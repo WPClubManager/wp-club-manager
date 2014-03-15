@@ -1,0 +1,703 @@
+.clearfix {
+	*zoom: 1;
+}
+	.clearfix:before,
+	.clearfix:after {
+		content: " ";
+		display: table;
+	}
+	.clearfix:after {
+		clear: both;
+	}
+
+.right {
+	float: right !important;
+}
+.left {
+	float: left !important;
+}
+
+.wpcm-row {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 62.5em;
+	*zoom: 1;
+}
+	.wpcm-row:before, .wpcm-row:after {
+		content: " ";
+		display: table;
+	}
+	.wpcm-row:after {
+		clear: both;
+	}
+	.wpcm-row .wpcm-row {
+		width: auto;
+		margin-top: 0;
+		margin-bottom: 0;
+		max-width: none;
+		*zoom: 1;
+	}
+	.wpcm-row .wpcm-row:before,
+	.wpcm-row .wpcm-row:after {
+		content: " ";
+		display: table;
+	}
+	.wpcm-row .wpcm-row:after {
+		clear: both;
+	}
+
+table {
+	background: white;
+	margin-bottom: 1.25rem;
+	border: solid 1px #dddddd;
+}
+	table thead,
+	table tfoot {
+		background: whitesmoke;
+	}
+	table thead tr th,
+	table thead tr td,
+	table tfoot tr th,
+	table tfoot tr td {
+		padding: 0.5rem 0.625 0.625rem;
+		font-weight: bold;
+		color: #222222;
+		text-align: left;
+	}
+	table tr th,
+	table tr td {
+		padding: 0.5625rem 0.625rem;
+		color: #222222;
+	}
+	table tr.even, table tr.alt,
+	table tr:nth-of-type(even) {
+		background: #f9f9f9;
+	}
+	table thead tr th,
+	table tfoot tr th,
+	table tbody tr td,
+	table tr td,
+	table tfoot tr td {
+		display: table-cell;
+		line-height: 1.125rem;
+	}
+	.entry-content td {
+	  	padding-left: 0.625rem !important;
+	}
+	.wpcm-fixtures-shortcode tbody tr:hover {
+		cursor: pointer;
+	}
+
+.wpcm-view-link {
+	display: block;
+	float: right;
+	margin: 1.5em 0 0;
+}
+
+.wpcm-entry-content {
+	clear: both;
+	display: block;
+}
+
+
+/*
+*******************************************************
+****** Shortcodes
+*******************************************************
+*/
+
+/* Staff */
+.wpcm-staff-shortcode {
+	clear: both;
+}
+
+
+.wpcm-staff-image {
+	float: left;
+	margin-bottom: 2em;
+	width: 40%;
+}
+	.wpcm-staff-image img {
+		max-width: 100%;
+	}
+
+
+.wpcm-staff-info {
+	float: right;
+	margin-bottom: 2em;
+	width: 50%;
+}
+	.wpcm-staff-info h1 {
+		font-size: 1.6em;
+		font-weight: normal;
+		margin: 0 0 1.4em;
+	}
+	.wpcm-staff-meta table {
+		width: 100%;
+	}
+	.wpcm-staff-meta table th {
+		font-weight: bold;
+	}
+
+.wpcm-staff-bio {
+	clear: both;
+	margin-bottom: 2em;
+	width: 100%;
+}
+	.wpcm-staff-bio h3 {
+		margin-bottom: 1em;
+	}
+
+
+/* Players */
+.wpcm-players-shortcode {
+	
+}
+	.wpcm-players-shortcode table {
+		text-align: center;
+		width: 100%;
+	}
+	.wpcm-players-shortcode table td,
+	.wpcm-players-shortcode table th {
+		text-align: center;
+	}
+	.wpcm-players-shortcode table th.number {
+		width: auto;
+	}
+	.wpcm-players-shortcode table thead th.name,
+	.wpcm-players-shortcode table tbody td.name,
+	.wpcm-players-shortcode table thead th.position,
+	.wpcm-players-shortcode table tbody td.position {
+		text-align: left;
+	}
+
+
+/* Standings */
+.wpcm-standings-shortcode {
+
+}
+	.wpcm-standings-shortcode table {
+		width: 100%;
+	}
+	.wpcm-standings-shortcode thead th,
+	.wpcm-standings-shortcode tbody td {
+		text-align: center;
+	}
+	.wpcm-standings-shortcode tr.highlighted {
+		background: rgba(0,0,0,.1);
+	}
+	.wpcm-standings-shortcode table thead th.club,
+	.wpcm-standings-shortcode table tbody td.club {
+		text-align: left;
+	}
+
+
+/* Matches */
+.wpcm-fixtures-shortcode {
+
+}
+	.wpcm-fixtures-shortcode th {
+		
+	}
+	.wpcm-fixtures-shortcode td.date {
+		
+	}
+	.wpcm-fixtures-shortcode th.venue,
+	.wpcm-fixtures-shortcode td.venue {
+		text-align: center;
+	}
+	.wpcm-fixtures-shortcode th.opponents {
+		
+	}
+	.wpcm-fixtures-shortcode th.result,
+	.wpcm-fixtures-shortcode td.result {
+		text-align: center;
+	}
+	.wpcm-fixtures-shortcode td span.win,
+	.wpcm-fixtures-shortcode td span.draw,
+	.wpcm-fixtures-shortcode td span.lose {
+		background: green;
+		border-radius: 10px;
+		color: #fff;
+		display: block;
+		float: right;
+		height: 16px;
+		width: 16px;
+	}
+	.wpcm-fixtures-shortcode td span.draw {
+		background: #dcdcdc;
+	}
+	.wpcm-fixtures-shortcode td span.lose {
+		background: red;
+	}
+
+/* Sponsors */
+.wpcm-sponsor-widget {
+	
+}
+	.wpcm-sponsor-widget ul {
+		list-style: none !important;
+	}
+
+
+/*
+*******************************************************
+****** Widgets
+*******************************************************
+*/
+
+/* Fixtures & results widgets */
+.wpcm-matches-widget {
+	
+}
+	.wpcm-matches-widget ul {
+		margin: 0;
+		padding: 0;
+	}
+	.wpcm-matches-widget ul li {
+		clear: both;
+		float: left;
+		list-style: none !important;
+		margin-bottom: 1.5em;
+	}
+	.wpcm-matches-widget .fixture-meta {
+		background: #f9f9f9;
+		float: left;
+		font-size: .913em;
+		height: 100%;
+		margin-bottom: 1em;
+		width: 100%;
+	}
+		.wpcm-matches-widget .fixture-meta .competition {
+			padding: .5em;
+			text-transform: uppercase;
+		}
+		.wpcm-matches-widget .fixture-meta .team {
+			float: right;
+			padding: .5em;
+			text-transform: uppercase;
+		}
+	.wpcm-matches-widget .clubs {
+		float: left;
+		height: 100%;
+		width: 100%;
+	}
+		.wpcm-matches-widget .clubs a {
+			display: block;
+		}
+		.wpcm-matches-widget .clubs .home-clubs {
+			display: block;
+			float: left;
+			font-size: 1.15em;
+			line-height: 36px;
+			padding: 0 2%;
+			width: 96%;
+		}
+		.wpcm-matches-widget .clubs .home-logo {
+			float: left;
+			height: 30px;
+			margin-right: 1em;
+			width: 30px;
+		}
+		.wpcm-matches-widget .clubs .away-clubs {
+			display: block;
+			float: left;
+			font-size: 1.15em;
+			line-height: 36px;
+			padding: 0 2%;
+			width: 96%;
+		}
+		.wpcm-matches-widget .clubs .away-logo {
+			float: left;
+			height: 30px;
+			margin-right: 1em;
+			width: 30px;
+		}
+		.wpcm-matches-widget .clubs .score {
+			float: right;
+			font-size: 1.4em;
+			font-weight: bold;
+		}
+	.wpcm-matches-widget .date {
+		background: #f9f9f9;
+		float: left;
+		height: 100%;
+		margin-top: 1em;
+		width: 100%;
+	}
+		.wpcm-matches-widget .kickoff {
+			padding: .5em;
+		}
+
+
+/*
+*******************************************************
+****** Single Match
+*******************************************************
+*/
+
+.wpcm-match-info {
+ 	background: #f9f9f9;
+ 	padding: .5em 0;
+ 	text-align: center;
+}
+	.wpcm-match-home-club-badge {
+		float: left;
+		padding-left: .5em;
+	}
+	.wpcm-match-away-club-badge {
+		float: right;
+		padding-right: .5em;
+	}
+	.wpcm-match-date {
+		font-size: .913em;
+		padding-top: .4em;
+		text-transform: uppercase;	
+	}
+	.wpcm-match-comp {
+		font-size: .913em;
+		padding-top: .8em;
+		text-transform: uppercase;
+	}
+
+.wpcm-match-fixture {
+	padding: 1.5em 0 2em;
+	text-align: center;
+}
+	.wpcm-match-home-club {
+		float: left;
+		font-size: 1.4em;
+		font-weight: 600;
+		padding-top: .5em;
+		text-align: center;
+		width: 40%;
+	}
+	.wpcm-match-away-club {
+		float: right;
+		font-size: 1.4em;
+		font-weight: 600;
+		padding-top: .5em;
+		text-align: center;
+		width: 40%;
+	}
+	.wpcm-match-score {
+		display: inline-block;
+		font-size: 2.4em;
+		font-weight: 600;
+		text-align: center;
+		width: 16%;
+	}
+	.wpcm-match-score-delimiter {
+		font-size: 1em;
+		font-weight: 600;
+		line-height: 1em;
+	}
+
+.wpcm-match-meta {
+	background: #f9f9f9;
+ 	padding: .5em 0;
+}
+	.wpcm-match-meta-left {
+		float: left;
+		width: 50%;
+	}
+	.wpcm-match-meta-right {
+		float: right;
+		width: 50%;
+	}
+	.wpcm-match-team {
+		font-size: .913em;
+		padding-right: .5em;
+		text-align: right;
+	}
+	.wpcm-match-referee {
+		font-size: .913em;
+		padding-right: .5em;
+		padding-top: .5em;
+		text-align: right;
+	}
+	.wpcm-match-venue {
+		font-size: .913em;
+		padding-left: .5em;
+		text-align: left;
+	}
+	.wpcm-match-attendance {
+		font-size: .913em;
+		padding-left: .5em;
+		padding-top: .5em;
+		text-align: left;
+	}
+
+.wpcm-match-details {
+	padding: 2em 0;
+}
+	.wpcm-match-report {
+		padding: 0 0 3em;
+	}
+	.wpcm-match-details table {
+		width: 100%;
+	}
+	.wpcm-match-details table td.name {
+		width:50%;
+	}
+	.wpcm-match-details table th.goals,
+	.wpcm-match-details table th.assists,
+	.wpcm-match-details table th.rating {
+		text-align: center;
+	}
+	.wpcm-match-details table td.goals,
+	.wpcm-match-details table td.assists,
+	.wpcm-match-details table td.rating {
+		text-align: center;
+		width: 9%;
+	}
+	.wpcm-match-details table td.notes {
+		width:auto;
+	}
+	.wpcm-match-details table td.name .sub {
+		color: #555;
+		font-size: .913em;
+		font-style: italic;
+		padding-left: 1em;
+	}
+	.wpcm-match-details table td.notes .yellowcard,
+	.wpcm-match-details table td.notes .redcard,
+	.wpcm-match-details table td.notes .mvp {
+		display: inline-block;
+		width: 12px;
+		height: 18px;
+		background: url(../images/notes.png) no-repeat;
+		overflow: hidden;
+		margin-right: 8px;
+		text-indent: -100px;
+	}
+	.wpcm-match-details table td.notes .yellowcard {
+		background-position: 0px 0px;
+	}
+	.wpcm-match-details table td.notes .redcard {
+		background-position: -12px 0px;
+	}
+	.wpcm-match-details table td.notes .mvp {
+		background-position: -24px 0px;
+	}
+	.wpcm-match-details h3 {
+		margin-bottom: 1.5em;
+	}
+	.wpcm-match-stats-start {
+		
+	}
+	.wpcm-match-stats-subs {
+		padding-top: 1.4em;
+	}
+	.wpcm-match-venue-info {
+
+	}
+	.wpcm-match-venue-address {
+		clear: both;
+		background: #f0f0f0;
+		margin-top: 1em;
+		padding: 1em .5em;
+	}
+	.wpcm-match-map-canvas img {
+			max-width: none;
+		}
+
+
+/*
+*******************************************************
+****** Single Players
+*******************************************************
+*/
+
+.wpcm-profile-image {
+	float: left;
+	margin-bottom: 2em;
+	width: 33.333%;
+}
+	.wpcm-profile-image img {
+		max-width: 100%;
+	}
+
+
+.wpcm-profile-meta {
+	float: right;
+	margin-bottom: 2em;
+	width: 58.333%;
+}
+	.wpcm-profile-meta h1 {
+		font-size: 1.6em;
+		font-weight: normal;
+		margin: 0 0 1.4em;
+	}
+	.wpcm-profile-meta table {
+		width: 100%;
+	}
+	.wpcm-profile-meta table th {
+		font-weight: bold;
+	}
+
+.wpcm-profile-stats {
+	margin-bottom: 2em;
+}
+	.wpcm-profile-stats .stats-tabs {
+		margin: 0;
+		border-bottom: 1px solid #ccc;
+		padding-left: 6px;
+	}
+	.wpcm-profile-stats .stats-tabs li {
+		display: inline-block;
+		background: #e4e4e4;
+		border-color: #ccc;
+		border-style: solid;
+		border-width: 1px;
+		font-weight: 700;
+		font-size: 15px;
+		position: relative;
+		margin-bottom:-1px;
+	}
+	.wpcm-profile-stats .stats-tabs li a {
+		color: #555;
+		display: inline-block;
+		padding: 8px 12px;
+		text-decoration: none;
+	}
+	.wpcm-profile-stats .stats-tabs .tabs {
+		background: #fff;
+		border-bottom: 1px solid #fff;
+	}
+	.wpcm-profile-stats .tabs-panel {
+		height: auto;
+		overflow: auto;
+		margin-top: 1.4em;
+	}
+	.wpcm-profile-stats .tabs-panel table td {
+		text-align: center;
+	}
+
+.wpcm-profile-bio {
+	margin-bottom: 2em;
+}
+
+
+/*
+*******************************************************
+****** Sponsors Archive
+*******************************************************
+*/
+.wpcm-single-sponsors,
+.wpcm-archive-sponsors {
+
+}
+	.wpcm-sponsor-post {
+		padding-bottom: 2.5em;
+	}
+	.wpcm-entry-title {
+		font-size: 1.6em;
+		font-weight: normal;
+		margin: 0 0 1em;
+	}
+	.wpcm-sponsor-image {
+		float: left;
+		width: 40%;
+	}
+	.wpcm-sponsor-thumbnail {
+		float: right;
+		margin-bottom: 2em;
+		width: 25%;
+	}
+	.wpcm-archive-sponsors .wpcm-sponsor-details {
+		float: right;
+		width: 55%;
+	}
+	.wpcm-single-sponsors .wpcm-sponsor-details {
+		float: left;
+		margin-bottom: 2em;
+		width: 65%;
+	}
+	.wpcm-sponsor-details h2 {
+		font-size: 1.6em;
+		font-weight: normal;
+		margin: 0 0 1em;
+	}
+	.wpcm-sponsor-meta {
+		margin-bottom: 1em;
+	}
+	.wpcm-sponsor-details a.more-link {
+		display: block;
+	}
+
+
+/* Twentyfourteen theme specific styles */
+.twentyfourteen .tfwpcm {
+	padding:12px 10px 0;
+	max-width:474px;
+	margin:0 auto;
+}
+	.twentyfourteen .tfwpcm .wpcm_player .entry-summary {
+		padding:0!important;
+		margin:0 0 1.618em!important
+	}
+	.twentyfourteen .tfwpcm div.wpcm_player.has-post-thumbnail {
+		margin-top:0
+	}
+	.twentyfourteen .tfwpcm .wpcm_player .images img {
+		margin-bottom:1em
+	}
+
+	@media screen and (min-width:673px) {
+		.twentyfourteen .tfwpcm {
+			padding-right:30px;
+			padding-left:30px
+		}
+	}
+	@media screen and (min-width:1040px) {
+		.twentyfourteen .tfwpcm {
+			padding-right:15px;
+			padding-left:15px
+		}
+	}
+	@media screen and (min-width:1110px) {
+		.twentyfourteen .tfwpcm {
+			padding-right:30px;
+			padding-left:30px
+		}
+	}
+	@media screen and (min-width:1218px) {
+		.twentyfourteen .tfwpcm {
+			margin-right:54px
+		}
+		.full-width .twentyfourteen .tfwpcm {
+			margin-right:auto
+		}
+	}
+
+
+/* High Res images */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
+	.wpcm-match-details table td.notes .yellowcard,
+	.wpcm-match-details table td.notes .redcard,
+	.wpcm-match-details table td.notes .mvp {
+		display: inline-block;
+		width: 12px;
+		height: 18px;
+		background: url(../images/notes@2x.png) no-repeat;
+		overflow: hidden;
+		margin-right: 8px;
+		text-indent: -100px;
+	}
+	.wpcm-match-details table td.notes .yellowcard {
+		background-position: 0px 0px;
+		background-size: 12px 18px;
+	}
+	.wpcm-match-details table td.notes .redcard {
+		background-position: -24px 0px;
+		background-size: 12px 18px;
+	}
+	.wpcm-match-details table td.notes .mvp {
+		background-position: -48px 0px;
+		background-size: 12px 18px;
+	}
+}
