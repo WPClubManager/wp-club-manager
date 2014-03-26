@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.0
+ * @version     1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -397,7 +397,7 @@ function wpcm_profile_stats_table( $stats = array(), $team = 0, $season = 0 ) {
 
 				<?php if( $show_ratings == 'yes' ) { ?>
 
-					<th><?php echo get_option( 'wpcm_player_rating_label'); ?></th>
+					<th><?php echo get_option( 'wpcm_player_ratings_label'); ?></th>
 
 				<?php } ?>
 
@@ -441,9 +441,13 @@ function wpcm_profile_stats_table( $stats = array(), $team = 0, $season = 0 ) {
 
 				<?php } ?>
 
-				<?php if( $show_ratings == 'yes' ) { ?>
+				<?php if( $show_ratings == 'yes' ) {
+
+					$rating = get_wpcm_stats_value( $stats, 'total', 'rating' );
+					$apps = get_wpcm_stats_value( $stats, 'total', 'appearances' );
+					$avrating = $rating / $apps; ?>
 					
-					<td><span data-index="rating"><?php wpcm_stats_value( $stats, 'total', 'rating' ); ?></span></td>
+					<td><span data-index="rating"><?php echo sprintf( "%01.2f", round($avrating, 2) ); ?></span></td>
 
 				<?php } ?>
 
