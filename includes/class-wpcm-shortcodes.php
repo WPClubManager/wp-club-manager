@@ -3,7 +3,7 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		1.0.0
+ * @version		1.0.1
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -523,7 +523,7 @@ class WPCM_Shortcodes {
 			'assists' => get_option( 'wpcm_player_assists_label'),
 			'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
 			'redcards' => get_option( 'wpcm_player_redcards_label'),
-			'rating' => get_option( 'wpcm_player_rating_label'),
+			'rating' => get_option( 'wpcm_player_ratings_label'),
 			'mvp' => get_option( 'wpcm_player_mvp_label')
 		);
 
