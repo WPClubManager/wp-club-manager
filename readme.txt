@@ -39,7 +39,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 
 = Automatic installation =
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of WooCommerce, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of WP Club Manager, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
 In the search field type “WP Club Manager” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
@@ -55,9 +55,11 @@ Automatic updates should work as expected but as always, it is recommended that 
 
 = Where can I find documentation and support for the WP Club Manager plugin? =
 
-You can find full documentation for the plugin at [WP Club Manager documentation](http://wpclubmanager.com/docs/).
+You can find full documentation for the plugin at [WP Club Manager documentation](http://wpclubmanager.com/docs/). Support is available in our [Support Forum](http://wpclubmanager.com/support/)
 
 = Where can I report bugs or contribute to the project? =
+
+You can help improve this plugin by reporting any bugs or contributing to the source code at our [Github repository](https://github.com/ClubPress/wpclubmanager).
 
 == Screenshots ==
 
@@ -66,7 +68,10 @@ You can find full documentation for the plugin at [WP Club Manager documentation
 
 == Changelog ==
 
-= 1.0.0 - 07/03/2014
+= 1.0.1 -
+* Fix - Fixed manual club stats not updating
+
+= 1.0.0 - 18/03/2014
 * Initial release
 
 == Upgrade Notice ==
