@@ -129,6 +129,42 @@ class WPCM_Meta_Box_Player_Stats {
 				    sum += Number($(this).val());
 				});
 				$('#wpcm_team-0_season-0 .player-stats-auto-mvp').val(sum);
+
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-appearances').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-appearances').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-appearances').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-goals').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-goals').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-goals').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-assists').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-assists').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-assists').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-yellowcards').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-yellowcards').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-yellowcards').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-redcards').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-redcards').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-redcards').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-rating').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-rating').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-rating').val(total);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-mvp').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-mvp').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-mvp').val(total);
 			
 			})(jQuery);
 		</script>
