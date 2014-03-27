@@ -29,31 +29,31 @@ if ( ! class_exists( 'WPClubManager' ) ) :
  */
 final class WPClubManager {
 
-	/**
-	 * @var string
-	 */
+/**
+ * @var string
+ */
 	public $version = '1.0.0';
 
-	/**
-	 * @var WPClubManager The single instance of the class
-	 */
+/**
+ * @var WPClubManager The single instance of the class
+ */
 	protected static $_instance = null;
 
-	/**
-	 * @var WPCM_Countries $countries
-	 */
+/**
+ * @var WPCM_Countries $countries
+ */
 	public $countries = null;
 
-	/**
-	 * Main WPClubManager Instance
-	 *
-	 * Ensures only one instance of WPClubManager is loaded or can be loaded.
-	 *
-	 * @since 1.0.0
-	 * @static
-	 * @see WPCM()
-	 * @return WPClubManager - Main instance
-	 */
+/**
+ * Main WPClubManager Instance
+ *
+ * Ensures only one instance of WPClubManager is loaded or can be loaded.
+ *
+ * @since 1.0.0
+ * @static
+ * @see WPCM()
+ * @return WPClubManager - Main instance
+ */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
@@ -61,15 +61,14 @@ final class WPClubManager {
 		return self::$_instance;
 	}
 
-	/**
-	 * WPClubManager Constructor.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return WPClubManager
-	 */
+/**
+ * WPClubManager Constructor.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return WPClubManager
+ */
 	public function __construct() {
-
 		// Auto-load classes on demand
 		if ( function_exists( "__autoload" ) ) {
 			spl_autoload_register( "__autoload" );
@@ -77,10 +76,10 @@ final class WPClubManager {
 		spl_autoload_register( array( $this, 'autoload' ) );
 
 		// Include constants
-		$this->constants();
+		$this->_constants();
 
 		// Include required files
-		$this->includes();
+		$this->_includes();
 
 		// Hooks.
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
@@ -94,27 +93,26 @@ final class WPClubManager {
 		do_action( 'wpclubmanager_loaded' );
 	}
 
-	/**
-	 * Show action links on the plugin screen
-	 *
-	 * @param mixed $links
-	 * @return array
-	 */
+/**
+ * Show action links on the plugin screen
+ *
+ * @param mixed $links
+ * @return array
+ */
 	public function action_links( $links ) {
 		return array_merge( array(
 			'<a href="' . esc_url( apply_filters( 'wpclubmanager_docs_url', 'http://wpclubmanager.com/docs/', 'wpclubmanager' ) ) . '">' . __( 'Docs', 'wpclubmanager' ) . '</a>'
 		), $links );
 	}
 
-	/**
-	 * Auto-load WPCM classes on demand to reduce memory consumption.
-	 *
-	 * @access public
-	 * @param mixed $class
-	 * @return void
-	 */
+/**
+ * Auto-load WPCM classes on demand to reduce memory consumption.
+ *
+ * @access public
+ * @param mixed $class
+ * @return void
+ */
 	public function autoload( $class ) {
-
 		$class = strtolower( $class );
 
 		if ( strpos( $class, 'wpcm_meta_box' ) === 0 ) {
@@ -140,15 +138,14 @@ final class WPClubManager {
 		}
 	}
 
-	/**
-	 * Defines constants used by the plugin.
-	 *
-	 * @since  1.0.0
-	 * @access private
-	 * @return void
-	 */
-	private function constants() {
-
+/**
+ * Defines constants used by the plugin.
+ *
+ * @since  1.0.0
+ * @access private
+ * @return void
+ */
+	private function _constants() {
 		define( 'WPCM_PLUGIN_FILE', __FILE__ );
 		define( 'WPCM_VERSION', $this->version );
 
@@ -166,15 +163,14 @@ final class WPClubManager {
 		}
 	}
 
-	/**
-	 * Loads the initial files needed by the plugin.
-	 *
-	 * @since  1.0.0
-	 * @access private
-	 * @return void
-	 */
-	private function includes() {
-
+/**
+ * Loads the initial files needed by the plugin.
+ *
+ * @since  1.0.0
+ * @access private
+ * @return void
+ */
+	private function _includes() {
 		include( 'includes/wpcm-core-functions.php' );
 		include( 'includes/class-wpcm-install.php' );
 
@@ -202,51 +198,47 @@ final class WPClubManager {
 		include_once( 'includes/class-wpcm-shortcodes.php' );
 	}
 
-	/**
-	 * Include required ajax files.
-	 *
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Include required ajax files.
+ *
+ * @access public
+ * @return void
+ */
 	public function ajax_includes() {
-
 		include_once( 'includes/class-wpcm-ajax.php' );
 	}
 
 
-	/**
-	 * Include required frontend files.
-	 *
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Include required frontend files.
+ *
+ * @access public
+ * @return void
+ */
 	public function frontend_includes() {
-
 		include_once( 'includes/class-wpcm-template-loader.php' );
 		include_once( 'includes/class-wpcm-frontend-scripts.php' );
 	}
 
 
-	/**
-	 * Function used to Init WPCM Template Functions - This makes them pluggable by plugins and themes.
-	 *
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Function used to Init WPCM Template Functions - This makes them pluggable by plugins and themes.
+ *
+ * @access public
+ * @return void
+ */
 	public function include_template_functions() {
-
 		include_once( 'includes/wpcm-template-functions.php' );
 	}
 
-	/**
-	 * Register widgets function.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Register widgets function.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
 	public function register_widgets() {
-
 		include_once( 'includes/widgets/class-wpcm-widget-fixtures.php');
 		include_once( 'includes/widgets/class-wpcm-widget-results.php');
 		include_once( 'includes/widgets/class-wpcm-widget-standings.php');
@@ -254,14 +246,13 @@ final class WPClubManager {
 		include_once( 'includes/widgets/class-wpcm-widget-players.php');
 	}
 
-	/**
-	 * Init WooCommerce when WordPress Initialises.
-	 *
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Init WooCommerce when WordPress Initialises.
+ *
+ * @access public
+ * @return void
+ */
 	public function init() {
-
 		//Before init action
 		do_action( 'before_wpcm_init' );
 
@@ -282,26 +273,24 @@ final class WPClubManager {
 		do_action( 'wpcm_init' );
 	}
 
-	/**
-	 * Loads the translation files.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Loads the translation files.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
 	public function load_plugin_textdomain() {
-		
 		load_plugin_textdomain( 'wpclubmanager', false, WPCM_BASENAME . '/i18n' );
 	}
 
-	/**
-	 * Add Compatibility for various bits.
-	 *
-	 * @access public
-	 * @return void
-	 */
+/**
+ * Add Compatibility for various bits.
+ *
+ * @access public
+ * @return void
+ */
 	public function compatibility() {
-
 		// Post thumbnail support
 		if ( ! current_theme_supports( 'post-thumbnails', 'wpcm_player' ) ) {
 			add_theme_support( 'post-thumbnails' );
@@ -326,40 +315,40 @@ final class WPClubManager {
 		add_image_size( 'staff_single', $staff_single['width'], $staff_single['height'], $staff_single['crop'] );
 	}
 
-	/** Helper functions ******************************************************/
+/** Helper functions ******************************************************/
 
-	/**
-	 * Get the plugin url.
-	 *
-	 * @return string
-	 */
+/**
+ * Get the plugin url.
+ *
+ * @return string
+ */
 	public function plugin_url() {
 		return untrailingslashit( plugins_url( '/', __FILE__ ) );
 	}
 
-	/**
-	 * Get the plugin path.
-	 *
-	 * @return string
-	 */
+/**
+ * Get the plugin path.
+ *
+ * @return string
+ */
 	public function plugin_path() {
 		return untrailingslashit( plugin_dir_path( __FILE__ ) );
 	}
 
-	/**
-	 * Get the template path.
-	 *
-	 * @return string
-	 */
+/**
+ * Get the template path.
+ *
+ * @return string
+ */
 	public function template_path() {
 		return apply_filters( 'WPCM_TEMPLATE_PATH', 'wpclubmanager/' );
 	}
 
-	/**
-	 * Get Ajax URL.
-	 *
-	 * @return string
-	 */
+/**
+ * Get Ajax URL.
+ *
+ * @return string
+ */
 	public function ajax_url() {
 		return admin_url( 'admin-ajax.php', 'relative' );
 	}
