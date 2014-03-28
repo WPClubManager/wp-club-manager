@@ -314,7 +314,7 @@ function wpcm_player_stats_table( $stats = array(), $team = 0, $season = 0 ) {
 			<tr>
 				<td align="right"><?php _e( 'Manual', 'wpclubmanager' ); ?></td>
 				<?php foreach( $stats_labels as $key => $val ): ?>
-					<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>" /></td>
+					<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>"<?php echo ( $season == 0 ? ' readonly' : '' ); ?> /></td>
 				<?php endforeach; ?>
 			</tr>
 		</tbody>
