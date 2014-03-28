@@ -32,7 +32,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		
+
 		return apply_filters( 'wpclubmanager_general_settings', array(
 
 			array( 'title' => __( 'General Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => '', 'id' => 'general_options' ),
@@ -60,6 +60,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 			array( 'type' => 'sectionend', 'id' => 'general_options'),
 
 		)); // End general settings
+
 	}
 
 	/**

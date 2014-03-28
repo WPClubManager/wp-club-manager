@@ -187,6 +187,9 @@ table.wpcm-match-players-table tbody tr td.redcards {
 }
 
 /* Tabs */
+div.stuffbox h3 {
+	border-bottom: 1px solid #eee;
+}
 .wpcm_stats-tabs {
 	margin: 2em 0 0;
 	border-bottom: 1px solid #ccc;

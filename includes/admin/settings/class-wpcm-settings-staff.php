@@ -35,7 +35,7 @@ class WPCM_Settings_Staff extends WPCM_Settings_Page {
 		
 		return apply_filters( 'wpclubmanager_staff_settings', array(
 
-			array( 'title' => __( 'Staff Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( 'Choose which fields to display on staff profile pages.', 'wpclubmanager' ), 'id' => 'staff_options' ),
+			array( 'title' => __( 'Staff Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on staff profile pages.</p>', 'wpclubmanager' ), 'id' => 'staff_options' ),
 
 			array(
 				'title' => __( 'Birthday', 'wpclubmanager' ),

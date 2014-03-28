@@ -35,7 +35,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 		
 		return apply_filters( 'wpclubmanager_players_settings', array(
 
-			array( 'title' => __( 'Player Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( 'Choose which fields to display on player profile pages.', 'wpclubmanager' ), 'id' => 'players_options' ),
+			array( 'title' => __( 'Player Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on player profile pages.</p>', 'wpclubmanager' ), 'id' => 'players_options' ),
 
 			array(
 				'title' => __( 'Number', 'wpclubmanager' ),
@@ -167,7 +167,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'players_options'),
 
-			array(	'title' => __( 'Player Image Sizes', 'wpclubmanager' ), 'type' => 'title','desc' => sprintf(__( 'These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.', 'wpclubmanager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
+			array(	'title' => __( 'Player Image Sizes', 'wpclubmanager' ), 'type' => 'title','desc' => sprintf(__( '<p>These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.</p>', 'wpclubmanager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
 
 			array(
 				'title' => __( 'Player Profile Image', 'wpclubmanager' ),
