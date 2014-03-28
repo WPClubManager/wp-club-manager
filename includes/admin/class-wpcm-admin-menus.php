@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.0
+ * @version     1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,7 +29,7 @@ class WPCM_Admin_Menus {
 
 		global $menu, $wpclubmanager;
 
-	    $main_page = add_menu_page( __( 'Club Manager', 'wpclubmanager' ), __( 'Club Manager', 'wpclubmanager' ), 'manage_wpclubmanager', 'wpcm-settings' , array( $this, 'settings_page' ), null, '99.6' );
+	    $main_page = add_menu_page( __( 'Club Manager', 'wpclubmanager' ), __( 'Club Manager', 'wpclubmanager' ), 'manage_wpclubmanager', 'wpcm-settings' , array( $this, 'settings_page' ), WPCM()->plugin_url() . '/assets/images/logo.png', '99.6' );
 
 		remove_submenu_page('edit.php?post_type=wpcm_player', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_player');
 		remove_submenu_page('edit.php?post_type=wpcm_player', 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_player');
