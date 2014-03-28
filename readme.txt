@@ -69,6 +69,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 == Changelog ==
 
 = 1.0.1 - 28/03/2014
+* Tweak - Added admin menu logo
 * Tweak - Removed some background and color properties to improve frontend CSS compatibility with themes
 * Tweak - Disabled manual player stats input for All Seasons. Makes sure stats are assigned to a season
 * Fix - Total player stats input fixed
