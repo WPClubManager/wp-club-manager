@@ -48,6 +48,7 @@
 								<li><a target="_blank" href="http://twitter.com/?status=Showing%20my%20appreciation%20for%20WordPress%20plugin%3A%20WP%20Club%20Manager%20%20-%20check%20it%20out!%20http%3A%2F%2Fwordpress.org%2Fplugins%2Fwp-club-manager%2F">Tweet about WP Club Manager</a></li>
 								<li><a target="_blank" href="http://wordpress.org/plugins/wp-club-manager/">Vote "works" on the WordPress.org plugin page</a></li>
 							</ul>
+							<p>You can also follow WP Club Manager on Twitter <a href="https://twitter.com/WPClubManager" target="_blank">here</a>.</p>
 						</div>
 					</div>
 
