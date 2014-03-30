@@ -88,8 +88,8 @@ class WPCM_Results_Widget extends WP_Widget {
 		$args = array(
 			'tax_query' => array(),
 			'numberposts' => $limit,
-			'order' => 'post_date',
-			'orderby' => 'DESC',
+			'order' => 'DESC',
+			'orderby' => 'post_date',
 			'meta_query' => array(
 				array(
 					'key' => 'wpcm_played',
@@ -207,7 +207,7 @@ class WPCM_Results_Widget extends WP_Widget {
 						echo '</div>';
 					echo '</a>';
 
-					echo '<div class="date">';
+					echo '<div class="wpcm-date">';
 						echo '<div class="kickoff">';
 							if ( $show_date )
 								echo date_i18n( $date_format, $timestamp );

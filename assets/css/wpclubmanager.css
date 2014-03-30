@@ -191,7 +191,7 @@ table {
 	.wpcm-fixtures-shortcode th {
 		
 	}
-	.wpcm-fixtures-shortcode td.date {
+	.wpcm-fixtures-shortcode td.wpcm-date {
 		
 	}
 	.wpcm-fixtures-shortcode th.venue,
@@ -309,7 +309,7 @@ table {
 			font-size: 1.4em;
 			font-weight: bold;
 		}
-	.wpcm-matches-widget .date {
+	.wpcm-matches-widget .wpcm-date {
 		float: left;
 		height: 100%;
 		margin-top: 1em;

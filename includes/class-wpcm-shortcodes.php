@@ -3,7 +3,7 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		1.0.1
+ * @version		1.0.2
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -236,7 +236,7 @@ class WPCM_Shortcodes {
 
 					$output .= '<tr data-url="' . get_permalink( $fixture->ID ) . '">';
 					
-					$output .= '<td class="date"><a href="' . get_permalink( $fixture->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
+					$output .= '<td class="wpcm-date"><a href="' . get_permalink( $fixture->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
 
 						if ( $default_club == $home_club ) {
 							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="away">' . get_the_title ( $away_club ) . '</td>';
@@ -393,7 +393,7 @@ class WPCM_Shortcodes {
 			if ( $size > 0 ) {
 				$output .= '
 					<tr>
-						<th class="date">'.__('Date').'</th>';
+						<th class="wpcm-date">'.__('Date').'</th>';
 				$output .= '
 						<th class="venue">'.__('Venue', 'wpclubmanager').'</th>
 						<th class="opponent">'.__('Opponent', 'wpclubmanager').'</th>';
@@ -435,7 +435,7 @@ class WPCM_Shortcodes {
 
 					$output .=
 					'<tr data-url="' . get_permalink( $match->ID ) . '">';
-						$output .= '<td class="date"><a href="' . get_permalink( $match->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
+						$output .= '<td class="wpcm-date"><a href="' . get_permalink( $match->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
 
 						if ( $default_club == $home_club ) {
 							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="opponent away">' . get_the_title ( $away_club ) . '</td>';
