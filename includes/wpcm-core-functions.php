@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.0
+ * @version     1.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -506,3 +506,19 @@ if (!function_exists('wpcm_array_filter_checked')) {
 		return ( array_key_exists( 'checked', $value ) );
 	}
 }
+
+/**
+ * Show future matches
+ *
+ * @access public
+ * @param string $posts
+ * @return string
+ */
+function show_future_matches($posts) {
+	global $wp_query, $wpdb;
+	if(is_single() && $wp_query->post_count == 0) {
+		$posts = $wpdb->get_results($wp_query->request);
+	}
+	return $posts;
+}
+add_filter('the_posts', 'show_future_matches');
