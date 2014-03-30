@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.0.0
+ * @version 	1.0.2
  * @extends 	WP_Widget
  */
 
@@ -86,8 +86,8 @@ class WPCM_Fixtures_Widget extends WP_Widget {
 		$args = array(
 			'tax_query' => array(),
 			'numberposts' => $limit,
-			'order' => 'post_date',
-			'orderby' => 'ASC',
+			'order' => 'ASC',
+			'orderby' => 'post_date',
 			'post_status' => 'future',
 			'meta_query' => array(
 				array(
@@ -198,7 +198,7 @@ class WPCM_Fixtures_Widget extends WP_Widget {
 						echo '</div>';
 					echo '</a>';
 
-					echo '<div class="date">';
+					echo '<div class="wpcm-date">';
 						echo '<div class="kickoff">';
 							if ( $show_date )
 								echo date_i18n( $date_format, $timestamp );
