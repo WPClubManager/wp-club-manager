@@ -4,7 +4,7 @@ Tags: clubs, teams, sports team, sports club, club management, team management, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,7 +68,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
+= 1.0.2 - 30/03/2014
+
+* Fix - Fixed match players not being saved
+* Fix - Fixed 404 on scheduled matches
+* Fix - Converted 'date' to 'wpcm-date' in frontend css
+* Fix - Fixture widget order and orderby
+
 = 1.0.1 - 29/03/2014
+
 * Tweak - Improved admin UI
 * Tweak - Added admin menu logo
 * Tweak - Removed some background and color properties to improve frontend CSS compatibility with themes
@@ -79,6 +87,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed manual club stats not updating
 
 = 1.0.0 - 18/03/2014
+
 * Initial release
 
 == Upgrade Notice ==
