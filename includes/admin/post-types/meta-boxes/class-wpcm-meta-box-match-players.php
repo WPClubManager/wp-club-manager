@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.0.0
+ * @version     1.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,11 +47,7 @@ class WPCM_Meta_Box_Match_Players {
 	 */
 	public static function save( $post_id, $post ) {
 
-		if(isset($players)) {
-			$players = (array)$_POST['wpcm_players'];
-		}else{
-			$players = null;
-		}
+		$players = (array)$_POST['wpcm_players'];
 			
 		if ( is_array( $players ) ) {
 			if ( array_key_exists( 'lineup', $players ) && is_array( $players['lineup'] ) )
