@@ -249,9 +249,16 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$output .= '<tr>';
 
+	if( $show_number == 'yes') {
+
+		$output .= '<td>' . $number . '</td>';
+
+	}
+
 	$output .= '<td class="name">
 					<a href="' . get_permalink( $key ) . '">
 						' . ( !empty( $number ) ? $number . '. ' : '' ) . get_the_title( $key ) . '
+					<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '
 					</a>';
 
 	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
