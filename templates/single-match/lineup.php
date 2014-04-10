@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,6 +13,10 @@ global $wpclubmanager, $post;
 
 $played = get_post_meta( $post->ID, 'wpcm_played', true );
 $players = unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) );
+
+$show_number = get_option('wpcm_player_profile_show_number');
+$show_assists = get_option('wpcm_player_profile_show_assists');
+$show_ratings = get_option('wpcm_player_profile_show_ratings');
 
 if ( $played ) {
 
@@ -32,23 +36,29 @@ if ( $played ) {
 
 						<tr>
 
-							<th><?php _e('Name', 'wpclubmanager') ?></th>
+							<?php if( $show_number == 'yes') { ?>
 
-							<th><?php echo get_option('wpcm_player_goals_label'); ?></th>
-
-							<?php if( get_option('wpcm_player_profile_show_assists' == 'yes') ) { ?>
-
-								<th><?php echo get_option('wpcm_player_assists_label'); ?></th>
+								<th class="squadno"><?php _e('No.', 'wpclubmanager') ?></th>
 
 							<?php } ?>
 
-							<?php if( get_option('wpcm_player_profile_show_ratings' == 'yes') ) { ?>
+							<th class="name"><?php _e('Name', 'wpclubmanager') ?></th>
 
-								<th><?php _e('Rating', 'wpclubmanager') ?></th>
+							<th class="goals"><?php echo get_option('wpcm_player_goals_label'); ?></th>
+
+							<?php if( $show_assists == 'yes') { ?>
+
+								<th class="assists"><?php echo get_option('wpcm_player_assists_label'); ?></th>
 
 							<?php } ?>
 
-							<th><?php _e('Notes', 'wpclubmanager') ?></th>
+							<?php if( $show_ratings == 'yes') { ?>
+
+								<th class="rating"><?php _e('Rating', 'wpclubmanager') ?></th>
+
+							<?php } ?>
+
+							<th class="notes"><?php _e('Notes', 'wpclubmanager') ?></th>
 
 						</tr>
 
