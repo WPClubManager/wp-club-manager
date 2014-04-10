@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.0
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -245,13 +245,22 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$number = get_post_meta( $key, 'wpcm_number', true );
 
+	$show_number = get_option('wpcm_player_profile_show_number');
+	$show_assists = get_option('wpcm_player_profile_show_assists');
+	$show_ratings = get_option('wpcm_player_profile_show_ratings');
+
 	$output = '';
 
 	$output .= '<tr>';
 
+	if( $show_number == 'yes') {
+
+		$output .= '<td>' . $number . '</td>';
+
+	}
+
 	$output .= '<td class="name">
-					<a href="' . get_permalink( $key ) . '">
-						' . ( !empty( $number ) ? $number . '. ' : '' ) . get_the_title( $key ) . '
+					<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '
 					</a>';
 
 	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
@@ -263,13 +272,13 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$output .= '<td class="goals">' . $value['goals'] . '</td>';
 
-	if( get_option('wpcm_player_profile_show_assists' == 'yes') ) {
+	if( $show_assists == 'yes') {
 
 		$output .= '<td class="assists">' . $value['assists'] . '</td>';
 
 	}
 
-	if( get_option('wpcm_player_profile_show_ratings' == 'yes') ) {
+	if( $show_ratings == 'yes') {
 
 		if ( 0 < $value['rating'] ) {
 	

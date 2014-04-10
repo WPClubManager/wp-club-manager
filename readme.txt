@@ -3,7 +3,7 @@ Contributors: ClubPress
 Tags: clubs, teams, sports team, sports club, club management, team management, league tables, football, rugby, soccer, hockey, ice hockey
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
-Tested up to: 3.8
+Tested up to: 3.8.2
 Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -67,6 +67,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 2. ....
 
 == Changelog ==
+
+= 1.0.3 - 00/04/2014
+
+* Tweak - Added jobs filter to staff shortcode
+* Tweak - Added classes to some <th> elements in single-match lineup template
+* Tweak - Added number column to table in match lineup and removed number from name column
+* Fix - Fixed broken wpclubmanager_get_template_part() function
+* Fix - Fixed display of recorded stats in single-match lineup
 
 = 1.0.2 - 30/03/2014
 
