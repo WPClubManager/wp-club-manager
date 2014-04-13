@@ -137,6 +137,9 @@ table.wpcm-match-players-table tbody tr td.redcards {
 	padding-right: 10px;
 	text-align: center;
 }
+input.measure-text {
+	max-width: 100px;
+}
 
 /* Input labels */
 .player-stats-list-labels {

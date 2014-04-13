@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.0.0
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -36,6 +36,9 @@ class WPCM_Meta_Box_Player_Details {
 		$dob_day = substr( $dob, 8, 2 );
 		$dob_month = substr( $dob, 5, 2 );
 		$dob_year = substr( $dob, 0, 4 );
+
+		$height = get_post_meta( $post->ID, 'wpcm_height', true );
+		$weight = get_post_meta( $post->ID, 'wpcm_weight', true );
 
 		$natl = get_post_meta( $post->ID, 'wpcm_natl', true );
 		$hometown = get_post_meta( $post->ID, 'wpcm_hometown', true );
@@ -78,6 +81,10 @@ class WPCM_Meta_Box_Player_Details {
 			<input type="text" name="wpcm_dob_year" id="wpcm_dob_year" value="<?php echo $dob_year; ?>" size="4" maxlength="4" autocomplete="off" />
 		</p><?php
 
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_height', 'label' => __( 'Height', 'wpclubmanager' ), 'class' => 'measure-text' ) );
+
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_weight', 'label' => __( 'Weight', 'wpclubmanager' ), 'class' => 'measure-text' ) );
+
 		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_hometown', 'label' => __( 'Hometown', 'wpclubmanager' ), 'class' => 'regular-text' ) );
 
 		wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wpclubmanager' ) ) );
@@ -99,6 +106,8 @@ class WPCM_Meta_Box_Player_Details {
 		update_post_meta( $post_id, 'wpcm_number', $_POST['wpcm_number'] );
 		wp_set_post_terms( $post_id, $_POST['wpcm_position'], 'wpcm_position' );
 		update_post_meta( $post_id, 'wpcm_dob', $dob_year . '-' . $dob_month. '-' . $dob_day );
+		update_post_meta( $post_id, 'wpcm_height', $_POST['wpcm_height'] );
+		update_post_meta( $post_id, 'wpcm_weight', $_POST['wpcm_weight'] );
 		update_post_meta( $post_id, 'wpcm_natl', $_POST['wpcm_natl'] );
 		update_post_meta( $post_id, 'wpcm_hometown', $_POST['wpcm_hometown'] );
 		update_post_meta( $post_id, 'wpcm_prevclubs', $_POST['wpcm_prevclubs'] );

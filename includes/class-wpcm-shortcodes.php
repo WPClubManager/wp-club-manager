@@ -272,7 +272,7 @@ class WPCM_Shortcodes {
 							$output .= '</td>';
 						endif;
 
-						$output .= '</td><td class="goals">&nbsp;</td><td>&nbsp;</td></tr>';
+						$output .= '</td><td class="goals">&nbsp;</td></tr>';
 
 				}
 				
@@ -405,7 +405,6 @@ class WPCM_Shortcodes {
 						<th class="competition">'.__('Competition', 'wpclubmanager').'</th>';
 				$output .= '
 						<th class="result">'.__('Results', 'wpclubmanager').'</th>
-						<th>&nbsp;</th>
 					</tr>';
 			} else {
 				$output .=
@@ -473,26 +472,30 @@ class WPCM_Shortcodes {
 
 							if ( $home_goals == $away_goals ) {
 								$result = '<span class="draw"></span>';
+								$status = ' draw';
 							}
 
 							if ( $default_club == $home_club ) {
 								if ( $home_goals > $away_goals ) {
 									$result = '<span class="win"></span>';
+									$status = ' win';
 								}
 								if ( $home_goals < $away_goals ) {
 									$result = '<span class="lose"></span>';
+									$status = ' loss';
 								}
 							} else {
 								if ( $home_goals > $away_goals ) {
 									$result = '<span class="lose"></span>';
+									$status = ' loss';
 								}
 								if ( $home_goals < $away_goals ) {
 									$result = '<span class="win"></span>';
+									$status = ' win';
 								}
 							}
 
-					$output .= '<td class="result">' . ( $played ? $home_goals . ' ' . get_option( 'wpcm_match_goals_delimiter' ) . ' ' . $away_goals : '' ) . '</td>';
-					$output .= '<td>' . ( $played ? $result : '' ) . '</td>';
+					$output .= '<td class="result' . $status . '">' . ( $played ? $home_goals . ' ' . get_option( 'wpcm_match_goals_delimiter' ) . ' ' . $away_goals : '' ) . ' ' . ( $played ? $result : '' ) . '</td>';
 					$output .= '</tr>';
 				}
 			}
