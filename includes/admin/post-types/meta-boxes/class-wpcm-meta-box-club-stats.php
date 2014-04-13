@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.0.1
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -69,7 +69,7 @@ class WPCM_Meta_Box_Club_Stats {
 	public static function save( $post_id, $post ) {
 
 		$stats = $_POST['wpcm_stats'];
-		array_walk_recursive( $stats, 'wpcm_array_values_to_int' );
+		if( is_array( $stats ) ) array_walk_recursive( $stats, 'wpcm_array_values_to_int' );
 		update_post_meta( $post_id, 'wpcm_stats', serialize( $stats ) );
 	}
 }
