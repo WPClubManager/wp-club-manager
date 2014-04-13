@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.2
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,7 +33,7 @@ function wpclubmanager_get_template_part( $slug, $name = '' ) {
 
 	// Look in yourtheme/slug-name.php and yourtheme/wpclubmanager/slug-name.php
 	if ( $name )
-		$template = locate_template( array ( "{$slug}-{$name}.php", "{WPCM()->template_path}{$slug}-{$name}.php" ) );
+		$template = locate_template( array ( "{$slug}-{$name}.php", WPCM()->template_path() . "{$slug}-{$name}.php" ) );
 
 	// Get default slug-name.php
 	if ( !$template && $name && file_exists( WPCM()->plugin_path() . "/templates/{$slug}-{$name}.php" ) )
@@ -41,7 +41,10 @@ function wpclubmanager_get_template_part( $slug, $name = '' ) {
 
 	// If template file doesn't exist, look in yourtheme/slug.php and yourtheme/wpclubmanager/slug.php
 	if ( !$template )
-		$template = locate_template( array ( "{$slug}.php", "{WPCM()->template_path}{$slug}.php" ) );
+		$template = locate_template( array ( "{$slug}.php", WPCM()->template_path() . "{$slug}.php" ) );
+
+	// Allow 3rd party plugin filter template file from their plugin
+	$template = apply_filters( 'wpclubmanager_get_template_part', $template, $slug, $name );
 
 	if ( $template )
 		load_template( $template, false );

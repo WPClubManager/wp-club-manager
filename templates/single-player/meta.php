@@ -4,22 +4,14 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $post, $wpclubmanager;
 
-$season = '0';
-
-$show_appearances = get_option( 'wpcm_player_profile_show_appearances' );
-$show_goals = get_option( 'wpcm_player_profile_show_goals' );
-$show_assists = get_option( 'wpcm_player_profile_show_assists' );
-$show_yellowcards = get_option( 'wpcm_player_profile_show_yellowcards' );
-$show_redcards = get_option( 'wpcm_player_profile_show_redcards' );
-$show_ratings = get_option( 'wpcm_player_profile_show_ratings' );
-$show_mvp = get_option( 'wpcm_player_profile_show_mvp' ); ?>
+$season = '0'; ?>
 
 	<table>
 					
@@ -62,6 +54,36 @@ $show_mvp = get_option( 'wpcm_player_profile_show_mvp' ); ?>
 					</td>
 				</tr>
 			<?php }
+
+			if ( get_option( 'wpcm_player_profile_show_height' ) == 'yes') {
+
+				$height = get_post_meta( $post->ID, 'wpcm_height', true ); ?>
+
+				<tr>
+					<th>
+						<?php _e( 'Height', 'wpclubmanager' ); ?>
+					</th>
+					<td>
+						<?php echo $height; ?>
+					</td>
+				</tr>
+			<?php
+			}
+
+			if ( get_option( 'wpcm_player_profile_show_weight' ) == 'yes') {
+
+				$weight = get_post_meta( $post->ID, 'wpcm_weight', true ); ?>
+
+				<tr>
+					<th>
+						<?php _e( 'Weight', 'wpclubmanager' ); ?>
+					</th>
+					<td>
+						<?php echo $weight; ?>
+					</td>
+				</tr>
+			<?php
+			}
 
 			if ( get_option( 'wpcm_player_profile_show_season' ) == 'yes') {
 

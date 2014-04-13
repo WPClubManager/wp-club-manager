@@ -5,7 +5,7 @@
  * AJAX Event Handler
  *
  * @class 		WPCM_AJAX
- * @version		1.0.0
+ * @version		1.0.3
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -448,6 +448,7 @@ class WPCM_AJAX {
 			'limit' => 0,
 			'season' => null,
 			'team' => null,
+			'jobs' => null,
 			'title' => __( 'Staff', 'wpclubmanager' ),
 			'team' => null,
 			'linktext' => __( 'View all staff', 'wpclubmanager' ),
@@ -494,6 +495,23 @@ class WPCM_AJAX {
 								'hide_empty' => 0,
 								'orderby' => 'title',
 								'taxonomy' => 'wpcm_team',
+								'selected' => $args[$field],
+								'name' => $field,
+								'id' => 'option-' . $field
+							) );
+							?>
+						</td>
+					</tr>
+					<tr>
+						<?php $field = 'jobs'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Jobs', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<?php
+							wp_dropdown_categories( array(
+								'show_option_none' => __( 'All' ),
+								'hide_empty' => 0,
+								'orderby' => 'title',
+								'taxonomy' => 'wpcm_jobs',
 								'selected' => $args[$field],
 								'name' => $field,
 								'id' => 'option-' . $field
