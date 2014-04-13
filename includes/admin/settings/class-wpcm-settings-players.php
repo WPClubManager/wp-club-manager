@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.1
+ * @version     1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -57,6 +57,22 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 				'title' => __( 'Age', 'wpclubmanager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_age',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox'
+			),
+
+			array(
+				'title' => __( 'Height', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_player_profile_show_height',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox'
+			),
+
+			array(
+				'title' => __( 'Weight', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_player_profile_show_weight',
 				'default'	=> 'yes',
 				'type' 		=> 'checkbox'
 			),
