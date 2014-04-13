@@ -281,6 +281,7 @@ table {
 			float: left;
 			font-size: 1.15em;
 			line-height: 36px;
+			margin: 0;
 			padding: 0 2%;
 			width: 96%;
 		}
@@ -295,6 +296,7 @@ table {
 			float: left;
 			font-size: 1.15em;
 			line-height: 36px;
+			margin: 0;
 			padding: 0 2%;
 			width: 96%;
 		}
