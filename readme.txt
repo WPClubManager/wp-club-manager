@@ -1,5 +1,5 @@
 === WP Club Manager ===
-Contributors: ClubPress
+Contributors: Clubpress
 Tags: clubs, teams, sports team, sports club, club management, team management, league tables, football, rugby, soccer, hockey, ice hockey
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
@@ -81,6 +81,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed localisation
 * Fix - Added .pot file
 * Fix - Possible fix for 'expecting array' warning when adding/editing clubs
+* Fix - Fixed division by zero warning in player stats tables
 * Fix - Fixed broken wpclubmanager_get_template_part() function
 * Fix - Fixed display of recorded stats in single-match lineup
 
@@ -108,5 +109,5 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-1.0.1 is a minor update with a few minor fixes and improvements. There shouldn't be any problems upgrading but some styles may be affected depending on your theme.
+= 1.0.3 =
+1.0.3 is a minor update with a few minor fixes and improvements. There shouldn't be any problems upgrading but some styles may be affected depending on your theme.
