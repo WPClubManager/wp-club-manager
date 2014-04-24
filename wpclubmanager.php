@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: WP Club Manager
- * Version: 1.0.3
+ * Version: 1.0.4
  * Plugin URI: http://wpclubmanager.com
  * Description: A plugin to help you run any sports club website easily and quickly.
  * Author: ClubPress
  * Author URI: http://wpclubmanager.com
  * Requires at least: 3.8
- * Tested up to: 3.8.3
+ * Tested up to: 3.9
  * 
  * Text Domain: wpclubmanager
  * Domain Path: /languages/
@@ -25,14 +25,14 @@ if ( ! class_exists( 'WPClubManager' ) ) :
  * Main WPClubManager Class
  *
  * @class WPClubManager
- * @version	1.0.3
+ * @version	1.0.4
  */
 final class WPClubManager {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.0.3';
+	public $version = '1.0.4';
 
 	/**
 	 * @var WPClubManager The single instance of the class
