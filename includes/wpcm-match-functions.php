@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.3
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -78,15 +78,6 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 
 	global $player;
 
-	$wpcm_player_stats_labels = array(
-		'goals' => get_option( 'wpcm_player_goals_label'),
-		'assists' => get_option( 'wpcm_player_assists_label'),
-		'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-		'redcards' => get_option( 'wpcm_player_redcards_label'),
-		'rating' => get_option( 'wpcm_player_rating_label'),
-		'mvp' => get_option( 'wpcm_player_mvp_label')
-	);
-
 	$args = array(
 		'post_type' => 'wpcm_player',
 		'meta_query' => array(
@@ -101,13 +92,6 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 		'showposts' => -1
 	);
 
-	$goals_label = get_option( 'wpcm_player_goals_label');
-	$assist_label = get_option( 'wpcm_player_assists_label');
-	$yellowcards_label = get_option( 'wpcm_player_yellowcards_label');
-	$redcards_label = get_option( 'wpcm_player_redcards_label');
-	$rating_label = get_option( 'wpcm_player_rating_label');
-	$mvp_label = get_option( 'wpcm_player_mvp_label');
-
 	if ( get_option( 'wpcm_player_order' ) == 'menu_order' ) {
 
 	    $args['orderby'] = 'menu_order';
@@ -115,31 +99,41 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 
 	$players = get_posts( $args );
 
-	if ( empty( $players ) ) {
+	if ( empty( $players ) ) { ?>
 
-		printf( __( 'No %s found', 'wpclubmanager' ), __( 'players', 'wpclubmanager' ) );
-		return;
+		<div class="wpcm-notice-block">
+			<p>
+				<?php _e( 'No players found!', 'wpclubmanager' ); ?>
+			</p>
+		</div>
+	<?php
 	}
 
 	if ( ! is_array( $selected_players ) )
 
 		$selected_players = array();
 
-		$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players ); ?>
+		$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
+
+	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels(); ?>
 
 	<table class="wpcm-match-players-table">
 		<thead>
 			<tr class="player-stats-list-labels">
 				<th>&nbsp;</th>
-				<th><?php echo $goals_label; ?></th>
-				<th><?php echo $assist_label; ?></th>
-				<th class="th-checkbox"><?php echo $yellowcards_label; ?></th>
-				<th class="th-checkbox"><?php echo $redcards_label; ?></th>
-				<th><?php echo $rating_label; ?></th>
-				<th class="th-radio"><?php echo $mvp_label; ?></th>
-				<?php if ( $type == 'subs' ) { ?>
+
+				<?php foreach( $wpcm_player_stats_labels as $key => $val ) { 
+
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+						<th<?php if( $key == 'greencards' ||$key == 'yellowcards' || $key == 'redcards' ) echo ' class="th-checkbox"'; if( $key == 'mvp' ) echo ' class="th-radio"'; ?>><?php echo $val; ?></th>
+					<?php
+					endif;
+				}
+
+				if ( $type == 'subs' ) { ?>
 					<th><?php _e( 'Player Off', 'wpclubmanager' ); ?></th>
 				<?php } ?>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -169,8 +163,8 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 				<tr data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $teamclass; ?>">
 					<td class="names">
 						<label class="selectit">
-							<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
-							<?php echo get_post_meta( $player->ID, 'wpcm_number', true ); ?>. <?php echo $player->post_title; ?>
+							<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> /><span class="name">
+							<?php echo get_post_meta( $player->ID, 'wpcm_number', true ); ?>. <?php echo $player->post_title; ?></span>
 						</label>
 					</td>
 					<?php foreach( $wpcm_player_stats_labels as $key => $val ):
@@ -184,51 +178,60 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 								array_key_exists( $key, $selected_players[$type][$player->ID] )
 							);
 
-						if ( $key == 'yellowcards' ) { ?>
+						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 
-							<td class="<?php echo $key; ?>">
-								<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-							</td>
+							if ( $key == 'greencards' ) { ?>
 
-						<?php } elseif ( $key == 'redcards' ) { ?>
+								<td class="<?php echo $key; ?>">
+									<input type="checkbox" data-card="green" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+								</td>
 
-							<td class="<?php echo $key; ?>">
-								<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-							</td>
+							<?php } elseif ( $key == 'yellowcards' ) { ?>
 
-						<?php } elseif ( $key == 'rating' ) { ?>
+								<td class="<?php echo $key; ?>">
+									<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+								</td>
 
-							<td class="<?php echo $key; ?>">
-								<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
-							</td>
+							<?php } elseif ( $key == 'redcards' ) { ?>
 
-						<?php } elseif ( $key == 'mvp' ) { ?>
+								<td class="<?php echo $key; ?>">
+									<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+								</td>
 
-							<td class="mvp">
-								<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
-							</td>
+							<?php } elseif ( $key == 'rating' ) { ?>
 
-						<?php } else { ?>
+								<td class="<?php echo $key; ?>">
+									<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
+								</td>
 
-							<td class="<?php echo $key; ?>">
-								<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0"<?php if ( !$played ) echo ' disabled'; ?>/>
-							</td>
+							<?php } elseif ( $key == 'mvp' ) { ?>
 
-						<?php }
+								<td class="mvp">
+									<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
+								</td>
+
+							<?php } else { ?>
+
+								<td class="<?php echo $key; ?>">
+									<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>"<?php if ( !$played ) echo ' disabled'; ?>/>
+								</td>
+
+							<?php }
+
+						endif;
 					
 					endforeach;
 
 					if ( $type == 'subs' ) {
 						
 						wpcm_player_subs_dropdown( $selected_players, $player->ID, !$played );
-
-						//wpcm_player_subs_minutes( $selected_players, $player->ID, !$played );
 						
 					} ?>
 				</tr>
 			<?php } ?>
 		</tbody>
 	</table>
+
 <?php }
 
 /**
@@ -244,66 +247,64 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$number = get_post_meta( $key, 'wpcm_number', true );
-
 	$show_number = get_option('wpcm_player_profile_show_number');
-	$show_assists = get_option('wpcm_player_profile_show_assists');
-	$show_ratings = get_option('wpcm_player_profile_show_ratings');
+	$sport = get_option('wpcm_sport');
+	
+	if( $show_number == 'yes') {
+		$snumber = $number;
+	}
+
+	if ( isset( $value['mvp'] ) ) {
+		$mvp = '<span class="mvp" title="' . __( 'Man of Match', 'wpclubmanager' ) . '">&#9733;</span>';
+	} else {
+		$mvp = '';
+	}
 
 	$output = '';
 
 	$output .= '<tr>';
 
-	if( $show_number == 'yes') {
-
-		$output .= '<td>' . $number . '</td>';
-
-	}
-
-	$output .= '<td class="name">
-					<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '
-					</a>';
+	$output .= '<th class="name"><div>' . $snumber . '. <a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
 
 	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
 
 		$output .= '<span class="sub">&larr; ' . get_the_title( $value['sub'] ) . '</span>';
 	}
 
-	$output .= '</td>';
+	$output .= '</div></th>';
 
-	$output .= '<td class="goals">' . $value['goals'] . '</td>';
+	foreach( $value as $key => $stat ) {
 
-	if( $show_assists == 'yes') {
-
-		$output .= '<td class="assists">' . $value['assists'] . '</td>';
-
+		if( $key == 'checked' || $key == 'sub' || $key == 'greencards' ||$key == 'yellowcards' || $key == 'redcards' || $key == 'mvp' ) {
+			$output .= '';
+		} else {
+			if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
+				$output .= '<td class="'.$key.'">' . $stat . '</td>';
+			}
+		}
 	}
 
-	if( $show_ratings == 'yes') {
+	if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' ) {
 
-		if ( 0 < $value['rating'] ) {
-	
-			$output .= '<td class="rating">' . $value['rating'] . '</td>';
-	
+		$output .= '<td class="notes">';
+
+		if ( isset( $value['greencards'] ) ) {
+			
+			$output .= '<span class="greencard" title="' . __( 'Green Card', 'wpclubmanager' ) . '">' . __( 'Green Card', 'wpclubmanager' ) . '</span>';
+		}
+		
+		if ( isset( $value['yellowcards'] ) ) {
+			
+			$output .= '<span class="yellowcard" title="' . __( 'Yellow Card', 'wpclubmanager' ) . '">' . __( 'Yellow Card', 'wpclubmanager' ) . '</span>';
+		}
+		
+		if ( isset( $value['redcards'] ) ) {
+			$output .= '<span class="redcard" title="' . __( 'Red Card', 'wpclubmanager' ) . '">' . __( 'Red Card', 'wpclubmanager' ) . '</span>';
 		}
 
-	}
+		$output .= '</td>';
 
-	$output .= '<td class="notes">';
-	
-	if ( isset( $value['yellowcards'] ) ) {
-		
-		$output .= '<span class="yellowcard" title="' . get_option( 'wpcm_player_yellowcards_label') . '">' . __( 'Yellow Card', 'wpclubmanager' ) . '</span>';
 	}
-	
-	if ( isset( $value['redcards'] ) ) {
-		$output .= '<span class="redcard" title="' . get_option( 'wpcm_player_redcards_label') . '">' . __( 'Red Card', 'wpclubmanager' ) . '</span>';
-	}
-
-	if ( isset( $value['mvp'] ) ) {
-		$output .= '<span class="mvp" title="' . get_option( 'wpcm_player_mvp_label') . '">' . __( 'Man of Match', 'wpclubmanager' ) . '</span>';
-	}
-
-	$output .= '</td>';
 
 	$output .= '</tr>';
 
