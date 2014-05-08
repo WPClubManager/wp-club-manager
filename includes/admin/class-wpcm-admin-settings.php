@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.1
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -700,6 +700,47 @@ class WPCM_Admin_Settings {
 	    	update_option( $name, $value );
 
 	    return true;
+	}
+
+	/**
+	 * Configure sport
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public static function configure_sport( $sport ) {
+		// Get array of taxonomies to insert
+		$term_groups = wpcm_array_value( $sport, 'terms', array() );
+
+		foreach( $term_groups as $taxonomy => $terms ):
+			// Find empty terms and destroy
+			$allterms = get_terms( $taxonomy, 'hide_empty=0' );
+
+			foreach( $allterms as $term ):
+				if ( $term->count == 0 )
+					wp_delete_term( $term->term_id, $taxonomy );
+			endforeach;
+
+			// Insert terms
+			foreach( $terms as $term ):
+				wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
+			endforeach;
+		endforeach;
+
+		// Get array of taxonomies to insert
+		$stats_labels = wpcm_array_value( $sport, 'stats_labels' );
+
+		// $data = wpcm_get_sport_presets();
+
+		// $stats_labels = $data[$sport]['stats_labels'];
+
+		foreach( $stats_labels as $key => $value ):
+			
+			update_option( 'wpcm_show_stats_' . $key, 'yes' );
+
+		endforeach;
+
+    	update_option( 'wpcm_primary_result', 0 );
 	}
 }
 

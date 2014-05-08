@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Classes
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,7 +21,9 @@ class WPCM_Install {
 
 		register_activation_hook( WPCM_PLUGIN_FILE, array( $this, 'install' ) );
 
+		add_action( 'admin_init', array( $this, 'install_actions' ) );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
+		add_action( 'in_plugin_update_message-wpclubmanager/wpclubmanager.php', array( $this, 'in_plugin_update_message' ) );
 	}
 
 	/**
@@ -31,10 +33,52 @@ class WPCM_Install {
 	 * @return void
 	 */
 	public function check_version() {
-		if ( ! defined( 'IFRAME_REQUEST' ) && ( get_option( 'wpclubmanager_version' ) != WPCM()->version || get_option( 'wpclubmanager_db_version' ) != WPCM()->version ) ) {
+		if ( ! defined( 'IFRAME_REQUEST' ) && ( get_option( 'wpclubmanager_version' ) != WPCM()->version ) ) {
 			$this->install();
 
 			do_action( 'wpclubmanager_updated' );
+		}
+	}
+
+	/**
+	 * Install actions such as installing pages when a button is clicked.
+	 */
+	public function install_actions() {
+		// Install - Add pages button
+		if ( ! empty( $_GET['install_wpclubmanager'] ) ) {
+
+			// We no longer need to install pages
+			delete_option( '_wpcm_needs_welcome' );
+			delete_transient( '_wpcm_activation_redirect' );
+
+			// What's new redirect
+			//wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-installed=true' ) );
+			//exit;
+
+		// Skip button
+		} elseif ( ! empty( $_GET['skip_install_wpclubmanager'] ) ) {
+
+			// We no longer need to install configs
+			delete_option( '_wpcm_needs_welcome' );
+			delete_transient( '_wpcm_activation_redirect' );
+
+			// What's new redirect
+			//wp_redirect( admin_url( 'index.php?page=wpcm-about' ) );
+			//exit;
+
+		// Update button
+		} elseif ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
+
+			$this->update();
+
+			// Update complete
+			delete_option( '_wpcm_needs_welcome' );
+			delete_option( '_wpcm_needs_update' );
+			delete_transient( '_wpcm_activation_redirect' );
+
+			// What's new redirect
+			wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
+			exit;
 		}
 	}
 
@@ -51,17 +95,37 @@ class WPCM_Install {
 		WPCM_Post_Types::register_taxonomies();
 
 		// Queue upgrades
-		// $current_version = get_option( 'wpclubmanager_version', null );
-		// $current_db_version = get_option( 'wpclubmanager_db_version', null );
-
-		// if ( version_compare( $current_db_version, '2.1.0', '<' ) && null !== $current_db_version ) {
-		// 	update_option( '_wpcm_needs_update', 1 );
-		// } else {
-		// 	update_option( 'wpclubmanager_db_version', WPCM()->version );
-		// }
-
+		$current_version = get_option( 'wpclubmanager_version', null );
+		
 		// Update version
-		//update_option( 'wpclubmanager_version', WPCM()->version );
+		update_option( 'wpclubmanager_version', WPCM()->version );
+
+		// Check if pages are needed
+		if ( ! get_option( 'wpcm_sport' ) ) {
+			update_option( '_wpcm_needs_welcome', 1 );
+		}
+
+		// Flush rules after install
+		flush_rewrite_rules();
+
+		// Redirect to welcome screen
+		set_transient( '_wpcm_activation_redirect', 1, 60 * 60 );
+
+	}
+
+	/**
+	 * Handle updates
+	 */
+	public function update() {
+		// Do updates
+		$current_version = get_option( 'wpclubmanager_version' );
+
+		if ( version_compare( $current_version, '1.1.0', '<' ) ) {
+			include( 'updates/wpclubmanager-update-1.1.0.php' );
+			update_option( 'wpclubmanager_version', '1.1.0' );
+		}
+
+		update_option( 'wpclubmanager_version', WPCM()->version );
 	}
 
 	/**
@@ -84,6 +148,15 @@ class WPCM_Install {
 					add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
 				}
 			}
+		}
+
+		if ( ! get_option( 'wpclubmanager_installed' ) ) {
+			// Configure default sport
+			$sport = 'soccer';
+			$options = wpcm_get_sport_presets();
+			WPCM_Admin_Settings::configure_sport( $options[ $sport ] );
+			update_option( 'wpcm_sport', $sport );
+			update_option( 'wpclubmanager_installed', 1 );
 		}
 	}
 
@@ -235,6 +308,102 @@ class WPCM_Install {
 
 			remove_role( 'player' );
 			remove_role( 'team_manager' );
+		}
+	}
+
+	/**
+	 * Active plugins pre update option filter
+	 *
+	 * @param string $new_value
+	 * @return string
+	 */
+	function pre_update_option_active_plugins( $new_value ) {
+		$old_value = (array) get_option( 'active_plugins' );
+
+		if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value ) && in_array( W3TC_FILE, (array) $old_value ) ) {
+			$this->_config->set( 'notes.plugins_updated', true );
+			try {
+				$this->_config->save();
+			} catch( Exception $ex ) {}
+		}
+
+		return $new_value;
+	}
+
+	/**
+	 * Show plugin changes. Code adapted from W3 Total Cache.
+	 *
+	 * @return void
+	 */
+	function in_plugin_update_message() {
+		$response = wp_remote_get( 'https://plugins.svn.wordpress.org/wp-club-manager/trunk/readme.txt' );
+
+		if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
+
+			// Output Upgrade Notice
+			$matches = null;
+			$regexp = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*=|$)~Uis';
+
+			if ( preg_match( $regexp, $response['body'], $matches ) ) {
+				$version = trim( $matches[1] );
+				$notices = (array) preg_split('~[\r\n]+~', trim( $matches[2] ) );
+
+				if ( version_compare( WPCM_VERSION, $version, '<' ) ) {
+
+					echo '<div style="font-weight: normal; background: #cc99c2; color: #fff !important; border: 1px solid #b76ca9; padding: 9px; margin: 9px 0;">';
+
+					foreach ( $notices as $index => $line ) {
+						echo '<p style="margin: 0; font-size: 1.1em; color: #fff; text-shadow: 0 1px 1px #b574a8;">' . wp_kses_post( preg_replace( '~\[([^\]]*)\]\(([^\)]*)\)~', '<a href="${2}">${1}</a>', $line ) ) . '</p>';
+					}
+
+					echo '</div> ';
+				}
+			}
+
+			// Output Changelog
+			$matches = null;
+			$regexp = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*-(.*)=|$)~Uis';
+
+			if ( preg_match( $regexp, $response['body'], $matches ) ) {
+				$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
+
+				echo __( 'What\'s new:', 'wpclubmanager' ) . '<div style="font-weight: normal;">';
+
+				$ul = false;
+
+				foreach ( $changelog as $index => $line ) {
+					if ( preg_match('~^\s*\*\s*~', $line ) ) {
+						if ( ! $ul ) {
+							echo '<ul style="list-style: disc inside; margin: 9px 0 9px 20px; overflow:hidden; zoom: 1;">';
+							$ul = true;
+						}
+						
+						$line = preg_replace( '~^\s*\*\s*~', '', htmlspecialchars( $line ) );
+						
+						echo '<li style="width: 50%; margin: 0; float: left; ' . ( $index % 2 == 0 ? 'clear: left;' : '' ) . '">' . esc_html( $line ) . '</li>';
+					} else {
+
+						$version = trim( current( explode( '-', str_replace( '=', '', $line ) ) ) );
+
+						if ( version_compare( WPCM_VERSION, $version, '>=' ) ) {
+							break;
+						}
+
+						if ( $ul ) {
+							echo '</ul>';
+							$ul = false;
+						}
+
+						echo '<p style="margin: 9px 0;">' . esc_html( htmlspecialchars( $line ) ) . '</p>';
+					}
+				}
+
+				if ( $ul ) {
+					echo '</ul>';
+				}
+
+				echo '</div>';
+			}
 		}
 	}
 }

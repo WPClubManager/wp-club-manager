@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.0.0
+ * @version 	1.1.0
  * @extends 	WP_Widget
  */
 
@@ -113,7 +113,7 @@ class WPCM_Standings_Widget extends WP_Widget {
 			'order' => 'DESC',
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'p,w,d,l,f,a,gd,pts',
+			'stats' => 'p,w,d,l,otl,pct,f,a,gd,b,pts',
 			'title' => __( 'Standings', 'wpclubmanager' )
 		);
 		

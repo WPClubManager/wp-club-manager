@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,6 +51,16 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 				'title' => __( 'Points for draw', 'wpclubmanager' ),
 				'desc' 		=> __( 'This sets the points for drawn matches.', 'wpclubmanager' ),
 				'id' 		=> 'wpcm_standings_draw_points',
+				'css' 		=> 'width:50px;',
+				'default'	=> '1',
+				'type' 		=> 'number',
+				'desc_tip'	=>  true,
+			),
+
+			array(
+				'title' => __( 'Points for overtime loss', 'wpclubmanager' ),
+				'desc' 		=> __( 'This sets the points for lost in overtime matches. Often used in Ice Hockey', 'wpclubmanager' ),
+				'id' 		=> 'wpcm_standings_otl_points',
 				'css' 		=> 'width:50px;',
 				'default'	=> '1',
 				'type' 		=> 'number',
@@ -117,6 +127,24 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 			),
 
 			array(
+				'title' => __( 'Lost in Overtime', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_standings_otl_label',
+				'css' 		=> 'width:150px;',
+				'default'	=> 'OTL',
+				'type' 		=> 'text'
+			),
+
+			array(
+				'title' => __( 'Win Percentage', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_standings_pct_label',
+				'css' 		=> 'width:150px;',
+				'default'	=> 'PCT',
+				'type' 		=> 'text'
+			),
+
+			array(
 				'title' => __( 'Goals For', 'wpclubmanager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_standings_f_label',
@@ -140,6 +168,15 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 				'id' 		=> 'wpcm_standings_gd_label',
 				'css' 		=> 'width:150px;',
 				'default'	=> 'GD',
+				'type' 		=> 'text'
+			),
+
+			array(
+				'title' => __( 'Bonus Points', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_standings_bonus_label',
+				'css' 		=> 'width:150px;',
+				'default'	=> 'B',
 				'type' 		=> 'text'
 			),
 

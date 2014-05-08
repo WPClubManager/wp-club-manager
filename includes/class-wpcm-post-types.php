@@ -5,7 +5,7 @@
  * Registers post types.
  *
  * @class 		WPCM_Post_Types
- * @version		1.0.0
+ * @version		1.1.0
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
@@ -22,6 +22,7 @@ class WPCM_Post_Types {
 		
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
+		add_filter('the_posts', array( $this, 'show_future_matches') );
 	}
 
 	/**
@@ -346,7 +347,7 @@ class WPCM_Post_Types {
 					'show_ui'              => true,
 					'show_in_menu'         => true,
 					'show_in_nav_menus'    => true,
-					'menu_icon'            => 'dashicons-flag',
+					'menu_icon'            => 'dashicons-megaphone',
 					'publicly_queryable'   => true,
 					'exclude_from_search'  => false,
 					'has_archive'          => true,
@@ -357,6 +358,21 @@ class WPCM_Post_Types {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Show future matches
+	 *
+	 * @access public
+	 * @param string $posts
+	 * @return string
+	 */
+	public function show_future_matches($posts) {
+		global $wp_query, $wpdb;
+		if(is_single() && $wp_query->post_count == 0  && isset( $wp_query->query_vars['wpcm_match'] )) {
+			$posts = $wpdb->get_results($wp_query->request);
+		}
+		return $posts;
 	}
 }
 

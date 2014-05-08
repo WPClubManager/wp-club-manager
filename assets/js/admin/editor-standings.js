@@ -27,13 +27,13 @@
 				'limit': '7',
 				'comp': '-1',
 				'season': '-1',
-				'club': '-1',
 				'orderby': 'pts',
 				'order': 'DESC',
 				'linktext': '',
 				'linkpage': '',
 				'stats': 'p,w,d,l,f,a,gd,pts',
-				'title': ''
+				'title': '',
+				'thumb': 1,
 				};
 			var shortcode = '[wpcm_standings';
 			
@@ -46,6 +46,14 @@
 							stats.push( $(val).val() );
 					});
 					value = stats.join( ',' );
+				} else if ( index == 'thumb' ) {
+					values = form.find('[name="thumb"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
 				} else {
 					var value = form.find('#option-' + index).val();
 				}

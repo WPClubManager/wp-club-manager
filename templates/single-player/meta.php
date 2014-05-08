@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.3
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -160,6 +160,22 @@ $season = '0'; ?>
 				}
 			}
 
+			if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes') {
+
+				$natl = get_post_meta( $post->ID, 'wpcm_natl', true );
+				$hometown = get_post_meta( $post->ID, 'wpcm_hometown', true ); ?>
+
+				<tr>
+					<th>
+						<?php _e( 'Birthplace', 'wpclubmanager' ); ?>
+					</th>
+					<td>
+						<?php echo $hometown; ?> <img class="flag" src="<?php echo WPCM_URL; ?>assets/images/flags/<?php echo $natl; ?>.png" />
+					</td>
+				</tr>
+			<?php
+			}
+
 			if ( get_option( 'wpcm_player_profile_show_joined' ) == 'yes') { ?>
 
 				<tr>
@@ -173,17 +189,14 @@ $season = '0'; ?>
 			<?php
 			}
 
-			if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes') {
-
-				$natl = get_post_meta( $post->ID, 'wpcm_natl', true );
-				$hometown = get_post_meta( $post->ID, 'wpcm_hometown', true ); ?>
+			if ( get_option( 'wpcm_player_profile_show_exp' ) == 'yes') { ?>
 
 				<tr>
 					<th>
-						<?php _e( 'Hometown', 'wpclubmanager' ); ?>
+						<?php _e( 'Experience', 'wpclubmanager' ); ?>
 					</th>
 					<td>
-						<?php echo $hometown; ?> <img class="flag" src="<?php echo WPCM_URL; ?>assets/images/flags/<?php echo $natl; ?>.png" />
+						<?php echo human_time_diff(get_the_time('U'), current_time('timestamp')); ?>
 					</td>
 				</tr>
 			<?php
