@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -26,9 +26,12 @@ if (!function_exists('get_wpcm_club_stats_empty_row')) {
 			'w' => get_option( 'wpcm_standings_w_label' ),
 			'd' => get_option( 'wpcm_standings_d_label' ),
 			'l' => get_option( 'wpcm_standings_l_label' ),
+			'otl' => get_option( 'wpcm_standings_otl_label' ),
+			'pct' => get_option( 'wpcm_standings_pct_label' ),
 			'f' => get_option( 'wpcm_standings_f_label' ),
 			'a' => get_option( 'wpcm_standings_a_label' ),
 			'gd' => get_option( 'wpcm_standings_gd_label' ),
+			'b' => get_option( 'wpcm_standings_bonus_label' ),
 			'pts' => get_option( 'wpcm_standings_pts_label' )
 		);
 
@@ -61,7 +64,22 @@ if (!function_exists('get_wpcm_club_total_stats')) {
 
 		foreach( $output as $key => $val ) {
 
-			$output[$key] = $autostats[$key] + $manualstats[$key];
+			if( $key == 'pct' ){
+
+				$combined_win = $autostats['w'] + $manualstats['w'];
+				$combined_played = $autostats['p'] + $manualstats['p'];
+				if( $combined_win > 0 || $combined_played > 0 ) {
+					$wpct = $combined_win / $combined_played;
+				}else{
+					$wpct = '0';
+				}
+
+				$output[$key] = round( $wpct, 3 );
+
+			} else {
+
+				$output[$key] = $autostats[$key] + $manualstats[$key];
+			}
 		}
 
 		return $output;
@@ -147,21 +165,27 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 			$played = get_post_meta( $match->ID, 'wpcm_played', true );
 			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
 
+			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+
 			if ( $played && !$friendly ) {
 
 				$f = get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				$a = get_post_meta( $match->ID, 'wpcm_away_goals', true );
+				$hb = get_post_meta( $match->ID, 'wpcm_home_bonus', true );
 				$won = (int)( $f > $a );
 				$draw = (int)( $f == $a );
-				$lost = (int)( $f < $a );
+				$lost = $overtime == 0 && (int)( $f < $a );
+				$otl = $overtime == 1 && (int)( $f < $a );
 				$output['p'] ++;
 				$output['w'] += $won;
 				$output['d'] += $draw;
 				$output['l'] += $lost;
+				$output['otl'] += $otl;
 				$output['f'] += $f;
 				$output['a'] += $a;
 				$output['gd'] += $f - $a;
-				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' );
+				$output['b'] += $hb;
+				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $hb;
 			}
 		}
 
@@ -174,21 +198,27 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 			$played = get_post_meta( $match->ID, 'wpcm_played', true );
 			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
 
+			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+
 			if ( $played && !$friendly ) {
 
 				$f = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				$a = get_post_meta( $match->ID, 'wpcm_home_goals', true );
+				$ab = get_post_meta( $match->ID, 'wpcm_away_bonus', true );
 				$won = (int)( $f > $a );
 				$draw = (int)( $f == $a );
-				$lost = (int)( $f < $a );
+				$lost = $overtime == 0 && (int)( $f < $a );
+				$otl = $overtime == 1 && (int)( $f < $a );
 				$output['p'] ++;
 				$output['w'] += $won;
 				$output['d'] += $draw;
 				$output['l'] += $lost;
+				$output['otl'] += $otl;
 				$output['f'] += $f;
 				$output['a'] += $a;
 				$output['gd'] += $f - $a;
-				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' );
+				$output['b'] += $ab;
+				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $ab;
 			}
 		}
 
@@ -306,9 +336,12 @@ function wpcm_club_stats_table( $stats = array(), $comp = 0, $season = 0 ) {
 		'w' => get_option( 'wpcm_standings_w_label' ),
 		'd' => get_option( 'wpcm_standings_d_label' ),
 		'l' => get_option( 'wpcm_standings_l_label' ),
+		'otl' => get_option( 'wpcm_standings_otl_label' ),
+		'pct' => get_option( 'wpcm_standings_pct_label' ),
 		'f' => get_option( 'wpcm_standings_f_label' ),
 		'a' => get_option( 'wpcm_standings_a_label' ),
 		'gd' => get_option( 'wpcm_standings_gd_label' ),
+		'b' => get_option( 'wpcm_standings_bonus_label' ),
 		'pts' => get_option( 'wpcm_standings_pts_label' )
 	);
 
@@ -381,6 +414,61 @@ if ( !function_exists( 'wpcm_club_standings_sort' ) ) {
 				return -1;
 
 			} elseif  ($a->wpcm_stats['gd'] < $b->wpcm_stats['gd']) {
+
+				return 1;
+
+			} else {
+
+				if ( $a->wpcm_stats['f'] > $b->wpcm_stats['f'] ) {
+
+					return -1;
+
+				} elseif ( $a->wpcm_stats['f'] < $b->wpcm_stats['f']  ) {
+
+					return 1;
+
+				} else {
+
+					if ( strcmp( $a->post_title, $b->post_title ) < 0 ) {
+
+						return -1;
+
+					} else {
+
+						return 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Standing table sorting.
+ *
+ * @access public
+ * @param array
+ * @param array
+ * @return int
+ */
+if ( !function_exists( 'wpcm_club_standings_pct_sort' ) ) {
+	function wpcm_club_standings_pct_sort( $a, $b ) {
+
+		if ( $a->wpcm_stats['pct'] > $b->wpcm_stats['pct'] ) {
+
+			return -1;
+
+		} elseif  ( $a->wpcm_stats['pct'] < $b->wpcm_stats['pct'] ) {
+
+			return 1;
+
+		} else {
+
+			if ( $a->wpcm_stats['w'] > $b->wpcm_stats['w'] ) {
+
+				return -1;
+
+			} elseif  ($a->wpcm_stats['w'] < $b->wpcm_stats['w']) {
 
 				return 1;
 
