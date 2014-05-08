@@ -19,5 +19,5 @@ function wpcm_print_js() {
 	_deprecated_function( 'wpcm_print_js', '1.0.3', '' );
 }
 function check_jquery() {
-	_deprecated_function( 'check_jquery', '1.1', '' );
+	_deprecated_function( 'check_jquery', '1.1.0', '' );
 }

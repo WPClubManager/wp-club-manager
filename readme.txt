@@ -1,18 +1,10 @@
 === WP Club Manager ===
 Contributors: Clubpress
-<<<<<<< HEAD
 Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
 Stable tag: 1.1.0
-=======
-Tags: clubs, teams, sports team, sports club, club management, team management, league tables, football, rugby, soccer, hockey, ice hockey
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
-Requires at least: 3.8
-Tested up to: 3.9
-Stable tag: 1.0.4
->>>>>>> master
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,7 +71,6 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-<<<<<<< HEAD
 = 1.1.0 - 08/05/2014
 
 * Feature - Choose sport for preset player stats
@@ -101,9 +92,6 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Localisation - Updated language files
 
 = 1.0.4 - 23/04/2014
-=======
-= 1.0.3 - 23/04/2014
->>>>>>> master
 
 * Fix - Fixed shortcode buttons compatibility with WP 3.9
 
@@ -148,14 +136,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Upgrade Notice ==
 
-<<<<<<< HEAD
 = 1.1.0 =
 
 THIS IS A MAJOR UPGRADE AND WE RECOMMEND THAT YOU BACKUP YOUR FILES AND DATABASE BEFORE UPGRADING! The stats system has been revamped and any player stats that have already been added will probably get mixed up and need to be redone. I apologise for the inconvenience this will cause.
 
 = 1.0.3 =
 
-=======
-= 1.0.3 =
->>>>>>> master
 1.0.3 is a minor update with a few minor fixes and improvements. There shouldn't be any problems upgrading but some styles may be affected depending on your theme.

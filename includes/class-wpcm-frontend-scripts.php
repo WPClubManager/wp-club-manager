@@ -15,7 +15,6 @@ class WPCM_Frontend_Scripts {
 	 */
 	public function __construct () {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
-		//add_action( 'wp_print_scripts', array( $this, 'check_jquery' ), 25 );
 	}
 
 	/**
