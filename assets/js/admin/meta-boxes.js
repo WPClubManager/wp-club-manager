@@ -56,9 +56,19 @@ jQuery( function($){
 
 	wpcm_filter_team_players = function(team) {
 		var team = jQuery('#wpcm_match_team').val();
-		jQuery('#wpcm_players table tbody tr').hide().find('input');
-		jQuery('#wpcm_players table tbody tr.team_' + team).show().find('input');
+		
+		if( team == null ) {
+			jQuery('#wpcm_players table tbody tr').show().find('input');
+		} else if( team != '0' ) {
+			jQuery('#wpcm_players table tbody tr').hide().find('input');
+			jQuery('#wpcm_players table tbody tr.team_' + team).show().find('input');
+		} else {
+			jQuery('#wpcm_players table tbody tr').show().find('input');
+		}
+		
 	}
+
+	wpcm_filter_team_players();
 
 	jQuery('#wpcm_match_team').on('change', function() {
 		wpcm_filter_team_players();
@@ -70,11 +80,17 @@ jQuery( function($){
 		if(len>0) {
 			jQuery("#wpcm_lineup .counter").text(''+len+'');
 		}
+		else {
+			jQuery("#wpcm_lineup .counter").text('0');
+		}
 		if(sublen>0) {
 			jQuery("#wpcm_subs .counter").text(''+sublen+'');
 		}
+		else {
+			jQuery("#wpcm_subs .counter").text('0');
+		}
 	}
-	jQuery("#wpcm_subs .counter").text(function() {
+	jQuery("#wpcm_lineup .counter, #wpcm_subs .counter").text(function() {
 		updateCounter();
 	});
 	jQuery("#wpcm_lineup input:checkbox, #wpcm_subs input:checkbox").on("change", function() {
@@ -132,5 +148,7 @@ jQuery( function($){
 			Number(jQuery('#leaguetable #manualstats-pts').val())
 		);
 	});
+
+	
 	
 });
