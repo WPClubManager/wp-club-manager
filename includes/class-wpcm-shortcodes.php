@@ -3,7 +3,7 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		1.0.2
+ * @version		1.1.0
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -233,15 +233,30 @@ class WPCM_Shortcodes {
 					$time_format = get_option( 'time_format' );
 					$comps = get_the_terms( $fixture->ID, 'wpcm_comp' );
 					$teams = get_the_terms( $fixture->ID, 'wpcm_team' );
+					if( $fixtures_data['thumb'] == 1 ) {
+						if ( has_post_thumbnail( $home_club ) ) {
+							$home_crest = get_the_post_thumbnail( $home_club, 'crest-small' );
+						} else {
+							$home_crest = wpcm_crest_placeholder_img( 'crest-small' );
+						}
+						if ( has_post_thumbnail( $away_club ) ) {
+							$away_crest = get_the_post_thumbnail( $away_club, 'crest-small' );
+						} else {
+							$away_crest = wpcm_crest_placeholder_img( 'crest-small' );
+						}
+					} else {
+						$home_crest = '';
+						$away_crest = '';
+					}
 
 					$output .= '<tr data-url="' . get_permalink( $fixture->ID ) . '">';
 					
 					$output .= '<td class="wpcm-date"><a href="' . get_permalink( $fixture->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
 
 						if ( $default_club == $home_club ) {
-							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="away">' . get_the_title ( $away_club ) . '</td>';
+							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="away">' . $away_crest . '' . get_the_title ( $away_club ) . '</td>';
 						} elseif ( $default_club == $away_club ) {
-							$output .= '<td class="venue">' . __('A', 'wpclubmanager') . '</td><td class="home">' . get_the_title ( $home_club ) . '</td>';
+							$output .= '<td class="venue">' . __('A', 'wpclubmanager') . '</td><td class="home">' . $home_crest . '' . get_the_title ( $home_club ) . '</td>';
 						}
 
 						if ( $show_team ):
@@ -298,7 +313,7 @@ class WPCM_Shortcodes {
 			'linktext' => __( 'View all results', 'wpclubmanager' ),
 			'linkpage' => null,
 			'title' => __( 'Fixtures & Results', 'wpclubmanager' ),
-			'type' => 'default'
+			'thumb' => 1,
 		), $atts ) );
 		// convert atts to something more useful
 		if ( $linkpage <= 0 )
@@ -322,6 +337,7 @@ class WPCM_Shortcodes {
 			'season' => $season,
 			'team' => $team,
 			'venue' => $venue,
+			'thumb' => $thumb,
 		);
 
 		// get all corresponding matches
@@ -404,7 +420,7 @@ class WPCM_Shortcodes {
 						$output .= '
 						<th class="competition">'.__('Competition', 'wpclubmanager').'</th>';
 				$output .= '
-						<th class="result">'.__('Results', 'wpclubmanager').'</th>
+						<th class="result">'.__('Result', 'wpclubmanager').'</th>
 					</tr>';
 			} else {
 				$output .=
@@ -430,16 +446,31 @@ class WPCM_Shortcodes {
 					$time_format = get_option( 'time_format' );
 					$comps = get_the_terms( $match->ID, 'wpcm_comp' );
 					$teams = get_the_terms( $match->ID, 'wpcm_team' );
-					
+					if( $thumb == 1 ) {
+						if ( has_post_thumbnail( $home_club ) ) {
+							$home_crest = get_the_post_thumbnail( $home_club, 'crest-small' );
+						} else {
+							$home_crest = wpcm_crest_placeholder_img( 'crest-small' );
+						}
+						if ( has_post_thumbnail( $away_club ) ) {
+							$away_crest = get_the_post_thumbnail( $away_club, 'crest-small' );
+						} else {
+							$away_crest = wpcm_crest_placeholder_img( 'crest-small' );
+						}
+					} else {
+						$home_crest = '';
+						$away_crest = '';
+					}
+						
 
 					$output .=
 					'<tr data-url="' . get_permalink( $match->ID ) . '">';
 						$output .= '<td class="wpcm-date"><a href="' . get_permalink( $match->ID ) . '">' . date_i18n( 'd M', $timestamp ) . ', ' . date_i18n( $time_format, $timestamp ) . '</a></td>';
 
 						if ( $default_club == $home_club ) {
-							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="opponent away">' . get_the_title ( $away_club ) . '</td>';
+							$output .= '<td class="venue">' . __('H', 'wpclubmanager') . '</td><td class="opponent away">' . $away_crest . '' . get_the_title ( $away_club ) . '</td>';
 						} elseif ( $default_club == $away_club ) {
-							$output .= '<td class="venue">' . __('A', 'wpclubmanager') . '</td><td class="opponent home">' . get_the_title ( $home_club ) . '</td>';
+							$output .= '<td class="venue">' . __('A', 'wpclubmanager') . '</td><td class="opponent home">' . $home_crest . '' . get_the_title ( $home_club ) . '</td>';
 						}
 
 						if ( $show_team ):
@@ -521,14 +552,7 @@ class WPCM_Shortcodes {
 	
 		global $wpclubmanager;
 
-		$wpcm_player_stats_labels = array(
-			'goals' => get_option( 'wpcm_player_goals_label'),
-			'assists' => get_option( 'wpcm_player_assists_label'),
-			'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-			'redcards' => get_option( 'wpcm_player_redcards_label'),
-			'rating' => get_option( 'wpcm_player_ratings_label'),
-			'mvp' => get_option( 'wpcm_player_mvp_label')
-		);
+		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
 
 		$player_stats_labels = array_merge( array( 'appearances' => __( 'Apps', 'wpclubmanager' ) ), $wpcm_player_stats_labels );
 
@@ -537,8 +561,11 @@ class WPCM_Shortcodes {
 				'flag' => '&nbsp;',
 				'number' => '&nbsp;',
 				'name' => __( 'Name', 'wpclubmanager' ),
+				'thumb' => '&nbsp',
 				'position' => __( 'Position', 'wpclubmanager' ),
 				'age' => __( 'Age', 'wpclubmanager' ),
+				'height' => __( 'Height', 'wpclubmanager' ),
+				'weight' => __( 'Weight', 'wpclubmanager' ),
 				'team' => __( 'Team', 'wpclubmanager' ),
 				'season' => __( 'Season', 'wpclubmanager' ),
 				'dob' => __( 'Date of Birth', 'wpclubmanager' ),
@@ -554,15 +581,9 @@ class WPCM_Shortcodes {
 			'position' => null,
 			'orderby' => 'number',
 			'order' => 'ASC',
-			'show_flag' => get_option( 'wpcm_player_list_show_flag' ),
-			'show_position' => get_option( 'wpcm_player_list_show_position' ),
-			'show_age' => get_option( 'wpcm_player_list_show_age' ),
-			'show_dob' => get_option( 'wpcm_player_list_show_dob' ),
-			'show_name' => get_option( 'wpcm_player_gallery_show_name' ),
-			'show_number' => get_option( 'wpcm_player_gallery_show_number' ),
 			'linktext' => __( 'View all players', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'flag,number,name,position,age',
+			'stats' => 'flag,number,name,position,age,height,weight',
 			'title' => __( 'Players', 'wpclubmanager' )
 		), $atts ) );
 		
@@ -638,9 +659,14 @@ class WPCM_Shortcodes {
 		$count = 0;	
 		
 		if ( sizeof( $players ) > 0 ) {
-			$output .= '<div class="wpcm-players-shortcode">';
-				$output .=
-				'<table>
+			if( $title ) {
+				$title = '<h3>' . $title . '</h3>';
+			} else{
+				$title = '';
+			}
+			$output .= '<div class="wpcm-players-shortcode">
+				' . $title . '
+				<table>
 					<thead>
 						<tr>';
 						foreach( $stats as $stat ) {
@@ -663,6 +689,12 @@ class WPCM_Shortcodes {
 					$name = $player->post_title;
 					$positions = get_the_terms( $player->ID, 'wpcm_position' );
 
+				if ( has_post_thumbnail( $player->ID ) ) {
+					$thumb = get_the_post_thumbnail( $player->ID, 'player_thumbnail' );
+				} else {
+					$thumb = wpcm_placeholder_img( 'player_thumbnail' );
+				}
+
 				if ( is_array( $positions ) ) {
 					$position = reset($positions);
 					$position = $position->name;
@@ -674,6 +706,8 @@ class WPCM_Shortcodes {
 				}
 
 				$dob = get_post_meta( $player->ID, 'wpcm_dob', true );
+				$height = get_post_meta( $player->ID, 'wpcm_height', true );
+				$weight = get_post_meta( $player->ID, 'wpcm_weight', true );
 				$natl = get_post_meta( $player->ID, 'wpcm_natl', true );
 				$hometown = get_post_meta( $player->ID, 'wpcm_hometown', true );
 
@@ -689,6 +723,10 @@ class WPCM_Shortcodes {
 						}
 					} else {
 						switch ( $stat ) {
+						case 'thumb':
+							$player_details[$player->ID][$stat] = '';
+							$player_details[$player->ID][$stat] .= '<a href="' . get_permalink( $player->ID ) . '">' . $thumb . '</a>';
+							break;
 						case 'flag':
 							$player_details[$player->ID][$stat] = '';
 							$player_details[$player->ID][$stat] .= '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . $natl . '.png" />';
@@ -741,6 +779,14 @@ class WPCM_Shortcodes {
 						case 'dob':
 							$player_details[$player->ID][$stat] = '';
 							$player_details[$player->ID][$stat] .= date_i18n( get_option( 'date_format' ), strtotime( get_post_meta( $player->ID, 'wpcm_dob', true ) ) );
+							break;
+						case 'height':
+							$player_details[$player->ID][$stat] = '';
+							$player_details[$player->ID][$stat] .= $height;
+							break;
+						case 'weight':
+							$player_details[$player->ID][$stat] = '';
+							$player_details[$player->ID][$stat] .= $weight;
 							break;
 						case 'hometown':
 							$player_details[$player->ID][$stat] = '';
@@ -999,18 +1045,21 @@ class WPCM_Shortcodes {
 			'order' => 'DESC',
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'p,w,d,l,f,a,gd,pts',
+			'stats' => 'p,w,d,l,otl,pct,f,a,gd,b,pts',
 			'title' => __( 'Standings', 'wpclubmanager' ),
-			'type' => 'normal'
+			'thumb' => 1,
 		), $atts ) );
 		$wpcm_standings_stats_labels = array(
 			'p' => get_option( 'wpcm_standings_p_label' ),
 			'w' => get_option( 'wpcm_standings_w_label' ),
 			'd' => get_option( 'wpcm_standings_d_label' ),
 			'l' => get_option( 'wpcm_standings_l_label' ),
+			'otl' => get_option( 'wpcm_standings_otl_label' ),
+			'pct' => get_option( 'wpcm_standings_pct_label' ),
 			'f' => get_option( 'wpcm_standings_f_label' ),
 			'a' => get_option( 'wpcm_standings_a_label' ),
 			'gd' => get_option( 'wpcm_standings_gd_label' ),
+			'b' => get_option( 'wpcm_standings_bonus_label' ),
 			'pts' => get_option( 'wpcm_standings_pts_label' )
 		);
 		// convert atts to something more useful
@@ -1065,10 +1114,21 @@ class WPCM_Shortcodes {
 		foreach ( $clubs as $club ) {
 			$club_stats = get_wpcm_club_total_stats( $club->ID, $comp, $season );		
 			$club->wpcm_stats = $club_stats;
+			if ( $thumb == 1 ) {
+				if ( has_post_thumbnail( $club->ID ) ) {
+					$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
+				} else {
+					$club->thumb = wpcm_crest_placeholder_img( 'crest-small' );
+				}
+			} else {
+				$club->thumb = '';
+			}
 		}
 		// sort clubs
 		if ( $orderby == 'pts' ) {
 			usort( $clubs, 'wpcm_club_standings_sort');
+		} elseif ( $orderby == 'pct' ) {
+			usort( $clubs, 'wpcm_club_standings_pct_sort');
 		} else {
 			$clubs = wpcm_club_standings_sort_by( $orderby, $clubs );
 		}
@@ -1103,13 +1163,20 @@ class WPCM_Shortcodes {
 			$first = 0;
 			$limit = $size;
 		}
+
 		// slice array
 		$clubs = array_slice( $clubs, $first, $limit );
 		// initialize output
 		$output = '';
 		// table head
+		if( $title ) {
+			$title = '<h3>' . $title . '</h3>';
+		} else{
+			$title = '';
+		}
 		$output .=
-		'<div class="wpcm-standings-shortcode wpcm-standings-' . $type . '">
+		'<div class="wpcm-standings-shortcode wpcm-standings">
+			' . $title . '
 			<table>
 				<thead>
 					<tr>
@@ -1131,7 +1198,7 @@ class WPCM_Shortcodes {
 
 				$output .= '<td class="pos">' . $club->place . '</td>';
 
-				$output .= '<td class="club">' . $club->post_title . '</td>';
+				$output .= '<td class="club">' . $club->thumb . '' . $club->post_title . '</td>';
 
 				foreach( $stats as $stat ) {
 					$output .= '<td class="' . $stat . '">' . $club_stats[$stat] . '</td>';
