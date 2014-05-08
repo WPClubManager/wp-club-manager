@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.3
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,7 +33,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 	 */
 	public function get_settings() {
 		
-		return apply_filters( 'wpclubmanager_players_settings', array(
+		$settings = array(
 
 			array( 'title' => __( 'Player Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on player profile pages.</p>', 'wpclubmanager' ), 'id' => 'players_options' ),
 
@@ -102,66 +102,18 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Appearances', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_appearances',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Goals', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_goals',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Assists', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_assists',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Yellow Cards', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_yellowcards',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Red Cards', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_redcards',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Av. Rating', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_ratings',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Player of the Match Awards', 'wpclubmanager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_player_profile_show_mvp',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
 				'title' => __( 'Date Joined', 'wpclubmanager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_joined',
-				'default'	=> 'yes',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox'
+			),
+
+			array(
+				'title' => __( 'Experience', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_player_profile_show_exp',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox'
 			),
 
@@ -206,8 +158,8 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 				'css' 		=> '',
 				'type' 		=> 'image_width',
 				'default'	=> array(
-					'width' 	=> '90',
-					'height'	=> '90',
+					'width' 	=> '25',
+					'height'	=> '25',
 					'crop'		=> 1
 				),
 				'desc_tip'	=>  true,
@@ -215,82 +167,30 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'image_options'),
 
-			array( 'title' => __( 'Player Stat Labels', 'wpclubmanager' ), 'type' => 'title', 'desc' => '', 'id' => 'player_stat_label_options' ),
+			array( 'title' => __( 'Display Player Stats', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which player stats to display throughout the site.</p>', 'wpclubmanager' ), 'id' => 'players_stats' ),
+		);
 
-			array(
-				'title' => __( 'Goals', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players goals.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_goals_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Goals',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
 
-			array(
-				'title' => __( 'Assists', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players assists.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_assists_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Assists',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+		$stats_labels = array( 'appearances' => '<a title="' . __('Games Played', 'wpclubmanager') . '">' . __( 'GP', 'wpclubmanager' ) . '</a>' );
+		$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels );
 
-			array(
-				'title' => __( 'Yellow Cards', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players yellow cards.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_yellowcards_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Yellow Cards',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+		foreach ( $stats_labels as $key => $value ) {
 
-			array(
-				'title' => __( 'Red Cards', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players red cards.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_redcards_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Red Cards',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+			$settings[] = array(
+				'title' => __( strip_tags($value), 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_show_stats_'. $key,
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox',
+			);
+										
+		}
 
-			array(
-				'title' => __( 'Rating', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players ratings.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_rating_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Rating',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+		$settings[] = array( 'type' => 'sectionend', 'id' => 'players_stats');
 
-			array(
-				'title' => __( 'Av. Rating', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the players average ratings.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_ratings_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Av. Rating',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
+		return apply_filters( 'wpclubmanager_players_settings', $settings );
 
-			array(
-				'title' => __( 'Player of the Match', 'wpclubmanager' ),
-				'desc' 		=> __( 'The label to display the player of the match awards.', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_player_mvp_label',
-				'css' 		=> 'width:250px;',
-				'default'	=> 'Player of the Match',
-				'type' 		=> 'text',
-				'desc_tip'	=>  true,
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'player_stat_label_options'),
-
-
-		)); // End team settings
 	}
 
 	/**
