@@ -64,8 +64,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Screenshots ==
 
-1. ...
-2. ....
+1. Add matches and pick match teams
+2. Choosing your team is easy and quick
+3. Extensive player profiles with season stats
+4. A slick admin interface blends in with WordPress
 
 == Changelog ==
 
@@ -73,6 +75,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 * Feature - Choose sport for preset player stats
 * Feature - Loads more stats for each specific sport
+* Feature - Preset player positions for each sport
 * Feature - Added overtime losses to standings (Ice Hockey)
 * Feature - Added win percentage to standings
 * Feature - Added bonus points to standings (Rugby)
