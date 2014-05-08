@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.0.0
+ * @version 	1.1.0
  * @extends 	WP_Widget
  */
 
@@ -129,23 +129,22 @@ class WPCM_Players_Widget extends WP_Widget {
 			'title' => __( 'Players', 'wpclubmanager' )
 		);
 
-		$wpcm_player_stats_labels = array(
-			'goals' => get_option( 'wpcm_player_goals_label'),
-			'assists' => get_option( 'wpcm_player_assists_label'),
-			'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-			'redcards' => get_option( 'wpcm_player_redcards_label'),
-			'rating' => get_option( 'wpcm_player_rating_label'),
-			'mvp' => get_option( 'wpcm_player_mvp_label')
-		);
+		$sport = get_option('wpcm_sport');
+
+		$data = wpcm_get_sport_presets();
+		$wpcm_player_stats_labels = $data[$sport]['stats_labels'];
 
 		$player_stats_labels = array_merge( array( 'appearances' => __( 'Appearances', 'wpclubmanager' ) ), $wpcm_player_stats_labels );
 		$stats_labels = array_merge(
 			array(
+				'thumb' => __( 'Image', 'wpclubmanager' ),
 				'flag' => __( 'Flag', 'wpclubmanager' ),
 				'number' => __( 'Number', 'wpclubmanager' ),
 				'name' => __( 'Name', 'wpclubmanager' ),
 				'position' => __( 'Position', 'wpclubmanager' ),
 				'age' => __( 'Age', 'wpclubmanager' ),
+				'height' => __( 'Height', 'wpclubmanager' ),
+				'weight' => __( 'Weight', 'wpclubmanager' ),
 				'team' => __( 'Team', 'wpclubmanager' ),
 				'season' => __( 'Season', 'wpclubmanager' ),
 				'dob' => __( 'Date of Birth', 'wpclubmanager' ),

@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.0.3
+ * @version 	1.1.0
  * @extends 	WP_Widget
  */
 
@@ -197,12 +197,12 @@ class WPCM_Results_Widget extends WP_Widget {
 							echo '<h4 class="home-clubs">';
 								echo '<div class="home-logo">' . get_the_post_thumbnail( $home_club, 'crest-medium', array( 'title' => get_the_title( $home_club ) ) ) . '</div>';
 								echo get_the_title( $home_club );
-								echo '<div class="score">' . $home_goals . '</div>';
+								echo '<div class="score">' . ( $played ? $home_goals : '' ) . '</div>';
 							echo '</h4>';
 							echo '<h4 class="away-clubs">';
 								echo '<div class="away-logo">' . get_the_post_thumbnail( $away_club, 'crest-medium', array( 'title' => get_the_title( $away_club ) ) ) . '</div>';
 								echo get_the_title( $away_club );
-								echo '<div class="score">' . $away_goals . '</div>';
+								echo '<div class="score">' . ( $played ? $away_goals : '' ) . '</div>';
 							echo '</h4>';
 						echo '</div>';
 					echo '</a>';
