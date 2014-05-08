@@ -47,18 +47,21 @@
 	}
 
 /* TinyMCE buttons */
-.wp_themeSkin span.mce_wpcm_standings_button:before {
+i.mce-ico {
+	font: 400 20px/1 dashicons;
+}
+i.mce-i-wpcm_standings_button:before {
 	content: '\f239';
 }
-.wp_themeSkin span.mce_wpcm_map_button:before {
+i.mce-i-wpcm_map_button:before {
 	content: '\f231';
 }
-.wp_themeSkin span.mce_wpcm_matches_button:before {
+i.mce-i-wpcm_matches_button:before {
 	content: '\f313';
 }
-.wp_themeSkin span.mce_wpcm_players_button:before {
+i.mce-i-wpcm_players_button:before {
 	content: '\f307';
 }
-.wp_themeSkin span.mce_wpcm_staff_button:before {
+i.mce-i-wpcm_staff_button:before {
 	content: '\f338';
 }

@@ -156,7 +156,7 @@ table {
 	.wpcm-players-shortcode table th.number {
 		width: auto;
 	}
-	.wpcm-players-shortcode table thead th.name,
+	.wpcm-players-shortcode table thead td.name,
 	.wpcm-players-shortcode table tbody td.name,
 	.wpcm-players-shortcode table thead th.position,
 	.wpcm-players-shortcode table tbody td.position {
@@ -427,7 +427,7 @@ table {
 	.wpcm-match-details table {
 		width: 100%;
 	}
-	.wpcm-match-details table td.name {
+	.wpcm-match-details table th.name {
 		width:50%;
 	}
 	.wpcm-match-details table th.goals,
@@ -444,21 +444,25 @@ table {
 	.wpcm-match-details table td.notes {
 		width:auto;
 	}
-	.wpcm-match-details table td.name .sub {
+	.wpcm-match-details table th.name .sub {
 		font-size: .913em;
 		font-style: italic;
+		font-weight: normal;
 		padding-left: 1em;
 	}
 	.wpcm-match-details table td.notes .yellowcard,
 	.wpcm-match-details table td.notes .redcard,
-	.wpcm-match-details table td.notes .mvp {
+	.wpcm-match-details table td.notes .greencard {
 		display: inline-block;
 		width: 12px;
 		height: 18px;
 		background: url(../images/notes.png) no-repeat;
 		overflow: hidden;
-		margin-right: 8px;
+		margin-left: 8px;
 		text-indent: -100px;
+	}
+	.wpcm-match-details table td.notes .greencard {
+		background-position: -24px 0px;
 	}
 	.wpcm-match-details table td.notes .yellowcard {
 		background-position: 0px 0px;
@@ -466,8 +470,9 @@ table {
 	.wpcm-match-details table td.notes .redcard {
 		background-position: -12px 0px;
 	}
-	.wpcm-match-details table td.notes .mvp {
-		background-position: -24px 0px;
+	.wpcm-match-details table th.name span.mvp {
+		color: #e5c100;
+		margin-left: 16px;
 	}
 	.wpcm-match-details h3 {
 		margin-bottom: 1.5em;
@@ -662,16 +667,20 @@ table {
 
 /* High Res images */
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
+	.wpcm-match-details table td.notes .greencard,
 	.wpcm-match-details table td.notes .yellowcard,
-	.wpcm-match-details table td.notes .redcard,
-	.wpcm-match-details table td.notes .mvp {
+	.wpcm-match-details table td.notes .redcard {
 		display: inline-block;
 		width: 12px;
 		height: 18px;
 		background: url(../images/notes@2x.png) no-repeat;
 		overflow: hidden;
-		margin-right: 8px;
+		margin-left: 8px;
 		text-indent: -100px;
+	}
+	.wpcm-match-details table td.notes .greencard {
+		background-position: -48px 0px;
+		background-size: 12px 18px;
 	}
 	.wpcm-match-details table td.notes .yellowcard {
 		background-position: 0px 0px;
@@ -681,8 +690,8 @@ table {
 		background-position: -24px 0px;
 		background-size: 12px 18px;
 	}
-	.wpcm-match-details table td.notes .mvp {
-		background-position: -48px 0px;
-		background-size: 12px 18px;
+	.wpcm-match-details table th.name span.mvp {
+		margin-left: 16px;
+		color: #e5c100;
 	}
 }
