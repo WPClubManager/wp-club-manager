@@ -15,4 +15,10 @@ jQuery(function(){
     	'delay' : 200
     });
 
+    // Chosen selects
+	jQuery("select.chosen_select").chosen({
+		width: '220px',
+		disable_search_threshold: 12
+	});
+
 });
