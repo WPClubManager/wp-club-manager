@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 class WPCM_Frontend_Scripts {
@@ -15,7 +15,7 @@ class WPCM_Frontend_Scripts {
 	 */
 	public function __construct () {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
-		add_action( 'wp_print_scripts', array( $this, 'check_jquery' ), 25 );
+		//add_action( 'wp_print_scripts', array( $this, 'check_jquery' ), 25 );
 	}
 
 	/**
@@ -61,27 +61,6 @@ class WPCM_Frontend_Scripts {
 			foreach ( $enqueue_styles as $handle => $args )
 				wp_enqueue_style( $handle, $args['src'], $args['deps'], $args['version'], $args['media'] );
 		
-	}
-
-	/**
-	 * WC requires jQuery 1.7 since it uses functions like .on() for events.
-	 * If, by the time wp_print_scrips is called, jQuery is outdated (i.e not
-	 * using the version in core) we need to deregister it and register the
-	 * core version of the file.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function check_jquery() {
-
-		global $wp_scripts;
-
-		// Enforce minimum version of jQuery
-		if ( ! empty( $wp_scripts->registered['jquery']->ver ) && ! empty( $wp_scripts->registered['jquery']->src ) && 0 >= version_compare( $wp_scripts->registered['jquery']->ver, '1.7' ) ) {
-			wp_deregister_script( 'jquery' );
-			wp_register_script( 'jquery', '/wp-includes/js/jquery/jquery.js', array(), '1.7' );
-			wp_enqueue_script( 'jquery' );
-		}
 	}
 }
 
