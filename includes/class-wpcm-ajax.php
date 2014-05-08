@@ -5,7 +5,7 @@
  * AJAX Event Handler
  *
  * @class 		WPCM_AJAX
- * @version		1.0.3
+ * @version		1.1.0
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -145,7 +145,8 @@ class WPCM_AJAX {
 			'venue' => null,
 			'linktext' => __( 'View all results', 'wpclubmanager' ),
 			'linkpage' => null,
-			'title' => __( 'Fixtures & Results', 'wpclubmanager' )
+			'title' => __( 'Fixtures & Results', 'wpclubmanager' ),
+			'thumb' => 1,
 		);
 		$args = array_merge( $defaults, $_GET );
 		?>
@@ -225,6 +226,11 @@ class WPCM_AJAX {
 						</td>
 					</tr>
 					<tr>
+						<?php $field = 'thumb'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Show Thumbnail', 'wpclubmanager' ); ?></label></th>
+						<td><input type="checkbox" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" checked /></td>
+					</tr>
+					<tr>
 						<?php $field = 'linktext'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Link text', 'wpclubmanager' ); ?></label></th>
 						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" /></td>
@@ -266,22 +272,16 @@ class WPCM_AJAX {
 			'linktext' => __( 'View all players', 'wpclubmanager' ),
 			'linkpage' => null,
 			'stats' => 'flag,number,name,position,age',
-			'title' => __( 'Players', 'wpclubmanager' ),
-			'type' => get_option( 'wpcm_players_view' )
+			'title' => __( 'Players', 'wpclubmanager' )
 		);
 		$args = array_merge( $defaults, $_GET );
 		
-		$wpcm_player_stats_labels = array(
-			'goals' => get_option( 'wpcm_player_goals_label'),
-			'assists' => get_option( 'wpcm_player_assists_label'),
-			'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-			'redcards' => get_option( 'wpcm_player_redcards_label'),
-			'rating' => get_option( 'wpcm_player_rating_label'),
-			'mvp' => get_option( 'wpcm_player_mvp_label')
-		);
+		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
+		
 		$player_stats_labels = array_merge( array( 'appearances' => __( 'Appearances', 'wpclubmanager' ) ), $wpcm_player_stats_labels );
 		$stats_labels = array_merge(
 			array(
+				'thumb' => __( 'Thumbnail', 'wpclubmanager' ),
 				'flag' => __( 'Flag', 'wpclubmanager' ),
 				'number' => __( 'Number', 'wpclubmanager' ),
 				'name' => __( 'Name', 'wpclubmanager' ),
@@ -290,6 +290,8 @@ class WPCM_AJAX {
 				'team' => __( 'Team', 'wpclubmanager' ),
 				'season' => __( 'Season', 'wpclubmanager' ),
 				'dob' => __( 'Date of Birth', 'wpclubmanager' ),
+				'height' => __( 'Height', 'wpclubmanager' ),
+				'weight' => __( 'Weight', 'wpclubmanager' ),
 				'hometown' => __( 'Hometown', 'wpclubmanager' ),
 				'joined' => __( 'Joined', 'wpclubmanager' )
 			),
@@ -377,7 +379,12 @@ class WPCM_AJAX {
 						<?php $field = 'order'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Order', 'wpclubmanager' ); ?></label></th>
 						<td>
-							<?php global $wpcm_order_options; ?>
+							<?php
+							$wpcm_order_options = array(
+								'ASC' => __( 'Lowest to highest', 'wpclubmanager' ),
+								'DESC' => __( 'Highest to lowest', 'wpclubmanager' )
+							);
+							?>
 							<select id="option-<?php echo $field; ?>" name="<?php echo $field; ?>">
 								<?php foreach ( $wpcm_order_options as $key => $val ) { ?>
 									<option id="<?php echo $key; ?>" value="<?php echo $key; ?>"<?php if ( $args[$field] == $key ) echo ' selected'; ?>><?php echo $val; ?></option>
@@ -406,7 +413,7 @@ class WPCM_AJAX {
 					</tr>
 					<tr>
 						<?php $field = 'stats'; ?>
-						<th><label><?php _e( 'Statistics', 'wpclubmanager' ); ?></label></th>
+						<th><label><?php _e( 'Display options', 'wpclubmanager' ); ?></label></th>
 						<td>
 							<table>
 								<tr>
@@ -560,8 +567,9 @@ class WPCM_AJAX {
 			'order' => 'DESC',
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'p,w,d,l,f,a,gd,pts',
-			'title' => __( 'Standings', 'wpclubmanager' )
+			'stats' => 'p,w,d,l,pct,f,a,gd,pts',
+			'title' => __( 'Standings', 'wpclubmanager' ),
+			'thumb' => 1,
 		);
 		$args = array_merge( $defaults, $_GET );
 		?>
@@ -618,9 +626,12 @@ class WPCM_AJAX {
 							'w' => get_option( 'wpcm_standings_w_label' ),
 							'd' => get_option( 'wpcm_standings_d_label' ),
 							'l' => get_option( 'wpcm_standings_l_label' ),
+							'otl' => get_option( 'wpcm_standings_otl_label' ),
+							'pct' => get_option( 'wpcm_standings_pct_label' ),
 							'f' => get_option( 'wpcm_standings_f_label' ),
 							'a' => get_option( 'wpcm_standings_a_label' ),
 							'gd' => get_option( 'wpcm_standings_gd_label' ),
+							'b' => get_option( 'wpcm_standings_bonus_label' ),
 							'pts' => get_option( 'wpcm_standings_pts_label' )
 						); ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Order by', 'wpclubmanager' ); ?></label></th>
@@ -668,18 +679,28 @@ class WPCM_AJAX {
 						</td>
 					</tr>
 					<tr>
+						<?php $field = 'thumb'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Show Thumbnail', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<input type="checkbox" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" checked />
+						</td>
+					</tr>
+					<tr>
 						<?php $field = 'stats';
 						$wpcm_standings_stats_labels = array(
 							'p' => get_option( 'wpcm_standings_p_label' ),
 							'w' => get_option( 'wpcm_standings_w_label' ),
 							'd' => get_option( 'wpcm_standings_d_label' ),
 							'l' => get_option( 'wpcm_standings_l_label' ),
+							'otl' => get_option( 'wpcm_standings_otl_label' ),
+							'pct' => get_option( 'wpcm_standings_pct_label' ),
 							'f' => get_option( 'wpcm_standings_f_label' ),
 							'a' => get_option( 'wpcm_standings_a_label' ),
 							'gd' => get_option( 'wpcm_standings_gd_label' ),
+							'b' => get_option( 'wpcm_standings_bonus_label' ),
 							'pts' => get_option( 'wpcm_standings_pts_label' )
 						); ?>
-						<th><label><?php _e( 'Statistics', 'wpclubmanager' ); ?></label></th>
+						<th><label><?php _e( 'Display columns', 'wpclubmanager' ); ?></label></th>
 						<td>
 							<table style="text-align: center;">
 								<tr>

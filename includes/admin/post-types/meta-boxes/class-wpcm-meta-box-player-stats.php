@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.0.1
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,133 +41,7 @@ class WPCM_Meta_Box_Player_Stats {
 			</div>
 		</div>
 		<div class="clear"></div>
-		<script type="text/javascript">
-			(function($) {
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-appearances').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-appearances').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-goals').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-goals').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-assists').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-assists').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-yellowcards').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-yellowcards').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-redcards').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-redcards').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-rating').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-rating').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-mvp').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-mvp').val(sum);
-
-
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-appearances').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-appearances').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-goals').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-goals').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-assists').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-assists').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-yellowcards').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-yellowcards').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-redcards').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-redcards').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-rating').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-rating').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-mvp').each(function(){
-				    sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-mvp').val(sum);
-
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-appearances').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-appearances').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-appearances').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-goals').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-goals').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-goals').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-assists').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-assists').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-assists').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-yellowcards').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-yellowcards').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-yellowcards').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-redcards').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-redcards').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-redcards').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-rating').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-rating').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-rating').val(total);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-mvp').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-mvp').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-mvp').val(total);
-			
-			})(jQuery);
-		</script>
+		
 	<?php }
 
 	/**
@@ -175,7 +49,11 @@ class WPCM_Meta_Box_Player_Stats {
 	 */
 	public static function save( $post_id, $post ) {
 
-		$stats = $_POST['wpcm_stats'];
+		if( isset( $_POST['wpcm_stats'] ) ) {
+			$stats = $_POST['wpcm_stats'];
+		} else {
+			$stats = array();
+		}
 		array_walk_recursive( $stats, 'wpcm_array_values_to_int' );
 		
 		update_post_meta( $post_id, 'wpcm_stats', serialize( $stats ) );

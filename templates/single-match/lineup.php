@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.3
+ * @version     1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -15,8 +15,8 @@ $played = get_post_meta( $post->ID, 'wpcm_played', true );
 $players = unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) );
 
 $show_number = get_option('wpcm_player_profile_show_number');
-$show_assists = get_option('wpcm_player_profile_show_assists');
-$show_ratings = get_option('wpcm_player_profile_show_ratings');
+
+$sport = get_option('wpcm_sport');
 
 if ( $played ) {
 
@@ -30,35 +30,34 @@ if ( $played ) {
 
 				<h3><?php echo _e( 'Lineup', 'wpclubmanager' ); ?></h3>
 
-				<table>
+				<table class="wpcm-lineup-table">
 
 					<thead>
 
 						<tr>
 
-							<?php if( $show_number == 'yes') { ?>
-
-								<th class="squadno"><?php _e('No.', 'wpclubmanager') ?></th>
-
-							<?php } ?>
-
 							<th class="name"><?php _e('Name', 'wpclubmanager') ?></th>
 
-							<th class="goals"><?php echo get_option('wpcm_player_goals_label'); ?></th>
+							<?php $wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
 
-							<?php if( $show_assists == 'yes') { ?>
+							foreach( $wpcm_player_stats_labels as $key => $val ):
 
-								<th class="assists"><?php echo get_option('wpcm_player_assists_label'); ?></th>
+								if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
 
+									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'redcards' && $key != 'mvp' ) {  ?>
+
+										<th><?php echo $val; ?></th>
+									
+									<?php
+									}
+
+								}
+
+							endforeach;
+
+							if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' ) { ?>
+								<th class="notes"><?php _e('Cards', 'wpclubmanager') ?></th>
 							<?php } ?>
-
-							<?php if( $show_ratings == 'yes') { ?>
-
-								<th class="rating"><?php _e('Rating', 'wpclubmanager') ?></th>
-
-							<?php } ?>
-
-							<th class="notes"><?php _e('Notes', 'wpclubmanager') ?></th>
 
 						</tr>
 
@@ -86,11 +85,42 @@ if ( $played ) {
 
 		if ( array_key_exists( 'subs', $players ) && is_array( $players['subs'] ) ) { ?>
 						
-			<div class="wpcm-match-stats-subs small-12 columns">
+			<div class="wpcm-match-stats-subs">
 
 				<h3><?php echo _e( 'Subs', 'wpclubmanager' ); ?></h3>
 
-				<table>
+				<table class="wpcm-subs-table">
+
+					<thead>
+
+						<tr>
+
+							<th class="name"><?php _e('Name', 'wpclubmanager') ?></th>
+
+							<?php $wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
+
+							foreach( $wpcm_player_stats_labels as $key => $val ):
+
+								if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
+
+									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'redcards' && $key != 'mvp' ) {  ?>
+
+										<th><?php echo $val; ?></th>
+									
+									<?php
+									}
+
+								}
+
+							endforeach;
+
+							if( $sport == 'soccer' ) { ?>
+								<th class="notes"><?php _e('Cards', 'wpclubmanager') ?></th>
+							<?php } ?>
+
+						</tr>
+
+					</thead>
 
 					<tbody>
 											

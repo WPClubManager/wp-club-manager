@@ -1,20 +1,28 @@
 <?php
 /**
  * Plugin Name: WP Club Manager
+<<<<<<< HEAD
+ * Version: 1.1.0
+=======
  * Version: 1.0.4
+>>>>>>> master
  * Plugin URI: http://wpclubmanager.com
- * Description: A plugin to help you run any sports club website easily and quickly.
- * Author: ClubPress
+ * Description: A plugin to help you run a sports club website easily and quickly.
+ * Author: Clubpress
  * Author URI: http://wpclubmanager.com
  * Requires at least: 3.8
+<<<<<<< HEAD
+ * Tested up to: 3.9.1
+=======
  * Tested up to: 3.9
+>>>>>>> master
  * 
  * Text Domain: wpclubmanager
  * Domain Path: /languages/
  *
  * @package   WPClubManager
  * @category  Core
- * @author    ClubPress <info@wpclubmanager.com>
+ * @author    Clubpress <info@wpclubmanager.com>
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -25,14 +33,22 @@ if ( ! class_exists( 'WPClubManager' ) ) :
  * Main WPClubManager Class
  *
  * @class WPClubManager
+<<<<<<< HEAD
+ * @version	1.1.0
+=======
  * @version	1.0.4
+>>>>>>> master
  */
 final class WPClubManager {
 
 	/**
 	 * @var string
 	 */
+<<<<<<< HEAD
+	public $version = '1.1.0';
+=======
 	public $version = '1.0.4';
+>>>>>>> master
 
 	/**
 	 * @var WPClubManager The single instance of the class
@@ -43,6 +59,11 @@ final class WPClubManager {
 	 * @var WPCM_Countries $countries
 	 */
 	public $countries = null;
+
+	/**
+	 * @var WPCM_Sports $sports
+	 */
+	public $sports = null;
 
 	/**
 	 * Main WPClubManager Instance
@@ -59,6 +80,24 @@ final class WPClubManager {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
+	}
+
+	/**
+	 * Cloning is forbidden.
+	 *
+	 * @since 1.1.0
+	 */
+	public function __clone() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpclubmanager' ), '1.1.0' );
+	}
+
+	/**
+	 * Unserializing instances of this class is forbidden.
+	 *
+	 * @since 1.1.0
+	 */
+	public function __wakeup() {
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpclubmanager' ), '1.1.0' );
 	}
 
 	/**
@@ -269,14 +308,8 @@ final class WPClubManager {
 		$this->load_plugin_textdomain();
 
 		// Load class instances
-		$this->countries 			= new WPCM_Countries();
-
-		// Classes/actions loaded for the frontend and for ajax requests
-		if ( ! is_admin() || defined('DOING_AJAX') ) {
-
-			// Hooks
-			
-		}
+		$this->countries = new WPCM_Countries();
+		$this->sports = new WPCM_Sports();
 
 		// Init action
 		do_action( 'wpcm_init' );

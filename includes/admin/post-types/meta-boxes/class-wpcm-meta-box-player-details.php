@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.0.3
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -85,7 +85,7 @@ class WPCM_Meta_Box_Player_Details {
 
 		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_weight', 'label' => __( 'Weight', 'wpclubmanager' ), 'class' => 'measure-text' ) );
 
-		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_hometown', 'label' => __( 'Hometown', 'wpclubmanager' ), 'class' => 'regular-text' ) );
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_hometown', 'label' => __( 'Birthplace', 'wpclubmanager' ), 'class' => 'regular-text' ) );
 
 		wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wpclubmanager' ) ) );
 

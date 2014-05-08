@@ -1,0 +1,82 @@
+/* Messages */
+.wpclubmanager-message {
+	border-left-color: #49BE37 !important;
+}
+
+.about-wpclubmanager-wrap div.stuffbox h4 {
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	padding: 8px 12px;
+	margin: 0;
+	line-height: 1.4;
+}
+
+.about-wpclubmanager-wrap div.stuffbox h5 {
+	font-size: 13px;
+	padding: 16px 0 0;
+	margin: 0;
+	line-height: 1.4;
+}
+
+.wpcm-feature a {
+	text-decoration: none;
+}
+
+.wpcm-feature p.wpclubmanager-actions {
+	margin-top: 16px;
+}
+
+.about-wpclubmanager-wrap div.updated {
+	display: block!important;
+}
+
+.about-wpclubmanager-wrap .changelog {
+	padding-top: 10px;
+}
+
+.about-wrap .feature-section {
+	margin-top: 20px !important;
+}
+
+.about-wpclubmanager-wrap .wpclubmanager-steps {
+	margin-top: 24px;
+}
+
+.about-wpclubmanager-wrap .wpclubmanager-steps li {
+	line-height: 16px;
+	list-style-type: none;
+	margin: .65em 0;
+}
+
+.about-wpclubmanager-wrap .wpclubmanager-steps li a {
+	display: block;
+	padding: 0 0 8px;
+	background: transparent!important;
+}
+
+.wpclubmanager-steps .welcome-icon:before {
+	font: 400 20px/1 "dashicons";
+	speak: none;
+	display: inline-block;
+	padding: 0 10px 0 0;
+	top: -1px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none!important;
+	vertical-align: top;
+	color: #888;
+}
+
+.wpclubmanager-steps .welcome-add-comps:before {
+	content: "\f325";
+}
+.wpclubmanager-steps .welcome-add-seasons:before {
+	content: "\f145";
+}
+.wpclubmanager-steps .welcome-add-club:before {
+	content: "\f332";
+}
+.wpclubmanager-steps .welcome-add-player:before {
+	content: "\f307";
+}

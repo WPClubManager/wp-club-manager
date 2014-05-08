@@ -1,14 +1,22 @@
 === WP Club Manager ===
 Contributors: Clubpress
+<<<<<<< HEAD
+Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
+Requires at least: 3.8
+Tested up to: 3.9.1
+Stable tag: 1.1.0
+=======
 Tags: clubs, teams, sports team, sports club, club management, team management, league tables, football, rugby, soccer, hockey, ice hockey
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9
 Stable tag: 1.0.4
+>>>>>>> master
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WP Club Manager is a powerful tool to help you run any sports club website easily and quickly.
+WP Club Manager is a powerful tool to help you run a sports club website easily and quickly.
 
 == Description ==
 
@@ -19,6 +27,7 @@ Create and manage a sports club website quickly and easily using WordPress. Mana
 Comes with all the tools you need to manage your sports club or team website. Features include:
 
 * Can be used for almost any team sport
+* Preset player stats for soccer, baseball, basketball, hockey, Aussie rules, American football and rugby
 * Manage multiple teams
 * Player and staff profiles
 * Player ratings
@@ -63,12 +72,38 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Screenshots ==
 
-1. ...
-2. ....
+1. Add matches and pick match teams
+2. Choosing your team is easy and quick
+3. Extensive player profiles with season stats
+4. A slick admin interface blends in with WordPress
 
 == Changelog ==
 
+<<<<<<< HEAD
+= 1.1.0 - 08/05/2014
+
+* Feature - Choose sport for preset player stats
+* Feature - Loads more stats for each specific sport
+* Feature - Preset player positions for each sport
+* Feature - Added overtime losses to standings (Ice Hockey)
+* Feature - Added win percentage to standings
+* Feature - Added bonus points to standings (Rugby)
+* Feature - New welcome page with plugin configuration options
+* Tweak - Added experience settings for players
+* Tweak - Added display player thumbnails option to player widget
+* Tweak - Added display player thumbnails option to player shortcode
+* Tweak - Added option to display club badge in standings
+* Tweak - Improved match post player table usability
+* Tweak - New sponsors menu dashicon
+* Fix - Fixed match post player counter
+* Fix - Fixed result widget showing 0-0 score before result added
+* Fix - Fixed match post team players filter behaviour
+* Localisation - Updated language files
+
+= 1.0.4 - 23/04/2014
+=======
 = 1.0.3 - 23/04/2014
+>>>>>>> master
 
 * Fix - Fixed shortcode buttons compatibility with WP 3.9
 
@@ -113,5 +148,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Upgrade Notice ==
 
+<<<<<<< HEAD
+= 1.1.0 =
+
+THIS IS A MAJOR UPGRADE AND WE RECOMMEND THAT YOU BACKUP YOUR FILES AND DATABASE BEFORE UPGRADING! The stats system has been revamped and any player stats that have already been added will probably get mixed up and need to be redone. I apologise for the inconvenience this will cause.
+
 = 1.0.3 =
+
+=======
+= 1.0.3 =
+>>>>>>> master
 1.0.3 is a minor update with a few minor fixes and improvements. There shouldn't be any problems upgrading but some styles may be affected depending on your theme.

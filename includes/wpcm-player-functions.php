@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.3
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,18 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if (!function_exists('get_wpcm_player_stats_empty_row')) {
 	function get_wpcm_player_stats_empty_row() {
 
-		$wpcm_player_stats_labels = array(
-			'goals' => get_option( 'wpcm_player_goals_label'),
-			'assists' => get_option( 'wpcm_player_assists_label'),
-			'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-			'redcards' => get_option( 'wpcm_player_redcards_label'),
-			'rating' => get_option( 'wpcm_player_rating_label'),
-			'mvp' => get_option( 'wpcm_player_mvp_label')
-		);
+		$stats_labels = wpcm_get_sports_stats_labels();
 
 		$output = array( 'appearances' => 0 );
 
-		foreach( $wpcm_player_stats_labels as $key => $val ) {
+		foreach( $stats_labels as $key => $val ) {
 			$output[$key] = 0;
 		}
 
@@ -106,6 +99,8 @@ if (!function_exists('get_wpcm_player_auto_stats')) {
 
 		if ( !$post_id ) global $post_id;
 
+		$stats_labels = wpcm_get_sports_stats_labels();
+
 		$club_id = get_post_meta( $post_id, 'wpcm_club', true );
 		$output = get_wpcm_player_stats_empty_row();
 
@@ -143,12 +138,12 @@ if (!function_exists('get_wpcm_player_auto_stats')) {
 
 						$stats = $players[$post_id];
 						$output['appearances'] ++;
-						$output['goals'] += $stats['goals'];
-						$output['assists'] += $stats['assists'];
-						if(isset($stats['yellowcards'])){ $output['yellowcards'] += $stats['yellowcards']; }
-						if(isset($stats['redcards'])){ $output['redcards'] += $stats['redcards']; }
-						$output['rating'] += $stats['rating'];
-						if(isset($stats['mvp'])){ $output['mvp'] += $stats['mvp']; }
+
+						foreach( $stats as $key => $value ) {
+							if ( array_key_exists( $key, $stats_labels ) )  {
+								if(isset($stats[ $key ])){ $output[ $key ] += $stats[ $key ]; }
+							}
+						}
 					}
 				}
 			}
@@ -175,12 +170,12 @@ if (!function_exists('get_wpcm_player_auto_stats')) {
 
 						$stats = $players[$post_id];
 						$output['appearances'] ++;
-						$output['goals'] += $stats['goals'];
-						$output['assists'] += $stats['assists'];
-						if(isset($stats['yellowcards'])){ $output['yellowcards'] += $stats['yellowcards']; }
-						if(isset($stats['redcards'])){ $output['redcards'] += $stats['redcards']; }
-						$output['rating'] += $stats['rating'];
-						if(isset($stats['mvp'])){ $output['mvp'] += $stats['mvp']; }
+						
+						foreach( $stats as $key => $value ) {
+							if ( array_key_exists( $key, $stats_labels ) )  {
+								if(isset($stats[ $key ])){ $output[ $key ] += $stats[ $key ]; }
+							}
+						}
 					}
 				}
 			}
@@ -267,59 +262,86 @@ if (!function_exists('get_wpcm_player_stats')) {
  */
 function wpcm_player_stats_table( $stats = array(), $team = 0, $season = 0 ) {
 
-	$wpcm_player_stats_labels = array(
-		'goals' => get_option( 'wpcm_player_goals_label'),
-		'assists' => get_option( 'wpcm_player_assists_label'),
-		'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-		'redcards' => get_option( 'wpcm_player_redcards_label'),
-		'rating' => get_option( 'wpcm_player_rating_label'),
-		'mvp' => get_option( 'wpcm_player_mvp_label')
-	);
-
-	$stats_labels = array( 'appearances' => __( 'Apps', 'wpclubmanager' ) );
-	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels );
-
 	if ( array_key_exists( $team, $stats ) ):
 
 		if ( array_key_exists( $season, $stats[$team] ) ):
 
 			$stats = $stats[$team][$season];
 		endif;
-	endif; ?>
+	endif;
+
+	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
+
+	$stats_labels = array( 'appearances' => __( 'Apps', 'wpclubmanager' ) );
+	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels ); ?>
 
 	<table>
 		<thead>
 			<tr>
 				<td>&nbsp;</td>
-				<?php foreach( $stats_labels as $key => $val ): ?>
-					<th><?php echo $val; ?></th>
-				<?php endforeach; ?>
+				<?php foreach( $stats_labels as $key => $val ):
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+						<th><?php echo $val; ?></th>
+					<?php endif;
+				endforeach; ?>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				<th align="right">Total</th>
-				<?php foreach( $stats_labels as $key => $val ): ?>
-					<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo $key; ?>" readonly /></td>
-				<?php endforeach; ?>
+				<?php foreach( $stats_labels as $key => $val ):
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+						<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo $key; ?>" readonly /></td>
+					<?php endif;
+				endforeach; ?>
 			</tr>
 		</tfoot>
 		<tbody>
 			<tr>
 				<td align="right"><?php _e( 'Auto' ); ?></td>
-				<?php foreach( $stats_labels as $key => $val ): ?>
-					<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo $key; ?>" readonly /></td>
-				<?php endforeach; ?>
+				<?php foreach( $stats_labels as $key => $val ):
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+						<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo $key; ?>" readonly /></td>
+					<?php endif;
+				endforeach; ?>
 			</tr>
 			<tr>
 				<td align="right"><?php _e( 'Manual', 'wpclubmanager' ); ?></td>
-				<?php foreach( $stats_labels as $key => $val ): ?>
-					<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>"<?php echo ( $season == 0 ? ' readonly' : '' ); ?> /></td>
-				<?php endforeach; ?>
+				<?php foreach( $stats_labels as $key => $val ):
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+						<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>"<?php echo ( $season == 0 ? ' readonly' : '' ); ?> /></td>
+					<?php endif;
+				endforeach; ?>
 			</tr>
 		</tbody>
 	</table>
-<?php }
+	<script type="text/javascript">
+		(function($) {
+			<?php foreach( $stats_labels as $key => $val ) { ?>
+
+				var sum = 0;
+				$('.stats-table-season .player-stats-manual-<?php echo $key; ?>').each(function(){
+					sum += Number($(this).val());
+				});
+				$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val(sum);
+
+				var sum = 0;
+				$('.stats-table-season .player-stats-auto-<?php echo $key; ?>').each(function(){
+					sum += Number($(this).val());
+				});
+				$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val(sum);
+
+				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val();
+				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val();
+				var total = a+b;
+				$('#wpcm_team-0_season-0 .player-stats-total-<?php echo $key; ?>').val(total);
+
+			<?php } ?>
+		})(jQuery);
+	</script>
+
+<?php
+}
 
 /**
  * Player profile stats table.
@@ -332,136 +354,65 @@ function wpcm_player_stats_table( $stats = array(), $team = 0, $season = 0 ) {
  */
 function wpcm_profile_stats_table( $stats = array(), $team = 0, $season = 0 ) {
 
-	$wpcm_player_stats_labels = array(
-		'goals' => get_option( 'wpcm_player_goals_label'),
-		'assists' => get_option( 'wpcm_player_assists_label'),
-		'yellowcards' => get_option( 'wpcm_player_yellowcards_label'),
-		'redcards' => get_option( 'wpcm_player_redcards_label'),
-		'rating' => get_option( 'wpcm_player_ratings_label'),
-		'mvp' => get_option( 'wpcm_player_mvp_label')
-	);
-
-	$stats_labels = array( 'appearances' => __( 'Apps', 'wpclubmanager' ) );
-	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels );
-
 	if ( array_key_exists( $team, $stats ) ):
 
 		if ( array_key_exists( $season, $stats[$team] ) ):
 
 			$stats = $stats[$team][$season];
 		endif;
-	endif; 
+	endif;
 
-	$show_appearances = get_option('wpcm_player_profile_show_appearances');
-	$show_goals = get_option('wpcm_player_profile_show_goals');
-	$show_assists = get_option('wpcm_player_profile_show_assists');
-	$show_yellowcards = get_option('wpcm_player_profile_show_yellowcards');
-	$show_redcards = get_option('wpcm_player_profile_show_redcards');
-	$show_ratings = get_option('wpcm_player_profile_show_ratings');
-	$show_mvp = get_option('wpcm_player_profile_show_mvp');
-	?>
+	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
+
+	$stats_labels = array( 'appearances' => '<a title="' . __('Games Played', 'wpclubmanager') . '">' . __( 'GP', 'wpclubmanager' ) . '</a>' );
+	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels ); ?>
 
 	<table>
 		<thead>
 			<tr>
+				<?php
+				foreach( $stats_labels as $key => $val ) { 
 
-				<?php if( $show_appearances == 'yes' ) { ?>
+					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) { ?>
 
-					<th><?php _e( 'Apps', 'wpclubmanager' ); ?></th>
+						<th><?php echo $val; ?></th>
+					<?php
+					}
 
-				<?php } ?>
-
-				<?php if( $show_goals == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_goals_label'); ?></th>
-
-				<?php } ?>
-
-				<?php if( $show_assists == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_assists_label'); ?></th>
-
-				<?php } ?>
-
-				<?php if( $show_yellowcards == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_yellowcards_label'); ?></th>
-
-				<?php } ?>
-
-				<?php if( $show_redcards == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_redcards_label'); ?></th>
-
-				<?php } ?>
-
-				<?php if( $show_ratings == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_ratings_label'); ?></th>
-
-				<?php } ?>
-
-				<?php if( $show_mvp == 'yes' ) { ?>
-
-					<th><?php echo get_option( 'wpcm_player_mvp_label'); ?></th>
-
-				<?php } ?>
+				} ?>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
+				<?php foreach( $stats_labels as $key => $val ) {
 
-				<?php if( $show_appearances == 'yes' ) { ?>
+					if( $key == 'rating' ) {
 
-					<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?></span></td>
+						$rating = get_wpcm_stats_value( $stats, 'total', 'rating' );
+						$apps = get_wpcm_stats_value( $stats, 'total', 'appearances' );
+						if( $apps > 0 ) {
+							$avrating = $rating / $apps;
+						} else {
+							$avrating = 0;
+						}
 
-				<?php } ?>
-				
-				<?php if( $show_goals == 'yes' ) { ?>
-
-					<td><span data-index="goals"><?php wpcm_stats_value( $stats, 'total', 'goals' ); ?></span></td>
-
-				<?php } ?>
-				
-				<?php if( $show_assists == 'yes' ) { ?>
-
-					<td><span data-index="assists"><?php wpcm_stats_value( $stats, 'total', 'assists' ); ?></span></td>
-
-				<?php } ?>
-				
-				<?php if( $show_yellowcards == 'yes' ) { ?>
-
-					<td><span data-index="yellowcards"><?php wpcm_stats_value( $stats, 'total', 'yellowcards' ); ?></span></td>
-
-				<?php } ?>
-
-				<?php if( $show_redcards == 'yes' ) { ?>
+						if( get_option( 'wpcm_show_stats_rating' ) == 'yes' ) : ?>
 					
-					<td><span data-index="redcards"><?php wpcm_stats_value( $stats, 'total', 'redcards' ); ?></span></td>
+							<td><span data-index="rating"><?php echo sprintf( "%01.2f", round($avrating, 2) ); ?></span></td>
+						<?php endif;
 
-				<?php } ?>
+					} else { 
 
-				<?php if( $show_ratings == 'yes' ) {
+						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) { ?>
 
-					$rating = get_wpcm_stats_value( $stats, 'total', 'rating' );
-					$apps = get_wpcm_stats_value( $stats, 'total', 'appearances' );
-					if( $apps > 0 ) {
-						$avrating = $rating / $apps;
-					} else {
-						$avrating = 0;
-					} ?>
-					
-					<td><span data-index="rating"><?php echo sprintf( "%01.2f", round($avrating, 2) ); ?></span></td>
-
-				<?php } ?>
-
-				<?php if( $show_mvp == 'yes' ) { ?>
-					
-					<td><span data-index="mvp"><?php wpcm_stats_value( $stats, 'total', 'mvp' ); ?></span></td>
-
-				<?php } ?>
+							<td><span data-index="<?php echo $key; ?>"><?php wpcm_stats_value( $stats, 'total', $key ); ?></span></td>
+						<?php
+						}
+					}
+				} ?>
 				
 			</tr>
 		</tbody>
 	</table>
-<?php }
+<?php
+}
