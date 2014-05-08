@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.0
+ * @version     1.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -26,7 +26,7 @@ class WPCM_Admin_Assets {
 	/**
 	 * Loads the styles for the backend.
 	 *
-	 * @since  0.1.0
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
@@ -53,7 +53,7 @@ class WPCM_Admin_Assets {
 	/**
 	 * Loads the scripts for the backend.
 	 *
-	 * @since  0.1.0
+	 * @since  1.1
 	 * @access public
 	 * @return void
 	 */
@@ -76,18 +76,18 @@ class WPCM_Admin_Assets {
 
 		wp_register_script( 'chosen', WPCM()->plugin_url() . '/assets/js/jquery-chosen/chosen.jquery' . $suffix . '.js', array('jquery'), WPCM_VERSION );
 
-		// WooCommerce admin pages
+		// WPlubManager admin pages
 	    if ( in_array( $screen->id, wpcm_get_screen_ids() ) ) {
 
-	    	wp_enqueue_script( 'wpclubmanager_admin' );
+	    	wp_enqueue_script( 'jquery' );
 	    	wp_enqueue_script( 'ajax-chosen' );
 	    	wp_enqueue_script( 'chosen' );
+	    	wp_enqueue_script( 'wpclubmanager_admin' );
 	    }
 
-	    // Product/Coupon/Orders
-		if ( in_array( $screen->id, array( 'wpcm_player', 'wpcm_club', 'wpcm_staff', 'wpcm_sponsor', 'wpcm_match', 'edit-wpcm_player', 'edit-wpcm_club', 'edit-wpcm_staff', 'edit-wpcm_sponsor', 'edit-wpcm_match' ) ) ) {
+	    if ( in_array( $screen->id, array( 'wpcm_player', 'wpcm_club', 'wpcm_staff', 'wpcm_sponsor', 'wpcm_match', 'edit-wpcm_player', 'edit-wpcm_club', 'edit-wpcm_staff', 'edit-wpcm_sponsor', 'edit-wpcm_match' ) ) ) {
 
-			wp_enqueue_script( 'wpclubmanager_admin_meta_boxes' );
+	    	wp_enqueue_script( 'wpclubmanager_admin_meta_boxes' );
 			wp_enqueue_script( 'ajax-chosen' );
 			wp_enqueue_script( 'chosen' );
 		}
