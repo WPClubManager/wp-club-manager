@@ -21,7 +21,6 @@ class WPCM_Admin {
 	public function __construct() {
 
 		add_action( 'init', array( $this, 'includes' ) );
-		add_action( 'admin_footer', 'wpcm_print_js', 25 );
 	}
 
 	/**
@@ -38,6 +37,8 @@ class WPCM_Admin {
 		// Classes we only need if the ajax is not-ajax
 		if ( ! is_ajax() ) {
 			include( 'class-wpcm-admin-menus.php' );
+			include( 'class-wpcm-admin-welcome.php' );
+			include( 'class-wpcm-admin-notices.php' );
 			include( 'class-wpcm-admin-assets.php' );
 			include( 'class-wpcm-admin-editor.php' );
 		}
