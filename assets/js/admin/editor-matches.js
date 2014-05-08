@@ -30,12 +30,23 @@
 				'venue': '-1',
 				'linktext': '',
 				'linkpage': '',
-				'title': ''
+				'title': '',
+				'thumb': 1,
 				};
 			var shortcode = '[wpcm_matches';
 			
 			for( var index in options) {
-				var value = form.find('#option-' + index).val();
+				if ( index == 'thumb' ) {
+					values = form.find('[name="thumb"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				} else {
+					var value = form.find('#option-' + index).val();
+				}
 				
 				// attaches the attribute to the shortcode only if it's different from the default value
 				if ( value !== options[index] )
