@@ -21,3 +21,6 @@ function wpcm_print_js() {
 function check_jquery() {
 	_deprecated_function( 'check_jquery', '1.1.0', '' );
 }
+function is_sponsors() {
+	_deprecated_function( 'is_sponsors', '1.1.1', '' );
+}
