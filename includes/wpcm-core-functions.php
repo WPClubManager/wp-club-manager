@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.0
+ * @version     1.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -527,6 +527,15 @@ function wpcm_get_sport_presets() {
 	return apply_filters( 'wpcm_sports', array(
 		'baseball' => array(
 			'name' => __( 'Baseball', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => '',
+						'slug' => '',
+					),
+				),
+			),
 			'stats_labels' => array(
 				'ab' => '<a title="' . __('At Bats', 'wpclubmanager'). '">' . __('AB', 'wpclubmanager') . '</a>',
 				'h' => '<a title="' . __('Hits', 'wpclubmanager'). '">' . __('H', 'wpclubmanager') . '</a>',
@@ -752,6 +761,27 @@ function wpcm_get_sport_presets() {
 		),
 		'hockey_field' => array(
 			'name' => __( 'Field Hockey', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Goalie',
+						'slug' => 'goalie',
+					),
+					array(
+						'name' => 'Defence',
+						'slug' => 'defence',
+					),
+					array(
+						'name' => 'Midfield',
+						'slug' => 'midfield',
+					),
+					array(
+						'name' => 'Forward',
+						'slug' => 'forward',
+					),
+				),
+			),
 			'stats_labels' => array(
 				'gls' => '<a title="' . __('Goals', 'wpclubmanager'). '">' . __('G', 'wpclubmanager') . '</a>',
 				'ass' => '<a title="' . __('Assists', 'wpclubmanager'). '">' . __('A', 'wpclubmanager') . '</a>',
@@ -767,6 +797,31 @@ function wpcm_get_sport_presets() {
 		),
 		'hockey' => array(
 			'name' => __( 'Ice Hockey', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Goalie',
+						'slug' => 'goalie',
+					),
+					array(
+						'name' => 'Defense',
+						'slug' => 'defense',
+					),
+					array(
+						'name' => 'Center',
+						'slug' => 'center',
+					),
+					array(
+						'name' => 'Right Wing',
+						'slug' => 'right-wing',
+					),
+					array(
+						'name' => 'Left Wing',
+						'slug' => 'left-wing',
+					),
+				),
+			),
 			'stats_labels' => array(
 				'g' => '<a title="' . __('Goals', 'wpclubmanager'). '">' . __('G', 'wpclubmanager') . '</a>',
 				'a' => '<a title="' . __('Assists', 'wpclubmanager'). '">' . __('A', 'wpclubmanager') . '</a>',
@@ -785,6 +840,51 @@ function wpcm_get_sport_presets() {
 		),
 		'rugby' => array(
 			'name' => __( 'Rugby', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Scrum Half',
+						'slug' => 'scrum-half',
+					),
+					array(
+						'name' => 'Fly Half',
+						'slug' => 'fly-half',
+					),
+					array(
+						'name' => 'Centre',
+						'slug' => 'centre',
+					),
+					array(
+						'name' => 'Winger',
+						'slug' => 'winger',
+					),
+					array(
+						'name' => 'Full Back',
+						'slug' => 'full-back',
+					),
+					array(
+						'name' => 'Prop',
+						'slug' => 'prop',
+					),
+					array(
+						'name' => 'Hooker',
+						'slug' => 'hooker',
+					),
+					array(
+						'name' => 'Lock',
+						'slug' => 'lock',
+					),
+					array(
+						'name' => 'Flanker',
+						'slug' => 'flanker',
+					),
+					array(
+						'name' => 'No. 8',
+						'slug' => 'no-8',
+					),
+				),
+			),
 			'stats_labels' => array(
 				't' => '<a title="' . __('Tries', 'wpclubmanager'). '">' . __('TRI', 'wpclubmanager') . '</a>',
 				'c' => '<a title="' . __('Conversions', 'wpclubmanager'). '">' . __('CON', 'wpclubmanager') . '</a>',
@@ -826,6 +926,97 @@ function wpcm_get_sport_presets() {
 				'og' => '<a title="' . __('Own Goals', 'wpclubmanager'). '">' . __('OG', 'wpclubmanager') . '</a>',
 				'yellowcards' => '<a title="' . __('Yellow Cards', 'wpclubmanager'). '">' . __('YC', 'wpclubmanager') . '</a>',
 				'redcards' => '<a title="' . __('Red Cards', 'wpclubmanager'). '">' . __('RC', 'wpclubmanager') . '</a>',
+				'rating' => '<a title="' . __('Rating', 'wpclubmanager'). '">' . __('RAT', 'wpclubmanager'),
+				'mvp' => '<a title="' . __('Player of Match', 'wpclubmanager'). '">' . __('POM', 'wpclubmanager') . '</a>',
+			),
+		),
+		'netball' => array(
+			'name' => __( 'Netball', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Goal Shooter',
+						'slug' => 'goal-shooter',
+					),
+					array(
+						'name' => 'Goal Attack',
+						'slug' => 'goal-attack',
+					),
+					array(
+						'name' => 'Wing Attack',
+						'slug' => 'wing-attack',
+					),
+					array(
+						'name' => 'Centre',
+						'slug' => 'centre',
+					),
+					array(
+						'name' => 'Wing Defence',
+						'slug' => 'wing-defence',
+					),
+					array(
+						'name' => 'Goal Defence',
+						'slug' => 'goal-defence',
+					),
+					array(
+						'name' => 'Goal Keeper',
+						'slug' => 'goal-keeper',
+					),
+				),
+			),
+			'stats_labels' => array(
+				'g' => '<a title="' . __('Goals', 'wpclubmanager'). '">' . __('GLS', 'wpclubmanager') . '</a>',
+				'gatt' => '<a title="' . __('Goal Attempts', 'wpclubmanager'). '">' . __('ATT', 'wpclubmanager') . '</a>',
+				'gass' => '<a title="' . __('Goal Assists', 'wpclubmanager'). '">' . __('AST', 'wpclubmanager') . '</a>',
+				'rbs' => '<a title="' . __('Rebounds', 'wpclubmanager'). '">' . __('REB', 'wpclubmanager') . '</a>',
+				'cpr' => '<a title="' . __('Centre Pass Receives', 'wpclubmanager'). '">' . __('CPR', 'wpclubmanager') . '</a>',
+				'int' => '<a title="' . __('Interceptions', 'wpclubmanager'). '">' . __('INT', 'wpclubmanager') . '</a>',
+				'def' => '<a title="' . __('Deflections', 'wpclubmanager'). '">' . __('DEF', 'wpclubmanager') . '</a>',
+				'pen' => '<a title="' . __('Penaties', 'wpclubmanager'). '">' . __('PEN', 'wpclubmanager') . '</a>',
+				'to' => '<a title="' . __('Turnovers', 'wpclubmanager'). '">' . __('TO', 'wpclubmanager') . '</a>',
+				'rating' => '<a title="' . __('Rating', 'wpclubmanager'). '">' . __('RAT', 'wpclubmanager'),
+				'mvp' => '<a title="' . __('Player of Match', 'wpclubmanager'). '">' . __('POM', 'wpclubmanager') . '</a>',
+			),
+		),
+		'volleyball' => array(
+			'name' => __( 'Volleyball', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Outside Hitter',
+						'slug' => 'outside-hitter',
+					),
+					array(
+						'name' => 'Middle Blocker',
+						'slug' => 'middle-blocker',
+					),
+					array(
+						'name' => 'Setter',
+						'slug' => 'setter',
+					),
+					array(
+						'name' => 'Opposite',
+						'slug' => 'opposite',
+					),
+					array(
+						'name' => 'Defensive Specialist',
+						'slug' => 'defensive-specialist',
+					),
+					array(
+						'name' => 'Libero',
+						'slug' => 'libero',
+					),
+				),
+			),
+			'stats_labels' => array(
+				'ace' => '<a title="' . __('Aces', 'wpclubmanager'). '">' . __('ACE', 'wpclubmanager') . '</a>',
+				'kill' => '<a title="' . __('Kills', 'wpclubmanager'). '">' . __('KILL', 'wpclubmanager') . '</a>',
+				'blk' => '<a title="' . __('Blocks', 'wpclubmanager'). '">' . __('BLK', 'wpclubmanager') . '</a>',
+				'bass' => '<a title="' . __('Block Assists', 'wpclubmanager'). '">' . __('BA', 'wpclubmanager') . '</a>',
+				'sass' => '<a title="' . __('Setting Assists', 'wpclubmanager'). '">' . __('SA', 'wpclubmanager') . '</a>',
+				'dig' => '<a title="' . __('Digs', 'wpclubmanager'). '">' . __('DIG', 'wpclubmanager') . '</a>',
 				'rating' => '<a title="' . __('Rating', 'wpclubmanager'). '">' . __('RAT', 'wpclubmanager'),
 				'mvp' => '<a title="' . __('Player of Match', 'wpclubmanager'). '">' . __('POM', 'wpclubmanager') . '</a>',
 			),
