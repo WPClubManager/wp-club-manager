@@ -9,7 +9,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.1.0
+ * @version     1.1.1
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -302,9 +302,9 @@ class WPCM_Admin_Welcome {
 						<div class="stuffbox">
 							<h4><?php _e( 'Translators', 'wpclubmanager' ); ?></h4>
 							<div class="inside">
-								<p><?php _e( 'We would love to make WP Club Manager available in as many languages as possible. If you can help translate and would like to join our translation team, sign up for a free account on <a href="https://www.transifex.com/">Transifex</a> and visit the <a href="https://www.transifex.com/projects/p/wp-club-manager/">WP Club Manager project</a>.', 'wpclubmanager' ); ?></p>
+								<p><?php _e( 'WP Club Manager has been translated by our generous translation teams, listed below. If you can help translate WPCM please sign up for a free account on <a href="https://www.transifex.com/">Transifex</a> and visit the <a href="https://www.transifex.com/projects/p/wp-club-manager/">WP Club Manager project</a>.', 'wpclubmanager' ); ?></p>
 								<?php
-								$translator_handles = array( 'Clubpress' );
+								$translator_handles = array( 'Clubpress', 'King3R', 'rychu_cmg' );
 								$translator_links = array();
 								foreach ( $translator_handles as $handle ):
 									$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
