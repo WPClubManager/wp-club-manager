@@ -1,10 +1,10 @@
 === WP Club Manager ===
-Contributors: Clubpress
-Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules
+Contributors: ClubPress
+Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules, netball, volleyball
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,17 +18,17 @@ Create and manage a sports club website quickly and easily using WordPress. Mana
 
 Comes with all the tools you need to manage your sports club or team website. Features include:
 
-* Can be used for almost any team sport
-* Preset player stats for soccer, baseball, basketball, hockey, Aussie rules, American football and rugby
+* Included sports are soccer, baseball, basketball, hockey, netball, vollayball, Aussie rules, American football and rugby
 * Manage multiple teams
 * Player and staff profiles
 * Player ratings
 * Player stats for each season
-* Fixtures and results tables
+* Fixtures and results table
 * League tables
 * Match reports
 * Sponsors
 * Fixture, results, player, table and sponsor widgets
+* Flexible templates
 
 == Installation ==
 
@@ -70,6 +70,22 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.1 - 30/05/2014
+
+* Feature - Added netball and volleyball
+* Feature - Added shortcode templates
+* Feature - Added fixtures and results widget templates
+* Tweak - Add preset positions for rugby and hockey (field and ice)
+* Tweak - Improved widget functions
+* Tweak - Improved queries in fixtures and results widgets
+* Tweak - Optimised matches shortcode query
+* Tweak - Hidden duplicate title on players and standings widgets
+* Tweak - Removed sponsors archive
+* Tweak - Add theme support notice
+* Localisation - Add German language by King3R
+* Localisation - Add Polish language by rychu_cmg
+
 
 = 1.1.0 - 08/05/2014
 
