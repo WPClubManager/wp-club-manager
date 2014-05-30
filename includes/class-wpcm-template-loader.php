@@ -45,12 +45,6 @@ class WPCM_Template_Loader {
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
-		} elseif ( is_post_type_archive( 'wpcm_player' ) ) {
-
-			$file 	= 'archive-player.php';
-			$find[] = $file;
-			$find[] = WPCM_TEMPLATE_PATH . $file;
-
 		}
 
 		if ( is_single() && get_post_type() == 'wpcm_match' ) {
@@ -59,23 +53,11 @@ class WPCM_Template_Loader {
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
-		} elseif ( is_post_type_archive( 'wpcm_match' ) ) {
-
-			$file 	= 'archive-match.php';
-			$find[] = $file;
-			$find[] = WPCM_TEMPLATE_PATH . $file;
-
 		}
 
 		if ( is_single() && get_post_type() == 'wpcm_sponsor' ) {
 
 			$file 	= 'single-sponsor.php';
-			$find[] = $file;
-			$find[] = WPCM_TEMPLATE_PATH . $file;
-
-		} elseif ( is_post_type_archive( 'wpcm_sponsor' ) ) {
-
-			$file 	= 'archive-sponsor.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
