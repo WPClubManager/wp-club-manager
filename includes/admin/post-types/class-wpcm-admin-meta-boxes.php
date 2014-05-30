@@ -36,7 +36,7 @@ class WPCM_Admin_Meta_Boxes {
 
 		// Save Player Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_player_meta', 'WPCM_Meta_Box_Player_Details::save', 10, 2 );
-		add_action( 'wpclubmanager_process_wpcm_player_meta', 'WPCM_Meta_Box_Player_Stats::save', 20, 2 );
+		add_action( 'wpclubmanager_process_wpcm_player_meta', 'WPCM_Meta_Box_Player_Stats::save', 10, 2 );
 
 		// Save Sponsor Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_sponsor_meta', 'WPCM_Meta_Box_Sponsor_Url::save', 10, 2 );
