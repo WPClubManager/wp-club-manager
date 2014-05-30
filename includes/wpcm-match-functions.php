@@ -275,7 +275,7 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	foreach( $value as $key => $stat ) {
 
-		if( $key == 'checked' || $key == 'sub' || $key == 'greencards' ||$key == 'yellowcards' || $key == 'redcards' || $key == 'mvp' ) {
+		if( $key == 'checked' || $key == 'sub' || $key == 'greencards' || $key == 'yellowcards' || $key == 'redcards' || $key == 'mvp' ) {
 			$output .= '';
 		} else {
 			if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
