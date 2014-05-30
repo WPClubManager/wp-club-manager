@@ -238,6 +238,11 @@ table {
 *******************************************************
 */
 
+.widget-players h3.wpcm-sc-title,
+.widget-standings h3.wpcm-sc-title {
+	display: none;
+}
+
 /* Fixtures & results widgets */
 .wpcm-matches-widget {
 	
@@ -255,7 +260,6 @@ table {
 	.wpcm-matches-widget .fixture-meta {
 		float: left;
 		font-size: .913em;
-		height: 100%;
 		margin-bottom: 1em;
 		width: 100%;
 	}
@@ -270,7 +274,6 @@ table {
 		}
 	.wpcm-matches-widget .clubs {
 		float: left;
-		height: 100%;
 		width: 100%;
 	}
 		.wpcm-matches-widget .clubs a {
@@ -313,7 +316,6 @@ table {
 		}
 	.wpcm-matches-widget .wpcm-date {
 		float: left;
-		height: 100%;
 		margin-top: 1em;
 		width: 100%;
 	}
