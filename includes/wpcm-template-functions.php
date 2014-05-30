@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -41,9 +41,6 @@ function wpcm_body_class( $classes ) {
 	if ( is_match() ) {
 		$classes[] = 'match';
 	}
-	if ( is_sponsors() ) {
-		$classes[] = 'sponsors';
-	}
 	if ( is_sponsor() ) {
 		$classes[] = 'sponsor';
 	}
@@ -60,10 +57,6 @@ function wpcm_body_class( $classes ) {
  */
 function wpcm_post_class( $classes ) {
 
-	if ( is_sponsors() ) {
-		$classes[] = 'wpcm-archive-sponsors';
-		$classes[] = 'row';
-	}
 	if ( is_sponsor() ) {
 		$classes[] = 'wpcm-single-sponsors';
 	}
