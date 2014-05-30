@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.0.0
+ * @version     1.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return bool
  */
 function is_wpclubmanager() {
-	return apply_filters( 'is_wpclubmanager', ( is_match() || is_player() || is_sponsors() ) ? true : false );
+	return apply_filters( 'is_wpclubmanager', ( is_match() || is_player() || is_sponsor() ) ? true : false );
 }
 
 if ( ! function_exists( 'is_player' ) ) {
@@ -45,19 +45,6 @@ if ( ! function_exists( 'is_match' ) ) {
 	 */
 	function is_match() {
 		return is_singular( array( 'wpcm_match' ) );
-	}
-}
-
-if ( ! function_exists( 'is_sponsors' ) ) {
-
-	/**
-	 * is_sponsors - Returns true when viewing the sponsor type archive.
-	 *
-	 * @access public
-	 * @return bool
-	 */
-	function is_sponsors() {
-		return ( is_post_type_archive( 'wpcm_sponsor' ) ) ? true : false;
 	}
 }
 
