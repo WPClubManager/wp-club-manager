@@ -5,7 +5,7 @@
  * Registers post types.
  *
  * @class 		WPCM_Post_Types
- * @version		1.1.0
+ * @version		1.1.1
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
@@ -242,7 +242,7 @@ class WPCM_Post_Types {
 					'menu_icon'            => 'dashicons-groups',
 					'publicly_queryable'   => true,
 					'exclude_from_search'  => false,
-					'has_archive'          => true,
+					'has_archive'          => false,
 					'query_var'            => true,
 					'can_export'           => true,
 					'rewrite'              => array( 'slug' => 'player' ),
@@ -350,7 +350,7 @@ class WPCM_Post_Types {
 					'menu_icon'            => 'dashicons-megaphone',
 					'publicly_queryable'   => true,
 					'exclude_from_search'  => false,
-					'has_archive'          => true,
+					'has_archive'          => false,
 					'query_var'            => true,
 					'can_export'           => true,
 					'rewrite'              => array( 'slug' => 'sponsors' ),
