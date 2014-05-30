@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Club Manager
- * Version: 1.1.0
+ * Version: 1.1.1
  * Plugin URI: http://wpclubmanager.com
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
@@ -25,14 +25,14 @@ if ( ! class_exists( 'WPClubManager' ) ) :
  * Main WPClubManager Class
  *
  * @class WPClubManager
- * @version	1.1.0
+ * @version	1.1.1
  */
 final class WPClubManager {
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.1.0';
+	public $version = '1.1.1';
 
 	/**
 	 * @var WPClubManager The single instance of the class
@@ -142,7 +142,9 @@ final class WPClubManager {
 		$class = strtolower( $class );
 		$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
 
-		if ( strpos( $class, 'wpcm_meta_box' ) === 0 ) {
+		if ( strpos( $class, 'wpcm_shortcode_' ) === 0 ) {
+			$path = $this->plugin_path() . '/includes/shortcodes/';
+		} elseif ( strpos( $class, 'wpcm_meta_box' ) === 0 ) {
 			$path = $this->plugin_path() . '/includes/admin/post-types/meta-boxes/';
 		} elseif ( strpos( $class, 'wpcm_admin' ) === 0 ) {
 			$path = $this->plugin_path() . '/includes/admin/';
@@ -247,6 +249,7 @@ final class WPClubManager {
 
 		include_once( 'includes/class-wpcm-template-loader.php' );
 		include_once( 'includes/class-wpcm-frontend-scripts.php' );
+		include_once( 'includes/class-wpcm-shortcodes.php' );
 	}
 
 
@@ -270,6 +273,7 @@ final class WPClubManager {
 	 */
 	public function register_widgets() {
 
+		include_once( 'includes/abstracts/abstract-wpcm-widget.php' );
 		include_once( 'includes/widgets/class-wpcm-widget-fixtures.php');
 		include_once( 'includes/widgets/class-wpcm-widget-results.php');
 		include_once( 'includes/widgets/class-wpcm-widget-standings.php');
