@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,18 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Sponsors
 * Fixture, results, player, table and sponsor widgets
 * Flexible templates
+
+= Available Languages =
+
+* English - UK (en_GB)
+* German - Deutsch (de_DE)
+* Polish - Polski (pl_PL)
+
+= Get Involved =
+
+Developers can contribute to the source code on the [WP Club Manager GitHub Repository](https://github.com/ClubPress/wpclubmanager).
+
+Translators can contribute new languages to WooCommerce through [Transifex](https://www.transifex.com/projects/p/wp-club-manager/).
 
 == Installation ==
 
@@ -70,6 +82,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.2 - 02/06/2014
+
+* Feature - Add staff shortcode and staff profile templates
+* Tweak - Add staff single profiles
+* Tweak - Alter staff shortcode to match players shortcode
+* Tweak - Add alphabetical sorting option to player shortcode
+* Fix - Fix broken staff shortcode filter
+* Localisation - Updated wpclubmanager.pot
 
 = 1.1.1 - 30/05/2014
 
