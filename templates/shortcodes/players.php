@@ -4,7 +4,7 @@
  *
  * @author 		Clubpress
  * @package 	WPClubManager/Templates
- * @version     1.1.1
+ * @version     1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,7 +20,8 @@ $default = array(
 	'linktext' => __( 'View all players', 'wpclubmanager' ),
 	'linkpage' => null,
 	'stats' => 'flag,number,name,position,age,height,weight',
-	'title' => __( 'Players', 'wpclubmanager' )
+	'title' => __( 'Players', 'wpclubmanager' ),
+	'type' => 'list',
 );
 
 extract( $default, EXTR_SKIP );
@@ -79,17 +80,11 @@ if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) )
 		'order' => $order
 	);
 
+if ( $orderby == 'name' ) {
+    $args['orderby'] = 'name';
+}
 if ( $orderby == 'menu_order' ) {
     $args['orderby'] = 'menu_order';
-}
-
-if ( $club ) {
-	$args['meta_query'] = array(
-		array(
-			'key' => 'wpcm_club',
-			'value' => $club,
-		)
-	);
 }
 
 if ( $season ) {
@@ -117,6 +112,7 @@ if ( $position ) {
 }
 
 $players = get_posts( $args );
+
 $count = 0;	
 
 if ( sizeof( $players ) > 0 ) {
