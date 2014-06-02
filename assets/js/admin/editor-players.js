@@ -26,7 +26,6 @@
 			var options = { 
 				'limit': '-1',
 				'season': '-1',
-				'club': '-1',
 				'team': '-1',
 				'position': '-1',
 				'orderby': 'number',
