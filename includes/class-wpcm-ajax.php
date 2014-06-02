@@ -5,7 +5,7 @@
  * AJAX Event Handler
  *
  * @class 		WPCM_AJAX
- * @version		1.1.0
+ * @version		1.1.2
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -369,6 +369,7 @@ class WPCM_AJAX {
 							<select id="option-<?php echo $field; ?>" name="<?php echo $field; ?>">
 								<option id="number" value="number"<?php if ( $args[$field] == 'number' ) echo ' selected'; ?>><?php _e( 'Number', 'wpclubmanager' ); ?></option>
 								<option id="menu_order" value="menu_order"<?php if ( $args[$field] == 'menu_order' ) echo ' selected'; ?>><?php _e( 'Page order' ); ?></option>
+								<option id="name" value="name"<?php if ( $args[$field] == 'name' ) echo ' selected'; ?>><?php _e( 'Alphabetical' ); ?></option>
 								<?php foreach ( $player_stats_labels as $key => $val ) { ?>
 									<option id="<?php echo $key; ?>" value="<?php echo $key; ?>"<?php if ( $args[$field] == $key ) echo ' selected'; ?>><?php echo $val; ?></option>
 								<?php } ?>
@@ -456,12 +457,27 @@ class WPCM_AJAX {
 			'season' => null,
 			'team' => null,
 			'jobs' => null,
-			'title' => __( 'Staff', 'wpclubmanager' ),
+			'orderby' => 'name',
+			'order' => 'ASC',
 			'team' => null,
 			'linktext' => __( 'View all staff', 'wpclubmanager' ),
-			'linkpage' => null
+			'linkpage' => null,
+			'stats' => 'flag,number,name,job,age',
+			'title' => __( 'Staff', 'wpclubmanager' ),
 		);
 		$args = array_merge( $defaults, $_GET );
+
+		$stats_labels = array(
+			'thumb' => __( 'Thumbnail', 'wpclubmanager' ),
+			'flag' => __( 'Flag', 'wpclubmanager' ),
+			'name' => __( 'Name', 'wpclubmanager' ),
+			'job' => __( 'Job', 'wpclubmanager' ),
+			'age' => __( 'Age', 'wpclubmanager' ),
+			'team' => __( 'Team', 'wpclubmanager' ),
+			'season' => __( 'Season', 'wpclubmanager' ),
+			'joined' => __( 'Joined', 'wpclubmanager' )
+		);
+		$stats = explode( ',', $args['stats'] );
 		?>
 			<div id="wpcm_staff-form">
 				<table id="wpcm_staff-table" class="form-table">
@@ -527,6 +543,33 @@ class WPCM_AJAX {
 						</td>
 					</tr>
 					<tr>
+						<?php $field = 'orderby'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Order by', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<select id="option-<?php echo $field; ?>" name="<?php echo $field; ?>">
+								<option id="name" value="name"<?php if ( $args[$field] == 'name' ) echo ' selected'; ?>><?php _e( 'Alphabetical' ); ?></option>
+								<option id="rand" value="rand"<?php if ( $args[$field] == 'rand' ) echo ' selected'; ?>><?php _e( 'Random' ); ?></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<?php $field = 'order'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Order', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<?php
+							$wpcm_order_options = array(
+								'ASC' => __( 'Lowest to highest', 'wpclubmanager' ),
+								'DESC' => __( 'Highest to lowest', 'wpclubmanager' )
+							);
+							?>
+							<select id="option-<?php echo $field; ?>" name="<?php echo $field; ?>">
+								<?php foreach ( $wpcm_order_options as $key => $val ) { ?>
+									<option id="<?php echo $key; ?>" value="<?php echo $key; ?>"<?php if ( $args[$field] == $key ) echo ' selected'; ?>><?php echo $val; ?></option>
+								<?php } ?>
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<?php $field = 'linktext'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Link text', 'wpclubmanager' ); ?></label></th>
 						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" /></td>
@@ -543,6 +586,32 @@ class WPCM_AJAX {
 								'id' => 'option-' . $field
 							) );
 							?>
+						</td>
+					</tr>
+					<tr>
+						<?php $field = 'stats'; ?>
+						<th><label><?php _e( 'Display options', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<table>
+								<tr>
+									<?php
+									$count = 0;
+									foreach ( $stats_labels as $key => $value ) {
+										$count++;
+										if ( $count > 3 ) {
+											$count = 1;
+											echo '</tr><tr>';
+										}
+									?>
+										<td>
+											<label class="selectit" for="option-<?php echo $field; ?>-<?php echo $key; ?>">
+												<input type="checkbox" id="option-<?php echo $field; ?>-<?php echo $key; ?>" name="<?php echo $field; ?>[]" value="<?php echo $key; ?>" <?php checked( in_array( $key, $stats ) ); ?> />
+												<?php echo $value; ?>
+											</label>
+										</td>
+									<?php } ?>
+								</tr
+							></table>
 						</td>
 					</tr>
 				</table>
