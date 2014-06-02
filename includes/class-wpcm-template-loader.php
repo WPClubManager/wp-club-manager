@@ -3,7 +3,7 @@
  * Template Loader
  *
  * @class 		WPCM_Template_Loader
- * @version		1.0.0
+ * @version		1.1.2
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -42,6 +42,14 @@ class WPCM_Template_Loader {
 		if ( is_single() && get_post_type() == 'wpcm_player' ) {
 
 			$file 	= 'single-player.php';
+			$find[] = $file;
+			$find[] = WPCM_TEMPLATE_PATH . $file;
+
+		}
+
+		if ( is_single() && get_post_type() == 'wpcm_staff' ) {
+
+			$file 	= 'single-staff.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 

@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     1.1.1
+ * @version     1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -38,6 +38,9 @@ function wpcm_body_class( $classes ) {
 	if ( is_player() ) {
 		$classes[] = 'player';
 	}
+	if ( is_staff() ) {
+		$classes[] = 'staff';
+	}
 	if ( is_match() ) {
 		$classes[] = 'match';
 	}
@@ -62,6 +65,9 @@ function wpcm_post_class( $classes ) {
 	}
 	if ( is_player() ) {
 		$classes[] = 'wpcm-single-player';
+	}
+	if ( is_staff() ) {
+		$classes[] = 'wpcm-single-staff';
 	}
 	if ( is_match() ) {
 		$classes[] = 'wpcm-single-match';
@@ -224,6 +230,39 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 			$number = $custom['wpcm_number'][0];
 			$name = $number.'. '.get_the_title($post->ID);
 		}
+
+		echo form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
+	}
+}
+
+if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
+
+	/**
+	 * Output the staff dropdown.
+	 *
+	 * @access public
+	 * @subpackage	Player
+	 * @return void
+	 */
+	function wpclubmanager_template_single_staff_dropdown() {
+
+		global $post;
+		
+		$args = array(
+			'post_type' => 'wpcm_staff',
+			'numberposts' => -1,
+			'orderby' => 'name',
+			'order' => 'ASC',		);
+
+		$player_posts = get_posts($args);
+		$players = array();
+
+		foreach($player_posts as $player_post):
+					
+			$custom = get_post_custom($player_post->ID);
+					
+			$players[get_permalink($player_post->ID)] = get_the_title($player_post->ID);
+		endforeach;
 
 		echo form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
 	}
