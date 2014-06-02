@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.1
+ * @version     1.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return bool
  */
 function is_wpclubmanager() {
-	return apply_filters( 'is_wpclubmanager', ( is_match() || is_player() || is_sponsor() ) ? true : false );
+	return apply_filters( 'is_wpclubmanager', ( is_match() || is_player() || is_staff() ||is_sponsor() ) ? true : false );
 }
 
 if ( ! function_exists( 'is_player' ) ) {
@@ -32,6 +32,19 @@ if ( ! function_exists( 'is_player' ) ) {
 	 */
 	function is_player() {
 		return is_singular( array( 'wpcm_player' ) );
+	}
+}
+
+if ( ! function_exists( 'is_staff' ) ) {
+
+	/**
+	 * is_staff - Returns true when viewing a single staff.
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	function is_staff() {
+		return is_singular( array( 'wpcm_staff' ) );
 	}
 }
 
