@@ -26,16 +26,29 @@
 			var options = { 
 				'limit': '-1',
 				'season': '-1',
-				'club': '-1',
 				'team': '-1',
+				'jobs': '-1',
+				'orderby': 'name',
+				'order': 'ASC',
 				'linktext': '',
 				'linkpage': '',
+				'stats': 'flag,number,name,job,age',
 				'title': ''
 				};
 			var shortcode = '[wpcm_staff';
 			
 			for( var index in options) {
-				var value = form.find('#option-' + index).val();
+				if ( index == 'stats' ) {
+					values = form.find('[name="stats[]"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats.join( ',' );
+				} else {
+					var value = form.find('#option-' + index).val();
+				}
 				
 				// attaches the attribute to the shortcode only if it's different from the default value
 				if ( value !== options[index] )
