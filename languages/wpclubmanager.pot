@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
-"POT-Creation-Date: 2014-06-02 17:13-0000\n"
-"PO-Revision-Date: 2014-06-02 17:14-0000\n"
+"POT-Creation-Date: 2014-06-10 09:06-0000\n"
+"PO-Revision-Date: 2014-06-10 09:07-0000\n"
 "Last-Translator: \n"
 "Language-Team: Clupress\n"
 "MIME-Version: 1.0\n"
@@ -161,8 +161,8 @@ msgstr ""
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:122
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:120
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:83
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:72
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:92
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:82
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:102
 #: ../includes/admin/settings/class-wpcm-settings-players.php:89
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:65
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:59
@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:244 ../includes/class-wpcm-ajax.php:407
 #: ../includes/class-wpcm-ajax.php:583 ../includes/class-wpcm-ajax.php:742
-#: ../includes/wpcm-match-functions.php:36
+#: ../includes/wpcm-match-functions.php:79
 #: ../includes/abstracts/abstract-wpcm-widget.php:166
 #: ../includes/admin/class-wpcm-admin-settings.php:492
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:58
@@ -331,6 +331,7 @@ msgid "Hometown"
 msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:296 ../includes/class-wpcm-ajax.php:478
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:89
 #: ../includes/widgets/class-wpcm-widget-players.php:152
 #: ../templates/content-single-staff.php:163
 #: ../templates/shortcodes/players.php:47 ../templates/shortcodes/staff.php:38
@@ -2767,27 +2768,27 @@ msgstr ""
 msgid "DIG"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:106
+#: ../includes/wpcm-match-functions.php:149
 msgid "No players found!"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:134
+#: ../includes/wpcm-match-functions.php:177
 msgid "Player Off"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:258
+#: ../includes/wpcm-match-functions.php:301
 msgid "Man of Match"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:293
+#: ../includes/wpcm-match-functions.php:336
 msgid "Green Card"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:298
+#: ../includes/wpcm-match-functions.php:341
 msgid "Yellow Card"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:302
+#: ../includes/wpcm-match-functions.php:345
 msgid "Red Card"
 msgstr ""
 
@@ -3207,14 +3208,14 @@ msgid "Choose a competition and season to edit the manual stats."
 msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:111
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:100
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:110
 #: ../templates/single-match/attendance.php:24
 msgid "Attendance"
 msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:113
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:80
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:108
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:90
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:118
 #: ../templates/single-match/referee.php:21
 msgid "Referee"
 msgstr ""
@@ -3273,11 +3274,11 @@ msgstr ""
 msgid "Bonus Points"
 msgstr ""
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:74
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:73
 msgid "Overtime"
 msgstr ""
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:82
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:81
 msgid "Friendly"
 msgstr ""
 
@@ -3365,18 +3366,26 @@ msgid "Display Options"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:58
-msgid "Goals Delimiter"
+msgid "Clubs Separator"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:59
-msgid "This sets the separator of results."
+msgid "This sets the separator of clubs."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:68
+msgid "Goals Delimiter"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:69
+msgid "This sets the separator of results."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:79
 msgid "Pre Match Display Options"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:89
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:99
 msgid "Post Match Display Options"
 msgstr ""
 
@@ -3440,11 +3449,11 @@ msgstr ""
 msgid "Birthday"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-staff.php:90
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:98
 msgid "Staff Image Sizes"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-staff.php:90
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:98
 #, php-format
 msgid ""
 "These settings affect the actual dimensions of images in player and staff "
@@ -3453,11 +3462,11 @@ msgid ""
 "\">regenerate your thumbnails</a>."
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-staff.php:93
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:101
 msgid "Staff Profile Image"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-staff.php:107
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:115
 msgid "Staff Thumbnails"
 msgstr ""
 
@@ -3575,7 +3584,7 @@ msgstr ""
 msgid "Kick Off"
 msgstr ""
 
-#: ../includes/widgets/class-wpcm-widget-fixtures.php:212
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:225
 msgid "No more matches scheduled."
 msgstr ""
 
@@ -3599,7 +3608,7 @@ msgstr ""
 msgid "WPCM Results"
 msgstr ""
 
-#: ../includes/widgets/class-wpcm-widget-results.php:217
+#: ../includes/widgets/class-wpcm-widget-results.php:230
 #: ../templates/shortcodes/matches.php:130
 msgid "No matches played yet."
 msgstr ""
