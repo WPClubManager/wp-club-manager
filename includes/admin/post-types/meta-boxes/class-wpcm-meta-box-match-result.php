@@ -65,8 +65,7 @@ class WPCM_Meta_Box_Match_Result {
 						</tr>
 					</tbody>
 				</table>
-			<?php } ?>
-			<?php
+			<?php }
 			if ( $sport == 'hockey') { ?>
 				<p>
 					<label class="selectit">
