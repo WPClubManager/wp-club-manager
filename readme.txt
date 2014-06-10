@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * English - UK (en_GB)
 * German - Deutsch (de_DE)
 * Polish - Polski (pl_PL)
+* Greek - Ελληνικά (el_GR)
 
 = Get Involved =
 
@@ -82,6 +83,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.3 - 10/06/2014
+
+* Fix - Fixed missing title on match pages
+* Fix - Fixed default club filter in fixtures and results widgets
+* Fix - Fixed staff single profile display options
+* Tweak - Added display option to staff display options
+* Localisation - Updated wpclubmanager.pot
+* Localisation - Add Greek language
 
 = 1.1.2 - 02/06/2014
 
