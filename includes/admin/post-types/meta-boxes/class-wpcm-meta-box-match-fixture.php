@@ -76,7 +76,7 @@ class WPCM_Meta_Box_Match_Fixture {
 		update_post_meta( $post_id, 'wpcm_home_club', $home_club );
 		update_post_meta( $post_id, 'wpcm_away_club', $away_club );
 
-		// add comps and sesaons to clubs
+		// add comps and seasons to clubs
 		wp_set_post_terms( $home_club, $comp, 'wpcm_comp', true );
 		wp_set_post_terms( $home_club, $season, 'wpcm_season', true );
 		wp_set_post_terms( $away_club, $comp, 'wpcm_comp', true );
