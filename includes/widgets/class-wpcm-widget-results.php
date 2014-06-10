@@ -162,12 +162,25 @@ class WPCM_Results_Widget extends WPCM_Widget {
 			'order' => 'DESC',
 			'orderby' => 'post_date',
 			'post_type' => 'wpcm_match',
+			'meta_query' => array(
+				array(
+					'key' => 'wpcm_played',
+					'value' => true
+				)
+			),
 			'posts_per_page' => $limit,
 		);
 
 		$query_args['meta_query'] = array(
-			'key' => 'wpcm_played',
-			'value' => true,
+			'relation' => 'OR',
+			array(
+				'key' => 'wpcm_home_club',
+				'value' => $club,
+			),
+			array(
+				'key' => 'wpcm_away_club',
+				'value' => $club,
+			)
 		);
 
 		if ( isset( $comp ) )

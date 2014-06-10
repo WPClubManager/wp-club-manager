@@ -157,12 +157,25 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 			'orderby' => 'post_date',
 			'post_type' => 'wpcm_match',
 			'post_status' => 'future',
+			'meta_query' => array(
+				array(
+					'key' => 'wpcm_played',
+					'value' => false
+				)
+			),
 			'posts_per_page' => $limit,
 		);
 
 		$query_args['meta_query'] = array(
-			'key' => 'wpcm_played',
-			'value' => false,
+			'relation' => 'OR',
+			array(
+				'key' => 'wpcm_home_club',
+				'value' => $club,
+			),
+			array(
+				'key' => 'wpcm_away_club',
+				'value' => $club,
+			)
 		);
 
 		if ( isset( $comp ) )
