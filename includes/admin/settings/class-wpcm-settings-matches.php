@@ -55,6 +55,16 @@ class WPCM_Settings_Matches extends WPCM_Settings_Page {
 			array(	'title' => __( 'Display Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => '', 'id' => 'match_delimiter_options' ),
 
 			array(
+				'title' 	=> __( 'Clubs Separator', 'wpclubmanager' ),
+				'desc' 		=> __( 'This sets the separator of clubs.', 'wpclubmanager' ),
+				'id' 		=> 'wpcm_match_clubs_separator',
+				'css' 		=> 'width:50px;',
+				'default'	=> 'v',
+				'type' 		=> 'text',
+				'desc_tip'	=>  true,
+			),
+
+			array(
 				'title' 	=> __( 'Goals Delimiter', 'wpclubmanager' ),
 				'desc' 		=> __( 'This sets the separator of results.', 'wpclubmanager' ),
 				'id' 		=> 'wpcm_match_goals_delimiter',
