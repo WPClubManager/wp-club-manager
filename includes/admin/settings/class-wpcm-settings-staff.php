@@ -85,6 +85,14 @@ class WPCM_Settings_Staff extends WPCM_Settings_Page {
 				'type' 		=> 'checkbox'
 			),
 
+			array(
+				'title' => __( 'Joined', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_staff_profile_show_joined',
+				'default'	=> 'yes',
+				'type' 		=> 'checkbox'
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'staff_options'),
 
 			array(	'title' => __( 'Staff Image Sizes', 'wpclubmanager' ), 'type' => 'title','desc' => sprintf(__( 'These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.', 'wpclubmanager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
