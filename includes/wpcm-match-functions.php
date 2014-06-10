@@ -12,6 +12,50 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+// generate title
+function match_title( $title, $id = null ) {
+	if ( get_post_type( $id ) == 'wpcm_match' ) {
+		
+		$default_club = get_option('wpcm_default_club');
+		$title_format = get_option('wpcm_match_title_format');
+		$separator = get_option('wpcm_match_clubs_separator');
+		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
+		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
+		$home_club = get_post( $home_id );
+		$away_club = get_post( $away_id );
+		$search = array( '%home%', 'vs', '%away%' );
+		$replace = array( $home_club->post_title, $separator, $away_club->post_title );
+		
+		if ( $away_id == $default_club ) {
+			//away
+			$title = str_replace( $search, $replace, $title_format );
+		} else {
+			// home
+			$title = str_replace( $search, $replace, $title_format );
+		}
+	}
+	return $title;
+}
+add_filter( 'the_title', 'match_title', 10, 2 );
+
+// generate title
+function match_wp_title( $title, $sep ) {
+	global $post;
+	if ( get_post_type( ) == 'wpcm_match' ) {
+
+		$id = $post->ID;
+		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
+		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
+		$home_club = get_post( $home_id );
+		$away_club = get_post( $away_id );
+		$title = match_title( $title, $id ) . ' | ' . get_the_date();
+
+		return $title;
+	}
+	return $title;
+}
+add_filter( 'wp_title', 'match_wp_title', 10, 2 );
+
 /**
  * Match player subs dropdown.
  *
@@ -22,7 +66,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return void
  */
 function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = false ) {
-
 	$subs = get_posts( array (
 		'post_type' => 'wpcm_player',
 		'meta_key' => 'wpcm_number',
@@ -42,7 +85,8 @@ function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = 
 			<?php } ?>
 		</select>
 	</td>
-<?php }
+<?php
+}
 
 /**
  * Match player minutes input.
@@ -54,7 +98,6 @@ function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = 
  * @return void
  */
 function wpcm_player_subs_minutes( $players = array(), $id = null, $disabled = false ) {
-
 	global $player;
 
 	$players = array( 'lineup' => array(), 'subs' => array() ); ?>
@@ -62,7 +105,8 @@ function wpcm_player_subs_minutes( $players = array(), $id = null, $disabled = f
 	<td>
 		<input type="text" data-player="<?php echo $id; ?>" name="wpcm_players[subs][<?php echo $id; ?>][subtime]" value="<?php echo get_wpcm_stats_value( $players['subs'], $id, 'subtime' ) ?>" size="2" <?php disabled( true, $disabled ); ?>/>
 	</td>
-<?php }
+<?php
+}
 
 /**
  * Player stats table.
@@ -75,7 +119,6 @@ function wpcm_player_subs_minutes( $players = array(), $id = null, $disabled = f
  * @return void
  */
 function wpcm_match_player_stats_table( $selected_players = array(), $club = null, $type = 'lineup', $keyarray = false ) {
-
 	global $player;
 
 	$args = array(
@@ -113,7 +156,7 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 
 		$selected_players = array();
 
-		$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
+	$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
 
 	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels(); ?>
 
@@ -231,8 +274,8 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 			<?php } ?>
 		</tbody>
 	</table>
-
-<?php }
+<?php
+}
 
 /**
  * Single page match player row.
