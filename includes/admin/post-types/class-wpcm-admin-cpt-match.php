@@ -30,8 +30,8 @@ class WPCM_Admin_CPT_Match extends WPCM_Admin_CPT {
 		// Publish text
 		add_filter( 'gettext', array( $this, 'text_replace' ) );
 
-		add_filter( 'the_title', array( $this, 'match_title' ), 10, 2 );
-		add_filter( 'wp_title', array( $this, 'match_wp_title' ), 10, 3 );
+		// add_filter( 'the_title', array( $this, 'match_title' ), 10, 2 );
+		// add_filter( 'wp_title', array( $this, 'match_wp_title' ), 10, 2 );
 
 		add_filter( 'manage_edit-wpcm_match_columns', array( $this, 'custom_edit_columns' ) );
 		add_action( 'manage_wpcm_match_posts_custom_column', array( $this, 'custom_columns' ) );
@@ -84,61 +84,61 @@ class WPCM_Admin_CPT_Match extends WPCM_Admin_CPT {
 		return $string;
 	}
 
-	// generate title
-	public function match_title( $title, $id = null ) {
+	// // generate title
+	// public function match_title( $title, $id = null ) {
 
-		if ( get_post_type( $id ) == 'wpcm_match' ) {
+	// 	if ( get_post_type( $id ) == 'wpcm_match' ) {
 			
-			$default_club = get_option('wpcm_default_club');
-			$title_format = get_option('wpcm_match_title_format');
-			$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
-			$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
-			$home_club = get_post( $home_id );
-			$away_club = get_post( $away_id );
-			$search = array( '%home%', '%away%' );
-			$replace = array( $home_club->post_title, $away_club->post_title );
+	// 		$default_club = get_option('wpcm_default_club');
+	// 		$title_format = get_option('wpcm_match_title_format');
+	// 		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
+	// 		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
+	// 		$home_club = get_post( $home_id );
+	// 		$away_club = get_post( $away_id );
+	// 		$search = array( '%home%', '%away%' );
+	// 		$replace = array( $home_club->post_title, $away_club->post_title );
 			
-			if ( $away_id == $default_club ) {
-				//away
-				$title = str_replace( $search, $replace, $title_format );
-			} else {
-				// home
-				$title = str_replace( $search, $replace, $title_format );
-			}
-		}
+	// 		if ( $away_id == $default_club ) {
+	// 			//away
+	// 			$title = str_replace( $search, $replace, $title_format );
+	// 		} else {
+	// 			// home
+	// 			$title = str_replace( $search, $replace, $title_format );
+	// 		}
+	// 	}
 
-		return $title;
-	}
+	// 	return $title;
+	// }
 
-	// generate title
-	public function match_wp_title( $title, $sep, $seplocation ) {
+	// // generate title
+	// public function match_wp_title( $title, $sep, $seplocation ) {
 
-		global $post;
+	// 	global $post;
 
-		if ( get_post_type( ) == 'wpcm_match' ) {
+	// 	if ( get_post_type( ) == 'wpcm_match' ) {
 
-			$title = '';
+	// 		$title = '';
 
-			if ( $seplocation == 'left' ) {
-				$title .= ' ' . $sep . ' ';
-			}
+	// 		if ( $seplocation == 'left' ) {
+	// 			$title .= ' ' . $sep . ' ';
+	// 		}
 
-			$id = $post->ID;
-			$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
-			$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
-			$home_club = get_post( $home_id );
-			$away_club = get_post( $away_id );
-			$title .= wpcm_match_title( $title, $id ) . ' ' . $sep . ' ' . get_the_date();
+	// 		$id = $post->ID;
+	// 		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
+	// 		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
+	// 		$home_club = get_post( $home_id );
+	// 		$away_club = get_post( $away_id );
+	// 		$title = match_title( $title, $id ) . ' ' . $sep . ' ' . get_the_date();
 
-			if ( $seplocation == 'right' ) {
-				$title .= ' ' . $sep . ' ';
-			}
+	// 		if ( $seplocation == 'right' ) {
+	// 			$title .= ' ' . $sep . ' ';
+	// 		}
 
-			return $title;
-		}
+	// 		return $title;
+	// 	}
 
-		return $title;
-	}
+	// 	return $title;
+	// }
 
 	// // edit columns
 	public function custom_edit_columns($columns) {
