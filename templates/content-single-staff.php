@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 					<?php
 
-					if ( get_option( 'wpcm_player_profile_show_dob' ) == 'yes') { ?>
+					if ( get_option( 'wpcm_staff_profile_show_dob' ) == 'yes') { ?>
 
 						<tr>
 							<th>
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						</tr>
 					<?php }
 
-					if ( get_option( 'wpcm_player_profile_show_age' ) == 'yes') { ?>
+					if ( get_option( 'wpcm_staff_profile_show_age' ) == 'yes') { ?>
 
 						<tr>
 							<th>
@@ -66,7 +66,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						</tr>
 					<?php }
 
-					if ( get_option( 'wpcm_player_profile_show_season' ) == 'yes') {
+					if ( get_option( 'wpcm_staff_profile_show_season' ) == 'yes') {
 
 						$seasons = get_the_terms( $post->ID, 'wpcm_season' );
 								
@@ -91,7 +91,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						}
 					}
 
-					if ( get_option( 'wpcm_player_profile_show_team' ) == 'yes') {
+					if ( get_option( 'wpcm_staff_profile_show_team' ) == 'yes') {
 
 						$teams = get_the_terms( $post->ID, 'wpcm_team' );
 
@@ -116,7 +116,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						}
 					}
 
-					if ( get_option( 'wpcm_player_profile_show_jobs' ) == 'yes') {
+					if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes') {
 
 						$jobs = get_the_terms( $post->ID, 'wpcm_job' );
 
@@ -141,7 +141,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						}
 					}
 
-					if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes') {
+					if ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes') {
 
 						$natl = get_post_meta( $post->ID, 'wpcm_natl', true ); ?>
 
@@ -156,7 +156,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 					<?php
 					}
 
-					if ( get_option( 'wpcm_player_profile_show_joined' ) == 'yes') { ?>
+					if ( get_option( 'wpcm_staff_profile_show_joined' ) == 'yes') { ?>
 
 						<tr>
 							<th>
