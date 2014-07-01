@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.0
+ * @version     1.1.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -317,6 +317,10 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 	$output .= '</div></th>';
 
 	foreach( $value as $key => $stat ) {
+
+		if( $stat == '0' ) {
+			$stat = '&mdash;';
+		}
 
 		if( $key == 'checked' || $key == 'sub' || $key == 'greencards' || $key == 'yellowcards' || $key == 'redcards' || $key == 'mvp' ) {
 			$output .= '';
