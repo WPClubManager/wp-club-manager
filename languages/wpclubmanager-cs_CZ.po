@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
 "POT-Creation-Date: 2014-06-10 09:06-0000\n"
-"PO-Revision-Date: 2014-06-19 17:21-0000\n"
+"PO-Revision-Date: 2014-06-21 02:21-0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
 "wp-club-manager/language/cs_CZ/)\n"
@@ -372,7 +372,7 @@ msgstr "Řazení stránky"
 
 #: ../includes/class-wpcm-ajax.php:372 ../includes/class-wpcm-ajax.php:550
 msgid "Alphabetical"
-msgstr ""
+msgstr "Abecedně"
 
 #: ../includes/class-wpcm-ajax.php:381 ../includes/class-wpcm-ajax.php:557
 #: ../includes/class-wpcm-ajax.php:718
@@ -2695,11 +2695,11 @@ msgstr "VG"
 
 #: ../includes/wpcm-core-functions.php:934
 msgid "Netball"
-msgstr ""
+msgstr "Nohejbal"
 
 #: ../includes/wpcm-core-functions.php:970
 msgid "Goal Attempts"
-msgstr ""
+msgstr "Gólové šance"
 
 #: ../includes/wpcm-core-functions.php:970
 msgid "ATT"
@@ -2711,7 +2711,7 @@ msgstr ""
 
 #: ../includes/wpcm-core-functions.php:973
 msgid "Centre Pass Receives"
-msgstr ""
+msgstr "Obdržené centry"
 
 #: ../includes/wpcm-core-functions.php:973
 msgid "CPR"
@@ -2723,15 +2723,15 @@ msgstr ""
 
 #: ../includes/wpcm-core-functions.php:975
 msgid "DEF"
-msgstr ""
+msgstr "OBR"
 
 #: ../includes/wpcm-core-functions.php:976
 msgid "Penaties"
-msgstr ""
+msgstr "Fauly"
 
 #: ../includes/wpcm-core-functions.php:983
 msgid "Volleyball"
-msgstr ""
+msgstr "Volejbal"
 
 #: ../includes/wpcm-core-functions.php:1014
 msgid "Aces"
@@ -3658,15 +3658,15 @@ msgstr "Odkaz přímo na webovou stránku?"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:31
 msgid "Display your clubs league standings."
-msgstr ""
+msgstr "Zobrazena tabulka pořadí vašeho klubu"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:33
 msgid "WPCM Standings"
-msgstr ""
+msgstr "WPCM Pořadí"
 
 #: ../templates/content-single-sponsor.php:32
 msgid "Visit website"
-msgstr ""
+msgstr "Navštívit web"
 
 #: ../templates/shortcodes/matches.php:117
 msgid "Opponent"
@@ -3674,21 +3674,21 @@ msgstr "Soupeř"
 
 #: ../templates/single-match/lineup.php:31
 msgid "Lineup"
-msgstr ""
+msgstr "Sestava"
 
 #: ../templates/single-match/lineup.php:59
 #: ../templates/single-match/lineup.php:118
 msgid "Cards"
-msgstr ""
+msgstr "Karty"
 
 #: ../templates/single-match/lineup.php:90
 msgid "Subs"
-msgstr ""
+msgstr "Náhradníci"
 
 #: ../templates/single-match/report.php:22
 msgid "Match Report"
-msgstr ""
+msgstr "Report zápasu"
 
 #: ../templates/single-player/meta.php:25
 msgid "Squad No."
-msgstr ""
+msgstr "Číslo"

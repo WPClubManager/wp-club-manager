@@ -1,19 +1,18 @@
 #
 # Translators:
-# Patrick Kindler <patrick.kindler@gmx.de>, 2014
-# fvottendorf <transifex@fv-o.de>, 2014
+# hatasu <tom090@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
 "POT-Creation-Date: 2014-06-10 09:06-0000\n"
-"PO-Revision-Date: 2014-07-01 21:58-0000\n"
+"PO-Revision-Date: 2014-07-01 22:00-0000\n"
 "Last-Translator: \n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-club-"
-"manager/language/de_DE/)\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/wp-"
+"club-manager/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
+"Language: hu_HU\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
@@ -27,11 +26,11 @@ msgstr ""
 
 #: ../wpclubmanager.php:75 ../wpclubmanager.php:84
 msgid "Cheatin&#8217; huh?"
-msgstr "Mogelst du?"
+msgstr "Csalnál, mi?"
 
 #: ../wpclubmanager.php:128
 msgid "Docs"
-msgstr "Dokumente"
+msgstr "Dokumentumok"
 
 #: ../includes/class-wpcm-ajax.php:86
 #: ../includes/admin/class-wpcm-admin-welcome.php:217
@@ -43,7 +42,7 @@ msgstr "Dokumente"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:54
 #, php-format
 msgid "Select %s"
-msgstr "%s auswählen"
+msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:86
 #: ../includes/class-wpcm-post-types.php:187
@@ -55,16 +54,16 @@ msgstr "%s auswählen"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:51
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:54
 msgid "Club"
-msgstr "Verein"
+msgstr "Klub"
 
 #: ../includes/class-wpcm-ajax.php:114
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:268
 msgid "Address"
-msgstr "Adresse"
+msgstr "Cím"
 
 #: ../includes/class-wpcm-ajax.php:119
 msgid "Width"
-msgstr "Breite"
+msgstr "Szélesség"
 
 #: ../includes/class-wpcm-ajax.php:124 ../includes/class-wpcm-ajax.php:293
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:84
@@ -73,27 +72,27 @@ msgstr "Breite"
 #: ../templates/shortcodes/players.php:41
 #: ../templates/single-player/meta.php:64
 msgid "Height"
-msgstr "Größe"
+msgstr "Magasság"
 
 #: ../includes/class-wpcm-ajax.php:129 ../includes/class-wpcm-ajax.php:254
 #: ../includes/class-wpcm-ajax.php:443 ../includes/class-wpcm-ajax.php:619
 #: ../includes/class-wpcm-ajax.php:792
 #, php-format
 msgid "Insert %s"
-msgstr "%s einfügen"
+msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:129
 msgid "Map"
-msgstr "Karte"
+msgstr "Térkép"
 
 #: ../includes/class-wpcm-ajax.php:146 ../templates/shortcodes/matches.php:18
 msgid "View all results"
-msgstr "Alle Ergebnisse anzeigen"
+msgstr "Minden találat megjelenítése"
 
 #: ../includes/class-wpcm-ajax.php:148 ../includes/class-wpcm-ajax.php:254
 #: ../templates/shortcodes/matches.php:20
 msgid "Fixtures & Results"
-msgstr "Begegnungen & Ergebnisse"
+msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:157 ../includes/class-wpcm-ajax.php:306
 #: ../includes/class-wpcm-ajax.php:486 ../includes/class-wpcm-ajax.php:649
@@ -103,7 +102,7 @@ msgstr "Begegnungen & Ergebnisse"
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:138
 #: ../includes/widgets/class-wpcm-widget-standings.php:123
 msgid "Title"
-msgstr "Titel"
+msgstr "Cím"
 
 #: ../includes/class-wpcm-ajax.php:162 ../includes/class-wpcm-ajax.php:659
 #: ../includes/class-wpcm-post-types.php:44
@@ -118,7 +117,7 @@ msgstr "Titel"
 #: ../includes/widgets/class-wpcm-widget-standings.php:131
 #: ../templates/shortcodes/matches.php:123
 msgid "Competition"
-msgstr "Wettbewerb"
+msgstr "Versenykiírások"
 
 #: ../includes/class-wpcm-ajax.php:166 ../includes/class-wpcm-ajax.php:183
 #: ../includes/class-wpcm-ajax.php:200 ../includes/class-wpcm-ajax.php:217
@@ -134,7 +133,7 @@ msgstr "Wettbewerb"
 #: ../includes/widgets/class-wpcm-widget-standings.php:134
 #: ../includes/widgets/class-wpcm-widget-standings.php:148
 msgid "All"
-msgstr "Alle"
+msgstr "Összes"
 
 #: ../includes/class-wpcm-ajax.php:179 ../includes/class-wpcm-ajax.php:291
 #: ../includes/class-wpcm-ajax.php:316 ../includes/class-wpcm-ajax.php:477
@@ -156,7 +155,7 @@ msgstr "Alle"
 #: ../templates/shortcodes/players.php:44 ../templates/shortcodes/staff.php:37
 #: ../templates/single-player/meta.php:103
 msgid "Season"
-msgstr "Saison"
+msgstr "Szezon"
 
 #: ../includes/class-wpcm-ajax.php:196 ../includes/class-wpcm-ajax.php:290
 #: ../includes/class-wpcm-ajax.php:333 ../includes/class-wpcm-ajax.php:476
@@ -182,7 +181,7 @@ msgstr "Saison"
 #: ../templates/shortcodes/players.php:43 ../templates/shortcodes/staff.php:36
 #: ../templates/single-player/meta.php:128
 msgid "Team"
-msgstr "Mannschaft"
+msgstr "Csapat"
 
 #: ../includes/class-wpcm-ajax.php:213
 #: ../includes/class-wpcm-post-types.php:154
@@ -192,11 +191,11 @@ msgstr "Mannschaft"
 #: ../includes/widgets/class-wpcm-widget-results.php:65
 #: ../templates/shortcodes/matches.php:116
 msgid "Venue"
-msgstr "Austragungsort"
+msgstr "Helyszín"
 
 #: ../includes/class-wpcm-ajax.php:230 ../includes/class-wpcm-ajax.php:752
 msgid "Show Thumbnail"
-msgstr "Thumbnail anzeigen"
+msgstr "Bélyegkép mutatása"
 
 #: ../includes/class-wpcm-ajax.php:235 ../includes/class-wpcm-ajax.php:398
 #: ../includes/class-wpcm-ajax.php:574 ../includes/class-wpcm-ajax.php:733
@@ -205,7 +204,7 @@ msgstr "Thumbnail anzeigen"
 #: ../includes/widgets/class-wpcm-widget-results.php:70
 #: ../includes/widgets/class-wpcm-widget-standings.php:167
 msgid "Link text"
-msgstr "Text verknüpfen"
+msgstr "Link szöveg"
 
 #: ../includes/class-wpcm-ajax.php:240 ../includes/class-wpcm-ajax.php:403
 #: ../includes/class-wpcm-ajax.php:579 ../includes/class-wpcm-ajax.php:738
@@ -214,7 +213,7 @@ msgstr "Text verknüpfen"
 #: ../includes/widgets/class-wpcm-widget-results.php:74
 #: ../includes/widgets/class-wpcm-widget-standings.php:171
 msgid "Link page"
-msgstr "Seite verknüpfen"
+msgstr "Hivatkozás"
 
 #: ../includes/class-wpcm-ajax.php:244 ../includes/class-wpcm-ajax.php:407
 #: ../includes/class-wpcm-ajax.php:583 ../includes/class-wpcm-ajax.php:742
@@ -233,13 +232,13 @@ msgstr "Seite verknüpfen"
 #: ../templates/shortcodes/staff.php:141
 #: ../templates/single-player/meta.php:218
 msgid "None"
-msgstr "Keine"
+msgstr "None"
 
 #: ../includes/class-wpcm-ajax.php:272
 #: ../includes/widgets/class-wpcm-widget-players.php:126
 #: ../templates/shortcodes/players.php:20
 msgid "View all players"
-msgstr "Alle Spieler anzeigen"
+msgstr "Összes játékos"
 
 #: ../includes/class-wpcm-ajax.php:275 ../includes/class-wpcm-ajax.php:443
 #: ../includes/class-wpcm-post-types.php:222
@@ -249,28 +248,28 @@ msgstr "Alle Spieler anzeigen"
 #: ../includes/widgets/class-wpcm-widget-players.php:129
 #: ../templates/shortcodes/players.php:23
 msgid "Players"
-msgstr "Spieler"
+msgstr "Játékosok"
 
 #: ../includes/class-wpcm-ajax.php:281
 #: ../includes/widgets/class-wpcm-widget-players.php:137
 msgid "Appearances"
-msgstr "Einsätze"
+msgstr ""
 
 #: ../includes/class-wpcm-ajax.php:284 ../includes/class-wpcm-ajax.php:471
 msgid "Thumbnail"
-msgstr "Thumbnail"
+msgstr "Bélyegkép"
 
 #: ../includes/class-wpcm-ajax.php:285 ../includes/class-wpcm-ajax.php:472
 #: ../includes/widgets/class-wpcm-widget-players.php:141
 msgid "Flag"
-msgstr "Flagge"
+msgstr "Zászló"
 
 #: ../includes/class-wpcm-ajax.php:286 ../includes/class-wpcm-ajax.php:370
 #: ../includes/admin/settings/class-wpcm-settings-players.php:41
 #: ../includes/widgets/class-wpcm-widget-players.php:142
 #: ../includes/widgets/class-wpcm-widget-players.php:214
 msgid "Number"
-msgstr "Nummer"
+msgstr "Szám"
 
 #: ../includes/class-wpcm-ajax.php:287 ../includes/class-wpcm-ajax.php:473
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:115
@@ -287,7 +286,7 @@ msgstr "Nummer"
 #: ../templates/single-match/lineup.php:39
 #: ../templates/single-match/lineup.php:98
 msgid "Name"
-msgstr "Name"
+msgstr "Név"
 
 #: ../includes/class-wpcm-ajax.php:288 ../includes/class-wpcm-ajax.php:350
 #: ../includes/class-wpcm-post-types.php:88
@@ -300,7 +299,7 @@ msgstr "Name"
 #: ../templates/shortcodes/players.php:39
 #: ../templates/single-player/meta.php:153
 msgid "Position"
-msgstr "Position"
+msgstr "Poszt"
 
 #: ../includes/class-wpcm-ajax.php:289 ../includes/class-wpcm-ajax.php:475
 #: ../includes/admin/settings/class-wpcm-settings-players.php:57
@@ -310,7 +309,7 @@ msgstr "Position"
 #: ../templates/shortcodes/players.php:40 ../templates/shortcodes/staff.php:35
 #: ../templates/single-player/meta.php:50
 msgid "Age"
-msgstr "Alter"
+msgstr "Kor"
 
 #: ../includes/class-wpcm-ajax.php:292
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:66
@@ -319,7 +318,7 @@ msgstr "Alter"
 #: ../includes/widgets/class-wpcm-widget-players.php:150
 #: ../templates/shortcodes/players.php:45
 msgid "Date of Birth"
-msgstr "Geburtsdatum"
+msgstr "Születési idő"
 
 #: ../includes/class-wpcm-ajax.php:294
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:86
@@ -328,13 +327,13 @@ msgstr "Geburtsdatum"
 #: ../templates/shortcodes/players.php:42
 #: ../templates/single-player/meta.php:79
 msgid "Weight"
-msgstr "Gewicht"
+msgstr "Súly"
 
 #: ../includes/class-wpcm-ajax.php:295
 #: ../includes/widgets/class-wpcm-widget-players.php:151
 #: ../templates/shortcodes/players.php:46
 msgid "Hometown"
-msgstr "Heimatort"
+msgstr "Szülőváros"
 
 #: ../includes/class-wpcm-ajax.php:296 ../includes/class-wpcm-ajax.php:478
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:89
@@ -343,7 +342,7 @@ msgstr "Heimatort"
 #: ../templates/shortcodes/players.php:47 ../templates/shortcodes/staff.php:38
 #: ../templates/single-player/meta.php:183
 msgid "Joined"
-msgstr "Beigetreten"
+msgstr "Csatlakozott"
 
 #: ../includes/class-wpcm-ajax.php:311 ../includes/class-wpcm-ajax.php:491
 #: ../includes/class-wpcm-ajax.php:654
@@ -357,50 +356,50 @@ msgstr "Limit"
 #: ../includes/class-wpcm-ajax.php:312 ../includes/class-wpcm-ajax.php:492
 #: ../includes/class-wpcm-ajax.php:655
 msgid "0 = no limit"
-msgstr "0 = kein Limit"
+msgstr "0 = nincs limit"
 
 #: ../includes/class-wpcm-ajax.php:367 ../includes/class-wpcm-ajax.php:547
 #: ../includes/class-wpcm-ajax.php:706
 #: ../includes/widgets/class-wpcm-widget-players.php:212
 #: ../includes/widgets/class-wpcm-widget-standings.php:159
 msgid "Order by"
-msgstr "Sortieren nach"
+msgstr "Rendezés"
 
 #: ../includes/class-wpcm-ajax.php:371
 #: ../includes/widgets/class-wpcm-widget-players.php:215
 msgid "Page order"
-msgstr "Seitenreihenfolge"
+msgstr "Oldal sorrend"
 
 #: ../includes/class-wpcm-ajax.php:372 ../includes/class-wpcm-ajax.php:550
 msgid "Alphabetical"
-msgstr "Alphabetisch"
+msgstr "ABC"
 
 #: ../includes/class-wpcm-ajax.php:381 ../includes/class-wpcm-ajax.php:557
 #: ../includes/class-wpcm-ajax.php:718
 #: ../includes/widgets/class-wpcm-widget-players.php:224
 #: ../includes/widgets/class-wpcm-widget-standings.php:163
 msgid "Order"
-msgstr "Reihenfolge"
+msgstr "Sorrend"
 
 #: ../includes/class-wpcm-ajax.php:385 ../includes/class-wpcm-ajax.php:561
 #: ../includes/class-wpcm-ajax.php:721
 #: ../includes/widgets/class-wpcm-widget-players.php:227
 msgid "Lowest to highest"
-msgstr "Aufsteigend"
+msgstr "Lentről fel"
 
 #: ../includes/class-wpcm-ajax.php:386 ../includes/class-wpcm-ajax.php:562
 #: ../includes/class-wpcm-ajax.php:722
 #: ../includes/widgets/class-wpcm-widget-players.php:228
 msgid "Highest to lowest"
-msgstr "Absteigend"
+msgstr "Fentről le"
 
 #: ../includes/class-wpcm-ajax.php:417 ../includes/class-wpcm-ajax.php:593
 msgid "Display options"
-msgstr "Anzeigeoptionen"
+msgstr "Megjelenítési beállítások"
 
 #: ../includes/class-wpcm-ajax.php:463 ../templates/shortcodes/staff.php:23
 msgid "View all staff"
-msgstr "Alle Mitarbeiter anzeigen"
+msgstr "Összes stábtag"
 
 #: ../includes/class-wpcm-ajax.php:466 ../includes/class-wpcm-ajax.php:619
 #: ../includes/class-wpcm-post-types.php:258
@@ -409,60 +408,60 @@ msgstr "Alle Mitarbeiter anzeigen"
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:22
 #: ../templates/shortcodes/staff.php:22
 msgid "Staff"
-msgstr "Mitarbeiter"
+msgstr "Stáb"
 
 #: ../includes/class-wpcm-ajax.php:474
 #: ../includes/class-wpcm-post-types.php:66
 #: ../templates/content-single-staff.php:134
 #: ../templates/shortcodes/staff.php:34
 msgid "Job"
-msgstr "Tätigkeit"
+msgstr "Beosztás"
 
 #: ../includes/class-wpcm-ajax.php:530
 #: ../includes/class-wpcm-post-types.php:65
 msgid "Jobs"
-msgstr "Tätigkeiten"
+msgstr "Beosztások"
 
 #: ../includes/class-wpcm-ajax.php:551 ../includes/class-wpcm-ajax.php:712
 msgid "Random"
-msgstr "Zufall"
+msgstr "Véletlenszerű"
 
 #: ../includes/class-wpcm-ajax.php:637
 #: ../includes/widgets/class-wpcm-widget-standings.php:114
 #: ../templates/shortcodes/standings.php:19
 msgid "View all standings"
-msgstr "Alle Wertungen anzeigen"
+msgstr "Teljes tabella"
 
 #: ../includes/class-wpcm-ajax.php:640 ../includes/class-wpcm-ajax.php:792
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:22
 #: ../includes/widgets/class-wpcm-widget-standings.php:117
 #: ../templates/shortcodes/standings.php:22
 msgid "Standings"
-msgstr "Wertungen"
+msgstr "Tabella"
 
 #: ../includes/class-wpcm-ajax.php:772
 msgid "Display columns"
-msgstr "Spalten anzeigen"
+msgstr "Display columns"
 
 #: ../includes/class-wpcm-countries.php:32
 msgid "Afghanistan"
-msgstr "Afghanistan"
+msgstr "Afganisztán"
 
 #: ../includes/class-wpcm-countries.php:33
 msgid "&#197;land Islands"
-msgstr "Åland"
+msgstr "&#197;land Islands"
 
 #: ../includes/class-wpcm-countries.php:34
 msgid "Albania"
-msgstr "Albanien"
+msgstr "Albánia"
 
 #: ../includes/class-wpcm-countries.php:35
 msgid "Algeria"
-msgstr "Algerien"
+msgstr "Algéria"
 
 #: ../includes/class-wpcm-countries.php:36
 msgid "American Samoa"
-msgstr "Amerikanisch-Samoa"
+msgstr "Amerikai Samoa"
 
 #: ../includes/class-wpcm-countries.php:37
 msgid "Andorra"
@@ -478,19 +477,19 @@ msgstr "Anguilla"
 
 #: ../includes/class-wpcm-countries.php:40
 msgid "Antarctica"
-msgstr "Antarktika"
+msgstr "Antarktisz"
 
 #: ../includes/class-wpcm-countries.php:41
 msgid "Antigua and Barbuda"
-msgstr "Antigua und Barbuda"
+msgstr "Antigua and Barbuda"
 
 #: ../includes/class-wpcm-countries.php:42
 msgid "Argentina"
-msgstr "Argentinien"
+msgstr "Argentína"
 
 #: ../includes/class-wpcm-countries.php:43
 msgid "Armenia"
-msgstr "Armenien"
+msgstr "Armenia"
 
 #: ../includes/class-wpcm-countries.php:44
 msgid "Aruba"
@@ -498,15 +497,15 @@ msgstr "Aruba"
 
 #: ../includes/class-wpcm-countries.php:45
 msgid "Australia"
-msgstr "Australien"
+msgstr "Ausztrália"
 
 #: ../includes/class-wpcm-countries.php:46
 msgid "Austria"
-msgstr "Österreich"
+msgstr "Ausztria"
 
 #: ../includes/class-wpcm-countries.php:47
 msgid "Azerbaijan"
-msgstr "Aserbaidschan"
+msgstr "Azerbaijan"
 
 #: ../includes/class-wpcm-countries.php:48
 msgid "Bahamas"
@@ -518,7 +517,7 @@ msgstr "Bahrain"
 
 #: ../includes/class-wpcm-countries.php:50
 msgid "Bangladesh"
-msgstr "Bangladesch"
+msgstr "Bangladesh"
 
 #: ../includes/class-wpcm-countries.php:51
 msgid "Barbados"
@@ -526,11 +525,11 @@ msgstr "Barbados"
 
 #: ../includes/class-wpcm-countries.php:52
 msgid "Belarus"
-msgstr "Weißrussland"
+msgstr "Belarus"
 
 #: ../includes/class-wpcm-countries.php:53
 msgid "Belgium"
-msgstr "Belgien"
+msgstr "Belgium"
 
 #: ../includes/class-wpcm-countries.php:54
 msgid "Belize"
@@ -550,11 +549,11 @@ msgstr "Bhutan"
 
 #: ../includes/class-wpcm-countries.php:58
 msgid "Bolivia"
-msgstr "Bolivien"
+msgstr "Bolivia"
 
 #: ../includes/class-wpcm-countries.php:59
 msgid "Bosnia and Herzegovina"
-msgstr "Bosnien und Herzegowina"
+msgstr "Bosznia-Herzegovina"
 
 #: ../includes/class-wpcm-countries.php:60
 msgid "Botswana"
@@ -562,23 +561,23 @@ msgstr "Botswana"
 
 #: ../includes/class-wpcm-countries.php:61
 msgid "Bouvet Island"
-msgstr "Bouvetinsel"
+msgstr "Bouvet Island"
 
 #: ../includes/class-wpcm-countries.php:62
 msgid "Brazil"
-msgstr "Brasilien"
+msgstr "Brazília"
 
 #: ../includes/class-wpcm-countries.php:63
 msgid "British Indian Ocean Territory"
-msgstr "Britisches Territorium im Indischen Ozean"
+msgstr "British Indian Ocean Territory"
 
 #: ../includes/class-wpcm-countries.php:64
 msgid "Brunei Darussalam"
-msgstr "Brunei"
+msgstr "Brunei Darussalam"
 
 #: ../includes/class-wpcm-countries.php:65
 msgid "Bulgaria"
-msgstr "Bulgarien"
+msgstr "Bulgária"
 
 #: ../includes/class-wpcm-countries.php:66
 msgid "Burkina Faso"
@@ -590,7 +589,7 @@ msgstr "Burundi"
 
 #: ../includes/class-wpcm-countries.php:68
 msgid "Cambodia"
-msgstr "Kambodscha"
+msgstr "Kambodzsa"
 
 #: ../includes/class-wpcm-countries.php:69
 msgid "Cameroon"
@@ -602,23 +601,23 @@ msgstr "Kanada"
 
 #: ../includes/class-wpcm-countries.php:71
 msgid "Cape Verde"
-msgstr "Kap Verde"
+msgstr "Cape Verde"
 
 #: ../includes/class-wpcm-countries.php:72
 msgid "Catalonia"
-msgstr "Katalonien"
+msgstr "Catalonia"
 
 #: ../includes/class-wpcm-countries.php:73
 msgid "Cayman Islands"
-msgstr "Kaimaninseln"
+msgstr "Cayman Islands"
 
 #: ../includes/class-wpcm-countries.php:74
 msgid "Central African Republic"
-msgstr "Zentralafrikanische Republik"
+msgstr "Central African Republic"
 
 #: ../includes/class-wpcm-countries.php:75
 msgid "Chad"
-msgstr "Tschad"
+msgstr "Chad"
 
 #: ../includes/class-wpcm-countries.php:76
 msgid "Chile"
@@ -626,35 +625,35 @@ msgstr "Chile"
 
 #: ../includes/class-wpcm-countries.php:77
 msgid "China"
-msgstr "China"
+msgstr "Kína"
 
 #: ../includes/class-wpcm-countries.php:78
 msgid "Christmas Island"
-msgstr "Weihnachtsinseln"
+msgstr "Christmas Island"
 
 #: ../includes/class-wpcm-countries.php:79
 msgid "Cocos (Keeling) Islands"
-msgstr "Kokosinseln"
+msgstr "Cocos (Keeling) Islands"
 
 #: ../includes/class-wpcm-countries.php:80
 msgid "Colombia"
-msgstr "Kolumbien"
+msgstr "Kolumbia"
 
 #: ../includes/class-wpcm-countries.php:81
 msgid "Comoros"
-msgstr "Komoren"
+msgstr "Comoros"
 
 #: ../includes/class-wpcm-countries.php:82
 msgid "Congo"
-msgstr "Kongo"
+msgstr "Congo"
 
 #: ../includes/class-wpcm-countries.php:83
 msgid "Congo DR"
-msgstr "Kongo, Demokratische Republik "
+msgstr "Congo DR"
 
 #: ../includes/class-wpcm-countries.php:84
 msgid "Cook Islands"
-msgstr "Cookinseln"
+msgstr "Cook Islands"
 
 #: ../includes/class-wpcm-countries.php:85
 msgid "Costa Rica"
@@ -662,7 +661,7 @@ msgstr "Costa Rica"
 
 #: ../includes/class-wpcm-countries.php:86
 msgid "Croatia"
-msgstr "Kroatien"
+msgstr "Horvátország"
 
 #: ../includes/class-wpcm-countries.php:87
 msgid "Cuba"
@@ -670,15 +669,15 @@ msgstr "Kuba"
 
 #: ../includes/class-wpcm-countries.php:88
 msgid "Cyprus"
-msgstr "Zypern"
+msgstr "Ciprus"
 
 #: ../includes/class-wpcm-countries.php:89
 msgid "Czech Republic"
-msgstr "Tchechische Repulik"
+msgstr "Csehország"
 
 #: ../includes/class-wpcm-countries.php:90
 msgid "Denmark"
-msgstr "Dänemark"
+msgstr "Dánia"
 
 #: ../includes/class-wpcm-countries.php:91
 msgid "Djibouti"
@@ -690,15 +689,15 @@ msgstr "Dominica"
 
 #: ../includes/class-wpcm-countries.php:93
 msgid "Dominican Republic"
-msgstr "Dominikanische Republik"
+msgstr "Dominican Republic"
 
 #: ../includes/class-wpcm-countries.php:94
 msgid "Ecuador"
-msgstr "Equador"
+msgstr "Ecuador"
 
 #: ../includes/class-wpcm-countries.php:95
 msgid "Egypt"
-msgstr "Ägypten"
+msgstr "Egyiptom"
 
 #: ../includes/class-wpcm-countries.php:96
 msgid "El Salvador"
@@ -706,11 +705,11 @@ msgstr "El Salvador"
 
 #: ../includes/class-wpcm-countries.php:97
 msgid "England"
-msgstr "England"
+msgstr "Anglia"
 
 #: ../includes/class-wpcm-countries.php:98
 msgid "Equatorial Guinea"
-msgstr "Äquatorialguinea"
+msgstr "Egyenlítői Guinea"
 
 #: ../includes/class-wpcm-countries.php:99
 msgid "Eritrea"
@@ -718,19 +717,19 @@ msgstr "Eritrea"
 
 #: ../includes/class-wpcm-countries.php:100
 msgid "Estonia"
-msgstr "Estland"
+msgstr "Észtország"
 
 #: ../includes/class-wpcm-countries.php:101
 msgid "Ethiopia"
-msgstr "Äthiopien"
+msgstr "Etiópia"
 
 #: ../includes/class-wpcm-countries.php:102
 msgid "Falkland Islands"
-msgstr "Falklandinseln"
+msgstr "Falkland Islands"
 
 #: ../includes/class-wpcm-countries.php:103
 msgid "Faroe Islands"
-msgstr "Färöerinseln"
+msgstr "Faroe Islands"
 
 #: ../includes/class-wpcm-countries.php:104
 msgid "Fiji"
@@ -738,27 +737,27 @@ msgstr "Fiji"
 
 #: ../includes/class-wpcm-countries.php:105
 msgid "Finland"
-msgstr "Finnland"
+msgstr "Finnország"
 
 #: ../includes/class-wpcm-countries.php:106
 msgid "France"
-msgstr "Frankreich"
+msgstr "Franciaország"
 
 #: ../includes/class-wpcm-countries.php:107
 msgid "French Guiana"
-msgstr "Französisch-Guayana"
+msgstr "French Guiana"
 
 #: ../includes/class-wpcm-countries.php:108
 msgid "French Polynesia"
-msgstr "Französisch-Polynesien"
+msgstr "French Polynesia"
 
 #: ../includes/class-wpcm-countries.php:109
 msgid "French Southern Territories"
-msgstr "Französische Süd- und Antarktisgebiete"
+msgstr "French Southern Territories"
 
 #: ../includes/class-wpcm-countries.php:110
 msgid "Gabon"
-msgstr "Gabun"
+msgstr "Gabon"
 
 #: ../includes/class-wpcm-countries.php:111
 msgid "Gambia"
@@ -766,11 +765,11 @@ msgstr "Gambia"
 
 #: ../includes/class-wpcm-countries.php:112
 msgid "Georgia"
-msgstr "Georgien"
+msgstr "Georgia"
 
 #: ../includes/class-wpcm-countries.php:113
 msgid "Germany"
-msgstr "Deutschland"
+msgstr "Németország"
 
 #: ../includes/class-wpcm-countries.php:114
 msgid "Ghana"
@@ -782,11 +781,11 @@ msgstr "Gibraltar"
 
 #: ../includes/class-wpcm-countries.php:116
 msgid "Greece"
-msgstr "Griechenland"
+msgstr "Görögország"
 
 #: ../includes/class-wpcm-countries.php:117
 msgid "Greenland"
-msgstr "Grönland"
+msgstr "Greenland"
 
 #: ../includes/class-wpcm-countries.php:118
 msgid "Grenada"
@@ -826,11 +825,11 @@ msgstr "Haiti"
 
 #: ../includes/class-wpcm-countries.php:127
 msgid "Heard Island and McDonald Islands"
-msgstr "Heardinseln und McDonaldinseln"
+msgstr "Heard Island and McDonald Islands"
 
 #: ../includes/class-wpcm-countries.php:128
 msgid "Holy See (Vatican City State)"
-msgstr "Vatikanstadt"
+msgstr "Holy See (Vatican City State)"
 
 #: ../includes/class-wpcm-countries.php:129
 msgid "Honduras"
@@ -842,23 +841,23 @@ msgstr "Hong Kong"
 
 #: ../includes/class-wpcm-countries.php:131
 msgid "Hungary"
-msgstr "Ungarn"
+msgstr "Magyarország"
 
 #: ../includes/class-wpcm-countries.php:132
 msgid "Iceland"
-msgstr "Island"
+msgstr "Iceland"
 
 #: ../includes/class-wpcm-countries.php:133
 msgid "India"
-msgstr "Indien"
+msgstr "India"
 
 #: ../includes/class-wpcm-countries.php:134
 msgid "Indonesia"
-msgstr "Indonesien"
+msgstr "Indonesia"
 
 #: ../includes/class-wpcm-countries.php:135
 msgid "Iran"
-msgstr "Iran"
+msgstr "Irán"
 
 #: ../includes/class-wpcm-countries.php:136
 msgid "Iraq"
@@ -866,7 +865,7 @@ msgstr "Irak"
 
 #: ../includes/class-wpcm-countries.php:137
 msgid "Ireland"
-msgstr "Irland"
+msgstr "Írország"
 
 #: ../includes/class-wpcm-countries.php:138
 msgid "Isle of Man"
@@ -874,23 +873,23 @@ msgstr "Isle of Man"
 
 #: ../includes/class-wpcm-countries.php:139
 msgid "Israel"
-msgstr "Israel"
+msgstr "Izrael"
 
 #: ../includes/class-wpcm-countries.php:140
 msgid "Italy"
-msgstr "Italien"
+msgstr "Olaszország"
 
 #: ../includes/class-wpcm-countries.php:141
 msgid "Ivory Coast"
-msgstr "Elfenbeinküste"
+msgstr "Elefántcsontpart"
 
 #: ../includes/class-wpcm-countries.php:142
 msgid "Jamaica"
-msgstr "Jamaika"
+msgstr "Jamaica"
 
 #: ../includes/class-wpcm-countries.php:143
 msgid "Japan"
-msgstr "Japan"
+msgstr "Japán"
 
 #: ../includes/class-wpcm-countries.php:144
 msgid "Jersey"
@@ -898,15 +897,15 @@ msgstr "Jersey"
 
 #: ../includes/class-wpcm-countries.php:145
 msgid "Jordan"
-msgstr "Jordanien"
+msgstr "Jordan"
 
 #: ../includes/class-wpcm-countries.php:146
 msgid "Kazakhstan"
-msgstr "Kasachstan"
+msgstr "Kazakhstan"
 
 #: ../includes/class-wpcm-countries.php:147
 msgid "Kenya"
-msgstr "Kenia"
+msgstr "Kenya"
 
 #: ../includes/class-wpcm-countries.php:148
 msgid "Kiribati"
@@ -918,7 +917,7 @@ msgstr "Kuwait"
 
 #: ../includes/class-wpcm-countries.php:150
 msgid "Kyrgyzstan"
-msgstr "Kirgisistan"
+msgstr "Kyrgyzstan"
 
 #: ../includes/class-wpcm-countries.php:151
 msgid "Laos"
@@ -926,11 +925,11 @@ msgstr "Laos"
 
 #: ../includes/class-wpcm-countries.php:152
 msgid "Latvia"
-msgstr "Lettland"
+msgstr "Lettország"
 
 #: ../includes/class-wpcm-countries.php:153
 msgid "Lebanon"
-msgstr "Libanon"
+msgstr "Lebanon"
 
 #: ../includes/class-wpcm-countries.php:154
 msgid "Lesotho"
@@ -942,19 +941,19 @@ msgstr "Liberia"
 
 #: ../includes/class-wpcm-countries.php:156
 msgid "Libya"
-msgstr "Libyen"
+msgstr "Libya"
 
 #: ../includes/class-wpcm-countries.php:157
 msgid "Liechtenstein"
-msgstr "Lichtenstein"
+msgstr "Liechtenstein"
 
 #: ../includes/class-wpcm-countries.php:158
 msgid "Lithuania"
-msgstr "Litauen"
+msgstr "Lithuania"
 
 #: ../includes/class-wpcm-countries.php:159
 msgid "Luxembourg"
-msgstr "Luxemburg"
+msgstr "Luxembourg"
 
 #: ../includes/class-wpcm-countries.php:160
 msgid "Macao"
@@ -962,11 +961,11 @@ msgstr "Macao"
 
 #: ../includes/class-wpcm-countries.php:161
 msgid "Macedonia"
-msgstr "Mazedonien"
+msgstr "Macedonia"
 
 #: ../includes/class-wpcm-countries.php:162
 msgid "Madagascar"
-msgstr "Madagaskar"
+msgstr "Madagascar"
 
 #: ../includes/class-wpcm-countries.php:163
 msgid "Malawi"
@@ -974,11 +973,11 @@ msgstr "Malawi"
 
 #: ../includes/class-wpcm-countries.php:164
 msgid "Malaysia"
-msgstr "Malaysien"
+msgstr "Malaysia"
 
 #: ../includes/class-wpcm-countries.php:165
 msgid "Maldives"
-msgstr "Malediven"
+msgstr "Maldives"
 
 #: ../includes/class-wpcm-countries.php:166
 msgid "Mali"
@@ -986,11 +985,11 @@ msgstr "Mali"
 
 #: ../includes/class-wpcm-countries.php:167
 msgid "Malta"
-msgstr "Malta"
+msgstr "Málta"
 
 #: ../includes/class-wpcm-countries.php:168
 msgid "Marshall Islands"
-msgstr "Marshallinseln"
+msgstr "Marshall Islands"
 
 #: ../includes/class-wpcm-countries.php:169
 msgid "Martinique"
@@ -998,7 +997,7 @@ msgstr "Martinique"
 
 #: ../includes/class-wpcm-countries.php:170
 msgid "Mauritania"
-msgstr "Mauretanien"
+msgstr "Mauritania"
 
 #: ../includes/class-wpcm-countries.php:171
 msgid "Mauritius"
@@ -1010,15 +1009,15 @@ msgstr "Mayotte"
 
 #: ../includes/class-wpcm-countries.php:173
 msgid "Mexico"
-msgstr "Mexiko"
+msgstr "Mexikó"
 
 #: ../includes/class-wpcm-countries.php:174
 msgid "Micronesia, Federal States of"
-msgstr "Mikronesien, Föderierte Staaten von"
+msgstr "Micronesia, Federal States of"
 
 #: ../includes/class-wpcm-countries.php:175
 msgid "Moldova, Republic of"
-msgstr "Moldawien"
+msgstr "Moldova, Republic of"
 
 #: ../includes/class-wpcm-countries.php:176
 msgid "Monaco"
@@ -1026,11 +1025,11 @@ msgstr "Monaco"
 
 #: ../includes/class-wpcm-countries.php:177
 msgid "Mongolia"
-msgstr "Mongolei"
+msgstr "Mongólia"
 
 #: ../includes/class-wpcm-countries.php:178
 msgid "Monserrat"
-msgstr "Montserrat"
+msgstr "Monserrat"
 
 #: ../includes/class-wpcm-countries.php:179
 msgid "Montenegro"
@@ -1038,15 +1037,15 @@ msgstr "Montenegro"
 
 #: ../includes/class-wpcm-countries.php:180
 msgid "Morocco"
-msgstr "Marokko"
+msgstr "Morocco"
 
 #: ../includes/class-wpcm-countries.php:181
 msgid "North Korea"
-msgstr "Nordkorea"
+msgstr "North Korea"
 
 #: ../includes/class-wpcm-countries.php:182
 msgid "Mozambique"
-msgstr "Mosambik"
+msgstr "Mozambique"
 
 #: ../includes/class-wpcm-countries.php:183
 msgid "Myanmar"
@@ -1066,15 +1065,15 @@ msgstr "Nepal"
 
 #: ../includes/class-wpcm-countries.php:187
 msgid "Netherlands"
-msgstr "Niederlande"
+msgstr "Hollandia"
 
 #: ../includes/class-wpcm-countries.php:188
 msgid "New Caledonia"
-msgstr "Neukaledonien"
+msgstr "New Caledonia"
 
 #: ../includes/class-wpcm-countries.php:189
 msgid "New Zealand"
-msgstr "Neuseeland"
+msgstr "Új Zéland"
 
 #: ../includes/class-wpcm-countries.php:190
 msgid "Nicaragua"
@@ -1094,19 +1093,19 @@ msgstr "Niue"
 
 #: ../includes/class-wpcm-countries.php:194
 msgid "Norfolk Island"
-msgstr "Norfolkinsel"
+msgstr "Norfolk Island"
 
 #: ../includes/class-wpcm-countries.php:195
 msgid "Northern Ireland"
-msgstr "Nordirland"
+msgstr "Northern Ireland"
 
 #: ../includes/class-wpcm-countries.php:196
 msgid "Northern Mariana Islands"
-msgstr "Nördliche Marianen"
+msgstr "Northern Mariana Islands"
 
 #: ../includes/class-wpcm-countries.php:197
 msgid "Norway"
-msgstr "Norwegen"
+msgstr "Norway"
 
 #: ../includes/class-wpcm-countries.php:198
 msgid "Oman"
@@ -1122,7 +1121,7 @@ msgstr "Palau"
 
 #: ../includes/class-wpcm-countries.php:201
 msgid "Palestine, State of"
-msgstr "Palestina"
+msgstr "Palestine, State of"
 
 #: ../includes/class-wpcm-countries.php:202
 msgid "Panama"
@@ -1130,7 +1129,7 @@ msgstr "Panama"
 
 #: ../includes/class-wpcm-countries.php:203
 msgid "Papua New Guinea"
-msgstr "Papua-Neuguinea"
+msgstr "Papua New Guinea"
 
 #: ../includes/class-wpcm-countries.php:204
 msgid "Paraguay"
@@ -1142,15 +1141,15 @@ msgstr "Peru"
 
 #: ../includes/class-wpcm-countries.php:206
 msgid "Philippines"
-msgstr "Phillippinen"
+msgstr "Philippines"
 
 #: ../includes/class-wpcm-countries.php:207
 msgid "Pitcairn"
-msgstr "Pitcairninseln"
+msgstr "Pitcairn"
 
 #: ../includes/class-wpcm-countries.php:208
 msgid "Poland"
-msgstr "Polen"
+msgstr "Poland"
 
 #: ../includes/class-wpcm-countries.php:209
 msgid "Portugal"
@@ -1162,43 +1161,43 @@ msgstr "Puerto Rico"
 
 #: ../includes/class-wpcm-countries.php:211
 msgid "Qatar"
-msgstr "Katar"
+msgstr "Qatar"
 
 #: ../includes/class-wpcm-countries.php:212
 msgid "Reunion"
-msgstr "Réunion"
+msgstr "Reunion"
 
 #: ../includes/class-wpcm-countries.php:213
 msgid "Romania"
-msgstr "Romänien"
+msgstr "Románia"
 
 #: ../includes/class-wpcm-countries.php:214
 msgid "Russian Federation"
-msgstr "Russland"
+msgstr "Russian Federation"
 
 #: ../includes/class-wpcm-countries.php:215
 msgid "Rwanda"
-msgstr "Ruanda"
+msgstr "Rwanda"
 
 #: ../includes/class-wpcm-countries.php:216
 msgid "Saint Helena"
-msgstr "St. Helena"
+msgstr "Saint Helena"
 
 #: ../includes/class-wpcm-countries.php:217
 msgid "Saint Kitts and Nevis"
-msgstr "St. Kitts und Nevis"
+msgstr "Saint Kitts and Nevis"
 
 #: ../includes/class-wpcm-countries.php:218
 msgid "Saint Lucia"
-msgstr "St. Lucia"
+msgstr "Saint Lucia"
 
 #: ../includes/class-wpcm-countries.php:219
 msgid "Saint Pierre & Miquelon"
-msgstr "Saint-Pierre und Miquelon"
+msgstr "Saint Pierre & Miquelon"
 
 #: ../includes/class-wpcm-countries.php:220
 msgid "Saint Vincent and the Grenadines"
-msgstr "St. Vincent und die Grenadinen"
+msgstr "Saint Vincent and the Grenadines"
 
 #: ../includes/class-wpcm-countries.php:221
 msgid "Samoa"
@@ -1210,15 +1209,15 @@ msgstr "San Marino"
 
 #: ../includes/class-wpcm-countries.php:223
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
-msgstr "São Tomé and Príncipe"
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 
 #: ../includes/class-wpcm-countries.php:224
 msgid "Saudi Arabia"
-msgstr "Saudi Arabien"
+msgstr "Saudi Arabia"
 
 #: ../includes/class-wpcm-countries.php:225
 msgid "Scotland"
-msgstr "Schottland"
+msgstr "Skócia"
 
 #: ../includes/class-wpcm-countries.php:226
 msgid "Senegal"
@@ -1226,31 +1225,31 @@ msgstr "Senegal"
 
 #: ../includes/class-wpcm-countries.php:227
 msgid "Serbia"
-msgstr "Serbien"
+msgstr "Szerbia"
 
 #: ../includes/class-wpcm-countries.php:228
 msgid "Seychelles"
-msgstr "Seychellen"
+msgstr "Seychelles"
 
 #: ../includes/class-wpcm-countries.php:229
 msgid "Sierre Leone"
-msgstr "Sierra Leone"
+msgstr "Sierre Leone"
 
 #: ../includes/class-wpcm-countries.php:230
 msgid "Singapore"
-msgstr "Singapur"
+msgstr "Singapore"
 
 #: ../includes/class-wpcm-countries.php:231
 msgid "Slovakia"
-msgstr "Slowakei"
+msgstr "Szlovákia"
 
 #: ../includes/class-wpcm-countries.php:232
 msgid "Slovenia"
-msgstr "Slowenien"
+msgstr "Szlovénia"
 
 #: ../includes/class-wpcm-countries.php:233
 msgid "Solomon Islands"
-msgstr "Salomonen"
+msgstr "Solomon Islands"
 
 #: ../includes/class-wpcm-countries.php:234
 msgid "Somalia"
@@ -1258,19 +1257,19 @@ msgstr "Somalia"
 
 #: ../includes/class-wpcm-countries.php:235
 msgid "South Africa"
-msgstr "Südafrika"
+msgstr "South Africa"
 
 #: ../includes/class-wpcm-countries.php:236
 msgid "South Georgia / Sandwich Islands"
-msgstr "Südgeorgien und die Südlichen Sandwichinseln"
+msgstr "South Georgia / Sandwich Islands"
 
 #: ../includes/class-wpcm-countries.php:237
 msgid "South Korea"
-msgstr "Südkorea"
+msgstr "Dél-Korea"
 
 #: ../includes/class-wpcm-countries.php:238
 msgid "Spain"
-msgstr "Spanien"
+msgstr "Spanyolország"
 
 #: ../includes/class-wpcm-countries.php:239
 msgid "Sri Lanka"
@@ -1290,31 +1289,31 @@ msgstr "Suriname"
 
 #: ../includes/class-wpcm-countries.php:243
 msgid "Swaziland"
-msgstr "Swasiland"
+msgstr "Swaziland"
 
 #: ../includes/class-wpcm-countries.php:244
 msgid "Sweden"
-msgstr "Schweden"
+msgstr "Sweden"
 
 #: ../includes/class-wpcm-countries.php:245
 msgid "Switzerland"
-msgstr "Schweiz"
+msgstr "Svájc"
 
 #: ../includes/class-wpcm-countries.php:246
 msgid "Syrian Arab Republic"
-msgstr "Syrien, Arabische Republik"
+msgstr "Syrian Arab Republic"
 
 #: ../includes/class-wpcm-countries.php:247
 msgid "Taiwan, Province of China"
-msgstr "Taiwan, Provinz von China"
+msgstr "Taiwan, Province of China"
 
 #: ../includes/class-wpcm-countries.php:248
 msgid "Tajikstan"
-msgstr "Tadschikistan"
+msgstr "Tajikstan"
 
 #: ../includes/class-wpcm-countries.php:249
 msgid "Tanzania, United Republic of"
-msgstr "Tansania, Vereinigte Republik von"
+msgstr "Tanzania, United Republic of"
 
 #: ../includes/class-wpcm-countries.php:250
 msgid "Thailand"
@@ -1322,7 +1321,7 @@ msgstr "Thailand"
 
 #: ../includes/class-wpcm-countries.php:251
 msgid "Timor-Leste"
-msgstr "Osttimor"
+msgstr "Timor-Leste"
 
 #: ../includes/class-wpcm-countries.php:252
 msgid "Togo"
@@ -1338,15 +1337,15 @@ msgstr "Tonga"
 
 #: ../includes/class-wpcm-countries.php:255
 msgid "Trinidad and Tobago"
-msgstr "Trinidad und Tobago"
+msgstr "Trinidad and Tobago"
 
 #: ../includes/class-wpcm-countries.php:256
 msgid "Tunisia"
-msgstr "Tunesien"
+msgstr "Tunisia"
 
 #: ../includes/class-wpcm-countries.php:257
 msgid "Turkey"
-msgstr "Türkei"
+msgstr "Turkey"
 
 #: ../includes/class-wpcm-countries.php:258
 msgid "Turkmenistan"
@@ -1354,7 +1353,7 @@ msgstr "Turkmenistan"
 
 #: ../includes/class-wpcm-countries.php:259
 msgid "Turks and Caicos Islands"
-msgstr "Turks- und Caicosinseln"
+msgstr "Turks and Caicos Islands"
 
 #: ../includes/class-wpcm-countries.php:260
 msgid "Tuvalu"
@@ -1366,19 +1365,19 @@ msgstr "Uganda"
 
 #: ../includes/class-wpcm-countries.php:262
 msgid "Ukraine"
-msgstr "Ukraine"
+msgstr "Ukrajna"
 
 #: ../includes/class-wpcm-countries.php:263
 msgid "United Arab Emirates"
-msgstr "Vereinigte Arabische Emirate"
+msgstr "United Arab Emirates"
 
 #: ../includes/class-wpcm-countries.php:264
 msgid "United Kingdom (UK)"
-msgstr "Vereinigtes Königreich (UK)"
+msgstr "Egyesült királyság (UK)"
 
 #: ../includes/class-wpcm-countries.php:265
 msgid "United States (US)"
-msgstr "Vereinigte Staaten (US)"
+msgstr "Egyesült Államok (US)"
 
 #: ../includes/class-wpcm-countries.php:266
 msgid "Uruguay"
@@ -1386,11 +1385,11 @@ msgstr "Uruguay"
 
 #: ../includes/class-wpcm-countries.php:267
 msgid "US Minor Outlying Islands"
-msgstr "Kleinere Inselbesitzungen der Vereinigten Staaten"
+msgstr "US Minor Outlying Islands"
 
 #: ../includes/class-wpcm-countries.php:268
 msgid "Uzbekistan"
-msgstr "Usbekistan"
+msgstr "Uzbekistan"
 
 #: ../includes/class-wpcm-countries.php:269
 msgid "Vanuata"
@@ -1398,19 +1397,19 @@ msgstr "Vanuata"
 
 #: ../includes/class-wpcm-countries.php:270
 msgid "Venezuala"
-msgstr "Venezuela"
+msgstr "Venezuala"
 
 #: ../includes/class-wpcm-countries.php:271
 msgid "Vietnam"
-msgstr "Vietnam"
+msgstr "Vietnám"
 
 #: ../includes/class-wpcm-countries.php:272
 msgid "Virgin Islands, British"
-msgstr "Jungferninseln, Britisch"
+msgstr "Virgin Islands, British"
 
 #: ../includes/class-wpcm-countries.php:273
 msgid "Virgin Islands, U.S."
-msgstr "Jungferninseln, Vereinigte Staaten"
+msgstr "Virgin Islands, U.S."
 
 #: ../includes/class-wpcm-countries.php:274
 msgid "Wales"
@@ -1422,239 +1421,239 @@ msgstr "Wallis and Futuna"
 
 #: ../includes/class-wpcm-countries.php:276
 msgid "Western Sahara"
-msgstr "Westsahara"
+msgstr "Western Sahara"
 
 #: ../includes/class-wpcm-countries.php:277
 msgid "Yemen"
-msgstr "Jemen"
+msgstr "Yemen"
 
 #: ../includes/class-wpcm-countries.php:278
 msgid "Yugoslavia"
-msgstr "Jugoslawien"
+msgstr "Yugoslavia"
 
 #: ../includes/class-wpcm-countries.php:279
 msgid "Zambia"
-msgstr "Sambia"
+msgstr "Zambia"
 
 #: ../includes/class-wpcm-countries.php:280
 msgid "Zimbabwe"
-msgstr "Simbabwe"
+msgstr "Zimbabwe"
 
 #: ../includes/class-wpcm-install.php:178
 #: ../includes/class-wpcm-post-types.php:223
 msgid "Player"
-msgstr "Spieler"
+msgstr "játékos"
 
 #: ../includes/class-wpcm-install.php:185
 msgid "Team Manager"
-msgstr "Mannschaftsverwalter"
+msgstr "Team Manager"
 
 #: ../includes/class-wpcm-install.php:370
 msgid "What's new:"
-msgstr "Was ist neu:"
+msgstr "Újdonságok:"
 
 #: ../includes/class-wpcm-post-types.php:43
 msgid "Competitions"
-msgstr "Wettbewerbe"
+msgstr "Versenykiírások"
 
 #: ../includes/class-wpcm-post-types.php:45
 msgid "Search Competitions"
-msgstr "Wettbewerbe suchen"
+msgstr "Verseny keresés"
 
 #: ../includes/class-wpcm-post-types.php:46
 msgid "All Competitions"
-msgstr "Alle Wettbewerbe"
+msgstr "Összes verseny"
 
 #: ../includes/class-wpcm-post-types.php:47
 msgid "Parent Competition"
-msgstr "Übergeordneter Wettbewerb"
+msgstr "Szülő verseny"
 
 #: ../includes/class-wpcm-post-types.php:48
 msgid "Parent Competition:"
-msgstr "Übergeordneter Wettbewerb:"
+msgstr "Szülő verseny:"
 
 #: ../includes/class-wpcm-post-types.php:49
 msgid "Edit Competition"
-msgstr "Wettbewerb bearbeiten"
+msgstr "Verseny szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:50
 msgid "Update Competition"
-msgstr "Wettbewerb aktualisieren"
+msgstr "Verseny frissítése"
 
 #: ../includes/class-wpcm-post-types.php:51
 msgid "Add New Competition"
-msgstr "Neuen Wettbewerb hinzufügen"
+msgstr "Új versenykiírás"
 
 #: ../includes/class-wpcm-post-types.php:67
 msgid "Search Jobs"
-msgstr "Tätigkeiten suchen"
+msgstr "Beosztás keresés"
 
 #: ../includes/class-wpcm-post-types.php:68
 msgid "All Jobs"
-msgstr "Alle Tätigkeiten"
+msgstr "Minden beosztás"
 
 #: ../includes/class-wpcm-post-types.php:69
 msgid "Parent Job"
-msgstr "Übergeordnete Tätigkeit"
+msgstr "Szülő beosztás"
 
 #: ../includes/class-wpcm-post-types.php:70
 msgid "Parent Job:"
-msgstr "Übergeordnete Tätigkeit:"
+msgstr "Szülő beosztás:"
 
 #: ../includes/class-wpcm-post-types.php:71
 msgid "Edit Job"
-msgstr "Tätigkeit bearbeiten"
+msgstr "Beosztás szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:72
 msgid "Update Job"
-msgstr "Tätigkeit aktualisieren"
+msgstr "Beosztás frissítése"
 
 #: ../includes/class-wpcm-post-types.php:73
 msgid "Add New Job"
-msgstr "Neue Tätigkeit hinzufügen"
+msgstr "Új beosztás"
 
 #: ../includes/class-wpcm-post-types.php:74
 msgid "New Job Title"
-msgstr "Neue Tätigkeitsbezeichnung"
+msgstr "Beosztás neve"
 
 #: ../includes/class-wpcm-post-types.php:87
 msgid "Positions"
-msgstr "Positionen"
+msgstr "Posztok"
 
 #: ../includes/class-wpcm-post-types.php:89
 msgid "Search Positions"
-msgstr "Positionen durchsuchen"
+msgstr "Poszt keresése"
 
 #: ../includes/class-wpcm-post-types.php:90
 msgid "All Positions"
-msgstr "Alle Positionen"
+msgstr "Minden poszt"
 
 #: ../includes/class-wpcm-post-types.php:91
 msgid "Parent Position"
-msgstr "Übergeordnete Position"
+msgstr "Szülő poszt"
 
 #: ../includes/class-wpcm-post-types.php:92
 msgid "Parent Position:"
-msgstr "Übergeordnete Position:"
+msgstr "Szülő poszt:"
 
 #: ../includes/class-wpcm-post-types.php:93
 msgid "Edit Position"
-msgstr "Position bearbeiten"
+msgstr "Poszt szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:94
 msgid "Update Position"
-msgstr "Position aktualisieren"
+msgstr "Poszt frissítés"
 
 #: ../includes/class-wpcm-post-types.php:95
 msgid "Add New Position"
-msgstr "Neue Position hinzufügen"
+msgstr "Új poszt"
 
 #: ../includes/class-wpcm-post-types.php:96
 msgid "New Position Name"
-msgstr "Neuer Positionsname"
+msgstr "Új poszt neve"
 
 #: ../includes/class-wpcm-post-types.php:109
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:29
 #: ../templates/single-player/stats.php:19
 msgid "Seasons"
-msgstr "Saisons"
+msgstr "Szezonok"
 
 #: ../includes/class-wpcm-post-types.php:111
 msgid "Search Seasons"
-msgstr "Saisons durchsuchen"
+msgstr "Szerzon keresés"
 
 #: ../includes/class-wpcm-post-types.php:112
 msgid "All Seasons"
-msgstr "Alle Saisons"
+msgstr "Összes szezon"
 
 #: ../includes/class-wpcm-post-types.php:113
 msgid "Parent Season"
-msgstr "Übergeordnete Saison"
+msgstr "Szülő szezon"
 
 #: ../includes/class-wpcm-post-types.php:114
 msgid "Parent Season:"
-msgstr "Übergeordnete Saison:"
+msgstr "Szülő szezon:"
 
 #: ../includes/class-wpcm-post-types.php:115
 msgid "Edit Season"
-msgstr "Saison bearbeiten"
+msgstr "Szezon szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:116
 msgid "Update Season"
-msgstr "Saison aktualisieren"
+msgstr "Szezon frissítés"
 
 #: ../includes/class-wpcm-post-types.php:117
 msgid "Add New Season"
-msgstr "Neue Saison hinzufügen"
+msgstr "Új szezon"
 
 #: ../includes/class-wpcm-post-types.php:131
 msgid "Teams"
-msgstr "Mannschaften"
+msgstr "Csapatok"
 
 #: ../includes/class-wpcm-post-types.php:133
 msgid "Search Teams"
-msgstr "Mannschaften durchsuchen"
+msgstr "Csapat keresés"
 
 #: ../includes/class-wpcm-post-types.php:134
 msgid "All Teams"
-msgstr "Alle Mannschaften"
+msgstr "Csapatok"
 
 #: ../includes/class-wpcm-post-types.php:135
 msgid "Parent Team"
-msgstr "Übergeordnete Mannschaft"
+msgstr "Szülő csapat"
 
 #: ../includes/class-wpcm-post-types.php:136
 msgid "Parent Team:"
-msgstr "Übergeordnete Mannschaft:"
+msgstr "Szülő csapat:"
 
 #: ../includes/class-wpcm-post-types.php:137
 msgid "Edit Team"
-msgstr "Mannschaft bearbeiten"
+msgstr "Csapat szerkesztés"
 
 #: ../includes/class-wpcm-post-types.php:138
 msgid "Update Team"
-msgstr "Mannschaft aktualisieren"
+msgstr "Csapat frissítés"
 
 #: ../includes/class-wpcm-post-types.php:139
 msgid "Add New Team"
-msgstr "Neue Mannschaft hinzufügen"
+msgstr "Új csapat"
 
 #: ../includes/class-wpcm-post-types.php:153
 msgid "Venues"
-msgstr "Austragungsorte"
+msgstr "Helyszínek"
 
 #: ../includes/class-wpcm-post-types.php:155
 msgid "Search Venues"
-msgstr "Austragungsorte durchsuchen"
+msgstr "Helyszín keresés"
 
 #: ../includes/class-wpcm-post-types.php:156
 msgid "All Venues"
-msgstr "Alle Austragungsorte"
+msgstr "Összes helyszín"
 
 #: ../includes/class-wpcm-post-types.php:157
 msgid "Parent Venue"
-msgstr "Übergeordneter Austragungsort"
+msgstr "Szülő helyszín"
 
 #: ../includes/class-wpcm-post-types.php:158
 msgid "Parent Venue:"
-msgstr "Übergeordneter Austragungsort:"
+msgstr "Szülő helyszín:"
 
 #: ../includes/class-wpcm-post-types.php:159
 msgid "Edit Venue"
-msgstr "Austragungsort bearbeiten"
+msgstr "Helyszín szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:160
 msgid "Update Venue"
-msgstr "Austragungsort aktualisieren"
+msgstr "Helyszín frissítés"
 
 #: ../includes/class-wpcm-post-types.php:161
 msgid "Add New Venue"
-msgstr "Neuen Austragungsort hinzufügen"
+msgstr "Új helyszín"
 
 #: ../includes/class-wpcm-post-types.php:186
 #: ../includes/class-wpcm-post-types.php:198
 msgid "Clubs"
-msgstr "Vereine"
+msgstr "Klubok"
 
 #: ../includes/class-wpcm-post-types.php:188
 #: ../includes/class-wpcm-post-types.php:224
@@ -1662,237 +1661,235 @@ msgstr "Vereine"
 #: ../includes/class-wpcm-post-types.php:296
 #: ../includes/class-wpcm-post-types.php:332
 msgid "Add New"
-msgstr "Neuen hinzufügen"
+msgstr "Új hozzáadása"
 
 #: ../includes/class-wpcm-post-types.php:189
 msgid "All Clubs"
-msgstr "Alle Vereine"
+msgstr "Klubok"
 
 #: ../includes/class-wpcm-post-types.php:190
 msgid "Add New Club"
-msgstr "Neuen Verein hinzufügen"
+msgstr "Új klub"
 
 #: ../includes/class-wpcm-post-types.php:191
 msgid "Edit Club"
-msgstr "Verein bearbeiten"
+msgstr "Klub szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:192
 msgid "New Club"
-msgstr "Neuer Verein"
+msgstr "Új klub"
 
 #: ../includes/class-wpcm-post-types.php:193
 msgid "View Club"
-msgstr "Verein zeigen"
+msgstr "Klub megtekintés"
 
 #: ../includes/class-wpcm-post-types.php:194
 msgid "Search Clubs"
-msgstr "Vereine durchsuchen"
+msgstr "Klub keresés"
 
 #: ../includes/class-wpcm-post-types.php:195
 msgid "No clubs found"
-msgstr "Keine Vereine gefunden"
+msgstr "Nincs klub"
 
 #: ../includes/class-wpcm-post-types.php:196
 msgid "No clubs found in trash"
-msgstr "Keine Vereine im Papierkorb gefunden"
+msgstr "Nincs klub a lomtárban"
 
 #: ../includes/class-wpcm-post-types.php:197
 msgid "Parent Club:"
-msgstr "Übergeordneter Verein:"
+msgstr "Szülő klub:"
 
 #: ../includes/class-wpcm-post-types.php:225
 msgid "All Players"
-msgstr "Alle Spieler"
+msgstr "Játékosok"
 
 #: ../includes/class-wpcm-post-types.php:226
 msgid "Add New Player"
-msgstr "Neuen Spieler hinzufügen"
+msgstr "Új játékos"
 
 #: ../includes/class-wpcm-post-types.php:227
 msgid "Edit Player"
-msgstr "Spieler bearbeiten"
+msgstr "Játékos szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:228
 msgid "New Player"
-msgstr "Neuer Spieler"
+msgstr "Új játékos"
 
 #: ../includes/class-wpcm-post-types.php:229
 msgid "View Player"
-msgstr "Spieler anzeigen"
+msgstr "Játékos megtekintése"
 
 #: ../includes/class-wpcm-post-types.php:230
 msgid "Search Players"
-msgstr "Spieler durchsuchen"
+msgstr "Játékos keresés"
 
 #: ../includes/class-wpcm-post-types.php:231
 msgid "No players found"
-msgstr "Keine Spieler gefunden"
+msgstr "Nincs játékos"
 
 #: ../includes/class-wpcm-post-types.php:232
 msgid "No players found in trash"
-msgstr "Keine Spieler im Papierkorb gefunden"
+msgstr "Nincs játékos a lomtárban"
 
 #: ../includes/class-wpcm-post-types.php:233
 msgid "Parent Player:"
-msgstr "Übergeordneter Spieler:"
+msgstr "Szülő játékos:"
 
 #: ../includes/class-wpcm-post-types.php:261
 msgid "All Staff"
-msgstr "Alle Mitarbeiter"
+msgstr "Stábtagok"
 
 #: ../includes/class-wpcm-post-types.php:262
 msgid "Add New Staff"
-msgstr "Neuen Mitarbeiter hinzufügen"
+msgstr "Új stábtag"
 
 #: ../includes/class-wpcm-post-types.php:263
 msgid "Edit Staff"
-msgstr "Mitarbeiter bearbeiten"
+msgstr "Stábtag szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:264
 msgid "New Staff"
-msgstr "Neuer Mitarbeiter"
+msgstr "Új stábtag"
 
 #: ../includes/class-wpcm-post-types.php:265
 msgid "View Staff"
-msgstr "Mitarbeiter anzeigen"
+msgstr "Stábtag megtekintés"
 
 #: ../includes/class-wpcm-post-types.php:266
 msgid "Search Staff"
-msgstr "Mitarbeiter durchsuchen"
+msgstr "Stábtag keresés"
 
 #: ../includes/class-wpcm-post-types.php:267
 msgid "No staff found"
-msgstr "Keine Mitarbeiter gefunden"
+msgstr "Nincs stábtag"
 
 #: ../includes/class-wpcm-post-types.php:268
 msgid "No staff found in trash"
-msgstr "Keine Mitarbeiter im Papierkorb gefunden"
+msgstr "Nincs stábtag a lomtárban"
 
 #: ../includes/class-wpcm-post-types.php:269
 msgid "Parent Staff:"
-msgstr "Übergeordneter Mitarbeiter:"
+msgstr "Szülő stábtag:"
 
 #: ../includes/class-wpcm-post-types.php:294
 #: ../includes/class-wpcm-post-types.php:306
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:22
 msgid "Matches"
-msgstr "Spiele"
+msgstr "Mérkőzések"
 
 #: ../includes/class-wpcm-post-types.php:295
 msgid "Match"
-msgstr "Spiel"
+msgstr "Mérkőzés"
 
 #: ../includes/class-wpcm-post-types.php:297
 msgid "All Matches"
-msgstr "Alle Spiele"
+msgstr "Minden mérkőzés"
 
 #: ../includes/class-wpcm-post-types.php:298
 msgid "Add New Match"
-msgstr "Neues Spiel hinzufügen"
+msgstr "Új mérkőzés hozzáadása"
 
 #: ../includes/class-wpcm-post-types.php:299
 msgid "Edit Match"
-msgstr "Spiel bearbeiten"
+msgstr "Mérkőzés szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:300
 msgid "New Match"
-msgstr "Neues Spiel"
+msgstr "Új mérkőzés"
 
 #: ../includes/class-wpcm-post-types.php:301
 msgid "View Match"
-msgstr "Spiel anzeigen"
+msgstr "Mérkőzés megtekintése"
 
 #: ../includes/class-wpcm-post-types.php:302
 msgid "Search Matches"
-msgstr "Spiele durchsuchen"
+msgstr "Mérkőzés keresés"
 
 #: ../includes/class-wpcm-post-types.php:303
 msgid "No matches found"
-msgstr "Keine Spiele gefunden"
+msgstr "Nincs mérkőzés"
 
 #: ../includes/class-wpcm-post-types.php:304
 msgid "No matches found in trash"
-msgstr "Keine Spiele im Papierkorb gefunden"
+msgstr "Nincs mérkőzés a lomtárban"
 
 #: ../includes/class-wpcm-post-types.php:305
 msgid "Parent Match:"
-msgstr "Übergeordnetes Spiel:"
+msgstr "Szülő mérkőzés:"
 
 #: ../includes/class-wpcm-post-types.php:330
 #: ../includes/class-wpcm-post-types.php:342
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:132
 msgid "Sponsors"
-msgstr "Sponsoren"
+msgstr "Szponzorok"
 
 #: ../includes/class-wpcm-post-types.php:331
 msgid "Sponsor"
-msgstr "Sponsor"
+msgstr "Szponzor"
 
 #: ../includes/class-wpcm-post-types.php:333
 msgid "All Sponsors"
-msgstr "Alle Sponsoren"
+msgstr "Minden szponzor"
 
 #: ../includes/class-wpcm-post-types.php:334
 msgid "Add New Sponsor"
-msgstr "Neuen Sponsor hinzufügen"
+msgstr "Új szponzor"
 
 #: ../includes/class-wpcm-post-types.php:335
 msgid "Edit Sponsor"
-msgstr "Sponsor bearbeiten"
+msgstr "Szponzor szerkesztése"
 
 #: ../includes/class-wpcm-post-types.php:336
 msgid "New Sponsor"
-msgstr "Neuer Sponsor"
+msgstr "Új szponzor"
 
 #: ../includes/class-wpcm-post-types.php:337
 msgid "View Sponsor"
-msgstr "Sponsor anzeigen"
+msgstr "Szponzor megtekintése"
 
 #: ../includes/class-wpcm-post-types.php:338
 msgid "Search Sponsors"
-msgstr "Sponsoren durchsuchen"
+msgstr "Szponzor keresése"
 
 #: ../includes/class-wpcm-post-types.php:339
 msgid "No sponsors found"
-msgstr "Keine Sponsoren gefunden"
+msgstr "Nincs szponzor"
 
 #: ../includes/class-wpcm-post-types.php:340
 msgid "No sponsors found in trash"
-msgstr "Keine Sponsoren im Papierkorb gefunden"
+msgstr "Nincs szponzor a lomtárban"
 
 #: ../includes/class-wpcm-post-types.php:341
 msgid "Parent Sponsor:"
-msgstr "Übergeordneter Sponsor:"
+msgstr "Szülő szponzor:"
 
 #: ../includes/class-wpcm-shortcodes.php:204
 msgid "No location found for the entered address."
-msgstr "Es wurde kein Ort für die eingegebene Adresse gefunden."
+msgstr "Nem találtam helyszínt a megadott címen."
 
 #: ../includes/class-wpcm-shortcodes.php:206
 msgid "Invalid request. Did you enter an address?"
-msgstr "Ungültige Anfrage. Haben Sie eine Adresse eingegeben?"
+msgstr "Érvénytelen lekérdezés. Meg lett adva cím?"
 
 #: ../includes/class-wpcm-shortcodes.php:208
 msgid ""
 "Something went wrong while retrieving your map, please ensure you have "
 "entered the short code correctly."
 msgstr ""
-"Es ist ein Fehler beim Abrufen Ihrer Karte aufgetreten. Bitte stellen Sie "
-"sicher, dass Sie den Shortcode korrekt eingegeben haben."
 
 #: ../includes/class-wpcm-shortcodes.php:212
 msgid "Unable to contact Google API service."
-msgstr "Es ist nicht möglich den Google-API-Service zu kontaktieren."
+msgstr "Sikertelen kapcsolódás a Google API-hoz."
 
 #: ../includes/wpcm-club-functions.php:376
 #: ../includes/wpcm-player-functions.php:301
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatikus"
 
 #: ../includes/wpcm-club-functions.php:382
 #: ../includes/wpcm-player-functions.php:309
 msgid "Manual"
-msgstr "Manuell"
+msgstr "Manuális"
 
 #: ../includes/wpcm-core-functions.php:529
 msgid "Baseball"
@@ -1966,7 +1963,7 @@ msgstr "RBI"
 
 #: ../includes/wpcm-core-functions.php:548
 msgid "Bases on Bulk"
-msgstr "Bases on Balls"
+msgstr "Bases on Bulk"
 
 #: ../includes/wpcm-core-functions.php:548
 msgid "BB"
@@ -2018,7 +2015,7 @@ msgstr "PO"
 #: ../includes/wpcm-core-functions.php:827
 #: ../includes/wpcm-core-functions.php:924
 msgid "Assists"
-msgstr "Assists"
+msgstr "Gólpassz"
 
 #: ../includes/wpcm-core-functions.php:554
 #: ../includes/wpcm-core-functions.php:787
@@ -2054,7 +2051,7 @@ msgstr "DP"
 #: ../includes/wpcm-core-functions.php:978
 #: ../includes/wpcm-core-functions.php:1020
 msgid "Rating"
-msgstr "Rating"
+msgstr "Értékelés"
 
 #: ../includes/wpcm-core-functions.php:557
 #: ../includes/wpcm-core-functions.php:605
@@ -2067,7 +2064,7 @@ msgstr "Rating"
 #: ../includes/wpcm-core-functions.php:978
 #: ../includes/wpcm-core-functions.php:1020
 msgid "RAT"
-msgstr "RAT"
+msgstr "ÉRT"
 
 #: ../includes/wpcm-core-functions.php:558
 #: ../includes/wpcm-core-functions.php:606
@@ -2080,7 +2077,7 @@ msgstr "RAT"
 #: ../includes/wpcm-core-functions.php:979
 #: ../includes/wpcm-core-functions.php:1021
 msgid "Player of Match"
-msgstr "Spieler des Tages"
+msgstr "Meccs játékosa"
 
 #: ../includes/wpcm-core-functions.php:558
 #: ../includes/wpcm-core-functions.php:606
@@ -2093,7 +2090,7 @@ msgstr "Spieler des Tages"
 #: ../includes/wpcm-core-functions.php:979
 #: ../includes/wpcm-core-functions.php:1021
 msgid "POM"
-msgstr "SDT"
+msgstr "MJ"
 
 #: ../includes/wpcm-core-functions.php:562
 msgid "Basketball"
@@ -2101,7 +2098,7 @@ msgstr "Basketball"
 
 #: ../includes/wpcm-core-functions.php:589
 msgid "Minutes"
-msgstr "Minuten"
+msgstr "Perc"
 
 #: ../includes/wpcm-core-functions.php:589
 msgid "MIN"
@@ -2185,7 +2182,7 @@ msgstr "REB"
 #: ../includes/wpcm-core-functions.php:924
 #: ../includes/wpcm-core-functions.php:971
 msgid "AST"
-msgstr "AST"
+msgstr "GP"
 
 #: ../includes/wpcm-core-functions.php:600
 #: ../includes/wpcm-core-functions.php:1016
@@ -2207,7 +2204,7 @@ msgstr "STL"
 
 #: ../includes/wpcm-core-functions.php:602
 msgid "Personal Fouls"
-msgstr "Persönliche Fouls"
+msgstr "Personal Fouls"
 
 #: ../includes/wpcm-core-functions.php:602
 msgid "PF"
@@ -2226,7 +2223,7 @@ msgstr "TO"
 #: ../includes/wpcm-core-functions.php:604
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:184
 msgid "Points"
-msgstr "Punkte"
+msgstr "Pontok"
 
 #: ../includes/wpcm-core-functions.php:604
 #: ../includes/wpcm-core-functions.php:683
@@ -2235,7 +2232,7 @@ msgstr "PTS"
 
 #: ../includes/wpcm-core-functions.php:610
 msgid "American Football"
-msgstr "American Football"
+msgstr "Amerikai foci"
 
 #: ../includes/wpcm-core-functions.php:665
 msgid "Pass Completions"
@@ -2308,7 +2305,7 @@ msgstr "Total Tackles"
 
 #: ../includes/wpcm-core-functions.php:674
 msgid "TOTAL"
-msgstr "TOTAL"
+msgstr "ÖSSZES"
 
 #: ../includes/wpcm-core-functions.php:675
 msgid "Sacks"
@@ -2494,7 +2491,7 @@ msgstr "HO"
 #: ../includes/wpcm-core-functions.php:923
 #: ../includes/wpcm-core-functions.php:969
 msgid "Goals"
-msgstr "Goals"
+msgstr "Gólok"
 
 #: ../includes/wpcm-core-functions.php:754
 #: ../includes/wpcm-core-functions.php:786
@@ -2515,36 +2512,36 @@ msgstr "B"
 #: ../includes/wpcm-core-functions.php:893
 #: ../includes/wpcm-core-functions.php:927
 msgid "Yellow Cards"
-msgstr "Gelbe Karte"
+msgstr "Sárga lapok"
 
 #: ../includes/wpcm-core-functions.php:756
 #: ../includes/wpcm-core-functions.php:792
 #: ../includes/wpcm-core-functions.php:893
 #: ../includes/wpcm-core-functions.php:927
 msgid "YC"
-msgstr "GK"
+msgstr "SL"
 
 #: ../includes/wpcm-core-functions.php:757
 #: ../includes/wpcm-core-functions.php:793
 #: ../includes/wpcm-core-functions.php:894
 #: ../includes/wpcm-core-functions.php:928
 msgid "Red Cards"
-msgstr "Rote Karte"
+msgstr "Piros lapok"
 
 #: ../includes/wpcm-core-functions.php:757
 #: ../includes/wpcm-core-functions.php:793
 #: ../includes/wpcm-core-functions.php:894
 #: ../includes/wpcm-core-functions.php:928
 msgid "RC"
-msgstr "RK"
+msgstr "PL"
 
 #: ../includes/wpcm-core-functions.php:763
 msgid "Field Hockey"
-msgstr "Feldhockey"
+msgstr "Field Hockey"
 
 #: ../includes/wpcm-core-functions.php:788
 msgid "Shots"
-msgstr "Schüsse"
+msgstr "Lövések"
 
 #: ../includes/wpcm-core-functions.php:788
 msgid "SH"
@@ -2553,7 +2550,7 @@ msgstr "SH"
 #: ../includes/wpcm-core-functions.php:789
 #: ../includes/wpcm-core-functions.php:829
 msgid "Shots on Goal"
-msgstr "Torschüsse"
+msgstr "Shots on Goal"
 
 #: ../includes/wpcm-core-functions.php:789
 #: ../includes/wpcm-core-functions.php:829
@@ -2563,16 +2560,16 @@ msgstr "SOG"
 #: ../includes/wpcm-core-functions.php:790
 #: ../includes/wpcm-core-functions.php:836
 msgid "Saves"
-msgstr "Gehalten"
+msgstr "Mentések"
 
 #: ../includes/wpcm-core-functions.php:790
 #: ../includes/wpcm-core-functions.php:836
 msgid "SAV"
-msgstr "SAV"
+msgstr "MEN"
 
 #: ../includes/wpcm-core-functions.php:791
 msgid "Green Cards"
-msgstr "Grüne Karte"
+msgstr "Green Cards"
 
 #: ../includes/wpcm-core-functions.php:791
 msgid "GC"
@@ -2580,19 +2577,19 @@ msgstr "GC"
 
 #: ../includes/wpcm-core-functions.php:799
 msgid "Ice Hockey"
-msgstr "Eishockey"
+msgstr "Jéghoki"
 
 #: ../includes/wpcm-core-functions.php:828
 msgid "Plus/Minus Rating"
-msgstr "Plus/Minus-Bewertung"
+msgstr "Plus/Minus Rating"
 
 #: ../includes/wpcm-core-functions.php:828
 msgid "+/-"
-msgstr "+ / -"
+msgstr "+/-"
 
 #: ../includes/wpcm-core-functions.php:830
 msgid "Missed Shots"
-msgstr "Fehlschüsse"
+msgstr "Kihagyott helyzet"
 
 #: ../includes/wpcm-core-functions.php:830
 msgid "MS"
@@ -2600,7 +2597,7 @@ msgstr "MS"
 
 #: ../includes/wpcm-core-functions.php:831
 msgid "Blocked Shots"
-msgstr "Geblockte Schüsse"
+msgstr "Blokkolt lövés"
 
 #: ../includes/wpcm-core-functions.php:831
 msgid "BS"
@@ -2636,7 +2633,7 @@ msgstr "FL"
 
 #: ../includes/wpcm-core-functions.php:842
 msgid "Rugby"
-msgstr "Rugby"
+msgstr "Rögbi"
 
 #: ../includes/wpcm-core-functions.php:889
 msgid "Tries"
@@ -2656,12 +2653,12 @@ msgstr "CON"
 
 #: ../includes/wpcm-core-functions.php:891
 msgid "Penalties"
-msgstr "Penalties"
+msgstr "Büntetők"
 
 #: ../includes/wpcm-core-functions.php:891
 #: ../includes/wpcm-core-functions.php:976
 msgid "PEN"
-msgstr "PEN"
+msgstr "BÜN"
 
 #: ../includes/wpcm-core-functions.php:892
 msgid "Drop Goals"
@@ -2673,36 +2670,36 @@ msgstr "DG"
 
 #: ../includes/wpcm-core-functions.php:900
 msgid "Football (Soccer)"
-msgstr "Fussball"
+msgstr "Labdarúgás"
 
 #: ../includes/wpcm-core-functions.php:923
 #: ../includes/wpcm-core-functions.php:969
 msgid "GLS"
-msgstr "T"
+msgstr "GÓL"
 
 #: ../includes/wpcm-core-functions.php:925
 msgid "Penalty Goals"
-msgstr "Tore nach Strafstoß"
+msgstr "Gólok büntetőből"
 
 #: ../includes/wpcm-core-functions.php:925
 msgid "PENS"
-msgstr "PENS"
+msgstr "BÜN"
 
 #: ../includes/wpcm-core-functions.php:926
 msgid "Own Goals"
-msgstr "Eigentore"
+msgstr "Öngól"
 
 #: ../includes/wpcm-core-functions.php:926
 msgid "OG"
-msgstr "ET"
+msgstr "ÖG"
 
 #: ../includes/wpcm-core-functions.php:934
 msgid "Netball"
-msgstr "Korbball"
+msgstr "Netball"
 
 #: ../includes/wpcm-core-functions.php:970
 msgid "Goal Attempts"
-msgstr "Torversuche"
+msgstr "Kapuralövési kísérlet"
 
 #: ../includes/wpcm-core-functions.php:970
 msgid "ATT"
@@ -2710,7 +2707,7 @@ msgstr "ATT"
 
 #: ../includes/wpcm-core-functions.php:971
 msgid "Goal Assists"
-msgstr "Torvorlagen"
+msgstr "Gólpasszok"
 
 #: ../includes/wpcm-core-functions.php:973
 msgid "Centre Pass Receives"
@@ -2730,11 +2727,11 @@ msgstr "DEF"
 
 #: ../includes/wpcm-core-functions.php:976
 msgid "Penaties"
-msgstr "Strafstöße"
+msgstr "Büntető"
 
 #: ../includes/wpcm-core-functions.php:983
 msgid "Volleyball"
-msgstr "Volleyball"
+msgstr "Röplabda"
 
 #: ../includes/wpcm-core-functions.php:1014
 msgid "Aces"
@@ -2778,7 +2775,7 @@ msgstr "DIG"
 
 #: ../includes/wpcm-match-functions.php:149
 msgid "No players found!"
-msgstr "Keine Spieler gefunden!"
+msgstr "Nem találhatóak játékosok!"
 
 #: ../includes/wpcm-match-functions.php:177
 msgid "Player Off"
@@ -2786,34 +2783,34 @@ msgstr "Player Off"
 
 #: ../includes/wpcm-match-functions.php:301
 msgid "Man of Match"
-msgstr "Man of Match"
+msgstr "Mérkőzés legjobbja"
 
 #: ../includes/wpcm-match-functions.php:336
 msgid "Green Card"
-msgstr "Grüne Karte"
+msgstr "Green Card"
 
 #: ../includes/wpcm-match-functions.php:341
 msgid "Yellow Card"
-msgstr "Gelbe Karte"
+msgstr "Sárga lap"
 
 #: ../includes/wpcm-match-functions.php:345
 msgid "Red Card"
-msgstr "Rote Karte"
+msgstr "Piros lap"
 
 #: ../includes/wpcm-player-functions.php:275
 #: ../templates/shortcodes/players.php:31
 msgid "Apps"
-msgstr "Applikationen"
+msgstr "Apps"
 
 #: ../includes/wpcm-player-functions.php:367
 #: ../includes/admin/settings/class-wpcm-settings-players.php:175
 msgid "Games Played"
-msgstr "Absolvierte Spiele"
+msgstr "Mérkőzések"
 
 #: ../includes/wpcm-player-functions.php:367
 #: ../includes/admin/settings/class-wpcm-settings-players.php:175
 msgid "GP"
-msgstr "AS"
+msgstr "GP"
 
 #: ../includes/admin/class-wpcm-admin-assets.php:65
 msgid "WPClubManager"
@@ -2821,42 +2818,39 @@ msgstr "WPClubManager"
 
 #: ../includes/admin/class-wpcm-admin-menus.php:32
 msgid "Club Manager"
-msgstr "WP Club Manager"
+msgstr "Club Manager"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:49
 msgid "Action failed. Please refresh the page and retry."
-msgstr ""
-"Aktion fehlgeschlagen. Bitte aktualisieren Sie die Seite und versuchen Sie "
-"es erneut."
+msgstr "A művelet sikertelen. Kérjük, frissítse az oldalt és próbálja újra."
 
 #: ../includes/admin/class-wpcm-admin-settings.php:60
 #: ../includes/admin/class-wpcm-admin-welcome.php:206
 msgid "Your settings have been saved."
-msgstr "Ihre Einstellungen wurden gespeichert."
+msgstr "Beállításaidat elmentettük."
 
 #: ../includes/admin/class-wpcm-admin-settings.php:116
 msgid "The changes you made will be lost if you navigate away from this page."
-msgstr ""
-"Die vorgenommenen Änderungen gehen verloren, wenn Sie diese Seite verlassen."
+msgstr "A változtatások elvesznek ha elnavigál az oldalról."
 
 #: ../includes/admin/class-wpcm-admin-settings.php:479
 msgid "Hard Crop?"
-msgstr "Hard Crop?"
+msgstr "Kép kivágása"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:530
 msgid "Select a page&hellip;"
-msgstr "Wählen Sie eine Seite ..."
+msgstr "Select a page&hellip;"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:551
 #: ../includes/admin/class-wpcm-admin-welcome.php:272
 #: ../includes/admin/wpcm-meta-box-functions.php:225
 msgid "Choose a country&hellip;"
-msgstr "Wählen Sie ein Land ..."
+msgstr "Válassz országot&hellip;"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:53
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:73
 msgid "Competition Label"
-msgstr "Wettbewerbsbeschriftung"
+msgstr "Versenykiírás felirat"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:55
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:77
@@ -2864,18 +2858,17 @@ msgid ""
 "The competition label is used to display a shortened version of the "
 "competition name."
 msgstr ""
-"Das Wettbewerbsetikett wird genutzt um eine verkürzte Version des "
-"Wettbewerbsnamens anzuzeigen."
+"A versenykiírás felirata lesz használva a verseny nevének rövidítéseként."
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:116
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:155
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:174
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Leírás"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:117
 msgid "Label"
-msgstr "Beschriftung"
+msgstr "Felirat"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:156
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:175
@@ -2886,49 +2879,45 @@ msgstr "Slug"
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:216
 #: ../templates/single-match/venue-info.php:37
 msgid "Venue Address"
-msgstr "Adresse des Austragungsortes"
+msgstr "Helyszín címe"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:193
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:220
 msgid "The venue address is used to display a map of the venue."
-msgstr ""
-"Die Adresse des Austragungsortes wird genutzt um eine Karte des "
-"Austragungsortes anzuzeigen."
+msgstr "A helyszín címe alapján az oldalon megjelenítjük a térképen."
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:196
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:225
 msgid "Venue Capacity"
-msgstr "Kapazität des Austragungsortes"
+msgstr "Helyszín férőhely"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:198
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:229
 msgid ""
 "The venue capacity is not prominent by default; however, some themes may "
 "show it."
-msgstr ""
-"Die Kapazität des Austragungsortes ist nicht standardmäßig sichtbar; jedoch "
-"können einige Themen sie anzeigen."
+msgstr "A férőhely a téma beállításától függően jelenítődik meg az oldalon."
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:269
 msgid "Capacity"
-msgstr "Kapazität"
+msgstr "Férőhely"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:46
 #: ../includes/admin/class-wpcm-admin-welcome.php:145
 msgid "Welcome to WP Club Manager"
-msgstr "Willkommen zum WP Club Manager"
+msgstr "Welcome to WP Club Manager"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:150
 msgid "Thanks, all done!"
-msgstr "Danke, fertig!"
+msgstr "Köszönjük, készen vagyunk!"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:152
 msgid "Thank you for updating to the latest version of"
-msgstr "Danke, dass Sie eine Aktualisierung auf die neueste Version von"
+msgstr "Thank you for updating to the latest version of"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:154
 msgid "Thanks for installing"
-msgstr "Vielen Dank für die Installation"
+msgstr "Köszönjük hogy telepítetted a plugint"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:156
 #, php-format
@@ -2937,9 +2926,9 @@ msgid ""
 "Version %s is more powerful and stable than ever before. We hope you enjoy "
 "it."
 msgstr ""
-"%s WP Club Manager, die Komplettlösung zur Verwaltung Ihrer Vereinswebseite. "
-"Version %s ist leistungsfähiger und stabiler als je zuvor. Wir hoffen, es "
-"gefällt Ihnen."
+"%s WP Club Manager, the complete solution for managing your clubs website. "
+"Version %s is more powerful and stable than ever before. We hope you enjoy "
+"it."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:160
 #, php-format
@@ -2948,68 +2937,67 @@ msgstr "Version %s"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:163
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Beállítások"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:169
 #: ../includes/admin/class-wpcm-admin-welcome.php:188
 msgid "Get Started"
-msgstr "Los geht's"
+msgstr "Get Started"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:214
 msgid "Configure Plugin"
-msgstr "Plugin konfigurieren"
+msgstr "Plugin beállítása"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:217
 #: ../includes/admin/settings/class-wpcm-settings-general.php:43
 msgid "Sport"
-msgstr "Sportart"
+msgstr "Sport"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:252
 msgid "Create Default Club"
-msgstr "Standardverein erstellen"
+msgstr "Alap klub elkészítése"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:267
 #: ../includes/admin/settings/class-wpcm-settings-general.php:65
 msgid "Base Location"
-msgstr "Standort"
+msgstr "Alap helyszín"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:277
 #: ../includes/admin/views/html-admin-settings.php:25
 msgid "Save changes"
-msgstr "Änderungen speichern"
+msgstr "Mentés"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:287
 msgid "Next Steps"
-msgstr "Nächster Schritt"
+msgstr "Következő"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:290
 msgid "Add Competitions"
-msgstr "Wettbewerbe hinzufügen"
+msgstr "Versenykiírás hozzáadása"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:291
 msgid "Add Seasons"
-msgstr "Saisons hinzufügen"
+msgstr "Szezonok hozzáadása"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:292
 msgid "Add Players"
-msgstr "Spieler hinzufügen"
+msgstr "Játékosok hozzáadása"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:293
 msgid "Add More Clubs"
-msgstr "Weitere Vereine hinzufügen"
+msgstr "Klubok hozzáadása"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:296
 msgid ""
 "Please check out our <a href=\"http://wpclubmanager.com/docs/\">plugin "
 "documentation</a> if you need help setting up or managing your club."
 msgstr ""
-"Bitte besuchen Sie unsere <a href=\"http://wpclubmanager.com/docs/\">Plugin-"
-"Dokumentation</ a> falls Sie Hilfe bei der Einrichtung oder Verwaltung Ihres "
-"Vereins benötigen."
+"Nézd meg a <a href=\"http://wpclubmanager.com/docs/\">plugin dokumentációt</"
+"a>ha szükséged van segítségre a plugint beállításához. (angol nyelvű)"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:303
 msgid "Translators"
-msgstr "Übersetzer"
+msgstr "Fordítók"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:305
 msgid ""
@@ -3019,37 +3007,37 @@ msgid ""
 "the <a href=\"https://www.transifex.com/projects/p/wp-club-manager/\">WP "
 "Club Manager project</a>."
 msgstr ""
-"WP Club Manager wurde von unseren tollen Übersetzungsteams, die unten "
-"aufgeführt sind, übersetzt. Wenn Sie bei der Übersetzung helfen können, "
-"melden Sie sich bitte für ein kostenloses Konto auf <a href=\"https://www."
-"transifex.com/\">Transifex</a> an und besuchen Sie das <a href=\"https://www."
-"transifex.com/projects/p/wp-club-manager/\">WP Club Manager - Projekt</a>."
+"WP Club Manager önkéntesek által lett lefordítva, emyenniben te is segítenél "
+"a fordítésban akkor készíts egy ingyenes felhasználót a <a href=\"https://"
+"www.transifex.com/\">Transifex</a> oldalán és látogasd meg a <a href="
+"\"https://www.transifex.com/projects/p/wp-club-manager/\">WP Club Manager "
+"projekt</a> oldalát."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:323
 msgid "Go to WP Club Manager Settings"
-msgstr "Gehe zu den WP Club Manager Einstellungen"
+msgstr "WP Club Manager beállításához"
 
 #: ../includes/admin/wpcm-admin-functions.php:21
 msgid "wpcm-settings"
-msgstr "wpcm-einstellungen"
+msgstr "wpcm-settings"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:74
 msgid "Club name"
-msgstr "Vereinsname"
+msgstr "Klub neve"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:87
 msgid "Club Badge"
-msgstr "Vereinswappen"
+msgstr "Klubcímer"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:89
 msgid "Remove club badge"
-msgstr "Vereinwappen entfernen"
+msgstr "Klubcímer eltávolítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:91
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:107
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:108
 msgid "Set club badge"
-msgstr "Vereinswappen setzen"
+msgstr "Klubcímer beállítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:161
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:171
@@ -3063,58 +3051,58 @@ msgstr "Vereinswappen setzen"
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:181
 #, php-format
 msgid "Show all %s"
-msgstr "Alle %s anzeigen"
+msgstr "Mutassa az összes: %s"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:161
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:204
 msgid "competitions"
-msgstr "Wettbewerbe"
+msgstr "versenyek"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:171
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:214
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:210
 msgid "seasons"
-msgstr "Saisons"
+msgstr "szezonok"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:78
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:80
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:82
 #, php-format
 msgid "Kick-off: <b>%1$s</b>"
-msgstr "Anstoss: <b>%1$s</b>"
+msgstr "Kick-off: <b>%1$s</b>"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:148
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:97
 msgid "Fixture"
-msgstr "Begegnung"
+msgstr "Tabella"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:152
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:85
 #: ../includes/widgets/class-wpcm-widget-results.php:85
 #: ../templates/shortcodes/matches.php:114
 msgid "Date"
-msgstr "Datum"
+msgstr "Dátum"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:153
 msgid "Kick-off"
-msgstr "Anstoss"
+msgstr "Mérkőzés kezdete"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:154
 #: ../includes/widgets/class-wpcm-widget-results.php:32
 msgid "Results"
-msgstr "Ergebnis"
+msgstr "Eredmény"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:224
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:200
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:181
 msgid "teams"
-msgstr "Mannschaften"
+msgstr "csapatok"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:80
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:78
 #, php-format
 msgid "Joins on: <b>%1$s</b>"
-msgstr "Tritt bei am: <b>%1$s</b>"
+msgstr ""
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:82
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:84
@@ -3122,43 +3110,43 @@ msgstr "Tritt bei am: <b>%1$s</b>"
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:82
 #, php-format
 msgid "Joined on: <b>%1$s</b>"
-msgstr "Beigetreten am: <b>%1$s</b>"
+msgstr ""
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:87
 msgid "Player Image"
-msgstr "Spielerbild"
+msgstr "Játékos fotó"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:89
 msgid "Remove player image"
-msgstr "Spielerbild entfernen"
+msgstr "Játékos fotó eltávolítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:91
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:106
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:107
 msgid "Set player image"
-msgstr "Spielerbild festlegen"
+msgstr "Játékos fotó beállítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:190
 msgid "positions"
-msgstr "Positionen"
+msgstr "posztok"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:68
 msgid "Sponsor name"
-msgstr "Sponsorname"
+msgstr "Szponzor neve"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:77
 msgid "Sponsor Logo"
-msgstr "Sponsorlogo"
+msgstr "Szponzor logó"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:79
 msgid "Remove sponsor logo"
-msgstr "Sponsorlogo entfernen"
+msgstr "Szponzor logó eltávolítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:81
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:96
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:97
 msgid "Set sponsor logo"
-msgstr "Sponsorlogo festlegen"
+msgstr "Szponzor logó beállítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:110
 msgid "URL"
@@ -3166,285 +3154,281 @@ msgstr "URL"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:111
 msgid "Link directly?"
-msgstr "Direkt verknüpfen?"
+msgstr "Közvetlen linkelés?"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:133
 msgid "Yes"
-msgstr "Ja"
+msgstr "Igen"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:133
 msgid "No"
-msgstr "Nein"
+msgstr "Nem"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:86
 msgid "Staff Image"
-msgstr "Mitarbeiterbild"
+msgstr "Stábtag fotó"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:88
 msgid "Remove staff image"
-msgstr "Mitarbeiterbild entfernen"
+msgstr "Stábtag fotójának eltávolítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:90
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:105
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:106
 msgid "Set staff image"
-msgstr "Mitarbeiterbild festlegen"
+msgstr "Stábtag fotójának beállítása"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:119
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:48
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:73
 msgid "Job Title"
-msgstr "Tätigkeitsbezeichnung"
+msgstr "Beosztás neve"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:171
 msgid "jobs"
-msgstr "Tätigkeiten"
+msgstr "beosztások"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt.php:40
 #, php-format
 msgid "Insert into %s"
-msgstr "Einfügen in %s"
+msgstr ""
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt.php:41
 #, php-format
 msgid "Uploaded to this %s"
-msgstr "Zu %s hochladen"
+msgstr ""
 
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:94
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:102
 #: ../includes/widgets/class-wpcm-widget-players.php:240
 #: ../includes/widgets/class-wpcm-widget-standings.php:182
 msgid "Statistics"
-msgstr "Statistiken"
+msgstr "Statisztikák"
 
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:96
 msgid "Match Result"
-msgstr "Spielergebnis"
+msgstr "Eredmény"
 
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:98
 msgid "Match Details"
-msgstr "Spieldetails"
+msgstr "Mérkőzés leírás"
 
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:101
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:104
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:106
 msgid "Basic Information"
-msgstr "Basisinformation"
+msgstr "Alapvető információk"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-stats.php:30
 msgid "Choose a competition and season to edit the manual stats."
-msgstr ""
-"Wählen Sie einen Wettbewerb und eine Saison um die manuellen Statistiken zu "
-"bearbeiten."
+msgstr "Válassza ki a versenyt és szezont a statisztika kézi szerkesztéséhez."
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:111
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:110
 #: ../templates/single-match/attendance.php:24
 msgid "Attendance"
-msgstr "Teilnahme"
+msgstr "Nézőszám"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:113
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:90
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:118
 #: ../templates/single-match/referee.php:21
 msgid "Referee"
-msgstr "Schiedsrichter"
+msgstr "Játékvezető"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:31
 msgid "Home"
-msgstr "Heim"
+msgstr "Hazai"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:32
 msgid "Away"
-msgstr "Gast"
+msgstr "Vendég"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:31
 msgid "Starting Lineup"
-msgstr "Startaufstellung"
+msgstr "Kezdő 11"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:32
 msgid "Substitutes"
-msgstr "Auswechselspieler"
+msgstr "Cserék"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:36
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:40
 msgid "You have selected"
-msgstr "Sie haben ausgewählt"
+msgstr "Kiválasztva"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:36
 msgid "players"
-msgstr "Spieler"
+msgstr "játékos"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:40
 msgid "substitutes"
-msgstr "Auswechselspieler"
+msgstr "csere"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:37
 #: ../templates/shortcodes/matches.php:125
 msgid "Result"
-msgstr "Ergebnis"
+msgstr "Eredmény"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:45
 msgctxt "team"
 msgid "Home"
-msgstr "Heim"
+msgstr "Hazai"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:46
 msgctxt "team"
 msgid "Away"
-msgstr "Gast"
+msgstr "Vendég"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:51
 #: ../includes/widgets/class-wpcm-widget-results.php:95
 msgid "Score"
-msgstr "Spielstand"
+msgstr "Eredmény"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:62
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:175
 msgid "Bonus Points"
-msgstr "Bonuspunkte"
+msgstr "Bónusz pontok"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:73
 msgid "Overtime"
-msgstr "Verlängerung"
+msgstr "Hosszabbítás"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:81
 msgid "Friendly"
-msgstr "Freundschaftsspiel"
+msgstr "Barátságos"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:48
 msgid "Squad Number"
-msgstr "Rückennummer"
+msgstr "Mezszám"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:88
 #: ../includes/admin/settings/class-wpcm-settings-players.php:121
 #: ../templates/single-player/meta.php:170
 msgid "Birthplace"
-msgstr "Geburtsort"
+msgstr "Születési hely"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:90
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:80
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:81
 #: ../templates/content-single-staff.php:150
 msgid "Nationality"
-msgstr "Nationalität"
+msgstr "Nemzetiség"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:92
 #: ../includes/admin/settings/class-wpcm-settings-players.php:129
 #: ../templates/single-player/meta.php:211
 msgid "Previous Clubs"
-msgstr "Bisherige Vereine"
+msgstr "Előző klubok"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:29
 #: ../templates/single-player/stats.php:19
 #, php-format
 msgid "All %s"
-msgstr "Alle %s"
+msgstr "Összes %s"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-sponsor-url.php:26
 msgid "Link URL"
-msgstr "Verknüpfungs-URL"
+msgstr "Link URL"
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:22
 msgid "General"
-msgstr "Allgemein"
+msgstr "Általános"
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:40
 msgid "General Options"
-msgstr "Allgemeine Einstellungen"
+msgstr "Általános beállítások"
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:44
 msgid ""
 "Choose your sport. Your choice will determine the player stats that are "
 "available."
 msgstr ""
-"Wählen Sie Ihre Sportart. Ihr Auswahl wird bestimmen, welche "
-"Spielerstatistiken zur Verfügung stehen."
+"Válassz ki egy sportot. A választástól függően jelenítődnek meg a "
+"statisztikai beállítások."
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:55
 msgid "Default Club"
-msgstr "Standardverein"
+msgstr "Alapértelmezett klub"
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:56
 msgid "This is the default club."
-msgstr "Das ist der Standardverein."
+msgstr "Ez lesz az alapértelmezett klubod"
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:66
 msgid ""
 "This is the base country for your club. Players nationality will default to "
 "this country."
 msgstr ""
-"Das ist das Basisland für Ihren Verein. Spielernationalitäten werden "
-"standarmäßig auf dieses Land gesetzt."
+"Ehhez az országhoz tartozik a klubod. A játékosok is alapértelmezetten ehhez "
+"a nemzetiséghez fognak tartozni."
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:38
 msgid "Title Format Options"
-msgstr "Titelformateinstellungen"
+msgstr "Felirat beállítások"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:41
 msgid "Choose the format to display matches"
-msgstr "Wählen Sie das Format in dem die Spiele angezeigt werden sollen."
+msgstr "Válassz formátumot az eredményhez"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:47
 msgid "Default - <code>%home% v %away%</code>"
-msgstr "Standard - <code>%heim% v %gast%>/code>"
+msgstr "Alapértelmezett - <code>%hazai% v %vendég%</code>"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:48
 msgid "Reverse - <code>%away% v %home%</code>"
-msgstr "Umkehren - <code>%gast% v %heim%</code>"
+msgstr "Fordított - <code>%vendég% v %hazai%</code>"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:55
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:79
 #: ../includes/widgets/class-wpcm-widget-results.php:79
 msgid "Display Options"
-msgstr "Anzeigeeinstellungen"
+msgstr "Megjelenítési beállítások"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:58
 msgid "Clubs Separator"
-msgstr "Trennzeichen der Vereine"
+msgstr "Klubnevek közti elválasztó"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:59
 msgid "This sets the separator of clubs."
-msgstr "Das legt das Trennzeichen für die Vereine fest."
+msgstr "Ez választja el egymástól a klubok neveit."
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:68
 msgid "Goals Delimiter"
-msgstr "Trennzeichen für Tore"
+msgstr "Gól elválasztó"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:69
 msgid "This sets the separator of results."
-msgstr "Das legt das Trennzeichen für die Ergebnisse fest."
+msgstr "Ez választja el egymástól az eredményt."
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:79
 msgid "Pre Match Display Options"
-msgstr "Anzeigeeinstellungen - vor dem Spiel"
+msgstr "Mérkőzés előtti adatok megjelenítése"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:99
 msgid "Post Match Display Options"
-msgstr "Anzeigeeinstellungen - nach dem Spiel"
+msgstr "Mérkőzés utáni  adatok megjelenítése"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:38
 msgid "Player Profile Options"
-msgstr "Spielerprofileinstellungen"
+msgstr "Játékos profil beállítások"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:38
 msgid "<p>Choose which fields to display on player profile pages.</p>"
-msgstr ""
-"<p>Wählen Sie, welche Felder auf der Spielerprofilseite angezeigt werden "
-"sollen.</p>"
+msgstr "<p>Válaszd ki mik jelenjenek meg a profil oldalon.</p>"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:105
 msgid "Date Joined"
-msgstr "Beitrittsdatum"
+msgstr "Csatlakozás dátuma"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:113
 #: ../templates/single-player/meta.php:196
 msgid "Experience"
-msgstr "Erfahrung"
+msgstr "Tapasztalat"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:138
 msgid "Player Image Sizes"
-msgstr "Spielerbildgröße"
+msgstr "Játékos kép mérete"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:138
 #, php-format
@@ -3454,49 +3438,40 @@ msgid ""
 "styles. After changing these settings you may need to <a href=\"%s"
 "\">regenerate your thumbnails</a>.</p>"
 msgstr ""
-"<p>Diese Einstellungen wirken sich auf die aktuellen Bildabmessungen in den "
-"Spieler- und Mitarbeiterprofilen aus - die Anzeige im Front-End wird "
-"weiterhin durch CSS-Stile beeinflusst. Nach dem Ändern dieser Einstellungen, "
-"müssen Sie möglicherweise <a href=\"%s\">Ihre Thumbnails regenerieren</ a>."
-"</ P>"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:141
 msgid "Player Profile Image"
-msgstr "Spielerprofilbild"
+msgstr "Játékos profilkép"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:155
 msgid "Player Thumbnails"
-msgstr "Spieler Thumbnails"
+msgstr "Játékos bélyegkép"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:170
 msgid "Display Player Stats"
-msgstr "Spielerstatistiken anzeigen"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:170
 msgid "<p>Choose which player stats to display throughout the site.</p>"
-msgstr ""
-"<p>Wählen Sie, welche Spielerstatistiken auf der Website angezeigt werden "
-"sollen.</ p>"
+msgstr "<p>Válaszd ki az oldalon megjelenítendő profil statisztikákat.</p>"
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:38
 msgid "Staff Profile Options"
-msgstr "Mitarbeiterprofileinstellungen"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:38
 msgid "<p>Choose which fields to display on staff profile pages.</p>"
 msgstr ""
-"<p>Wählen Sie, welche Felder auf den Mitarbeiterprofilseiten angezeigt "
-"werden sollen.</p>"
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:41
 #: ../templates/content-single-staff.php:49
 #: ../templates/single-player/meta.php:38
 msgid "Birthday"
-msgstr "Geburtstag"
+msgstr "Születésnap"
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:98
 msgid "Staff Image Sizes"
-msgstr "Mitarbeiterbildgröße"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:98
 #, php-format
@@ -3506,97 +3481,91 @@ msgid ""
 "styles. After changing these settings you may need to <a href=\"%s"
 "\">regenerate your thumbnails</a>."
 msgstr ""
-"Diese Einstellungen wirken sich auf die aktuellen Bildabmessungen in den "
-"Spieler- und Mitarbeiterprofilen aus - die Anzeige im Front-End wird "
-"weiterhin durch CSS-Stile beeinflusst. Nach dem Ändern dieser Einstellungen, "
-"müssen Sie möglicherweise <a href=\"%s\">Ihre Thumbnails regenerieren</ a>."
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:101
 msgid "Staff Profile Image"
-msgstr "Mitarbeiterprofilbild"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:115
 msgid "Staff Thumbnails"
-msgstr "Mitarbeiter Thumbnails"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:38
 msgid "Scoring System"
-msgstr "Punktesystem"
+msgstr "Pontozási rendszer"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:41
 msgid "Points for win"
-msgstr "Punkte für Sieg"
+msgstr "Pont győzelemért"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:42
 msgid "This sets the points for won matches."
-msgstr "Hier werden die Punkte für gewonne Spiele festgelegt."
+msgstr "Állítsd be mennyi pontot kap a győztes."
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:51
 msgid "Points for draw"
-msgstr "Punkte für Unentschieden"
+msgstr "Pont döntetlenért"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:52
 msgid "This sets the points for drawn matches."
-msgstr "Hier werden die Punkte für unentschiedene Spiele festgelegt."
+msgstr "Állítsd be mennyi pontot kapnak döntetlen esetében."
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:61
 msgid "Points for overtime loss"
-msgstr "Punkte für verlorene Verlängerung"
+msgstr "Pont hosszabításkori vereség esetén"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:62
 msgid ""
 "This sets the points for lost in overtime matches. Often used in Ice Hockey"
-msgstr ""
-"Hier werden die Punkte für verlorene Spiele nach Verlängerung festgelegt. "
-"Wird oft bei Eishockey angewandt."
+msgstr "Mennyi pontot kap a csapat ha a hosszabbításban kap ki. (jéghoki)"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:71
 msgid "Points for loss"
-msgstr "Punkte für Niederlage"
+msgstr "Pont vereségnél"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:72
 msgid "This sets the points for lost matches."
-msgstr "Hier werden die Punkte für verlorene Spiele festgelegt."
+msgstr "Állítsd be mennyi pontot kap a vesztes."
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:82
 msgid "Standings Labels"
-msgstr "Wertungsetiketten"
+msgstr "Tabella feliratok"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:94
 msgid "Played"
-msgstr "Gespielt"
+msgstr "Mérkőzések"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:103
 msgid "Win"
-msgstr "Siege"
+msgstr "Győzelem"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:112
 msgid "Draw"
-msgstr "Unentschieden"
+msgstr "Döntetlen"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:121
 msgid "Lost"
-msgstr "Niederlagen"
+msgstr "Vereség"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:130
 msgid "Lost in Overtime"
-msgstr "Niederlagen nach Verlängerung"
+msgstr "Vereség hosszabításban"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:139
 msgid "Win Percentage"
-msgstr "Gewonnene Spiele in %"
+msgstr "Győzelmek %"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:148
 msgid "Goals For"
-msgstr "Tore"
+msgstr "Lőtt gól"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:157
 msgid "Goals Against"
-msgstr "Gegentore"
+msgstr "Kapott gól"
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:166
 msgid "Goal Difference"
-msgstr "Torverhältnis"
+msgstr "Gólkülönbség"
 
 #: ../includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3604,118 +3573,118 @@ msgid ""
 "if you encounter layout issues please read our integration guide or choose a "
 "WP Club Manager theme :)"
 msgstr ""
-"<strong>Ihr Theme wird nicht direkt von WP Club Manager unterstützt.</"
-"strong> - Falls Sie Probleme mit dem Layout haben sollten, lesen Sie bitte "
-"unsere Integrationsanleitung oder wählen Sie ein WP Club Manager Theme. :-)"
+"<strong>Az általad használt sablon nem támogatja a WP Club Manager plugint.</"
+"strong> Ennek kijavításához kérlek olvasd el az integrációs leírást, vagy "
+"hazsnálj WP Club sablont. :)"
 
 #: ../includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
-msgstr "Theme-Integrationsanleitung (Engl.)"
+msgstr ""
 
 #: ../includes/admin/views/html-notice-theme-support.php:8
 msgid "Hide this notice"
-msgstr "Diesen Hinweis verbergen"
+msgstr "Elrejtés"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:26
 msgid "Display upcoming fixtures."
-msgstr "Bevorstehende Begegnungen anzeigen"
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:28
 msgid "WPCM Fixtures"
-msgstr "WPCM Begegnungen"
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:32
 msgid "Fixtures"
-msgstr "Begegnungen"
+msgstr "Tabellák"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:69
 #: ../includes/widgets/class-wpcm-widget-results.php:69
 msgid "View all matches"
-msgstr "Alle Spiele anzeigen"
+msgstr "Minden mérkőzés megtekintése"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:90
 #: ../includes/widgets/class-wpcm-widget-results.php:90
 msgid "Kick Off"
-msgstr "Anstoss"
+msgstr "Mérkőzés kezdés"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:225
 msgid "No more matches scheduled."
-msgstr "Keine weiteren Spiele geplant."
+msgstr "Nincs több lejátszatlan mérkőzés."
 
 #: ../includes/widgets/class-wpcm-widget-players.php:31
 msgid "Display a table of players details."
-msgstr "Eine Tabelle mit Spielerdetails anzeigen."
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-players.php:33
 msgid "WPCM Players"
-msgstr "WPCM Spieler"
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-players.php:140
 msgid "Image"
-msgstr "Bild"
+msgstr "Kép"
 
 #: ../includes/widgets/class-wpcm-widget-results.php:26
 msgid "Display most recent results."
-msgstr "Letzte Ergebnisse anzeigen."
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-results.php:28
 msgid "WPCM Results"
-msgstr "WPCM Ergebnisse"
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-results.php:230
 #: ../templates/shortcodes/matches.php:130
 msgid "No matches played yet."
-msgstr "Noch keine Spiele absolviert."
+msgstr "Még nincs lejátszott mérkőzés."
 
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:31
 msgid "Display a sponsors logo."
-msgstr "Sponsorlogo anzeigen"
+msgstr "Szponzor logó megjelenítés."
 
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:33
 msgid "WPCM Sponsors"
-msgstr "WPCM Sponsoren"
+msgstr "WPCM szponzorok"
 
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:142
 msgid "Choose a sponsor"
-msgstr "Sponsor auswählen"
+msgstr "Szponzor választása"
 
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:159
 msgid "Link directly to website?"
-msgstr "Direkt mit der Webseite verknüpfen?"
+msgstr "Hivatkozzunk a weboldalra?"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:31
 msgid "Display your clubs league standings."
-msgstr "Ligawertungen Ihres Vereins anzeigen."
+msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:33
 msgid "WPCM Standings"
-msgstr "WPCM Wertungen"
+msgstr ""
 
 #: ../templates/content-single-sponsor.php:32
 msgid "Visit website"
-msgstr "Webseite besuchen"
+msgstr "Weboldal megtekintése"
 
 #: ../templates/shortcodes/matches.php:117
 msgid "Opponent"
-msgstr "Gegner"
+msgstr "Ellenfél"
 
 #: ../templates/single-match/lineup.php:31
 msgid "Lineup"
-msgstr "Aufstellung"
+msgstr "Felállás"
 
 #: ../templates/single-match/lineup.php:59
 #: ../templates/single-match/lineup.php:118
 msgid "Cards"
-msgstr "Karten"
+msgstr "Lapok"
 
 #: ../templates/single-match/lineup.php:90
 msgid "Subs"
-msgstr "Ersatzspieler"
+msgstr ""
 
 #: ../templates/single-match/report.php:22
 msgid "Match Report"
-msgstr "Spielbericht"
+msgstr "Mérkőzés összefoglaló"
 
 #: ../templates/single-player/meta.php:25
 msgid "Squad No."
-msgstr "Rückennr."
+msgstr "Mezszám"

@@ -1,18 +1,19 @@
 #
 # Translators:
+# piotr01 <epiotr@gmail.com>, 2014
 # rychu_cmg <gebala@g.pl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
-"POT-Creation-Date: 2014-06-10 09:28-0000\n"
-"PO-Revision-Date: 2014-06-10 09:28-0000\n"
+"POT-Creation-Date: 2014-06-10 09:06-0000\n"
+"PO-Revision-Date: 2014-07-01 21:59-0000\n"
 "Last-Translator: \n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/wp-club-"
 "manager/language/pl_PL/)\n"
-"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
@@ -103,7 +104,7 @@ msgstr "Mecze i wyniki"
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:138
 #: ../includes/widgets/class-wpcm-widget-standings.php:123
 msgid "Title"
-msgstr ""
+msgstr "Tytuł"
 
 #: ../includes/class-wpcm-ajax.php:162 ../includes/class-wpcm-ajax.php:659
 #: ../includes/class-wpcm-post-types.php:44
@@ -373,7 +374,7 @@ msgstr "Kolejność stron"
 
 #: ../includes/class-wpcm-ajax.php:372 ../includes/class-wpcm-ajax.php:550
 msgid "Alphabetical"
-msgstr ""
+msgstr "Alfabetycznie"
 
 #: ../includes/class-wpcm-ajax.php:381 ../includes/class-wpcm-ajax.php:557
 #: ../includes/class-wpcm-ajax.php:718
@@ -416,7 +417,7 @@ msgstr "Sztab Zespołu"
 #: ../templates/content-single-staff.php:134
 #: ../templates/shortcodes/staff.php:34
 msgid "Job"
-msgstr ""
+msgstr "Stanowisko"
 
 #: ../includes/class-wpcm-ajax.php:530
 #: ../includes/class-wpcm-post-types.php:65
@@ -431,7 +432,7 @@ msgstr "Losowy"
 #: ../includes/widgets/class-wpcm-widget-standings.php:114
 #: ../templates/shortcodes/standings.php:19
 msgid "View all standings"
-msgstr ""
+msgstr "Wyświetl wszystkie pozycje"
 
 #: ../includes/class-wpcm-ajax.php:640 ../includes/class-wpcm-ajax.php:792
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:22
@@ -450,7 +451,7 @@ msgstr "Afganistan"
 
 #: ../includes/class-wpcm-countries.php:33
 msgid "&#197;land Islands"
-msgstr ""
+msgstr "Wyspy Alandzkie"
 
 #: ../includes/class-wpcm-countries.php:34
 msgid "Albania"
@@ -894,11 +895,11 @@ msgstr "Japonia"
 
 #: ../includes/class-wpcm-countries.php:144
 msgid "Jersey"
-msgstr ""
+msgstr "Jersey"
 
 #: ../includes/class-wpcm-countries.php:145
 msgid "Jordan"
-msgstr ""
+msgstr "Jordania"
 
 #: ../includes/class-wpcm-countries.php:146
 msgid "Kazakhstan"
@@ -910,7 +911,7 @@ msgstr "Kenia"
 
 #: ../includes/class-wpcm-countries.php:148
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #: ../includes/class-wpcm-countries.php:149
 msgid "Kuwait"
@@ -918,47 +919,47 @@ msgstr "Kuwejt"
 
 #: ../includes/class-wpcm-countries.php:150
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kirgistan"
 
 #: ../includes/class-wpcm-countries.php:151
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #: ../includes/class-wpcm-countries.php:152
 msgid "Latvia"
-msgstr ""
+msgstr "Łotwa"
 
 #: ../includes/class-wpcm-countries.php:153
 msgid "Lebanon"
-msgstr ""
+msgstr "Liban"
 
 #: ../includes/class-wpcm-countries.php:154
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #: ../includes/class-wpcm-countries.php:155
 msgid "Liberia"
-msgstr ""
+msgstr "Liberia"
 
 #: ../includes/class-wpcm-countries.php:156
 msgid "Libya"
-msgstr ""
+msgstr "Libia"
 
 #: ../includes/class-wpcm-countries.php:157
 msgid "Liechtenstein"
-msgstr ""
+msgstr " Liechtenstein"
 
 #: ../includes/class-wpcm-countries.php:158
 msgid "Lithuania"
-msgstr ""
+msgstr "Litwa"
 
 #: ../includes/class-wpcm-countries.php:159
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luksemburg"
 
 #: ../includes/class-wpcm-countries.php:160
 msgid "Macao"
-msgstr ""
+msgstr " Makau"
 
 #: ../includes/class-wpcm-countries.php:161
 msgid "Macedonia"
@@ -970,19 +971,19 @@ msgstr "Madagaskar"
 
 #: ../includes/class-wpcm-countries.php:163
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #: ../includes/class-wpcm-countries.php:164
 msgid "Malaysia"
-msgstr ""
+msgstr "Malezja"
 
 #: ../includes/class-wpcm-countries.php:165
 msgid "Maldives"
-msgstr ""
+msgstr "Malediwy"
 
 #: ../includes/class-wpcm-countries.php:166
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #: ../includes/class-wpcm-countries.php:167
 msgid "Malta"
@@ -990,23 +991,23 @@ msgstr "Malta"
 
 #: ../includes/class-wpcm-countries.php:168
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Wyspy Marshalla"
 
 #: ../includes/class-wpcm-countries.php:169
 msgid "Martinique"
-msgstr ""
+msgstr " Martynika"
 
 #: ../includes/class-wpcm-countries.php:170
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #: ../includes/class-wpcm-countries.php:171
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauritius"
 
 #: ../includes/class-wpcm-countries.php:172
 msgid "Mayotte"
-msgstr ""
+msgstr "Majotta"
 
 #: ../includes/class-wpcm-countries.php:173
 msgid "Mexico"
@@ -1014,7 +1015,7 @@ msgstr "Meksyk"
 
 #: ../includes/class-wpcm-countries.php:174
 msgid "Micronesia, Federal States of"
-msgstr ""
+msgstr "Mikronezja"
 
 #: ../includes/class-wpcm-countries.php:175
 msgid "Moldova, Republic of"
@@ -1210,7 +1211,7 @@ msgstr "San Marino"
 
 #: ../includes/class-wpcm-countries.php:223
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
-msgstr ""
+msgstr "Wyspy Świętego Tomasza i Książęca"
 
 #: ../includes/class-wpcm-countries.php:224
 msgid "Saudi Arabia"
@@ -1487,35 +1488,35 @@ msgstr "Dodaj nowe rozgrywki"
 
 #: ../includes/class-wpcm-post-types.php:67
 msgid "Search Jobs"
-msgstr ""
+msgstr "Szukaj stanowisk"
 
 #: ../includes/class-wpcm-post-types.php:68
 msgid "All Jobs"
-msgstr ""
+msgstr "Wszystkie stanowiska"
 
 #: ../includes/class-wpcm-post-types.php:69
 msgid "Parent Job"
-msgstr ""
+msgstr "Stanowisko nadrzędne"
 
 #: ../includes/class-wpcm-post-types.php:70
 msgid "Parent Job:"
-msgstr ""
+msgstr "Stanowisko nadrzędne:"
 
 #: ../includes/class-wpcm-post-types.php:71
 msgid "Edit Job"
-msgstr ""
+msgstr "Edytuj stanowisko"
 
 #: ../includes/class-wpcm-post-types.php:72
 msgid "Update Job"
-msgstr ""
+msgstr "Aktualizuj stanowisko"
 
 #: ../includes/class-wpcm-post-types.php:73
 msgid "Add New Job"
-msgstr ""
+msgstr "Dodaj nowe stanowisko"
 
 #: ../includes/class-wpcm-post-types.php:74
 msgid "New Job Title"
-msgstr ""
+msgstr "Nowa nazwa stanowiska"
 
 #: ../includes/class-wpcm-post-types.php:87
 msgid "Positions"
@@ -1531,11 +1532,11 @@ msgstr "Wszystkie Pozycje"
 
 #: ../includes/class-wpcm-post-types.php:91
 msgid "Parent Position"
-msgstr ""
+msgstr "Pozycja nadrzędna"
 
 #: ../includes/class-wpcm-post-types.php:92
 msgid "Parent Position:"
-msgstr ""
+msgstr "Pozycja nadrzędna:"
 
 #: ../includes/class-wpcm-post-types.php:93
 msgid "Edit Position"
@@ -1543,7 +1544,7 @@ msgstr "Edytuj Pozycje"
 
 #: ../includes/class-wpcm-post-types.php:94
 msgid "Update Position"
-msgstr ""
+msgstr "Aktualizuj pozycję"
 
 #: ../includes/class-wpcm-post-types.php:95
 msgid "Add New Position"
@@ -1569,11 +1570,11 @@ msgstr "Wszystkie Sezony"
 
 #: ../includes/class-wpcm-post-types.php:113
 msgid "Parent Season"
-msgstr ""
+msgstr "Sezon nadrzędny"
 
 #: ../includes/class-wpcm-post-types.php:114
 msgid "Parent Season:"
-msgstr ""
+msgstr "Sezon nadrzędny:"
 
 #: ../includes/class-wpcm-post-types.php:115
 msgid "Edit Season"
@@ -1601,11 +1602,11 @@ msgstr "Wszystkie Zespoły"
 
 #: ../includes/class-wpcm-post-types.php:135
 msgid "Parent Team"
-msgstr ""
+msgstr "Zespół nadrzędny"
 
 #: ../includes/class-wpcm-post-types.php:136
 msgid "Parent Team:"
-msgstr ""
+msgstr "Zespół nadrzędny:"
 
 #: ../includes/class-wpcm-post-types.php:137
 msgid "Edit Team"
@@ -1613,7 +1614,7 @@ msgstr "Edytuj Zespół"
 
 #: ../includes/class-wpcm-post-types.php:138
 msgid "Update Team"
-msgstr ""
+msgstr "Aktualizuj zespół"
 
 #: ../includes/class-wpcm-post-types.php:139
 msgid "Add New Team"
@@ -1633,11 +1634,11 @@ msgstr "Wszystkie stadiony"
 
 #: ../includes/class-wpcm-post-types.php:157
 msgid "Parent Venue"
-msgstr ""
+msgstr "Stadion nadrzędny"
 
 #: ../includes/class-wpcm-post-types.php:158
 msgid "Parent Venue:"
-msgstr ""
+msgstr "Stadion nadrzędny:"
 
 #: ../includes/class-wpcm-post-types.php:159
 msgid "Edit Venue"
@@ -1694,11 +1695,11 @@ msgstr "Nie znaleziono klubu"
 
 #: ../includes/class-wpcm-post-types.php:196
 msgid "No clubs found in trash"
-msgstr ""
+msgstr "Nie znaleziono żadnego klubu w koszu"
 
 #: ../includes/class-wpcm-post-types.php:197
 msgid "Parent Club:"
-msgstr ""
+msgstr "Klub nadrzędny:"
 
 #: ../includes/class-wpcm-post-types.php:225
 msgid "All Players"
@@ -1722,7 +1723,7 @@ msgstr "Wyświetl zawodnika"
 
 #: ../includes/class-wpcm-post-types.php:230
 msgid "Search Players"
-msgstr ""
+msgstr "Szukaj zawodników"
 
 #: ../includes/class-wpcm-post-types.php:231
 msgid "No players found"
@@ -1730,7 +1731,7 @@ msgstr "Nie znaleziono zawodników"
 
 #: ../includes/class-wpcm-post-types.php:232
 msgid "No players found in trash"
-msgstr ""
+msgstr "Nie znaleziono żadnego zawodnika w koszu"
 
 #: ../includes/class-wpcm-post-types.php:233
 msgid "Parent Player:"
@@ -1770,7 +1771,7 @@ msgstr "Nie znaleziono członka sztabu w koszu"
 
 #: ../includes/class-wpcm-post-types.php:269
 msgid "Parent Staff:"
-msgstr ""
+msgstr "Sztab nadrzędny:"
 
 #: ../includes/class-wpcm-post-types.php:294
 #: ../includes/class-wpcm-post-types.php:306
@@ -1804,15 +1805,15 @@ msgstr "Wyświetl mecze"
 
 #: ../includes/class-wpcm-post-types.php:302
 msgid "Search Matches"
-msgstr ""
+msgstr "Szukaj meczy"
 
 #: ../includes/class-wpcm-post-types.php:303
 msgid "No matches found"
-msgstr ""
+msgstr "Nie znaleziono żadnego meczu"
 
 #: ../includes/class-wpcm-post-types.php:304
 msgid "No matches found in trash"
-msgstr ""
+msgstr "Nie znaleziono żadnego meczu w koszu"
 
 #: ../includes/class-wpcm-post-types.php:305
 msgid "Parent Match:"
@@ -2188,12 +2189,12 @@ msgstr "Asysty"
 #: ../includes/wpcm-core-functions.php:600
 #: ../includes/wpcm-core-functions.php:1016
 msgid "Blocks"
-msgstr ""
+msgstr "Punkty z bloku"
 
 #: ../includes/wpcm-core-functions.php:600
 #: ../includes/wpcm-core-functions.php:1016
 msgid "BLK"
-msgstr ""
+msgstr "BLOK"
 
 #: ../includes/wpcm-core-functions.php:601
 msgid "Steals"
@@ -2492,7 +2493,7 @@ msgstr ""
 #: ../includes/wpcm-core-functions.php:923
 #: ../includes/wpcm-core-functions.php:969
 msgid "Goals"
-msgstr ""
+msgstr "Bramki"
 
 #: ../includes/wpcm-core-functions.php:754
 #: ../includes/wpcm-core-functions.php:786
@@ -2520,7 +2521,7 @@ msgstr "Żółta kartka"
 #: ../includes/wpcm-core-functions.php:893
 #: ../includes/wpcm-core-functions.php:927
 msgid "YC"
-msgstr ""
+msgstr "ŻK"
 
 #: ../includes/wpcm-core-functions.php:757
 #: ../includes/wpcm-core-functions.php:793
@@ -2534,7 +2535,7 @@ msgstr "Czerwona kartka"
 #: ../includes/wpcm-core-functions.php:894
 #: ../includes/wpcm-core-functions.php:928
 msgid "RC"
-msgstr ""
+msgstr "CK"
 
 #: ../includes/wpcm-core-functions.php:763
 msgid "Field Hockey"
@@ -2570,11 +2571,11 @@ msgstr ""
 
 #: ../includes/wpcm-core-functions.php:791
 msgid "Green Cards"
-msgstr ""
+msgstr "Zielone Kartki"
 
 #: ../includes/wpcm-core-functions.php:791
 msgid "GC"
-msgstr ""
+msgstr "ZK"
 
 #: ../includes/wpcm-core-functions.php:799
 msgid "Ice Hockey"
@@ -2736,23 +2737,23 @@ msgstr "Siatkówka"
 
 #: ../includes/wpcm-core-functions.php:1014
 msgid "Aces"
-msgstr ""
+msgstr "Asy serwisowe"
 
 #: ../includes/wpcm-core-functions.php:1014
 msgid "ACE"
-msgstr ""
+msgstr "AS"
 
 #: ../includes/wpcm-core-functions.php:1015
 msgid "Kills"
-msgstr ""
+msgstr "Punkty z ataku"
 
 #: ../includes/wpcm-core-functions.php:1015
 msgid "KILL"
-msgstr ""
+msgstr "ATAK"
 
 #: ../includes/wpcm-core-functions.php:1017
 msgid "Block Assists"
-msgstr ""
+msgstr "Udział w blokach zakończonych punktem"
 
 #: ../includes/wpcm-core-functions.php:1017
 msgid "BA"
@@ -2788,7 +2789,7 @@ msgstr "Zawodnik Meczu"
 
 #: ../includes/wpcm-match-functions.php:336
 msgid "Green Card"
-msgstr ""
+msgstr "Zielona Kartka"
 
 #: ../includes/wpcm-match-functions.php:341
 msgid "Yellow Card"
@@ -2851,7 +2852,7 @@ msgstr "Wybierz kraj&hellip;"
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:53
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:73
 msgid "Competition Label"
-msgstr ""
+msgstr "Etykieta dyscypliny"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:55
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:77
@@ -2859,6 +2860,8 @@ msgid ""
 "The competition label is used to display a shortened version of the "
 "competition name."
 msgstr ""
+"Etykieta dyscypliny jest używana do wyświetlania skróconej wersji nazwy "
+"dyscypliny."
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:116
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:155
@@ -2868,7 +2871,7 @@ msgstr "Opis"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:117
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:156
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:175
@@ -3179,11 +3182,11 @@ msgstr "Ustaw zdjęcie członka sztabu"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:48
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:73
 msgid "Job Title"
-msgstr ""
+msgstr "Nazwa stanowiska"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:171
 msgid "jobs"
-msgstr ""
+msgstr "stanowiska"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt.php:40
 #, php-format
@@ -3388,7 +3391,7 @@ msgstr "Separator pomiędzy nazwami klubów"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:59
 msgid "This sets the separator of clubs."
-msgstr ""
+msgstr "To ustawienie definiuje separator dla klubów."
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:68
 msgid "Goals Delimiter"
@@ -3605,7 +3608,7 @@ msgstr ""
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:225
 msgid "No more matches scheduled."
-msgstr ""
+msgstr "Nie ma więcej zaplanowanych meczy."
 
 #: ../includes/widgets/class-wpcm-widget-players.php:31
 msgid "Display a table of players details."
@@ -3630,7 +3633,7 @@ msgstr ""
 #: ../includes/widgets/class-wpcm-widget-results.php:230
 #: ../templates/shortcodes/matches.php:130
 msgid "No matches played yet."
-msgstr ""
+msgstr "Nie został jeszcze rozegrany żaden mecz."
 
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:31
 msgid "Display a sponsors logo."
