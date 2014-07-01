@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.1
+ * @version     1.1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -44,7 +44,7 @@ if ( $played ) {
 
 								if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
 
-									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'redcards' && $key != 'mvp' ) {  ?>
+									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'blackcards' && $key != 'redcards' && $key != 'mvp' ) {  ?>
 
 										<th><?php echo $val; ?></th>
 									
@@ -55,7 +55,7 @@ if ( $played ) {
 
 							endforeach;
 
-							if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' ) { ?>
+							if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' || $sport == 'floorball' || $sport == 'gaelic' ) { ?>
 								<th class="notes"><?php _e('Cards', 'wpclubmanager') ?></th>
 							<?php } ?>
 
@@ -103,7 +103,7 @@ if ( $played ) {
 
 								if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
 
-									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'redcards' && $key != 'mvp' ) {  ?>
+									if( $key != 'checked' && $key != 'greencards' && $key != 'yellowcards' && $key != 'blackcards'  && $key != 'redcards' && $key != 'mvp' ) {  ?>
 
 										<th><?php echo $val; ?></th>
 									
@@ -114,7 +114,7 @@ if ( $played ) {
 
 							endforeach;
 
-							if( $sport == 'soccer' ) { ?>
+							if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' || $sport == 'floorball' || $sport == 'gaelic' ) { ?>
 								<th class="notes"><?php _e('Cards', 'wpclubmanager') ?></th>
 							<?php } ?>
 
