@@ -90,6 +90,13 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
+= 1.1.6 - 1/07/2014
+
+* Fix - Fixed missing comps column in results/fixtures shortcode
+* Fix - Fix call to undefined `$sep` function
+* Localisation - Add Hungarian language
+* Localisation - Update Brazilian, German and Polish languages
+
 = 1.1.5 - 21/06/2014
 
 * Feature - Add gaelic football
