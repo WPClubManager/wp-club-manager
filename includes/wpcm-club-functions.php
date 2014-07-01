@@ -1,6 +1,6 @@
 <?php
 /**
- * WPClubManager Club Functions
+ * WPClubManager Club Functions. Code adapted from Football Club Theme by themeboy
  *
  * Functions for clubs.
  *

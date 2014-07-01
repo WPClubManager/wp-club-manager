@@ -1,6 +1,6 @@
 <?php
 /**
- * WPClubManager sports
+ * WPClubManager sports. Code adapted from SportsPress
  *
  * @class 		WPCM_Sports
  * @version		1.1.0

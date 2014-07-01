@@ -1,6 +1,6 @@
 <?php
 /**
- * WPClubManager Player Functions
+ * WPClubManager Player Functions. Code adapted from Football Club theme by themeboy.
  *
  * Functions for players.
  *
