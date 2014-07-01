@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,12 +36,15 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * German - Deutsch (de_DE)
 * Polish - Polski (pl_PL)
 * Greek - Ελληνικά (el_GR)
+* Italian - Italiano (it_IT)
+* Spanish - Español (es_ES)
+* Czech – Čeština ( cs_CZ )
 
 = Get Involved =
 
 Developers can contribute to the source code on the [WP Club Manager GitHub Repository](https://github.com/ClubPress/wpclubmanager).
 
-Translators can contribute new languages to WooCommerce through [Transifex](https://www.transifex.com/projects/p/wp-club-manager/).
+Translators can contribute new languages to WP Club Manager through [Transifex](https://www.transifex.com/projects/p/wp-club-manager/).
 
 == Installation ==
 
@@ -83,6 +86,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.4 - 13/06/2014
+
+* Tweak - Replaced '0' with '-' in frontend match lineup
+* Fix - Possible fix for localised date in match/results widget
+* Fix - Fixed broken player image placeholder
+* Localisation - Add Italian language
+* Localisation - Add Spanish language
+* Localisation - Add Czech language
 
 = 1.1.3 - 10/06/2014
 
@@ -186,7 +198,3 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 = 1.1.0 =
 
 THIS IS A MAJOR UPGRADE AND WE RECOMMEND THAT YOU BACKUP YOUR FILES AND DATABASE BEFORE UPGRADING! The stats system has been revamped and any player stats that have already been added will probably get mixed up and need to be redone. I apologise for the inconvenience this will cause.
-
-= 1.0.3 =
-
-1.0.3 is a minor update with a few minor fixes and improvements. There shouldn't be any problems upgrading but some styles may be affected depending on your theme.
