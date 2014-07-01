@@ -9,7 +9,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.1.2
+ * @version     1.1.5
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -304,18 +304,30 @@ class WPCM_Admin_Welcome {
 							<div class="inside">
 								<p><?php _e( 'WP Club Manager has been translated by our generous translation teams, listed below. If you can help translate WPCM please sign up for a free account on <a href="https://www.transifex.com/">Transifex</a> and visit the <a href="https://www.transifex.com/projects/p/wp-club-manager/">WP Club Manager project</a>.', 'wpclubmanager' ); ?></p>
 								<?php
-								$translator_handles = array( 'Clubpress', 'King3R', 'rychu_cmg', 'fvottendorf', 'Spirossmil', 'lucabarbetti', 'baldovi' );
+								$translator_handles = array( 'Clubpress', 'King3R', 'rychu_cmg', 'fvottendorf', 'Spirossmil', 'lucabarbetti', 'baldovi', 'thegreat', 'Vadim_C', 'hushiea', 'Pirolla' );
 								$translator_links = array();
 								foreach ( $translator_handles as $handle ):
-									$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
+									$translator_links[] = '<li><a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a></li>';
 								endforeach;
 								?>
-								<p class="wp-credits-list">
-									<?php echo implode( ', ', $translator_links ); ?>
-								</p>
+								<ul class="wp-credits-list">
+									<?php echo implode( '', $translator_links ); ?>
+								</ul>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="wpcm-feature">
+					
+						<div class="stuffbox wpcm-themes">
+							<h4><span>NEW</span> Scoreline - Enhance your club website</h4>
+							<div class="inside">
+								<p>Feature packed and fully responsive, <a href="https://wpclubmanager.com/themes/scoreline/">Scoreline</a> is a new theme built for the WP Club Manager plugin. It's highly customizable and includes a new players gallery shortcode and sliding player stats widget.</p>
+								<p>Stylish match pages and player/staff profiles will make your clubs website stand out from the crowd and by using the styling options it can be cusomized to your club colors easily.</p>
+								<p><a href="https://wpclubmanager.com/themes/scoreline/">Check out the themes features &rarr;</a></p>
+							</div>
+						</div>
+					
 				</div>
 			</div>
 
