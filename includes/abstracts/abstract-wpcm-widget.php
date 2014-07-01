@@ -150,7 +150,7 @@ abstract class WPCM_Widget extends WP_Widget {
 							'hide_empty' => 0,
 							'orderby' => 'title',
 							'taxonomy' => $setting['taxonomy'],
-							'selected' => $instance[ $key ],
+							'selected' => $value,
 							'name' => $this->get_field_name( $key ),
 							'id' => $this->get_field_id( $key )
 						)); ?>
@@ -164,7 +164,7 @@ abstract class WPCM_Widget extends WP_Widget {
 						<?php
 						wp_dropdown_pages( array(
 							'show_option_none' => __( 'None', 'wpclubmanager' ),
-							'selected' => $instance[ $key ],
+							'selected' => $value,
 							'name' => $this->get_field_name( $key ),
 							'id' => $this->get_field_id( $key )
 						) ); ?>
