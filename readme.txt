@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 3.9.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Create and manage a sports club website quickly and easily using WordPress. Mana
 
 Comes with all the tools you need to manage your sports club or team website. Features include:
 
-* Included sports are soccer, baseball, basketball, hockey, netball, vollayball, Aussie rules, American football and rugby
+* Supported sports: soccer, baseball, basketball, ice hockey, field hockey, netball, volleyball, Aussie rules, American football, rugby, gaelic football, hurling and floorball
 * Manage multiple teams
 * Player and staff profiles
 * Player ratings
@@ -33,12 +33,15 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 = Available Languages =
 
 * English - UK (en_GB)
+* Arabic – العربية (ar)
+* Czech – Čeština (cs_CZ)
 * German - Deutsch (de_DE)
-* Polish - Polski (pl_PL)
+* French – Français (fr_FR)
 * Greek - Ελληνικά (el_GR)
 * Italian - Italiano (it_IT)
+* Polish - Polski (pl_PL)
+* Portuguese (Brazil) – Português do Brasil (pt_BR)
 * Spanish - Español (es_ES)
-* Czech – Čeština ( cs_CZ )
 
 = Get Involved =
 
@@ -86,6 +89,17 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.5 - 21/06/2014
+
+* Feature - Add gaelic football
+* Feature - Add hurling
+* Feature - Add floorball
+* Fix - Fixed missing cards section on match stats for subs
+* Localisation - Add Arabic language
+* Localisation - Add French language
+* Localisation - Add Portuguese (Brazil) language
+* Localisation - Updated German and Czech language files
 
 = 1.1.4 - 13/06/2014
 
