@@ -454,7 +454,8 @@ table {
 	}
 	.wpcm-match-details table td.notes .yellowcard,
 	.wpcm-match-details table td.notes .redcard,
-	.wpcm-match-details table td.notes .greencard {
+	.wpcm-match-details table td.notes .greencard,
+	.wpcm-match-details table td.notes .blackcard {
 		display: inline-block;
 		width: 12px;
 		height: 18px;
@@ -471,6 +472,9 @@ table {
 	}
 	.wpcm-match-details table td.notes .redcard {
 		background-position: -12px 0px;
+	}
+	.wpcm-match-details table td.notes .blackcard {
+		background-position: -36px 0px;
 	}
 	.wpcm-match-details table th.name span.mvp {
 		color: #e5c100;
@@ -671,6 +675,7 @@ table {
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
 	.wpcm-match-details table td.notes .greencard,
 	.wpcm-match-details table td.notes .yellowcard,
+	.wpcm-match-details table td.notes .blackcard,
 	.wpcm-match-details table td.notes .redcard {
 		display: inline-block;
 		width: 12px;
@@ -690,6 +695,10 @@ table {
 	}
 	.wpcm-match-details table td.notes .redcard {
 		background-position: -24px 0px;
+		background-size: 12px 18px;
+	}
+	.wpcm-match-details table td.notes .blackcard {
+		background-position: -72px 0px;
 		background-size: 12px 18px;
 	}
 	.wpcm-match-details table th.name span.mvp {
