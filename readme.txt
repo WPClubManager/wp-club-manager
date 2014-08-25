@@ -3,8 +3,8 @@ Contributors: ClubPress
 Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules, netball, volleyball
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
-Tested up to: 3.9.1
-Stable tag: 1.1.6
+Tested up to: 3.9.2
+Stable tag: 1.1.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,22 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 4. A slick admin interface blends in with WordPress
 
 == Changelog ==
+
+= 1.1.7 - 22/08/2014
+
+* New - Added shootout option to results for Ice Hockey
+* New - Added 'Clean Sheets' to Soccer stats
+* Tweak - Moved player dropdown to new hook in single-player templates
+* Tweak - Added some hooks to admin
+* Tweak - Added more new hooks to templates
+* Tweak - Moved Club Manager admin menu
+* Tweak - Added extensions page to admin menu
+* Tweak - Updated WPCM logos
+* Tweak - Added extension license page
+* Fix - Fixed broken score on single matches when scores are 3 figures
+* Fix - Fixed high-res card images ( thanks emco!)
+* Fix - Missing transaltion string in templates/../match.php (thanks Stef!)
+* Localisation - Updated wpclubmanager.pot
 
 = 1.1.6 - 1/07/2014
 
@@ -217,6 +233,3 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-
-THIS IS A MAJOR UPGRADE AND WE RECOMMEND THAT YOU BACKUP YOUR FILES AND DATABASE BEFORE UPGRADING! The stats system has been revamped and any player stats that have already been added will probably get mixed up and need to be redone. I apologise for the inconvenience this will cause.
