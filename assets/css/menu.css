@@ -65,3 +65,13 @@ i.mce-i-wpcm_players_button:before {
 i.mce-i-wpcm_staff_button:before {
 	content: '\f338';
 }
+
+.wpclubmanager-extensions li.extension {
+	border: 1px solid #dcdcdc;
+	float: left;
+	display: inline-block;
+	height: 290px;
+	margin: 0 20px 20px 0;
+	padding: 15px;
+	width: 280px;
+}
