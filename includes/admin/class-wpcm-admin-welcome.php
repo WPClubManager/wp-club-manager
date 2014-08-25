@@ -28,7 +28,7 @@ class WPCM_Admin_Welcome {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->plugin             = 'wpclubmanager/wpclubmanager.php';
+		$this->plugin             = 'wp-club-manager/wpclubmanager.php';
 
 		add_action( 'admin_menu', array( $this, 'admin_menus') );
 		add_action( 'admin_head', array( $this, 'admin_head' ) );
