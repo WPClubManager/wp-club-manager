@@ -77,7 +77,8 @@ if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) )
 		'posts_per_page' => $numposts,
 		'orderby' => 'meta_value_num',
 		'meta_key' => 'wpcm_number',
-		'order' => $order
+		'order' => $order,
+		'suppress_filters' => 0
 	);
 
 if ( $orderby == 'name' ) {
