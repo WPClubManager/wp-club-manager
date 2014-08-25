@@ -27,6 +27,7 @@ class WPCM_Meta_Box_Match_Result {
 		$played = get_post_meta( $post_id, 'wpcm_played', true );
 		$friendly = get_post_meta( $post_id, 'wpcm_friendly', true );
 		$overtime = get_post_meta( $post_id, 'wpcm_overtime', true );
+		$shootout = get_post_meta( $post_id, 'wpcm_shootout', true );
 
 		$goals = array_merge( array( 'total' => array( 'home' => 0, 'away' => 0	) ), (array)unserialize( get_post_meta( $post_id, 'wpcm_goals', true ) ) );
 		$bonus = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post_id, 'wpcm_bonus', true ) ) ); ?>
@@ -47,6 +48,7 @@ class WPCM_Meta_Box_Match_Result {
 					</tr>
 				</thead>
 				<tbody>
+					<?php do_action('wpclubmanager_admin_results_table', $post->ID ); ?>
 					<tr>
 						<th align="right"><?php _e( 'Score', 'wpclubmanager' ); ?></th>
 						<td><input type="text" name="wpcm_goals[total][home]" id="wpcm_goals_total_home" value="<?php echo (int)$goals['total']['home']; ?>" size="3" /></td>
@@ -73,6 +75,12 @@ class WPCM_Meta_Box_Match_Result {
 						<?php _e( 'Overtime', 'wpclubmanager' ); ?>
 					</label>
 				</p>
+				<p>
+					<label class="selectit">
+						<input type="checkbox" name="wpcm_shootout" id="wpcm_shootout" value="1" <?php checked( true, $shootout ); ?> />
+						<?php _e( 'Shootout', 'wpclubmanager' ); ?>
+					</label>
+				</p>
 			<?php } ?>
 		</div>
 		<p>
@@ -81,7 +89,10 @@ class WPCM_Meta_Box_Match_Result {
 				<?php _e( 'Friendly', 'wpclubmanager' ); ?>
 			</label>
 		</p>
-	<?php }
+
+		<?php do_action('wpclubmanager_admin_after_results_table', $post->ID );
+
+	}
 
 	/**
 	 * Save meta box data
@@ -103,6 +114,11 @@ class WPCM_Meta_Box_Match_Result {
 		} else {
 			$overtime = null;
 		}
+		if(isset($_POST['wpcm_shootout'])){
+			$shootout = $_POST['wpcm_shootout'];
+		} else {
+			$shootout = null;
+		}
 		
 		$goals = $_POST['wpcm_goals'];
 
@@ -114,6 +130,7 @@ class WPCM_Meta_Box_Match_Result {
 
 		update_post_meta( $post_id, 'wpcm_played', $played );
 		update_post_meta( $post_id, 'wpcm_overtime', $overtime );
+		update_post_meta( $post_id, 'wpcm_shootout', $shootout );
 		update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
 		update_post_meta( $post_id, 'wpcm_home_goals', $goals['total']['home'] );
 		update_post_meta( $post_id, 'wpcm_away_goals', $goals['total']['away'] );
