@@ -1042,6 +1042,7 @@ function wpcm_get_sport_presets() {
 				'assists' => '<a title="' . __('Assists', 'wpclubmanager'). '">' . __('AST', 'wpclubmanager') . '</a>',
 				'penalties' => '<a title="' . __('Penalty Goals', 'wpclubmanager'). '">' . __('PENS', 'wpclubmanager') . '</a>',
 				'og' => '<a title="' . __('Own Goals', 'wpclubmanager'). '">' . __('OG', 'wpclubmanager') . '</a>',
+				'cs' => '<a title="' . __('Clean Sheets', 'wpclubmanager'). '">' . __('CS', 'wpclubmanager') . '</a>',
 				'yellowcards' => '<a title="' . __('Yellow Cards', 'wpclubmanager'). '">' . __('YC', 'wpclubmanager') . '</a>',
 				'redcards' => '<a title="' . __('Red Cards', 'wpclubmanager'). '">' . __('RC', 'wpclubmanager') . '</a>',
 				'rating' => '<a title="' . __('Rating', 'wpclubmanager'). '">' . __('RAT', 'wpclubmanager'),
