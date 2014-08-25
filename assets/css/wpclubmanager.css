@@ -684,22 +684,19 @@ table {
 		overflow: hidden;
 		margin-left: 8px;
 		text-indent: -100px;
+		background-size: 48px 18px;
 	}
 	.wpcm-match-details table td.notes .greencard {
 		background-position: -48px 0px;
-		background-size: 12px 18px;
 	}
 	.wpcm-match-details table td.notes .yellowcard {
 		background-position: 0px 0px;
-		background-size: 12px 18px;
 	}
 	.wpcm-match-details table td.notes .redcard {
 		background-position: -24px 0px;
-		background-size: 12px 18px;
 	}
 	.wpcm-match-details table td.notes .blackcard {
 		background-position: -72px 0px;
-		background-size: 12px 18px;
 	}
 	.wpcm-match-details table th.name span.mvp {
 		margin-left: 16px;
