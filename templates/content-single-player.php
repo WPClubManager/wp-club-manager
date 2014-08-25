@@ -12,6 +12,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
+<?php do_action( 'wpclubmanager_before_single_player' ); ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
     <div class="wpcm-player-info wpcm-row">
@@ -67,7 +69,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	</div>
 
-
-	<?php do_action( 'wpclubmanager_after_single_player_bio' ); ?>
+	<?php do_action( 'wpclubmanager_after_single_player' ); ?>
 
 </article>
