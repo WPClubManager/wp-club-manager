@@ -33,6 +33,7 @@ class WPCM_Admin_Settings {
 			$settings[] = include( 'settings/class-wpcm-settings-staff.php' );
 			$settings[] = include( 'settings/class-wpcm-settings-matches.php' );
 			$settings[] = include( 'settings/class-wpcm-settings-standings.php' );
+			$settings[] = include( 'settings/class-wpcm-settings-licenses.php' );
 
 			self::$settings = apply_filters( 'wpclubmanager_get_settings_pages', $settings );
 		}
@@ -555,6 +556,51 @@ class WPCM_Admin_Settings {
 	               	</tr><?php
 	            break;
 
+	            case 'license_key':
+
+	            	$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+
+	            	<tr valign="top">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<input
+	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		type="text"
+	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+	                    		value="<?php echo esc_attr( $option_value ); ?>"
+	                    		<?php echo implode( ' ', $custom_attributes ); ?>
+	                    		/>
+	                    <?php
+	            break;
+
+	            case 'license_activate' :
+
+	            	$option_value 	= self::get_option( $value['id'].'_license_key', $value['default'] );
+
+	            	$license 	= get_option( 'wpcm_pa_license_key' );
+					$status 	= get_option( 'wpcm_pa_license_status' );
+
+	            	if( false !== $license ) {
+
+						if( $status !== false && $status == 'valid' ) { ?>
+
+							<span style="font-size:12px;color:#fff;background:green;padding:2px 5px;margin-right:15px;border-radius:3px;"><?php _e('Active'); ?></span>
+							<?php wp_nonce_field( 'wpcm_pa_nonce', 'wpcm_pa_nonce' ); ?>
+							<input type="submit" class="button-secondary" name="wpcm_pa_license_deactivate" value="<?php _e('Deactivate License'); ?>"/>
+						<?php } else {
+							wp_nonce_field( 'wpcm_pa_nonce', 'wpcm_pa_nonce' ); ?>
+							<input type="submit" class="button-secondary" name="wpcm_pa_license_activate" value="<?php _e('Activate License'); ?>"/>
+						<?php } ?>
+					<?php } ?>
+
+					</td>
+				</tr> <?php
+
+				break;
+
 	            // Default: run an action
 	            default:
 	            	do_action( 'wpclubmanager_admin_field_' . $value['type'], $value );
@@ -623,6 +669,7 @@ class WPCM_Admin_Settings {
 		    	case "single_select_page" :
 		    	case "single_select_country" :
 		    	case 'radio' :
+		    	case 'license_key' :
 
 		    		if ( isset( $_POST[$value['id']] ) ) {
 			        	$option_value = wpcm_clean( stripslashes( $_POST[ $value['id'] ] ) );
