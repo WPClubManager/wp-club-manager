@@ -363,7 +363,7 @@ table {
 		font-weight: 600;
 		padding-top: .5em;
 		text-align: center;
-		width: 40%;
+		width: 37%;
 	}
 	.wpcm-match-away-club {
 		float: right;
@@ -371,14 +371,14 @@ table {
 		font-weight: 600;
 		padding-top: .5em;
 		text-align: center;
-		width: 40%;
+		width: 37%;
 	}
 	.wpcm-match-score {
 		display: inline-block;
 		font-size: 2.4em;
 		font-weight: 600;
 		text-align: center;
-		width: 16%;
+		width: 24%;
 	}
 	.wpcm-match-score-delimiter {
 		font-size: 1em;
