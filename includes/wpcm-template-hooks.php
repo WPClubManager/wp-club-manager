@@ -72,14 +72,14 @@ if ( ! is_admin() || defined('DOING_AJAX') ) {
 	 *
 	 * @see wpclubmanager_template_single_player_dropdown()
 	 */
-	add_action( 'wpclubmanager_after_single_player_bio', 'wpclubmanager_template_single_player_dropdown', 5 );
+	add_action( 'wpclubmanager_after_single_player', 'wpclubmanager_template_single_player_dropdown', 5 );
 
 	/**
 	 * After Single Staff Bio Div
 	 *
 	 * @see wpclubmanager_template_single_staff_dropdown()
 	 */
-	add_action( 'wpclubmanager_after_single_staff_bio', 'wpclubmanager_template_single_staff_dropdown', 5 );
+	add_action( 'wpclubmanager_after_single_staff', 'wpclubmanager_template_single_staff_dropdown', 5 );
 
 
 	/**
