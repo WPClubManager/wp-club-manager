@@ -319,7 +319,7 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$output .= '<tr>';
 
-	$output .= '<th class="name"><div>' . $snumber . ' <a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
+	$output .= '<th class="name"><div>' . $snumber . '<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
 
 	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
 
@@ -330,7 +330,7 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	foreach( $value as $key => $stat ) {
 
-		if( $stat == '0' ) {
+		if( $stat == '0' || $stat == null ) {
 			$stat = '&mdash;';
 		}
 
