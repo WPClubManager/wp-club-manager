@@ -79,3 +79,27 @@ function wpclubmanager_settings_get_option( $option_name, $default = '' ) {
 
     return WPCM_Admin_Settings::get_option( $option_name, $default );
 }
+
+/**
+ * Add rating links to the admin dashboard
+ *
+ * @since	    1.1.7
+ * @global		string $typenow
+ * @param       string $footer_text The existing footer text
+ * @return      string
+ */
+function wpclubmanager_admin_rate_us( $footer_text ) {
+	global $typenow;
+
+	if ( $typenow == 'wpcm_club' || $typenow == 'wpcm_player' || $typenow == 'wpcm_staff' || $typenow == 'wpcm_match' || $typenow == 'wpcm_sponsor' ) {
+		$rate_text = sprintf( __( 'Thank you for using <a href="%1$s" target="_blank">WP Club Manager</a>! Please <a href="%2$s" target="_blank">rate us</a> on <a href="%2$s" target="_blank">WordPress.org</a>', 'wpclubmanager' ),
+			'https://wpclubmanager.com',
+			'http://wordpress.org/support/view/plugin-reviews/wp-club-manager?filter=5#postform'
+		);
+
+		return str_replace( '</span>', '', $footer_text ) . ' | ' . $rate_text . '</span>';
+	} else {
+		return $footer_text;
+	}
+}
+add_filter( 'admin_footer_text', 'wpclubmanager_admin_rate_us' );
