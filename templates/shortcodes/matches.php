@@ -111,7 +111,7 @@ $output .= '<div class="wpcm-fixtures-shortcode">
 	if ( $size > 0 ) {
 		$output .= '
 			<tr>
-				<th class="wpcm-date">'.__('Date').'</th>';
+				<th class="wpcm-date">'.__('Date', 'wpclubmanager').'</th>';
 		$output .= '
 				<th class="venue">'.__('Venue', 'wpclubmanager').'</th>
 				<th class="opponent">'.__('Opponent', 'wpclubmanager').'</th>';
