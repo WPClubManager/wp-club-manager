@@ -181,7 +181,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 				'title' => __( strip_tags($value), 'wpclubmanager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_show_stats_'. $key,
-				'default'	=> 'yes',
+				'default'	=> 'no',
 				'type' 		=> 'checkbox',
 			);
 										
