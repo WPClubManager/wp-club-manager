@@ -129,6 +129,7 @@ class WPCM_Meta_Box_Match_Result {
 		}
 
 		update_post_meta( $post_id, 'wpcm_played', $played );
+		update_post_meta( $post_id, 'wpcm_friendly', $friendly );
 		update_post_meta( $post_id, 'wpcm_overtime', $overtime );
 		update_post_meta( $post_id, 'wpcm_shootout', $shootout );
 		update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
