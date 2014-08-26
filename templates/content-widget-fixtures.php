@@ -6,10 +6,6 @@ $postid = get_the_ID();
 
 $home_club = get_post_meta( $postid, 'wpcm_home_club', true );
 $away_club = get_post_meta( $postid, 'wpcm_away_club', true );
-// $timestamp = strtotime( get_the_date() );
-// $gmt_offset = get_option( 'gmt_offset' );
-// $date_format = get_option( 'date_format' );
-// $time_format = get_option( 'time_format' );
 $comps = get_the_terms( $postid, 'wpcm_comp' );
 $seasons = get_the_terms( $postid, 'wpcm_season' );
 $teams = get_the_terms( $postid, 'wpcm_team' );
@@ -50,10 +46,13 @@ echo '<li class="fixture">';
 
 	echo '<div class="wpcm-date">';
 		echo '<div class="kickoff">';
-			if ( $show_date )
-				echo the_date();
-			if ( $show_time )
-				echo ', <time>' . the_time() . '</time>';
+			if ( $show_date ) {
+				echo the_time('j M Y');
+			}
+			if ( $show_time ) {
+				echo ' - ';
+				echo the_time('g:i a');
+			}
 		echo '</div>';			
 	echo '</div>';
 
