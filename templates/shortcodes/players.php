@@ -269,22 +269,35 @@ if ( sizeof( $players ) > 0 ) {
 		if ( $limit > 0 && $count > $limit )
 			break;
 
-		$output .=
-		'<tr>';
+		$output .= '<tr>';
+
 		foreach( $stats as $stat ) {
+
 			$output .= '<td class="'. $stat . '">';
+
 			if ( $stat == 'rating' ) {
+
 				if ( $player_detail['rating'] > 0 ) {
-					$avrating = $player_detail['rating'] / $player_detail['appearances'];
+					if ( $season ) {
+						$player_details[$player->ID]['appearances'] = '';
+						$player_details[$player->ID]['appearances'] .= $player_stats[0][ $season ]['total']['appearances'];
+					} else {
+						$player_details[$player->ID]['appearances'] = '';
+						$player_details[$player->ID]['appearances'] .= $player_stats[0][0]['total']['appearances'];
+					}
+					$avrating = $player_detail['rating'] / $player_details[$player->ID]['appearances'];
 					$output .= sprintf( "%01.2f", round($avrating, 2) );
 				} else {
 					$output .= '0';
 				}
+				
 			} else {
 				$output .= $player_detail[$stat];
 			}
+
 			$output .= '</td>';
 		}
+
 		$output .= '</tr>';
 	}
 	$output .= '</tbody></table>';
