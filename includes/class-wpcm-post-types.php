@@ -198,7 +198,7 @@ class WPCM_Post_Types {
 						'menu_name'           => __( 'Clubs', 'wpclubmanager' )
 					),
 					'hierarchical'         => false,
-					'supports'             => array( 'title', 'thumbnail' ),
+					'supports'             => array( 'title', 'editor', 'thumbnail' ),
 					'public'               => true,
 					'show_ui'              => true,
 					'show_in_menu'         => true,
