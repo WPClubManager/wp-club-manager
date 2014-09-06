@@ -874,3 +874,7 @@ img.tips {
 .chosen_select_dob {
 	min-width:52px;
 }
+
+#loading-animation {
+	display: none;
+}
