@@ -21,6 +21,7 @@ $default = array(
 	'stats' => 'p,w,d,l,otl,pct,f,a,gd,b,pts',
 	'title' => __( 'Standings', 'wpclubmanager' ),
 	'thumb' => 1,
+	'linkclub' => 0,
 );
 
 extract( $default, EXTR_SKIP );
@@ -174,7 +175,19 @@ $output .=
 
 		$output .= '<td class="pos">' . $club->place . '</td>';
 
-		$output .= '<td class="club">' . $club->thumb . '' . $club->post_title . '</td>';
+		$output .= '<td class="club">' . $club->thumb;
+
+		if( $linkclub ) {
+			$output .= '<a href="' . get_the_permalink( $club->ID ) . '">';
+		}
+
+		$output .= ' ' . $club->post_title;
+
+		if( $linkclub ) {
+			$output .= '</a>';
+		}
+
+		$output .= '</td>';
 
 		foreach( $stats as $stat ) {
 			$output .= '<td class="' . $stat . '">' . $club_stats[$stat] . '</td>';
