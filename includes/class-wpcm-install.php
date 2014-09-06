@@ -23,7 +23,7 @@ class WPCM_Install {
 
 		add_action( 'admin_init', array( $this, 'install_actions' ) );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
-		add_action( 'in_plugin_update_message-wpclubmanager/wpclubmanager.php', array( $this, 'in_plugin_update_message' ) );
+		add_action( 'in_plugin_update_message-wp-club-manager/wpclubmanager.php', array( $this, 'in_plugin_update_message' ) );
 	}
 
 	/**
@@ -44,35 +44,12 @@ class WPCM_Install {
 	 * Install actions such as installing pages when a button is clicked.
 	 */
 	public function install_actions() {
-		// Install - Add pages button
-		if ( ! empty( $_GET['install_wpclubmanager'] ) ) {
-
-			// We no longer need to install pages
-			delete_option( '_wpcm_needs_welcome' );
-			delete_transient( '_wpcm_activation_redirect' );
-
-			// What's new redirect
-			//wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-installed=true' ) );
-			//exit;
-
-		// Skip button
-		} elseif ( ! empty( $_GET['skip_install_wpclubmanager'] ) ) {
-
-			// We no longer need to install configs
-			delete_option( '_wpcm_needs_welcome' );
-			delete_transient( '_wpcm_activation_redirect' );
-
-			// What's new redirect
-			//wp_redirect( admin_url( 'index.php?page=wpcm-about' ) );
-			//exit;
-
-		// Update button
-		} elseif ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
+		
+		if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
 
 			$this->update();
 
 			// Update complete
-			delete_option( '_wpcm_needs_welcome' );
 			delete_option( '_wpcm_needs_update' );
 			delete_transient( '_wpcm_activation_redirect' );
 
@@ -94,19 +71,27 @@ class WPCM_Install {
 		WPCM_Post_Types::register_post_types();
 		WPCM_Post_Types::register_taxonomies();
 
+		// Flush rules after install
+		flush_rewrite_rules();
+
 		// Queue upgrades
 		$current_version = get_option( 'wpclubmanager_version', null );
+		if ( $current_version ) {
+			update_option( 'wpcm_version_upgraded_from', $current_version );
+		}
 		
 		// Update version
 		update_option( 'wpclubmanager_version', WPCM()->version );
 
 		// Check if pages are needed
-		if ( ! get_option( 'wpcm_sport' ) ) {
-			update_option( '_wpcm_needs_welcome', 1 );
-		}
+		// if ( ! get_option( 'wpcm_sport' ) ) {
+		// 	update_option( '_wpcm_needs_welcome', 1 );
+		// }
 
-		// Flush rules after install
-		flush_rewrite_rules();
+		// Bail if activating from network, or bulk
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+			return;
+		}
 
 		// Redirect to welcome screen
 		set_transient( '_wpcm_activation_redirect', 1, 60 * 60 );
