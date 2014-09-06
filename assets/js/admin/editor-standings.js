@@ -34,6 +34,7 @@
 				'stats': 'p,w,d,l,f,a,gd,pts',
 				'title': '',
 				'thumb': 1,
+				'linkclub': 1,
 				};
 			var shortcode = '[wpcm_standings';
 			
@@ -48,6 +49,14 @@
 					value = stats.join( ',' );
 				} else if ( index == 'thumb' ) {
 					values = form.find('[name="thumb"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				} else if ( index == 'linkclub' ) {
+					values = form.find('[name="linkclub"]');
 					var stats = new Array();
 					$.each( values, function( key, val) {
 						if ( $(val).attr( 'checked' ))
