@@ -23,15 +23,29 @@
 			// defines the options and their default values
 			// again, this is not the most elegant way to do this
 			// but well, this gets the job done nonetheless
-			var options = { 
+			var options = {
+				'address': '',
+				'lat': '',
+				'lng': '',
 				'width': '584',
 				'height': '320',
-				'address': '',
+				'zoom': '13',
+				'marker': '1'
 				};
 			var shortcode = '[wpcm_map';
 			
 			for( var index in options) {
-				var value = form.find('#option-' + index).val();
+				if ( index == 'marker' ) {
+					values = form.find('[name="marker"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				} else {
+					var value = form.find('#option-' + index).val();
+				}
 				
 				// attaches the attribute to the shortcode only if it's different from the default value
 				if ( value !== options[index] )
