@@ -101,9 +101,13 @@ class WPCM_AJAX {
 	*/
 	public function map_shortcode_ajax() {
 		$defaults = array(
+			'address' => false,
+			'lat' => false,
+			'lng' => false,
 			'width' => 584,
 			'height' => 320,
-			'address' => null
+			'zoom' => '13',
+			'marker' => 1
 		);
 		$args = $defaults;
 		?>
@@ -115,14 +119,34 @@ class WPCM_AJAX {
 						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" class="widefat" /></td>
 					</tr>
 					<tr>
+						<?php $field = 'lat'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Latitude', 'wpclubmanager' ); ?></label></th>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /></td>
+					</tr>
+					<tr>
+						<?php $field = 'lng'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Longtitude', 'wpclubmanager' ); ?></label></th>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /></td>
+					</tr>
+					<tr>
 						<?php $field = 'width'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Width', 'wpclubmanager' ); ?></label></th>
-						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /></td>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /> px</td>
 					</tr>
 					<tr>
 						<?php $field = 'height'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Height', 'wpclubmanager' ); ?></label></th>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /> px</td>
+					</tr>
+					<tr>
+						<?php $field = 'zoom'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Zoom', 'wpclubmanager' ); ?></label></th>
 						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /></td>
+					</tr>
+					<tr>
+						<?php $field = 'marker'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Display Marker', 'wpclubmanager' ); ?></label></th>
+						<td><input type="checkbox" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" checked /></td>
 					</tr>
 				</table>
 				<p class="submit">
@@ -639,6 +663,7 @@ class WPCM_AJAX {
 			'stats' => 'p,w,d,l,pct,f,a,gd,pts',
 			'title' => __( 'Standings', 'wpclubmanager' ),
 			'thumb' => 1,
+			'linkclub' => 1,
 		);
 		$args = array_merge( $defaults, $_GET );
 		?>
@@ -750,6 +775,13 @@ class WPCM_AJAX {
 					<tr>
 						<?php $field = 'thumb'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Show Thumbnail', 'wpclubmanager' ); ?></label></th>
+						<td>
+							<input type="checkbox" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" checked />
+						</td>
+					</tr>
+					<tr>
+						<?php $field = 'linkclub'; ?>
+						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Link to Clubs', 'wpclubmanager' ); ?></label></th>
 						<td>
 							<input type="checkbox" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" checked />
 						</td>
