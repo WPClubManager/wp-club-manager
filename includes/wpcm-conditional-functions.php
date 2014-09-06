@@ -19,7 +19,20 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return bool
  */
 function is_wpclubmanager() {
-	return apply_filters( 'is_wpclubmanager', ( is_match() || is_player() || is_staff() ||is_sponsor() ) ? true : false );
+	return apply_filters( 'is_wpclubmanager', ( is_match() || is_club() || is_player() || is_staff() ||is_sponsor() ) ? true : false );
+}
+
+if ( ! function_exists( 'is_club' ) ) {
+
+	/**
+	 * is_club - Returns true when viewing a single club.
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	function is_club() {
+		return is_singular( array( 'wpcm_club' ) );
+	}
 }
 
 if ( ! function_exists( 'is_player' ) ) {
