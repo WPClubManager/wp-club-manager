@@ -86,6 +86,9 @@ class WPCM_Standings_Widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 			
 		$instance = $old_instance;
+
+		$instance['linkclub'] = strip_tags( $new_instance['linkclub'] );
+		$instance['thumb'] = strip_tags( $new_instance['thumb'] );
 		
 		foreach( $new_instance as $key => $value ) {
 
@@ -114,7 +117,9 @@ class WPCM_Standings_Widget extends WP_Widget {
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
 			'stats' => 'p,w,d,l,otl,pct,f,a,gd,b,pts',
-			'title' => __( 'Standings', 'wpclubmanager' )
+			'title' => __( 'Standings', 'wpclubmanager' ),
+			'linkclub' => null,
+			'thumb' => null,
 		);
 		
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
@@ -177,6 +182,18 @@ class WPCM_Standings_Widget extends WP_Widget {
 			'id' => $this->get_field_id( $field )
 		) );
 		?></p>
+
+		<?php $field = 'thumb'; ?>
+		<p><label class="selectit" for="<?php echo $this->get_field_id( $field ); ?>">
+				<input type="checkbox" id="<?php echo $this->get_field_id( $field ); ?>" name="<?php echo $this->get_field_name( $field ); ?>" value="1"<?php if( $instance[$field] ) echo ' checked' ?> />
+							<?php _e( 'Show Club Badge', 'wpclubmanager' ); ?>
+			</label></p>
+
+		<?php $field = 'linkclub'; ?>
+		<p><label class="selectit" for="<?php echo $this->get_field_id( $field ); ?>">
+				<input type="checkbox" id="<?php echo $this->get_field_id( $field ); ?>" name="<?php echo $this->get_field_name( $field ); ?>" value="1"<?php if( $instance[$field] ) echo ' checked' ?> />
+							<?php _e( 'Link to Clubs', 'wpclubmanager' ); ?>
+			</label></p>
 		
 		<?php $field = 'stats'; ?>
 		<p><label for="<?php echo $this->get_field_id( $field ); ?>"><?php _e('Statistics', 'wpclubmanager') ?>:</label>
