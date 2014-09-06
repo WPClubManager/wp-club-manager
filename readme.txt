@@ -3,8 +3,8 @@ Contributors: ClubPress
 Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules, netball, volleyball
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
-Tested up to: 3.9.2
-Stable tag: 1.1.8
+Tested up to: 4.0
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +23,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Player and staff profiles
 * Player ratings
 * Player stats for each season
+* Club profiles
 * Fixtures and results table
 * League tables
 * Match reports
@@ -35,6 +36,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * English - UK (en_GB)
 * Arabic – العربية (ar)
 * Czech – Čeština (cs_CZ)
+* Dutch - Nederlands (nl_NL)
 * German - Deutsch (de_DE)
 * French – Français (fr_FR)
 * Greek - Ελληνικά (el_GR)
@@ -76,7 +78,7 @@ Automatic updates should work as expected but as always, it is recommended that 
 
 = Where can I find documentation and support for the WP Club Manager plugin? =
 
-You can find full documentation for the plugin at [WP Club Manager documentation](http://wpclubmanager.com/docs/). Support is available in our [Support Forum](http://wpclubmanager.com/support/)
+You can find documentation for the plugin at [WP Club Manager documentation](https://wpclubmanager.com/docs/). Support is available in our [Support Forum](https://wpclubmanager.com/support/)
 
 = Where can I report bugs or contribute to the project? =
 
@@ -89,7 +91,29 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 3. Extensive player profiles with season stats
 4. A slick admin interface blends in with WordPress
 
+== Upgrade Notice ==
+
+
+
 == Changelog ==
+
+= 1.2.0 - 05/09/2014
+
+* New - Detailed club profiles
+* New - Added single club profile templates
+* New - Added link to club option in standings shortcode/widget
+* New - Added club badge option in standings widget
+* New - Drag and drop sorting of players for matches
+* New - Improved Maps Shortcode options
+* New - Revamped welcome/update screens
+* Tweak - Player dropdown now filters by team and season on profile pages
+* Tweak - Match substitutes dropdown now filters by season and team
+* Tweak - Tweaked venue address textarea and formatting
+* Fix - Fixed Google Maps controls distortion
+* Fix - Fixed division by zero error when displaying only ratings in players widget
+* Localisation - Updated wpclubmanager.pot
+* Localisation - Updated English_GB translation
+* Localisation - Added Dutch translation ( Thanks cherreman )
 
 = 1.1.8 - 26/08/2014
 
@@ -236,6 +260,3 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 = 1.0.0 - 18/03/2014
 
 * Initial release
-
-== Upgrade Notice ==
-

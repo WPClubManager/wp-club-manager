@@ -22,7 +22,7 @@ permission notices:
   This plugin has been built using the awesome WooCommerce plugin as a framework
   and therefor contains code straight from and adapted from WooCommerce which is released under GPL <http://www.woothemes.com/woocommerce/>
 
-  This plugin also contains code from and adapted from SportsPress plugin and 
+  This plugin also contains code adapted from SportsPress plugin and 
   Football Club theme by themeboy which are released under GPL <http://themeboy.com>
 
 and
