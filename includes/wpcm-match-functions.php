@@ -66,8 +66,47 @@ add_filter( 'wp_title', 'match_wp_title', 10, 2 );
  * @return void
  */
 function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = false ) {
+
+	global $post;
+	
+	$teams = get_the_terms( $post->ID, 'wpcm_team' );
+	$seasons = get_the_terms( $post->ID, 'wpcm_season' );
+
+	if ( is_array( $teams ) ) {
+						
+		$match_teams = array();
+
+		foreach ( $teams as $team ) {
+			
+			$match_teams[] = $team->term_id;
+		}
+	}
+
+	if ( is_array( $seasons ) ) {
+						
+		$match_seasons = array();
+
+		foreach ( $seasons as $season ) {
+			
+			$match_seasons[] = $season->term_id;
+		}
+	}
+
 	$subs = get_posts( array (
 		'post_type' => 'wpcm_player',
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'wpcm_team',
+				'field' => 'term_id',
+				'terms' => $match_teams
+			),
+			array(
+				'taxonomy' => 'wpcm_season',
+				'field' => 'term_id',
+				'terms' => $match_seasons
+			)
+		),
 		'meta_key' => 'wpcm_number',
 		'orderby' => 'meta_value_num',
 		'order' => 'ASC',
@@ -118,26 +157,59 @@ function wpcm_player_subs_minutes( $players = array(), $id = null, $disabled = f
  * @param bool $keyarray = false
  * @return void
  */
-function wpcm_match_player_stats_table( $selected_players = array(), $club = null, $type = 'lineup', $keyarray = false ) {
-	global $player;
+function wpcm_match_player_stats_table( $selected_players = array(), $type = 'lineup', $keyarray = false ) {
+
+	global $post, $player;
+
+	$teams = get_the_terms( $post->ID, 'wpcm_team' );
+	$seasons = get_the_terms( $post->ID, 'wpcm_season' );
+
+	if ( is_array( $teams ) ) {
+						
+		$match_teams = array();
+
+		foreach ( $teams as $team ) {
+			
+			$match_teams[] = $team->term_id;
+		}
+	} else {
+		$match_teams = array();
+	}
+
+	if ( is_array( $seasons ) ) {
+						
+		$match_seasons = array();
+
+		foreach ( $seasons as $season ) {
+			
+			$match_seasons[] = $season->term_id;
+		}
+	}else {
+		$match_seasons = array();
+	}
 
 	$args = array(
 		'post_type' => 'wpcm_player',
-		'meta_query' => array(
-			array(
-				'key' => 'wpcm_club',
-				'value' => $club,
-			)
-		),
 		'meta_key' => 'wpcm_number',
-		'orderby' => 'meta_value_num',
+		'orderby' => 'menu_order meta_value_num',
 		'order' => 'ASC',
 		'showposts' => -1
 	);
 
-	if ( get_option( 'wpcm_player_order' ) == 'menu_order' ) {
-
-	    $args['orderby'] = 'menu_order';
+	if( $teams ) {
+		$args['tax_query'] = array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'wpcm_team',
+				'field' => 'term_id',
+				'terms' => $match_teams
+			),
+			array(
+				'taxonomy' => 'wpcm_season',
+				'field' => 'term_id',
+				'terms' => $match_seasons
+			)
+		);
 	}
 
 	$players = get_posts( $args );
@@ -150,38 +222,40 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 			</p>
 		</div>
 	<?php
-	}
+	} else {
 
-	if ( ! is_array( $selected_players ) )
+		if ( ! is_array( $selected_players ) ) $selected_players = array();
 
-		$selected_players = array();
+		$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
 
-	$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
+		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels(); ?>
 
-	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels(); ?>
+		<p class="">
+			<?php _e( 'Click and drag players to reorder', 'wpclubmanager' ); ?>
+			<img src="<?php bloginfo('url'); ?>/wp-admin/images/loading.gif" id="loading-animation" />
+		</p>
+		<table class="wpcm-match-players-table">
+			<thead>
+				<tr class="player-stats-list-labels">
+					<th>&nbsp;</th>
 
-	<table class="wpcm-match-players-table">
-		<thead>
-			<tr class="player-stats-list-labels">
-				<th>&nbsp;</th>
+					<?php foreach( $wpcm_player_stats_labels as $key => $val ) { 
 
-				<?php foreach( $wpcm_player_stats_labels as $key => $val ) { 
+						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
+							<th<?php if( $key == 'greencards' ||$key == 'yellowcards' || $key == 'blackcards' || $key == 'redcards' ) echo ' class="th-checkbox"'; if( $key == 'mvp' ) echo ' class="th-radio"'; ?>><?php echo $val; ?></th>
+						<?php
+						endif;
+					}
 
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-						<th<?php if( $key == 'greencards' ||$key == 'yellowcards' || $key == 'blackcards' || $key == 'redcards' ) echo ' class="th-checkbox"'; if( $key == 'mvp' ) echo ' class="th-radio"'; ?>><?php echo $val; ?></th>
+					if ( $type == 'subs' ) { ?>
+						<th><?php _e( 'Player Off', 'wpclubmanager' ); ?></th>
+					<?php } ?>
+
+				</tr>
+			</thead>
+			<tbody id="sortable">
+				<?php foreach( $players as $player ) { ?>
 					<?php
-					endif;
-				}
-
-				if ( $type == 'subs' ) { ?>
-					<th><?php _e( 'Player Off', 'wpclubmanager' ); ?></th>
-				<?php } ?>
-
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach( $players as $player ) { ?>
-				<?php
 					$played = (
 						is_array( $selected_players ) &&
 						array_key_exists( $type, $selected_players ) &&
@@ -207,86 +281,94 @@ function wpcm_match_player_stats_table( $selected_players = array(), $club = nul
 					}else{
 						$seasonclass = 'season_0 ';
 					}
-				?>
 
-				<tr data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $teamclass; ?> <?php echo $seasonclass; ?>">
-					<td class="names">
-						<label class="selectit">
-							<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> /><span class="name">
-							<?php echo get_post_meta( $player->ID, 'wpcm_number', true ); ?>. <?php echo $player->post_title; ?></span>
-						</label>
-					</td>
-					<?php foreach( $wpcm_player_stats_labels as $key => $val ):
+					$number = get_post_meta( $player->ID, 'wpcm_number', true );
 
-						$keyarray = (
-								is_array( $selected_players ) &&
-								array_key_exists( $type, $selected_players ) &&
-								is_array( $selected_players[$type] ) &&
-								array_key_exists( $player->ID, $selected_players[$type] ) &&
-								is_array( $selected_players[$type][$player->ID] ) &&
-								array_key_exists( $key, $selected_players[$type][$player->ID] )
-							);
-
-						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
-
-							if ( $key == 'greencards' ) { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="checkbox" data-card="green" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php } elseif ( $key == 'yellowcards' ) { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php } elseif ( $key == 'blackcards' ) { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="checkbox" data-card="black" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php } elseif ( $key == 'redcards' ) { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php } elseif ( $key == 'rating' ) { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php } elseif ( $key == 'mvp' ) { ?>
-
-								<td class="mvp">
-									<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
-								</td>
-
-							<?php } else { ?>
-
-								<td class="<?php echo $key; ?>">
-									<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>"<?php if ( !$played ) echo ' disabled'; ?>/>
-								</td>
-
-							<?php }
-
-						endif;
-					
-					endforeach;
-
-					if ( $type == 'subs' ) {
-						
-						wpcm_player_subs_dropdown( $selected_players, $player->ID, !$played );
-						
+					if( $number ) {
+						$squad_number = $number . '. ';
+					} else {
+						$squad_number = '';
 					} ?>
-				</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-<?php
+
+					<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $teamclass; ?> <?php echo $seasonclass; ?> sortable sorted">
+						<td class="names">
+							<label class="selectit">
+								<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> /><span class="name">
+								<?php echo $squad_number; ?> <?php echo $player->post_title; ?></span>
+							</label>
+						</td>
+						<?php foreach( $wpcm_player_stats_labels as $key => $val ):
+
+							$keyarray = (
+									is_array( $selected_players ) &&
+									array_key_exists( $type, $selected_players ) &&
+									is_array( $selected_players[$type] ) &&
+									array_key_exists( $player->ID, $selected_players[$type] ) &&
+									is_array( $selected_players[$type][$player->ID] ) &&
+									array_key_exists( $key, $selected_players[$type][$player->ID] )
+								);
+
+							if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+
+								if ( $key == 'greencards' ) { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="checkbox" data-card="green" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php } elseif ( $key == 'yellowcards' ) { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php } elseif ( $key == 'blackcards' ) { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="checkbox" data-card="black" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php } elseif ( $key == 'redcards' ) { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php } elseif ( $key == 'rating' ) { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php } elseif ( $key == 'mvp' ) { ?>
+
+									<td class="mvp">
+										<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
+									</td>
+
+								<?php } else { ?>
+
+									<td class="<?php echo $key; ?>">
+										<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>"<?php if ( !$played ) echo ' disabled'; ?>/>
+									</td>
+
+								<?php }
+
+							endif;
+						
+						endforeach;
+
+						if ( $type == 'subs' ) {
+							
+							wpcm_player_subs_dropdown( $selected_players, $player->ID, !$played );
+							
+						} ?>
+					</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	<?php
+	}
 }
 
 /**
@@ -374,3 +456,24 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	return $output;
 }
+
+/**
+ * Save ajax menu_order sortable
+ *
+ * @access public
+ * @since 1.1.9
+ */
+function wpcm_match_players_item_order() {
+
+    global $wpdb;
+
+    $order = explode(',', $_POST['order']);
+    $counter = 0;
+    foreach ($order as $item_id) {
+        $wpdb->update($wpdb->posts, array( 'menu_order' => $counter ), array( 'ID' => $item_id) );
+        $counter++;
+    }
+    die(1);
+}
+add_action('wp_ajax_item_sort', 'wpcm_match_players_item_order');
+add_action('wp_ajax_nopriv_item_sort', 'wpcm_match_players_item_order');
