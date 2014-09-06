@@ -17,6 +17,10 @@
 	float: left !important;
 }
 
+.wpcm_map_canvas img {
+	max-width: none !important;
+}
+
 .wpcm-row {
 	width: 100%;
 	margin-left: auto;
@@ -624,6 +628,31 @@ table {
 	.wpcm-sponsor-details a.more-link {
 		display: block;
 	}
+
+/*
+*******************************************************
+****** Single Club
+*******************************************************
+*/
+.wpcm-club-details h2 {
+	font-size: 1.6em;
+	font-weight: normal;
+	margin: 0 0 1em;
+}
+.wpcm-club-details h2 img {
+	margin-right: 15px;
+	vertical-align: middle;
+}
+.wpcm-club-details table {
+	margin-bottom: 1.5em;
+}
+.wpcm-club-details table th {
+	font-weight: 600;
+	min-width: 100px;
+}
+.wpcm-club-map {
+	margin-bottom: 1.5em;
+}
 
 
 /* Twentyfourteen theme specific styles */
