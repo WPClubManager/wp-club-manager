@@ -47,6 +47,11 @@ class WPCM_Admin_Assets {
 			wp_enqueue_style( 'jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/' . $jquery_version . '/themes/smoothness/jquery-ui.css', array(), WPCM_VERSION );
 		}
 
+		if ( in_array( $screen->id, array( 'dashboard_page_wpcm-getting-started' ) ) ) {
+
+	    	wp_enqueue_style( 'mailchimp-form', '//cdn-images.mailchimp.com/embedcode/slim-081711.css', array(), false );
+		}
+
 		do_action( 'wpclubmanager_admin_css' );
 	}
 
@@ -66,7 +71,7 @@ class WPCM_Admin_Assets {
 		$suffix       = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 		// Register scripts
-		wp_register_script( 'wpclubmanager_admin', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-tiptip' ), WPCM_VERSION );
+		wp_register_script( 'wpclubmanager_admin', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-tiptip', 'jquery-ui-sortable' ), WPCM_VERSION );
 
 		wp_register_script( 'jquery-tiptip', WPCM()->plugin_url() . '/assets/js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), WPCM_VERSION, true );
 

@@ -74,6 +74,9 @@ jQuery( function($){
 		wpcm_filter_team_players();
 	});
 
+	// jQuery('table#wpcm-match-selection tbody').sortable({ cursor: "move" });
+	// jQuery( 'table#wpcm-match-selection tbody' ).disableSelection();
+
 	updateCounter = function() {
     	var len = jQuery("#wpcm_lineup input.player-select:checked").length;
     	var sublen = jQuery("#wpcm_subs input.player-select:checked").length;
@@ -150,5 +153,37 @@ jQuery( function($){
 	});
 
 	
-	
+	var itemList = jQuery('#sortable');
+
+    itemList.sortable({
+    	cursor: 'move',
+        update: function(event, ui) {
+            jQuery('#loading-animation').show(); // Show the animate loading gif while waiting
+
+            opts = {
+                url: ajaxurl, // ajaxurl is defined by WordPress and points to /wp-admin/admin-ajax.php
+                type: 'POST',
+                async: true,
+                cache: false,
+                dataType: 'json',
+                data:{
+                    action: 'item_sort', // Tell WordPress how to handle this ajax request
+                    order: itemList.sortable('toArray').toString() // Passes ID's of list items in  1,3,2 format
+                },
+                success: function(response) {
+                    jQuery('#loading-animation').hide(); // Hide the loading animation
+                    return; 
+                },
+                error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
+                    alert(e);
+                    alert('There was an error saving the updates');
+                    jQuery('#loading-animation').hide(); // Hide the loading animation
+                    return; 
+                }
+            };
+            jQuery.ajax(opts);
+        }
+    });
+
+
 });
