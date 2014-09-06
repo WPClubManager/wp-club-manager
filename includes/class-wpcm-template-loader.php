@@ -39,6 +39,14 @@ class WPCM_Template_Loader {
 		$find = array( 'wpclubmanager.php' );
 		$file = '';
 
+		if ( is_single() && get_post_type() == 'wpcm_club' ) {
+
+			$file 	= 'single-club.php';
+			$find[] = $file;
+			$find[] = WPCM_TEMPLATE_PATH . $file;
+
+		}
+
 		if ( is_single() && get_post_type() == 'wpcm_player' ) {
 
 			$file 	= 'single-player.php';
