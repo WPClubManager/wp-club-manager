@@ -189,12 +189,12 @@ class WPCM_Admin_Taxonomies {
 
 		<div class="form-field">
 			<label for="term_meta[wpcm_address]"><?php _e('Venue Address', 'wpclubmanager'); ?></label>
-			<input name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" type="text" value="<?php echo (isset($term_meta['wpcm_address'])&&!empty($term_meta['wpcm_address'])) ? $term_meta['wpcm_address'] : '' ?>" size="40">
+			<textarea name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" rows="5" cols="40"><?php echo (isset($term_meta['wpcm_address'])&&!empty($term_meta['wpcm_address'])) ? $term_meta['wpcm_address'] : '' ?></textarea>
 			<p><?php _e('The venue address is used to display a map of the venue.', 'wpclubmanager'); ?></p>
 		</div>
 		<div class="form-field">
 			<label for="term_meta[wpcm_capacity]"><?php _e('Venue Capacity', 'wpclubmanager'); ?></label>
-			<input name="term_meta[wpcm_capacity]" id="term_meta[wpcm_capacity]" type="text" value="<?php echo (isset($term_meta['wpcm_capacity'])&&!empty($term_meta['wpcm_capacity'])) ? $term_meta['wpcm_capacity'] : '' ?>">
+			<input name="term_meta[wpcm_capacity]" id="term_meta[wpcm_capacity]" type="text" value="<?php echo (isset($term_meta['wpcm_capacity'])&&!empty($term_meta['wpcm_capacity'])) ? $term_meta['wpcm_capacity'] : '' ?>" size="5">
 			<p><?php _e('The venue capacity is not prominent by default; however, some themes may show it.', 'wpclubmanager'); ?></p>
 		</div>
 	<?php }
@@ -216,7 +216,7 @@ class WPCM_Admin_Taxonomies {
 				<label for="term_meta[wpcm_address]"><?php _e('Venue Address', 'wpclubmanager'); ?></label>
 			</th>
 			<td>
-				<input name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" type="text" value="<?php echo (isset($term_meta['wpcm_address'])&&!empty($term_meta['wpcm_address'])) ? $term_meta['wpcm_address'] : '' ?>" size="40">
+				<textarea name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" rows="5" cols="40"><?php echo (isset($term_meta['wpcm_address'])&&!empty($term_meta['wpcm_address'])) ? $term_meta['wpcm_address'] : '' ?></textarea>
 				<p class="description"><?php _e('The venue address is used to display a map of the venue.', 'wpclubmanager'); ?></p>
 			</td>
 		</tr>
@@ -225,7 +225,7 @@ class WPCM_Admin_Taxonomies {
 				<label for="term_meta[wpcm_capacity]"><?php _e('Venue Capacity', 'wpclubmanager'); ?></label>
 			</th>
 			<td>
-				<input name="term_meta[wpcm_capacity]" id="term_meta[wpcm_capacity]" type="text" value="<?php echo (isset($term_meta['wpcm_capacity'])&&!empty($term_meta['wpcm_capacity'])) ? $term_meta['wpcm_capacity'] : '' ?>">
+				<input name="term_meta[wpcm_capacity]" id="term_meta[wpcm_capacity]" type="text" value="<?php echo (isset($term_meta['wpcm_capacity'])&&!empty($term_meta['wpcm_capacity'])) ? $term_meta['wpcm_capacity'] : '' ?>" size="5">
 				<p class="description"><?php _e('The venue capacity is not prominent by default; however, some themes may show it.', 'wpclubmanager'); ?></p>
 			</td>
 		</tr>
