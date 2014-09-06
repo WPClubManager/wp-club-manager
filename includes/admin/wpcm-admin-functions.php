@@ -21,7 +21,7 @@ function wpcm_get_screen_ids() {
 	$wpcm_screen_id = strtolower( __( 'wpcm-settings', 'wpclubmanager' ) );
 
     return apply_filters( 'wpclubmanager_screen_ids', array(
-    	'dashboard_page_wpcm-about',
+    	'dashboard_page_wpcm-getting-started',
     	'toplevel_page_' . $wpcm_screen_id,
     	$wpcm_screen_id . '_page_wpcm-settings',
     	//$wpcm_screen_id . '_page_wpcm-addons',
