@@ -107,8 +107,6 @@ class WPCM_Shortcodes {
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff', 'output' ), $atts );
 	}
 
-
-
 	/**
 	 * Display google map shortcode
 	 *
@@ -118,106 +116,70 @@ class WPCM_Shortcodes {
 	 */
 	public static function map( $atts ) {
 
-		$atts = shortcode_atts(
-			array(
-				'address' 	=> false,
-				'width' 	=> '100%',
-				'height' 	=> '400px'
-			),
-			$atts
-		);
-
-		$address = $atts['address'];
-
-		if( $address ) :
-
-			wp_print_scripts( 'google-maps-api' );
-
-			$coordinates = self::wpcm_map_get_coordinates( $address );
-
-			if( !is_array( $coordinates ) )
-				return;
-
-			$map_id = uniqid( 'wpcm_map_' ); // generate a unique ID for this map
-
-			ob_start(); ?>
-			<div class="wpcm-match-map-canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr( $atts['height'] ); ?>; width: <?php echo esc_attr( $atts['width'] ); ?>"></div>
-		    <script type="text/javascript">
-				var map_<?php echo $map_id; ?>;
-				function wpcm_run_map_<?php echo $map_id ; ?>(){
-					var location = new google.maps.LatLng("<?php echo $coordinates['lat']; ?>", "<?php echo $coordinates['lng']; ?>");
-					var map_options = {
-						zoom: 15,
-						center: location,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-					}
-					map_<?php echo $map_id ; ?> = new google.maps.Map(document.getElementById("<?php echo $map_id ; ?>"), map_options);
-					var marker = new google.maps.Marker({
-					position: location,
-					map: map_<?php echo $map_id ; ?>
-					});
-				}
-				wpcm_run_map_<?php echo $map_id ; ?>();
-			</script>
-			<?php
-		endif;
-		return ob_get_clean();
-	}
-
-	public static function wpcm_map_get_coordinates( $address, $force_refresh = false ) {
-
-	    $address_hash = md5( $address );
-
-	    $coordinates = get_transient( $address_hash );
-
-	    if ($force_refresh || $coordinates === false) {
-
-	    	$args       = array( 'address' => urlencode( $address ), 'sensor' => 'false' );
-	    	$url        = add_query_arg( $args, 'http://maps.googleapis.com/maps/api/geocode/json' );
-	     	$response 	= wp_remote_get( $url );
-
-	     	if( is_wp_error( $response ) )
-	     		return;
-
-	     	$data = wp_remote_retrieve_body( $response );
-
-	     	if( is_wp_error( $data ) )
-	     		return;
-
-			if ( $response['response']['code'] == 200 ) {
-
-				$data = json_decode( $data );
-
-				if ( $data->status === 'OK' ) {
-
-				  	$coordinates = $data->results[0]->geometry->location;
-
-				  	$cache_value['lat'] 	= $coordinates->lat;
-				  	$cache_value['lng'] 	= $coordinates->lng;
-				  	$cache_value['address'] = (string) $data->results[0]->formatted_address;
-
-				  	// cache coordinates for 3 months
-				  	set_transient($address_hash, $cache_value, 3600*24*30*3);
-				  	$data = $cache_value;
-
-				} elseif ( $data->status === 'ZERO_RESULTS' ) {
-				  	return __( 'No location found for the entered address.', 'pw-maps' );
-				} elseif( $data->status === 'INVALID_REQUEST' ) {
-				   	return __( 'Invalid request. Did you enter an address?', 'pw-maps' );
-				} else {
-					return __( 'Something went wrong while retrieving your map, please ensure you have entered the short code correctly.', 'pw-maps' );
-				}
-
-			} else {
-			 	return __( 'Unable to contact Google API service.', 'pw-maps' );
+		$atts = shortcode_atts( array(
+			'api_key' 		=> false,
+			'address' 		=> false,
+			'lat' 			=> false,
+			'lng' 			=> false,
+			'zoom' 			=> '13',
+			'height'    	=> '320px',
+			'width'			=> '584px',
+			'marker'    	=> 1,
+			'infowindow'	=> false,
+		), $atts );
+		
+		wp_print_scripts( 'google-maps-api' );
+		
+		if ( $atts['address'] ) {
+			$coordinates = wpcm_decode_address( $atts['address'] );
+			if ( is_array ( $coordinates ) ) {
+				$atts['lat'] = $coordinates['lat'];
+				$atts['lng'] = $coordinates['lng'];
 			}
+		}
+		
+		$map_id = uniqid( 'wpcm_map_' );
+		
+		// show marker or not
+		$atts['marker'] = (int) $atts['marker'] ? true : false;
 
-	    } else {
-	       // return cached results
-	       $data = $coordinates;
-	    }
-
-	    return $data;
+		ob_start(); ?>
+		<div class="wpcm_map_canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr( $atts['height'] ); ?>; width: <?php echo esc_attr( $atts['width'] ); ?>"></div>
+	    <script type="text/javascript">
+			var map_<?php echo $map_id; ?>;
+			var marker_<?php echo $map_id; ?>;
+			var infowindow_<?php echo $map_id; ?>;
+			var geocoder = new google.maps.Geocoder();
+			function wp_gmaps_<?php echo $map_id; ?>() {
+				var location = new google.maps.LatLng("<?php echo esc_attr( $atts['lat'] ); ?>", "<?php echo esc_attr( $atts['lng'] ); ?>");
+				var map_options = {
+					zoom: <?php echo esc_attr( $atts['zoom'] ) ?>,
+					center: location,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				}
+				map_<?php echo $map_id; ?> = new google.maps.Map(document.getElementById("<?php echo $map_id; ?>"), map_options);
+				
+				<?php if ( $atts['marker'] ): ?>
+					marker_<?php echo $map_id ?> = new google.maps.Marker({
+						position: location,
+						map: map_<?php echo $map_id; ?>
+					});
+				
+					<?php if ( $atts['infowindow'] ): ?>
+						infowindow_<?php echo $map_id; ?> = new google.maps.InfoWindow({
+							content: '<?php echo esc_attr( $atts['infowindow'] ) ?>'
+						});
+						google.maps.event.addListener(marker_<?php echo $map_id ?>, 'click', function() {
+							infowindow_<?php echo $map_id; ?>.open(map_<?php echo $map_id; ?>, marker_<?php echo $map_id ?>);
+						});
+					<?php endif; ?>
+				<?php endif; ?>
+			}
+			wp_gmaps_<?php echo $map_id; ?>();
+		</script>
+		<?php
+		
+		return ob_get_clean();
 	}
 
 }
