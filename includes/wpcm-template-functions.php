@@ -35,6 +35,9 @@ function wpcm_body_class( $classes ) {
 	if ( is_wpclubmanager() ) {
 		$classes[] = 'wpclubmanager';
 	}
+	if ( is_club() ) {
+		$classes[] = 'club';
+	}
 	if ( is_player() ) {
 		$classes[] = 'player';
 	}
@@ -62,6 +65,9 @@ function wpcm_post_class( $classes ) {
 
 	if ( is_sponsor() ) {
 		$classes[] = 'wpcm-single-sponsors';
+	}
+	if ( is_club() ) {
+		$classes[] = 'wpcm-single-club';
 	}
 	if ( is_player() ) {
 		$classes[] = 'wpcm-single-player';
@@ -203,8 +209,27 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 
 		global $post;
 		
+		$teams = get_the_terms( $post->ID, 'wpcm_team' );
+
+		if ( is_array( $teams ) ) {
+							
+			$player_teams = array();
+
+			foreach ( $teams as $team ) {
+				
+				$player_teams[] = $team->term_id;
+			}
+		}
+		
 		$args = array(
 			'post_type' => 'wpcm_player',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'wpcm_team',
+					'field' => 'term_id',
+					'terms' => $player_teams
+				)
+			),
 			'numberposts' => -1,
 			'orderby' => 'meta_value_num',
 			'order' => 'ASC',
@@ -247,9 +272,28 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 	function wpclubmanager_template_single_staff_dropdown() {
 
 		global $post;
+
+		$teams = get_the_terms( $post->ID, 'wpcm_team' );
+
+		if ( is_array( $teams ) ) {
+							
+			$staff_teams = array();
+
+			foreach ( $teams as $team ) {
+				
+				$staff_teams[] = $team->term_id;
+			}
+		}
 		
 		$args = array(
 			'post_type' => 'wpcm_staff',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'wpcm_team',
+					'field' => 'term_id',
+					'terms' => $staff_teams
+				)
+			),
 			'numberposts' => -1,
 			'orderby' => 'name',
 			'order' => 'ASC',		);
