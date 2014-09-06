@@ -1112,3 +1112,51 @@ function wpcm_get_sports_stats_labels() {
 
 	return $wpcm_player_stats_labels;
 }
+
+function wpcm_decode_address( $address ) {
+
+    $address_hash = md5( $address );
+
+    $coordinates = get_transient( $address_hash );
+	
+	if ( false === $coordinates ) {
+		$args = array( 'address' => urlencode( $address ) );
+		$url = add_query_arg( $args, 'http://maps.googleapis.com/maps/api/geocode/json' );
+     	$response = wp_remote_get( $url );
+		
+     	if ( is_wp_error( $response ) )
+     		return;
+
+		if ( $response['response']['code'] == 200 ) {
+	     	$data = wp_remote_retrieve_body( $response );
+			
+	     	if ( is_wp_error( $data ) )
+	     		return;
+			
+			$data = json_decode( $data );
+
+			if ( $data->status === 'OK' ) {
+			  	$coordinates = $data->results[0]->geometry->location;
+
+			  	$cache_value['lat'] = $coordinates->lat;
+			  	$cache_value['lng'] = $coordinates->lng;
+
+			  	// cache coordinates for 1 month
+			  	set_transient( $address_hash, $cache_value, 3600*24*30 );
+				$coordinates = $cache_value;
+
+			} elseif ( $data->status === 'ZERO_RESULTS' ) {
+			  	return __( 'No location found for the entered address.', 'wp-gmaps' );
+			} elseif( $data->status === 'INVALID_REQUEST' ) {
+			   	return __( 'Invalid request. Address is missing', 'wp-gmaps' );
+			} else {
+				return __( 'Something went wrong while retrieving your map.', 'wp-gmaps' );
+			}
+		} else {
+		 	return __( 'Unable to contact Google API service.', 'wp-gmaps' );
+		}
+		
+	}
+	
+	return $coordinates;
+}
