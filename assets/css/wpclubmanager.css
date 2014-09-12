@@ -487,8 +487,9 @@ table {
 	.wpcm-match-details h3 {
 		margin-bottom: 1.5em;
 	}
-	.wpcm-match-stats-start {
-		
+	.wpcm-match-stats-start img.lineup-thumb,
+	.wpcm-match-stats-subs img.lineup-thumb {
+		vertical-align: middle;	
 	}
 	.wpcm-match-stats-subs {
 		padding-top: 1.4em;
@@ -502,8 +503,8 @@ table {
 		padding: 1em .5em;
 	}
 	.wpcm-match-map-canvas img {
-			max-width: none;
-		}
+		max-width: none;
+	}
 
 
 /*
