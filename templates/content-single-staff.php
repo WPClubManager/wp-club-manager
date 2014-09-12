@@ -118,7 +118,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 					if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes') {
 
-						$jobs = get_the_terms( $post->ID, 'wpcm_job' );
+						$jobs = get_the_terms( $post->ID, 'wpcm_jobs' );
 
 						if ( is_array( $jobs ) ) {
 
