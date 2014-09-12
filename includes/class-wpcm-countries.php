@@ -146,6 +146,7 @@ class WPCM_Countries {
 			'kz' => __( 'Kazakhstan', 'wpclubmanager' ),
 			'ke' => __( 'Kenya', 'wpclubmanager' ),
 			'ki' => __( 'Kiribati', 'wpclubmanager' ),
+			'ks' => __( 'Kosovo', 'wpclubmanager' ),
 			'kw' => __( 'Kuwait', 'wpclubmanager' ),
 			'kg' => __( 'Kyrgyzstan', 'wpclubmanager' ),
 			'la' => __( 'Laos', 'wpclubmanager' ),
