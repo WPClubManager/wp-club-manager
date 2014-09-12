@@ -542,7 +542,7 @@ class WPCM_Admin_Welcome {
 				<div class="wpcm-feature feature-section col three-col">
 
 					<?php
-					$translator_handles = array( 'King3R', 'rychu_cmg', 'fvottendorf', 'Spirossmil', 'lucabarbetti', 'baldovi', 'thegreat', 'Vadim_C', 'hushiea', 'Pirolla', 'hatasu', 'piotr01', 'cherreman' );
+					$translator_handles = array( 'ClubPress', 'King3R', 'rychu_cmg', 'fvottendorf', 'Spirossmil', 'lucabarbetti', 'baldovi', 'thegreat', 'Vadim_C', 'hushiea', 'Pirolla', 'hatasu', 'piotr01', 'cherreman', 'Wuko', 'sigma66699969669' );
 					$translator_links = array();
 					foreach ( $translator_handles as $handle ):
 						$translator_links[] = '<a href="https://www.transifex.com/accounts/profile/' . $handle . '">' . $handle . '</a>';
