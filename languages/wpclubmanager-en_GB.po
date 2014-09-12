@@ -1,20 +1,25 @@
+#
+# Translators:
+# Clubpress <leon@wpclubmanager.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
-"POT-Creation-Date: 2014-09-05 21:48-0000\n"
-"PO-Revision-Date: 2014-09-05 21:49-0000\n"
+"POT-Creation-Date: 2014-09-12 14:33-0000\n"
+"PO-Revision-Date: 2014-09-12 15:04-0000\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
+"wp-club-manager/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_c;"
 "_nc:4c,1,2\n"
-"X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
@@ -928,530 +933,534 @@ msgid "Kiribati"
 msgstr "Kiribati"
 
 #: ../includes/class-wpcm-countries.php:149
+msgid "Kosovo"
+msgstr "Kosovo"
+
+#: ../includes/class-wpcm-countries.php:150
 msgid "Kuwait"
 msgstr "Kuwait"
 
-#: ../includes/class-wpcm-countries.php:150
+#: ../includes/class-wpcm-countries.php:151
 msgid "Kyrgyzstan"
 msgstr "Kyrgyzstan"
 
-#: ../includes/class-wpcm-countries.php:151
+#: ../includes/class-wpcm-countries.php:152
 msgid "Laos"
 msgstr "Laos"
 
-#: ../includes/class-wpcm-countries.php:152
+#: ../includes/class-wpcm-countries.php:153
 msgid "Latvia"
 msgstr "Latvia"
 
-#: ../includes/class-wpcm-countries.php:153
+#: ../includes/class-wpcm-countries.php:154
 msgid "Lebanon"
 msgstr "Lebanon"
 
-#: ../includes/class-wpcm-countries.php:154
+#: ../includes/class-wpcm-countries.php:155
 msgid "Lesotho"
 msgstr "Lesotho"
 
-#: ../includes/class-wpcm-countries.php:155
+#: ../includes/class-wpcm-countries.php:156
 msgid "Liberia"
 msgstr "Liberia"
 
-#: ../includes/class-wpcm-countries.php:156
+#: ../includes/class-wpcm-countries.php:157
 msgid "Libya"
 msgstr "Libya"
 
-#: ../includes/class-wpcm-countries.php:157
+#: ../includes/class-wpcm-countries.php:158
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: ../includes/class-wpcm-countries.php:158
+#: ../includes/class-wpcm-countries.php:159
 msgid "Lithuania"
 msgstr "Lithuania"
 
-#: ../includes/class-wpcm-countries.php:159
+#: ../includes/class-wpcm-countries.php:160
 msgid "Luxembourg"
 msgstr "Luxembourg"
 
-#: ../includes/class-wpcm-countries.php:160
+#: ../includes/class-wpcm-countries.php:161
 msgid "Macao"
 msgstr "Macao"
 
-#: ../includes/class-wpcm-countries.php:161
+#: ../includes/class-wpcm-countries.php:162
 msgid "Macedonia"
 msgstr "Macedonia"
 
-#: ../includes/class-wpcm-countries.php:162
+#: ../includes/class-wpcm-countries.php:163
 msgid "Madagascar"
 msgstr "Madagascar"
 
-#: ../includes/class-wpcm-countries.php:163
+#: ../includes/class-wpcm-countries.php:164
 msgid "Malawi"
 msgstr "Malawi"
 
-#: ../includes/class-wpcm-countries.php:164
+#: ../includes/class-wpcm-countries.php:165
 msgid "Malaysia"
 msgstr "Malaysia"
 
-#: ../includes/class-wpcm-countries.php:165
+#: ../includes/class-wpcm-countries.php:166
 msgid "Maldives"
 msgstr "Maldives"
 
-#: ../includes/class-wpcm-countries.php:166
+#: ../includes/class-wpcm-countries.php:167
 msgid "Mali"
 msgstr "Mali"
 
-#: ../includes/class-wpcm-countries.php:167
+#: ../includes/class-wpcm-countries.php:168
 msgid "Malta"
 msgstr "Malta"
 
-#: ../includes/class-wpcm-countries.php:168
+#: ../includes/class-wpcm-countries.php:169
 msgid "Marshall Islands"
 msgstr "Marshall Islands"
 
-#: ../includes/class-wpcm-countries.php:169
+#: ../includes/class-wpcm-countries.php:170
 msgid "Martinique"
 msgstr "Martinique"
 
-#: ../includes/class-wpcm-countries.php:170
+#: ../includes/class-wpcm-countries.php:171
 msgid "Mauritania"
 msgstr "Mauritania"
 
-#: ../includes/class-wpcm-countries.php:171
+#: ../includes/class-wpcm-countries.php:172
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#: ../includes/class-wpcm-countries.php:172
+#: ../includes/class-wpcm-countries.php:173
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: ../includes/class-wpcm-countries.php:173
+#: ../includes/class-wpcm-countries.php:174
 msgid "Mexico"
 msgstr "Mexico"
 
-#: ../includes/class-wpcm-countries.php:174
+#: ../includes/class-wpcm-countries.php:175
 msgid "Micronesia, Federal States of"
 msgstr "Micronesia, Federal States of"
 
-#: ../includes/class-wpcm-countries.php:175
+#: ../includes/class-wpcm-countries.php:176
 msgid "Moldova, Republic of"
 msgstr "Moldova, Republic of"
 
-#: ../includes/class-wpcm-countries.php:176
+#: ../includes/class-wpcm-countries.php:177
 msgid "Monaco"
 msgstr "Monaco"
 
-#: ../includes/class-wpcm-countries.php:177
+#: ../includes/class-wpcm-countries.php:178
 msgid "Mongolia"
 msgstr "Mongolia"
 
-#: ../includes/class-wpcm-countries.php:178
+#: ../includes/class-wpcm-countries.php:179
 msgid "Monserrat"
 msgstr "Monserrat"
 
-#: ../includes/class-wpcm-countries.php:179
+#: ../includes/class-wpcm-countries.php:180
 msgid "Montenegro"
 msgstr "Montenegro"
 
-#: ../includes/class-wpcm-countries.php:180
+#: ../includes/class-wpcm-countries.php:181
 msgid "Morocco"
 msgstr "Morocco"
 
-#: ../includes/class-wpcm-countries.php:181
+#: ../includes/class-wpcm-countries.php:182
 msgid "North Korea"
 msgstr "North Korea"
 
-#: ../includes/class-wpcm-countries.php:182
+#: ../includes/class-wpcm-countries.php:183
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: ../includes/class-wpcm-countries.php:183
+#: ../includes/class-wpcm-countries.php:184
 msgid "Myanmar"
 msgstr "Myanmar"
 
-#: ../includes/class-wpcm-countries.php:184
+#: ../includes/class-wpcm-countries.php:185
 msgid "Namibia"
 msgstr "Namibia"
 
-#: ../includes/class-wpcm-countries.php:185
+#: ../includes/class-wpcm-countries.php:186
 msgid "Nauru"
 msgstr "Nauru"
 
-#: ../includes/class-wpcm-countries.php:186
+#: ../includes/class-wpcm-countries.php:187
 msgid "Nepal"
 msgstr "Nepal"
 
-#: ../includes/class-wpcm-countries.php:187
+#: ../includes/class-wpcm-countries.php:188
 msgid "Netherlands"
 msgstr "Netherlands"
 
-#: ../includes/class-wpcm-countries.php:188
+#: ../includes/class-wpcm-countries.php:189
 msgid "New Caledonia"
 msgstr "New Caledonia"
 
-#: ../includes/class-wpcm-countries.php:189
+#: ../includes/class-wpcm-countries.php:190
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: ../includes/class-wpcm-countries.php:190
+#: ../includes/class-wpcm-countries.php:191
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: ../includes/class-wpcm-countries.php:191
+#: ../includes/class-wpcm-countries.php:192
 msgid "Niger"
 msgstr "Niger"
 
-#: ../includes/class-wpcm-countries.php:192
+#: ../includes/class-wpcm-countries.php:193
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: ../includes/class-wpcm-countries.php:193
+#: ../includes/class-wpcm-countries.php:194
 msgid "Niue"
 msgstr "Niue"
 
-#: ../includes/class-wpcm-countries.php:194
+#: ../includes/class-wpcm-countries.php:195
 msgid "Norfolk Island"
 msgstr "Norfolk Island"
 
-#: ../includes/class-wpcm-countries.php:195
+#: ../includes/class-wpcm-countries.php:196
 msgid "Northern Ireland"
 msgstr "Northern Ireland"
 
-#: ../includes/class-wpcm-countries.php:196
+#: ../includes/class-wpcm-countries.php:197
 msgid "Northern Mariana Islands"
 msgstr "Northern Mariana Islands"
 
-#: ../includes/class-wpcm-countries.php:197
+#: ../includes/class-wpcm-countries.php:198
 msgid "Norway"
 msgstr "Norway"
 
-#: ../includes/class-wpcm-countries.php:198
+#: ../includes/class-wpcm-countries.php:199
 msgid "Oman"
 msgstr "Oman"
 
-#: ../includes/class-wpcm-countries.php:199
+#: ../includes/class-wpcm-countries.php:200
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: ../includes/class-wpcm-countries.php:200
+#: ../includes/class-wpcm-countries.php:201
 msgid "Palau"
 msgstr "Palau"
 
-#: ../includes/class-wpcm-countries.php:201
+#: ../includes/class-wpcm-countries.php:202
 msgid "Palestine, State of"
 msgstr "Palestine, State of"
 
-#: ../includes/class-wpcm-countries.php:202
+#: ../includes/class-wpcm-countries.php:203
 msgid "Panama"
 msgstr "Panama"
 
-#: ../includes/class-wpcm-countries.php:203
+#: ../includes/class-wpcm-countries.php:204
 msgid "Papua New Guinea"
 msgstr "Papua New Guinea"
 
-#: ../includes/class-wpcm-countries.php:204
+#: ../includes/class-wpcm-countries.php:205
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: ../includes/class-wpcm-countries.php:205
+#: ../includes/class-wpcm-countries.php:206
 msgid "Peru"
 msgstr "Peru"
 
-#: ../includes/class-wpcm-countries.php:206
+#: ../includes/class-wpcm-countries.php:207
 msgid "Philippines"
 msgstr "Philippines"
 
-#: ../includes/class-wpcm-countries.php:207
+#: ../includes/class-wpcm-countries.php:208
 msgid "Pitcairn"
 msgstr "Pitcairn"
 
-#: ../includes/class-wpcm-countries.php:208
+#: ../includes/class-wpcm-countries.php:209
 msgid "Poland"
 msgstr "Poland"
 
-#: ../includes/class-wpcm-countries.php:209
+#: ../includes/class-wpcm-countries.php:210
 msgid "Portugal"
 msgstr "Portugal"
 
-#: ../includes/class-wpcm-countries.php:210
+#: ../includes/class-wpcm-countries.php:211
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
-#: ../includes/class-wpcm-countries.php:211
+#: ../includes/class-wpcm-countries.php:212
 msgid "Qatar"
 msgstr "Qatar"
 
-#: ../includes/class-wpcm-countries.php:212
+#: ../includes/class-wpcm-countries.php:213
 msgid "Reunion"
 msgstr "Reunion"
 
-#: ../includes/class-wpcm-countries.php:213
+#: ../includes/class-wpcm-countries.php:214
 msgid "Romania"
 msgstr "Romania"
 
-#: ../includes/class-wpcm-countries.php:214
+#: ../includes/class-wpcm-countries.php:215
 msgid "Russian Federation"
 msgstr "Russian Federation"
 
-#: ../includes/class-wpcm-countries.php:215
+#: ../includes/class-wpcm-countries.php:216
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: ../includes/class-wpcm-countries.php:216
+#: ../includes/class-wpcm-countries.php:217
 msgid "Saint Helena"
 msgstr "Saint Helena"
 
-#: ../includes/class-wpcm-countries.php:217
+#: ../includes/class-wpcm-countries.php:218
 msgid "Saint Kitts and Nevis"
 msgstr "Saint Kitts and Nevis"
 
-#: ../includes/class-wpcm-countries.php:218
+#: ../includes/class-wpcm-countries.php:219
 msgid "Saint Lucia"
 msgstr "Saint Lucia"
 
-#: ../includes/class-wpcm-countries.php:219
+#: ../includes/class-wpcm-countries.php:220
 msgid "Saint Pierre & Miquelon"
 msgstr "Saint Pierre & Miquelon"
 
-#: ../includes/class-wpcm-countries.php:220
+#: ../includes/class-wpcm-countries.php:221
 msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent and the Grenadines"
 
-#: ../includes/class-wpcm-countries.php:221
+#: ../includes/class-wpcm-countries.php:222
 msgid "Samoa"
 msgstr "Samoa"
 
-#: ../includes/class-wpcm-countries.php:222
+#: ../includes/class-wpcm-countries.php:223
 msgid "San Marino"
 msgstr "San Marino"
 
-#: ../includes/class-wpcm-countries.php:223
+#: ../includes/class-wpcm-countries.php:224
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 
-#: ../includes/class-wpcm-countries.php:224
+#: ../includes/class-wpcm-countries.php:225
 msgid "Saudi Arabia"
 msgstr "Saudi Arabia"
 
-#: ../includes/class-wpcm-countries.php:225
+#: ../includes/class-wpcm-countries.php:226
 msgid "Scotland"
 msgstr "Scotland"
 
-#: ../includes/class-wpcm-countries.php:226
+#: ../includes/class-wpcm-countries.php:227
 msgid "Senegal"
 msgstr "Senegal"
 
-#: ../includes/class-wpcm-countries.php:227
+#: ../includes/class-wpcm-countries.php:228
 msgid "Serbia"
 msgstr "Serbia"
 
-#: ../includes/class-wpcm-countries.php:228
+#: ../includes/class-wpcm-countries.php:229
 msgid "Seychelles"
 msgstr "Seychelles"
 
-#: ../includes/class-wpcm-countries.php:229
+#: ../includes/class-wpcm-countries.php:230
 msgid "Sierre Leone"
 msgstr "Sierre Leone"
 
-#: ../includes/class-wpcm-countries.php:230
+#: ../includes/class-wpcm-countries.php:231
 msgid "Singapore"
 msgstr "Singapore"
 
-#: ../includes/class-wpcm-countries.php:231
+#: ../includes/class-wpcm-countries.php:232
 msgid "Slovakia"
 msgstr "Slovakia"
 
-#: ../includes/class-wpcm-countries.php:232
+#: ../includes/class-wpcm-countries.php:233
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: ../includes/class-wpcm-countries.php:233
+#: ../includes/class-wpcm-countries.php:234
 msgid "Solomon Islands"
 msgstr "Solomon Islands"
 
-#: ../includes/class-wpcm-countries.php:234
+#: ../includes/class-wpcm-countries.php:235
 msgid "Somalia"
 msgstr "Somalia"
 
-#: ../includes/class-wpcm-countries.php:235
+#: ../includes/class-wpcm-countries.php:236
 msgid "South Africa"
 msgstr "South Africa"
 
-#: ../includes/class-wpcm-countries.php:236
+#: ../includes/class-wpcm-countries.php:237
 msgid "South Georgia / Sandwich Islands"
 msgstr "South Georgia / Sandwich Islands"
 
-#: ../includes/class-wpcm-countries.php:237
+#: ../includes/class-wpcm-countries.php:238
 msgid "South Korea"
 msgstr "South Korea"
 
-#: ../includes/class-wpcm-countries.php:238
+#: ../includes/class-wpcm-countries.php:239
 msgid "Spain"
 msgstr "Spain"
 
-#: ../includes/class-wpcm-countries.php:239
+#: ../includes/class-wpcm-countries.php:240
 msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
-#: ../includes/class-wpcm-countries.php:240
+#: ../includes/class-wpcm-countries.php:241
 msgid "Svalbard and Jan Mayen"
 msgstr "Svalbard and Jan Mayen"
 
-#: ../includes/class-wpcm-countries.php:241
+#: ../includes/class-wpcm-countries.php:242
 msgid "Sudan"
 msgstr "Sudan"
 
-#: ../includes/class-wpcm-countries.php:242
+#: ../includes/class-wpcm-countries.php:243
 msgid "Suriname"
 msgstr "Suriname"
 
-#: ../includes/class-wpcm-countries.php:243
+#: ../includes/class-wpcm-countries.php:244
 msgid "Swaziland"
 msgstr "Swaziland"
 
-#: ../includes/class-wpcm-countries.php:244
+#: ../includes/class-wpcm-countries.php:245
 msgid "Sweden"
 msgstr "Sweden"
 
-#: ../includes/class-wpcm-countries.php:245
+#: ../includes/class-wpcm-countries.php:246
 msgid "Switzerland"
 msgstr "Switzerland"
 
-#: ../includes/class-wpcm-countries.php:246
+#: ../includes/class-wpcm-countries.php:247
 msgid "Syrian Arab Republic"
 msgstr "Syrian Arab Republic"
 
-#: ../includes/class-wpcm-countries.php:247
+#: ../includes/class-wpcm-countries.php:248
 msgid "Taiwan, Province of China"
 msgstr "Taiwan, Province of China"
 
-#: ../includes/class-wpcm-countries.php:248
+#: ../includes/class-wpcm-countries.php:249
 msgid "Tajikstan"
 msgstr "Tajikstan"
 
-#: ../includes/class-wpcm-countries.php:249
+#: ../includes/class-wpcm-countries.php:250
 msgid "Tanzania, United Republic of"
 msgstr "Tanzania, United Republic of"
 
-#: ../includes/class-wpcm-countries.php:250
+#: ../includes/class-wpcm-countries.php:251
 msgid "Thailand"
 msgstr "Thailand"
 
-#: ../includes/class-wpcm-countries.php:251
+#: ../includes/class-wpcm-countries.php:252
 msgid "Timor-Leste"
 msgstr "Timor-Leste"
 
-#: ../includes/class-wpcm-countries.php:252
+#: ../includes/class-wpcm-countries.php:253
 msgid "Togo"
 msgstr "Togo"
 
-#: ../includes/class-wpcm-countries.php:253
+#: ../includes/class-wpcm-countries.php:254
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: ../includes/class-wpcm-countries.php:254
+#: ../includes/class-wpcm-countries.php:255
 msgid "Tonga"
 msgstr "Tonga"
 
-#: ../includes/class-wpcm-countries.php:255
+#: ../includes/class-wpcm-countries.php:256
 msgid "Trinidad and Tobago"
 msgstr "Trinidad and Tobago"
 
-#: ../includes/class-wpcm-countries.php:256
+#: ../includes/class-wpcm-countries.php:257
 msgid "Tunisia"
 msgstr "Tunisia"
 
-#: ../includes/class-wpcm-countries.php:257
+#: ../includes/class-wpcm-countries.php:258
 msgid "Turkey"
 msgstr "Turkey"
 
-#: ../includes/class-wpcm-countries.php:258
+#: ../includes/class-wpcm-countries.php:259
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
-#: ../includes/class-wpcm-countries.php:259
+#: ../includes/class-wpcm-countries.php:260
 msgid "Turks and Caicos Islands"
 msgstr "Turks and Caicos Islands"
 
-#: ../includes/class-wpcm-countries.php:260
+#: ../includes/class-wpcm-countries.php:261
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: ../includes/class-wpcm-countries.php:261
+#: ../includes/class-wpcm-countries.php:262
 msgid "Uganda"
 msgstr "Uganda"
 
-#: ../includes/class-wpcm-countries.php:262
+#: ../includes/class-wpcm-countries.php:263
 msgid "Ukraine"
 msgstr "Ukraine"
 
-#: ../includes/class-wpcm-countries.php:263
+#: ../includes/class-wpcm-countries.php:264
 msgid "United Arab Emirates"
 msgstr "United Arab Emirates"
 
-#: ../includes/class-wpcm-countries.php:264
+#: ../includes/class-wpcm-countries.php:265
 msgid "United Kingdom (UK)"
 msgstr "United Kingdom (UK)"
 
-#: ../includes/class-wpcm-countries.php:265
+#: ../includes/class-wpcm-countries.php:266
 msgid "United States (US)"
 msgstr "United States (US)"
 
-#: ../includes/class-wpcm-countries.php:266
+#: ../includes/class-wpcm-countries.php:267
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: ../includes/class-wpcm-countries.php:267
+#: ../includes/class-wpcm-countries.php:268
 msgid "US Minor Outlying Islands"
 msgstr "US Minor Outlying Islands"
 
-#: ../includes/class-wpcm-countries.php:268
+#: ../includes/class-wpcm-countries.php:269
 msgid "Uzbekistan"
 msgstr "Uzbekistan"
 
-#: ../includes/class-wpcm-countries.php:269
+#: ../includes/class-wpcm-countries.php:270
 msgid "Vanuata"
 msgstr "Vanuata"
 
-#: ../includes/class-wpcm-countries.php:270
+#: ../includes/class-wpcm-countries.php:271
 msgid "Venezuala"
 msgstr "Venezuala"
 
-#: ../includes/class-wpcm-countries.php:271
+#: ../includes/class-wpcm-countries.php:272
 msgid "Vietnam"
 msgstr "Vietnam"
 
-#: ../includes/class-wpcm-countries.php:272
+#: ../includes/class-wpcm-countries.php:273
 msgid "Virgin Islands, British"
 msgstr "Virgin Islands, British"
 
-#: ../includes/class-wpcm-countries.php:273
+#: ../includes/class-wpcm-countries.php:274
 msgid "Virgin Islands, U.S."
 msgstr "Virgin Islands, U.S."
 
-#: ../includes/class-wpcm-countries.php:274
+#: ../includes/class-wpcm-countries.php:275
 msgid "Wales"
 msgstr "Wales"
 
-#: ../includes/class-wpcm-countries.php:275
+#: ../includes/class-wpcm-countries.php:276
 msgid "Wallis and Futuna"
 msgstr "Wallis and Futuna"
 
-#: ../includes/class-wpcm-countries.php:276
+#: ../includes/class-wpcm-countries.php:277
 msgid "Western Sahara"
 msgstr "Western Sahara"
 
-#: ../includes/class-wpcm-countries.php:277
+#: ../includes/class-wpcm-countries.php:278
 msgid "Yemen"
 msgstr "Yemen"
 
-#: ../includes/class-wpcm-countries.php:278
+#: ../includes/class-wpcm-countries.php:279
 msgid "Yugoslavia"
 msgstr "Yugoslavia"
 
-#: ../includes/class-wpcm-countries.php:279
+#: ../includes/class-wpcm-countries.php:280
 msgid "Zambia"
 msgstr "Zambia"
 
-#: ../includes/class-wpcm-countries.php:280
+#: ../includes/class-wpcm-countries.php:281
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
@@ -1709,7 +1718,7 @@ msgstr "No clubs found"
 
 #: ../includes/class-wpcm-post-types.php:196
 msgid "No clubs found in trash"
-msgstr "No clubs found in trash"
+msgstr "No clubs found in bin"
 
 #: ../includes/class-wpcm-post-types.php:197
 msgid "Parent Club:"
@@ -1745,7 +1754,7 @@ msgstr "No players found"
 
 #: ../includes/class-wpcm-post-types.php:232
 msgid "No players found in trash"
-msgstr "No players found in trash"
+msgstr "No players found in bin"
 
 #: ../includes/class-wpcm-post-types.php:233
 msgid "Parent Player:"
@@ -1781,7 +1790,7 @@ msgstr "No staff found"
 
 #: ../includes/class-wpcm-post-types.php:268
 msgid "No staff found in trash"
-msgstr "No staff found in trash"
+msgstr "No staff found in bin"
 
 #: ../includes/class-wpcm-post-types.php:269
 msgid "Parent Staff:"
@@ -1827,7 +1836,7 @@ msgstr "No matches found"
 
 #: ../includes/class-wpcm-post-types.php:304
 msgid "No matches found in trash"
-msgstr "No matches found in trash"
+msgstr "No matches found in bin"
 
 #: ../includes/class-wpcm-post-types.php:305
 msgid "Parent Match:"
@@ -1873,7 +1882,7 @@ msgstr "No sponsors found"
 
 #: ../includes/class-wpcm-post-types.php:340
 msgid "No sponsors found in trash"
-msgstr "No sponsors found in trash"
+msgstr "No sponsors found in bin"
 
 #: ../includes/class-wpcm-post-types.php:341
 msgid "Parent Sponsor:"
@@ -2784,7 +2793,7 @@ msgstr "DG"
 
 #: ../includes/wpcm-core-functions.php:1018
 msgid "Football (Soccer)"
-msgstr "Football (Soccer)"
+msgstr "Football"
 
 #: ../includes/wpcm-core-functions.php:1043
 msgid "Penalty Goals"
@@ -2878,23 +2887,23 @@ msgstr "Click and drag players to reorder"
 msgid "Player Off"
 msgstr "Player Off"
 
-#: ../includes/wpcm-match-functions.php:395
+#: ../includes/wpcm-match-functions.php:405
 msgid "Man of Match"
 msgstr "Man of Match"
 
-#: ../includes/wpcm-match-functions.php:434
+#: ../includes/wpcm-match-functions.php:444
 msgid "Green Card"
 msgstr "Green Card"
 
-#: ../includes/wpcm-match-functions.php:439
+#: ../includes/wpcm-match-functions.php:449
 msgid "Yellow Card"
 msgstr "Yellow Card"
 
-#: ../includes/wpcm-match-functions.php:444
+#: ../includes/wpcm-match-functions.php:454
 msgid "Black Card"
 msgstr "Black Card"
 
-#: ../includes/wpcm-match-functions.php:448
+#: ../includes/wpcm-match-functions.php:458
 msgid "Red Card"
 msgstr "Red Card"
 
@@ -2967,11 +2976,11 @@ msgstr "Active"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:592
 msgid "Deactivate License"
-msgstr "Deactivate License"
+msgstr "Deactivate Licence"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:595
 msgid "Activate License"
-msgstr "Activate License"
+msgstr "Activate Licence"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:53
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:73
@@ -3765,7 +3774,7 @@ msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-licenses.php:22
 msgid "Licenses"
-msgstr "Licenses"
+msgstr "Licences"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:38
 msgid "Title Format Options"
@@ -3812,6 +3821,10 @@ msgstr "Pre Match Display Options"
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:99
 msgid "Post Match Display Options"
 msgstr "Post Match Display Options"
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:126
+msgid "Show Player Thumbnails"
+msgstr "Show Player Thumbnails"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:38
 msgid "Player Profile Options"
@@ -4121,28 +4134,3 @@ msgstr "Match Report"
 #: ../templates/single-player/meta.php:25
 msgid "Squad No."
 msgstr "Squad No."
-
-#~ msgid "Invalid request. Did you enter an address?"
-#~ msgstr "Invalid request. Did you enter an address?"
-
-#~ msgid "Configure Plugin"
-#~ msgstr "Configure Plugin"
-
-#~ msgid "Next Steps"
-#~ msgstr "Next Steps"
-
-#~ msgid "Add Competitions"
-#~ msgstr "Add Competitions"
-
-#~ msgid "Add Seasons"
-#~ msgstr "Add Seasons"
-
-#~ msgid "Add More Clubs"
-#~ msgstr "Add More Clubs"
-
-#~ msgid ""
-#~ "Please check out our <a href=\"http://wpclubmanager.com/docs/\">plugin "
-#~ "documentation</a> if you need help setting up or managing your club."
-#~ msgstr ""
-#~ "Please check out our <a href=\"http://wpclubmanager.com/docs/\">plugin "
-#~ "documentation</a> if you need help setting up or managing your club."

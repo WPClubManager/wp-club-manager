@@ -1,11 +1,12 @@
 #
 # Translators:
+# TheKesh <frantahlava@email.cz>, 2014
 # thegreat <jiri.the.great@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
-"POT-Creation-Date: 2014-06-10 09:06-0000\n"
-"PO-Revision-Date: 2014-06-21 02:21-0000\n"
+"POT-Creation-Date: 2014-09-12 14:33-0000\n"
+"PO-Revision-Date: 2014-09-12 15:03-0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
 "wp-club-manager/language/cs_CZ/)\n"
@@ -24,16 +25,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../wpclubmanager.php:75 ../wpclubmanager.php:84
+#: ../wpclubmanager.php:74 ../wpclubmanager.php:83
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: ../wpclubmanager.php:128
+#: ../wpclubmanager.php:127 ../includes/admin/class-wpcm-admin-welcome.php:243
 msgid "Docs"
 msgstr "Dokumenty"
 
 #: ../includes/class-wpcm-ajax.php:86
-#: ../includes/admin/class-wpcm-admin-welcome.php:217
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:38
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:40
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:43
@@ -42,7 +42,7 @@ msgstr "Dokumenty"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:54
 #, php-format
 msgid "Select %s"
-msgstr "Vybráno %s"
+msgstr "Vyberte %s"
 
 #: ../includes/class-wpcm-ajax.php:86
 #: ../includes/class-wpcm-post-types.php:187
@@ -56,16 +56,25 @@ msgstr "Vybráno %s"
 msgid "Club"
 msgstr "Klub"
 
-#: ../includes/class-wpcm-ajax.php:114
+#: ../includes/class-wpcm-ajax.php:118
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:268
+#: ../templates/content-single-club.php:74
 msgid "Address"
 msgstr "Adresa"
 
-#: ../includes/class-wpcm-ajax.php:119
+#: ../includes/class-wpcm-ajax.php:123
+msgid "Latitude"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:128
+msgid "Longtitude"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:133
 msgid "Width"
 msgstr "Šířka"
 
-#: ../includes/class-wpcm-ajax.php:124 ../includes/class-wpcm-ajax.php:293
+#: ../includes/class-wpcm-ajax.php:138 ../includes/class-wpcm-ajax.php:317
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:84
 #: ../includes/admin/settings/class-wpcm-settings-players.php:65
 #: ../includes/widgets/class-wpcm-widget-players.php:146
@@ -74,37 +83,45 @@ msgstr "Šířka"
 msgid "Height"
 msgstr "Výška"
 
-#: ../includes/class-wpcm-ajax.php:129 ../includes/class-wpcm-ajax.php:254
-#: ../includes/class-wpcm-ajax.php:443 ../includes/class-wpcm-ajax.php:619
-#: ../includes/class-wpcm-ajax.php:792
+#: ../includes/class-wpcm-ajax.php:143
+msgid "Zoom"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:148
+msgid "Display Marker"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:153 ../includes/class-wpcm-ajax.php:278
+#: ../includes/class-wpcm-ajax.php:467 ../includes/class-wpcm-ajax.php:643
+#: ../includes/class-wpcm-ajax.php:824
 #, php-format
 msgid "Insert %s"
 msgstr "Vložit %s"
 
-#: ../includes/class-wpcm-ajax.php:129
+#: ../includes/class-wpcm-ajax.php:153
 msgid "Map"
 msgstr "Mapa"
 
-#: ../includes/class-wpcm-ajax.php:146 ../templates/shortcodes/matches.php:18
+#: ../includes/class-wpcm-ajax.php:170 ../templates/shortcodes/matches.php:18
 msgid "View all results"
 msgstr "Zobrazit všechny výsledky"
 
-#: ../includes/class-wpcm-ajax.php:148 ../includes/class-wpcm-ajax.php:254
+#: ../includes/class-wpcm-ajax.php:172 ../includes/class-wpcm-ajax.php:278
 #: ../templates/shortcodes/matches.php:20
 msgid "Fixtures & Results"
 msgstr "Rozlosování & Výsledky"
 
-#: ../includes/class-wpcm-ajax.php:157 ../includes/class-wpcm-ajax.php:306
-#: ../includes/class-wpcm-ajax.php:486 ../includes/class-wpcm-ajax.php:649
+#: ../includes/class-wpcm-ajax.php:181 ../includes/class-wpcm-ajax.php:330
+#: ../includes/class-wpcm-ajax.php:510 ../includes/class-wpcm-ajax.php:674
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:33
 #: ../includes/widgets/class-wpcm-widget-players.php:162
 #: ../includes/widgets/class-wpcm-widget-results.php:33
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:138
-#: ../includes/widgets/class-wpcm-widget-standings.php:123
+#: ../includes/widgets/class-wpcm-widget-standings.php:128
 msgid "Title"
 msgstr "Titulek"
 
-#: ../includes/class-wpcm-ajax.php:162 ../includes/class-wpcm-ajax.php:659
+#: ../includes/class-wpcm-ajax.php:186 ../includes/class-wpcm-ajax.php:684
 #: ../includes/class-wpcm-post-types.php:44
 #: ../includes/class-wpcm-post-types.php:52
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:122
@@ -114,30 +131,30 @@ msgstr "Titulek"
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:95
 #: ../includes/widgets/class-wpcm-widget-results.php:47
 #: ../includes/widgets/class-wpcm-widget-results.php:100
-#: ../includes/widgets/class-wpcm-widget-standings.php:131
+#: ../includes/widgets/class-wpcm-widget-standings.php:136
 #: ../templates/shortcodes/matches.php:123
 msgid "Competition"
 msgstr "Soutěž"
 
-#: ../includes/class-wpcm-ajax.php:166 ../includes/class-wpcm-ajax.php:183
-#: ../includes/class-wpcm-ajax.php:200 ../includes/class-wpcm-ajax.php:217
-#: ../includes/class-wpcm-ajax.php:320 ../includes/class-wpcm-ajax.php:337
-#: ../includes/class-wpcm-ajax.php:354 ../includes/class-wpcm-ajax.php:500
-#: ../includes/class-wpcm-ajax.php:517 ../includes/class-wpcm-ajax.php:534
-#: ../includes/class-wpcm-ajax.php:663 ../includes/class-wpcm-ajax.php:680
+#: ../includes/class-wpcm-ajax.php:190 ../includes/class-wpcm-ajax.php:207
+#: ../includes/class-wpcm-ajax.php:224 ../includes/class-wpcm-ajax.php:241
+#: ../includes/class-wpcm-ajax.php:344 ../includes/class-wpcm-ajax.php:361
+#: ../includes/class-wpcm-ajax.php:378 ../includes/class-wpcm-ajax.php:524
+#: ../includes/class-wpcm-ajax.php:541 ../includes/class-wpcm-ajax.php:558
+#: ../includes/class-wpcm-ajax.php:688 ../includes/class-wpcm-ajax.php:705
 #: ../includes/abstracts/abstract-wpcm-widget.php:149
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:86
 #: ../includes/widgets/class-wpcm-widget-players.php:173
 #: ../includes/widgets/class-wpcm-widget-players.php:187
 #: ../includes/widgets/class-wpcm-widget-players.php:201
-#: ../includes/widgets/class-wpcm-widget-standings.php:134
-#: ../includes/widgets/class-wpcm-widget-standings.php:148
+#: ../includes/widgets/class-wpcm-widget-standings.php:139
+#: ../includes/widgets/class-wpcm-widget-standings.php:153
 msgid "All"
 msgstr "Vše"
 
-#: ../includes/class-wpcm-ajax.php:179 ../includes/class-wpcm-ajax.php:291
-#: ../includes/class-wpcm-ajax.php:316 ../includes/class-wpcm-ajax.php:477
-#: ../includes/class-wpcm-ajax.php:496 ../includes/class-wpcm-ajax.php:676
+#: ../includes/class-wpcm-ajax.php:203 ../includes/class-wpcm-ajax.php:315
+#: ../includes/class-wpcm-ajax.php:340 ../includes/class-wpcm-ajax.php:501
+#: ../includes/class-wpcm-ajax.php:520 ../includes/class-wpcm-ajax.php:701
 #: ../includes/class-wpcm-post-types.php:110
 #: ../includes/class-wpcm-post-types.php:118
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:123
@@ -150,16 +167,16 @@ msgstr "Vše"
 #: ../includes/widgets/class-wpcm-widget-players.php:149
 #: ../includes/widgets/class-wpcm-widget-players.php:170
 #: ../includes/widgets/class-wpcm-widget-results.php:53
-#: ../includes/widgets/class-wpcm-widget-standings.php:145
+#: ../includes/widgets/class-wpcm-widget-standings.php:150
 #: ../templates/content-single-staff.php:84
 #: ../templates/shortcodes/players.php:44 ../templates/shortcodes/staff.php:37
 #: ../templates/single-player/meta.php:103
 msgid "Season"
 msgstr "Sezóna"
 
-#: ../includes/class-wpcm-ajax.php:196 ../includes/class-wpcm-ajax.php:290
-#: ../includes/class-wpcm-ajax.php:333 ../includes/class-wpcm-ajax.php:476
-#: ../includes/class-wpcm-ajax.php:513
+#: ../includes/class-wpcm-ajax.php:220 ../includes/class-wpcm-ajax.php:314
+#: ../includes/class-wpcm-ajax.php:357 ../includes/class-wpcm-ajax.php:500
+#: ../includes/class-wpcm-ajax.php:537
 #: ../includes/class-wpcm-post-types.php:132
 #: ../includes/class-wpcm-post-types.php:140
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:151
@@ -183,7 +200,7 @@ msgstr "Sezóna"
 msgid "Team"
 msgstr "Tým"
 
-#: ../includes/class-wpcm-ajax.php:213
+#: ../includes/class-wpcm-ajax.php:237
 #: ../includes/class-wpcm-post-types.php:154
 #: ../includes/class-wpcm-post-types.php:162
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:97
@@ -193,33 +210,33 @@ msgstr "Tým"
 msgid "Venue"
 msgstr "Místo konání"
 
-#: ../includes/class-wpcm-ajax.php:230 ../includes/class-wpcm-ajax.php:752
+#: ../includes/class-wpcm-ajax.php:254 ../includes/class-wpcm-ajax.php:777
 msgid "Show Thumbnail"
 msgstr "Zobrazit náhled"
 
-#: ../includes/class-wpcm-ajax.php:235 ../includes/class-wpcm-ajax.php:398
-#: ../includes/class-wpcm-ajax.php:574 ../includes/class-wpcm-ajax.php:733
+#: ../includes/class-wpcm-ajax.php:259 ../includes/class-wpcm-ajax.php:422
+#: ../includes/class-wpcm-ajax.php:598 ../includes/class-wpcm-ajax.php:758
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:70
 #: ../includes/widgets/class-wpcm-widget-players.php:264
 #: ../includes/widgets/class-wpcm-widget-results.php:70
-#: ../includes/widgets/class-wpcm-widget-standings.php:167
+#: ../includes/widgets/class-wpcm-widget-standings.php:172
 msgid "Link text"
 msgstr "Text odkazu"
 
-#: ../includes/class-wpcm-ajax.php:240 ../includes/class-wpcm-ajax.php:403
-#: ../includes/class-wpcm-ajax.php:579 ../includes/class-wpcm-ajax.php:738
+#: ../includes/class-wpcm-ajax.php:264 ../includes/class-wpcm-ajax.php:427
+#: ../includes/class-wpcm-ajax.php:603 ../includes/class-wpcm-ajax.php:763
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:74
 #: ../includes/widgets/class-wpcm-widget-players.php:268
 #: ../includes/widgets/class-wpcm-widget-results.php:74
-#: ../includes/widgets/class-wpcm-widget-standings.php:171
+#: ../includes/widgets/class-wpcm-widget-standings.php:176
 msgid "Link page"
 msgstr "Odkaz na stránku"
 
-#: ../includes/class-wpcm-ajax.php:244 ../includes/class-wpcm-ajax.php:407
-#: ../includes/class-wpcm-ajax.php:583 ../includes/class-wpcm-ajax.php:742
-#: ../includes/wpcm-match-functions.php:79
+#: ../includes/class-wpcm-ajax.php:268 ../includes/class-wpcm-ajax.php:431
+#: ../includes/class-wpcm-ajax.php:607 ../includes/class-wpcm-ajax.php:767
+#: ../includes/wpcm-match-functions.php:118
 #: ../includes/abstracts/abstract-wpcm-widget.php:166
-#: ../includes/admin/class-wpcm-admin-settings.php:492
+#: ../includes/admin/class-wpcm-admin-settings.php:493
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:58
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:72
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:100
@@ -227,20 +244,20 @@ msgstr "Odkaz na stránku"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:51
 #: ../includes/widgets/class-wpcm-widget-players.php:271
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:146
-#: ../includes/widgets/class-wpcm-widget-standings.php:174
-#: ../templates/shortcodes/players.php:161
+#: ../includes/widgets/class-wpcm-widget-standings.php:179
+#: ../templates/shortcodes/players.php:162
 #: ../templates/shortcodes/staff.php:141
 #: ../templates/single-player/meta.php:218
 msgid "None"
 msgstr "Žádné"
 
-#: ../includes/class-wpcm-ajax.php:272
+#: ../includes/class-wpcm-ajax.php:296
 #: ../includes/widgets/class-wpcm-widget-players.php:126
 #: ../templates/shortcodes/players.php:20
 msgid "View all players"
 msgstr "Zobrazit všechny výsledky"
 
-#: ../includes/class-wpcm-ajax.php:275 ../includes/class-wpcm-ajax.php:443
+#: ../includes/class-wpcm-ajax.php:299 ../includes/class-wpcm-ajax.php:467
 #: ../includes/class-wpcm-post-types.php:222
 #: ../includes/class-wpcm-post-types.php:234
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:99
@@ -250,28 +267,28 @@ msgstr "Zobrazit všechny výsledky"
 msgid "Players"
 msgstr "Hráči"
 
-#: ../includes/class-wpcm-ajax.php:281
+#: ../includes/class-wpcm-ajax.php:305
 #: ../includes/widgets/class-wpcm-widget-players.php:137
 msgid "Appearances"
 msgstr "Vzhled"
 
-#: ../includes/class-wpcm-ajax.php:284 ../includes/class-wpcm-ajax.php:471
+#: ../includes/class-wpcm-ajax.php:308 ../includes/class-wpcm-ajax.php:495
 msgid "Thumbnail"
 msgstr "Náhled"
 
-#: ../includes/class-wpcm-ajax.php:285 ../includes/class-wpcm-ajax.php:472
+#: ../includes/class-wpcm-ajax.php:309 ../includes/class-wpcm-ajax.php:496
 #: ../includes/widgets/class-wpcm-widget-players.php:141
 msgid "Flag"
 msgstr "Vlajka"
 
-#: ../includes/class-wpcm-ajax.php:286 ../includes/class-wpcm-ajax.php:370
+#: ../includes/class-wpcm-ajax.php:310 ../includes/class-wpcm-ajax.php:394
 #: ../includes/admin/settings/class-wpcm-settings-players.php:41
 #: ../includes/widgets/class-wpcm-widget-players.php:142
 #: ../includes/widgets/class-wpcm-widget-players.php:214
 msgid "Number"
 msgstr "Číslo"
 
-#: ../includes/class-wpcm-ajax.php:287 ../includes/class-wpcm-ajax.php:473
+#: ../includes/class-wpcm-ajax.php:311 ../includes/class-wpcm-ajax.php:497
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:115
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:154
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:173
@@ -288,7 +305,7 @@ msgstr "Číslo"
 msgid "Name"
 msgstr "Jméno"
 
-#: ../includes/class-wpcm-ajax.php:288 ../includes/class-wpcm-ajax.php:350
+#: ../includes/class-wpcm-ajax.php:312 ../includes/class-wpcm-ajax.php:374
 #: ../includes/class-wpcm-post-types.php:88
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:121
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:51
@@ -301,7 +318,7 @@ msgstr "Jméno"
 msgid "Position"
 msgstr "Pozice"
 
-#: ../includes/class-wpcm-ajax.php:289 ../includes/class-wpcm-ajax.php:475
+#: ../includes/class-wpcm-ajax.php:313 ../includes/class-wpcm-ajax.php:499
 #: ../includes/admin/settings/class-wpcm-settings-players.php:57
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:49
 #: ../includes/widgets/class-wpcm-widget-players.php:145
@@ -311,7 +328,7 @@ msgstr "Pozice"
 msgid "Age"
 msgstr "Věk"
 
-#: ../includes/class-wpcm-ajax.php:292
+#: ../includes/class-wpcm-ajax.php:316
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:66
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:62
 #: ../includes/admin/settings/class-wpcm-settings-players.php:49
@@ -320,7 +337,7 @@ msgstr "Věk"
 msgid "Date of Birth"
 msgstr "Datum narození"
 
-#: ../includes/class-wpcm-ajax.php:294
+#: ../includes/class-wpcm-ajax.php:318
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:86
 #: ../includes/admin/settings/class-wpcm-settings-players.php:73
 #: ../includes/widgets/class-wpcm-widget-players.php:147
@@ -329,13 +346,13 @@ msgstr "Datum narození"
 msgid "Weight"
 msgstr "Váha"
 
-#: ../includes/class-wpcm-ajax.php:295
+#: ../includes/class-wpcm-ajax.php:319
 #: ../includes/widgets/class-wpcm-widget-players.php:151
 #: ../templates/shortcodes/players.php:46
 msgid "Hometown"
 msgstr "Bydliště"
 
-#: ../includes/class-wpcm-ajax.php:296 ../includes/class-wpcm-ajax.php:478
+#: ../includes/class-wpcm-ajax.php:320 ../includes/class-wpcm-ajax.php:502
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:89
 #: ../includes/widgets/class-wpcm-widget-players.php:152
 #: ../templates/content-single-staff.php:163
@@ -344,64 +361,64 @@ msgstr "Bydliště"
 msgid "Joined"
 msgstr "V týmu od"
 
-#: ../includes/class-wpcm-ajax.php:311 ../includes/class-wpcm-ajax.php:491
-#: ../includes/class-wpcm-ajax.php:654
+#: ../includes/class-wpcm-ajax.php:335 ../includes/class-wpcm-ajax.php:515
+#: ../includes/class-wpcm-ajax.php:679
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:41
 #: ../includes/widgets/class-wpcm-widget-players.php:166
 #: ../includes/widgets/class-wpcm-widget-results.php:41
-#: ../includes/widgets/class-wpcm-widget-standings.php:127
+#: ../includes/widgets/class-wpcm-widget-standings.php:132
 msgid "Limit"
 msgstr "Limit"
 
-#: ../includes/class-wpcm-ajax.php:312 ../includes/class-wpcm-ajax.php:492
-#: ../includes/class-wpcm-ajax.php:655
+#: ../includes/class-wpcm-ajax.php:336 ../includes/class-wpcm-ajax.php:516
+#: ../includes/class-wpcm-ajax.php:680
 msgid "0 = no limit"
 msgstr "0 = bez limitu"
 
-#: ../includes/class-wpcm-ajax.php:367 ../includes/class-wpcm-ajax.php:547
-#: ../includes/class-wpcm-ajax.php:706
+#: ../includes/class-wpcm-ajax.php:391 ../includes/class-wpcm-ajax.php:571
+#: ../includes/class-wpcm-ajax.php:731
 #: ../includes/widgets/class-wpcm-widget-players.php:212
-#: ../includes/widgets/class-wpcm-widget-standings.php:159
+#: ../includes/widgets/class-wpcm-widget-standings.php:164
 msgid "Order by"
 msgstr "Řazeno dle"
 
-#: ../includes/class-wpcm-ajax.php:371
+#: ../includes/class-wpcm-ajax.php:395
 #: ../includes/widgets/class-wpcm-widget-players.php:215
 msgid "Page order"
 msgstr "Řazení stránky"
 
-#: ../includes/class-wpcm-ajax.php:372 ../includes/class-wpcm-ajax.php:550
+#: ../includes/class-wpcm-ajax.php:396 ../includes/class-wpcm-ajax.php:574
 msgid "Alphabetical"
 msgstr "Abecedně"
 
-#: ../includes/class-wpcm-ajax.php:381 ../includes/class-wpcm-ajax.php:557
-#: ../includes/class-wpcm-ajax.php:718
+#: ../includes/class-wpcm-ajax.php:405 ../includes/class-wpcm-ajax.php:581
+#: ../includes/class-wpcm-ajax.php:743
 #: ../includes/widgets/class-wpcm-widget-players.php:224
-#: ../includes/widgets/class-wpcm-widget-standings.php:163
+#: ../includes/widgets/class-wpcm-widget-standings.php:168
 msgid "Order"
 msgstr "Řazení"
 
-#: ../includes/class-wpcm-ajax.php:385 ../includes/class-wpcm-ajax.php:561
-#: ../includes/class-wpcm-ajax.php:721
+#: ../includes/class-wpcm-ajax.php:409 ../includes/class-wpcm-ajax.php:585
+#: ../includes/class-wpcm-ajax.php:746
 #: ../includes/widgets/class-wpcm-widget-players.php:227
 msgid "Lowest to highest"
 msgstr "Od nejnižšího po nejvyšší"
 
-#: ../includes/class-wpcm-ajax.php:386 ../includes/class-wpcm-ajax.php:562
-#: ../includes/class-wpcm-ajax.php:722
+#: ../includes/class-wpcm-ajax.php:410 ../includes/class-wpcm-ajax.php:586
+#: ../includes/class-wpcm-ajax.php:747
 #: ../includes/widgets/class-wpcm-widget-players.php:228
 msgid "Highest to lowest"
 msgstr "Od nejvyššího po nejnižší"
 
-#: ../includes/class-wpcm-ajax.php:417 ../includes/class-wpcm-ajax.php:593
+#: ../includes/class-wpcm-ajax.php:441 ../includes/class-wpcm-ajax.php:617
 msgid "Display options"
 msgstr "Zobrazit možnosti"
 
-#: ../includes/class-wpcm-ajax.php:463 ../templates/shortcodes/staff.php:23
+#: ../includes/class-wpcm-ajax.php:487 ../templates/shortcodes/staff.php:23
 msgid "View all staff"
 msgstr "Zobrazit všechen personál"
 
-#: ../includes/class-wpcm-ajax.php:466 ../includes/class-wpcm-ajax.php:619
+#: ../includes/class-wpcm-ajax.php:490 ../includes/class-wpcm-ajax.php:643
 #: ../includes/class-wpcm-post-types.php:258
 #: ../includes/class-wpcm-post-types.php:259
 #: ../includes/class-wpcm-post-types.php:270
@@ -410,36 +427,41 @@ msgstr "Zobrazit všechen personál"
 msgid "Staff"
 msgstr "Personál"
 
-#: ../includes/class-wpcm-ajax.php:474
+#: ../includes/class-wpcm-ajax.php:498
 #: ../includes/class-wpcm-post-types.php:66
 #: ../templates/content-single-staff.php:134
 #: ../templates/shortcodes/staff.php:34
 msgid "Job"
 msgstr "Práce"
 
-#: ../includes/class-wpcm-ajax.php:530
+#: ../includes/class-wpcm-ajax.php:554
 #: ../includes/class-wpcm-post-types.php:65
 msgid "Jobs"
 msgstr "Práce"
 
-#: ../includes/class-wpcm-ajax.php:551 ../includes/class-wpcm-ajax.php:712
+#: ../includes/class-wpcm-ajax.php:575 ../includes/class-wpcm-ajax.php:737
 msgid "Random"
 msgstr "Náhodně"
 
-#: ../includes/class-wpcm-ajax.php:637
-#: ../includes/widgets/class-wpcm-widget-standings.php:114
+#: ../includes/class-wpcm-ajax.php:661
+#: ../includes/widgets/class-wpcm-widget-standings.php:117
 #: ../templates/shortcodes/standings.php:19
 msgid "View all standings"
 msgstr "Zobrazit celou tabulku"
 
-#: ../includes/class-wpcm-ajax.php:640 ../includes/class-wpcm-ajax.php:792
+#: ../includes/class-wpcm-ajax.php:664 ../includes/class-wpcm-ajax.php:824
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:22
-#: ../includes/widgets/class-wpcm-widget-standings.php:117
+#: ../includes/widgets/class-wpcm-widget-standings.php:120
 #: ../templates/shortcodes/standings.php:22
 msgid "Standings"
 msgstr "Tabulka"
 
-#: ../includes/class-wpcm-ajax.php:772
+#: ../includes/class-wpcm-ajax.php:784
+#: ../includes/widgets/class-wpcm-widget-standings.php:195
+msgid "Link to Clubs"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:804
 msgid "Display columns"
 msgstr "Zobrazit sloupce"
 
@@ -912,543 +934,547 @@ msgid "Kiribati"
 msgstr "Kiribati"
 
 #: ../includes/class-wpcm-countries.php:149
+msgid "Kosovo"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:150
 msgid "Kuwait"
 msgstr "Kuvajt"
 
-#: ../includes/class-wpcm-countries.php:150
+#: ../includes/class-wpcm-countries.php:151
 msgid "Kyrgyzstan"
 msgstr "Kyrgyzstán"
 
-#: ../includes/class-wpcm-countries.php:151
+#: ../includes/class-wpcm-countries.php:152
 msgid "Laos"
 msgstr "Laos"
 
-#: ../includes/class-wpcm-countries.php:152
+#: ../includes/class-wpcm-countries.php:153
 msgid "Latvia"
 msgstr "Lotyšsko"
 
-#: ../includes/class-wpcm-countries.php:153
+#: ../includes/class-wpcm-countries.php:154
 msgid "Lebanon"
 msgstr "Libanon"
 
-#: ../includes/class-wpcm-countries.php:154
+#: ../includes/class-wpcm-countries.php:155
 msgid "Lesotho"
 msgstr "Lesotho"
 
-#: ../includes/class-wpcm-countries.php:155
+#: ../includes/class-wpcm-countries.php:156
 msgid "Liberia"
 msgstr "Libérie"
 
-#: ../includes/class-wpcm-countries.php:156
+#: ../includes/class-wpcm-countries.php:157
 msgid "Libya"
 msgstr "Libye"
 
-#: ../includes/class-wpcm-countries.php:157
+#: ../includes/class-wpcm-countries.php:158
 msgid "Liechtenstein"
 msgstr "Lichtenštejnsko"
 
-#: ../includes/class-wpcm-countries.php:158
+#: ../includes/class-wpcm-countries.php:159
 msgid "Lithuania"
 msgstr "Litva"
 
-#: ../includes/class-wpcm-countries.php:159
+#: ../includes/class-wpcm-countries.php:160
 msgid "Luxembourg"
 msgstr "Lucembursko"
 
-#: ../includes/class-wpcm-countries.php:160
+#: ../includes/class-wpcm-countries.php:161
 msgid "Macao"
 msgstr "Macao"
 
-#: ../includes/class-wpcm-countries.php:161
+#: ../includes/class-wpcm-countries.php:162
 msgid "Macedonia"
 msgstr "Makedonie"
 
-#: ../includes/class-wpcm-countries.php:162
+#: ../includes/class-wpcm-countries.php:163
 msgid "Madagascar"
 msgstr "Madagaskar"
 
-#: ../includes/class-wpcm-countries.php:163
+#: ../includes/class-wpcm-countries.php:164
 msgid "Malawi"
 msgstr "Malawi"
 
-#: ../includes/class-wpcm-countries.php:164
+#: ../includes/class-wpcm-countries.php:165
 msgid "Malaysia"
 msgstr "Malajsie"
 
-#: ../includes/class-wpcm-countries.php:165
+#: ../includes/class-wpcm-countries.php:166
 msgid "Maldives"
 msgstr "Maledivy"
 
-#: ../includes/class-wpcm-countries.php:166
+#: ../includes/class-wpcm-countries.php:167
 msgid "Mali"
 msgstr "Mali"
 
-#: ../includes/class-wpcm-countries.php:167
+#: ../includes/class-wpcm-countries.php:168
 msgid "Malta"
 msgstr "Malta"
 
-#: ../includes/class-wpcm-countries.php:168
+#: ../includes/class-wpcm-countries.php:169
 msgid "Marshall Islands"
 msgstr "Marshallovy ostrovy"
 
-#: ../includes/class-wpcm-countries.php:169
+#: ../includes/class-wpcm-countries.php:170
 msgid "Martinique"
 msgstr "Martinik"
 
-#: ../includes/class-wpcm-countries.php:170
+#: ../includes/class-wpcm-countries.php:171
 msgid "Mauritania"
 msgstr "Mauritánie"
 
-#: ../includes/class-wpcm-countries.php:171
+#: ../includes/class-wpcm-countries.php:172
 msgid "Mauritius"
 msgstr "Mauricius"
 
-#: ../includes/class-wpcm-countries.php:172
+#: ../includes/class-wpcm-countries.php:173
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: ../includes/class-wpcm-countries.php:173
+#: ../includes/class-wpcm-countries.php:174
 msgid "Mexico"
 msgstr "Mexiko"
 
-#: ../includes/class-wpcm-countries.php:174
+#: ../includes/class-wpcm-countries.php:175
 msgid "Micronesia, Federal States of"
 msgstr "Federativní státy Mikronésie"
 
-#: ../includes/class-wpcm-countries.php:175
+#: ../includes/class-wpcm-countries.php:176
 msgid "Moldova, Republic of"
 msgstr "Moldavsko"
 
-#: ../includes/class-wpcm-countries.php:176
+#: ../includes/class-wpcm-countries.php:177
 msgid "Monaco"
 msgstr "Monako"
 
-#: ../includes/class-wpcm-countries.php:177
+#: ../includes/class-wpcm-countries.php:178
 msgid "Mongolia"
 msgstr "Mongolsko"
 
-#: ../includes/class-wpcm-countries.php:178
+#: ../includes/class-wpcm-countries.php:179
 msgid "Monserrat"
 msgstr "Montserrat"
 
-#: ../includes/class-wpcm-countries.php:179
+#: ../includes/class-wpcm-countries.php:180
 msgid "Montenegro"
 msgstr "Černá Hora"
 
-#: ../includes/class-wpcm-countries.php:180
+#: ../includes/class-wpcm-countries.php:181
 msgid "Morocco"
 msgstr "Maroko"
 
-#: ../includes/class-wpcm-countries.php:181
+#: ../includes/class-wpcm-countries.php:182
 msgid "North Korea"
 msgstr "Severní Korea"
 
-#: ../includes/class-wpcm-countries.php:182
+#: ../includes/class-wpcm-countries.php:183
 msgid "Mozambique"
 msgstr "Mosambik"
 
-#: ../includes/class-wpcm-countries.php:183
+#: ../includes/class-wpcm-countries.php:184
 msgid "Myanmar"
 msgstr "Myanmar"
 
-#: ../includes/class-wpcm-countries.php:184
+#: ../includes/class-wpcm-countries.php:185
 msgid "Namibia"
 msgstr "Namibie"
 
-#: ../includes/class-wpcm-countries.php:185
+#: ../includes/class-wpcm-countries.php:186
 msgid "Nauru"
 msgstr "Nauru"
 
-#: ../includes/class-wpcm-countries.php:186
+#: ../includes/class-wpcm-countries.php:187
 msgid "Nepal"
 msgstr "Nepál"
 
-#: ../includes/class-wpcm-countries.php:187
+#: ../includes/class-wpcm-countries.php:188
 msgid "Netherlands"
 msgstr "Nizozemsko"
 
-#: ../includes/class-wpcm-countries.php:188
+#: ../includes/class-wpcm-countries.php:189
 msgid "New Caledonia"
 msgstr "Nová Kaledonie"
 
-#: ../includes/class-wpcm-countries.php:189
+#: ../includes/class-wpcm-countries.php:190
 msgid "New Zealand"
 msgstr "Nový Zéland"
 
-#: ../includes/class-wpcm-countries.php:190
+#: ../includes/class-wpcm-countries.php:191
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
-#: ../includes/class-wpcm-countries.php:191
+#: ../includes/class-wpcm-countries.php:192
 msgid "Niger"
 msgstr "Niger"
 
-#: ../includes/class-wpcm-countries.php:192
+#: ../includes/class-wpcm-countries.php:193
 msgid "Nigeria"
 msgstr "Nigérie"
 
-#: ../includes/class-wpcm-countries.php:193
+#: ../includes/class-wpcm-countries.php:194
 msgid "Niue"
 msgstr "Niue"
 
-#: ../includes/class-wpcm-countries.php:194
+#: ../includes/class-wpcm-countries.php:195
 msgid "Norfolk Island"
 msgstr "Norfolk"
 
-#: ../includes/class-wpcm-countries.php:195
+#: ../includes/class-wpcm-countries.php:196
 msgid "Northern Ireland"
 msgstr "Severní Irsko"
 
-#: ../includes/class-wpcm-countries.php:196
+#: ../includes/class-wpcm-countries.php:197
 msgid "Northern Mariana Islands"
 msgstr "Severní Mariany"
 
-#: ../includes/class-wpcm-countries.php:197
+#: ../includes/class-wpcm-countries.php:198
 msgid "Norway"
 msgstr "Norsko"
 
-#: ../includes/class-wpcm-countries.php:198
+#: ../includes/class-wpcm-countries.php:199
 msgid "Oman"
 msgstr "Omán"
 
-#: ../includes/class-wpcm-countries.php:199
+#: ../includes/class-wpcm-countries.php:200
 msgid "Pakistan"
 msgstr "Pákistán"
 
-#: ../includes/class-wpcm-countries.php:200
+#: ../includes/class-wpcm-countries.php:201
 msgid "Palau"
 msgstr "Palau"
 
-#: ../includes/class-wpcm-countries.php:201
+#: ../includes/class-wpcm-countries.php:202
 msgid "Palestine, State of"
 msgstr "Stát Palestina"
 
-#: ../includes/class-wpcm-countries.php:202
+#: ../includes/class-wpcm-countries.php:203
 msgid "Panama"
 msgstr "Panama"
 
-#: ../includes/class-wpcm-countries.php:203
+#: ../includes/class-wpcm-countries.php:204
 msgid "Papua New Guinea"
 msgstr "Papua-Nová Guinea"
 
-#: ../includes/class-wpcm-countries.php:204
+#: ../includes/class-wpcm-countries.php:205
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: ../includes/class-wpcm-countries.php:205
+#: ../includes/class-wpcm-countries.php:206
 msgid "Peru"
 msgstr "Peru"
 
-#: ../includes/class-wpcm-countries.php:206
+#: ../includes/class-wpcm-countries.php:207
 msgid "Philippines"
 msgstr "Filipíny"
 
-#: ../includes/class-wpcm-countries.php:207
+#: ../includes/class-wpcm-countries.php:208
 msgid "Pitcairn"
 msgstr "Pitcairnovy ostrovy"
 
-#: ../includes/class-wpcm-countries.php:208
+#: ../includes/class-wpcm-countries.php:209
 msgid "Poland"
 msgstr "Polsko"
 
-#: ../includes/class-wpcm-countries.php:209
+#: ../includes/class-wpcm-countries.php:210
 msgid "Portugal"
 msgstr "Portugalsko"
 
-#: ../includes/class-wpcm-countries.php:210
+#: ../includes/class-wpcm-countries.php:211
 msgid "Puerto Rico"
 msgstr "Portoriko"
 
-#: ../includes/class-wpcm-countries.php:211
+#: ../includes/class-wpcm-countries.php:212
 msgid "Qatar"
 msgstr "Katar"
 
-#: ../includes/class-wpcm-countries.php:212
+#: ../includes/class-wpcm-countries.php:213
 msgid "Reunion"
 msgstr "Réunion"
 
-#: ../includes/class-wpcm-countries.php:213
+#: ../includes/class-wpcm-countries.php:214
 msgid "Romania"
 msgstr "Rumunsko"
 
-#: ../includes/class-wpcm-countries.php:214
+#: ../includes/class-wpcm-countries.php:215
 msgid "Russian Federation"
 msgstr "Rusko"
 
-#: ../includes/class-wpcm-countries.php:215
+#: ../includes/class-wpcm-countries.php:216
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: ../includes/class-wpcm-countries.php:216
+#: ../includes/class-wpcm-countries.php:217
 msgid "Saint Helena"
 msgstr "Svatá Helena"
 
-#: ../includes/class-wpcm-countries.php:217
+#: ../includes/class-wpcm-countries.php:218
 msgid "Saint Kitts and Nevis"
 msgstr "Svatý Kryštof a Nevis"
 
-#: ../includes/class-wpcm-countries.php:218
+#: ../includes/class-wpcm-countries.php:219
 msgid "Saint Lucia"
 msgstr "Svatá Lucie"
 
-#: ../includes/class-wpcm-countries.php:219
+#: ../includes/class-wpcm-countries.php:220
 msgid "Saint Pierre & Miquelon"
 msgstr "Saint-Pierre a Miquelon"
 
-#: ../includes/class-wpcm-countries.php:220
+#: ../includes/class-wpcm-countries.php:221
 msgid "Saint Vincent and the Grenadines"
 msgstr "Svatý Vincenc a Grenadiny"
 
-#: ../includes/class-wpcm-countries.php:221
+#: ../includes/class-wpcm-countries.php:222
 msgid "Samoa"
 msgstr "Samoa"
 
-#: ../includes/class-wpcm-countries.php:222
+#: ../includes/class-wpcm-countries.php:223
 msgid "San Marino"
 msgstr "San Marino"
 
-#: ../includes/class-wpcm-countries.php:223
+#: ../includes/class-wpcm-countries.php:224
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 msgstr " Svatý Tomáš a Princův ostrov"
 
-#: ../includes/class-wpcm-countries.php:224
+#: ../includes/class-wpcm-countries.php:225
 msgid "Saudi Arabia"
 msgstr "Saúdská Arábie"
 
-#: ../includes/class-wpcm-countries.php:225
+#: ../includes/class-wpcm-countries.php:226
 msgid "Scotland"
 msgstr "Skotsko"
 
-#: ../includes/class-wpcm-countries.php:226
+#: ../includes/class-wpcm-countries.php:227
 msgid "Senegal"
 msgstr "Senegal"
 
-#: ../includes/class-wpcm-countries.php:227
+#: ../includes/class-wpcm-countries.php:228
 msgid "Serbia"
 msgstr "Srbsko"
 
-#: ../includes/class-wpcm-countries.php:228
+#: ../includes/class-wpcm-countries.php:229
 msgid "Seychelles"
 msgstr "Seychely"
 
-#: ../includes/class-wpcm-countries.php:229
+#: ../includes/class-wpcm-countries.php:230
 msgid "Sierre Leone"
 msgstr "Sierra Leone"
 
-#: ../includes/class-wpcm-countries.php:230
+#: ../includes/class-wpcm-countries.php:231
 msgid "Singapore"
 msgstr "Singapur"
 
-#: ../includes/class-wpcm-countries.php:231
+#: ../includes/class-wpcm-countries.php:232
 msgid "Slovakia"
 msgstr "Slovensko"
 
-#: ../includes/class-wpcm-countries.php:232
+#: ../includes/class-wpcm-countries.php:233
 msgid "Slovenia"
 msgstr "Slovinsko"
 
-#: ../includes/class-wpcm-countries.php:233
+#: ../includes/class-wpcm-countries.php:234
 msgid "Solomon Islands"
 msgstr "Šalamounovy ostrovy"
 
-#: ../includes/class-wpcm-countries.php:234
+#: ../includes/class-wpcm-countries.php:235
 msgid "Somalia"
 msgstr "Somálsko"
 
-#: ../includes/class-wpcm-countries.php:235
+#: ../includes/class-wpcm-countries.php:236
 msgid "South Africa"
 msgstr "Jihoafrická republika"
 
-#: ../includes/class-wpcm-countries.php:236
+#: ../includes/class-wpcm-countries.php:237
 msgid "South Georgia / Sandwich Islands"
 msgstr "Jižní Georgie a Jižní Sandwichovy ostrovy"
 
-#: ../includes/class-wpcm-countries.php:237
+#: ../includes/class-wpcm-countries.php:238
 msgid "South Korea"
 msgstr "Jižní Korea"
 
-#: ../includes/class-wpcm-countries.php:238
+#: ../includes/class-wpcm-countries.php:239
 msgid "Spain"
 msgstr "Španělsko"
 
-#: ../includes/class-wpcm-countries.php:239
+#: ../includes/class-wpcm-countries.php:240
 msgid "Sri Lanka"
 msgstr "Srí Lanka"
 
-#: ../includes/class-wpcm-countries.php:240
+#: ../includes/class-wpcm-countries.php:241
 msgid "Svalbard and Jan Mayen"
 msgstr "Špicberky a Jan Mayen"
 
-#: ../includes/class-wpcm-countries.php:241
+#: ../includes/class-wpcm-countries.php:242
 msgid "Sudan"
 msgstr "Súdán"
 
-#: ../includes/class-wpcm-countries.php:242
+#: ../includes/class-wpcm-countries.php:243
 msgid "Suriname"
 msgstr "Surinam"
 
-#: ../includes/class-wpcm-countries.php:243
+#: ../includes/class-wpcm-countries.php:244
 msgid "Swaziland"
 msgstr "Svazijsko"
 
-#: ../includes/class-wpcm-countries.php:244
+#: ../includes/class-wpcm-countries.php:245
 msgid "Sweden"
 msgstr "Švédsko"
 
-#: ../includes/class-wpcm-countries.php:245
+#: ../includes/class-wpcm-countries.php:246
 msgid "Switzerland"
 msgstr "Švýcarsko"
 
-#: ../includes/class-wpcm-countries.php:246
+#: ../includes/class-wpcm-countries.php:247
 msgid "Syrian Arab Republic"
 msgstr "Sýrie"
 
-#: ../includes/class-wpcm-countries.php:247
+#: ../includes/class-wpcm-countries.php:248
 msgid "Taiwan, Province of China"
 msgstr "Tchaj-wan"
 
-#: ../includes/class-wpcm-countries.php:248
+#: ../includes/class-wpcm-countries.php:249
 msgid "Tajikstan"
 msgstr "Tádžikistán"
 
-#: ../includes/class-wpcm-countries.php:249
+#: ../includes/class-wpcm-countries.php:250
 msgid "Tanzania, United Republic of"
 msgstr "Tanzanie"
 
-#: ../includes/class-wpcm-countries.php:250
+#: ../includes/class-wpcm-countries.php:251
 msgid "Thailand"
 msgstr "Thajsko"
 
-#: ../includes/class-wpcm-countries.php:251
+#: ../includes/class-wpcm-countries.php:252
 msgid "Timor-Leste"
 msgstr "Východní Timor"
 
-#: ../includes/class-wpcm-countries.php:252
+#: ../includes/class-wpcm-countries.php:253
 msgid "Togo"
 msgstr "Togo"
 
-#: ../includes/class-wpcm-countries.php:253
+#: ../includes/class-wpcm-countries.php:254
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: ../includes/class-wpcm-countries.php:254
+#: ../includes/class-wpcm-countries.php:255
 msgid "Tonga"
 msgstr "Tonga"
 
-#: ../includes/class-wpcm-countries.php:255
+#: ../includes/class-wpcm-countries.php:256
 msgid "Trinidad and Tobago"
 msgstr "Trinidad a Tobago"
 
-#: ../includes/class-wpcm-countries.php:256
+#: ../includes/class-wpcm-countries.php:257
 msgid "Tunisia"
 msgstr "Tunisko"
 
-#: ../includes/class-wpcm-countries.php:257
+#: ../includes/class-wpcm-countries.php:258
 msgid "Turkey"
 msgstr "Turecko"
 
-#: ../includes/class-wpcm-countries.php:258
+#: ../includes/class-wpcm-countries.php:259
 msgid "Turkmenistan"
 msgstr "Turkmenistán"
 
-#: ../includes/class-wpcm-countries.php:259
+#: ../includes/class-wpcm-countries.php:260
 msgid "Turks and Caicos Islands"
 msgstr "Turks a Caicos"
 
-#: ../includes/class-wpcm-countries.php:260
+#: ../includes/class-wpcm-countries.php:261
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: ../includes/class-wpcm-countries.php:261
+#: ../includes/class-wpcm-countries.php:262
 msgid "Uganda"
 msgstr "Uganda"
 
-#: ../includes/class-wpcm-countries.php:262
+#: ../includes/class-wpcm-countries.php:263
 msgid "Ukraine"
 msgstr "Ukrajina"
 
-#: ../includes/class-wpcm-countries.php:263
+#: ../includes/class-wpcm-countries.php:264
 msgid "United Arab Emirates"
 msgstr "Spojené arabské emiráty"
 
-#: ../includes/class-wpcm-countries.php:264
+#: ../includes/class-wpcm-countries.php:265
 msgid "United Kingdom (UK)"
 msgstr "Spojené království"
 
-#: ../includes/class-wpcm-countries.php:265
+#: ../includes/class-wpcm-countries.php:266
 msgid "United States (US)"
 msgstr "Spojené státy americké"
 
-#: ../includes/class-wpcm-countries.php:266
+#: ../includes/class-wpcm-countries.php:267
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: ../includes/class-wpcm-countries.php:267
+#: ../includes/class-wpcm-countries.php:268
 msgid "US Minor Outlying Islands"
 msgstr "Menší odlehlé ostrovy Spojených států amerických"
 
-#: ../includes/class-wpcm-countries.php:268
+#: ../includes/class-wpcm-countries.php:269
 msgid "Uzbekistan"
 msgstr "Uzbekistán"
 
-#: ../includes/class-wpcm-countries.php:269
+#: ../includes/class-wpcm-countries.php:270
 msgid "Vanuata"
 msgstr "Vanuatu"
 
-#: ../includes/class-wpcm-countries.php:270
+#: ../includes/class-wpcm-countries.php:271
 msgid "Venezuala"
 msgstr "Venezuela"
 
-#: ../includes/class-wpcm-countries.php:271
+#: ../includes/class-wpcm-countries.php:272
 msgid "Vietnam"
 msgstr "Vietnam"
 
-#: ../includes/class-wpcm-countries.php:272
+#: ../includes/class-wpcm-countries.php:273
 msgid "Virgin Islands, British"
 msgstr "Britské Panenské ostrovy"
 
-#: ../includes/class-wpcm-countries.php:273
+#: ../includes/class-wpcm-countries.php:274
 msgid "Virgin Islands, U.S."
 msgstr "Americké Panenské ostrovy"
 
-#: ../includes/class-wpcm-countries.php:274
+#: ../includes/class-wpcm-countries.php:275
 msgid "Wales"
 msgstr "Wales"
 
-#: ../includes/class-wpcm-countries.php:275
+#: ../includes/class-wpcm-countries.php:276
 msgid "Wallis and Futuna"
 msgstr "Wallis a Futuna"
 
-#: ../includes/class-wpcm-countries.php:276
+#: ../includes/class-wpcm-countries.php:277
 msgid "Western Sahara"
 msgstr "Západní Sahara"
 
-#: ../includes/class-wpcm-countries.php:277
+#: ../includes/class-wpcm-countries.php:278
 msgid "Yemen"
 msgstr "Jemen"
 
-#: ../includes/class-wpcm-countries.php:278
+#: ../includes/class-wpcm-countries.php:279
 msgid "Yugoslavia"
 msgstr "Jugoslávie"
 
-#: ../includes/class-wpcm-countries.php:279
+#: ../includes/class-wpcm-countries.php:280
 msgid "Zambia"
 msgstr "Zambie"
 
-#: ../includes/class-wpcm-countries.php:280
+#: ../includes/class-wpcm-countries.php:281
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
-#: ../includes/class-wpcm-install.php:178
+#: ../includes/class-wpcm-install.php:163
 #: ../includes/class-wpcm-post-types.php:223
 msgid "Player"
 msgstr "Hráč"
 
-#: ../includes/class-wpcm-install.php:185
+#: ../includes/class-wpcm-install.php:170
 msgid "Team Manager"
 msgstr "Vedoucí týmu"
 
-#: ../includes/class-wpcm-install.php:370
+#: ../includes/class-wpcm-install.php:355
 msgid "What's new:"
 msgstr "Novinky:"
 
@@ -1863,24 +1889,6 @@ msgstr "Žádní sponzoři nebyli v koši nalezeni"
 msgid "Parent Sponsor:"
 msgstr "Nadřazený sponzor:"
 
-#: ../includes/class-wpcm-shortcodes.php:204
-msgid "No location found for the entered address."
-msgstr ""
-
-#: ../includes/class-wpcm-shortcodes.php:206
-msgid "Invalid request. Did you enter an address?"
-msgstr ""
-
-#: ../includes/class-wpcm-shortcodes.php:208
-msgid ""
-"Something went wrong while retrieving your map, please ensure you have "
-"entered the short code correctly."
-msgstr ""
-
-#: ../includes/class-wpcm-shortcodes.php:212
-msgid "Unable to contact Google API service."
-msgstr ""
-
 #: ../includes/wpcm-club-functions.php:376
 #: ../includes/wpcm-player-functions.php:301
 msgid "Auto"
@@ -1891,909 +1899,1012 @@ msgstr "Auto"
 msgid "Manual"
 msgstr "Manuálně"
 
-#: ../includes/wpcm-core-functions.php:529
+#: ../includes/wpcm-core-functions.php:531
 msgid "Baseball"
 msgstr "Baseball"
 
-#: ../includes/wpcm-core-functions.php:540
+#: ../includes/wpcm-core-functions.php:542
 msgid "At Bats"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:540
+#: ../includes/wpcm-core-functions.php:542
 msgid "AB"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:541
-#: ../includes/wpcm-core-functions.php:833
+#: ../includes/wpcm-core-functions.php:543
+#: ../includes/wpcm-core-functions.php:902
 msgid "Hits"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:541
+#: ../includes/wpcm-core-functions.php:543
 #: ../templates/shortcodes/matches.php:173
 msgid "H"
 msgstr "D"
 
-#: ../includes/wpcm-core-functions.php:542
+#: ../includes/wpcm-core-functions.php:544
 msgid "Runs"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:542
+#: ../includes/wpcm-core-functions.php:544
 msgid "R"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:543
+#: ../includes/wpcm-core-functions.php:545
 msgid "Earned Runs"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:543
+#: ../includes/wpcm-core-functions.php:545
 msgid "ER"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:544
+#: ../includes/wpcm-core-functions.php:546
 msgid "Home Runs"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:544
+#: ../includes/wpcm-core-functions.php:546
 msgid "HR"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:545
+#: ../includes/wpcm-core-functions.php:547
 msgid "Doubles"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:545
+#: ../includes/wpcm-core-functions.php:547
 msgid "2B"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:546
+#: ../includes/wpcm-core-functions.php:548
 msgid "Triples"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:546
+#: ../includes/wpcm-core-functions.php:548
 msgid "3B"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:547
+#: ../includes/wpcm-core-functions.php:549
 msgid "Runs Batted In"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:547
+#: ../includes/wpcm-core-functions.php:549
 msgid "RBI"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:548
+#: ../includes/wpcm-core-functions.php:550
 msgid "Bases on Bulk"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:548
+#: ../includes/wpcm-core-functions.php:550
 msgid "BB"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:549
+#: ../includes/wpcm-core-functions.php:551
 msgid "Strike Outs"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:549
+#: ../includes/wpcm-core-functions.php:551
 msgid "SO"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:550
+#: ../includes/wpcm-core-functions.php:552
 msgid "Stolen Bases"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:550
+#: ../includes/wpcm-core-functions.php:552
 msgid "SB"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:551
+#: ../includes/wpcm-core-functions.php:553
 msgid "Caught Stealing"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:551
+#: ../includes/wpcm-core-functions.php:553
+#: ../includes/wpcm-core-functions.php:1045
 msgid "CS"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:552
+#: ../includes/wpcm-core-functions.php:554
 msgid "Total Chances"
 msgstr "Celkem šancí"
 
-#: ../includes/wpcm-core-functions.php:552
+#: ../includes/wpcm-core-functions.php:554
 msgid "TC"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:553
+#: ../includes/wpcm-core-functions.php:555
 msgid "Putouts"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:553
+#: ../includes/wpcm-core-functions.php:555
 msgid "PO"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:554
-#: ../includes/wpcm-core-functions.php:599
-#: ../includes/wpcm-core-functions.php:787
-#: ../includes/wpcm-core-functions.php:827
-#: ../includes/wpcm-core-functions.php:924
+#: ../includes/wpcm-core-functions.php:556
+#: ../includes/wpcm-core-functions.php:601
+#: ../includes/wpcm-core-functions.php:632
+#: ../includes/wpcm-core-functions.php:856
+#: ../includes/wpcm-core-functions.php:896
+#: ../includes/wpcm-core-functions.php:1042
 msgid "Assists"
 msgstr "Asistence"
 
-#: ../includes/wpcm-core-functions.php:554
-#: ../includes/wpcm-core-functions.php:787
-#: ../includes/wpcm-core-functions.php:827
+#: ../includes/wpcm-core-functions.php:556
+#: ../includes/wpcm-core-functions.php:632
+#: ../includes/wpcm-core-functions.php:856
+#: ../includes/wpcm-core-functions.php:896
 #: ../templates/shortcodes/matches.php:175
 msgid "A"
 msgstr "H"
 
-#: ../includes/wpcm-core-functions.php:555
+#: ../includes/wpcm-core-functions.php:557
 msgid "Errors"
 msgstr "Chyby"
 
-#: ../includes/wpcm-core-functions.php:555
+#: ../includes/wpcm-core-functions.php:557
 msgid "E"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:556
+#: ../includes/wpcm-core-functions.php:558
 msgid "Double Plays"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:556
+#: ../includes/wpcm-core-functions.php:558
 msgid "DP"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:557
-#: ../includes/wpcm-core-functions.php:605
-#: ../includes/wpcm-core-functions.php:684
-#: ../includes/wpcm-core-functions.php:758
-#: ../includes/wpcm-core-functions.php:794
-#: ../includes/wpcm-core-functions.php:837
-#: ../includes/wpcm-core-functions.php:895
-#: ../includes/wpcm-core-functions.php:929
-#: ../includes/wpcm-core-functions.php:978
-#: ../includes/wpcm-core-functions.php:1020
+#: ../includes/wpcm-core-functions.php:559
+#: ../includes/wpcm-core-functions.php:607
+#: ../includes/wpcm-core-functions.php:639
+#: ../includes/wpcm-core-functions.php:718
+#: ../includes/wpcm-core-functions.php:792
+#: ../includes/wpcm-core-functions.php:827
+#: ../includes/wpcm-core-functions.php:863
+#: ../includes/wpcm-core-functions.php:906
+#: ../includes/wpcm-core-functions.php:955
+#: ../includes/wpcm-core-functions.php:1013
+#: ../includes/wpcm-core-functions.php:1048
+#: ../includes/wpcm-core-functions.php:1090
 msgid "Rating"
-msgstr ""
+msgstr "Hodnocení"
 
-#: ../includes/wpcm-core-functions.php:557
-#: ../includes/wpcm-core-functions.php:605
-#: ../includes/wpcm-core-functions.php:684
-#: ../includes/wpcm-core-functions.php:758
-#: ../includes/wpcm-core-functions.php:794
-#: ../includes/wpcm-core-functions.php:837
-#: ../includes/wpcm-core-functions.php:895
-#: ../includes/wpcm-core-functions.php:929
-#: ../includes/wpcm-core-functions.php:978
-#: ../includes/wpcm-core-functions.php:1020
+#: ../includes/wpcm-core-functions.php:559
+#: ../includes/wpcm-core-functions.php:607
+#: ../includes/wpcm-core-functions.php:639
+#: ../includes/wpcm-core-functions.php:718
+#: ../includes/wpcm-core-functions.php:792
+#: ../includes/wpcm-core-functions.php:827
+#: ../includes/wpcm-core-functions.php:863
+#: ../includes/wpcm-core-functions.php:906
+#: ../includes/wpcm-core-functions.php:955
+#: ../includes/wpcm-core-functions.php:1013
+#: ../includes/wpcm-core-functions.php:1048
+#: ../includes/wpcm-core-functions.php:1090
 msgid "RAT"
-msgstr ""
+msgstr "Hod"
 
-#: ../includes/wpcm-core-functions.php:558
-#: ../includes/wpcm-core-functions.php:606
-#: ../includes/wpcm-core-functions.php:685
-#: ../includes/wpcm-core-functions.php:759
-#: ../includes/wpcm-core-functions.php:795
-#: ../includes/wpcm-core-functions.php:838
-#: ../includes/wpcm-core-functions.php:896
-#: ../includes/wpcm-core-functions.php:930
-#: ../includes/wpcm-core-functions.php:979
-#: ../includes/wpcm-core-functions.php:1021
+#: ../includes/wpcm-core-functions.php:560
+#: ../includes/wpcm-core-functions.php:608
+#: ../includes/wpcm-core-functions.php:640
+#: ../includes/wpcm-core-functions.php:719
+#: ../includes/wpcm-core-functions.php:793
+#: ../includes/wpcm-core-functions.php:828
+#: ../includes/wpcm-core-functions.php:864
+#: ../includes/wpcm-core-functions.php:907
+#: ../includes/wpcm-core-functions.php:956
+#: ../includes/wpcm-core-functions.php:1014
+#: ../includes/wpcm-core-functions.php:1049
+#: ../includes/wpcm-core-functions.php:1091
 msgid "Player of Match"
 msgstr "Hráč zápasu"
 
-#: ../includes/wpcm-core-functions.php:558
-#: ../includes/wpcm-core-functions.php:606
-#: ../includes/wpcm-core-functions.php:685
-#: ../includes/wpcm-core-functions.php:759
-#: ../includes/wpcm-core-functions.php:795
-#: ../includes/wpcm-core-functions.php:838
-#: ../includes/wpcm-core-functions.php:896
-#: ../includes/wpcm-core-functions.php:930
-#: ../includes/wpcm-core-functions.php:979
-#: ../includes/wpcm-core-functions.php:1021
+#: ../includes/wpcm-core-functions.php:560
+#: ../includes/wpcm-core-functions.php:608
+#: ../includes/wpcm-core-functions.php:640
+#: ../includes/wpcm-core-functions.php:719
+#: ../includes/wpcm-core-functions.php:793
+#: ../includes/wpcm-core-functions.php:828
+#: ../includes/wpcm-core-functions.php:864
+#: ../includes/wpcm-core-functions.php:907
+#: ../includes/wpcm-core-functions.php:956
+#: ../includes/wpcm-core-functions.php:1014
+#: ../includes/wpcm-core-functions.php:1049
+#: ../includes/wpcm-core-functions.php:1091
 msgid "POM"
 msgstr "HZ"
 
-#: ../includes/wpcm-core-functions.php:562
+#: ../includes/wpcm-core-functions.php:564
 msgid "Basketball"
 msgstr "Basketbal"
 
-#: ../includes/wpcm-core-functions.php:589
+#: ../includes/wpcm-core-functions.php:591
 msgid "Minutes"
 msgstr "Minuty"
 
-#: ../includes/wpcm-core-functions.php:589
+#: ../includes/wpcm-core-functions.php:591
 msgid "MIN"
 msgstr "Min"
 
-#: ../includes/wpcm-core-functions.php:590
+#: ../includes/wpcm-core-functions.php:592
 msgid "Field Goals Made"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:590
+#: ../includes/wpcm-core-functions.php:592
 msgid "FGM"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:591
+#: ../includes/wpcm-core-functions.php:593
 msgid "Field Goals Attempted"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:591
+#: ../includes/wpcm-core-functions.php:593
 msgid "FGA"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:592
+#: ../includes/wpcm-core-functions.php:594
 msgid "3 Points Made"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:592
+#: ../includes/wpcm-core-functions.php:594
 msgid "3PM"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:593
+#: ../includes/wpcm-core-functions.php:595
 msgid "3 Ponits Attempted"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:593
+#: ../includes/wpcm-core-functions.php:595
 msgid "3PA"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:594
+#: ../includes/wpcm-core-functions.php:596
 msgid "Free Throws Made"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:594
+#: ../includes/wpcm-core-functions.php:596
 msgid "FTM"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:595
+#: ../includes/wpcm-core-functions.php:597
 msgid "Free Throws Attempted"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:595
+#: ../includes/wpcm-core-functions.php:597
 msgid "FTA"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:596
+#: ../includes/wpcm-core-functions.php:598
 msgid "Offensive Rebounds"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:596
+#: ../includes/wpcm-core-functions.php:598
 msgid "OR"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:597
+#: ../includes/wpcm-core-functions.php:599
 msgid "Defensive Rebounds"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:597
+#: ../includes/wpcm-core-functions.php:599
 msgid "DR"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:598
-#: ../includes/wpcm-core-functions.php:972
+#: ../includes/wpcm-core-functions.php:600
+#: ../includes/wpcm-core-functions.php:949
 msgid "Rebounds"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:598
-#: ../includes/wpcm-core-functions.php:972
+#: ../includes/wpcm-core-functions.php:600
+#: ../includes/wpcm-core-functions.php:949
 msgid "REB"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:599
-#: ../includes/wpcm-core-functions.php:924
-#: ../includes/wpcm-core-functions.php:971
+#: ../includes/wpcm-core-functions.php:601
+#: ../includes/wpcm-core-functions.php:948
+#: ../includes/wpcm-core-functions.php:1042
 msgid "AST"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:600
-#: ../includes/wpcm-core-functions.php:1016
+#: ../includes/wpcm-core-functions.php:602
+#: ../includes/wpcm-core-functions.php:1086
 msgid "Blocks"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:600
-#: ../includes/wpcm-core-functions.php:1016
+#: ../includes/wpcm-core-functions.php:602
+#: ../includes/wpcm-core-functions.php:1086
 msgid "BLK"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:601
+#: ../includes/wpcm-core-functions.php:603
 msgid "Steals"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:601
+#: ../includes/wpcm-core-functions.php:603
 msgid "STL"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:602
+#: ../includes/wpcm-core-functions.php:604
 msgid "Personal Fouls"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:602
+#: ../includes/wpcm-core-functions.php:604
 msgid "PF"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:603
-#: ../includes/wpcm-core-functions.php:977
+#: ../includes/wpcm-core-functions.php:605
+#: ../includes/wpcm-core-functions.php:954
 msgid "Turnovers"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:603
-#: ../includes/wpcm-core-functions.php:977
+#: ../includes/wpcm-core-functions.php:605
+#: ../includes/wpcm-core-functions.php:954
 msgid "TO"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:604
+#: ../includes/wpcm-core-functions.php:606
+#: ../includes/wpcm-core-functions.php:821
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:184
 msgid "Points"
-msgstr ""
+msgstr "Body"
 
-#: ../includes/wpcm-core-functions.php:604
-#: ../includes/wpcm-core-functions.php:683
+#: ../includes/wpcm-core-functions.php:606
+#: ../includes/wpcm-core-functions.php:717
 msgid "PTS"
+msgstr "B"
+
+#: ../includes/wpcm-core-functions.php:612
+msgid "Floorball"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:610
-msgid "American Football"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:665
-msgid "Pass Completions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:665
-msgid "CMP"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:666
-msgid "Passing Yards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:666
-#: ../includes/wpcm-core-functions.php:669
-#: ../includes/wpcm-core-functions.php:672
-msgid "YDS"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:667
-msgid "Passing Touchdowns"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:667
-msgid "PASS"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:668
-msgid "Passing Interceptions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:668
-#: ../includes/wpcm-core-functions.php:677
-#: ../includes/wpcm-core-functions.php:974
-msgid "INT"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:669
-msgid "Rushing Yards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:670
-msgid "Rushing Touchdowns"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:670
-msgid "RUSH"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:671
-msgid "Receptions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:671
-#: ../includes/wpcm-core-functions.php:673
-msgid "REC"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:672
-msgid "Receiving Yards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:673
-msgid "Receiving Touchdowns"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:674
-msgid "Total Tackles"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:674
-msgid "TOTAL"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:675
-msgid "Sacks"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:675
-msgid "SACK"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:676
-msgid "Fumbles"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:676
-#: ../includes/wpcm-core-functions.php:746
-msgid "FF"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:677
-#: ../includes/wpcm-core-functions.php:974
-msgid "Interceptions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:678
-msgid "Blocked Kicks"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:678
-msgid "KB"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:679
-msgid "Touchdowns"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:679
-msgid "TD"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:680
-msgid "2 Point Conversions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:680
-msgid "2PT"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:681
-msgid "Field Goals"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:681
-msgid "FG"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:682
-msgid "Extra Points"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:682
-msgid "PAT"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:683
-msgid "Total Points"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:689
-msgid "Australian Rules Football"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:740
-msgid "Kicks"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:740
-msgid "K"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:741
-msgid "Handballs"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:741
-msgid "HB"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:742
-msgid "Disposals"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:742
-msgid "D"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:743
-msgid "Contested Possesion"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:743
-msgid "CP"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:744
-msgid "Marks"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:744
-msgid "M"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:745
-msgid "Contested Marks"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:745
-msgid "CM"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:746
-msgid "Frees For"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:747
-msgid "Frees Against"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:747
-msgid "FA"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:748
-msgid "Clangers"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:748
-msgid "C"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:749
-msgid "Tackles"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:749
-msgid "T"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:750
-msgid "Inside 50s"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:750
-msgid "I50"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:751
-msgid "Rebound 50s"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:751
-msgid "R50"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:752
-msgid "One-Percenters"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:752
-msgid "1PCT"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:753
-msgid "Hit-Outs"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:753
-msgid "HO"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:754
-#: ../includes/wpcm-core-functions.php:786
-#: ../includes/wpcm-core-functions.php:826
-#: ../includes/wpcm-core-functions.php:923
-#: ../includes/wpcm-core-functions.php:969
+#: ../includes/wpcm-core-functions.php:631
+#: ../includes/wpcm-core-functions.php:788
+#: ../includes/wpcm-core-functions.php:820
+#: ../includes/wpcm-core-functions.php:855
+#: ../includes/wpcm-core-functions.php:895
+#: ../includes/wpcm-core-functions.php:946
+#: ../includes/wpcm-core-functions.php:1041
 msgid "Goals"
-msgstr ""
+msgstr "Góly"
 
-#: ../includes/wpcm-core-functions.php:754
-#: ../includes/wpcm-core-functions.php:786
-#: ../includes/wpcm-core-functions.php:826
+#: ../includes/wpcm-core-functions.php:631
+#: ../includes/wpcm-core-functions.php:788
+#: ../includes/wpcm-core-functions.php:820
+#: ../includes/wpcm-core-functions.php:855
+#: ../includes/wpcm-core-functions.php:895
 msgid "G"
-msgstr ""
+msgstr "G"
 
-#: ../includes/wpcm-core-functions.php:755
-msgid "Behinds"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:755
-msgid "B"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:756
-#: ../includes/wpcm-core-functions.php:792
-#: ../includes/wpcm-core-functions.php:893
-#: ../includes/wpcm-core-functions.php:927
-msgid "Yellow Cards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:756
-#: ../includes/wpcm-core-functions.php:792
-#: ../includes/wpcm-core-functions.php:893
-#: ../includes/wpcm-core-functions.php:927
-msgid "YC"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:757
-#: ../includes/wpcm-core-functions.php:793
-#: ../includes/wpcm-core-functions.php:894
-#: ../includes/wpcm-core-functions.php:928
-msgid "Red Cards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:757
-#: ../includes/wpcm-core-functions.php:793
-#: ../includes/wpcm-core-functions.php:894
-#: ../includes/wpcm-core-functions.php:928
-msgid "RC"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:763
-msgid "Field Hockey"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:788
-msgid "Shots"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:788
-msgid "SH"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:789
-#: ../includes/wpcm-core-functions.php:829
-msgid "Shots on Goal"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:789
-#: ../includes/wpcm-core-functions.php:829
-msgid "SOG"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:790
-#: ../includes/wpcm-core-functions.php:836
-msgid "Saves"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:790
-#: ../includes/wpcm-core-functions.php:836
-msgid "SAV"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:791
-msgid "Green Cards"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:791
-msgid "GC"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:799
-msgid "Ice Hockey"
-msgstr "Lední hokej"
-
-#: ../includes/wpcm-core-functions.php:828
+#: ../includes/wpcm-core-functions.php:633
+#: ../includes/wpcm-core-functions.php:897
 msgid "Plus/Minus Rating"
 msgstr "+/- hodnocení"
 
-#: ../includes/wpcm-core-functions.php:828
+#: ../includes/wpcm-core-functions.php:633
+#: ../includes/wpcm-core-functions.php:897
 msgid "+/-"
 msgstr "+/-"
 
-#: ../includes/wpcm-core-functions.php:830
-msgid "Missed Shots"
-msgstr "Střely mimo"
+#: ../includes/wpcm-core-functions.php:634
+#: ../includes/wpcm-core-functions.php:858
+#: ../includes/wpcm-core-functions.php:898
+msgid "Shots on Goal"
+msgstr "Střely na branku"
 
-#: ../includes/wpcm-core-functions.php:830
-msgid "MS"
-msgstr "SM"
+#: ../includes/wpcm-core-functions.php:634
+#: ../includes/wpcm-core-functions.php:858
+#: ../includes/wpcm-core-functions.php:898
+msgid "SOG"
+msgstr "Snb"
 
-#: ../includes/wpcm-core-functions.php:831
-msgid "Blocked Shots"
-msgstr "Blokované střely"
-
-#: ../includes/wpcm-core-functions.php:831
-msgid "BS"
-msgstr "BS"
-
-#: ../includes/wpcm-core-functions.php:832
+#: ../includes/wpcm-core-functions.php:635
+#: ../includes/wpcm-core-functions.php:901
 msgid "Penalty Minutes"
 msgstr "Trestné minuty"
 
-#: ../includes/wpcm-core-functions.php:832
+#: ../includes/wpcm-core-functions.php:635
+#: ../includes/wpcm-core-functions.php:901
 msgid "PIM"
 msgstr "TM"
 
-#: ../includes/wpcm-core-functions.php:833
+#: ../includes/wpcm-core-functions.php:636
+#: ../includes/wpcm-core-functions.php:791
+#: ../includes/wpcm-core-functions.php:826
+#: ../includes/wpcm-core-functions.php:862
+#: ../includes/wpcm-core-functions.php:1012
+#: ../includes/wpcm-core-functions.php:1047
+msgid "Red Cards"
+msgstr "Červené karty"
+
+#: ../includes/wpcm-core-functions.php:636
+#: ../includes/wpcm-core-functions.php:791
+#: ../includes/wpcm-core-functions.php:826
+#: ../includes/wpcm-core-functions.php:862
+#: ../includes/wpcm-core-functions.php:1012
+#: ../includes/wpcm-core-functions.php:1047
+msgid "RC"
+msgstr "ČK"
+
+#: ../includes/wpcm-core-functions.php:637
+#: ../includes/wpcm-core-functions.php:859
+#: ../includes/wpcm-core-functions.php:905
+msgid "Saves"
+msgstr "Zákroky"
+
+#: ../includes/wpcm-core-functions.php:637
+#: ../includes/wpcm-core-functions.php:859
+#: ../includes/wpcm-core-functions.php:905
+msgid "SAV"
+msgstr "Zkr"
+
+#: ../includes/wpcm-core-functions.php:638
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:157
+msgid "Goals Against"
+msgstr "Obdržené góly"
+
+#: ../includes/wpcm-core-functions.php:638
+msgid "GA"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:644
+msgid "American Football"
+msgstr "Americký fotbal"
+
+#: ../includes/wpcm-core-functions.php:699
+msgid "Pass Completions"
+msgstr "Úspěšné přihrávky"
+
+#: ../includes/wpcm-core-functions.php:699
+msgid "CMP"
+msgstr "ÚP"
+
+#: ../includes/wpcm-core-functions.php:700
+msgid "Passing Yards"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:700
+#: ../includes/wpcm-core-functions.php:703
+#: ../includes/wpcm-core-functions.php:706
+msgid "YDS"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:701
+msgid "Passing Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:701
+msgid "PASS"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:702
+msgid "Passing Interceptions"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:702
+#: ../includes/wpcm-core-functions.php:711
+#: ../includes/wpcm-core-functions.php:951
+msgid "INT"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:703
+msgid "Rushing Yards"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:704
+msgid "Rushing Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:704
+msgid "RUSH"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:705
+msgid "Receptions"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:705
+#: ../includes/wpcm-core-functions.php:707
+msgid "REC"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:706
+msgid "Receiving Yards"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:707
+msgid "Receiving Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:708
+msgid "Total Tackles"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:708
+msgid "TOTAL"
+msgstr "CELKEM"
+
+#: ../includes/wpcm-core-functions.php:709
+msgid "Sacks"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:709
+msgid "SACK"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:710
+msgid "Fumbles"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:710
+#: ../includes/wpcm-core-functions.php:780
+msgid "FF"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:711
+#: ../includes/wpcm-core-functions.php:951
+msgid "Interceptions"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:712
+msgid "Blocked Kicks"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:712
+msgid "KB"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:713
+msgid "Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:713
+msgid "TD"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:714
+msgid "2 Point Conversions"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:714
+msgid "2PT"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:715
+msgid "Field Goals"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:715
+msgid "FG"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:716
+msgid "Extra Points"
+msgstr "Extra body"
+
+#: ../includes/wpcm-core-functions.php:716
+msgid "PAT"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:717
+msgid "Total Points"
+msgstr "Celkem bodů"
+
+#: ../includes/wpcm-core-functions.php:723
+msgid "Australian Rules Football"
+msgstr "Australský fotbal"
+
+#: ../includes/wpcm-core-functions.php:774
+msgid "Kicks"
+msgstr "Kopy"
+
+#: ../includes/wpcm-core-functions.php:774
+msgid "K"
+msgstr "K"
+
+#: ../includes/wpcm-core-functions.php:775
+msgid "Handballs"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:775
+msgid "HB"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:776
+msgid "Disposals"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:776
+msgid "D"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:777
+msgid "Contested Possesion"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:777
+msgid "CP"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:778
+msgid "Marks"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:778
+msgid "M"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:779
+msgid "Contested Marks"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:779
+msgid "CM"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:780
+msgid "Frees For"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:781
+msgid "Frees Against"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:781
+msgid "FA"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:782
+msgid "Clangers"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:782
+msgid "C"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:783
+msgid "Tackles"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:783
+msgid "T"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:784
+msgid "Inside 50s"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:784
+msgid "I50"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:785
+msgid "Rebound 50s"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:785
+msgid "R50"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:786
+msgid "One-Percenters"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:786
+msgid "1PCT"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:787
+msgid "Hit-Outs"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:787
+msgid "HO"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:789
+msgid "Behinds"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:789
+msgid "B"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:790
+#: ../includes/wpcm-core-functions.php:824
+#: ../includes/wpcm-core-functions.php:861
+#: ../includes/wpcm-core-functions.php:1011
+#: ../includes/wpcm-core-functions.php:1046
+msgid "Yellow Cards"
+msgstr "Žluté karty"
+
+#: ../includes/wpcm-core-functions.php:790
+#: ../includes/wpcm-core-functions.php:824
+#: ../includes/wpcm-core-functions.php:861
+#: ../includes/wpcm-core-functions.php:1011
+#: ../includes/wpcm-core-functions.php:1046
+msgid "YC"
+msgstr "ŽK"
+
+#: ../includes/wpcm-core-functions.php:797
+msgid "Gaelic Football / Hurling"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:821
+msgid "P"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:822
+msgid "Goals from Frees"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:822
+msgid "GFF"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:823
+msgid "Points from Frees"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:823
+msgid "PFF"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:825
+msgid "Black Cards"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:825
+msgid "BC"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:832
+msgid "Field Hockey"
+msgstr "Pozemní hokej"
+
+#: ../includes/wpcm-core-functions.php:857
+msgid "Shots"
+msgstr "Střely"
+
+#: ../includes/wpcm-core-functions.php:857
+msgid "SH"
+msgstr "Stř"
+
+#: ../includes/wpcm-core-functions.php:860
+msgid "Green Cards"
+msgstr "Zelené karty"
+
+#: ../includes/wpcm-core-functions.php:860
+msgid "GC"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:868
+msgid "Ice Hockey"
+msgstr "Lední hokej"
+
+#: ../includes/wpcm-core-functions.php:899
+msgid "Missed Shots"
+msgstr "Střely mimo"
+
+#: ../includes/wpcm-core-functions.php:899
+msgid "MS"
+msgstr "SM"
+
+#: ../includes/wpcm-core-functions.php:900
+msgid "Blocked Shots"
+msgstr "Blokované střely"
+
+#: ../includes/wpcm-core-functions.php:900
+msgid "BS"
+msgstr "BS"
+
+#: ../includes/wpcm-core-functions.php:902
 msgid "HT"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:834
+#: ../includes/wpcm-core-functions.php:903
 msgid "Faceoffs Won"
 msgstr "Vyhrané buly"
 
-#: ../includes/wpcm-core-functions.php:834
+#: ../includes/wpcm-core-functions.php:903
 msgid "FW"
 msgstr "VB"
 
-#: ../includes/wpcm-core-functions.php:835
+#: ../includes/wpcm-core-functions.php:904
 msgid "Faceoffs Lost"
 msgstr "Prohrané buly"
 
-#: ../includes/wpcm-core-functions.php:835
+#: ../includes/wpcm-core-functions.php:904
 msgid "FL"
 msgstr "PB"
 
-#: ../includes/wpcm-core-functions.php:842
-msgid "Rugby"
-msgstr "Rugby"
-
-#: ../includes/wpcm-core-functions.php:889
-msgid "Tries"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:889
-msgid "TRI"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:890
-msgid "Conversions"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:890
-msgid "CON"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:891
-msgid "Penalties"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:891
-#: ../includes/wpcm-core-functions.php:976
-msgid "PEN"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:892
-msgid "Drop Goals"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:892
-msgid "DG"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:900
-msgid "Football (Soccer)"
-msgstr "Fotbal"
-
-#: ../includes/wpcm-core-functions.php:923
-#: ../includes/wpcm-core-functions.php:969
-msgid "GLS"
-msgstr "G"
-
-#: ../includes/wpcm-core-functions.php:925
-msgid "Penalty Goals"
-msgstr "Góly z penalt"
-
-#: ../includes/wpcm-core-functions.php:925
-msgid "PENS"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:926
-msgid "Own Goals"
-msgstr "Vlastní góly"
-
-#: ../includes/wpcm-core-functions.php:926
-msgid "OG"
-msgstr "VG"
-
-#: ../includes/wpcm-core-functions.php:934
+#: ../includes/wpcm-core-functions.php:911
 msgid "Netball"
 msgstr "Nohejbal"
 
-#: ../includes/wpcm-core-functions.php:970
+#: ../includes/wpcm-core-functions.php:946
+#: ../includes/wpcm-core-functions.php:1041
+msgid "GLS"
+msgstr "G"
+
+#: ../includes/wpcm-core-functions.php:947
 msgid "Goal Attempts"
 msgstr "Gólové šance"
 
-#: ../includes/wpcm-core-functions.php:970
+#: ../includes/wpcm-core-functions.php:947
 msgid "ATT"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:971
+#: ../includes/wpcm-core-functions.php:948
 msgid "Goal Assists"
-msgstr ""
+msgstr "Gólové asistence"
 
-#: ../includes/wpcm-core-functions.php:973
+#: ../includes/wpcm-core-functions.php:950
 msgid "Centre Pass Receives"
 msgstr "Obdržené centry"
 
-#: ../includes/wpcm-core-functions.php:973
+#: ../includes/wpcm-core-functions.php:950
 msgid "CPR"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:975
+#: ../includes/wpcm-core-functions.php:952
 msgid "Deflections"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:975
+#: ../includes/wpcm-core-functions.php:952
 msgid "DEF"
 msgstr "OBR"
 
-#: ../includes/wpcm-core-functions.php:976
+#: ../includes/wpcm-core-functions.php:953
 msgid "Penaties"
 msgstr "Fauly"
 
-#: ../includes/wpcm-core-functions.php:983
+#: ../includes/wpcm-core-functions.php:953
+#: ../includes/wpcm-core-functions.php:1009
+msgid "PEN"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:960
+msgid "Rugby"
+msgstr "Rugby"
+
+#: ../includes/wpcm-core-functions.php:1007
+msgid "Tries"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1007
+msgid "TRI"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1008
+msgid "Conversions"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1008
+msgid "CON"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1009
+msgid "Penalties"
+msgstr "Tresty"
+
+#: ../includes/wpcm-core-functions.php:1010
+msgid "Drop Goals"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1010
+msgid "DG"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1018
+msgid "Football (Soccer)"
+msgstr "Fotbal"
+
+#: ../includes/wpcm-core-functions.php:1043
+msgid "Penalty Goals"
+msgstr "Góly z penalt"
+
+#: ../includes/wpcm-core-functions.php:1043
+msgid "PENS"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1044
+msgid "Own Goals"
+msgstr "Vlastní góly"
+
+#: ../includes/wpcm-core-functions.php:1044
+msgid "OG"
+msgstr "VG"
+
+#: ../includes/wpcm-core-functions.php:1045
+msgid "Clean Sheets"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:1053
 msgid "Volleyball"
 msgstr "Volejbal"
 
-#: ../includes/wpcm-core-functions.php:1014
+#: ../includes/wpcm-core-functions.php:1084
 msgid "Aces"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1014
+#: ../includes/wpcm-core-functions.php:1084
 msgid "ACE"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1015
+#: ../includes/wpcm-core-functions.php:1085
 msgid "Kills"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1015
+#: ../includes/wpcm-core-functions.php:1085
 msgid "KILL"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1017
+#: ../includes/wpcm-core-functions.php:1087
 msgid "Block Assists"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1017
+#: ../includes/wpcm-core-functions.php:1087
 msgid "BA"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1018
+#: ../includes/wpcm-core-functions.php:1088
 msgid "Setting Assists"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1018
+#: ../includes/wpcm-core-functions.php:1088
 msgid "SA"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1019
+#: ../includes/wpcm-core-functions.php:1089
 msgid "Digs"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:1019
+#: ../includes/wpcm-core-functions.php:1089
 msgid "DIG"
 msgstr ""
 
-#: ../includes/wpcm-match-functions.php:149
+#: ../includes/wpcm-core-functions.php:1149
+msgid "No location found for the entered address."
+msgstr "Pro zadanou adresu nebylo nalezeno žádné místo."
+
+#: ../includes/wpcm-core-functions.php:1151
+msgid "Invalid request. Address is missing"
+msgstr "Neplatný požadavek. Chybí adresa"
+
+#: ../includes/wpcm-core-functions.php:1153
+msgid "Something went wrong while retrieving your map."
+msgstr "Něco se pokazilo při načítání vaší mapy."
+
+#: ../includes/wpcm-core-functions.php:1156
+msgid "Unable to contact Google API service."
+msgstr "Nepodařilo se kontaktovat službu Google API."
+
+#: ../includes/wpcm-match-functions.php:221
 msgid "No players found!"
 msgstr "Žádní hráči nebyly nalezeni!"
 
-#: ../includes/wpcm-match-functions.php:177
+#: ../includes/wpcm-match-functions.php:234
+msgid "Click and drag players to reorder"
+msgstr "Klikněte a přetáhněte hráče ke změně pořadí"
+
+#: ../includes/wpcm-match-functions.php:251
 msgid "Player Off"
 msgstr "Hráč ze hřiště"
 
-#: ../includes/wpcm-match-functions.php:301
+#: ../includes/wpcm-match-functions.php:405
 msgid "Man of Match"
 msgstr "Muž zápasu"
 
-#: ../includes/wpcm-match-functions.php:336
+#: ../includes/wpcm-match-functions.php:444
 msgid "Green Card"
 msgstr "Zelená karta"
 
-#: ../includes/wpcm-match-functions.php:341
+#: ../includes/wpcm-match-functions.php:449
 msgid "Yellow Card"
 msgstr "Žlutá karta"
 
-#: ../includes/wpcm-match-functions.php:345
+#: ../includes/wpcm-match-functions.php:454
+msgid "Black Card"
+msgstr "Černá karta"
+
+#: ../includes/wpcm-match-functions.php:458
 msgid "Red Card"
 msgstr "Červená karta"
 
@@ -2812,41 +2923,66 @@ msgstr "Odehrané zápasy"
 msgid "GP"
 msgstr "OZ"
 
-#: ../includes/admin/class-wpcm-admin-assets.php:65
+#: ../includes/admin/class-wpcm-admin-assets.php:70
 msgid "WPClubManager"
 msgstr "WPClubManager"
 
-#: ../includes/admin/class-wpcm-admin-menus.php:32
+#: ../includes/admin/class-wpcm-admin-menus.php:37
 msgid "Club Manager"
 msgstr "Klubový manažer"
 
-#: ../includes/admin/class-wpcm-admin-settings.php:49
+#: ../includes/admin/class-wpcm-admin-menus.php:50
+#: ../includes/admin/views/html-admin-page-extensions.php:3
+msgid "WP Club Manager Extensions"
+msgstr "WP Club Manger rozšíření"
+
+#: ../includes/admin/class-wpcm-admin-menus.php:50
+msgid "Extensions"
+msgstr "Rozšíření"
+
+#: ../includes/admin/class-wpcm-admin-menus.php:57
+#: ../includes/admin/class-wpcm-admin-welcome.php:242
+msgid "Settings"
+msgstr "Nastavení"
+
+#: ../includes/admin/class-wpcm-admin-settings.php:50
 msgid "Action failed. Please refresh the page and retry."
 msgstr "Akce se nezdařila. Prosím aktualizujte stránku a zkuste to znovu."
 
-#: ../includes/admin/class-wpcm-admin-settings.php:60
-#: ../includes/admin/class-wpcm-admin-welcome.php:206
+#: ../includes/admin/class-wpcm-admin-settings.php:61
+#: ../includes/admin/class-wpcm-admin-welcome.php:370
 msgid "Your settings have been saved."
-msgstr ""
+msgstr "Vaše nastavení bylo uloženo."
 
-#: ../includes/admin/class-wpcm-admin-settings.php:116
+#: ../includes/admin/class-wpcm-admin-settings.php:117
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr ""
 "Změny, které jste provedli, budou ztraceny, pokud opustíte tuto stránku."
 
-#: ../includes/admin/class-wpcm-admin-settings.php:479
+#: ../includes/admin/class-wpcm-admin-settings.php:480
 msgid "Hard Crop?"
-msgstr ""
+msgstr "Pevné oříznutí?"
 
-#: ../includes/admin/class-wpcm-admin-settings.php:530
+#: ../includes/admin/class-wpcm-admin-settings.php:531
 msgid "Select a page&hellip;"
 msgstr "Zvolte stránku&hellip;"
 
-#: ../includes/admin/class-wpcm-admin-settings.php:551
-#: ../includes/admin/class-wpcm-admin-welcome.php:272
+#: ../includes/admin/class-wpcm-admin-settings.php:552
 #: ../includes/admin/wpcm-meta-box-functions.php:225
 msgid "Choose a country&hellip;"
 msgstr "Zvolte zemi&hellip;"
+
+#: ../includes/admin/class-wpcm-admin-settings.php:590
+msgid "Active"
+msgstr "Aktivní"
+
+#: ../includes/admin/class-wpcm-admin-settings.php:592
+msgid "Deactivate License"
+msgstr "Deaktivovat licenci"
+
+#: ../includes/admin/class-wpcm-admin-settings.php:595
+msgid "Activate License"
+msgstr "Aktivovat licenci"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:53
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:73
@@ -2901,108 +3037,294 @@ msgstr ""
 "vzhledy je můžou zobrazit."
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:269
+#: ../templates/content-single-club.php:66
 msgid "Capacity"
 msgstr "Kapacita"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:46
-#: ../includes/admin/class-wpcm-admin-welcome.php:145
+#: ../includes/admin/class-wpcm-admin-welcome.php:49
+msgid "About WP Club Manager"
+msgstr "O WP Club Manager"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:50
 msgid "Welcome to WP Club Manager"
 msgstr "Vítá Vás WP Club Manager"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:150
+#: ../includes/admin/class-wpcm-admin-welcome.php:224
+#, php-format
+msgid "Welcome to WP Club Manager %s"
+msgstr "Vítejte ve WP Club Manager %s"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:229
 msgid "Thanks, all done!"
 msgstr "Děkujeme, vše hotovo!"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:152
+#: ../includes/admin/class-wpcm-admin-welcome.php:231
 msgid "Thank you for updating to the latest version of"
 msgstr "Díky za aktualizaci na nejnovější verzi"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:154
+#: ../includes/admin/class-wpcm-admin-welcome.php:233
 msgid "Thanks for installing"
 msgstr "Díky za instalaci"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:156
+#: ../includes/admin/class-wpcm-admin-welcome.php:235
 #, php-format
 msgid ""
-"%s WP Club Manager, the complete solution for managing your clubs website. "
-"Version %s is more powerful and stable than ever before. We hope you enjoy "
-"it."
+"%s WP Club Manager, the complete solution for managing your sports club "
+"website. Version %s is more powerful and stable than ever before. We hope "
+"you enjoy it."
 msgstr ""
-"%s WP Club Manager, kompletní řešení pro správu klubových webových stránek. "
-"Verze %s je výkonnější a stabilnější než kdy předtím. Doufáme, že se vám "
-"bude líbit."
+"%s WP Club Manager, kompletní řešení pro správu vaší webové stránky klubu. "
+"Verze %s je výkonější a stabilnější než kdy předtím. Doufáme, že se vám bude "
+"líbit."
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:160
+#: ../includes/admin/class-wpcm-admin-welcome.php:239
 #, php-format
 msgid "Version %s"
 msgstr "Verze %s"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:163
-msgid "Settings"
-msgstr "Nastavení"
+#: ../includes/admin/class-wpcm-admin-welcome.php:257
+msgid "What's New"
+msgstr "Co je nového"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:169
-#: ../includes/admin/class-wpcm-admin-welcome.php:188
-msgid "Get Started"
+#: ../includes/admin/class-wpcm-admin-welcome.php:260
+msgid "Getting Started"
 msgstr "Začněme"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:214
-msgid "Configure Plugin"
-msgstr "Konfigurace pluginu"
+#: ../includes/admin/class-wpcm-admin-welcome.php:263
+msgid "Translators"
+msgstr "Překladatelé"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:217
-#: ../includes/admin/settings/class-wpcm-settings-general.php:43
-msgid "Sport"
-msgstr "Sport"
+#: ../includes/admin/class-wpcm-admin-welcome.php:266
+msgid "Changelog"
+msgstr "Historie změn"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:252
-msgid "Create Default Club"
-msgstr "Vytvořit výchozí klub"
+#: ../includes/admin/class-wpcm-admin-welcome.php:285
+msgid ""
+"This new version of WP Club Manager introduces a few new features, some "
+"minor performance improvements and a couple of bugfixes. Check the changelog "
+"for a full list of changes."
+msgstr ""
+"Tato nová verze WP Club Manager přináší několik nových funkcí, drobných "
+"vylepšení výkonu a několik oprav chyb. Zkontrolujte historii změn pro "
+"kompletní seznam změn."
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:267
-#: ../includes/admin/settings/class-wpcm-settings-general.php:65
-msgid "Base Location"
-msgstr "Základní lokalita"
+#: ../includes/admin/class-wpcm-admin-welcome.php:289
+msgid "What's New In This Version"
+msgstr "Co je nového v této verzi"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:277
+#: ../includes/admin/class-wpcm-admin-welcome.php:295
+msgid "New Club Profiles"
+msgstr "Nové klubové profily"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:296
+msgid ""
+"Club profiles allow you to add more detailed information about each club. "
+"The new single club template displays that information and details of the "
+"club venue and we've added the option to link to each clubs profile page "
+"from the standings shortcode or widget."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:298
+msgid "Drag and Drop Player Sorting"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:299
+msgid ""
+"You can now drag and drop players to reorder the lineup for each match. "
+"Using the new sorting feature you can drag players into whichever order you "
+"want and finally get the match lineups you've always wanted!"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:305
+msgid "Improved Player Dropdowns"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:306
+msgid ""
+"We've overhauled the player dropdowns on single player profile pages and "
+"match lineup substitutes. The player and substitutes dropdowns are now "
+"filtered by team and season so theres no more long lists of every player in "
+"the club!"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:308
+msgid "Improved Map Shortcode"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:309
+msgid ""
+"The map shortcode has also had a makeover. The shortcode has more options "
+"allowing you to choose whether to display the pointer, set zoom level and "
+"define the position by latitude and longtitude."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:340
+#: ../includes/admin/class-wpcm-admin-welcome.php:519
+#: ../includes/admin/class-wpcm-admin-welcome.php:560
+#: ../includes/admin/class-wpcm-admin-welcome.php:589
+msgid "Go to WP Club Manager Settings"
+msgstr "Přejít na nastavení WP Club Manger"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:367
+msgid ""
+"WP Club Manager has been built with the focus on simplicity and ease of use "
+"so it won't be long before your club website is up and ready for action."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:375
+msgid "Quick and Easy Setup"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:381
+msgid "1. Choose Your Sport"
+msgstr "1. Vyberte Váš sport"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:382
+#, php-format
+msgid ""
+"Take your pick from 13 supported team sports. Each sport has preset player "
+"positions and statistics so it's a good idea to set this up before anything "
+"else. To select your default sport goto <a href=\"%s\">General Settings</a> "
+"or use the form below."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:396
+#: ../includes/admin/class-wpcm-admin-welcome.php:431
 #: ../includes/admin/views/html-admin-settings.php:25
 msgid "Save changes"
 msgstr "Uložit změny"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:287
-msgid "Next Steps"
-msgstr "Další kroky"
+#: ../includes/admin/class-wpcm-admin-welcome.php:401
+msgid "2. Create Your Club"
+msgstr "2. Vytvořte váš klub"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:290
-msgid "Add Competitions"
-msgstr "Přidat soutěže"
-
-#: ../includes/admin/class-wpcm-admin-welcome.php:291
-msgid "Add Seasons"
-msgstr "Přidat sezóny"
-
-#: ../includes/admin/class-wpcm-admin-welcome.php:292
-msgid "Add Players"
-msgstr "Přidat hráče"
-
-#: ../includes/admin/class-wpcm-admin-welcome.php:293
-msgid "Add More Clubs"
-msgstr "Přidat více klubů"
-
-#: ../includes/admin/class-wpcm-admin-welcome.php:296
+#: ../includes/admin/class-wpcm-admin-welcome.php:402
+#, php-format
 msgid ""
-"Please check out our <a href=\"http://wpclubmanager.com/docs/\">plugin "
-"documentation</a> if you need help setting up or managing your club."
+"The Clubs menu is where you create and edit clubs, including your own and "
+"create Competitions, Seasons, Teams and Venues. To create a club, click "
+"<em><a href=\"%s\">Add New</a></em> and then fill out the club details. "
+"<strong>Your club will need to be set as the Default Club in <a href=\"%s"
+"\">General Settings</a>.</strong> Alternatively, you can enter your default "
+"club in the box below."
 msgstr ""
-"Prosím, podívejte se na naši <a href=\"http://wpclubmanager.com/docs/"
-"\">plugin dokumentaci</ a>, pokud budete potřebovat pomoc s nastavením nebo "
-"správou Vašeho klubu."
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:303
-msgid "Translators"
-msgstr "Překladatelé"
+#: ../includes/admin/class-wpcm-admin-welcome.php:438
+msgid "3. Seasons, Competitions and Teams"
+msgstr "3. Sezona, soutěže a týmy"
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:305
+#: ../includes/admin/class-wpcm-admin-welcome.php:439
+#, php-format
+msgid ""
+"Before adding your players and opposition clubs you should create <a href="
+"\"%s\">Competitions</a> and <a href=\"%s\">Seasons</a>. If your club has "
+"more than one team, for example, firsts, reserves, youth team etc. you will "
+"need to create <a href=\"%s\">Teams</a> for each one. When creating players "
+"or adding more clubs you will need to choose the competitions, seasons and "
+"teams which they compete in."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:440
+msgid ""
+"<strong>If you have already created your default club you will need to edit "
+"your club to add competitions, seasons and teams.</strong>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:444
+msgid "4. Add Your Players"
+msgstr "4. Přidejte vaše hráče"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:445
+#: ../includes/admin/class-wpcm-admin-welcome.php:448
+#, php-format
+msgid ""
+"Now you should be ready to add your clubs players. The Players Menu is where "
+"you can create and edit your clubs players and player positions. To create a "
+"player, simply click <em><a href=\"%s\">Add New</a></em> and then fill out "
+"the player details, including competitions, seasons and teams."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:447
+msgid "5. Play A Match"
+msgstr "5. Hrajte zápas"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:449
+#, php-format
+msgid ""
+"Don't forget to run through the <a href=\"%s\">WP Club Manager settings</a> "
+"where you can set visibility options for player stats, set league standing "
+"options and loads more."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:456
+msgid "Need Help?"
+msgstr "Potřebujete pomoc?"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:460
+msgid "Plugin Documentation"
+msgstr "Dokumentace pluginu"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:461
+msgid ""
+"If you need more help setting up WP Club Manager, using the shortcodes and "
+"widgets or customizing the plugin templates then visit our <a href=\"https://"
+"wpclubmanager.com/docs/\">documentation</a>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:463
+msgid "Friendly Support"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:464
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, post a question in the <a href=\"https://"
+"wpclubmanager.com/support\">support forums</a>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:470
+msgid "Stay Up to Date"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:474
+msgid "Get Notified of New Extensions and Plugin Updates"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:475
+msgid ""
+"WP Club Manager is getting better every day with new features, extensions "
+"and themes being created. Stay in touch with the latest developments, newest "
+"extensions and get special offers by subscribing to our newsletter."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:494
+msgid "Want More Features?"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:499
+msgid "Score Summary"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:500
+msgid ""
+"Keep record of the interval scores and add a score summary to your clubs "
+"matches"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:501
+#: ../includes/admin/class-wpcm-admin-welcome.php:507
+msgid "Download"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:505
+msgid "Player Appearances"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:506
+msgid "Display a list of a players matches, season by season, on their profile"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:536
 msgid ""
 "WP Club Manager has been translated by our generous translation teams, "
 "listed below. If you can help translate WPCM please sign up for a free "
@@ -3010,14 +3332,35 @@ msgid ""
 "the <a href=\"https://www.transifex.com/projects/p/wp-club-manager/\">WP "
 "Club Manager project</a>."
 msgstr ""
+"WP Club Manager byl přeložen díky štědrosti překladatelských týmů uvedených "
+"níže. Pokud můžete pomoci přeložit WPCM, přihlaste se prosím zdarma k účtu "
+"na <a href=\"https://www.transifex.com/\">Transifex</a> a navštivte <a href="
+"\"https://www.transifex.com/projects/p/wp-club-manager/\">projekt WP Club "
+"Manager</a>."
 
-#: ../includes/admin/class-wpcm-admin-welcome.php:323
-msgid "Go to WP Club Manager Settings"
-msgstr "Přejít na nastavení WP Club Manger"
+#: ../includes/admin/class-wpcm-admin-welcome.php:540
+msgid "A Massive Thanks to the Following Translators"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:581
+msgid "Full Changelog"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:605
+msgid "No valid changlog was found."
+msgstr ""
 
 #: ../includes/admin/wpcm-admin-functions.php:21
 msgid "wpcm-settings"
 msgstr "wpcm-nastaveni"
+
+#: ../includes/admin/wpcm-admin-functions.php:95
+#, php-format
+msgid ""
+"Thank you for using <a href=\"%1$s\" target=\"_blank\">WP Club Manager</a>! "
+"Please <a href=\"%2$s\" target=\"_blank\">rate us</a> on <a href=\"%2$s\" "
+"target=\"_blank\">WordPress.org</a>"
+msgstr ""
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:74
 msgid "Club name"
@@ -3067,12 +3410,12 @@ msgstr "sezóny"
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:82
 #, php-format
 msgid "Kick-off: <b>%1$s</b>"
-msgstr "Výkop: <b>%1$s</b>"
+msgstr "Začátek: <b>%1$s</b>"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:148
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:97
 msgid "Fixture"
-msgstr "Rozlosováníí"
+msgstr "Rozpis zápasů"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:152
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:85
@@ -3083,12 +3426,12 @@ msgstr "Datum"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:153
 msgid "Kick-off"
-msgstr "Výkop"
+msgstr "Začátek"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:154
 #: ../includes/widgets/class-wpcm-widget-results.php:32
 msgid "Results"
-msgstr "Výsledky"
+msgstr "Výsledek"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:224
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:200
@@ -3180,7 +3523,7 @@ msgstr "Nastavit fotku personálu"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:48
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:73
 msgid "Job Title"
-msgstr ""
+msgstr "Titulek práce"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:171
 msgid "jobs"
@@ -3199,7 +3542,7 @@ msgstr "Nahráno %s"
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:94
 #: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:102
 #: ../includes/widgets/class-wpcm-widget-players.php:240
-#: ../includes/widgets/class-wpcm-widget-standings.php:182
+#: ../includes/widgets/class-wpcm-widget-standings.php:199
 msgid "Statistics"
 msgstr "Statistiky"
 
@@ -3263,36 +3606,40 @@ msgstr "hráči"
 msgid "substitutes"
 msgstr "střídající"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:37
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:38
 #: ../templates/shortcodes/matches.php:125
 msgid "Result"
 msgstr "Výsledek"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:45
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:46
 msgctxt "team"
 msgid "Home"
 msgstr "Domácí"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:46
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:47
 msgctxt "team"
 msgid "Away"
 msgstr "Hosté"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:51
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:53
 #: ../includes/widgets/class-wpcm-widget-results.php:95
 msgid "Score"
 msgstr "Výsledek"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:62
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:64
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:175
 msgid "Bonus Points"
 msgstr "Bonusové body"
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:73
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:75
 msgid "Overtime"
 msgstr "Prodloužení"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:81
+msgid "Shootout"
+msgstr "Nájezdy"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:89
 msgid "Friendly"
 msgstr "Přátelský"
 
@@ -3337,6 +3684,10 @@ msgstr "Obecné"
 msgid "General Options"
 msgstr "Obecné možnosti"
 
+#: ../includes/admin/settings/class-wpcm-settings-general.php:43
+msgid "Sport"
+msgstr "Sport"
+
 #: ../includes/admin/settings/class-wpcm-settings-general.php:44
 msgid ""
 "Choose your sport. Your choice will determine the player stats that are "
@@ -3353,6 +3704,10 @@ msgstr "Výchozí klub"
 msgid "This is the default club."
 msgstr "Toto je výchozí klub."
 
+#: ../includes/admin/settings/class-wpcm-settings-general.php:65
+msgid "Base Location"
+msgstr "Základní lokalita"
+
 #: ../includes/admin/settings/class-wpcm-settings-general.php:66
 msgid ""
 "This is the base country for your club. Players nationality will default to "
@@ -3360,6 +3715,10 @@ msgid ""
 msgstr ""
 "Toto je základní země pro Váš klub. Příslušnost hráče bude výchozí dle této "
 "země."
+
+#: ../includes/admin/settings/class-wpcm-settings-licenses.php:22
+msgid "Licenses"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:38
 msgid "Title Format Options"
@@ -3385,11 +3744,11 @@ msgstr "Možnosti zobrazení"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:58
 msgid "Clubs Separator"
-msgstr ""
+msgstr "Oddělovač klubů"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:59
 msgid "This sets the separator of clubs."
-msgstr ""
+msgstr "Tímto se nastaví oddělovač klubů."
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:68
 msgid "Goals Delimiter"
@@ -3406,6 +3765,10 @@ msgstr "Předzápasové možnosti zobrazení"
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:99
 msgid "Post Match Display Options"
 msgstr "Pozápasové možnosti zobrazení"
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:126
+msgid "Show Player Thumbnails"
+msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:38
 msgid "Player Profile Options"
@@ -3566,13 +3929,21 @@ msgstr "Procento výher"
 msgid "Goals For"
 msgstr "Vstřelené góly"
 
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:157
-msgid "Goals Against"
-msgstr "Obdržené góly"
-
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:166
 msgid "Goal Difference"
 msgstr "Rozdíl"
+
+#: ../includes/admin/views/html-admin-page-extensions.php:4
+msgid "Browse all extensions"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:5
+msgid "Browse themes"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:8
+msgid "These add-ons extend the functionality of WP Club Manager."
+msgstr ""
 
 #: ../includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -3580,6 +3951,9 @@ msgid ""
 "if you encounter layout issues please read our integration guide or choose a "
 "WP Club Manager theme :)"
 msgstr ""
+"<strong>Vaše šablona nepodporuje WP Club Manager </strong> &#8211; pokud "
+"narazíte na problémy s rozvržením, přečtěte si prosím náš integrační manuál "
+"nebo zvolte šablonu WP Club Manager :)"
 
 #: ../includes/admin/views/html-notice-theme-support.php:7
 msgid "Theme Integration Guide"
@@ -3599,12 +3973,12 @@ msgstr "WPCM Rozlosování"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:32
 msgid "Fixtures"
-msgstr "Rozlosování"
+msgstr "Rozpis zápasů"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:69
 #: ../includes/widgets/class-wpcm-widget-results.php:69
 msgid "View all matches"
-msgstr ""
+msgstr "Zobrazit všechny zápasy"
 
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:90
 #: ../includes/widgets/class-wpcm-widget-results.php:90
@@ -3658,11 +4032,23 @@ msgstr "Odkaz přímo na webovou stránku?"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:31
 msgid "Display your clubs league standings."
-msgstr "Zobrazena tabulka pořadí vašeho klubu"
+msgstr "Zobrazit tabulku pořadí vašeho klubu"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:33
 msgid "WPCM Standings"
 msgstr "WPCM Pořadí"
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:189
+msgid "Show Club Badge"
+msgstr "Zobrazit klubový znak"
+
+#: ../templates/content-single-club.php:59
+msgid "Ground"
+msgstr "Hřiště"
+
+#: ../templates/content-single-club.php:82
+msgid "More Info"
+msgstr "Více info"
 
 #: ../templates/content-single-sponsor.php:32
 msgid "Visit website"
