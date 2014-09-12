@@ -122,6 +122,14 @@ class WPCM_Settings_Matches extends WPCM_Settings_Page {
 				'type' 		=> 'checkbox'
 			),
 
+			array(
+				'title' 	=> __( 'Show Player Thumbnails', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_results_show_image',
+				'default'	=> 'no',
+				'type' 		=> 'checkbox'
+			),
+
 			array( 'type' => 'sectionend', 'id' => 'match_result_display_options'),
 
 		)); // End matches settings
