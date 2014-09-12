@@ -391,6 +391,16 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 		$snumber = $number .'. ';
 	}
 
+	if( get_option('wpcm_results_show_image') == 'yes' ) {
+		if ( has_post_thumbnail( $key ) ) {			
+			$image = ' ' . get_the_post_thumbnail( $key, 'player_thumbnail', array( 'class' => 'lineup-thumb' ) ) . ' ';
+		} else {			
+			$image = ' ' . apply_filters( 'wpclubmanager_match_player_image', sprintf( '<img src="%s" alt="Placeholder" class="lineup-thumb" />', wpcm_placeholder_img_src() ), $post->ID ) . ' ';		
+		}
+	} else {
+		$image = '';
+	}
+
 	if ( isset( $value['mvp'] ) ) {
 		$mvp = '<span class="mvp" title="' . __( 'Man of Match', 'wpclubmanager' ) . '">&#9733;</span>';
 	} else {
@@ -401,7 +411,7 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 
 	$output .= '<tr>';
 
-	$output .= '<th class="name"><div>' . $snumber . '<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
+	$output .= '<th class="name"><div>' . $snumber . '' . $image . '<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
 
 	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
 
