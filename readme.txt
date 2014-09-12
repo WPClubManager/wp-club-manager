@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,6 +42,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Greek - Ελληνικά (el_GR)
 * Hungarian - Magyar (hu_HU)
 * Italian - Italiano (it_IT)
+* Latvian - Latviešu (lv_LV)
 * Polish - Polski (pl_PL)
 * Portuguese (Brazil) – Português do Brasil (pt_BR)
 * Spanish - Español (es_ES)
@@ -96,6 +97,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 
 == Changelog ==
+
+= 1.2.1 - 12/09/2014
+
+* New - Added option to display player thumbnails in match lineups
+* New - Added Kosovo flag
+* Fix - Fixed missing job titles in single Staff template
+* Localisation - Added Latvian language (Thanks sigma66699969669)
+* Localisation - Updated all languages (Thanks King3R, Wuko, Spirossmil, thegreat)
 
 = 1.2.0 - 05/09/2014
 
