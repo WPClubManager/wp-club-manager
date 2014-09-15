@@ -10,6 +10,14 @@
 	<div class="">
 		<ul class="extensions">
 			<li class="extension">
+				<a href="https://wpclubmanager.com/extensions/players-gallery">
+					<img src="<?php echo WPCM()->plugin_url(); ?>/assets/images/extensions/wpcm-pg-280.png"/>
+				</a>
+				<h3>Players Gallery</h3>
+				<p>Display a gallery of your clubs players or staff anywhere on your site</p>
+				<a href="https://wpclubmanager.com/extensions/players-gallery" class="button right">Find out more</a>
+			</li>
+			<li class="extension">
 				<a href="https://wpclubmanager.com/extensions/score-summary">
 					<img src="<?php echo WPCM()->plugin_url(); ?>/assets/images/extensions/wpcm-ss-280.png"/>
 				</a>
