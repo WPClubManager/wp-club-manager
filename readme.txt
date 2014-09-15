@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -97,6 +97,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 
 == Changelog ==
+
+= 1.2.2 - 15/09/2014
+
+* Tweak - Updated extensions
+* Fix - Fixed bug in map shortcodes caused by width and height settings
+* Localisation - Updated Portuguese (Brazilian) language (Thanks Pirolla)
 
 = 1.2.1 - 12/09/2014
 
