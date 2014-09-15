@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
 "POT-Creation-Date: 2014-09-12 14:33-0000\n"
-"PO-Revision-Date: 2014-09-12 15:04-0000\n"
+"PO-Revision-Date: 2014-09-15 14:48-0000\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/wp-"
 "club-manager/language/pt_BR/)\n"
@@ -63,11 +63,11 @@ msgstr "Endereço"
 
 #: ../includes/class-wpcm-ajax.php:123
 msgid "Latitude"
-msgstr ""
+msgstr "Latitude"
 
 #: ../includes/class-wpcm-ajax.php:128
 msgid "Longtitude"
-msgstr ""
+msgstr "Longitude"
 
 #: ../includes/class-wpcm-ajax.php:133
 msgid "Width"
@@ -84,11 +84,11 @@ msgstr "Altura"
 
 #: ../includes/class-wpcm-ajax.php:143
 msgid "Zoom"
-msgstr ""
+msgstr "Zoo"
 
 #: ../includes/class-wpcm-ajax.php:148
 msgid "Display Marker"
-msgstr ""
+msgstr "Mostrar marcador"
 
 #: ../includes/class-wpcm-ajax.php:153 ../includes/class-wpcm-ajax.php:278
 #: ../includes/class-wpcm-ajax.php:467 ../includes/class-wpcm-ajax.php:643
@@ -458,7 +458,7 @@ msgstr "Classificação"
 #: ../includes/class-wpcm-ajax.php:784
 #: ../includes/widgets/class-wpcm-widget-standings.php:195
 msgid "Link to Clubs"
-msgstr ""
+msgstr "Link para os Clubes"
 
 #: ../includes/class-wpcm-ajax.php:804
 msgid "Display columns"
@@ -934,7 +934,7 @@ msgstr "Kiribati"
 
 #: ../includes/class-wpcm-countries.php:149
 msgid "Kosovo"
-msgstr ""
+msgstr "Kosovo"
 
 #: ../includes/class-wpcm-countries.php:150
 msgid "Kuwait"
@@ -2251,7 +2251,7 @@ msgstr "PTS"
 
 #: ../includes/wpcm-core-functions.php:612
 msgid "Floorball"
-msgstr ""
+msgstr "Floorball"
 
 #: ../includes/wpcm-core-functions.php:631
 #: ../includes/wpcm-core-functions.php:788
@@ -2340,7 +2340,7 @@ msgstr "Gols Sofridos"
 
 #: ../includes/wpcm-core-functions.php:638
 msgid "GA"
-msgstr ""
+msgstr "GA"
 
 #: ../includes/wpcm-core-functions.php:644
 msgid "American Football"
@@ -2623,35 +2623,35 @@ msgstr "CA"
 
 #: ../includes/wpcm-core-functions.php:797
 msgid "Gaelic Football / Hurling"
-msgstr ""
+msgstr "Hurling"
 
 #: ../includes/wpcm-core-functions.php:821
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #: ../includes/wpcm-core-functions.php:822
 msgid "Goals from Frees"
-msgstr ""
+msgstr "Gols de faltas"
 
 #: ../includes/wpcm-core-functions.php:822
 msgid "GFF"
-msgstr ""
+msgstr "GF"
 
 #: ../includes/wpcm-core-functions.php:823
 msgid "Points from Frees"
-msgstr ""
+msgstr "Pontos de faltas"
 
 #: ../includes/wpcm-core-functions.php:823
 msgid "PFF"
-msgstr ""
+msgstr "PF"
 
 #: ../includes/wpcm-core-functions.php:825
 msgid "Black Cards"
-msgstr ""
+msgstr "Cartão preto"
 
 #: ../includes/wpcm-core-functions.php:825
 msgid "BC"
-msgstr ""
+msgstr "CP"
 
 #: ../includes/wpcm-core-functions.php:832
 msgid "Field Hockey"
@@ -2813,7 +2813,7 @@ msgstr "GC"
 
 #: ../includes/wpcm-core-functions.php:1045
 msgid "Clean Sheets"
-msgstr ""
+msgstr "Sem sofrer gols"
 
 #: ../includes/wpcm-core-functions.php:1053
 msgid "Volleyball"
@@ -2865,11 +2865,11 @@ msgstr "Nenhuma localidade foi encontrada para o endereço digitado."
 
 #: ../includes/wpcm-core-functions.php:1151
 msgid "Invalid request. Address is missing"
-msgstr ""
+msgstr "Pedido inválido. Esta faltando o endereço"
 
 #: ../includes/wpcm-core-functions.php:1153
 msgid "Something went wrong while retrieving your map."
-msgstr ""
+msgstr "Algo deu errado ao recuperar seu mapa."
 
 #: ../includes/wpcm-core-functions.php:1156
 msgid "Unable to contact Google API service."
@@ -2881,7 +2881,7 @@ msgstr "Nenhum jogador encontrado!"
 
 #: ../includes/wpcm-match-functions.php:234
 msgid "Click and drag players to reorder"
-msgstr ""
+msgstr "Clique e solte os jogadores para reordenar"
 
 #: ../includes/wpcm-match-functions.php:251
 msgid "Player Off"
@@ -2901,7 +2901,7 @@ msgstr "Cartão Amarel"
 
 #: ../includes/wpcm-match-functions.php:454
 msgid "Black Card"
-msgstr ""
+msgstr "Cartão Preto"
 
 #: ../includes/wpcm-match-functions.php:458
 msgid "Red Card"
@@ -2933,11 +2933,11 @@ msgstr "Club Manager"
 #: ../includes/admin/class-wpcm-admin-menus.php:50
 #: ../includes/admin/views/html-admin-page-extensions.php:3
 msgid "WP Club Manager Extensions"
-msgstr ""
+msgstr "WP Club Manager Extensões"
 
 #: ../includes/admin/class-wpcm-admin-menus.php:50
 msgid "Extensions"
-msgstr ""
+msgstr "Extensões"
 
 #: ../includes/admin/class-wpcm-admin-menus.php:57
 #: ../includes/admin/class-wpcm-admin-welcome.php:242
@@ -2972,15 +2972,15 @@ msgstr "Selecione um País&hellip;"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:590
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:592
 msgid "Deactivate License"
-msgstr ""
+msgstr "Desativar Licença"
 
 #: ../includes/admin/class-wpcm-admin-settings.php:595
 msgid "Activate License"
-msgstr ""
+msgstr "Ativar Licença"
 
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:53
 #: ../includes/admin/class-wpcm-admin-taxonomies.php:73
@@ -3043,7 +3043,7 @@ msgstr "Capacidade"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:49
 msgid "About WP Club Manager"
-msgstr ""
+msgstr "Sobre WP Club Manager"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:50
 msgid "Welcome to WP Club Manager"
@@ -3052,7 +3052,7 @@ msgstr "Bem vindo ao WP Club Manager"
 #: ../includes/admin/class-wpcm-admin-welcome.php:224
 #, php-format
 msgid "Welcome to WP Club Manager %s"
-msgstr ""
+msgstr "Bem vindo ao WP Club Manager %s"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:229
 msgid "Thanks, all done!"
@@ -3073,6 +3073,9 @@ msgid ""
 "website. Version %s is more powerful and stable than ever before. We hope "
 "you enjoy it."
 msgstr ""
+"%s WP Club Manager, a solução completa para administrar seus sites de clube "
+"esportivo. Versão %s é mais poderosa e instável do que nunca. Nós esperamos "
+"que você goste."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:239
 #, php-format
@@ -3081,11 +3084,11 @@ msgstr "Versão %s"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:257
 msgid "What's New"
-msgstr ""
+msgstr "O que há de novo"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:260
 msgid "Getting Started"
-msgstr ""
+msgstr "Começando"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:263
 msgid "Translators"
@@ -3093,7 +3096,7 @@ msgstr "Traduções"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:266
 msgid "Changelog"
-msgstr ""
+msgstr "Mudanças"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:285
 msgid ""
@@ -3101,14 +3104,17 @@ msgid ""
 "minor performance improvements and a couple of bugfixes. Check the changelog "
 "for a full list of changes."
 msgstr ""
+"Esta nova versão do WP Club Manager introduz novas funcionalidades, "
+"melhorias de desempenho e uma série de bugs foram consertados. Confira o "
+"Changelog para uma lista completa de mudanças."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:289
 msgid "What's New In This Version"
-msgstr ""
+msgstr "Quais as mudanças nesta nova versão"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:295
 msgid "New Club Profiles"
-msgstr ""
+msgstr "Novo Perfil de Clube"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:296
 msgid ""
@@ -3117,10 +3123,14 @@ msgid ""
 "club venue and we've added the option to link to each clubs profile page "
 "from the standings shortcode or widget."
 msgstr ""
+"Perfil de Clubes permite que você adicione mais informações sobre cada "
+"clube. O novo modelo  de perfil de clube exibe informações e detalhes do "
+"clube local e nós adicionamos a opção de ligação para cada página de perfil "
+"clubes do shortcode classificação ou widget."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:298
 msgid "Drag and Drop Player Sorting"
-msgstr ""
+msgstr "Arrastar e Soltar um jogador sortido"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:299
 msgid ""
@@ -3128,10 +3138,14 @@ msgid ""
 "Using the new sorting feature you can drag players into whichever order you "
 "want and finally get the match lineups you've always wanted!"
 msgstr ""
+"Agora você pode arrastar e soltar os jogadores para reordenar a programação "
+"para cada partida. Usando o novo recurso de ordenação você pode arrastar os "
+"jogadores em qualquer ordem que você quer e, finalmente, obter os lineups "
+"jogo que você sempre quis!"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:305
 msgid "Improved Player Dropdowns"
-msgstr ""
+msgstr "Melhorias no Dropdown de Jogadores"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:306
 msgid ""
@@ -3140,10 +3154,14 @@ msgid ""
 "filtered by team and season so theres no more long lists of every player in "
 "the club!"
 msgstr ""
+"Nós reformulou os menus suspensos nas páginas dos jogadores e substitutos "
+"dos jogos. Os jogadores e seus substitutos agora serão filtrados por menus "
+"suspensos, dividindo-os por equipe e temporada, então há listas mais longas "
+"de cada jogador!"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:308
 msgid "Improved Map Shortcode"
-msgstr ""
+msgstr "Melhorar Shortcode do Mapa"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:309
 msgid ""
@@ -3151,6 +3169,9 @@ msgid ""
 "allowing you to choose whether to display the pointer, set zoom level and "
 "define the position by latitude and longtitude."
 msgstr ""
+"O mapa shortcode também teve uma renovação. O shortcode tem mais opções, "
+"permitindo que você escolha se deseja exibir o ponteiro, definir o nível de "
+"zoom e definir a posição de latitude e longitude."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:340
 #: ../includes/admin/class-wpcm-admin-welcome.php:519
@@ -3164,14 +3185,16 @@ msgid ""
 "WP Club Manager has been built with the focus on simplicity and ease of use "
 "so it won't be long before your club website is up and ready for action."
 msgstr ""
+"WP Club Manager foi construído com o foco na simplicidade e facilidade de "
+"uso."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:375
 msgid "Quick and Easy Setup"
-msgstr ""
+msgstr "Instalação Fácil e Rápida"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:381
 msgid "1. Choose Your Sport"
-msgstr ""
+msgstr "1. Escolha seu esporte"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:382
 #, php-format
@@ -3181,6 +3204,10 @@ msgid ""
 "else. To select your default sport goto <a href=\"%s\">General Settings</a> "
 "or use the form below."
 msgstr ""
+"Nós temos suportes para 13 esportes. Cada esporte com suas posições e "
+"estatísticas, logo, será uma boa ideia configurar isso antes de tudo. Para "
+"selecionar seu esporte vá para <a href=\"%s\">Configurações</a> ou use o "
+"formulário abaixo."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:396
 #: ../includes/admin/class-wpcm-admin-welcome.php:431
@@ -3190,7 +3217,7 @@ msgstr "Salvar mudanças"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:401
 msgid "2. Create Your Club"
-msgstr ""
+msgstr "2. Crie seu clube"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:402
 #, php-format
@@ -3202,10 +3229,16 @@ msgid ""
 "\">General Settings</a>.</strong> Alternatively, you can enter your default "
 "club in the box below."
 msgstr ""
+"O menu de Clubes é onde você cria e edita seus clubes, incluindo o seu "
+"próprio. Também são criadas Competições, Temporadas, Elencos e Estádios. "
+"Para criar um clube, clique em <em><a href=\"%s\">Adicionar novo</a></em> e "
+"depois adicione os detalhes do clube. <strong> Seu clube deve ser "
+"selecionado como padrão em <a href=\"%s\">Configurações Gerais</a>.</"
+"strong>. Ou, você pode selecionar o seu clube padrão abaixo."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:438
 msgid "3. Seasons, Competitions and Teams"
-msgstr ""
+msgstr "3. Temporadas, Competições e Planteis"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:439
 #, php-format
@@ -3217,16 +3250,23 @@ msgid ""
 "or adding more clubs you will need to choose the competitions, seasons and "
 "teams which they compete in."
 msgstr ""
+"Antes de adicionar os jogadores você pode criar <a href=\"%s\">Competições</"
+"a> e <a href=\"%s\">Temporadas</a>. Se você tem mais de um clube, por "
+"exemplo, titulares, reservas e juniores etc. você precisa criar <a href=\"%s"
+"\">Elencos</a> para cada um. Quando criar os jogadores você necessita "
+"selecionar competições, temporadas e qual elenco eles pertencem."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:440
 msgid ""
 "<strong>If you have already created your default club you will need to edit "
 "your club to add competitions, seasons and teams.</strong>"
 msgstr ""
+"<strong>Se você já criou o seu clube padrão, você terá que editar o seu "
+"clube para adicionar competições, temporadas e as elencos.</strong>"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:444
 msgid "4. Add Your Players"
-msgstr ""
+msgstr "4. Adicione seus jogadores"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:445
 #: ../includes/admin/class-wpcm-admin-welcome.php:448
@@ -3237,10 +3277,14 @@ msgid ""
 "player, simply click <em><a href=\"%s\">Add New</a></em> and then fill out "
 "the player details, including competitions, seasons and teams."
 msgstr ""
+"Agora você precisa criar seus jogadores. O Menu Jogadores é onde você os "
+"cria e edita, por clube e posição. Para criar um jogador, clique em <em><a "
+"href=\"%s\">Adicionar Jogador</a></em> e depois adicione os seus detalhes, "
+"incluindo competições, temporadas e elencos."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:447
 msgid "5. Play A Match"
-msgstr ""
+msgstr "5. Jogue uma partida"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:449
 #, php-format
@@ -3249,14 +3293,17 @@ msgid ""
 "where you can set visibility options for player stats, set league standing "
 "options and loads more."
 msgstr ""
+"Não esqueça de ir em  <a href=\"%s\">Configurações do WP Club Manager</a> "
+"para optar quais estatísticas dos jogadores serão exibidas e para também "
+"configurar os métodos de pontuação da liga. "
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:456
 msgid "Need Help?"
-msgstr ""
+msgstr "Necessita de ajuda?"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:460
 msgid "Plugin Documentation"
-msgstr ""
+msgstr "Documentação do Plugi"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:461
 msgid ""
@@ -3264,10 +3311,13 @@ msgid ""
 "widgets or customizing the plugin templates then visit our <a href=\"https://"
 "wpclubmanager.com/docs/\">documentation</a>."
 msgstr ""
+"Se precisar de mais ajuda para configurar WP Club Manager, usar os códigos "
+"de acesso e widgets, ou personalizar os modelos de plugin, então visite os "
+"nossos <a href=\"https://wpclubmanager.com/docs/\">documentos</a>."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:463
 msgid "Friendly Support"
-msgstr ""
+msgstr "Suporte amigável"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:464
 msgid ""
@@ -3275,14 +3325,17 @@ msgid ""
 "problem or have a question, post a question in the <a href=\"https://"
 "wpclubmanager.com/support\">support forums</a>."
 msgstr ""
+"Nós damos o nosso melhor para o ajudar. Se você encontrar um problema ou "
+"tiver uma dúvida, poste-a em nosso <a href=\"https://wpclubmanager.com/"
+"support\">fórum de suporte</a>."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:470
 msgid "Stay Up to Date"
-msgstr ""
+msgstr "Mantenha-se atualizado"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:474
 msgid "Get Notified of New Extensions and Plugin Updates"
-msgstr ""
+msgstr "Seja avisado de novas extensões e atualizações de Plugin"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:475
 msgid ""
@@ -3290,33 +3343,39 @@ msgid ""
 "and themes being created. Stay in touch with the latest developments, newest "
 "extensions and get special offers by subscribing to our newsletter."
 msgstr ""
+"WP Club Manager está ficando melhor a cada dia com novos recursos, extensões "
+"e temas que está sendo criado. Fique em contato com os mais recentes "
+"desenvolvimentos mais recentes, extensões e obtenha ofertas especiais, "
+"assinando a nossa newsletter."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:494
 msgid "Want More Features?"
-msgstr ""
+msgstr "Quer mais funcionalidades?"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:499
 msgid "Score Summary"
-msgstr ""
+msgstr "Pontuação"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:500
 msgid ""
 "Keep record of the interval scores and add a score summary to your clubs "
 "matches"
 msgstr ""
+"Manter registro das pontuações ao intervalo e adicionar um resumo de "
+"resultados para os jogos do seu clube"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:501
 #: ../includes/admin/class-wpcm-admin-welcome.php:507
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:505
 msgid "Player Appearances"
-msgstr ""
+msgstr "Aparições dos Jogadores"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:506
 msgid "Display a list of a players matches, season by season, on their profile"
-msgstr ""
+msgstr "Exiba uma lista de jogadores, temporada por temporada, em seu perfil"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:536
 msgid ""
@@ -3334,15 +3393,15 @@ msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:540
 msgid "A Massive Thanks to the Following Translators"
-msgstr ""
+msgstr "Muitos agradecimentos aos seguintes tradutores"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:581
 msgid "Full Changelog"
-msgstr ""
+msgstr "Changelog completo"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:605
 msgid "No valid changlog was found."
-msgstr ""
+msgstr "Changelog não foi encontrado."
 
 #: ../includes/admin/wpcm-admin-functions.php:21
 msgid "wpcm-settings"
@@ -3355,6 +3414,9 @@ msgid ""
 "Please <a href=\"%2$s\" target=\"_blank\">rate us</a> on <a href=\"%2$s\" "
 "target=\"_blank\">WordPress.org</a>"
 msgstr ""
+"Obrigado por usar <a href=\"%1$s\" target=\"_blank\">WP Club Manager</a>! "
+"Por favor <a href=\"%2$s\" target=\"_blank\">avalie-nos</a> no <a href=\"%2$s"
+"\" target=\"_blank\">WordPress.org</a>"
 
 #: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:74
 msgid "Club name"
@@ -3632,7 +3694,7 @@ msgstr "Prorrogação"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:81
 msgid "Shootout"
-msgstr ""
+msgstr "Shootout"
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:89
 msgid "Friendly"
@@ -3713,7 +3775,7 @@ msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-licenses.php:22
 msgid "Licenses"
-msgstr ""
+msgstr "Licenças"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:38
 msgid "Title Format Options"
@@ -3763,7 +3825,7 @@ msgstr "Opções de exibição do Pós Jogo"
 
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:126
 msgid "Show Player Thumbnails"
-msgstr ""
+msgstr "Exibir Thumbnails dos jogadores"
 
 #: ../includes/admin/settings/class-wpcm-settings-players.php:38
 msgid "Player Profile Options"
@@ -3936,15 +3998,15 @@ msgstr "Saldo de Gols"
 
 #: ../includes/admin/views/html-admin-page-extensions.php:4
 msgid "Browse all extensions"
-msgstr ""
+msgstr "Procurar todas as extensões"
 
 #: ../includes/admin/views/html-admin-page-extensions.php:5
 msgid "Browse themes"
-msgstr ""
+msgstr "Procurar temas"
 
 #: ../includes/admin/views/html-admin-page-extensions.php:8
 msgid "These add-ons extend the functionality of WP Club Manager."
-msgstr ""
+msgstr "Estes add-ons estendem a funcionalidade do WP Club Manager."
 
 #: ../includes/admin/views/html-notice-theme-support.php:5
 msgid ""
@@ -4041,15 +4103,15 @@ msgstr "WPCM Classificação"
 
 #: ../includes/widgets/class-wpcm-widget-standings.php:189
 msgid "Show Club Badge"
-msgstr ""
+msgstr "Exibir Emblema do Clube"
 
 #: ../templates/content-single-club.php:59
 msgid "Ground"
-msgstr ""
+msgstr "Campo"
 
 #: ../templates/content-single-club.php:82
 msgid "More Info"
-msgstr ""
+msgstr "Mais informações"
 
 #: ../templates/content-single-sponsor.php:32
 msgid "Visit website"
