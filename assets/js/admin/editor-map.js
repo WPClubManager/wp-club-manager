@@ -24,11 +24,11 @@
 			// again, this is not the most elegant way to do this
 			// but well, this gets the job done nonetheless
 			var options = {
+				'width': '584',
+				'height': '320',
 				'address': '',
 				'lat': '',
 				'lng': '',
-				'width': '584',
-				'height': '320',
 				'zoom': '13',
 				'marker': '1'
 				};

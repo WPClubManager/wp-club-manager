@@ -117,13 +117,12 @@ class WPCM_Shortcodes {
 	public static function map( $atts ) {
 
 		$atts = shortcode_atts( array(
-			'api_key' 		=> false,
+			'width' 		=> '584',
+			'height' 		=> '320',
 			'address' 		=> false,
 			'lat' 			=> false,
 			'lng' 			=> false,
 			'zoom' 			=> '13',
-			'height'    	=> '320px',
-			'width'			=> '584px',
 			'marker'    	=> 1,
 			'infowindow'	=> false,
 		), $atts );
@@ -144,7 +143,7 @@ class WPCM_Shortcodes {
 		$atts['marker'] = (int) $atts['marker'] ? true : false;
 
 		ob_start(); ?>
-		<div class="wpcm_map_canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr( $atts['height'] ); ?>; width: <?php echo esc_attr( $atts['width'] ); ?>"></div>
+		<div class="wpcm_map_canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr( $atts['height'] ); ?>px; width: <?php echo esc_attr( $atts['width'] ); ?>px"></div>
 	    <script type="text/javascript">
 			var map_<?php echo $map_id; ?>;
 			var marker_<?php echo $map_id; ?>;

@@ -101,15 +101,15 @@ class WPCM_AJAX {
 	*/
 	public function map_shortcode_ajax() {
 		$defaults = array(
+			'width' => '584',
+			'height' => '320',
 			'address' => false,
 			'lat' => false,
 			'lng' => false,
-			'width' => 584,
-			'height' => 320,
 			'zoom' => '13',
 			'marker' => 1
 		);
-		$args = $defaults;
+		$args = array_merge( $defaults, $_GET );
 		?>
 			<div id="wpcm_map-form">
 				<table id="wpcm_map-table" class="form-table">
@@ -131,12 +131,12 @@ class WPCM_AJAX {
 					<tr>
 						<?php $field = 'width'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Width', 'wpclubmanager' ); ?></label></th>
-						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /> px</td>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" />px</td>
 					</tr>
 					<tr>
 						<?php $field = 'height'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Height', 'wpclubmanager' ); ?></label></th>
-						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" /> px</td>
+						<td><input type="text" id="option-<?php echo $field; ?>" name="<?php echo $field; ?>" value="<?php echo $args[$field]; ?>" size="3" />px</td>
 					</tr>
 					<tr>
 						<?php $field = 'zoom'; ?>
