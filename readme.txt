@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.2
+Stable tag: 1.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,7 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Polish - Polski (pl_PL)
 * Portuguese (Brazil) – Português do Brasil (pt_BR)
 * Spanish - Español (es_ES)
+* Swedish – Svenska (sv_SE)
 
 = Get Involved =
 
@@ -97,6 +98,17 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 
 == Changelog ==
+
+= 1.2.4 - 20/09/2014
+
+* Tweak - Removed period in match lineups when no number for player is set
+* Fix - Fixed bug displaying players from multiple teams in add match screen
+* Localisation - Added Swedish language (Thanks Kauge)
+* Localisation - Updated Greek and Hungarian languages (Thanks Spirossmil, SzJanos)
+
+= 1.2.3 - 16/09/2014
+
+* Fix - Fixed broken display of maps in scheduled matches introduced in last update
 
 = 1.2.2 - 15/09/2014
 
