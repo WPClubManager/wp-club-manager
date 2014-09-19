@@ -494,8 +494,8 @@ table {
 	.wpcm-match-stats-subs {
 		padding-top: 1.4em;
 	}
-	.wpcm-match-venue-info {
-
+	.wpcm-match-venue-info .wpcm_map_canvas {
+		max-width: 100%;
 	}
 	.wpcm-match-venue-address {
 		clear: both;
