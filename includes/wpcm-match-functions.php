@@ -80,6 +80,8 @@ function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = 
 			
 			$match_teams[] = $team->term_id;
 		}
+	} else {
+		$match_teams = array();
 	}
 
 	if ( is_array( $seasons ) ) {
@@ -90,6 +92,8 @@ function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = 
 			
 			$match_seasons[] = $season->term_id;
 		}
+	}else {
+		$match_seasons = array();
 	}
 
 	$subs = get_posts( array (
@@ -267,13 +271,16 @@ function wpcm_match_player_stats_table( $selected_players = array(), $type = 'li
 					$teams = get_the_terms( $player->ID, 'wpcm_team' );
 					$seasons = get_the_terms( $player->ID, 'wpcm_season' );
 
-					if($teams > 0){
+					if($teams){
+						$teamclass = array();
 						foreach( $teams as $team ) {
-							$teamclass = 'team_' . $team->term_id . ' ';
+							$teamclass[] = 'team_' . $team->term_id . ' ';
 						}
 					}else{
-						$teamclass = 'team_0 ';
+						$teamclass = array();
 					}
+					$player_teams = implode( '', $teamclass );
+
 					if($seasons > 0){
 						foreach( $seasons as $season ) {
 							$seasonclass = 'season_' . $season->term_id . ' ';
@@ -290,7 +297,7 @@ function wpcm_match_player_stats_table( $selected_players = array(), $type = 'li
 						$squad_number = '';
 					} ?>
 
-					<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $teamclass; ?> <?php echo $seasonclass; ?> sortable sorted">
+					<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $player_teams; ?> <?php echo $seasonclass; ?> sortable sorted">
 						<td class="names">
 							<label class="selectit">
 								<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> /><span class="name">
@@ -387,8 +394,10 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 	$show_number = get_option('wpcm_player_profile_show_number');
 	$sport = get_option('wpcm_sport');
 	
-	if( $show_number == 'yes') {
+	if( $show_number == 'yes' && $number == true) {
 		$snumber = $number .'. ';
+	}else{
+		$snumber = '';
 	}
 
 	if( get_option('wpcm_results_show_image') == 'yes' ) {
