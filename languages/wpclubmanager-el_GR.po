@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
 "POT-Creation-Date: 2014-09-12 14:33-0000\n"
-"PO-Revision-Date: 2014-09-12 15:04-0000\n"
+"PO-Revision-Date: 2014-09-20 00:29-0000\n"
 "Last-Translator: \n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/wp-club-manager/"
 "language/el/)\n"
@@ -3044,7 +3044,7 @@ msgstr "Χωρητικότητα"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:49
 msgid "About WP Club Manager"
-msgstr ""
+msgstr "Σχετικά με το WP Club Manager"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:50
 msgid "Welcome to WP Club Manager"
@@ -3053,7 +3053,7 @@ msgstr "Καλώς ήρθατε στο WP Club Manager"
 #: ../includes/admin/class-wpcm-admin-welcome.php:224
 #, php-format
 msgid "Welcome to WP Club Manager %s"
-msgstr ""
+msgstr "Καλώς ήρθατε στο WP Club Manager %s"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:229
 msgid "Thanks, all done!"
@@ -3074,6 +3074,9 @@ msgid ""
 "website. Version %s is more powerful and stable than ever before. We hope "
 "you enjoy it."
 msgstr ""
+"%s WP Club Manager, η ολοκληρωμένη λύση για τη διαχείριση της ιστοσελίδας "
+"αθλητικού συλλόγου σας. Έκδοση %s είναι πιο ισχυρή και σταθερή από ποτέ. "
+"Ελπίζουμε να το απολαύσετε."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:239
 #, php-format
@@ -3082,11 +3085,11 @@ msgstr "Έκδοση %s"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:257
 msgid "What's New"
-msgstr ""
+msgstr "Τι νέο υπάρχει"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:260
 msgid "Getting Started"
-msgstr ""
+msgstr "Ξεκινώντας"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:263
 msgid "Translators"
@@ -3094,7 +3097,7 @@ msgstr "Μεταφραστές"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:266
 msgid "Changelog"
-msgstr ""
+msgstr "Αρχείο καταγραφής αλλαγών"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:285
 msgid ""
@@ -3102,6 +3105,9 @@ msgid ""
 "minor performance improvements and a couple of bugfixes. Check the changelog "
 "for a full list of changes."
 msgstr ""
+"Αυτή η νέα έκδοση του WP Club Manager εισάγει μερικά νέα χαρακτηριστικά, "
+"κάποιες μικρές βελτιώσεις στην απόδοση και μερικές από διορθώσεις σφαλμάτων. "
+"Ελέγξτε το αρχείο καταγραφής αλλαγών για μια πλήρη λίστα των αλλαγών."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:289
 msgid "What's New In This Version"
@@ -3168,11 +3174,11 @@ msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:375
 msgid "Quick and Easy Setup"
-msgstr ""
+msgstr "Γρήγορη και εύκολη εγκατάσταση"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:381
 msgid "1. Choose Your Sport"
-msgstr ""
+msgstr "1. Επιλέξτε το άθλημα σας"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:382
 #, php-format
@@ -3182,6 +3188,11 @@ msgid ""
 "else. To select your default sport goto <a href=\"%s\">General Settings</a> "
 "or use the form below."
 msgstr ""
+"Κάντε την επιλογή σας από 13 υποστηριζόμενα ομαδικά αθλήματα. Κάθε άθλημα "
+"έχει προκαθορίσει τις θέσεις των παικτών και τα στατιστικά στοιχεία γι 'αυτό "
+"είναι μια καλή ιδέα να κάνετε τις ρυθμίσεις σας πριν από οτιδήποτε άλλο. Για "
+"να επιλέξετε τις προεπιλεγμένες άθλημα σας goto <a href=\"%s\"> Γενικές "
+"Ρυθμίσεις </a> ή χρησιμοποιήστε την παρακάτω φόρμα."
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:396
 #: ../includes/admin/class-wpcm-admin-welcome.php:431
@@ -3191,7 +3202,7 @@ msgstr "Αποθήκευση αλλαγών"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:401
 msgid "2. Create Your Club"
-msgstr ""
+msgstr "2.Δημιουργήστε τον σύλλογο σας"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:402
 #, php-format
@@ -3206,7 +3217,7 @@ msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:438
 msgid "3. Seasons, Competitions and Teams"
-msgstr ""
+msgstr "3.Αγωνιστικές Περίοδοι, Διοργανώσεις και ομάδες"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:439
 #, php-format
@@ -3227,7 +3238,7 @@ msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:444
 msgid "4. Add Your Players"
-msgstr ""
+msgstr "4.Προσθέσετε παίκτες"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:445
 #: ../includes/admin/class-wpcm-admin-welcome.php:448
@@ -3309,7 +3320,7 @@ msgstr ""
 #: ../includes/admin/class-wpcm-admin-welcome.php:501
 #: ../includes/admin/class-wpcm-admin-welcome.php:507
 msgid "Download"
-msgstr ""
+msgstr "Λήψη"
 
 #: ../includes/admin/class-wpcm-admin-welcome.php:505
 msgid "Player Appearances"
@@ -3329,7 +3340,7 @@ msgid ""
 msgstr ""
 "Εμείς θέλουμε να κάνουμε το WP Club Manager διαθέσιμο σε όσο το δυνατόν "
 "περισσότερες γλώσσες. Αν μπορείτε να βοηθήσετε να μεταφράσετε και θέλετε να "
-"ενταχθείτε στην ομάδα μετάφρασης μας, εγγραφείτε για ένα δωρεάν λογαριασμό "
+"ενταχθείτε στην ομάδα μετάφρασης μας, εγγραφείτε σε ένα δωρεάν λογαριασμό "
 "στο <a href=\"https://www.transifex.com/\">Transifex</a> και επισκεφθείτε το "
 "<a href=\"https://www.transifex.com/projects/p/wp-club-manager/\">WP Club "
 "Manager πρόγραμμα</a>."
