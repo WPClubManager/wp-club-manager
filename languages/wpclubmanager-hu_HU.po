@@ -1,11 +1,12 @@
 #
 # Translators:
+# Szalai János <daff@mailbox.hu>, 2014
 # hatasu <tom090@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
 "POT-Creation-Date: 2014-09-12 14:33-0000\n"
-"PO-Revision-Date: 2014-09-12 15:04-0000\n"
+"PO-Revision-Date: 2014-09-20 00:30-0000\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/wp-"
 "club-manager/language/hu_HU/)\n"
@@ -41,7 +42,7 @@ msgstr "Dokumentumok"
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:54
 #, php-format
 msgid "Select %s"
-msgstr ""
+msgstr "%s kiválasztása"
 
 #: ../includes/class-wpcm-ajax.php:86
 #: ../includes/class-wpcm-post-types.php:187
@@ -63,11 +64,11 @@ msgstr "Cím"
 
 #: ../includes/class-wpcm-ajax.php:123
 msgid "Latitude"
-msgstr ""
+msgstr "Földrajzi szélesség"
 
 #: ../includes/class-wpcm-ajax.php:128
 msgid "Longtitude"
-msgstr ""
+msgstr "Földrajzi hosszúság"
 
 #: ../includes/class-wpcm-ajax.php:133
 msgid "Width"
@@ -84,18 +85,18 @@ msgstr "Magasság"
 
 #: ../includes/class-wpcm-ajax.php:143
 msgid "Zoom"
-msgstr ""
+msgstr "Nagyítás"
 
 #: ../includes/class-wpcm-ajax.php:148
 msgid "Display Marker"
-msgstr ""
+msgstr "Jelölő mutatása"
 
 #: ../includes/class-wpcm-ajax.php:153 ../includes/class-wpcm-ajax.php:278
 #: ../includes/class-wpcm-ajax.php:467 ../includes/class-wpcm-ajax.php:643
 #: ../includes/class-wpcm-ajax.php:824
 #, php-format
 msgid "Insert %s"
-msgstr ""
+msgstr "%s beszúrása"
 
 #: ../includes/class-wpcm-ajax.php:153
 msgid "Map"
@@ -108,7 +109,7 @@ msgstr "Minden találat megjelenítése"
 #: ../includes/class-wpcm-ajax.php:172 ../includes/class-wpcm-ajax.php:278
 #: ../templates/shortcodes/matches.php:20
 msgid "Fixtures & Results"
-msgstr ""
+msgstr "Mérkőzések & Eredmények"
 
 #: ../includes/class-wpcm-ajax.php:181 ../includes/class-wpcm-ajax.php:330
 #: ../includes/class-wpcm-ajax.php:510 ../includes/class-wpcm-ajax.php:674
@@ -458,7 +459,7 @@ msgstr "Tabella"
 #: ../includes/class-wpcm-ajax.php:784
 #: ../includes/widgets/class-wpcm-widget-standings.php:195
 msgid "Link to Clubs"
-msgstr ""
+msgstr "Link a klubbokhoz"
 
 #: ../includes/class-wpcm-ajax.php:804
 msgid "Display columns"
@@ -934,7 +935,7 @@ msgstr "Kiribati"
 
 #: ../includes/class-wpcm-countries.php:149
 msgid "Kosovo"
-msgstr ""
+msgstr "Koszovó"
 
 #: ../includes/class-wpcm-countries.php:150
 msgid "Kuwait"
