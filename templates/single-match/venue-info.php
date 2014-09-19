@@ -30,7 +30,7 @@ if ( ! $played ) { ?>
 
 		<h3><?php echo $venue->name; ?></h3>
 
-		<?php echo do_shortcode( '[wpcm_map address="' . $address . '" width="100%" height="240px"]' ); ?>
+		<?php echo do_shortcode( '[wpcm_map address="' . $address . '" width="720" height="240"]' ); ?>
 
 		<div class="wpcm-match-venue-address<?php echo ( $address ? ' with-map' : '' ); ?>">
 
