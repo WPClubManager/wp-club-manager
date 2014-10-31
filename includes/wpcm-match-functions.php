@@ -257,7 +257,7 @@ function wpcm_match_player_stats_table( $selected_players = array(), $type = 'li
 
 				</tr>
 			</thead>
-			<tbody id="sortable">
+			<tbody class="wpcm-sortable">
 				<?php foreach( $players as $player ) { ?>
 					<?php
 					$played = (
@@ -444,7 +444,7 @@ function wpcm_match_player_row( $key, $value, $count = 0 ) {
 		}
 	}
 
-	if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' || $sport == 'floorball' || $sport == 'gaelic' ) {
+	if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' || $sport == 'floorball' || $sport == 'gaelic' || $sport == 'handball' ) {
 
 		$output .= '<td class="notes">';
 
