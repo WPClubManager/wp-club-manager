@@ -33,6 +33,7 @@ class WPCM_Admin_Meta_Boxes {
 		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Fixture::save', 20, 2 );
 		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Players::save', 30, 2 );
 		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Result::save', 10, 2 );
+		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Video::save', 10, 2 );
 
 		// Save Player Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_player_meta', 'WPCM_Meta_Box_Player_Details::save', 10, 2 );
@@ -94,6 +95,7 @@ class WPCM_Admin_Meta_Boxes {
 		add_meta_box( 'wpclubmanager-club-stats', __( 'Statistics', 'wpclubmanager' ), 'WPCM_Meta_Box_Club_Stats::output', 'wpcm_club', 'normal', 'low' );
 
 		add_meta_box( 'wpclubmanager-match-result', __('Match Result', 'wpclubmanager'), 'WPCM_Meta_Box_Match_Result::output', 'wpcm_match', 'side', 'default');
+		add_meta_box( 'wpclubmanager-match-video', __('Match Video', 'wpclubmanager'), 'WPCM_Meta_Box_Match_Video::output', 'wpcm_match', 'side', 'default');
 		add_meta_box( 'wpclubmanager-match-fixture', __('Fixture', 'wpclubmanager'), 'WPCM_Meta_Box_Match_Fixture::output', 'wpcm_match', 'normal', 'high');
 		add_meta_box( 'wpclubmanager-match-details', __('Match Details', 'wpclubmanager'), 'WPCM_Meta_Box_Match_Details::output', 'wpcm_match', 'normal', 'high');
 		add_meta_box( 'wpclubmanager-match-players', __('Players', 'wpclubmanager'), 'WPCM_Meta_Box_Match_Players::output', 'wpcm_match', 'normal', 'high');
