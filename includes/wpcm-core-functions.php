@@ -828,6 +828,50 @@ function wpcm_get_sport_presets() {
 				'mvp' => '<a title="' . __('Player of Match', 'wpclubmanager'). '">' . __('POM', 'wpclubmanager') . '</a>',
 			),
 		),
+		'handball' => array(
+			'name' => __( 'Handball', 'wpclubmanager' ),
+			'terms' => array(
+				// Positions
+				'wpcm_position' => array(
+					array(
+						'name' => 'Goalkeeper',
+						'slug' => 'goalkeeper',
+					),
+					array(
+						'name' => 'Left Wing',
+						'slug' => 'left-wing',
+					),
+					array(
+						'name' => 'Left Back',
+						'slug' => 'left-back',
+					),
+					array(
+						'name' => 'Center',
+						'slug' => 'center',
+					),
+					array(
+						'name' => 'Right Wing',
+						'slug' => 'right-wing',
+					),
+					array(
+						'name' => 'Right Back',
+						'slug' => 'right-back',
+					),
+					array(
+						'name' => 'Pivot',
+						'slug' => 'pivot',
+					),
+				),
+			),
+			'stats_labels' => array(
+				'goals' => '<a title="' . __('Goals', 'wpclubmanager'). '">' . __('GLS', 'wpclubmanager') . '</a>',
+				'2min' => '<a title="' . __('2 Minute Suspension', 'wpclubmanager'). '">' . __('2MIN', 'wpclubmanager') . '</a>',
+				'yellowcards' => '<a title="' . __('Yellow Cards', 'wpclubmanager'). '">' . __('YC', 'wpclubmanager') . '</a>',
+				'redcards' => '<a title="' . __('Red Cards', 'wpclubmanager'). '">' . __('RC', 'wpclubmanager') . '</a>',
+				'rating' => '<a title="' . __('Rating', 'wpclubmanager'). '">' . __('RAT', 'wpclubmanager'),
+				'mvp' => '<a title="' . __('Player of Match', 'wpclubmanager'). '">' . __('POM', 'wpclubmanager') . '</a>',
+			),
+		),
 		'hockey_field' => array(
 			'name' => __( 'Field Hockey', 'wpclubmanager' ),
 			'terms' => array(
