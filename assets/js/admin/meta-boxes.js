@@ -153,7 +153,7 @@ jQuery( function($){
 	});
 
 	
-	var itemList = jQuery('#sortable');
+	var itemList = jQuery('.wpcm-sortable');
 
     itemList.sortable({
     	cursor: 'move',
@@ -184,6 +184,18 @@ jQuery( function($){
             jQuery.ajax(opts);
         }
     });
+
+	// Video embed
+	jQuery(".wpcm-add-video").click(function() {
+		jQuery(this).closest("fieldset").hide().siblings(".wpcm-video-field").show();
+		return false;
+	});
+
+	// Removing video embed
+	jQuery(".wpcm-remove-video").click(function() {
+		jQuery(this).closest("fieldset").hide().siblings(".wpcm-video-adder").show().siblings(".wpcm-video-field").find("input").val(null);
+		return false;
+	});
 
 
 });
