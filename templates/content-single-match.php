@@ -89,6 +89,7 @@ $played = get_post_meta( $post->ID, 'wpcm_played', true ); ?>
 				 * wpclubmanager_single_match_report hook
 				 *
 				 * @hooked wpclubmanager_template_single_match_report - 5
+				 * @hooked wpclubmanager_template_single_match_video - 10
 				 */
 				do_action( 'wpclubmanager_single_match_report' );
 			?>
