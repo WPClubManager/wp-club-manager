@@ -71,9 +71,6 @@ class WPCM_Install {
 		WPCM_Post_Types::register_post_types();
 		WPCM_Post_Types::register_taxonomies();
 
-		// Flush rules after install
-		flush_rewrite_rules();
-
 		// Queue upgrades
 		$current_version = get_option( 'wpclubmanager_version', null );
 		if ( $current_version ) {
@@ -89,9 +86,12 @@ class WPCM_Install {
 		// }
 
 		// Bail if activating from network, or bulk
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
-			return;
-		}
+		// if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		// 	return;
+		// }
+
+		// Flush rules after install
+		flush_rewrite_rules();
 
 		// Redirect to welcome screen
 		set_transient( '_wpcm_activation_redirect', 1, 60 * 60 );
@@ -161,59 +161,129 @@ class WPCM_Install {
 
 			// Player role
 			add_role( 'player', __( 'Player', 'wpclubmanager' ), array(
-				'read' 						=> true,
-				'edit_posts' 				=> false,
-				'delete_posts' 				=> false
+				'level_1' 						=> true,
+				'level_0' 						=> true,
+
+	            'read' 							=> true,
+	            'delete_posts' 					=> true,
+	            'edit_posts' 					=> true,
+	            'upload_files' 					=> true,
+
+	            'edit_wpcm_player'				=> true,
+	            'read_wpcm_player'				=> true,
+	            'edit_wpcm_players' 			=> true,
+	            'edit_published_wpcm_players' 	=> true,
+				'assign_wpcm_player_terms' 		=> true,
 			) );
+
+			add_role( 'staff', __( 'Staff', 'wpclubmanager' ), array(
+				'level_1' 						=> true,
+				'level_0' 						=> true,
+
+	            'read' 							=> true,
+	            'delete_posts' 					=> true,
+	            'edit_posts' 					=> true,
+	            'upload_files' 					=> true,
+
+	            'edit_wpcm_staff'				=> true,
+	            'read_wpcm_staff'				=> true,
+	            'edit_wpcm_staff' 				=> true,
+	            'edit_published_wpcm_staff' 	=> true,
+				'assign_wpcm_staff_terms' 		=> true,
+
+	            'edit_wpcm_player'				=> true,
+	            'read_wpcm_player'				=> true,
+	            'delete_wpcm_player'			=> true,
+	            'edit_wpcm_playeres' 			=> true,
+	            'publish_wpcm_players' 			=> true,
+	            'delete_wpcm_players' 			=> true,
+	            'delete_published_wpcm_players' => true,
+	            'edit_published_wpcm_players' 	=> true,
+				'assign_wpcm_player_terms' 		=> true,
+
+				'edit_wpcm_club'				=> true,
+	            'read_wpcm_club'				=> true,
+	            'delete_wpcm_club'				=> true,
+	            'edit_wpcm_clubes' 				=> true,
+	            'publish_wpcm_clubs' 			=> true,
+	            'delete_wpcm_clubs' 			=> true,
+	            'delete_published_wpcm_clubs' 	=> true,
+	            'edit_published_wpcm_clubs' 	=> true,
+				'assign_wpcm_club_terms' 		=> true,
+
+				'edit_wpcm_match'				=> true,
+	            'read_wpcm_match'				=> true,
+	            'delete_wpcm_match'				=> true,
+	            'edit_wpcm_matches' 			=> true,
+	            'publish_wpcm_matches' 			=> true,
+	            'delete_wpcm_matches' 			=> true,
+	            'delete_published_wpcm_matches' => true,
+	            'edit_published_wpcm_matches' 	=> true,
+				'assign_wpcm_match_terms' 		=> true,
+
+				'edit_wpcm_sponsor'				=> true,
+	            'read_wpcm_sponsor'				=> true,
+	            'delete_wpcm_sponsor'			=> true,
+	            'edit_wpcm_sponsores' 			=> true,
+	            'publish_wpcm_sponsors' 		=> true,
+	            'delete_wpcm_sponsors' 			=> true,
+	            'delete_published_wpcm_sponsors'=> true,
+	            'edit_published_wpcm_sponsors' 	=> true,
+				'assign_wpcm_sponsor_terms' 	=> true,
+		        )
+		    );
 
 			// Manager role
 			add_role( 'team_manager', __( 'Team Manager', 'wpclubmanager' ), array(
-				'level_9'                => true,
-				'level_8'                => true,
-				'level_7'                => true,
-				'level_6'                => true,
-				'level_5'                => true,
-				'level_4'                => true,
-				'level_3'                => true,
-				'level_2'                => true,
-				'level_1'                => true,
-				'level_0'                => true,
-				'read'                   => true,
-				'read_private_pages'     => true,
-				'read_private_posts'     => true,
-				'edit_users'             => true,
-				'edit_posts'             => true,
-				'edit_pages'             => true,
-				'edit_published_posts'   => true,
-				'edit_published_pages'   => true,
-				'edit_private_pages'     => true,
-				'edit_private_posts'     => true,
-				'edit_others_posts'      => true,
-				'edit_others_pages'      => true,
-				'publish_posts'          => true,
-				'publish_pages'          => true,
-				'delete_posts'           => true,
-				'delete_pages'           => true,
-				'delete_private_pages'   => true,
-				'delete_private_posts'   => true,
-				'delete_published_pages' => true,
-				'delete_published_posts' => true,
-				'delete_others_posts'    => true,
-				'delete_others_pages'    => true,
-				'manage_categories'      => true,
-				'manage_links'           => true,
-				'moderate_comments'      => true,
-				'unfiltered_html'        => true,
-				'upload_files'           => true,
-				'export'                 => true,
-				'import'                 => true,
-				'list_users'             => true
+				'level_2' 						=> true,
+				'level_1' 						=> true,
+				'level_0' 						=> true,
+
+	            'read' 							=> true,
+	            'delete_posts' 					=> true,
+	            'edit_posts' 					=> true,
+	            'delete_published_posts' 		=> true,
+	            'publish_posts' 				=> true,
+	            'upload_files' 					=> true,
+	            'edit_published_posts' 			=> true,
+
+	            'edit_wpcm_player'				=> true,
+	            'read_wpcm_player'				=> true,
+	            'delete_wpcm_player'			=> true,
+	            'edit_wpcm_players' 			=> true,
+	            'publish_wpcm_players' 			=> true,
+	            'delete_wpcm_players' 			=> true,
+	            'delete_published_wpcm_players' => true,
+	            'edit_published_wpcm_players' 	=> true,
+				'assign_wpcm_player_terms' 		=> true,
+
+	            'edit_wpcm_staff'				=> true,
+	            'read_wpcm_staff'				=> true,
+	            'delete_wpcm_staff'				=> true,
+	            'edit_wpcm_staffs' 				=> true,
+	            'publish_wpcm_staffs' 			=> true,
+	            'delete_wpcm_staffs' 			=> true,
+	            'delete_published_wpcm_staffs' 	=> true,
+	            'edit_published_wpcm_staffs' 	=> true,
+				'assign_wpcm_staff_terms' 		=> true,
+
+				'edit_wpcm_match'				=> true,
+	            'read_wpcm_match'				=> true,
+	            'delete_wpcm_match'				=> true,
+	            'edit_wpcm_matchs' 				=> true,
+	            'publish_wpcm_matchs' 			=> true,
+	            'delete_wpcm_matchs' 			=> true,
+	            'delete_published_wpcm_matchs' 	=> true,
+	            'edit_published_wpcm_matchs' 	=> true,
+				'assign_wpcm_match_terms' 		=> true,
 			) );
 
 			$capabilities = $this->get_core_capabilities();
 
 			foreach ( $capabilities as $cap_group ) {
 				foreach ( $cap_group as $cap ) {
+					$wp_roles->add_cap( 'player', $cap );
+					$wp_roles->add_cap( 'staff', $cap );
 					$wp_roles->add_cap( 'team_manager', $cap );
 					$wp_roles->add_cap( 'administrator', $cap );
 				}
@@ -286,12 +356,15 @@ class WPCM_Install {
 
 			foreach ( $capabilities as $cap_group ) {
 				foreach ( $cap_group as $cap ) {
+					$wp_roles->remove_cap( 'player', $cap );
+					$wp_roles->remove_cap( 'staff', $cap );
 					$wp_roles->remove_cap( 'team_manager', $cap );
 					$wp_roles->remove_cap( 'administrator', $cap );
 				}
 			}
 
 			remove_role( 'player' );
+			remove_role( 'staff' );
 			remove_role( 'team_manager' );
 		}
 	}
