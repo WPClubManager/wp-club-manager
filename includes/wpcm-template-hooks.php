@@ -129,6 +129,7 @@ if ( ! is_admin() || defined('DOING_AJAX') ) {
 	 *
 	 * @see wpclubmanager_template_single_match_lineup()
 	 * @see wpclubmanager_template_single_match_venue_info()
+	 * @see wpclubmanager_template_single_match_video()
 	 */
 	add_action( 'wpclubmanager_single_match_details', 'wpclubmanager_template_single_match_lineup', 5 );
 	add_action( 'wpclubmanager_single_match_details', 'wpclubmanager_template_single_match_venue_info', 10 );
@@ -139,5 +140,6 @@ if ( ! is_admin() || defined('DOING_AJAX') ) {
 	 * @see wpclubmanager_template_single_match_report()
 	 */
 	add_action( 'wpclubmanager_single_match_report', 'wpclubmanager_template_single_match_report', 5 );
+	add_action( 'wpclubmanager_single_match_report', 'wpclubmanager_template_single_match_video', 10 );
 
 }

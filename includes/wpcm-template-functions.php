@@ -509,3 +509,17 @@ if ( ! function_exists( 'wpclubmanager_template_single_match_report' ) ) {
 		wpclubmanager_get_template( 'single-match/report.php' );
 	}
 }
+
+if ( ! function_exists( 'wpclubmanager_template_single_match_video' ) ) {
+
+	/**
+	 * Output the match venue info.
+	 *
+	 * @access public
+	 * @subpackage	Player
+	 * @return void
+	 */
+	function wpclubmanager_template_single_match_video() {
+		wpclubmanager_get_template( 'single-match/video.php' );
+	}
+}
