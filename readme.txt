@@ -4,7 +4,7 @@ Tags: clubs, teams, sports club, club management, team management, league tables
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Create and manage a sports club website quickly and easily using WordPress. Mana
 
 Comes with all the tools you need to manage your sports club or team website. Features include:
 
-* Supported sports: soccer, baseball, basketball, ice hockey, field hockey, netball, volleyball, Aussie rules, American football, rugby, gaelic football, hurling and floorball
+* Supported sports: soccer, baseball, basketball, ice hockey, field hockey, netball, volleyball, Aussie rules, American football, rugby, gaelic football, hurling, floorball and handball
 * Manage multiple teams
 * Player and staff profiles
 * Player ratings
@@ -98,6 +98,17 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 
 == Changelog ==
+
+= 1.2.5 - 31/10/2014
+
+* New - Added Handball presets
+* New - Added player user role
+* New - Embed video in matches
+* New - Added `single-match/video` template
+* Tweak - Tweaked role capabilities
+* Fix - Fixed match substitutes sorting
+* Localisation - Updated wpclubmanager.pot resource file
+* Localisation - Updated Arabic, Dutch, Italian, Hungarian, Portuguese (Brazil) and Swedish languages (Thanks mwestrik, lasiton, GhiMax, Abdulelah, SzJanos, Pirolla and Kauge)
 
 = 1.2.4 - 20/09/2014
 
