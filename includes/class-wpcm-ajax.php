@@ -660,13 +660,27 @@ class WPCM_AJAX {
 			'order' => 'DESC',
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'p,w,d,l,pct,f,a,gd,pts',
+			'stats' => 'p,w,d,l,f,a,gd,pts',
 			'title' => __( 'Standings', 'wpclubmanager' ),
 			'thumb' => 1,
 			'linkclub' => 1,
 		);
 		$args = array_merge( $defaults, $_GET );
-		?>
+
+		$wpcm_standings_stats_labels = array(
+			'p' => get_option( 'wpcm_standings_p_label' ),
+			'w' => get_option( 'wpcm_standings_w_label' ),
+			'd' => get_option( 'wpcm_standings_d_label' ),
+			'l' => get_option( 'wpcm_standings_l_label' ),
+			'otw' => get_option( 'wpcm_standings_otw_label' ),
+			'otl' => get_option( 'wpcm_standings_otl_label' ),
+			'pct' => get_option( 'wpcm_standings_pct_label' ),
+			'f' => get_option( 'wpcm_standings_f_label' ),
+			'a' => get_option( 'wpcm_standings_a_label' ),
+			'gd' => get_option( 'wpcm_standings_gd_label' ),
+			'b' => get_option( 'wpcm_standings_bonus_label' ),
+			'pts' => get_option( 'wpcm_standings_pts_label' )
+		); ?>
 			<div id="wpcm_standings-form">
 				<table id="wpcm_standings-table" class="form-table">
 					<tr>
@@ -714,20 +728,7 @@ class WPCM_AJAX {
 						</td>
 					</tr>
 					<tr>
-						<?php $field = 'orderby';
-						$wpcm_standings_stats_labels = array(
-							'p' => get_option( 'wpcm_standings_p_label' ),
-							'w' => get_option( 'wpcm_standings_w_label' ),
-							'd' => get_option( 'wpcm_standings_d_label' ),
-							'l' => get_option( 'wpcm_standings_l_label' ),
-							'otl' => get_option( 'wpcm_standings_otl_label' ),
-							'pct' => get_option( 'wpcm_standings_pct_label' ),
-							'f' => get_option( 'wpcm_standings_f_label' ),
-							'a' => get_option( 'wpcm_standings_a_label' ),
-							'gd' => get_option( 'wpcm_standings_gd_label' ),
-							'b' => get_option( 'wpcm_standings_bonus_label' ),
-							'pts' => get_option( 'wpcm_standings_pts_label' )
-						); ?>
+						<?php $field = 'orderby'; ?>
 						<th><label for="option-<?php echo $field; ?>"><?php _e( 'Order by', 'wpclubmanager' ); ?></label></th>
 						<td>
 							<select id="option-<?php echo $field; ?>" name="<?php echo $field; ?>">
@@ -787,20 +788,7 @@ class WPCM_AJAX {
 						</td>
 					</tr>
 					<tr>
-						<?php $field = 'stats';
-						$wpcm_standings_stats_labels = array(
-							'p' => get_option( 'wpcm_standings_p_label' ),
-							'w' => get_option( 'wpcm_standings_w_label' ),
-							'd' => get_option( 'wpcm_standings_d_label' ),
-							'l' => get_option( 'wpcm_standings_l_label' ),
-							'otl' => get_option( 'wpcm_standings_otl_label' ),
-							'pct' => get_option( 'wpcm_standings_pct_label' ),
-							'f' => get_option( 'wpcm_standings_f_label' ),
-							'a' => get_option( 'wpcm_standings_a_label' ),
-							'gd' => get_option( 'wpcm_standings_gd_label' ),
-							'b' => get_option( 'wpcm_standings_bonus_label' ),
-							'pts' => get_option( 'wpcm_standings_pts_label' )
-						); ?>
+						<?php $field = 'stats'; ?>
 						<th><label><?php _e( 'Display columns', 'wpclubmanager' ); ?></label></th>
 						<td>
 							<table style="text-align: center;">
