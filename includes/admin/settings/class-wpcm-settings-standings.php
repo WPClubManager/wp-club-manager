@@ -58,21 +58,31 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Points for overtime loss', 'wpclubmanager' ),
-				'desc' 		=> __( 'This sets the points for lost in overtime matches. Often used in Ice Hockey', 'wpclubmanager' ),
-				'id' 		=> 'wpcm_standings_otl_points',
-				'css' 		=> 'width:50px;',
-				'default'	=> '1',
-				'type' 		=> 'number',
-				'desc_tip'	=>  true,
-			),
-
-			array(
 				'title' => __( 'Points for loss', 'wpclubmanager' ),
 				'desc' 		=> __( 'This sets the points for lost matches.', 'wpclubmanager' ),
 				'id' 		=> 'wpcm_standings_loss_points',
 				'css' 		=> 'width:50px;',
 				'default'	=> '0',
+				'type' 		=> 'number',
+				'desc_tip'	=>  true,
+			),
+
+			array(
+				'title' => __( 'Points for overtime win', 'wpclubmanager' ),
+				'desc' 		=> __( 'This sets the points for win in overtime matches. Often used in Ice Hockey', 'wpclubmanager' ),
+				'id' 		=> 'wpcm_standings_otw_points',
+				'css' 		=> 'width:50px;',
+				'default'	=> '0',
+				'type' 		=> 'number',
+				'desc_tip'	=>  true,
+			),
+
+			array(
+				'title' => __( 'Points for overtime loss', 'wpclubmanager' ),
+				'desc' 		=> __( 'This sets the points for lost in overtime matches. Often used in Ice Hockey', 'wpclubmanager' ),
+				'id' 		=> 'wpcm_standings_otl_points',
+				'css' 		=> 'width:50px;',
+				'default'	=> '1',
 				'type' 		=> 'number',
 				'desc_tip'	=>  true,
 			),
@@ -123,6 +133,15 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 				'id' 		=> 'wpcm_standings_l_label',
 				'css' 		=> 'width:150px;',
 				'default'	=> 'L',
+				'type' 		=> 'text'
+			),
+
+			array(
+				'title' => __( 'Won in Overtime', 'wpclubmanager' ),
+				'desc' 		=> '',
+				'id' 		=> 'wpcm_standings_otw_label',
+				'css' 		=> 'width:150px;',
+				'default'	=> 'OTW',
 				'type' 		=> 'text'
 			),
 
