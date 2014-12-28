@@ -116,7 +116,7 @@ class WPCM_Standings_Widget extends WP_Widget {
 			'order' => 'DESC',
 			'linktext' => __( 'View all standings', 'wpclubmanager' ),
 			'linkpage' => null,
-			'stats' => 'p,w,d,l,otl,pct,f,a,gd,b,pts',
+			'stats' => 'p,w,d,l,otw,otl,pct,f,a,gd,b,pts',
 			'title' => __( 'Standings', 'wpclubmanager' ),
 			'linkclub' => null,
 			'thumb' => null,
