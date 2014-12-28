@@ -3,8 +3,8 @@ Contributors: ClubPress
 Tags: clubs, teams, sports club, club management, team management, league tables, football, rugby, soccer, field hockey, ice hockey, baseball, basketball, aussie rules, netball, volleyball
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.2.5
+Tested up to: 4.1
+Stable tag: 1.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,13 +12,12 @@ WP Club Manager is a powerful tool to help you run a sports club website easily 
 
 == Description ==
 
-Create and manage a sports club website quickly and easily using WordPress. Manage multiple teams, player profiles and statistics, club staff, sponsors, league tables and keep track of upcoming and played matches all within one single plugin.
+Create and manage a sports club website quickly and easily using WordPress. Manage multiple teams in your club, player profiles and statistics, club staff, sponsors, league tables and keep track of upcoming and played matches all within one single plugin.
 
 = Features =
 
 Comes with all the tools you need to manage your sports club or team website. Features include:
 
-* Supported sports: soccer, baseball, basketball, ice hockey, field hockey, netball, volleyball, Aussie rules, American football, rugby, gaelic football, hurling, floorball and handball
 * Manage multiple teams
 * Player and staff profiles
 * Player ratings
@@ -31,7 +30,28 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Fixture, results, player, table and sponsor widgets
 * Flexible templates
 
-= Available Languages =
+= Supported Sports =
+
+* American Football
+* Australian Rules Football
+* Baseball
+* Basketball
+* Field Hockey
+* Floorball
+* Football (Soccer)
+* Gaelic Football
+* Handball
+* Hurling
+* Ice Hockey
+* Netball
+* Rugby
+* Volleyball
+
+= Themes & Extensions =
+
+The WP Club Manager plugin has a growing catalogue of themes and extensions to add extra functionality and a professioanl look to your club website. Check out our [WP Club Manager extensions](https://wpclubmanager.com/extensions/) page to see what features you can add or browse through our collection of [WP Club Manager themes](https://wpclubmanager.com/themes/).
+
+= Included Languages =
 
 * English - UK (en_GB)
 * Arabic – العربية (ar)
@@ -45,10 +65,12 @@ Comes with all the tools you need to manage your sports club or team website. Fe
 * Latvian - Latviešu (lv_LV)
 * Polish - Polski (pl_PL)
 * Portuguese (Brazil) – Português do Brasil (pt_BR)
+* Russian - Русский (ru_RU)
 * Spanish - Español (es_ES)
 * Swedish – Svenska (sv_SE)
+* Turkish - Türkçe (tr_TR)
 
-= Get Involved =
+= Getting Involved =
 
 Developers can contribute to the source code on the [WP Club Manager GitHub Repository](https://github.com/ClubPress/wpclubmanager).
 
@@ -98,6 +120,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 
 == Changelog ==
+
+= 1.2.7 - 28/12/2014
+
+* New - Added option to adjust points for wins in overtime
+
+= 1.2.6 - 20/11/2014
+
+* Localisation - Added Russian language (Thanks Akinshin and retbys)
+* Localisation - Added Turkish language (Thanks sivasspor, cengizyilmaz, cemsacan and muhahmetkara)
 
 = 1.2.5 - 31/10/2014
 
