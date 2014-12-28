@@ -26,6 +26,7 @@ if (!function_exists('get_wpcm_club_stats_empty_row')) {
 			'w' => get_option( 'wpcm_standings_w_label' ),
 			'd' => get_option( 'wpcm_standings_d_label' ),
 			'l' => get_option( 'wpcm_standings_l_label' ),
+			'otw' => get_option( 'wpcm_standings_otw_label' ),
 			'otl' => get_option( 'wpcm_standings_otl_label' ),
 			'pct' => get_option( 'wpcm_standings_pct_label' ),
 			'f' => get_option( 'wpcm_standings_f_label' ),
@@ -87,7 +88,7 @@ if (!function_exists('get_wpcm_club_total_stats')) {
 }
 
 /**
- * Get manual player stats.
+ * Get manual club stats.
  *
  * @access public
  * @param string $post_id
@@ -118,7 +119,7 @@ if (!function_exists('get_wpcm_club_manual_stats')) {
 }
 
 /**
- * Get auto player stats.
+ * Get auto club stats.
  *
  * @access public
  * @param string $post_id
@@ -172,20 +173,22 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 				$f = get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				$a = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				$hb = get_post_meta( $match->ID, 'wpcm_home_bonus', true );
-				$won = (int)( $f > $a );
+				$won = $overtime == 0 && (int)( $f > $a );
 				$draw = (int)( $f == $a );
 				$lost = $overtime == 0 && (int)( $f < $a );
+				$otw = $overtime == 1 && (int)( $f > $a );
 				$otl = $overtime == 1 && (int)( $f < $a );
 				$output['p'] ++;
 				$output['w'] += $won;
 				$output['d'] += $draw;
 				$output['l'] += $lost;
+				$output['otw'] += $otw;
 				$output['otl'] += $otl;
 				$output['f'] += $f;
 				$output['a'] += $a;
 				$output['gd'] += $f - $a;
 				$output['b'] += $hb;
-				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $hb;
+				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $otw * get_option( 'wpcm_standings_otw_points' ) + $hb;
 			}
 		}
 
@@ -205,20 +208,22 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 				$f = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				$a = get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				$ab = get_post_meta( $match->ID, 'wpcm_away_bonus', true );
-				$won = (int)( $f > $a );
+				$won = $overtime == 0 && (int)( $f > $a );
 				$draw = (int)( $f == $a );
 				$lost = $overtime == 0 && (int)( $f < $a );
+				$otw = $overtime == 1 && (int)( $f > $a );
 				$otl = $overtime == 1 && (int)( $f < $a );
 				$output['p'] ++;
 				$output['w'] += $won;
 				$output['d'] += $draw;
 				$output['l'] += $lost;
+				$output['otw'] += $otw;
 				$output['otl'] += $otl;
 				$output['f'] += $f;
 				$output['a'] += $a;
 				$output['gd'] += $f - $a;
 				$output['b'] += $ab;
-				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $ab;
+				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $draw * get_option( 'wpcm_standings_draw_points' ) + $lost * get_option( 'wpcm_standings_loss_points' ) + $otl * get_option( 'wpcm_standings_otl_points' ) + $otw * get_option( 'wpcm_standings_otw_points' ) + $ab;
 			}
 		}
 
@@ -336,6 +341,7 @@ function wpcm_club_stats_table( $stats = array(), $comp = 0, $season = 0 ) {
 		'w' => get_option( 'wpcm_standings_w_label' ),
 		'd' => get_option( 'wpcm_standings_d_label' ),
 		'l' => get_option( 'wpcm_standings_l_label' ),
+		'otw' => get_option( 'wpcm_standings_otw_label' ),
 		'otl' => get_option( 'wpcm_standings_otl_label' ),
 		'pct' => get_option( 'wpcm_standings_pct_label' ),
 		'f' => get_option( 'wpcm_standings_f_label' ),
