@@ -5,7 +5,7 @@
 * @author      ClubPress
 * @category    Core
 * @package     WPClubManager/Admin/Functions
-* @version     1.0.0
+* @version     1.4.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return void
  */
 function wpclubmanager_wp_text_input( $field ) {
-	global $thepostid, $post, $wpclubmanager;
+	global $thepostid, $post;
 
 	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['placeholder']   = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
@@ -67,15 +67,17 @@ function wpclubmanager_wp_hidden_input( $field ) {
  * @return void
  */
 function wpclubmanager_wp_textarea_input( $field ) {
-	global $thepostid, $post, $wpclubmanager;
+	global $thepostid, $post;
 
 	$thepostid 				= empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['placeholder'] 	= isset( $field['placeholder'] ) ? $field['placeholder'] : '';
 	$field['class'] 		= isset( $field['class'] ) ? $field['class'] : 'short';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 	$field['value'] 		= isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
+	$field['rows'] 	= isset( $field['rows'] ) ? $field['rows'] : '4';
+	$field['cols'] 	= isset( $field['cols'] ) ? $field['cols'] : '40';
 
-	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><textarea class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['id'] ) . '" id="' . esc_attr( $field['id'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" rows="4" cols="40">' . esc_textarea( $field['value'] ) . '</textarea> ';
+	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><textarea class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['id'] ) . '" id="' . esc_attr( $field['id'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" rows="' . esc_attr( $field['rows'] ) . '" cols="' . esc_attr( $field['cols'] ) . '">' . esc_textarea( $field['value'] ) . '</textarea> ';
 
 	if ( ! empty( $field['description'] ) ) {
 
@@ -121,18 +123,18 @@ function wpclubmanager_wp_checkbox( $field ) {
  * @return void
  */
 function wpclubmanager_wp_select( $field ) {
-	global $thepostid, $post, $wpclubmanager;
+	global $thepostid, $post;
 
 	$thepostid 				= empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['class'] 		= isset( $field['class'] ) ? $field['class'] : 'chosen_select';
 	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
 	$field['value'] 		= isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 
-	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><select id="' . esc_attr( $field['id'] ) . '" name="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '">';
+	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '" style="width:150px;display:inline-block">' . wp_kses_post( $field['label'] ) . '</label><select id="' . esc_attr( $field['id'] ) . '" name="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '">';
 
 	foreach ( $field['options'] as $key => $value ) {
 
-		echo '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $field['value'] ), esc_attr( $key ), false ) . '>' . esc_html( $value ) . '</option>';
+		echo '<option value="' . esc_attr( $value ) . '" ' . selected( esc_attr( $field['value'] ), esc_attr( $value ), false ) . '>' . esc_html( $value ) . '</option>';
 
 	}
 
@@ -158,7 +160,7 @@ function wpclubmanager_wp_select( $field ) {
  * @return void
  */
 function wpclubmanager_wp_radio( $field ) {
-	global $thepostid, $post, $wpclubmanager;
+	global $thepostid, $post;
 
 	$thepostid 				= empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['class'] 		= isset( $field['class'] ) ? $field['class'] : 'select short';
@@ -195,6 +197,26 @@ function wpclubmanager_wp_radio( $field ) {
 }
 
 /**
+ * Output a color picker.
+ *
+ * @access public
+ * @param array $field
+ * @return void
+ */
+function wpclubmanager_wp_color_input( $field ) {
+	global $thepostid, $post;
+
+	$thepostid              = empty( $thepostid ) ? $post->ID : $thepostid;
+	$field['placeholder']   = isset( $field['placeholder'] ) ? $field['placeholder'] : '';
+	$field['wrapper_class'] = isset( $field['wrapper_class'] ) ? $field['wrapper_class'] : '';
+	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
+	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
+	$field['type']          = isset( $field['type'] ) ? $field['type'] : 'text';
+
+	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><span class="colorpickpreview" style="background: ' . esc_attr( $field['value'] ) . ';"></span><input type="' . esc_attr( $field['type'] ) . '" class="colorpick" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" /></p>';
+}
+
+/**
  * Output a radio input box.
  *
  * @access public
@@ -203,7 +225,7 @@ function wpclubmanager_wp_radio( $field ) {
  */
 function wpclubmanager_wp_country_select( $field ) {
 
-	global $thepostid, $post, $wpclubmanager;
+	global $thepostid, $post;
 
 	$country_setting = get_post_meta( $post->ID, 'wpcm_natl', true);
 
@@ -222,7 +244,7 @@ function wpclubmanager_wp_country_select( $field ) {
 	
 	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label>';
 
-	echo '<select name="' . esc_attr( $field['id'] ) . '" data-placeholder="' . __( 'Choose a country&hellip;', 'wpclubmanager' ) . '" title="Country" class="' . esc_attr( $field['class'] ) . '">';
+	echo '<select name="' . esc_attr( $field['id'] ) . '" data-placeholder="' . __( 'Choose a country&hellip;', 'wp-club-manager' ) . '" title="Country" class="' . esc_attr( $field['class'] ) . '">';
 
 	WPCM()->countries->country_dropdown_options( $country = $country );
 

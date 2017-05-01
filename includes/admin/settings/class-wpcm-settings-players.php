@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.1.0
+ * @version     1.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,7 +19,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'players';
-		$this->label = __( 'Players', 'wpclubmanager' );
+		$this->label = __( 'Players', 'wp-club-manager' );
 
 		add_filter( 'wpclubmanager_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'wpclubmanager_settings_' . $this->id, array( $this, 'output' ) );
@@ -35,10 +35,10 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 		
 		$settings = array(
 
-			array( 'title' => __( 'Player Profile Options', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on player profile pages.</p>', 'wpclubmanager' ), 'id' => 'players_options' ),
+			array( 'title' => __( 'Player Profile Options', 'wp-club-manager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on player profile pages.</p>', 'wp-club-manager' ), 'id' => 'players_options' ),
 
 			array(
-				'title' => __( 'Number', 'wpclubmanager' ),
+				'title' => __( 'Squad Number', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_number',
 				'default'	=> 'yes',
@@ -46,7 +46,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Date of Birth', 'wpclubmanager' ),
+				'title' => __( 'Date of Birth', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_dob',
 				'default'	=> 'yes',
@@ -54,7 +54,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Age', 'wpclubmanager' ),
+				'title' => __( 'Age', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_age',
 				'default'	=> 'yes',
@@ -62,7 +62,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Height', 'wpclubmanager' ),
+				'title' => __( 'Height', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_height',
 				'default'	=> 'yes',
@@ -70,7 +70,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Weight', 'wpclubmanager' ),
+				'title' => __( 'Weight', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_weight',
 				'default'	=> 'yes',
@@ -78,7 +78,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Season', 'wpclubmanager' ),
+				'title' => __( 'Season', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_season',
 				'default'	=> 'yes',
@@ -86,7 +86,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Team', 'wpclubmanager' ),
+				'title' => __( 'Team', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_team',
 				'default'	=> 'yes',
@@ -94,7 +94,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Position', 'wpclubmanager' ),
+				'title' => __( 'Position', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_position',
 				'default'	=> 'yes',
@@ -102,7 +102,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Date Joined', 'wpclubmanager' ),
+				'title' => __( 'Date Joined', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_joined',
 				'default'	=> 'no',
@@ -110,7 +110,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Experience', 'wpclubmanager' ),
+				'title' => __( 'Experience', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_exp',
 				'default'	=> 'no',
@@ -118,7 +118,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Birthplace', 'wpclubmanager' ),
+				'title' => __( 'Birthplace', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_hometown',
 				'default'	=> 'yes',
@@ -126,7 +126,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Previous Clubs', 'wpclubmanager' ),
+				'title' => __( 'Previous Clubs', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_player_profile_show_prevclubs',
 				'default'	=> 'yes',
@@ -135,10 +135,10 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'players_options'),
 
-			array(	'title' => __( 'Player Image Sizes', 'wpclubmanager' ), 'type' => 'title','desc' => sprintf(__( '<p>These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.</p>', 'wpclubmanager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
+			array(	'title' => __( 'Player Image Sizes', 'wp-club-manager' ), 'type' => 'title','desc' => sprintf(__( '<p>These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.</p>', 'wp-club-manager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
 
 			array(
-				'title' => __( 'Player Profile Image', 'wpclubmanager' ),
+				'title' => __( 'Player Profile Image', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'player_single_image_size',
 				'css' 		=> '',
@@ -152,7 +152,7 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 			),
 
 			array(
-				'title' => __( 'Player Thumbnails', 'wpclubmanager' ),
+				'title' => __( 'Player Thumbnails', 'wp-club-manager' ),
 				'desc' 		=> '',
 				'id' 		=> 'player_thumbnail_image_size',
 				'css' 		=> '',
@@ -167,18 +167,15 @@ class WPCM_Settings_Players extends WPCM_Settings_Page {
 
 			array( 'type' => 'sectionend', 'id' => 'image_options'),
 
-			array( 'title' => __( 'Display Player Stats', 'wpclubmanager' ), 'type' => 'title', 'desc' => __( '<p>Choose which player stats to display throughout the site.</p>', 'wpclubmanager' ), 'id' => 'players_stats' ),
+			array( 'title' => __( 'Global Player Stats Display', 'wp-club-manager' ), 'type' => 'title', 'desc' => __( '<p>Choose which player stats to display. These can be overridden for individual players. Go to Settings &rarr; Matches to choose stats to display for matches.</p>', 'wp-club-manager' ), 'id' => 'players_stats' ),
 		);
 
-		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
-
-		$stats_labels = array( 'appearances' => '<a title="' . __('Games Played', 'wpclubmanager') . '">' . __( 'GP', 'wpclubmanager' ) . '</a>' );
-		$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels );
+		$stats_labels = array_merge( wpcm_get_appearance_and_subs_names(), wpcm_get_preset_labels( 'players', 'name' ) );
 
 		foreach ( $stats_labels as $key => $value ) {
 
 			$settings[] = array(
-				'title' => __( strip_tags($value), 'wpclubmanager' ),
+				'title' 	=> strip_tags($value),
 				'desc' 		=> '',
 				'id' 		=> 'wpcm_show_stats_'. $key,
 				'default'	=> 'no',

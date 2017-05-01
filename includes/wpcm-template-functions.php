@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     1.1.2
+ * @version     1.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -209,7 +209,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 
 		global $post;
 		
-		$teams = get_the_terms( $post->ID, 'wpcm_team' );
+		$teams = wp_get_object_terms( $post->ID, 'wpcm_team' );
 
 		if ( is_array( $teams ) ) {
 							
@@ -223,18 +223,20 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 		
 		$args = array(
 			'post_type' => 'wpcm_player',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'wpcm_team',
-					'field' => 'term_id',
-					'terms' => $player_teams
-				)
-			),
+			'tax_query' => array(),
 			'numberposts' => -1,
 			'orderby' => 'meta_value_num',
 			'order' => 'ASC',
 			'meta_key' => 'wpcm_number'
 		);
+
+		if ( is_array( $teams ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'wpcm_team',
+				'field' => 'term_id',
+				'terms' => $player_teams
+			);
+		}
 
 		$player_posts = get_posts($args);
 		$players = array();
@@ -273,7 +275,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 
 		global $post;
 
-		$teams = get_the_terms( $post->ID, 'wpcm_team' );
+		$teams = wp_get_object_terms( $post->ID, 'wpcm_team' );
 
 		if ( is_array( $teams ) ) {
 							
@@ -286,17 +288,21 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 		}
 		
 		$args = array(
-			'post_type' => 'wpcm_staff',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'wpcm_team',
-					'field' => 'term_id',
-					'terms' => $staff_teams
-				)
-			),
+			'post_type' => 'wpcm_player',
+			'tax_query' => array(),
 			'numberposts' => -1,
-			'orderby' => 'name',
-			'order' => 'ASC',		);
+			'orderby' => 'meta_value_num',
+			'order' => 'ASC',
+			'meta_key' => 'wpcm_number'
+		);
+
+		if ( is_array( $teams ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'wpcm_team',
+				'field' => 'term_id',
+				'terms' => $staff_teams
+			);
+		}
 
 		$player_posts = get_posts($args);
 		$players = array();
@@ -423,6 +429,25 @@ if ( ! function_exists( 'wpclubmanager_template_single_match_away_club' ) ) {
 	 */
 	function wpclubmanager_template_single_match_away_club() {
 		wpclubmanager_get_template( 'single-match/away-club.php' );
+	}
+}
+
+if ( ! function_exists( 'wpclubmanager_template_single_match_status' ) ) {
+
+	/**
+	 * Output the match away club.
+	 *
+	 * @access public
+	 * @subpackage	Player
+	 * @return void
+	 */
+	function wpclubmanager_template_single_match_status() {
+
+		$sport = get_option( 'wpcm_sport' );
+
+		if( $sport == 'soccer' ) {
+			wpclubmanager_get_template( 'single-match/status.php' );
+		}
 	}
 }
 

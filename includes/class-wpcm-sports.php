@@ -8,6 +8,9 @@
  * @category	Class
  * @author 		Clubpress
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class WPCM_Sports {
 
 	/** @var array Array of sports */

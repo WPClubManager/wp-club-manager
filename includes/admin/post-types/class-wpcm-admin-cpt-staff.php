@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Post Types
- * @version     1.0.0
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,6 +28,7 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 		// Post title fields
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 		add_filter( 'gettext', array( $this, 'text_replace' ), 10, 4 );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'custom_admin_post_thumbnail_html' ) );
 		add_filter( 'media_view_strings', array( $this, 'media_view_strings' ), 10, 2 );
 
 		add_filter( 'manage_edit-wpcm_staff_columns', array( $this, 'custom_edit_columns' ) );
@@ -66,7 +67,7 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 	public function enter_title_here( $text, $post ) {
 
 		if ( $post->post_type == 'wpcm_staff' )
-			return __( 'Name', 'wpclubmanager' );
+			return __( 'Enter staff name', 'wp-club-manager' );
 
 		return $text;
 	}
@@ -75,21 +76,26 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 	public function text_replace( $string = '' ) {
 
 		if ( 'Scheduled for: <b>%1$s</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joins on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joins on: <b>%1$s</b>', 'wp-club-manager' );
 		} elseif ( 'Published on: <b>%1$s</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joined on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 		} elseif ( 'Publish <b>immediately</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joined on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 		}
 
-		if ( 'Featured Image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Staff Image', 'wpclubmanager' );
-		} elseif ( 'Remove featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Remove staff image', 'wpclubmanager' );
-		} elseif ( 'Set featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Set staff image', 'wpclubmanager' );
-		}
 		return $string;
+	}
+
+	public function custom_admin_post_thumbnail_html( $content ) {
+	    global $current_screen;
+	 
+	    if( 'wpcm_staff' == $current_screen->post_type ) {
+
+	        $content = str_replace( __( 'Set featured image' ), __( 'Set staff image', 'wp-club-manager' ), $content);
+	    	$content = str_replace( __( 'Remove featured image' ), __( 'Remove staff image', 'wp-club-manager' ), $content );
+	    }
+
+	        return $content;
 	}
 
 	/**
@@ -102,8 +108,8 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 
 		if ( is_object( $post ) ) {
 			if ( 'wpcm_staff' == $post->post_type ) {
-				$strings['setFeaturedImageTitle'] = __( 'Set staff image', 'wpclubmanager' );
-				$strings['setFeaturedImage']      = __( 'Set staff image', 'wpclubmanager' );
+				$strings['setFeaturedImageTitle'] = __( 'Set staff image', 'wp-club-manager' );
+				$strings['setFeaturedImage']      = __( 'Set staff image', 'wp-club-manager' );
 			}
 		}
 
@@ -116,8 +122,8 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Name' ),
-			'jobs' => __( 'Job Title', 'wpclubmanager' ),
-			'team' => __( 'Team', 'wpclubmanager' )
+			'jobs' => __( 'Job Title', 'wp-club-manager' ),
+			'team' => __( 'Team', 'wp-club-manager' )
 		);
 
 		return $columns;	
@@ -168,7 +174,7 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 			// jobs dropdown
 			$selected = isset( $_REQUEST['wpcm_jobs'] ) ? $_REQUEST['wpcm_jobs'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'jobs', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'jobs', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_jobs',
 				'name' => 'wpcm_jobs',
 				'selected' => $selected
@@ -178,7 +184,7 @@ class WPCM_Admin_CPT_Staff extends WPCM_Admin_CPT {
 			// team dropdown
 			$selected = isset( $_REQUEST['wpcm_team'] ) ? $_REQUEST['wpcm_team'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'teams', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'teams', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_team',
 				'name' => 'wpcm_team',
 				'selected' => $selected

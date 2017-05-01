@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Post Types
- * @version     1.0.0
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -28,6 +28,7 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 		// Post title fields
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 		add_filter( 'gettext', array( $this, 'text_replace' ), 10, 4 );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'custom_admin_post_thumbnail_html' ) );
 		add_filter( 'media_view_strings', array( $this, 'media_view_strings' ), 10, 2 );
 
 		add_filter( 'manage_edit-wpcm_player_columns', array( $this, 'custom_edit_columns' ) );
@@ -68,7 +69,7 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 	public function enter_title_here( $text, $post ) {
 		
 		if ( $post->post_type == 'wpcm_player' )
-			return __( 'Name', 'wpclubmanager' );
+			return __( 'Enter players name', 'wp-club-manager' );
 
 		return $text;
 	}
@@ -77,20 +78,26 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 	public function text_replace( $string = '' ) {
 
 		if ( 'Scheduled for: <b>%1$s</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joins on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joins on: <b>%1$s</b>', 'wp-club-manager' );
 		} elseif ( 'Published on: <b>%1$s</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joined on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 		} elseif ( 'Publish <b>immediately</b>' == $string && $this->is_editing_product() ) {
-			$string = __( 'Joined on: <b>%1$s</b>', 'wpclubmanager' );
+			$string = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 		}
-		if ( 'Featured Image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Player Image', 'wpclubmanager' );
-		} elseif ( 'Remove featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Remove player image', 'wpclubmanager' );
-		} elseif ( 'Set featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Set player image', 'wpclubmanager' );
-		}
+
 		return $string;
+	}
+
+	public function custom_admin_post_thumbnail_html( $content ) {
+	    global $current_screen;
+	 
+	    if( 'wpcm_player' == $current_screen->post_type ) {
+
+	        $content = str_replace( __( 'Set featured image' ), __( 'Set player image', 'wp-club-manager' ), $content);
+	    	$content = str_replace( __( 'Remove featured image' ), __( 'Remove player image', 'wp-club-manager' ), $content );
+	    }
+
+	        return $content;
 	}
 
 	/**
@@ -103,8 +110,8 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 
 		if ( is_object( $post ) ) {
 			if ( 'wpcm_player' == $post->post_type ) {
-				$strings['setFeaturedImageTitle'] = __( 'Set player image', 'wpclubmanager' );
-				$strings['setFeaturedImage']      = __( 'Set player image', 'wpclubmanager' );
+				$strings['setFeaturedImageTitle'] = __( 'Set player image', 'wp-club-manager' );
+				$strings['setFeaturedImage']      = __( 'Set player image', 'wp-club-manager' );
 			}
 		}
 
@@ -118,9 +125,9 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 			'cb' => '<input type="checkbox" />',
 			'number' => '#',
 			'title' => __( 'Name' ),
-			'position' => __( 'Position', 'wpclubmanager' ),
-			'team' => __( 'Team', 'wpclubmanager' ),
-			'season' => __( 'Season', 'wpclubmanager' )
+			'position' => __( 'Position', 'wp-club-manager' ),
+			'team' => __( 'Team', 'wp-club-manager' ),
+			'season' => __( 'Season', 'wp-club-manager' )
 		);
 		return $columns;	
 	}
@@ -187,7 +194,7 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 			// position dropdown
 			$selected = isset( $_REQUEST['wpcm_position'] ) ? $_REQUEST['wpcm_position'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'positions', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'positions', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_position',
 				'name' => 'wpcm_position',
 				'selected' => $selected
@@ -197,7 +204,7 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 			// team dropdown
 			$selected = isset( $_REQUEST['wpcm_team'] ) ? $_REQUEST['wpcm_team'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'teams', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'teams', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_team',
 				'name' => 'wpcm_team',
 				'selected' => $selected
@@ -207,7 +214,7 @@ class WPCM_Admin_CPT_Player extends WPCM_Admin_CPT {
 			// season dropdown
 			$selected = isset( $_REQUEST['wpcm_season'] ) ? $_REQUEST['wpcm_season'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'seasons', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'seasons', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_season',
 				'name' => 'wpcm_season',
 				'selected' => $selected

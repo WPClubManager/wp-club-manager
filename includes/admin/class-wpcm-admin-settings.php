@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.1.0
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -47,23 +47,14 @@ class WPCM_Admin_Settings {
 		global $current_section, $current_tab;
 
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'wpclubmanager-settings' ) )
-	    		die( __( 'Action failed. Please refresh the page and retry.', 'wpclubmanager' ) );
+	    		die( __( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
 
 	    // Trigger actions
 	   	do_action( 'wpclubmanager_settings_save_' . $current_tab );
 	    do_action( 'wpclubmanager_update_options_' . $current_tab );
 	    do_action( 'wpclubmanager_update_options' );
 
-    	// Clear any unwanted data
-		// wpcm_delete_product_transients();
-		// delete_transient( 'wpclubmanager_cache_excluded_uris' );
-
-		self::add_message( __( 'Your settings have been saved.', 'wpclubmanager' ) );
-
-		// Re-add endpoints and flush rules
-		// WPCM()->query->init_query_vars();
-		// WPCM()->query->add_endpoints();
-		// flush_rewrite_rules();
+    	self::add_message( __( 'Your settings have been saved.', 'wp-club-manager' ) );
 
 		do_action( 'wpclubmanager_settings_saved' );
 	}
@@ -114,7 +105,7 @@ class WPCM_Admin_Settings {
 	    wp_enqueue_script( 'wpclubmanager_settings', WPCM()->plugin_url() . '/assets/js/admin/settings.min.js', array( 'jquery', 'jquery-ui-sortable', 'iris' ), WPCM()->version, true );
 
 		wp_localize_script( 'wpclubmanager_settings', 'wpclubmanager_settings_params', array(
-			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'wpclubmanager' )
+			'i18n_nav_warning' => __( 'The changes you made will be lost if you navigate away from this page.', 'wp-club-manager' )
 		) );
 
 		// Include settings pages
@@ -198,6 +189,7 @@ class WPCM_Admin_Settings {
 	    	if ( ! isset( $value['default'] ) ) $value['default'] = '';
 	    	if ( ! isset( $value['desc'] ) ) $value['desc'] = '';
 	    	if ( ! isset( $value['desc_tip'] ) ) $value['desc_tip'] = false;
+	    	if ( ! isset( $value['options'] ) ) $value['options'] = '';
 
 	    	// Custom attribute handling
 			$custom_attributes = array();
@@ -277,7 +269,7 @@ class WPCM_Admin_Settings {
 	            	$class 			= '';
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
 
-	            	<tr valign="top">
+	            	<tr>
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							<?php echo $tip; ?>
@@ -301,7 +293,7 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr valign="top">
+	            	?><tr>
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							<?php echo $tip; ?>
@@ -326,10 +318,10 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr valign="top">
+	            	?><tr>
 						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							<?php echo $tip; ?>
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tip; ?></label>
+							
 						</th>
 	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 	                    	<select
@@ -364,7 +356,7 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr valign="top">
+	            	?><tr>
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							<?php echo $tip; ?>
@@ -421,7 +413,7 @@ class WPCM_Admin_Settings {
 
 	            	if ( ! isset( $value['checkboxgroup'] ) || 'start' == $value['checkboxgroup'] ) {
 	            		?>
-		            		<tr valign="top" class="<?php echo esc_attr( implode( ' ', $visbility_class ) ); ?>">
+		            		<tr class="<?php echo esc_attr( implode( ' ', $visbility_class ) ); ?>">
 								<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?></th>
 								<td class="forminp forminp-checkbox">
 									<fieldset>
@@ -471,13 +463,13 @@ class WPCM_Admin_Settings {
 	            	$height = self::get_option( $value['id'] . '[height]', $value['default']['height'] );
 	            	$crop 	= checked( 1, self::get_option( $value['id'] . '[crop]', $value['default']['crop'] ), false );
 
-	            	?><tr valign="top">
+	            	?><tr>
 						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></th>
 	                    <td class="forminp image_width_settings">
 
 	                    	<input name="<?php echo esc_attr( $value['id'] ); ?>[width]" id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo $width; ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo $height; ?>" />px
 
-	                    	<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" <?php echo $crop; ?> /> <?php _e( 'Hard Crop?', 'wpclubmanager' ); ?></label>
+	                    	<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" <?php echo $crop; ?> /> <?php _e( 'Hard Crop?', 'wp-club-manager' ); ?></label>
 
 	                    	</td>
 	                </tr><?php
@@ -499,8 +491,8 @@ class WPCM_Admin_Settings {
 	            	if( isset( $value['args'] ) )
 	            		$args = wp_parse_args( $value['args'], $args );
 
-	            	?><tr valign="top" class="single_select_page">
-	                    <th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></th>
+	            	?><tr>
+	                    <th scope="row" class="titledesc"><label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></label></th>
 	                    <td class="forminp">
 				        	<?php wpcm_dropdown_posts( $args ); ?> <?php echo $description; ?>
 				        </td>
@@ -525,10 +517,10 @@ class WPCM_Admin_Settings {
 	            	if( isset( $value['args'] ) )
 	            		$args = wp_parse_args( $value['args'], $args );
 
-	            	?><tr valign="top" class="single_select_page">
+	            	?><tr class="single_select_page">
 	                    <th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ) ?> <?php echo $tip; ?></th>
 	                    <td class="forminp">
-				        	<?php echo str_replace(' id=', " data-placeholder='" . __( 'Select a page&hellip;', 'wpclubmanager' ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
+				        	<?php echo str_replace(' id=', " data-placeholder='" . __( 'Select a page&hellip;', 'wp-club-manager' ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
 				        </td>
 	               	</tr><?php
 	            break;
@@ -544,12 +536,12 @@ class WPCM_Admin_Settings {
 	            	} else {
 						$country = $country_setting;
 	            	}
-	            	?><tr valign="top">
+	            	?><tr>
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							<?php echo $tip; ?>
 						</th>
-	                    <td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php _e( 'Choose a country&hellip;', 'wpclubmanager' ); ?>" title="Country" class="chosen_select">
+	                    <td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php _e( 'Choose a country&hellip;', 'wp-club-manager' ); ?>" title="Country" class="chosen_select">
 				        	<?php WPCM()->countries->country_dropdown_options( $country ); ?>
 				        </select> <?php echo $description; ?>
 	               		</td>
@@ -558,48 +550,21 @@ class WPCM_Admin_Settings {
 
 	            case 'license_key':
 
-	            	$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+	    			$option_value = self::get_option( $value['id'], $value['default'] ); ?>
 
-	            	<tr valign="top">
-						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						</th>
-	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
-	                    	<input
-	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
-	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
-	                    		type="text"
-	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
-	                    		value="<?php echo esc_attr( $option_value ); ?>"
-	                    		<?php echo implode( ' ', $custom_attributes ); ?>
-	                    		/>
-	                    <?php
-	            break;
-
-	            case 'license_activate' :
-
-	            	$option_value 	= self::get_option( $value['id'].'_license_key', $value['default'] );
-
-	            	$license 	= get_option( 'wpcm_pa_license_key' );
-					$status 	= get_option( 'wpcm_pa_license_status' );
-
-	            	if( false !== $license ) {
-
-						if( $status !== false && $status == 'valid' ) { ?>
-
-							<span style="font-size:12px;color:#fff;background:green;padding:2px 5px;margin-right:15px;border-radius:3px;"><?php _e('Active'); ?></span>
-							<?php wp_nonce_field( 'wpcm_pa_nonce', 'wpcm_pa_nonce' ); ?>
-							<input type="submit" class="button-secondary" name="wpcm_pa_license_deactivate" value="<?php _e('Deactivate License'); ?>"/>
-						<?php } else {
-							wp_nonce_field( 'wpcm_pa_nonce', 'wpcm_pa_nonce' ); ?>
-							<input type="submit" class="button-secondary" name="wpcm_pa_license_activate" value="<?php _e('Activate License'); ?>"/>
+					<div class="wpcm-license-keys">
+						<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+	                    <input name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] ); ?>" value="<?php echo esc_attr( $option_value ); ?>"
+	                    		class="regular-text" />
+                    	<?php
+                    	if ( 'valid' == get_option( $value['options']['is_valid_license_option'] ) ) { ?>
+							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $value['id'] ); ?>_deactivate" value="<?php _e( 'Deactivate License', 'wp-club-manager' ); ?>"/>
 						<?php } ?>
-					<?php } ?>
+	                </div><?php
 
-					</td>
-				</tr> <?php
+	                wp_nonce_field( $value['id'] . '-nonce', $value['id'] . '-nonce' );
 
-				break;
+	            break;
 
 	            // Default: run an action
 	            default:

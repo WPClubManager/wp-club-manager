@@ -5,13 +5,6 @@
 .nobr {
 	white-space:nowrap
 }
-.ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
-	white-space: nowrap;
-	width: 100%;
-}
 
 .form-field input[type="checkbox"] {
 	width: auto;
@@ -152,6 +145,10 @@ table.wpcm-match-players-table input:disabled {
 	background: rgba(255,255,255,.5);
 	color: rgba(51,51,51,.5);
 }
+table.wpcm-match-players-table tbody tr td.shirt-number {
+	padding-right: 10px;
+	text-align: center;
+}
 table.wpcm-match-players-table thead tr th.th-checkbox {
 	max-width: 50px;
 }
@@ -175,6 +172,9 @@ table.wpcm-match-players-table tbody tr td.redcards {
 	padding-right: 10px;
 	text-align: center;
 }
+table.wpcm-match-players-table tbody tr td.captain {
+	text-align: center;
+}
 input.measure-text {
 	max-width: 100px;
 }
@@ -192,48 +192,32 @@ input.measure-text {
 	font-size: .85em;
 	text-transform: uppercase;
 }
+#wpclubmanager-club-details label,
 #wpclubmanager-player-details label,
+#wpclubmanager-player-users label,
 #wpclubmanager-staff-details label,
+#wpclubmanager-match-fixture label,
 #wpclubmanager-match-details label,
 #wpclubmanager-sponsor-link label {
 	float: left;
 	width: 150px;
-	padding: 0;
+	padding: 5px 0 0;
+}
+#wpclubmanager-match-details label.wpcm-cb-block {
+	float: none;
+	display: inline-block;
+	margin-top: 5px;
+}
+#wpclubmanager-sponsor-link label {
+	width: 190px;
 }
 
 /* wpclubmanager messages */
 .wpclubmanager-message {
 	position:relative;
-	border-left-color:#cc99c2!important;
+	border-left-color:#113750!important;
 	overflow:hidden
 }
-/*.wpclubmanager-message a.button-primary {
-	background:#cc99c2;
-	border-color:#b366a4;
-	-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
-	box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
-	color:#fff;
-	text-decoration:none
-}
-.wpclubmanager-message a.button-primary:hover {
-	background:#bb77ae;
-	border-color:#aa559a;
-	-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15);
-	box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 0 rgba(0,0,0,.15)
-}
-.wpclubmanager-message a.button-primary:active {
-	background:#aa559a;
-	border-color:#aa559a
-}
-.wpclubmanager-message a.docs,.wpclubmanager-message a.skip {
-	opacity:.5
-}
-.wpclubmanager-message .twitter-share-button {
-	vertical-align:middle
-}
-.wrap.wpclubmanager div.error,.wrap.wpclubmanager div.updated {
-	margin-top:10px
-}*/
 
 /* Tabs */
 div.stuffbox h3 {
@@ -282,6 +266,150 @@ div.stuffbox h3 {
 }
 #wpclubmanager-club-stats .statsdiv h4 {
 	padding-left: 6px;
+}
+
+
+.wpcm-profile-stats {
+	margin-bottom: 2em;
+}
+	.wpcm-profile-stats-custom td {
+		padding-right: 1em;
+	}
+	.wpcm-profile-stats-block {
+		margin-bottom: 1.5em;
+	}
+	.wpcm-profile-stats-block h4 {
+		margin-bottom: 1.5em;
+	}
+	.wpcm-profile-stats-block .stats-tabs,
+	.wpcm-profile-stats-block .stats-tabs-multi {
+		margin: 0;
+		border-bottom: 1px solid #ccc;
+		padding-left: 6px;
+	}
+	.wpcm-profile-stats-block .stats-tabs li,
+	.wpcm-profile-stats-block .stats-tabs-multi li {
+		display: inline-block;
+		background: #e4e4e4;
+		border-color: #ccc;
+		border-style: solid;
+		border-width: 1px;
+		font-weight: 700;
+		font-size: 15px;
+		position: relative;
+		margin-bottom:-1px;
+	}
+	.wpcm-profile-stats-block .stats-tabs li a,
+	.wpcm-profile-stats-block .stats-tabs-multi li a {
+		color: #555;
+		display: inline-block;
+		padding: 8px 12px;
+		text-decoration: none;
+	}
+	.wpcm-profile-stats-block .stats-tabs li.tabs,
+	.wpcm-profile-stats-block .stats-tabs-multi li.tabs-multi {
+		background: #fff;
+		border-bottom: 1px solid #fff;
+	}
+	.wpcm-profile-stats-block .tabs-panel,
+	.wpcm-profile-stats-block .tabs-panel-multi {
+		height: auto;
+		overflow: auto;
+		margin-top: 1.4em;
+	}
+	.wpcm-profile-stats-block .tabs-panel table td,
+	.wpcm-profile-stats-block .tabs-panel-multi table td {
+		text-align: center;
+	}
+
+/* Extension License keys */
+
+.wpcm-license-keys {
+	display: block;
+	margin-bottom: 10px;
+}
+.wpcm-license-keys:first-of-type {
+	margin-top: 30px;
+}
+.wpcm-license-keys label {
+	display: inline-block;
+	width: 230px;
+}
+
+/* Status table */
+
+table.wpcm_status_table,
+table.wpcm_tools_table {
+	margin-bottom:1em;
+}
+table.wpcm_status_table tr:nth-child(2n) td,
+table.wpcm_status_table tr:nth-child(2n) th {
+	background:#f9f9f9;
+}
+table.wpcm_status_table th,
+table.wpcm_tools_table th {
+	font-weight:700;
+	padding:9px;
+}
+table.wpcm_status_table td:first-child,
+table.wpcm_tools_table td:first-child {
+	width:33%;
+}
+table.wpcm_status_table td.help,
+table.wpcm_tools_table td.help {
+	width:1em;
+}
+table.wpcm_status_table td,
+table.wpcm_tools_table td {
+	padding:9px;
+	font-size:1.1em;
+}
+table.wpcm_status_table td mark {
+	background:0 0;
+}
+table.wpcm_status_table td mark.yes {
+	color:#7ad03a;
+}
+table.wpcm_status_table td mark.no {
+	color:#999;
+}
+table.wpcm_status_table td mark.error {
+	color:#a00;
+}
+table.wpcm_status_table td ul {
+	margin:0;
+}
+table.wpcm_status_table .help_tip,
+table.wpcm_tools_table .help_tip {
+	cursor:help;
+}
+#debug-report {
+	display:none;
+	margin:10px 0;
+	padding:0;
+	position:relative;
+}
+#debug-report textarea {
+	font-family:monospace;
+	width:100%;
+	margin:0;
+	height:300px;
+	padding:20px;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border-radius:0;
+	resize:none;
+	font-size:12px;
+	line-height:20px;
+	outline:0;
+}
+#log-viewer-select {
+	padding:10px 0 8px;
+	line-height:180%;
+}
+#log-viewer textarea {
+	width:100%;
+	resize:vertical;
 }
 
 /* Tiptip styles */
@@ -377,6 +505,31 @@ img.tips {
 	margin:-1em 0 0 -3px
 }
 
+#wpclubmanager-club-details .iris-picker {
+	z-index:100;
+	display:none;
+	position:absolute;
+	left: 160px;
+	border:1px solid #ddd;
+	border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,.2);
+}
+#wpclubmanager-club-details .iris-picker {
+	margin-bottom:0!important
+}
+#wpclubmanager-club-details .colorpickpreview {
+	padding:3px 3px 3px 20px;
+	border:1px solid #ddd;
+	border-right:0;
+}
+#wpclubmanager-club-details .colorpick{
+	border-left:0;
+}
+span.edit-user-player {
+	display: inline-block;
+	padding-top: 7px;
+}
+
+
 /* Chosen js styles */
 .chosen-container
 {
@@ -415,7 +568,8 @@ img.tips {
 {
 	position:relative;
 	display:inline-block;
-	vertical-align:middle;
+	vertical-align:top;
+	margin-right: 5px;
 	font-size:13px;
 	zoom:1;
 	*display:inline;

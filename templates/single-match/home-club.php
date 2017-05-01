@@ -1,20 +1,20 @@
 <?php
 /**
- * Single Player Bio
+ * Single Match - Home Club
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $wpclubmanager, $post;
+global $post;
 
-$home_club = get_post_meta( $post->ID, 'wpcm_home_club', true ); ?>
+$side = wpcm_get_match_clubs( $post->ID ); ?>
 
 <div class="wpcm-match-home-club">
 
-	<?php echo get_the_title( $home_club ); ?>
+	<?php echo $side[0]; ?>
 
 </div>

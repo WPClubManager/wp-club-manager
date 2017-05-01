@@ -3,11 +3,13 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		1.1.0
+ * @version		1.4.9
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class WPCM_Shortcodes {
 
@@ -46,7 +48,7 @@ class WPCM_Shortcodes {
 		$function,
 		$atts    = array(),
 		$wrapper = array(
-			'class'  => 'wpcm',
+			'class'  => 'wpcm-shortcode-wrapper',
 			'before' => null,
 			'after'  => null
 		)
@@ -127,8 +129,8 @@ class WPCM_Shortcodes {
 			'infowindow'	=> false,
 		), $atts );
 		
-		wp_print_scripts( 'google-maps-api' );
-		
+		$api_key = urlencode( get_option( 'wpcm_google_map_api') );
+
 		if ( $atts['address'] ) {
 			$coordinates = wpcm_decode_address( $atts['address'] );
 			if ( is_array ( $coordinates ) ) {
@@ -148,12 +150,14 @@ class WPCM_Shortcodes {
 			var map_<?php echo $map_id; ?>;
 			var marker_<?php echo $map_id; ?>;
 			var infowindow_<?php echo $map_id; ?>;
-			var geocoder = new google.maps.Geocoder();
+			//var geocoder = new google.maps.Geocoder();
 			function wp_gmaps_<?php echo $map_id; ?>() {
-				var location = new google.maps.LatLng("<?php echo esc_attr( $atts['lat'] ); ?>", "<?php echo esc_attr( $atts['lng'] ); ?>");
+				var location = { lat: <?php echo esc_attr( $atts['lat'] ); ?>, lng: <?php echo esc_attr( $atts['lng'] ); ?> };
 				var map_options = {
 					zoom: <?php echo esc_attr( $atts['zoom'] ) ?>,
 					center: location,
+					scrollwheel: false,
+					gestureHandling: 'cooperative',
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
 				map_<?php echo $map_id; ?> = new google.maps.Map(document.getElementById("<?php echo $map_id; ?>"), map_options);
@@ -176,6 +180,7 @@ class WPCM_Shortcodes {
 			}
 			wp_gmaps_<?php echo $map_id; ?>();
 		</script>
+		<script async defer src="//maps.googleapis.com/maps/api/js?key=<?php echo $api_key ?>&callback=wp_gmaps_<?php echo $map_id; ?>"></script>
 		<?php
 		
 		return ob_get_clean();

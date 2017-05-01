@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.1.0
+ * @version     1.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -26,9 +26,12 @@ class WPCM_Meta_Box_Player_Details {
 		$number = get_post_meta( $post->ID, 'wpcm_number', true );
 		$position_id = null;
 		$positions = get_the_terms( $post->ID, 'wpcm_position' );
-
-		if ( !empty( $positions ) )
-			$position_id = $positions[0]->term_id;
+		$position_ids = array();
+		if ( $positions ):
+			foreach ( $positions as $position ):
+				$position_ids[] = $position->term_id;
+			endforeach;
+		endif;
 
 		$dob = get_post_meta( $post->ID, 'wpcm_dob', true );
 
@@ -45,25 +48,27 @@ class WPCM_Meta_Box_Player_Details {
 		$prevclubs = get_post_meta( $post->ID, 'wpcm_prevclubs', true );
 		$time_adj = current_time( 'timestamp' );
 		
-		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_number', 'label' => __( 'Squad Number', 'wpclubmanager' ), 'class' => 'small-text' ) ); ?>
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_number', 'label' => __( 'Squad Number', 'wp-club-manager' ), 'class' => 'small-text' ) ); ?>
 		
 		<p>
-			<label><?php _e( 'Position', 'wpclubmanager' ); ?></label>
+			<label><?php _e( 'Position', 'wp-club-manager' ); ?></label>
 			<?php
-				wp_dropdown_categories( array(
-					'show_option_none' => __( 'None' ),
-					'orderby' => 'title',
-					'hide_empty' => false,
-					'taxonomy' => 'wpcm_position',
-					'selected' => $position_id,
-					'name' => 'wpcm_position',
-					'class' => 'chosen_select',
-				) );
+			$args = array(
+				'taxonomy' => 'wpcm_position',
+				'name' => 'tax_input[wpcm_position][]',
+				'selected' => $position_ids,
+				'values' => 'term_id',
+				'placeholder' => sprintf( __( 'Choose %s', 'wp-club-manager' ), __( 'positions', 'wp-club-manager' ) ),
+				'class' => '',
+				'attribute' => 'multiple',
+				'chosen' => true,
+			);
+			wpcm_dropdown_taxonomies( $args );
 			?>
 		</p>
 
 		<p>
-			<label><?php _e( 'Date of Birth', 'wpclubmanager' ); ?></label>
+			<label><?php _e( 'Date of Birth', 'wp-club-manager' ); ?></label>
 			<select name="wpcm_dob_day" id="wpcm_dob_day" class="chosen_select_dob">
 				<?php for ( $a = 1; $a < 32; $a = $a +1 ): ?>
 					<option value="<?php echo zeroise($a, 2); ?>"<?php echo ($a == $dob_day ? ' selected="selected"' : ''); ?>>
@@ -81,15 +86,15 @@ class WPCM_Meta_Box_Player_Details {
 			<input type="text" name="wpcm_dob_year" id="wpcm_dob_year" value="<?php echo $dob_year; ?>" size="4" maxlength="4" autocomplete="off" />
 		</p><?php
 
-		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_height', 'label' => __( 'Height', 'wpclubmanager' ), 'class' => 'measure-text' ) );
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_height', 'label' => __( 'Height', 'wp-club-manager' ), 'class' => 'measure-text' ) );
 
-		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_weight', 'label' => __( 'Weight', 'wpclubmanager' ), 'class' => 'measure-text' ) );
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_weight', 'label' => __( 'Weight', 'wp-club-manager' ), 'class' => 'measure-text' ) );
 
-		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_hometown', 'label' => __( 'Birthplace', 'wpclubmanager' ), 'class' => 'regular-text' ) );
+		wpclubmanager_wp_text_input( array( 'id' => 'wpcm_hometown', 'label' => __( 'Birthplace', 'wp-club-manager' ), 'class' => 'regular-text' ) );
 
-		wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wpclubmanager' ) ) );
+		wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wp-club-manager' ) ) );
 
-		wpclubmanager_wp_textarea_input( array( 'id' => 'wpcm_prevclubs', 'label' => __( 'Previous Clubs', 'wpclubmanager'), 'class' => 'regular-text' ) );
+		wpclubmanager_wp_textarea_input( array( 'id' => 'wpcm_prevclubs', 'label' => __( 'Previous Clubs', 'wp-club-manager'), 'class' => 'regular-text' ) );
 
 	}
 
@@ -101,15 +106,31 @@ class WPCM_Meta_Box_Player_Details {
 		$dob_year = substr( zeroise( (int) $_POST['wpcm_dob_year'], 4 ), 0, 4 );
 		$dob_month = substr( zeroise( (int) $_POST['wpcm_dob_month'], 2 ), 0, 2 );
 		$dob_day = substr( zeroise( (int) $_POST['wpcm_dob_day'], 2 ), 0, 2 );
+		$formatted_date = date( 'Y-m-d', strtotime( $dob_year . '-' . $dob_month. '-' . $dob_day ) );
+
+		update_post_meta( $post_id, 'wpcm_dob', $formatted_date );
 		
-		update_post_meta( $post_id, 'wpcm_club', get_option('wpcm_default_club') );		
-		update_post_meta( $post_id, 'wpcm_number', $_POST['wpcm_number'] );
-		wp_set_post_terms( $post_id, $_POST['wpcm_position'], 'wpcm_position' );
-		update_post_meta( $post_id, 'wpcm_dob', $dob_year . '-' . $dob_month. '-' . $dob_day );
-		update_post_meta( $post_id, 'wpcm_height', $_POST['wpcm_height'] );
-		update_post_meta( $post_id, 'wpcm_weight', $_POST['wpcm_weight'] );
-		update_post_meta( $post_id, 'wpcm_natl', $_POST['wpcm_natl'] );
-		update_post_meta( $post_id, 'wpcm_hometown', $_POST['wpcm_hometown'] );
-		update_post_meta( $post_id, 'wpcm_prevclubs', $_POST['wpcm_prevclubs'] );
+		if( isset( $_POST['wpcm_number'] ) ) {
+			update_post_meta( $post_id, 'wpcm_number', $_POST['wpcm_number'] );
+		}
+		if( isset( $_POST['wpcm_height'] ) ) {
+			update_post_meta( $post_id, 'wpcm_height', $_POST['wpcm_height'] );
+		}
+		if( isset( $_POST['wpcm_weight'] ) ) {
+			update_post_meta( $post_id, 'wpcm_weight', $_POST['wpcm_weight'] );
+		}
+		if( isset( $_POST['wpcm_natl'] ) ) {
+			update_post_meta( $post_id, 'wpcm_natl', $_POST['wpcm_natl'] );
+		}
+		if( isset( $_POST['wpcm_hometown'] ) ) {
+			update_post_meta( $post_id, 'wpcm_hometown', $_POST['wpcm_hometown'] );
+		}
+		if( isset( $_POST['wpcm_prevclubs'] ) ) {
+			update_post_meta( $post_id, 'wpcm_prevclubs', $_POST['wpcm_prevclubs'] );
+		}
+
+		do_action( 'delete_plugin_transients' );
+
+		do_action('wpclubmanager_after_admin_player_save', $post_id );
 	}
 }

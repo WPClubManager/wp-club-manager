@@ -1,0 +1,6027 @@
+#
+# Translators:
+# Giedrius Gatavyna <as.giedrius@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Club Manager\n"
+"POT-Creation-Date: 2017-04-12 12:53+0100\n"
+"PO-Revision-Date: 2017-04-12 12:53+0100\n"
+"Last-Translator: Giedrius Gatavyna <as.giedrius@gmail.com>\n"
+"Language-Team: Lithuanian (Lithuania) (http://www.transifex.com/clubpress/wp-"
+"club-manager/language/lt_LT/)\n"
+"Language: lt_LT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.0\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_c;"
+"_nc:4c,1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../includes/WPCM_Plugin_Updater.php:179
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: ../includes/WPCM_Plugin_Updater.php:186
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: ../includes/abstracts/abstract-wpcm-widget.php:209
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:100
+#: ../includes/class-wpcm-ajax.php:209 ../includes/class-wpcm-ajax.php:232
+#: ../includes/class-wpcm-ajax.php:249 ../includes/class-wpcm-ajax.php:266
+#: ../includes/class-wpcm-ajax.php:282 ../includes/class-wpcm-ajax.php:295
+#: ../includes/class-wpcm-ajax.php:395 ../includes/class-wpcm-ajax.php:412
+#: ../includes/class-wpcm-ajax.php:429 ../includes/class-wpcm-ajax.php:566
+#: ../includes/class-wpcm-ajax.php:583 ../includes/class-wpcm-ajax.php:600
+#: ../includes/class-wpcm-ajax.php:735 ../includes/class-wpcm-ajax.php:752
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:66
+#: ../includes/widgets/class-wpcm-widget-results.php:66
+msgid "All"
+msgstr "Visi"
+
+#: ../includes/abstracts/abstract-wpcm-widget.php:227
+#: ../includes/abstracts/abstract-wpcm-widget.php:242
+#: ../includes/admin/class-wpcm-admin-settings.php:485
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:71
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:86
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:114
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:118
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:70
+#: ../includes/class-wpcm-ajax.php:338 ../includes/class-wpcm-ajax.php:482
+#: ../includes/class-wpcm-ajax.php:650 ../includes/class-wpcm-ajax.php:800
+#: ../includes/wpcm-player-functions.php:277
+#: ../includes/wpcm-player-functions.php:494
+#: ../templates/single-player/meta.php:147
+msgid "None"
+msgstr ""
+
+#: ../includes/abstracts/abstract-wpcm-widget.php:268
+#: ../includes/abstracts/abstract-wpcm-widget.php:312
+#: ../includes/class-wpcm-ajax.php:442 ../includes/class-wpcm-ajax.php:613
+#: ../includes/class-wpcm-ajax.php:765
+#: ../includes/widgets/class-wpcm-widget-players.php:64
+#: ../includes/widgets/class-wpcm-widget-standings.php:58
+msgid "Order by"
+msgstr "Dėlioti pagal"
+
+#: ../includes/admin/class-wpcm-admin-assets.php:76
+msgid "WPClubManager"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-dashboard.php:35
+msgid "This Week's Upcoming Matches"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-dashboard.php:58
+#, php-format
+msgid "%s "
+msgid_plural "%s "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: ../includes/admin/class-wpcm-admin-dashboard.php:203
+msgid "No upcoming matches."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-dashboard.php:211
+#: ../includes/class-wpcm-post-types.php:353
+msgid "Add New Match"
+msgstr "Pridėti naujas varžybas"
+
+#: ../includes/admin/class-wpcm-admin-importers.php:31
+#: ../includes/widgets/class-wpcm-widget-players.php:28
+msgid "WPCM Players"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:31
+msgid "Import <strong>players</strong> to your club via a csv file."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:32
+msgid "WPCM Staff"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:32
+msgid "Import <strong>staff</strong> to your club via a csv file."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:33
+msgid "WPCM Clubs"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:33
+msgid "Import <strong>clubs</strong> via a csv file."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:34
+msgid "WPCM Matches"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-importers.php:34
+msgid "Import <strong>matches</strong> via a csv file."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:39
+msgid "Club Manager"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:51
+#: ../includes/admin/views/html-admin-page-tools.php:14
+msgid "WP Club Manager Tools"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:51
+msgid "Tools"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:58
+#: ../includes/admin/views/html-admin-page-status.php:14
+msgid "WP Club Manager Status"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:58
+msgid "Status"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:65
+#: ../includes/admin/views/html-admin-page-extensions.php:8
+msgid "WP Club Manager Extensions"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:65
+msgid "Extensions"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-menus.php:72
+#: ../includes/admin/class-wpcm-admin-welcome.php:242 ../wpclubmanager.php:119
+msgid "Settings"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-notices.php:96
+#: ../includes/admin/class-wpcm-admin-settings.php:50
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-notices.php:100 ../wpclubmanager.php:74
+#: ../wpclubmanager.php:83
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:25
+#: ../includes/class-wpcm-post-types.php:229
+#: ../includes/class-wpcm-post-types.php:241
+msgid "Clubs"
+msgstr "Klubai"
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:26
+#: ../includes/admin/settings/class-wpcm-settings-players.php:22
+#: ../includes/class-wpcm-ajax.php:369 ../includes/class-wpcm-ajax.php:517
+#: ../includes/class-wpcm-post-types.php:269
+#: ../includes/class-wpcm-post-types.php:281
+#: ../includes/shortcodes/class-wpcm-shortcode-players.php:44
+#: ../includes/widgets/class-wpcm-widget-players.php:32
+msgid "Players"
+msgstr "Žaidėjai"
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:27
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:22
+#: ../includes/class-wpcm-ajax.php:540 ../includes/class-wpcm-ajax.php:686
+#: ../includes/class-wpcm-install.php:187
+#: ../includes/class-wpcm-post-types.php:309
+#: ../includes/class-wpcm-post-types.php:310
+#: ../includes/class-wpcm-post-types.php:321
+#: ../includes/shortcodes/class-wpcm-shortcode-staff.php:26
+msgid "Staff"
+msgstr "Personalas"
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:28
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:22
+#: ../includes/class-wpcm-post-types.php:349
+#: ../includes/class-wpcm-post-types.php:361
+msgid "Matches"
+msgstr "Varžybos"
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:40
+#: ../includes/admin/views/html-admin-page-status.php:318
+#: ../includes/admin/views/html-admin-settings.php:2
+msgid "WP Club Manager Settings"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-permalink-settings.php:68
+msgid ""
+"These settings control the permalinks used for WP Club Manager. These "
+"settings only apply when <strong>not using \"default\" permalinks above</"
+"strong>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:45
+#, php-format
+msgid "Player updated. <a href=\"%s\">View Player</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:46
+#: ../includes/admin/class-wpcm-admin-post-types.php:60
+#: ../includes/admin/class-wpcm-admin-post-types.php:74
+#: ../includes/admin/class-wpcm-admin-post-types.php:88
+#: ../includes/admin/class-wpcm-admin-post-types.php:102
+msgid "Custom field updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:47
+#: ../includes/admin/class-wpcm-admin-post-types.php:61
+#: ../includes/admin/class-wpcm-admin-post-types.php:75
+#: ../includes/admin/class-wpcm-admin-post-types.php:89
+#: ../includes/admin/class-wpcm-admin-post-types.php:103
+msgid "Custom field deleted."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:48
+msgid "Player updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:49
+#, php-format
+msgid "Player restored to revision from %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:50
+#, php-format
+msgid "Player published. <a href=\"%s\">View Player</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:51
+msgid "Player saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:52
+#, php-format
+msgid "Player submitted. <a target=\"_blank\" href=\"%s\">Preview Player</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:53
+#, php-format
+msgid ""
+"Player scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview Player</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:54
+#: ../includes/admin/class-wpcm-admin-post-types.php:68
+#: ../includes/admin/class-wpcm-admin-post-types.php:82
+#: ../includes/admin/class-wpcm-admin-post-types.php:96
+#: ../includes/admin/class-wpcm-admin-post-types.php:110
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:55
+#, php-format
+msgid ""
+"Player draft updated. <a target=\"_blank\" href=\"%s\">Preview Player</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:59
+#, php-format
+msgid "Staff updated. <a href=\"%s\">View Staff</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:62
+msgid "Staff updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:63
+#, php-format
+msgid "Staff restored to revision from %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:64
+#, php-format
+msgid "Staff published. <a href=\"%s\">View Staff</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:65
+msgid "Staff saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:66
+#, php-format
+msgid "Staff submitted. <a target=\"_blank\" href=\"%s\">Preview Staff</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:67
+#, php-format
+msgid ""
+"Staff scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview Staff</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:69
+#, php-format
+msgid "Staff draft updated. <a target=\"_blank\" href=\"%s\">Preview Staff</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:73
+#, php-format
+msgid "Match updated. <a href=\"%s\">View Match</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:76
+msgid "Match updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:77
+#, php-format
+msgid "Match restored to revision from %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:78
+#, php-format
+msgid "Match published. <a href=\"%s\">View Match</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:79
+msgid "Match saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:80
+#, php-format
+msgid "Match submitted. <a target=\"_blank\" href=\"%s\">Preview Match</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:81
+#, php-format
+msgid ""
+"Match scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview Match</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:83
+#, php-format
+msgid "Match draft updated. <a target=\"_blank\" href=\"%s\">Preview Match</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:87
+#, php-format
+msgid "Club updated. <a href=\"%s\">View Club</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:90
+msgid "Club updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:91
+#, php-format
+msgid "Club restored to revision from %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:92
+#, php-format
+msgid "Club published. <a href=\"%s\">View Club</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:93
+msgid "Club saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:94
+#, php-format
+msgid "Club submitted. <a target=\"_blank\" href=\"%s\">Preview Club</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:95
+#, php-format
+msgid ""
+"Club scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview Club</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:97
+#, php-format
+msgid "Club draft updated. <a target=\"_blank\" href=\"%s\">Preview Club</a>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:101
+#: ../includes/admin/class-wpcm-admin-post-types.php:104
+msgid "Sponsor updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:105
+#, php-format
+msgid "Sponsor restored to revision from %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:106
+msgid "Sponsor published."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:107
+msgid "Sponsor saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:108
+msgid "Sponsor submitted."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:109
+#, php-format
+msgid "Sponsor scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-post-types.php:111
+msgid "Sponsor draft updated."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-profile.php:39
+msgid "Player Details"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-profile.php:42
+msgid "Telephone"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-profile.php:46
+msgid "Twitter Username"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:57
+#: ../includes/admin/class-wpcm-admin-welcome.php:368
+msgid "Your settings have been saved."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:108
+msgid "The changes you made will be lost if you navigate away from this page."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:472
+msgid "Hard Crop?"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:523
+msgid "Select a page&hellip;"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:544
+#: ../includes/admin/wpcm-meta-box-functions.php:247
+msgid "Choose a country&hellip;"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-settings.php:561
+msgid "Deactivate License"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:58
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:78
+msgid "Display Name"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:60
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:82
+msgid "The team label is used to display a shortened version of the team name."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:119
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:139
+msgid "Competition Label"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:121
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:143
+msgid ""
+"The competition label is used to display a shortened version of the "
+"competition name."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:181
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:220
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:239
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:333
+#: ../includes/admin/importers/class-wpcm-club-importer.php:23
+#: ../includes/admin/importers/class-wpcm-player-importer.php:24
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:23
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:127
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:124
+#: ../includes/admin/views/html-admin-page-status.php:261
+#: ../includes/wpcm-player-functions.php:25
+#: ../includes/wpcm-player-functions.php:52
+#: ../includes/wpcm-player-functions.php:461
+#: ../templates/single-match/lineup.php:37
+#: ../templates/single-match/lineup.php:88
+msgid "Name"
+msgstr "Vardas Pavardė"
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:182
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:221
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:240
+msgid "Description"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:183
+msgid "Label"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:222
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:241
+msgid "Slug"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:257
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:282
+#: ../templates/single-match/venue-info.php:43
+msgid "Venue Address"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:259
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:286
+msgid "The venue address is used to display a map of the venue."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:262
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:291
+msgid "Venue Capacity"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:264
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:295
+msgid ""
+"The venue capacity is not prominent by default; however, some themes may "
+"show it."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:334
+#: ../includes/class-wpcm-ajax.php:98 ../templates/content-single-club.php:85
+msgid "Address"
+msgstr "Adresas"
+
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:335
+#: ../templates/content-single-club.php:77
+msgid "Capacity"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:49
+msgid "About WP Club Manager"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:50
+msgid "Welcome to WP Club Manager"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:224
+#, php-format
+msgid "Welcome to WP Club Manager %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:229
+msgid "Thanks, all done!"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:231
+msgid "Thank you for updating to the latest version of"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:233
+msgid "Thanks for installing"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:235
+#, php-format
+msgid ""
+"%s WP Club Manager, the complete solution for managing your sports club "
+"website. Version %s is more powerful and stable than ever before. We hope "
+"you enjoy it."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:239
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:243 ../wpclubmanager.php:120
+msgid "Docs"
+msgstr "Dokumentai"
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:257
+msgid "What's New"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:260
+msgid "Getting Started"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:263
+msgid "Translators"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:266
+msgid "Changelog"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:285
+msgid ""
+"Welcome to version 1.5 of WP Club Manager, bringing you more new features to "
+"provide even more detailed match info and more personalised player stats so "
+"your visitors can get even closer to their club! Check out the changelog for "
+"a full list of improvements."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:289
+msgid "What's New In This Version"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:295
+msgid "Control Each Players Stats"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:296
+msgid ""
+"You can set which stats to display for each player, overwriting the global "
+"player stats display options. "
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:298
+msgid "New Match Stats Display Options"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:299
+msgid ""
+"Similarly, you can also overwrite the global player stats options for "
+"matches so you have more control over what to display on your match pages. "
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:305
+msgid "Display Unused Substitutes"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:306
+msgid ""
+"Now unused substitutes get the recognition they deserve! You can now select "
+"players that were unused in matches so they will be included in match pages. "
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:308
+msgid "Better Overtime and Shootout Handling"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:309
+msgid ""
+"This version introduces more detailed information when those cup games go to "
+"the wire by displaying extra-time status and the outcome of shootouts. "
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:315
+#: ../includes/admin/class-wpcm-admin-welcome.php:468
+msgid "Stay Up to Date"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:319
+#: ../includes/admin/class-wpcm-admin-welcome.php:472
+msgid "Get Notified of New Extensions and Plugin Updates"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:320
+#: ../includes/admin/class-wpcm-admin-welcome.php:473
+msgid ""
+"WP Club Manager is getting better every day with new features, extensions "
+"and themes being created. Stay in touch with the latest developments, newest "
+"extensions and get special offers by subscribing to our newsletter."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:338
+#: ../includes/admin/class-wpcm-admin-welcome.php:491
+#: ../includes/admin/class-wpcm-admin-welcome.php:532
+#: ../includes/admin/class-wpcm-admin-welcome.php:561
+msgid "Go to WP Club Manager Settings"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:365
+msgid ""
+"WP Club Manager has been built with the focus on simplicity and ease of use "
+"so it won't be long before your club website is up and ready for action."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:373
+msgid "Quick and Easy Setup"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:379
+msgid "1. Choose Your Sport"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:380
+#, php-format
+msgid ""
+"Take your pick from 13 supported team sports. Each sport has preset player "
+"positions and statistics so it's a good idea to set this up before anything "
+"else. To select your default sport goto <a href=\"%s\">General Settings</a> "
+"or use the form below."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:394
+#: ../includes/admin/class-wpcm-admin-welcome.php:429
+#: ../includes/admin/views/html-admin-settings.php:25
+msgid "Save changes"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:399
+msgid "2. Create Your Club"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:400
+#, php-format
+msgid ""
+"The Clubs menu is where you create and edit clubs, including your own and "
+"create Competitions, Seasons, Teams and Venues. To create a club, click "
+"<em><a href=\"%s\">Add New</a></em> and then fill out the club details. "
+"<strong>Your club will need to be set as the Default Club in <a href=\"%s"
+"\">General Settings</a>.</strong> Alternatively, you can enter your default "
+"club in the box below."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:436
+msgid "3. Seasons, Competitions and Teams"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:437
+#, php-format
+msgid ""
+"Before adding your players and opposition clubs you should create <a href="
+"\"%s\">Competitions</a> and <a href=\"%s\">Seasons</a>. If your club has "
+"more than one team, for example, firsts, reserves, youth team etc. you will "
+"need to create <a href=\"%s\">Teams</a> for each one. When creating players "
+"or adding more clubs you will need to choose the competitions, seasons and "
+"teams which they compete in."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:438
+msgid ""
+"<strong>If you have already created your default club you will need to edit "
+"your club to add competitions, seasons and teams.</strong>"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:442
+msgid "4. Add Your Players"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:443
+#: ../includes/admin/class-wpcm-admin-welcome.php:446
+#, php-format
+msgid ""
+"Now you should be ready to add your clubs players. The Players Menu is where "
+"you can create and edit your clubs players and player positions. To create a "
+"player, simply click <em><a href=\"%s\">Add New</a></em> and then fill out "
+"the player details, including competitions, seasons and teams."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:445
+msgid "5. Play A Match"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:447
+#, php-format
+msgid ""
+"Don't forget to run through the <a href=\"%s\">WP Club Manager settings</a> "
+"where you can set visibility options for player stats, set league standing "
+"options and loads more."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:454
+msgid "Need Help?"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:458
+msgid "Plugin Documentation"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:459
+msgid ""
+"If you need more help setting up WP Club Manager, using the shortcodes and "
+"widgets or customizing the plugin templates then visit our <a href=\"http://"
+"docs.wpclubmanager.com\">documentation</a>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:461
+msgid "Friendly Support"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:462
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, just ask for <a href=\"https://wpclubmanager.com/"
+"support\">support</a>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:508
+msgid ""
+"WP Club Manager has been translated by our generous translation teams, "
+"listed below. If you can help translate WPCM please sign up for a free "
+"account on <a href=\"https://www.transifex.com/\">Transifex</a> and visit "
+"the <a href=\"https://www.transifex.com/projects/p/wp-club-manager/\">WP "
+"Club Manager project</a>."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:512
+msgid "A Massive Thanks to the Following Translators"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:553
+msgid "Full Changelog"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin-welcome.php:577
+msgid "No valid changlog was found."
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin.php:114
+#, php-format
+msgid ""
+"If you like <strong>WP Club Manager</strong> please leave us a %s&#9733;"
+"&#9733;&#9733;&#9733;&#9733;%s rating. A huge thank you in advance!"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin.php:114
+msgid "Many thanks :)"
+msgstr ""
+
+#: ../includes/admin/class-wpcm-admin.php:122
+msgid ""
+"Thank you for managing your club with WP Club Manager, your support is much "
+"appreciated."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:21
+#: ../includes/admin/importers/class-wpcm-club-importer.php:113
+msgid "Import Clubs"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:24
+#: ../includes/admin/views/html-admin-page-status.php:239
+#: ../includes/class-wpcm-post-types.php:45
+msgid "Competitions"
+msgstr "Turnyrai"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:25
+#: ../includes/admin/importers/class-wpcm-player-importer.php:26
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:25
+#: ../includes/admin/views/html-admin-page-status.php:215
+#: ../includes/class-wpcm-post-types.php:158
+msgid "Teams"
+msgstr "Komandos"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:26
+#: ../includes/admin/importers/class-wpcm-player-importer.php:27
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:26
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:68
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:159
+#: ../includes/admin/views/html-admin-page-status.php:227
+#: ../includes/class-wpcm-post-types.php:129
+#: ../templates/single-player/stats.php:36
+#: ../templates/single-player/stats.php:87
+msgid "Seasons"
+msgstr "Sezonai"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:27
+#: ../includes/admin/importers/class-wpcm-match-importer.php:31
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:111
+#: ../includes/class-wpcm-ajax.php:291
+#: ../includes/class-wpcm-post-types.php:188
+#: ../includes/class-wpcm-post-types.php:196
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:64
+#: ../includes/widgets/class-wpcm-widget-results.php:64
+#: ../templates/shortcodes/matches.php:20
+msgid "Venue"
+msgstr "Vieta"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:94
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> clubs and skipped <strong>%s</"
+"strong>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:104
+#: ../includes/admin/importers/class-wpcm-match-importer.php:176
+#: ../includes/admin/importers/class-wpcm-player-importer.php:129
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:117
+msgid "All done!"
+msgstr "Viskas atlikta!"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:104
+msgid "View Clubs"
+msgstr "Žiūrėti klubus"
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:121
+#: ../includes/admin/importers/class-wpcm-match-importer.php:193
+#: ../includes/admin/importers/class-wpcm-player-importer.php:146
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:134
+msgid "Choose a .csv file to upload, then click \"Upload file and import\"."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-club-importer.php:122
+#, php-format
+msgid ""
+"Clubs need to be defined with columns in a specific order (5 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-importers.php:94
+msgid "Disable"
+msgstr "Išjungti"
+
+#: ../includes/admin/importers/class-wpcm-importers.php:117
+#: ../includes/admin/importers/class-wpcm-importers.php:176
+#: ../includes/admin/importers/class-wpcm-importers.php:213
+#: ../includes/admin/importers/class-wpcm-importers.php:228
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-importers.php:118
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-importers.php:167
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-importers.php:177
+msgid "The CSV is invalid."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:21
+#: ../includes/admin/importers/class-wpcm-match-importer.php:185
+msgid "Import Matches"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:23
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:126
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:79
+#: ../includes/widgets/class-wpcm-widget-results.php:79
+#: ../templates/shortcodes/matches.php:19
+msgid "Date"
+msgstr "Data"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:24
+msgid "Kickoff"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:25
+msgid "Home Club"
+msgstr "Namų klubas"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:26
+msgid "Away Club"
+msgstr "Svečių klubas"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:27
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:61
+#: ../templates/shortcodes/matches.php:31
+msgid "Result"
+msgstr "Rezultatas"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:28
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:97
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:123
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:68
+#: ../includes/class-wpcm-ajax.php:228 ../includes/class-wpcm-ajax.php:731
+#: ../includes/class-wpcm-post-types.php:46
+#: ../includes/class-wpcm-post-types.php:54
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:47
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:89
+#: ../includes/widgets/class-wpcm-widget-results.php:47
+#: ../includes/widgets/class-wpcm-widget-results.php:94
+#: ../includes/widgets/class-wpcm-widget-standings.php:47
+#: ../templates/shortcodes/matches.php:29
+msgid "Competition"
+msgstr "Turnyras"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:29
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:98
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:124
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:130
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:83
+#: ../includes/admin/settings/class-wpcm-settings-players.php:81
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:57
+#: ../includes/class-wpcm-ajax.php:245 ../includes/class-wpcm-ajax.php:391
+#: ../includes/class-wpcm-ajax.php:562 ../includes/class-wpcm-ajax.php:748
+#: ../includes/class-wpcm-post-types.php:130
+#: ../includes/class-wpcm-post-types.php:138
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:44
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:53
+#: ../includes/widgets/class-wpcm-widget-players.php:47
+#: ../includes/widgets/class-wpcm-widget-results.php:53
+#: ../includes/widgets/class-wpcm-widget-standings.php:53
+#: ../includes/wpcm-player-functions.php:32
+#: ../includes/wpcm-player-functions.php:59
+#: ../includes/wpcm-player-functions.php:468
+#: ../templates/content-single-staff.php:74
+#: ../templates/single-player/meta.php:78
+msgid "Season"
+msgstr "Sezonas"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:30
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:125
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:129
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:126
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:97
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:90
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:110
+#: ../includes/admin/settings/class-wpcm-settings-players.php:89
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:65
+#: ../includes/admin/views/html-bulk-edit-match.php:20
+#: ../includes/admin/views/html-quick-edit-match.php:20
+#: ../includes/class-wpcm-ajax.php:262 ../includes/class-wpcm-ajax.php:408
+#: ../includes/class-wpcm-ajax.php:579
+#: ../includes/class-wpcm-post-types.php:159
+#: ../includes/class-wpcm-post-types.php:167
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:50
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:59
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:94
+#: ../includes/widgets/class-wpcm-widget-players.php:53
+#: ../includes/widgets/class-wpcm-widget-results.php:59
+#: ../includes/widgets/class-wpcm-widget-results.php:99
+#: ../includes/wpcm-player-functions.php:31
+#: ../includes/wpcm-player-functions.php:58
+#: ../includes/wpcm-player-functions.php:467
+#: ../templates/content-single-staff.php:99
+#: ../templates/shortcodes/matches.php:26
+#: ../templates/single-player/meta.php:89
+msgid "Team"
+msgstr "Komanda"
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:166
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> matches and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:176
+msgid "View Matches"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-match-importer.php:194
+#, php-format
+msgid ""
+"Matches need to be defined with columns in a specific order (9 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:21
+#: ../includes/admin/importers/class-wpcm-player-importer.php:138
+msgid "Import Players"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:23
+#: ../includes/class-wpcm-ajax.php:445
+#: ../includes/widgets/class-wpcm-widget-players.php:66
+#: ../includes/wpcm-player-functions.php:23
+msgid "Number"
+msgstr "Numeris"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:25
+#: ../includes/class-wpcm-post-types.php:101
+msgid "Positions"
+msgstr "Pozicija"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:28
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:27
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:71
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:70
+#: ../includes/admin/settings/class-wpcm-settings-players.php:49
+#: ../includes/wpcm-player-functions.php:33
+#: ../includes/wpcm-player-functions.php:60
+msgid "Date of Birth"
+msgstr "Gimimo data"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:29
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:89
+#: ../includes/admin/settings/class-wpcm-settings-players.php:65
+#: ../includes/class-wpcm-ajax.php:118 ../includes/wpcm-player-functions.php:29
+#: ../includes/wpcm-player-functions.php:56
+#: ../templates/single-player/meta.php:56
+msgid "Height"
+msgstr "Ūgis"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:30
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:91
+#: ../includes/admin/settings/class-wpcm-settings-players.php:73
+#: ../includes/wpcm-player-functions.php:30
+#: ../includes/wpcm-player-functions.php:57
+#: ../templates/single-player/meta.php:67
+msgid "Weight"
+msgstr "Svoris"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:31
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:93
+#: ../includes/admin/settings/class-wpcm-settings-players.php:121
+#: ../templates/single-player/meta.php:111
+msgid "Birthplace"
+msgstr "Gimtasis miestas"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:32
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:28
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:95
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:88
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:97
+#: ../templates/content-single-staff.php:170
+msgid "Nationality"
+msgstr "Tautybė"
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:33
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:97
+#: ../includes/admin/settings/class-wpcm-settings-players.php:129
+#: ../templates/single-player/meta.php:144
+msgid "Previous Clubs"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:119
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> players and skipped <strong>"
+"%s</strong>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:129
+msgid "View Players"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-player-importer.php:147
+#, php-format
+msgid ""
+"Players need to be defined with columns in a specific order (11 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:21
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:126
+msgid "Import Staff"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:24
+#: ../includes/class-wpcm-ajax.php:596 ../includes/class-wpcm-post-types.php:73
+msgid "Jobs"
+msgstr "Pareigos"
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:29
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:81
+#: ../includes/wpcm-player-functions.php:464
+#: ../templates/content-single-staff.php:140
+msgid "Email"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:30
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:89
+#: ../includes/wpcm-player-functions.php:465
+#: ../templates/content-single-staff.php:155
+msgid "Phone"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:107
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> staff and skipped <strong>%s</"
+"strong>."
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:117
+#: ../includes/class-wpcm-post-types.php:316
+msgid "View Staff"
+msgstr ""
+
+#: ../includes/admin/importers/class-wpcm-staff-importer.php:135
+#, php-format
+msgid ""
+"Staff need to be defined with columns in a specific order (8 columns). <a "
+"href=\"%s\">Click here to download a sample</a>."
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:55
+msgid "Enter club name"
+msgstr "Įrašyti klubo pavadinimą"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:65
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:96
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:56
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:94
+msgid "Set featured image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:65
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:82
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:83
+msgid "Set club badge"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:66
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:97
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:57
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:95
+msgid "Remove featured image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:66
+msgid "Remove club badge"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:96
+#: ../includes/class-wpcm-post-types.php:230
+msgid "Club"
+msgstr "Klubas"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:136
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:146
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:178
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:188
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:198
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:197
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:207
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:217
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:177
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:187
+#, php-format
+msgid "Show all %s"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:136
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:178
+#, fuzzy
+msgid "competitions"
+msgstr "Turnyrai"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-club.php:146
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:188
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:217
+#, fuzzy
+msgid "seasons"
+msgstr "Sezonai"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:108
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:110
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:112
+#, php-format
+msgid "Kick-off: <b>%1$s</b>"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:122
+msgid "Fixture"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:127
+msgid "Kick-off"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:128
+#: ../includes/class-wpcm-ajax.php:211
+#: ../includes/widgets/class-wpcm-widget-results.php:32
+msgid "Results"
+msgstr "Rezultatai"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-match.php:198
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:207
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:187
+#, fuzzy
+msgid "teams"
+msgstr "Komandos"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:72
+msgid "Enter players name"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:81
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:79
+#, php-format
+msgid "Joins on: <b>%1$s</b>"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:83
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:85
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:81
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:83
+#, php-format
+msgid "Joined on: <b>%1$s</b>"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:96
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:113
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:114
+msgid "Set player image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:97
+msgid "Remove player image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:128
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:54
+#: ../includes/admin/settings/class-wpcm-settings-players.php:97
+#: ../includes/class-wpcm-ajax.php:425
+#: ../includes/class-wpcm-post-types.php:102
+#: ../includes/widgets/class-wpcm-widget-players.php:59
+#: ../includes/wpcm-player-functions.php:27
+#: ../includes/wpcm-player-functions.php:54
+#: ../templates/single-player/meta.php:100
+msgid "Position"
+msgstr "Pozicija"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-player.php:197
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:61
+#, fuzzy
+msgid "positions"
+msgstr "Pozicija"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:46
+msgid "Enter sponsor name"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:56
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:73
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:74
+msgid "Set sponsor logo"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-sponsor.php:57
+msgid "Remove sponsor logo"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:70
+msgid "Enter staff name"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:94
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:111
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:112
+msgid "Set staff image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:95
+msgid "Remove staff image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:125
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:49
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:73
+msgid "Job Title"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt-staff.php:177
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:56
+#, fuzzy
+msgid "jobs"
+msgstr "Pareigos"
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt.php:40
+#, php-format
+msgid "Insert into %s"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-cpt.php:41
+#, php-format
+msgid "Uploaded to this %s"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:97
+msgid "Club Details"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:98
+msgid "Club Statistics"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:99
+msgid "Club Badge"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:101
+msgid "Match Result"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:102
+msgid "Match Video"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:103
+msgid "Match Fixture"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:104
+#: ../templates/single-match/report.php:39
+msgid "Match Preview"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:105
+#: ../includes/admin/views/html-bulk-edit-match.php:15
+#: ../includes/admin/views/html-quick-edit-match.php:15
+msgid "Match Details"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:106
+msgid "Select Players"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:108
+msgid "Player Information"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:109
+msgid "Player Statistics"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:110
+msgid "Link Player to User"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:111
+msgid "Player Order"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:112
+msgid "Player Image"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:114
+msgid "Sponsor Details"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:115
+msgid "Sponsor Logo"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:117
+msgid "Staff Information"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:118
+msgid "Staff Order"
+msgstr ""
+
+#: ../includes/admin/post-types/class-wpcm-admin-meta-boxes.php:119
+msgid "Staff Image"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php:26
+#: ../templates/content-single-club.php:65
+msgid "Formed"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php:28
+msgid "Primary Color"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php:30
+msgid "Secondary Color"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php:32
+#: ../templates/content-single-club.php:100
+msgid "Honours"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-stats.php:30
+msgid "Choose a competition and season to edit the manual stats."
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-stats.php:99
+msgid "Total"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-stats.php:107
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:268
+msgid "Auto"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-stats.php:113
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:276
+msgid "Manual"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:125
+msgid "Neutral?"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:129
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:118
+#: ../templates/single-match/attendance.php:24
+msgid "Attendance"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:131
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:98
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:126
+#: ../templates/single-match/referee.php:21
+msgid "Referee"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:29
+#: ../includes/class-wpcm-ajax.php:296
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:67
+#: ../includes/widgets/class-wpcm-widget-results.php:67
+msgid "Home"
+msgstr "Šeimininkai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:36
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:52
+msgid "Choose club"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:45
+#: ../includes/class-wpcm-ajax.php:297
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:68
+#: ../includes/widgets/class-wpcm-widget-results.php:68
+msgid "Away"
+msgstr "Svečiai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:31
+msgid "Starting Lineup"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:32
+msgid "Substitutes Used"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:33
+msgid "Substitutes Not Used"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:37
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:41
+msgid "You have selected"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:37
+#, fuzzy
+msgid "players"
+msgstr "Žaidėjai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:41
+msgid "substitutes"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:230
+#, fuzzy
+msgid "No players found!"
+msgstr "Žaidėjų nerasta"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:243
+msgid "Drag and drop players to control their display order."
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:265
+msgid "Captain"
+msgstr "Kapitonas"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php:268
+msgid "Player Off"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:71
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:100
+#, fuzzy
+msgctxt "team"
+msgid "Home"
+msgstr "Šeimininkai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:72
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:101
+#, fuzzy
+msgctxt "team"
+msgid "Away"
+msgstr "Svečiai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:77
+#: ../includes/wpcm-preset-functions.php:41
+#: ../includes/wpcm-preset-functions.php:329
+#: ../includes/wpcm-preset-functions.php:364
+msgid "Runs"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:82
+msgid "Extras"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:87
+#: ../includes/wpcm-preset-functions.php:369
+msgid "Wickets"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:107
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:190
+#: ../includes/widgets/class-wpcm-widget-results.php:89
+msgid "Score"
+msgstr "Taškai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:121
+#: ../includes/wpcm-preset-functions.php:1681
+msgid "Bonus Points"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:135
+#: ../includes/wpcm-preset-functions.php:429
+#: ../includes/wpcm-preset-functions.php:791
+#: ../includes/wpcm-preset-functions.php:874
+#: ../includes/wpcm-preset-functions.php:981
+#: ../includes/wpcm-preset-functions.php:1064
+#: ../includes/wpcm-preset-functions.php:1167
+#: ../includes/wpcm-preset-functions.php:1286
+#: ../includes/wpcm-preset-functions.php:1381
+#: ../includes/wpcm-preset-functions.php:1714
+msgid "Goals"
+msgstr "Įvarčiai"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:140
+#: ../includes/wpcm-preset-functions.php:139
+#: ../includes/wpcm-preset-functions.php:232
+#: ../includes/wpcm-preset-functions.php:286
+#: ../includes/wpcm-preset-functions.php:396
+#: ../includes/wpcm-preset-functions.php:499
+#: ../includes/wpcm-preset-functions.php:678
+#: ../includes/wpcm-preset-functions.php:845
+#: ../includes/wpcm-preset-functions.php:878
+#: ../includes/wpcm-preset-functions.php:940
+#: ../includes/wpcm-preset-functions.php:1035
+#: ../includes/wpcm-preset-functions.php:1134
+#: ../includes/wpcm-preset-functions.php:1257
+#: ../includes/wpcm-preset-functions.php:1340
+#: ../includes/wpcm-preset-functions.php:1455
+#: ../includes/wpcm-preset-functions.php:1566
+#: ../includes/wpcm-preset-functions.php:1685
+#: ../includes/wpcm-preset-functions.php:1780
+#: ../includes/wpcm-preset-functions.php:1875
+msgid "Points"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:154
+msgid "Overtime"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:165
+msgid "Shootout"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:176
+msgid "Extra Time"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:183
+#: ../includes/wpcm-preset-functions.php:1409
+#: ../includes/wpcm-preset-functions.php:1512
+#: ../includes/wpcm-preset-functions.php:1627
+#: ../includes/wpcm-preset-functions.php:1722
+msgid "Penalties"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:203
+msgid "Friendly"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-video.php:30
+msgid "Remove video"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-video.php:34
+msgid "URL"
+msgstr "URL adresas"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-video.php:36
+msgid "Cancel"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-video.php:39
+msgid "Add video"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:51
+#: ../includes/admin/settings/class-wpcm-settings-players.php:41
+msgid "Squad Number"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:61
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:56
+#, php-format
+msgid "Choose %s"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:27
+msgid "PL"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:30
+msgid "Profile stats display"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:49
+msgid "Choose a team and season to edit the manual stats."
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:68
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:159
+#: ../templates/single-player/stats.php:36
+#: ../templates/single-player/stats.php:87
+#, php-format
+msgid "All %s"
+msgstr "Visi %s"
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:62
+msgid "Edit user"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:64
+msgid "Existing user"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:67
+msgid "Choose User"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:81
+msgid "Create new user"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:83
+msgid "Email address"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:85
+msgid "Username"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:85
+msgid "Optional"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-sponsor-url.php:28
+msgid "Link URL"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-sponsor-url.php:31
+msgid "Open link in new window?"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:65
+msgid "Email Address"
+msgstr ""
+
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-details.php:67
+msgid "Contact Number"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:22
+msgid "General"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:40
+msgid "General Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:43
+msgid "Sport"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:44
+msgid ""
+"Choose your sport. Your choice will determine the player stats that are "
+"available."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:55
+#: ../includes/admin/views/html-admin-page-status.php:332
+msgid "Default Club"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:56
+msgid "This is the default club."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:65
+msgid "Base Location"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:66
+msgid ""
+"This is the base country for your club. Players nationality will default to "
+"this country."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:75
+msgid "Google Maps API Key"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:76
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Get API Key</a>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:84
+msgid "Disable WPCM Cache"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:85
+msgid "Check this box to disable the plugin cache."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-licenses.php:22
+msgid "Licenses"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:38
+msgid "Title Format Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:41
+msgid "Choose the format to display matches"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:47
+msgid "Default - <code>%home% v %away%</code>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:48
+msgid "Reverse - <code>%away% v %home%</code>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:55
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:73
+#: ../includes/widgets/class-wpcm-widget-players.php:81
+#: ../includes/widgets/class-wpcm-widget-results.php:73
+#, fuzzy
+msgid "Display Options"
+msgstr "Rodyti pasirinkimus"
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:58
+msgid "Clubs Separator"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:59
+msgid "This sets the separator of clubs."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:68
+msgid "Goals Delimiter"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:69
+msgid "This sets the separator of results."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:78
+msgid "Hide Scores"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:79
+msgid "Check this box to hide scores from guests."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:87
+msgid "Pre Match Display Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:107
+msgid "Post Match Display Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:135
+msgid "Match Lineup Display Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:138
+msgid "Display Shirt Numbers"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:146
+msgid "Show Player Thumbnails"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:38
+msgid "Player Profile Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:38
+msgid "<p>Choose which fields to display on player profile pages.</p>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:57
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:49
+#: ../includes/wpcm-player-functions.php:28
+#: ../includes/wpcm-player-functions.php:55
+#: ../includes/wpcm-player-functions.php:466
+#: ../templates/content-single-staff.php:51
+#: ../templates/single-player/meta.php:45
+msgid "Age"
+msgstr "Amžius"
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:105
+msgid "Date Joined"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:113
+#: ../templates/single-player/meta.php:133
+msgid "Experience"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:138
+msgid "Player Image Sizes"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:138
+#, php-format
+msgid ""
+"<p>These settings affect the actual dimensions of images in player and staff "
+"profiles - the display on the front-end will still be affected by CSS "
+"styles. After changing these settings you may need to <a href=\"%s"
+"\">regenerate your thumbnails</a>.</p>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:141
+msgid "Player Profile Image"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:155
+msgid "Player Thumbnails"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:170
+msgid "Global Player Stats Display"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-players.php:170
+msgid ""
+"<p>Choose which player stats to display. These can be overridden for "
+"individual players. Go to Settings &rarr; Matches to choose stats to display "
+"for matches.</p>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:38
+msgid "Staff Profile Options"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:38
+msgid "<p>Choose which fields to display on staff profile pages.</p>"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:41
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:55
+#: ../templates/content-single-staff.php:39
+#: ../templates/single-player/meta.php:34
+msgid "Birthday"
+msgstr "Gimimo data"
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:105
+#: ../includes/wpcm-player-functions.php:35
+#: ../includes/wpcm-player-functions.php:62
+#: ../includes/wpcm-player-functions.php:469
+#: ../templates/content-single-staff.php:183
+#: ../templates/single-player/meta.php:122
+msgid "Joined"
+msgstr "Prisijungė"
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:114
+msgid "Staff Image Sizes"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:114
+#, php-format
+msgid ""
+"These settings affect the actual dimensions of images in player and staff "
+"profiles - the display on the front-end will still be affected by CSS "
+"styles. After changing these settings you may need to <a href=\"%s"
+"\">regenerate your thumbnails</a>."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:117
+msgid "Staff Profile Image"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-staff.php:131
+msgid "Staff Thumbnails"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:22
+#: ../includes/class-wpcm-ajax.php:707 ../includes/class-wpcm-ajax.php:849
+#: ../includes/shortcodes/class-wpcm-shortcode-standings.php:26
+#: ../includes/widgets/class-wpcm-widget-standings.php:32
+msgid "Standings"
+msgstr "Turnyrinė lentelė"
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:38
+msgid "Scoring System"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:41
+msgid "Points for win"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:42
+msgid "This sets the points for won matches."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:51
+msgid "Points for draw"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:52
+msgid "This sets the points for drawn matches."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:61
+msgid "Points for loss"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:62
+msgid "This sets the points for lost matches."
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:75
+msgid "Points for overtime win"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:76
+msgid ""
+"This sets the points for win in overtime matches. Often used in Ice Hockey"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:85
+msgid "Points for overtime loss"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:86
+msgid ""
+"This sets the points for lost in overtime matches. Often used in Ice Hockey"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:3
+msgid "It's only temporary"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:4
+msgid "The club doesn't need a website anymore"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:5
+msgid "I miss a feature"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:7
+msgid "Technical Issue"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:8
+msgid "Can we help? Please describe your problem"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:9
+msgid "I switched to another plugin"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:11
+msgid "Other reason"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:12
+msgid "Please specify, if possible"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:21
+msgid ""
+"If you have a moment, can you please let us know why you are deactivating, "
+"your feedback will help us improve the plugin, thanks."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:32
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:33
+msgid "Only Deactivate"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-deactivate-feedback.php:34
+msgid "Don't deactivate"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:9
+msgid "Browse all extensions"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:10
+msgid "Browse themes"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:13
+msgid "These add-ons extend the functionality of WP Club Manager."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-extensions.php:39
+#, php-format
+msgid ""
+"Our catalog of WP Club Manager Extensions can be found on wpclubmanager.com "
+"here: <a href=\"%s\">WP Club Manager Extensions Catalog</a>"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:18
+msgid ""
+"Please copy and paste this information in your ticket when contacting "
+"support:"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:19
+msgid "Get System Report"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:23
+msgid "Copied!"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:23
+msgid "Copy for Support"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:36
+msgid "WordPress Environment"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:41
+msgid "Home URL"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:46
+msgid "Site URL"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:51
+msgid "WPCM Version"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:56
+msgid "WP Version"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:61
+msgid "WP Multisite"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:66
+msgid "WP Memory Limit"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:72
+#, php-format
+msgid ""
+"%s - We recommend setting memory to at least 64MB. See: <a href=\"%s\" "
+"target=\"_blank\">Increasing memory allocated to PHP</a>"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:79
+msgid "WP Debug Mode"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:84
+msgid "Language"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:93
+msgid "Server Environment"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:98
+msgid "Server Info"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:103
+msgid "PHP Version"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:111
+#, php-format
+msgid ""
+"%s - We recommend a minimum PHP version of 5.4. See: <a href=\"%s\" target="
+"\"_blank\">How to update your PHP version</a>"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:116
+msgid "Couldn't determine PHP version because phpversion() doesn't exist."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:122
+msgid "PHP Post Max Size"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:127
+msgid "PHP Time Limit"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:132
+msgid "PHP Max Input Vars"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:138
+msgid "MySQL Version"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:149
+msgid "Max Upload Size"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:154
+msgid "Default Timezone is UTC"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:159
+#, php-format
+msgid "Default timezone is %s - it should be UTC"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:170
+msgid "Active Plugins"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:194
+msgid "Visit plugin homepage"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:199
+#, php-format
+msgctxt "by author"
+msgid "by %s"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:210
+msgid "Taxonomies"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:255
+msgid "Theme"
+msgstr "Išvaizda"
+
+#: ../includes/admin/views/html-admin-page-status.php:266
+msgid "Version"
+msgstr "Versija"
+
+#: ../includes/admin/views/html-admin-page-status.php:271
+msgid "Author URL"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:276
+msgid "Child Theme"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:287
+msgid "Parent Theme Name"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:292
+msgid "Parent Theme Version"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:297
+msgid "Parent Theme Author URL"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:303
+msgid "WP Club Manager Support"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:307
+msgid "Not Declared"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:327
+msgid "Preset Sport"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:341
+msgid "Templates"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:378
+#, php-format
+msgid ""
+"<code>%s</code> version <strong style=\"color:red\">%s</strong> is out of "
+"date. The core version is %s"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-status.php:390
+#: ../includes/admin/views/html-admin-page-status.php:399
+msgid "Overrides"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-tools.php:17
+msgid "These tools can assist with the functionality of WP Club Manager."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-tools.php:28
+msgid "WP Club Manager Cache"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-tools.php:34
+msgid ""
+"Transients are used to cache the output of shortcodes and widgets in WP Club "
+"Manager."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-tools.php:35
+msgid ""
+"They are set to expire after 4 weeks OR when a match is added/updated, "
+"whichever is sooner. You can use the button below to manually clear all WP "
+"Club Manager transients in the cache. Each transient will be reset when the "
+"next person views that widget or shortcode."
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-tools.php:42
+msgid "Clear the WPCM transients cache"
+msgstr ""
+
+#: ../includes/admin/views/html-bulk-edit-match.php:23
+msgid "— No Change —"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-club-check.php:13
+msgid ""
+"<strong>You have not set a Default Club!</strong> Some features of WP Club "
+"Manager will not work without a default club set, please choose your default "
+"club now."
+msgstr ""
+
+#: ../includes/admin/views/html-notice-club-check.php:15
+msgid "Set Default Club"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-club-check.php:15
+#: ../includes/admin/views/html-notice-template-check.php:14
+#: ../includes/admin/views/html-notice-theme-support.php:17
+msgid "Hide this notice"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-install.php:13
+msgid "<strong>Welcome to WP Club Manager</strong> &#8211; Enjoy :)"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-install.php:14
+msgid "Skip setup"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-template-check.php:13
+msgid ""
+"<strong>Your theme has bundled outdated copies of WP Club Manager template "
+"files.</strong> If you notice an issue on your site, this could be the "
+"reason. Please contact your theme developer for further assistance. You can "
+"review the System Status report for full details or <a href=\"https://"
+"wpclubmanager.com/docs/\" target=\"_blank\">learn more about WP Club Manager "
+"Template Structure here</a>."
+msgstr ""
+
+#: ../includes/admin/views/html-notice-template-check.php:14
+msgid "System Status"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-theme-support.php:13
+msgid ""
+"<strong>Your theme does not declare WP Club Manager support</strong> &#8211; "
+"if you encounter layout issues please read our integration guide or save "
+"yourself time by using a fully compatible WP Club Manager theme from our "
+"collection."
+msgstr ""
+
+#: ../includes/admin/views/html-notice-theme-support.php:15
+msgid "Compatible Themes"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-theme-support.php:16
+msgid "Theme integration guide"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-update.php:13
+msgid ""
+"<strong>WP Club Manager Data Update Required</strong> &#8211; We just need "
+"to update your install to the latest version"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-update.php:14
+msgid "Run the updater"
+msgstr ""
+
+#: ../includes/admin/views/html-notice-update.php:18
+msgid ""
+"It is strongly recommended that you backup your database before proceeding. "
+"Are you sure you wish to run the updater now?"
+msgstr ""
+
+#: ../includes/admin/wpcm-admin-functions.php:19
+msgid "wpcm-settings"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:103
+msgid "Latitude"
+msgstr "Platuma"
+
+#: ../includes/class-wpcm-ajax.php:108
+msgid "Longtitude"
+msgstr "Ilguma"
+
+#: ../includes/class-wpcm-ajax.php:113
+msgid "Width"
+msgstr "Plotis"
+
+#: ../includes/class-wpcm-ajax.php:123
+msgid "Zoom"
+msgstr "Padidinti"
+
+#: ../includes/class-wpcm-ajax.php:128
+msgid "Display Marker"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:133 ../includes/class-wpcm-ajax.php:348
+#: ../includes/class-wpcm-ajax.php:517 ../includes/class-wpcm-ajax.php:686
+#: ../includes/class-wpcm-ajax.php:849
+#, php-format
+msgid "Insert %s"
+msgstr "Įkelti %s"
+
+#: ../includes/class-wpcm-ajax.php:133
+msgid "Map"
+msgstr "Žemėlapis"
+
+#: ../includes/class-wpcm-ajax.php:154
+#: ../includes/shortcodes/class-wpcm-shortcode-matches.php:48
+msgid "View all results"
+msgstr "Rodyti visus rezultatus"
+
+#: ../includes/class-wpcm-ajax.php:156 ../includes/class-wpcm-ajax.php:348
+#: ../includes/shortcodes/class-wpcm-shortcode-matches.php:38
+msgid "Fixtures & Results"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:165
+msgid "January"
+msgstr "Sausio"
+
+#: ../includes/class-wpcm-ajax.php:166
+msgid "February"
+msgstr "Vasario"
+
+#: ../includes/class-wpcm-ajax.php:167
+msgid "March"
+msgstr "Kovo"
+
+#: ../includes/class-wpcm-ajax.php:168
+msgid "April"
+msgstr "Balandžio"
+
+#: ../includes/class-wpcm-ajax.php:169
+msgid "May"
+msgstr "Gegužės"
+
+#: ../includes/class-wpcm-ajax.php:170
+msgid "June"
+msgstr "Birželio"
+
+#: ../includes/class-wpcm-ajax.php:171
+msgid "July"
+msgstr "Liepos"
+
+#: ../includes/class-wpcm-ajax.php:172
+msgid "August"
+msgstr "Rugpjūčio"
+
+#: ../includes/class-wpcm-ajax.php:173
+msgid "September"
+msgstr "Rugsėjo"
+
+#: ../includes/class-wpcm-ajax.php:174
+msgid "October"
+msgstr "Spalio"
+
+#: ../includes/class-wpcm-ajax.php:175
+msgid "November"
+msgstr "Lapkričio"
+
+#: ../includes/class-wpcm-ajax.php:176
+msgid "December"
+msgstr "Gruodžio"
+
+#: ../includes/class-wpcm-ajax.php:183 ../includes/class-wpcm-ajax.php:381
+#: ../includes/class-wpcm-ajax.php:552 ../includes/class-wpcm-ajax.php:721
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:33
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:33
+#: ../includes/widgets/class-wpcm-widget-players.php:33
+#: ../includes/widgets/class-wpcm-widget-results.php:33
+#: ../includes/widgets/class-wpcm-widget-sponsors.php:33
+#: ../includes/widgets/class-wpcm-widget-standings.php:33
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: ../includes/class-wpcm-ajax.php:188
+msgid "Style"
+msgstr "Stilius"
+
+#: ../includes/class-wpcm-ajax.php:192
+msgid "Classic"
+msgstr "Klasikinis"
+
+#: ../includes/class-wpcm-ajax.php:193
+msgid "List"
+msgstr "Sąrašas"
+
+#: ../includes/class-wpcm-ajax.php:205
+msgid "Format"
+msgstr "Formatas"
+
+#: ../includes/class-wpcm-ajax.php:210
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:32
+msgid "Fixtures"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:223 ../includes/class-wpcm-ajax.php:386
+#: ../includes/class-wpcm-ajax.php:557 ../includes/class-wpcm-ajax.php:726
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:41
+#: ../includes/widgets/class-wpcm-widget-players.php:41
+#: ../includes/widgets/class-wpcm-widget-results.php:41
+#: ../includes/widgets/class-wpcm-widget-standings.php:41
+msgid "Limit"
+msgstr "Limitas"
+
+#: ../includes/class-wpcm-ajax.php:224 ../includes/class-wpcm-ajax.php:387
+#: ../includes/class-wpcm-ajax.php:558 ../includes/class-wpcm-ajax.php:727
+msgid "0 = no limit"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:279
+msgid "Month"
+msgstr "Mėnesis"
+
+#: ../includes/class-wpcm-ajax.php:309 ../includes/class-wpcm-ajax.php:810
+msgid "Show Thumbnail"
+msgstr "Rodyti paveikslelį"
+
+#: ../includes/class-wpcm-ajax.php:314
+msgid "Link to Club Page"
+msgstr "Klubo adresas"
+
+#: ../includes/class-wpcm-ajax.php:319
+msgid "Show Competition"
+msgstr "Rodyti turnyrą"
+
+#: ../includes/class-wpcm-ajax.php:324
+msgid "Show Team"
+msgstr "Rodyti komandą"
+
+#: ../includes/class-wpcm-ajax.php:329 ../includes/class-wpcm-ajax.php:473
+#: ../includes/class-wpcm-ajax.php:641 ../includes/class-wpcm-ajax.php:791
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:104
+#: ../includes/widgets/class-wpcm-widget-players.php:96
+#: ../includes/widgets/class-wpcm-widget-results.php:109
+#: ../includes/widgets/class-wpcm-widget-standings.php:96
+msgid "Link text"
+msgstr ""
+
+#: ../includes/class-wpcm-ajax.php:334 ../includes/class-wpcm-ajax.php:478
+#: ../includes/class-wpcm-ajax.php:646 ../includes/class-wpcm-ajax.php:796
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:108
+#: ../includes/widgets/class-wpcm-widget-players.php:100
+#: ../includes/widgets/class-wpcm-widget-results.php:113
+#: ../includes/widgets/class-wpcm-widget-standings.php:100
+msgid "Link page"
+msgstr "Puslapio adresas"
+
+#: ../includes/class-wpcm-ajax.php:366
+#: ../includes/shortcodes/class-wpcm-shortcode-players.php:41
+msgid "View all players"
+msgstr "Rodyti visus žaidėjus"
+
+#: ../includes/class-wpcm-ajax.php:446 ../includes/class-wpcm-ajax.php:617
+msgid "Page order"
+msgstr "Puslapio dėliojimas"
+
+#: ../includes/class-wpcm-ajax.php:447 ../includes/class-wpcm-ajax.php:616
+msgid "Alphabetical"
+msgstr "Pagal abecėlę"
+
+#: ../includes/class-wpcm-ajax.php:456 ../includes/class-wpcm-ajax.php:624
+#: ../includes/class-wpcm-ajax.php:776
+msgid "Order"
+msgstr "Dėlioti"
+
+#: ../includes/class-wpcm-ajax.php:460 ../includes/class-wpcm-ajax.php:628
+#: ../includes/class-wpcm-ajax.php:779
+#: ../includes/widgets/class-wpcm-widget-players.php:75
+#: ../includes/widgets/class-wpcm-widget-standings.php:65
+msgid "Lowest to highest"
+msgstr "Nuo žemiausio iki aukščiausio"
+
+#: ../includes/class-wpcm-ajax.php:461 ../includes/class-wpcm-ajax.php:629
+#: ../includes/class-wpcm-ajax.php:780
+#: ../includes/widgets/class-wpcm-widget-players.php:76
+#: ../includes/widgets/class-wpcm-widget-standings.php:66
+msgid "Highest to lowest"
+msgstr "Nuo aukščiausio iki žemiausio"
+
+#: ../includes/class-wpcm-ajax.php:492 ../includes/class-wpcm-ajax.php:660
+msgid "Display options"
+msgstr "Rodyti pasirinkimus"
+
+#: ../includes/class-wpcm-ajax.php:537
+#: ../includes/shortcodes/class-wpcm-shortcode-staff.php:33
+msgid "View all staff"
+msgstr "Rodyti visą personalą"
+
+#: ../includes/class-wpcm-ajax.php:618
+msgid "Random"
+msgstr "Atsitiktinis"
+
+#: ../includes/class-wpcm-ajax.php:704
+#: ../includes/shortcodes/class-wpcm-shortcode-standings.php:34
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:103
+#: ../includes/widgets/class-wpcm-widget-players.php:95
+#: ../includes/widgets/class-wpcm-widget-results.php:108
+#: ../includes/widgets/class-wpcm-widget-standings.php:95
+msgid "View all standings"
+msgstr "Žiūrėti visą turnyrinę lentelę"
+
+#: ../includes/class-wpcm-ajax.php:817
+msgid "Link to Clubs"
+msgstr "Klubu puslapis"
+
+#: ../includes/class-wpcm-ajax.php:824
+msgid "Display columns"
+msgstr "Rodyti stulpelius"
+
+#: ../includes/class-wpcm-ajax.php:844
+msgid "Exclude Clubs (Comma-separated list of IDs)"
+msgstr "Išskyrus klubus (Pagal jų ID)"
+
+#: ../includes/class-wpcm-countries.php:33
+msgid "Afghanistan"
+msgstr "Afganistanas"
+
+#: ../includes/class-wpcm-countries.php:34
+msgid "&#197;land Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:35
+msgid "Albania"
+msgstr "Albanija"
+
+#: ../includes/class-wpcm-countries.php:36
+msgid "Algeria"
+msgstr "Algerija"
+
+#: ../includes/class-wpcm-countries.php:37
+msgid "American Samoa"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:38
+msgid "Andorra"
+msgstr "Andora"
+
+#: ../includes/class-wpcm-countries.php:39
+msgid "Angola"
+msgstr "Angola"
+
+#: ../includes/class-wpcm-countries.php:40
+msgid "Anguilla"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:41
+msgid "Antarctica"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:42
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:43
+msgid "Argentina"
+msgstr "Argentina"
+
+#: ../includes/class-wpcm-countries.php:44
+msgid "Armenia"
+msgstr "Armenija"
+
+#: ../includes/class-wpcm-countries.php:45
+msgid "Aruba"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:46
+msgid "Australia"
+msgstr "Australija"
+
+#: ../includes/class-wpcm-countries.php:47
+msgid "Austria"
+msgstr "Austrija"
+
+#: ../includes/class-wpcm-countries.php:48
+msgid "Azerbaijan"
+msgstr "Azerbaidžianas"
+
+#: ../includes/class-wpcm-countries.php:49
+msgid "Bahamas"
+msgstr "Bahamos"
+
+#: ../includes/class-wpcm-countries.php:50
+msgid "Bahrain"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:51
+msgid "Bangladesh"
+msgstr "Bangladešas"
+
+#: ../includes/class-wpcm-countries.php:52
+msgid "Barbados"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:53
+msgid "Belarus"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:54
+msgid "Belgium"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:55
+msgid "Belize"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:56
+msgid "Benin"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:57
+msgid "Bermuda"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:58
+msgid "Bhutan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:59
+msgid "Bolivia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:60
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:61
+msgid "Botswana"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:62
+msgid "Bouvet Island"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:63
+msgid "Brazil"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:64
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:65
+msgid "Brunei Darussalam"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:66
+msgid "Bulgaria"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:67
+msgid "Burkina Faso"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:68
+msgid "Burundi"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:69
+msgid "Cambodia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:70
+msgid "Cameroon"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:71
+msgid "Canada"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:72
+msgid "Cape Verde"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:73
+msgid "Catalonia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:74
+msgid "Cayman Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:75
+msgid "Central African Republic"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:76
+msgid "Chad"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:77
+msgid "Chile"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:78
+msgid "China"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:79
+msgid "Christmas Island"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:80
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:81
+msgid "Colombia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:82
+msgid "Comoros"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:83
+msgid "Congo"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:84
+msgid "Congo DR"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:85
+msgid "Cook Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:86
+msgid "Costa Rica"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:87
+msgid "Croatia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:88
+msgid "Cuba"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:89
+msgid "Cyprus"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:90
+msgid "Czech Republic"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:91
+msgid "Denmark"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:92
+msgid "Djibouti"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:93
+msgid "Dominica"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:94
+msgid "Dominican Republic"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:95
+msgid "Ecuador"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:96
+msgid "Egypt"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:97
+msgid "El Salvador"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:98
+msgid "England"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:99
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:100
+msgid "Eritrea"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:101
+msgid "Estonia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:102
+msgid "Ethiopia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:103
+msgid "Falkland Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:104
+msgid "Faroe Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:105
+msgid "Fiji"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:106
+msgid "Finland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:107
+msgid "France"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:108
+msgid "French Guiana"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:109
+msgid "French Polynesia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:110
+msgid "French Southern Territories"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:111
+msgid "Gabon"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:112
+msgid "Gambia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:113
+msgid "Georgia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:114
+msgid "Germany"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:115
+msgid "Ghana"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:116
+msgid "Gibraltar"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:117
+msgid "Greece"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:118
+msgid "Greenland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:119
+msgid "Grenada"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:120
+msgid "Guadeloupe"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:121
+msgid "Guam"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:122
+msgid "Guatemala"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:123
+msgid "Guernsey"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:124
+msgid "Guinea"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:125
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:126
+msgid "Guyana"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:127
+msgid "Haiti"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:128
+msgid "Heard Island and McDonald Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:129
+msgid "Holy See (Vatican City State)"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:130
+msgid "Honduras"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:131
+msgid "Hong Kong"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:132
+msgid "Hungary"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:133
+msgid "Iceland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:134
+msgid "India"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:135
+msgid "Indonesia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:136
+msgid "Iran"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:137
+msgid "Iraq"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:138
+msgid "Ireland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:139
+msgid "Isle of Man"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:140
+msgid "Israel"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:141
+msgid "Italy"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:142
+msgid "Ivory Coast"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:143
+msgid "Jamaica"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:144
+msgid "Japan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:145
+msgid "Jersey"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:146
+msgid "Jordan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:147
+msgid "Kazakhstan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:148
+msgid "Kenya"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:149
+msgid "Kiribati"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:150
+msgid "Kosovo"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:151
+msgid "Kuwait"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:152
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:153
+msgid "Laos"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:154
+msgid "Latvia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:155
+msgid "Lebanon"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:156
+msgid "Lesotho"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:157
+msgid "Liberia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:158
+msgid "Libya"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:159
+msgid "Liechtenstein"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:160
+msgid "Lithuania"
+msgstr "Lietuva"
+
+#: ../includes/class-wpcm-countries.php:161
+msgid "Luxembourg"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:162
+msgid "Macao"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:163
+msgid "Macedonia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:164
+msgid "Madagascar"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:165
+msgid "Malawi"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:166
+msgid "Malaysia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:167
+msgid "Maldives"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:168
+msgid "Mali"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:169
+msgid "Malta"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:170
+msgid "Marshall Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:171
+msgid "Martinique"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:172
+msgid "Mauritania"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:173
+msgid "Mauritius"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:174
+msgid "Mayotte"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:175
+msgid "Mexico"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:176
+msgid "Micronesia, Federal States of"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:177
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:178
+msgid "Monaco"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:179
+msgid "Mongolia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:180
+msgid "Monserrat"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:181
+msgid "Montenegro"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:182
+msgid "Morocco"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:183
+msgid "North Korea"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:184
+msgid "Mozambique"
+msgstr "Mozambikas"
+
+#: ../includes/class-wpcm-countries.php:185
+msgid "Myanmar"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:186
+msgid "Namibia"
+msgstr "Namibija"
+
+#: ../includes/class-wpcm-countries.php:187
+msgid "Nauru"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:188
+msgid "Nepal"
+msgstr "Nepalas"
+
+#: ../includes/class-wpcm-countries.php:189
+msgid "Netherlands"
+msgstr "Olandija"
+
+#: ../includes/class-wpcm-countries.php:190
+msgid "New Caledonia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:191
+msgid "New Zealand"
+msgstr "Naujoji Zelandija"
+
+#: ../includes/class-wpcm-countries.php:192
+msgid "Nicaragua"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:193
+msgid "Niger"
+msgstr "Nigeris"
+
+#: ../includes/class-wpcm-countries.php:194
+msgid "Nigeria"
+msgstr "Nigerija"
+
+#: ../includes/class-wpcm-countries.php:195
+msgid "Niue"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:196
+msgid "Norfolk Island"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:197
+msgid "Northern Ireland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:198
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:199
+msgid "Norway"
+msgstr "Norvegija"
+
+#: ../includes/class-wpcm-countries.php:200
+msgid "Oman"
+msgstr "Omanas"
+
+#: ../includes/class-wpcm-countries.php:201
+msgid "Pakistan"
+msgstr "Pakistanas"
+
+#: ../includes/class-wpcm-countries.php:202
+msgid "Palau"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:203
+msgid "Palestine, State of"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:204
+msgid "Panama"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:205
+msgid "Papua New Guinea"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:206
+msgid "Paraguay"
+msgstr "Paragvajus"
+
+#: ../includes/class-wpcm-countries.php:207
+msgid "Peru"
+msgstr "Peru"
+
+#: ../includes/class-wpcm-countries.php:208
+msgid "Philippines"
+msgstr "Filipinai"
+
+#: ../includes/class-wpcm-countries.php:209
+msgid "Pitcairn"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:210
+msgid "Poland"
+msgstr "Lenkija"
+
+#: ../includes/class-wpcm-countries.php:211
+msgid "Portugal"
+msgstr "Portugalija"
+
+#: ../includes/class-wpcm-countries.php:212
+msgid "Puerto Rico"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:213
+msgid "Qatar"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:214
+msgid "Reunion"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:215
+msgid "Romania"
+msgstr "Rumunija"
+
+#: ../includes/class-wpcm-countries.php:216
+msgid "Russian Federation"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:217
+msgid "Rwanda"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:218
+msgid "Saint Helena"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:219
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:220
+msgid "Saint Lucia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:221
+msgid "Saint Pierre & Miquelon"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:222
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:223
+msgid "Samoa"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:224
+msgid "San Marino"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:225
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:226
+msgid "Saudi Arabia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:227
+msgid "Scotland"
+msgstr "Škotija"
+
+#: ../includes/class-wpcm-countries.php:228
+msgid "Senegal"
+msgstr "Senegalas"
+
+#: ../includes/class-wpcm-countries.php:229
+msgid "Serbia"
+msgstr "Serbija"
+
+#: ../includes/class-wpcm-countries.php:230
+msgid "Seychelles"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:231
+msgid "Sierre Leone"
+msgstr "Sierra Leone"
+
+#: ../includes/class-wpcm-countries.php:232
+msgid "Singapore"
+msgstr "Singapūras"
+
+#: ../includes/class-wpcm-countries.php:233
+msgid "Slovakia"
+msgstr "Slovakija"
+
+#: ../includes/class-wpcm-countries.php:234
+msgid "Slovenia"
+msgstr "Slovėnija"
+
+#: ../includes/class-wpcm-countries.php:235
+msgid "Solomon Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:236
+msgid "Somalia"
+msgstr "Somalis"
+
+#: ../includes/class-wpcm-countries.php:237
+msgid "South Africa"
+msgstr "Pietų Afrika"
+
+#: ../includes/class-wpcm-countries.php:238
+msgid "South Georgia / Sandwich Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:239
+msgid "South Korea"
+msgstr "Pietų Korėja"
+
+#: ../includes/class-wpcm-countries.php:240
+msgid "Spain"
+msgstr "Ispanija"
+
+#: ../includes/class-wpcm-countries.php:241
+msgid "Sri Lanka"
+msgstr "Šri Lanka"
+
+#: ../includes/class-wpcm-countries.php:242
+msgid "Svalbard and Jan Mayen"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:243
+msgid "Sudan"
+msgstr "Sudanas"
+
+#: ../includes/class-wpcm-countries.php:244
+msgid "Suriname"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:245
+msgid "Swaziland"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:246
+msgid "Sweden"
+msgstr "Švėdija"
+
+#: ../includes/class-wpcm-countries.php:247
+msgid "Switzerland"
+msgstr "Šveicarija"
+
+#: ../includes/class-wpcm-countries.php:248
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:249
+msgid "Taiwan, Province of China"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:250
+msgid "Tajikstan"
+msgstr "Tadžikistanas"
+
+#: ../includes/class-wpcm-countries.php:251
+msgid "Tanzania, United Republic of"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:252
+msgid "Thailand"
+msgstr "Tailandas"
+
+#: ../includes/class-wpcm-countries.php:253
+msgid "Timor-Leste"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:254
+msgid "Togo"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:255
+msgid "Tokelau"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:256
+msgid "Tonga"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:257
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:258
+msgid "Tunisia"
+msgstr "Tunisas"
+
+#: ../includes/class-wpcm-countries.php:259
+msgid "Turkey"
+msgstr "Turkija"
+
+#: ../includes/class-wpcm-countries.php:260
+msgid "Turkmenistan"
+msgstr "Turkmenistanas"
+
+#: ../includes/class-wpcm-countries.php:261
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:262
+msgid "Tuvalu"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:263
+msgid "Uganda"
+msgstr "Uganda"
+
+#: ../includes/class-wpcm-countries.php:264
+msgid "Ukraine"
+msgstr "Ukraina"
+
+#: ../includes/class-wpcm-countries.php:265
+msgid "United Arab Emirates"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:266
+msgid "United Kingdom (UK)"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:267
+msgid "United States (US)"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:268
+msgid "Uruguay"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:269
+msgid "US Minor Outlying Islands"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:270
+msgid "Uzbekistan"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:271
+msgid "Vanuata"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:272
+msgid "Venezuala"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:273
+msgid "Vietnam"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:274
+msgid "Virgin Islands, British"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:275
+msgid "Virgin Islands, U.S."
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:276
+msgid "Wales"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:277
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:278
+msgid "Western Sahara"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:279
+msgid "Yemen"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:280
+msgid "Yugoslavia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:281
+msgid "Zambia"
+msgstr ""
+
+#: ../includes/class-wpcm-countries.php:282
+msgid "Zimbabwe"
+msgstr ""
+
+#: ../includes/class-wpcm-install.php:183
+#: ../includes/class-wpcm-post-types.php:270
+#, fuzzy
+msgid "Player"
+msgstr "žaidėjas"
+
+#: ../includes/class-wpcm-install.php:370
+msgid "What's new:"
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:128
+#, php-format
+msgid "%1$s License Key"
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:160
+#: ../includes/class-wpcm-license-handler.php:223
+msgid "Nonce verification failed"
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:160
+#: ../includes/class-wpcm-license-handler.php:223
+msgid "Error"
+msgstr "Klaida"
+
+#: ../includes/class-wpcm-license-handler.php:292
+msgid "This license does not belong to the product you have entered it for."
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:297
+msgid "This license does not have any activations left"
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:302
+msgid "This license key is expired. Please renew it."
+msgstr ""
+
+#: ../includes/class-wpcm-license-handler.php:307
+#, php-format
+msgid ""
+"There was a problem activating your license key, please try again or contact "
+"support. Error code: %s"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:47
+msgid "Search Competitions"
+msgstr "Ieškoti turnyrų"
+
+#: ../includes/class-wpcm-post-types.php:48
+msgid "All Competitions"
+msgstr "Visi turnyrai"
+
+#: ../includes/class-wpcm-post-types.php:49
+msgid "Parent Competition"
+msgstr "Panašus turnyrai"
+
+#: ../includes/class-wpcm-post-types.php:50
+#, fuzzy
+msgid "Parent Competition:"
+msgstr "Panašus turnyrai"
+
+#: ../includes/class-wpcm-post-types.php:51
+msgid "Edit Competition"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:52
+msgid "Update Competition"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:53
+msgid "Add New Competition"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:74
+#: ../includes/wpcm-player-functions.php:463
+#: ../templates/content-single-staff.php:124
+msgid "Job"
+msgstr "Pareigos"
+
+#: ../includes/class-wpcm-post-types.php:75
+msgid "Search Jobs"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:76
+msgid "All Jobs"
+msgstr "Visos pareigos"
+
+#: ../includes/class-wpcm-post-types.php:77
+msgid "Parent Job"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:78
+msgid "Parent Job:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:79
+msgid "Edit Job"
+msgstr "Redaguoti pareigas"
+
+#: ../includes/class-wpcm-post-types.php:80
+msgid "Update Job"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:81
+msgid "Add New Job"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:82
+msgid "New Job Title"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:103
+msgid "Search Positions"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:104
+msgid "All Positions"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:105
+msgid "Parent Position"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:106
+msgid "Parent Position:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:107
+msgid "Edit Position"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:108
+msgid "Update Position"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:109
+msgid "Add New Position"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:110
+msgid "New Position Name"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:131
+msgid "Search Seasons"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:132
+msgid "All Seasons"
+msgstr "Visi sezonai"
+
+#: ../includes/class-wpcm-post-types.php:133
+msgid "Parent Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:134
+msgid "Parent Season:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:135
+msgid "Edit Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:136
+msgid "Update Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:137
+msgid "Add New Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:160
+msgid "Search Teams"
+msgstr "Ieškoti komandų"
+
+#: ../includes/class-wpcm-post-types.php:161
+msgid "All Teams"
+msgstr "Visos komandos"
+
+#: ../includes/class-wpcm-post-types.php:162
+msgid "Parent Team"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:163
+msgid "Parent Team:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:164
+msgid "Edit Team"
+msgstr "Redaguoti komandą"
+
+#: ../includes/class-wpcm-post-types.php:165
+msgid "Update Team"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:166
+msgid "Add New Team"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:187
+msgid "Venues"
+msgstr "Vietos"
+
+#: ../includes/class-wpcm-post-types.php:189
+msgid "Search Venues"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:190
+msgid "All Venues"
+msgstr "Visos vietos"
+
+#: ../includes/class-wpcm-post-types.php:191
+msgid "Parent Venue"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:192
+msgid "Parent Venue:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:193
+msgid "Edit Venue"
+msgstr "Redaguoti vietą"
+
+#: ../includes/class-wpcm-post-types.php:194
+msgid "Update Venue"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:195
+msgid "Add New Venue"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:223
+msgctxt "slug"
+msgid "club"
+msgstr "klubas"
+
+#: ../includes/class-wpcm-post-types.php:231
+#: ../includes/class-wpcm-post-types.php:271
+#: ../includes/class-wpcm-post-types.php:311
+#: ../includes/class-wpcm-post-types.php:351
+msgid "Add New"
+msgstr "Pridėti naują"
+
+#: ../includes/class-wpcm-post-types.php:232
+msgid "All Clubs"
+msgstr "Visi klubai"
+
+#: ../includes/class-wpcm-post-types.php:233
+msgid "Add New Club"
+msgstr "Žiūrėti klubus"
+
+#: ../includes/class-wpcm-post-types.php:234
+msgid "Edit Club"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:235
+#, fuzzy
+msgid "New Club"
+msgstr "Žiūrėti klubus"
+
+#: ../includes/class-wpcm-post-types.php:236
+msgid "View Club"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:237
+msgid "Search Clubs"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:238
+msgid "No clubs found"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:239
+msgid "No clubs found in trash"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:240
+msgid "Parent Club:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:263
+msgctxt "slug"
+msgid "player"
+msgstr "žaidėjas"
+
+#: ../includes/class-wpcm-post-types.php:272
+msgid "All Players"
+msgstr "Visi žaidėjai"
+
+#: ../includes/class-wpcm-post-types.php:273
+msgid "Add New Player"
+msgstr "Pridėti naują žaidėją"
+
+#: ../includes/class-wpcm-post-types.php:274
+msgid "Edit Player"
+msgstr "Redaguoti žaidėją"
+
+#: ../includes/class-wpcm-post-types.php:275
+msgid "New Player"
+msgstr "Naujas žaidėjas"
+
+#: ../includes/class-wpcm-post-types.php:276
+msgid "View Player"
+msgstr "Peržiūrėti plačiau"
+
+#: ../includes/class-wpcm-post-types.php:277
+msgid "Search Players"
+msgstr "Ieškoti žaidėjų"
+
+#: ../includes/class-wpcm-post-types.php:278
+msgid "No players found"
+msgstr "Žaidėjų nerasta"
+
+#: ../includes/class-wpcm-post-types.php:279
+msgid "No players found in trash"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:280
+msgid "Parent Player:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:303
+msgctxt "slug"
+msgid "staff"
+msgstr "personalas"
+
+#: ../includes/class-wpcm-post-types.php:312
+msgid "All Staff"
+msgstr "Visas personalas"
+
+#: ../includes/class-wpcm-post-types.php:313
+msgid "Add New Staff"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:314
+msgid "Edit Staff"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:315
+msgid "New Staff"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:317
+msgid "Search Staff"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:318
+msgid "No staff found"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:319
+msgid "No staff found in trash"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:320
+msgid "Parent Staff:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:343
+msgctxt "slug"
+msgid "match"
+msgstr "varžybos"
+
+#: ../includes/class-wpcm-post-types.php:350
+msgid "Match"
+msgstr "Varžybos"
+
+#: ../includes/class-wpcm-post-types.php:352
+msgid "All Matches"
+msgstr "Viso varžybos"
+
+#: ../includes/class-wpcm-post-types.php:354
+msgid "Edit Match"
+msgstr "Redaguoti varžybas"
+
+#: ../includes/class-wpcm-post-types.php:355
+msgid "New Match"
+msgstr "Naujos varžybos"
+
+#: ../includes/class-wpcm-post-types.php:356
+msgid "View Match"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:357
+msgid "Search Matches"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:358
+msgid "No matches found"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:359
+msgid "No matches found in trash"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:360
+msgid "Parent Match:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:386
+#: ../includes/class-wpcm-post-types.php:398
+#: ../includes/widgets/class-wpcm-widget-sponsors.php:32
+msgid "Sponsors"
+msgstr "Rėmėjai"
+
+#: ../includes/class-wpcm-post-types.php:387
+msgid "Sponsor"
+msgstr "Rėmėjas"
+
+#: ../includes/class-wpcm-post-types.php:388
+#: ../includes/class-wpcm-post-types.php:390
+msgid "Add New Sponsor"
+msgstr "Pridėti naują rėmėją"
+
+#: ../includes/class-wpcm-post-types.php:389
+msgid "All Sponsors"
+msgstr "Visi rėmėjai"
+
+#: ../includes/class-wpcm-post-types.php:391
+msgid "Edit Sponsor"
+msgstr "Redaguoti rėmėją"
+
+#: ../includes/class-wpcm-post-types.php:392
+msgid "New Sponsor"
+msgstr "Naujas rėmėjas"
+
+#: ../includes/class-wpcm-post-types.php:393
+msgid "View Sponsor"
+msgstr "Žiūrėti rėmėją"
+
+#: ../includes/class-wpcm-post-types.php:394
+msgid "Search Sponsors"
+msgstr "Ieškoti rėmėjų"
+
+#: ../includes/class-wpcm-post-types.php:395
+msgid "No sponsors found"
+msgstr "Rėmėjų nerasta"
+
+#: ../includes/class-wpcm-post-types.php:396
+msgid "No sponsors found in trash"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:397
+msgid "Parent Sponsor:"
+msgstr ""
+
+#: ../includes/shortcodes/class-wpcm-shortcode-matches.php:191
+msgid "No matches yet."
+msgstr ""
+
+#: ../includes/updates/wpclubmanager-update-1.5.0.php:16
+msgid "Apps"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:26
+msgid "Display upcoming player and staff birthdays."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:28
+msgid "WPCM Birthdays"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:32
+msgid "Upcoming Birthdays"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:38
+msgid "Include Staff"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:57
+#: ../templates/content-widget-birthdays.php:38
+msgid "Today"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:58
+msgid "1 Week"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:59
+msgid "2 Weeks"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:60
+msgid "4 Weeks"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:61
+msgid "6 Weeks"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-birthdays.php:67
+msgid "Show Age"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:26
+msgid "Display upcoming fixtures."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:28
+msgid "WPCM Fixtures"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:84
+#: ../includes/widgets/class-wpcm-widget-results.php:84
+msgid "Kick Off"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:98
+#: ../includes/widgets/class-wpcm-widget-players.php:90
+#: ../includes/widgets/class-wpcm-widget-results.php:103
+#: ../includes/widgets/class-wpcm-widget-standings.php:90
+msgid "Link Options"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:245
+#: ../includes/widgets/class-wpcm-widget-results.php:259
+msgid "No more matches scheduled."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-players.php:26
+msgid "Display a table of players details."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-players.php:67
+#, fuzzy
+msgid "Page Order"
+msgstr "Puslapio dėliojimas"
+
+#: ../includes/widgets/class-wpcm-widget-players.php:73
+#: ../includes/widgets/class-wpcm-widget-standings.php:63
+#, fuzzy
+msgctxt "Sorting order"
+msgid "Order"
+msgstr "Dėlioti"
+
+#: ../includes/widgets/class-wpcm-widget-results.php:26
+msgid "Display most recent results."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-results.php:28
+msgid "WPCM Results"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-sponsors.php:26
+msgid "Display a sponsors logo."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-sponsors.php:28
+msgid "WPCM Sponsors"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-sponsors.php:39
+msgid "Choose a sponsor"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:26
+msgid "Display your clubs league standings."
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:28
+msgid "WPCM Standings"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:72
+msgid "Show club badge"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:77
+msgid "Link to club pages"
+msgstr ""
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:81
+#, fuzzy
+msgid "Display Columns"
+msgstr "Rodyti stulpelius"
+
+#: ../includes/widgets/class-wpcm-widget-standings.php:105
+msgid "Exclude clubs"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:523
+msgid "No location found for the entered address."
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:525
+msgid "Invalid request. Address is missing"
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:527
+msgid "Something went wrong while retrieving your map."
+msgstr ""
+
+#: ../includes/wpcm-core-functions.php:530
+msgid "Unable to contact Google API service."
+msgstr ""
+
+#: ../includes/wpcm-match-functions.php:151
+#: ../includes/wpcm-match-functions.php:152
+#: ../includes/wpcm-match-functions.php:153
+msgid "x"
+msgstr ""
+
+#: ../includes/wpcm-match-functions.php:369
+msgid "N"
+msgstr ""
+
+#: ../includes/wpcm-match-functions.php:372
+msgid "H"
+msgstr ""
+
+#: ../includes/wpcm-match-functions.php:374
+msgid "A"
+msgstr ""
+
+#: ../includes/wpcm-player-functions.php:24
+msgid "Image"
+msgstr "Nuotrauka"
+
+#: ../includes/wpcm-player-functions.php:26
+msgid "Flag"
+msgstr "Vėliava"
+
+#: ../includes/wpcm-player-functions.php:34
+#: ../includes/wpcm-player-functions.php:61
+msgid "Hometown"
+msgstr "Gimtasis miestas"
+
+#: ../includes/wpcm-player-functions.php:36
+#: ../includes/wpcm-player-functions.php:63
+#: ../includes/wpcm-player-functions.php:122
+msgid "Sub Appearances"
+msgstr ""
+
+#: ../includes/wpcm-player-functions.php:77
+msgctxt "Games Played (Appearances)"
+msgid "PL"
+msgstr ""
+
+#: ../includes/wpcm-player-functions.php:92
+msgid "SUBS"
+msgstr ""
+
+#: ../includes/wpcm-player-functions.php:107
+#: ../includes/wpcm-preset-functions.php:111
+#: ../includes/wpcm-preset-functions.php:246
+#: ../includes/wpcm-preset-functions.php:380
+#: ../includes/wpcm-preset-functions.php:471
+#: ../includes/wpcm-preset-functions.php:646
+#: ../includes/wpcm-preset-functions.php:817
+#: ../includes/wpcm-preset-functions.php:912
+#: ../includes/wpcm-preset-functions.php:1007
+#: ../includes/wpcm-preset-functions.php:1106
+#: ../includes/wpcm-preset-functions.php:1221
+#: ../includes/wpcm-preset-functions.php:1312
+#: ../includes/wpcm-preset-functions.php:1427
+#: ../includes/wpcm-preset-functions.php:1538
+#: ../includes/wpcm-preset-functions.php:1653
+#: ../includes/wpcm-preset-functions.php:1752
+#: ../includes/wpcm-preset-functions.php:1851
+msgid "Played"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:22
+msgid "Baseball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:33
+msgid "At Bats"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:34
+msgctxt "At Bats"
+msgid "AB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:37
+#: ../includes/wpcm-preset-functions.php:1195
+msgid "Hits"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:38
+msgctxt "Hits"
+msgid "H"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:42
+#: ../includes/wpcm-preset-functions.php:330
+msgctxt "Runs"
+msgid "R"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:45
+msgid "Earned Runs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:46
+msgctxt "Earned Runs"
+msgid "ER"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:49
+msgid "Home Runs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:50
+msgctxt "Home Runs"
+msgid "HR"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:53
+msgid "Doubles"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:54
+msgctxt "Doubles"
+msgid "2B"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:57
+msgid "Triples"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:58
+msgctxt "Triples"
+msgid "3B"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:61
+msgid "Runs Batted In"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:62
+msgctxt "Runs Batted In"
+msgid "RBI"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:65
+msgid "Bases on Bulk"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:66
+msgctxt "Bases on Bulk"
+msgid "BB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:69
+msgid "Strike Outs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:70
+msgctxt "Strike Outs"
+msgid "SO"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:73
+msgid "Stolen Bases"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:74
+msgctxt "Stolen Bases"
+msgid "SB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:77
+msgid "Caught Stealing"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:78
+msgctxt "Caught Stealing"
+msgid "CS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:81
+msgid "Total Chances"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:82
+msgctxt "Total Chances"
+msgid "TC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:85
+msgid "Putouts"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:86
+msgctxt "Putouts"
+msgid "PO"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:89
+#: ../includes/wpcm-preset-functions.php:212
+#: ../includes/wpcm-preset-functions.php:433
+#: ../includes/wpcm-preset-functions.php:1068
+#: ../includes/wpcm-preset-functions.php:1171
+#: ../includes/wpcm-preset-functions.php:1290
+#: ../includes/wpcm-preset-functions.php:1718
+msgid "Assists"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:90
+#: ../includes/wpcm-preset-functions.php:434
+#: ../includes/wpcm-preset-functions.php:1069
+#: ../includes/wpcm-preset-functions.php:1172
+msgctxt "Assists"
+msgid "A"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:93
+msgid "Errors"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:94
+msgctxt "Errors"
+msgid "E"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:97
+msgid "Double Plays"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:98
+msgctxt "Double Plays"
+msgid "DP"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:101
+#: ../includes/wpcm-preset-functions.php:236
+#: ../includes/wpcm-preset-functions.php:461
+#: ../includes/wpcm-preset-functions.php:636
+#: ../includes/wpcm-preset-functions.php:807
+#: ../includes/wpcm-preset-functions.php:902
+#: ../includes/wpcm-preset-functions.php:997
+#: ../includes/wpcm-preset-functions.php:1096
+#: ../includes/wpcm-preset-functions.php:1211
+#: ../includes/wpcm-preset-functions.php:1302
+#: ../includes/wpcm-preset-functions.php:1417
+#: ../includes/wpcm-preset-functions.php:1528
+#: ../includes/wpcm-preset-functions.php:1643
+#: ../includes/wpcm-preset-functions.php:1742
+#: ../includes/wpcm-preset-functions.php:1841
+msgid "Rating"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:102
+#: ../includes/wpcm-preset-functions.php:237
+#: ../includes/wpcm-preset-functions.php:462
+#: ../includes/wpcm-preset-functions.php:637
+#: ../includes/wpcm-preset-functions.php:808
+#: ../includes/wpcm-preset-functions.php:903
+#: ../includes/wpcm-preset-functions.php:998
+#: ../includes/wpcm-preset-functions.php:1097
+#: ../includes/wpcm-preset-functions.php:1212
+#: ../includes/wpcm-preset-functions.php:1303
+#: ../includes/wpcm-preset-functions.php:1418
+#: ../includes/wpcm-preset-functions.php:1529
+#: ../includes/wpcm-preset-functions.php:1644
+#: ../includes/wpcm-preset-functions.php:1743
+#: ../includes/wpcm-preset-functions.php:1842
+msgctxt "Rating"
+msgid "RAT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:105
+#: ../includes/wpcm-preset-functions.php:240
+#: ../includes/wpcm-preset-functions.php:374
+#: ../includes/wpcm-preset-functions.php:465
+#: ../includes/wpcm-preset-functions.php:640
+#: ../includes/wpcm-preset-functions.php:811
+#: ../includes/wpcm-preset-functions.php:906
+#: ../includes/wpcm-preset-functions.php:1001
+#: ../includes/wpcm-preset-functions.php:1100
+#: ../includes/wpcm-preset-functions.php:1215
+#: ../includes/wpcm-preset-functions.php:1306
+#: ../includes/wpcm-preset-functions.php:1421
+#: ../includes/wpcm-preset-functions.php:1532
+#: ../includes/wpcm-preset-functions.php:1647
+#: ../includes/wpcm-preset-functions.php:1746
+#: ../includes/wpcm-preset-functions.php:1845
+#: ../templates/single-match/lineup-row.php:30
+msgid "Player of Match"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:106
+#: ../includes/wpcm-preset-functions.php:241
+#: ../includes/wpcm-preset-functions.php:375
+#: ../includes/wpcm-preset-functions.php:466
+#: ../includes/wpcm-preset-functions.php:641
+#: ../includes/wpcm-preset-functions.php:812
+#: ../includes/wpcm-preset-functions.php:907
+#: ../includes/wpcm-preset-functions.php:1002
+#: ../includes/wpcm-preset-functions.php:1101
+#: ../includes/wpcm-preset-functions.php:1216
+#: ../includes/wpcm-preset-functions.php:1307
+#: ../includes/wpcm-preset-functions.php:1422
+#: ../includes/wpcm-preset-functions.php:1533
+#: ../includes/wpcm-preset-functions.php:1648
+#: ../includes/wpcm-preset-functions.php:1747
+#: ../includes/wpcm-preset-functions.php:1846
+msgctxt "Player of Match"
+msgid "POM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:112
+#: ../includes/wpcm-preset-functions.php:247
+#: ../includes/wpcm-preset-functions.php:381
+#: ../includes/wpcm-preset-functions.php:472
+#: ../includes/wpcm-preset-functions.php:647
+#: ../includes/wpcm-preset-functions.php:818
+#: ../includes/wpcm-preset-functions.php:913
+#: ../includes/wpcm-preset-functions.php:1008
+#: ../includes/wpcm-preset-functions.php:1107
+#: ../includes/wpcm-preset-functions.php:1222
+#: ../includes/wpcm-preset-functions.php:1313
+#: ../includes/wpcm-preset-functions.php:1428
+#: ../includes/wpcm-preset-functions.php:1539
+#: ../includes/wpcm-preset-functions.php:1654
+#: ../includes/wpcm-preset-functions.php:1753
+#: ../includes/wpcm-preset-functions.php:1852
+msgctxt "Played"
+msgid "P"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:115
+#: ../includes/wpcm-preset-functions.php:250
+#: ../includes/wpcm-preset-functions.php:384
+#: ../includes/wpcm-preset-functions.php:475
+#: ../includes/wpcm-preset-functions.php:650
+#: ../includes/wpcm-preset-functions.php:821
+#: ../includes/wpcm-preset-functions.php:916
+#: ../includes/wpcm-preset-functions.php:1011
+#: ../includes/wpcm-preset-functions.php:1110
+#: ../includes/wpcm-preset-functions.php:1225
+#: ../includes/wpcm-preset-functions.php:1316
+#: ../includes/wpcm-preset-functions.php:1431
+#: ../includes/wpcm-preset-functions.php:1542
+#: ../includes/wpcm-preset-functions.php:1657
+#: ../includes/wpcm-preset-functions.php:1756
+#: ../includes/wpcm-preset-functions.php:1855
+msgid "Won"
+msgstr "Laimėta"
+
+#: ../includes/wpcm-preset-functions.php:116
+#: ../includes/wpcm-preset-functions.php:251
+#: ../includes/wpcm-preset-functions.php:385
+#: ../includes/wpcm-preset-functions.php:476
+#: ../includes/wpcm-preset-functions.php:651
+#: ../includes/wpcm-preset-functions.php:822
+#: ../includes/wpcm-preset-functions.php:917
+#: ../includes/wpcm-preset-functions.php:1012
+#: ../includes/wpcm-preset-functions.php:1111
+#: ../includes/wpcm-preset-functions.php:1226
+#: ../includes/wpcm-preset-functions.php:1317
+#: ../includes/wpcm-preset-functions.php:1432
+#: ../includes/wpcm-preset-functions.php:1543
+#: ../includes/wpcm-preset-functions.php:1658
+#: ../includes/wpcm-preset-functions.php:1757
+#: ../includes/wpcm-preset-functions.php:1856
+msgctxt "Won"
+msgid "W"
+msgstr "Laimėta"
+
+#: ../includes/wpcm-preset-functions.php:119
+#: ../includes/wpcm-preset-functions.php:258
+#: ../includes/wpcm-preset-functions.php:392
+#: ../includes/wpcm-preset-functions.php:483
+#: ../includes/wpcm-preset-functions.php:658
+#: ../includes/wpcm-preset-functions.php:829
+#: ../includes/wpcm-preset-functions.php:924
+#: ../includes/wpcm-preset-functions.php:1019
+#: ../includes/wpcm-preset-functions.php:1118
+#: ../includes/wpcm-preset-functions.php:1229
+#: ../includes/wpcm-preset-functions.php:1324
+#: ../includes/wpcm-preset-functions.php:1439
+#: ../includes/wpcm-preset-functions.php:1550
+#: ../includes/wpcm-preset-functions.php:1665
+#: ../includes/wpcm-preset-functions.php:1764
+#: ../includes/wpcm-preset-functions.php:1859
+msgid "Lost"
+msgstr "Pralošta"
+
+#: ../includes/wpcm-preset-functions.php:120
+#: ../includes/wpcm-preset-functions.php:259
+#: ../includes/wpcm-preset-functions.php:393
+#: ../includes/wpcm-preset-functions.php:484
+#: ../includes/wpcm-preset-functions.php:659
+#: ../includes/wpcm-preset-functions.php:830
+#: ../includes/wpcm-preset-functions.php:925
+#: ../includes/wpcm-preset-functions.php:1020
+#: ../includes/wpcm-preset-functions.php:1119
+#: ../includes/wpcm-preset-functions.php:1230
+#: ../includes/wpcm-preset-functions.php:1325
+#: ../includes/wpcm-preset-functions.php:1440
+#: ../includes/wpcm-preset-functions.php:1551
+#: ../includes/wpcm-preset-functions.php:1666
+#: ../includes/wpcm-preset-functions.php:1765
+#: ../includes/wpcm-preset-functions.php:1860
+msgctxt "Lost"
+msgid "L"
+msgstr "Pralošta"
+
+#: ../includes/wpcm-preset-functions.php:123
+#: ../includes/wpcm-preset-functions.php:270
+#: ../includes/wpcm-preset-functions.php:674
+#: ../includes/wpcm-preset-functions.php:1241
+msgid "Win Percentage"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:124
+#: ../includes/wpcm-preset-functions.php:271
+#: ../includes/wpcm-preset-functions.php:675
+#: ../includes/wpcm-preset-functions.php:1242
+msgctxt "Win Percentage"
+msgid "PCT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:127
+#: ../includes/wpcm-preset-functions.php:400
+msgid "Runs For"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:128
+#: ../includes/wpcm-preset-functions.php:401
+msgctxt "Runs For"
+msgid "RF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:131
+#: ../includes/wpcm-preset-functions.php:404
+msgid "Runs Against"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:132
+#: ../includes/wpcm-preset-functions.php:405
+msgctxt "Runs Against"
+msgid "RA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:135
+msgid "Run Difference"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:136
+msgctxt "Run Difference"
+msgid "RD"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:140
+#: ../includes/wpcm-preset-functions.php:287
+#: ../includes/wpcm-preset-functions.php:397
+#: ../includes/wpcm-preset-functions.php:500
+#: ../includes/wpcm-preset-functions.php:679
+#: ../includes/wpcm-preset-functions.php:846
+#: ../includes/wpcm-preset-functions.php:941
+#: ../includes/wpcm-preset-functions.php:1036
+#: ../includes/wpcm-preset-functions.php:1135
+#: ../includes/wpcm-preset-functions.php:1258
+#: ../includes/wpcm-preset-functions.php:1341
+#: ../includes/wpcm-preset-functions.php:1456
+#: ../includes/wpcm-preset-functions.php:1567
+#: ../includes/wpcm-preset-functions.php:1686
+#: ../includes/wpcm-preset-functions.php:1781
+#: ../includes/wpcm-preset-functions.php:1876
+#, fuzzy
+msgctxt "Points"
+msgid "Pts"
+msgstr "Taškai"
+
+#: ../includes/wpcm-preset-functions.php:145
+msgid "Basketball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:172
+msgid "Minutes"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:173
+msgctxt "Minutes"
+msgid "MIN"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:176
+msgid "Field Goals Made"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:177
+msgctxt "Field Goals Made"
+msgid "FGM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:180
+msgid "Field Goals Attempted"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:181
+msgctxt "Field Goals Attempted"
+msgid "FGA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:184
+msgid "3 Points Made"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:185
+msgctxt "3 Points Made"
+msgid "3PM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:188
+msgid "3 Points Attempted"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:189
+msgctxt "3 Points Attempted"
+msgid "3PA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:192
+msgid "Free Throws Made"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:193
+msgctxt "Free Throws Made"
+msgid "FTM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:196
+msgid "Free Throws Attempted"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:197
+msgctxt "Free Throws Attempted"
+msgid "FTA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:200
+msgid "Offensive Rebounds"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:201
+msgctxt "Offensive Rebounds"
+msgid "OR"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:204
+msgid "Defensive Rebounds"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:205
+msgctxt "Defensive Rebounds"
+msgid "DR"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:208
+#: ../includes/wpcm-preset-functions.php:1393
+msgid "Rebounds"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:209
+#: ../includes/wpcm-preset-functions.php:1394
+msgctxt "Rebounds"
+msgid "REB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:213
+#: ../includes/wpcm-preset-functions.php:1291
+#: ../includes/wpcm-preset-functions.php:1719
+msgctxt "Assists"
+msgid "AST"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:216
+#: ../includes/wpcm-preset-functions.php:1825
+msgid "Blocks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:217
+#: ../includes/wpcm-preset-functions.php:1826
+msgctxt "Blocks"
+msgid "BLK"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:220
+msgid "Steals"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:221
+msgctxt "Steals"
+msgid "STL"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:224
+msgid "Personal Fouls"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:225
+msgctxt "Personal Fouls"
+msgid "PF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:228
+#: ../includes/wpcm-preset-functions.php:1413
+msgid "Turnovers"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:229
+#: ../includes/wpcm-preset-functions.php:1414
+msgctxt "Turnovers"
+msgid "TO"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:233
+#, fuzzy
+msgctxt "Points"
+msgid "PTS"
+msgstr "Taškai"
+
+#: ../includes/wpcm-preset-functions.php:254
+#: ../includes/wpcm-preset-functions.php:388
+#: ../includes/wpcm-preset-functions.php:479
+#: ../includes/wpcm-preset-functions.php:825
+#: ../includes/wpcm-preset-functions.php:920
+#: ../includes/wpcm-preset-functions.php:1015
+#: ../includes/wpcm-preset-functions.php:1114
+#: ../includes/wpcm-preset-functions.php:1320
+#: ../includes/wpcm-preset-functions.php:1435
+#: ../includes/wpcm-preset-functions.php:1546
+#: ../includes/wpcm-preset-functions.php:1661
+#: ../includes/wpcm-preset-functions.php:1760
+msgid "Draw"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:255
+#: ../includes/wpcm-preset-functions.php:389
+#: ../includes/wpcm-preset-functions.php:480
+#: ../includes/wpcm-preset-functions.php:826
+#: ../includes/wpcm-preset-functions.php:921
+#: ../includes/wpcm-preset-functions.php:1016
+#: ../includes/wpcm-preset-functions.php:1115
+#: ../includes/wpcm-preset-functions.php:1321
+#: ../includes/wpcm-preset-functions.php:1436
+#: ../includes/wpcm-preset-functions.php:1547
+#: ../includes/wpcm-preset-functions.php:1662
+#: ../includes/wpcm-preset-functions.php:1761
+msgctxt "Draw"
+msgid "D"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:262
+#: ../includes/wpcm-preset-functions.php:1233
+msgid "Overtime Wins"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:263
+#: ../includes/wpcm-preset-functions.php:1234
+msgctxt "Overtime Wins"
+msgid "OTW"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:266
+#: ../includes/wpcm-preset-functions.php:1237
+msgid "Overtime Losses"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:267
+#: ../includes/wpcm-preset-functions.php:1238
+msgctxt "Overtime Losses"
+msgid "OTL"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:274
+#: ../includes/wpcm-preset-functions.php:662
+#: ../includes/wpcm-preset-functions.php:833
+#: ../includes/wpcm-preset-functions.php:1554
+#: ../includes/wpcm-preset-functions.php:1669
+#, fuzzy
+msgid "Points For"
+msgstr "Viso taškų"
+
+#: ../includes/wpcm-preset-functions.php:275
+#: ../includes/wpcm-preset-functions.php:663
+#: ../includes/wpcm-preset-functions.php:1555
+#: ../includes/wpcm-preset-functions.php:1670
+msgctxt "Points For"
+msgid "PF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:278
+#: ../includes/wpcm-preset-functions.php:666
+#: ../includes/wpcm-preset-functions.php:837
+#: ../includes/wpcm-preset-functions.php:1558
+#: ../includes/wpcm-preset-functions.php:1673
+msgid "Points Against"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:279
+#: ../includes/wpcm-preset-functions.php:667
+#: ../includes/wpcm-preset-functions.php:1559
+#: ../includes/wpcm-preset-functions.php:1674
+msgctxt "Points Against"
+msgid "PA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:282
+#: ../includes/wpcm-preset-functions.php:670
+#: ../includes/wpcm-preset-functions.php:841
+#: ../includes/wpcm-preset-functions.php:1562
+#: ../includes/wpcm-preset-functions.php:1677
+msgid "Points Difference"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:283
+#: ../includes/wpcm-preset-functions.php:671
+#: ../includes/wpcm-preset-functions.php:842
+#: ../includes/wpcm-preset-functions.php:1563
+#: ../includes/wpcm-preset-functions.php:1678
+msgctxt "Points Difference"
+msgid "PD"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:292
+msgid "Cricket"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:319
+msgid "Batting &amp; Fielding"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:320
+msgid "Bowling"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:324
+#, fuzzy
+#| msgid "Standings"
+msgid "Innings"
+msgstr "Turnyrinė lentelė"
+
+#: ../includes/wpcm-preset-functions.php:325
+msgctxt "Innings"
+msgid "I"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:334
+msgid "Fours"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:335
+msgctxt "Fours"
+msgid "4s"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:339
+msgid "Sixes"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:340
+msgctxt "Sixes"
+msgid "6s"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:344
+#, fuzzy
+#| msgid "Matches"
+msgid "Catches"
+msgstr "Varžybos"
+
+#: ../includes/wpcm-preset-functions.php:345
+msgctxt "Catches"
+msgid "CT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:349
+#, fuzzy
+#| msgid "Standings"
+msgid "Stumpings"
+msgstr "Turnyrinė lentelė"
+
+#: ../includes/wpcm-preset-functions.php:350
+msgctxt "Stumpings"
+msgid "ST"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:354
+msgid "Overs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:355
+msgctxt "Overs"
+msgid "O"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:359
+msgid "Maidens"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:360
+msgctxt "Maidens"
+msgid "M"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:365
+msgctxt "Runs Against"
+msgid "R"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:370
+#, fuzzy
+#| msgctxt "Won"
+#| msgid "W"
+msgctxt "Wickets"
+msgid "W"
+msgstr "Laimėta"
+
+#: ../includes/wpcm-preset-functions.php:410
+msgid "Floorball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:430
+#: ../includes/wpcm-preset-functions.php:792
+#: ../includes/wpcm-preset-functions.php:875
+#: ../includes/wpcm-preset-functions.php:1065
+#: ../includes/wpcm-preset-functions.php:1168
+msgctxt "Goals"
+msgid "G"
+msgstr "Įv."
+
+#: ../includes/wpcm-preset-functions.php:437
+#: ../includes/wpcm-preset-functions.php:1175
+msgid "Plus/Minus Rating"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:438
+#: ../includes/wpcm-preset-functions.php:1176
+msgctxt "Plus/Minus Rating"
+msgid "+/-"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:441
+#: ../includes/wpcm-preset-functions.php:1076
+msgid "Shots on Goal"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:442
+#: ../includes/wpcm-preset-functions.php:1077
+msgctxt "Shots on Goal"
+msgid "SOG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:445
+#: ../includes/wpcm-preset-functions.php:1191
+msgid "Penalty Minutes"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:446
+msgctxt "Penalty Minutes"
+msgid "PM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:449
+#: ../includes/wpcm-preset-functions.php:803
+#: ../includes/wpcm-preset-functions.php:898
+#: ../includes/wpcm-preset-functions.php:993
+#: ../includes/wpcm-preset-functions.php:1092
+#: ../includes/wpcm-preset-functions.php:1524
+#: ../includes/wpcm-preset-functions.php:1639
+#: ../includes/wpcm-preset-functions.php:1738
+msgid "Red Cards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:450
+#: ../includes/wpcm-preset-functions.php:804
+#: ../includes/wpcm-preset-functions.php:899
+#: ../includes/wpcm-preset-functions.php:994
+#: ../includes/wpcm-preset-functions.php:1093
+#: ../includes/wpcm-preset-functions.php:1525
+#: ../includes/wpcm-preset-functions.php:1640
+#: ../includes/wpcm-preset-functions.php:1739
+msgctxt "Red Cards"
+msgid "RC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:453
+#: ../includes/wpcm-preset-functions.php:1080
+#: ../includes/wpcm-preset-functions.php:1207
+#: ../includes/wpcm-preset-functions.php:1298
+msgid "Saves"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:454
+#: ../includes/wpcm-preset-functions.php:1081
+#: ../includes/wpcm-preset-functions.php:1208
+#: ../includes/wpcm-preset-functions.php:1299
+msgctxt "Saves"
+msgid "SAV"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:457
+#: ../includes/wpcm-preset-functions.php:491
+#: ../includes/wpcm-preset-functions.php:932
+#: ../includes/wpcm-preset-functions.php:1027
+#: ../includes/wpcm-preset-functions.php:1126
+#: ../includes/wpcm-preset-functions.php:1249
+#: ../includes/wpcm-preset-functions.php:1332
+#: ../includes/wpcm-preset-functions.php:1447
+#: ../includes/wpcm-preset-functions.php:1772
+msgid "Goals Against"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:458
+msgctxt "Goals Against"
+msgid "GA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:487
+#: ../includes/wpcm-preset-functions.php:928
+#: ../includes/wpcm-preset-functions.php:1023
+#: ../includes/wpcm-preset-functions.php:1122
+#: ../includes/wpcm-preset-functions.php:1245
+#: ../includes/wpcm-preset-functions.php:1328
+#: ../includes/wpcm-preset-functions.php:1443
+#: ../includes/wpcm-preset-functions.php:1768
+msgid "Goals For"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:488
+#: ../includes/wpcm-preset-functions.php:929
+#: ../includes/wpcm-preset-functions.php:1024
+#: ../includes/wpcm-preset-functions.php:1123
+#: ../includes/wpcm-preset-functions.php:1246
+#: ../includes/wpcm-preset-functions.php:1329
+#: ../includes/wpcm-preset-functions.php:1444
+#: ../includes/wpcm-preset-functions.php:1769
+msgctxt "Goals For"
+msgid "F"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:492
+#: ../includes/wpcm-preset-functions.php:933
+#: ../includes/wpcm-preset-functions.php:1028
+#: ../includes/wpcm-preset-functions.php:1127
+#: ../includes/wpcm-preset-functions.php:1250
+#: ../includes/wpcm-preset-functions.php:1448
+msgctxt "Goals Against"
+msgid "A"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:495
+#: ../includes/wpcm-preset-functions.php:936
+#: ../includes/wpcm-preset-functions.php:1031
+#: ../includes/wpcm-preset-functions.php:1130
+#: ../includes/wpcm-preset-functions.php:1253
+#: ../includes/wpcm-preset-functions.php:1336
+#: ../includes/wpcm-preset-functions.php:1776
+msgid "Goal Difference"
+msgstr "Įvarčiu skirtumas"
+
+#: ../includes/wpcm-preset-functions.php:496
+#: ../includes/wpcm-preset-functions.php:937
+#: ../includes/wpcm-preset-functions.php:1032
+#: ../includes/wpcm-preset-functions.php:1131
+#: ../includes/wpcm-preset-functions.php:1254
+#: ../includes/wpcm-preset-functions.php:1337
+#: ../includes/wpcm-preset-functions.php:1777
+msgctxt "Goal Difference"
+msgid "GD"
+msgstr "Įvarč. skirt."
+
+#: ../includes/wpcm-preset-functions.php:505
+msgid "American Football"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:560
+msgid "Pass Completions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:561
+msgctxt "Pass Completions"
+msgid "CMP"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:564
+msgid "Passing Yards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:565
+msgctxt "Passing Yards"
+msgid "YDS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:568
+msgid "Passing Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:569
+msgctxt "Passing Touchdowns"
+msgid "PASS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:572
+msgid "Passing Interceptions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:573
+msgctxt "Passing Interceptions"
+msgid "INT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:576
+msgid "Rushing Yards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:577
+msgctxt "Rushing Yards"
+msgid "YDS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:580
+msgid "Rushing Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:581
+msgctxt "Rushing Touchdowns"
+msgid "RUSH"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:584
+msgid "Receptions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:585
+msgctxt "Receptions"
+msgid "REC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:588
+msgid "Receiving Yards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:589
+msgctxt "Receiving Yards"
+msgid "YDS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:592
+msgid "Receiving Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:593
+msgctxt "Receiving Touchdowns"
+msgid "REC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:596
+msgid "Total Tackles"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:597
+msgctxt "Total Tackles"
+msgid "TOTAL"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:600
+msgid "Sacks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:601
+msgctxt "Sacks"
+msgid "SACK"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:604
+msgid "Fumbles"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:605
+msgctxt "Fumbles"
+msgid "FF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:608
+#: ../includes/wpcm-preset-functions.php:1401
+msgid "Interceptions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:609
+#: ../includes/wpcm-preset-functions.php:1402
+msgctxt "Interceptions"
+msgid "INT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:612
+msgid "Blocked Kicks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:613
+msgctxt "Blocked Kicks"
+msgid "KB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:616
+msgid "Touchdowns"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:617
+msgctxt "Touchdowns"
+msgid "T"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:620
+msgid "2 Point Conversions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:621
+msgctxt "2 Point Conversions"
+msgid "2PT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:624
+msgid "Field Goals"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:625
+msgctxt "Field Goals"
+msgid "FG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:628
+msgid "Extra Points"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:629
+msgctxt "Extra Points"
+msgid "PAT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:632
+msgid "Total Points"
+msgstr "Viso taškų"
+
+#: ../includes/wpcm-preset-functions.php:633
+msgctxt "Total Points"
+msgid "PTS"
+msgstr "Taškai"
+
+#: ../includes/wpcm-preset-functions.php:654
+msgid "Tie"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:655
+msgctxt "Tie"
+msgid "T"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:684
+msgid "Australian Rules Football"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:735
+msgid "Kicks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:736
+msgctxt "Kicks"
+msgid "K"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:739
+msgid "Handballs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:740
+msgctxt "Handballs"
+msgid "HB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:743
+msgid "Disposals"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:744
+msgctxt "Disposals"
+msgid "D"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:747
+msgid "Contested Possesion"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:748
+msgctxt "Contested Possesion"
+msgid "CP"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:751
+msgid "Marks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:752
+msgctxt "Marks"
+msgid "M"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:755
+msgid "Contested Marks"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:756
+msgctxt "Contested Marks"
+msgid "CM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:759
+msgid "Frees For"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:760
+msgctxt "Frees For"
+msgid "FF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:763
+msgid "Frees Against"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:764
+msgctxt "Frees Against"
+msgid "FA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:767
+msgid "Clangers"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:768
+msgctxt "Clangers"
+msgid "C"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:771
+msgid "Tackles"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:772
+msgctxt "Tackles"
+msgid "T"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:775
+msgid "Inside 50s"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:776
+msgctxt "Inside 50s"
+msgid "I50"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:779
+msgid "Rebound 50s"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:780
+msgctxt "Rebound 50s"
+msgid "R50"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:783
+msgid "One-Percenters"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:784
+msgctxt "One-Percenters"
+msgid "1PCT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:787
+msgid "Hit Outs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:788
+msgctxt "Hit Outs"
+msgid "HO"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:795
+msgid "Behinds"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:796
+msgctxt "Behinds"
+msgid "B"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:799
+#: ../includes/wpcm-preset-functions.php:890
+#: ../includes/wpcm-preset-functions.php:989
+#: ../includes/wpcm-preset-functions.php:1088
+#: ../includes/wpcm-preset-functions.php:1520
+#: ../includes/wpcm-preset-functions.php:1635
+#: ../includes/wpcm-preset-functions.php:1734
+msgid "Yellow Cards"
+msgstr "Geltonos kortelės"
+
+#: ../includes/wpcm-preset-functions.php:800
+#: ../includes/wpcm-preset-functions.php:891
+#: ../includes/wpcm-preset-functions.php:990
+#: ../includes/wpcm-preset-functions.php:1089
+#: ../includes/wpcm-preset-functions.php:1521
+#: ../includes/wpcm-preset-functions.php:1636
+#: ../includes/wpcm-preset-functions.php:1735
+msgctxt "Yellow Cards"
+msgid "YC"
+msgstr "Geltonos kortelės"
+
+#: ../includes/wpcm-preset-functions.php:834
+msgctxt "Points For"
+msgid "F"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:838
+msgctxt "Points Against"
+msgid "A"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:851
+msgid "Gaelic Football / Hurling"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:879
+msgctxt "Points"
+msgid "P"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:882
+msgid "Goals From Frees"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:883
+msgctxt "Goals From Frees"
+msgid "GFF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:886
+msgid "Points From Frees"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:887
+msgctxt "Points From Frees"
+msgid "PFF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:894
+msgid "Black Cards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:895
+msgctxt "Black Cards"
+msgid "BC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:946
+msgid "Handball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:982
+#: ../includes/wpcm-preset-functions.php:1287
+#: ../includes/wpcm-preset-functions.php:1382
+#: ../includes/wpcm-preset-functions.php:1715
+msgctxt "Goals"
+msgid "GLS"
+msgstr "Įvarčiai"
+
+#: ../includes/wpcm-preset-functions.php:985
+msgid "2 Minute Suspension"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:986
+msgctxt "2 Minute Suspension"
+msgid "2MIN"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1041
+msgid "Field Hockey"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1072
+msgid "Shots"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1073
+msgctxt "Shots"
+msgid "SH"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1084
+msgid "Green Cards"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1085
+msgctxt "Green Cards"
+msgid "GC"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1140
+msgid "Ice Hockey"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1179
+msgid "Shots On Goal"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1180
+msgctxt "Shots On Goal"
+msgid "SOG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1183
+msgid "Missed Shots"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1184
+msgctxt "Missed Shots"
+msgid "MS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1187
+msgid "Blocked Shots"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1188
+msgctxt "Blocked Shots"
+msgid "BS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1192
+msgctxt "Penalty Minutes"
+msgid "PIM"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1196
+msgctxt "Hits"
+msgid "HT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1199
+msgid "Faceoffs Won"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1200
+msgctxt "Faceoffs Won"
+msgid "FW"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1203
+msgid "Faceoffs Lost"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1204
+msgctxt "Faceoffs Lost"
+msgid "FL"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1263
+msgid "Lacrosse"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1294
+msgid "Ground Balls"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1295
+msgctxt "Ground Balls"
+msgid "GRB"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1333
+#: ../includes/wpcm-preset-functions.php:1773
+msgctxt "Played"
+msgid "A"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1346
+msgid "Netball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1385
+msgid "Goal Attempts"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1386
+msgctxt "Goal Attempts"
+msgid "ATT"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1389
+msgid "Goal Assists"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1390
+msgctxt "Goal Assists"
+msgid "AST"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1397
+msgid "Center Pass Receives"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1398
+msgctxt "Center Pass Receives"
+msgid "CPR"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1405
+msgid "Deflections"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1406
+msgctxt "Deflections"
+msgid "DEF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1410
+#: ../includes/wpcm-preset-functions.php:1513
+#: ../includes/wpcm-preset-functions.php:1628
+msgctxt "Penalties"
+msgid "PEN"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1451
+msgid "Goals Difference"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1452
+msgctxt "Goals Difference"
+msgid "PD"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1461
+msgid "Rugby League"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1504
+#: ../includes/wpcm-preset-functions.php:1619
+msgid "Tries"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1505
+#: ../includes/wpcm-preset-functions.php:1620
+msgctxt "Tries"
+msgid "TR"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1508
+#: ../includes/wpcm-preset-functions.php:1623
+msgid "Conversions"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1509
+#: ../includes/wpcm-preset-functions.php:1624
+msgctxt "Conversions"
+msgid "CON"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1516
+#: ../includes/wpcm-preset-functions.php:1631
+msgid "Drop Goals"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1517
+#: ../includes/wpcm-preset-functions.php:1632
+msgctxt "Drop Goals"
+msgid "DG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1572
+msgid "Rugby Union"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1682
+msgctxt "Bonus Points"
+msgid "B"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1691
+msgid "Football (Soccer)"
+msgstr "Futbolas"
+
+#: ../includes/wpcm-preset-functions.php:1723
+msgctxt "Penalties"
+msgid "PENS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1726
+msgid "Own Goals"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1727
+msgctxt "Own Goals"
+msgid "OG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1730
+msgid "Clean Sheets"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1731
+msgctxt "Clean Sheets"
+msgid "CS"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1786
+msgid "Volleyball"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1817
+msgid "Aces"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1818
+msgctxt "Aces"
+msgid "ACE"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1821
+msgid "Kills"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1822
+msgctxt "Kills"
+msgid "KILL"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1829
+msgid "Block Assists"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1830
+msgctxt "Block Assists"
+msgid "BA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1833
+msgid "Setting Assists"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1834
+msgctxt "Setting Assists"
+msgid "SA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1837
+msgid "Digs"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1838
+msgctxt "Digs"
+msgid "DIG"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1863
+msgid "Sets For"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1864
+msgctxt "Sets For"
+msgid "SF"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1867
+msgid "Sets Against"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1868
+msgctxt "Sets Against"
+msgid "SA"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1871
+msgid "Set Difference"
+msgstr ""
+
+#: ../includes/wpcm-preset-functions.php:1872
+msgctxt "Set Difference"
+msgid "SD"
+msgstr ""
+
+#: ../templates/content-single-club.php:70
+msgid "Ground"
+msgstr ""
+
+#: ../templates/content-single-club.php:93
+msgid "Ground Info"
+msgstr ""
+
+#: ../templates/content-single-club.php:131
+#, php-format
+msgid "Matches against %s"
+msgstr ""
+
+#: ../templates/content-widget-birthdays.php:31
+msgid "Happy Birthday!"
+msgstr ""
+
+#: ../templates/shortcodes/matches.php:24
+msgid "Opponent"
+msgstr "Varžovas"
+
+#: ../templates/single-match/lineup-row.php:60
+msgid "Green Card"
+msgstr ""
+
+#: ../templates/single-match/lineup-row.php:66
+msgid "Yellow Card"
+msgstr "Geltona kortelė"
+
+#: ../templates/single-match/lineup-row.php:72
+msgid "Black Card"
+msgstr ""
+
+#: ../templates/single-match/lineup-row.php:78
+msgid "Red Card"
+msgstr "Raudona kortelė"
+
+#: ../templates/single-match/lineup.php:25
+msgid "Lineup"
+msgstr ""
+
+#: ../templates/single-match/lineup.php:48
+#: ../templates/single-match/lineup.php:99
+msgid "Cards"
+msgstr "Kortelės"
+
+#: ../templates/single-match/lineup.php:76
+msgid "Subs"
+msgstr ""
+
+#: ../templates/single-match/report.php:22
+msgid "Match Report"
+msgstr ""
+
+#: ../templates/single-match/status.php:26
+msgid "AET"
+msgstr ""
+
+#: ../templates/single-match/status.php:37
+msgid "Pens:"
+msgstr ""
+
+#: ../templates/single-player/meta.php:23
+msgid "Squad No."
+msgstr "Marškinėlių nr."
+
+#: ../wpclubmanager.php:119
+msgid "View WP Club Manager Settings"
+msgstr ""
+
+#: ../wpclubmanager.php:120
+msgid "View WP Club Manager Documentation"
+msgstr ""
+
+#: ../wpclubmanager.php:121
+msgid "Support"
+msgstr "Pagalba"

@@ -35,6 +35,7 @@
 				'title': '',
 				'thumb': 1,
 				'linkclub': 1,
+				'excludes': '',
 				};
 			var shortcode = '[wpcm_standings';
 			

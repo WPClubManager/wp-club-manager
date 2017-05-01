@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Post Types
- * @version     1.0.0
+ * @version     1.3.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,7 +29,7 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 		add_filter( 'enter_title_here', array( $this, 'enter_title_here' ), 1, 2 );
 
 		// Featured image text
-		add_filter( 'gettext', array( $this, 'featured_image_gettext' ) );
+		add_filter( 'admin_post_thumbnail_html', array( $this, 'custom_admin_post_thumbnail_html' ) );
 		add_filter( 'media_view_strings', array( $this, 'media_view_strings' ), 10, 2 );
 
 		// Admin columns
@@ -44,25 +44,6 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 	}
 
 	/**
-	 * Check if we're editing or adding a club
-	 * @return boolean
-	 */
-	private function is_editing_product() {
-
-		if ( ! empty( $_GET['post_type'] ) && 'wpcm_club' == $_GET['post_type'] ) {
-			return true;
-		}
-		if ( ! empty( $_GET['post'] ) && 'wpcm_club' == get_post_type( $_GET['post'] ) ) {
-			return true;
-		}
-		if ( ! empty( $_REQUEST['post_id'] ) && 'wpcm_club' == get_post_type( $_REQUEST['post_id'] ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Change title boxes in admin.
 	 * @param  string $text
 	 * @param  object $post
@@ -71,27 +52,21 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 	public function enter_title_here( $text, $post ) {
 
 		if ( $post->post_type == 'wpcm_club' )
-			return __( 'Club name', 'wpclubmanager' );
+			return __( 'Enter club name', 'wp-club-manager' );
 
 		return $text;
 	}
 
-	/**
-	 * Replace 'Featured' when editing a club. Adapted from https://gist.github.com/tw2113/c7fd8da782232ce90176
-	 * @param  string $string string being translated
-	 * @return string after manipulation
-	 */
-	public function featured_image_gettext( $string = '' ) {
+	public function custom_admin_post_thumbnail_html( $content ) {
+	    global $current_screen;
+	 
+	    if( 'wpcm_club' == $current_screen->post_type ) {
 
-		if ( 'Featured Image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Club Badge', 'wpclubmanager' );
-		} elseif ( 'Remove featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Remove club badge', 'wpclubmanager' );
-		} elseif ( 'Set featured image' == $string && $this->is_editing_product() ) {
-			$string = __( 'Set club badge', 'wpclubmanager' );
-		}
+	        $content = str_replace( __( 'Set featured image' ), __( 'Set club badge', 'wp-club-manager' ), $content);
+	    	$content = str_replace( __( 'Remove featured image' ), __( 'Remove club badge', 'wp-club-manager' ), $content );
+	    }
 
-		return $string;
+	        return $content;
 	}
 
 	/**
@@ -104,8 +79,8 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 
 		if ( is_object( $post ) ) {
 			if ( 'wpcm_club' == $post->post_type ) {
-				$strings['setFeaturedImageTitle'] = __( 'Set club badge', 'wpclubmanager' );
-				$strings['setFeaturedImage']      = __( 'Set club badge', 'wpclubmanager' );
+				$strings['setFeaturedImageTitle'] = __( 'Set club badge', 'wp-club-manager' );
+				$strings['setFeaturedImage']      = __( 'Set club badge', 'wp-club-manager' );
 			}
 		}
 
@@ -118,9 +93,9 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 		$columns = array(
 			'cb' => "<input type=\"checkbox\" />",
 			'crest' => '',
-			'title' => __( 'Club', 'wpclubmanager' ),
-			'comp' => __( 'Competition', 'wpclubmanager' ),
-			'season' => __( 'Season', 'wpclubmanager' ),
+			'title' => __( 'Club', 'wp-club-manager' ),
+			'comp' => __( 'Competition', 'wp-club-manager' ),
+			'season' => __( 'Season', 'wp-club-manager' ),
 		);
 
 		return $columns;
@@ -158,7 +133,7 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 			// comp dropdown
 			$selected = isset( $_REQUEST['wpcm_comp'] ) ? $_REQUEST['wpcm_comp'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'competitions', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'competitions', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_comp',
 				'name' => 'wpcm_comp',
 				'selected' => $selected
@@ -168,7 +143,7 @@ class WPCM_Admin_CPT_Club extends WPCM_Admin_CPT {
 			// season dropdown
 			$selected = isset( $_REQUEST['wpcm_season'] ) ? $_REQUEST['wpcm_season'] : null;
 			$args = array(
-				'show_option_all' =>  sprintf( __( 'Show all %s', 'wpclubmanager' ), __( 'seasons', 'wpclubmanager' ) ),
+				'show_option_all' =>  sprintf( __( 'Show all %s', 'wp-club-manager' ), __( 'seasons', 'wp-club-manager' ) ),
 				'taxonomy' => 'wpcm_season',
 				'name' => 'wpcm_season',
 				'selected' => $selected

@@ -1,0 +1,100 @@
+#dashboard_right_now li a.wpcm_match-count:before,
+#dashboard_right_now li span.wpcm_match-count:before {
+	content: '\f313';
+}
+#dashboard_right_now li a.wpcm_player-count:before,
+#dashboard_right_now li span.wpcm_player-count:before {
+    content: '\f307';
+}
+#dashboard_right_now li a.wpcm_staff-count:before,
+#dashboard_right_now li span.wpcm_staff-count:before {
+    content: '\f338';
+}
+#dashboard_right_now li a.wpcm_sponsor-count:before,
+#dashboard_right_now li span.wpcm_sponsor-count:before {
+    content: '\f488';
+}
+
+#wpclubmanager_dashboard_upcoming ul.wpcm-matches-list {
+	list-style: none;
+	margin-bottom: 20px;
+	padding: 0;
+	width: 100%;
+}
+#wpclubmanager_dashboard_upcoming li.wpcm-matches-list-item {
+	border-bottom: 1px solid #eee;
+	font-size: 1em;
+	list-style: none;
+	padding: 4px 10px;
+	margin: 0 !important;
+}
+#wpclubmanager_dashboard_upcoming li.wpcm-matches-list-item:nth-child(even) {
+	background: #f9f9f9;
+}
+
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-link {
+	display: table;
+	outline: 0;
+	table-layout: fixed;
+	text-decoration: none;
+	width: 100%;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-additional {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: .5em;
+    margin-top: .2em;
+}
+
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-col {
+	display: table-cell;
+	height: 32px;
+	overflow: hidden;
+	text-align: center;
+	vertical-align: middle;
+	white-space: no-wrap;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-additional-col {
+	display: table-cell;
+	text-align: center;
+}
+
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-date {
+	font-size: .875em;
+	text-align: left;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-club1,
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-club2 {
+	text-overflow: ellipsis;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-club1 {
+	text-align: right;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-club2 {
+	text-align: left;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-status {
+	border-left: .3em solid transparent;
+	border-right: .3em solid transparent;
+	padding: 0 .6em;
+	width: 2em;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-sep {
+	background: #00769c;
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-time {
+	font-size: .875em;
+}
+#wpclubmanager_dashboard_upcoming .wpcm-matches-list-info {
+	font-size: .875em;
+	text-align: right;
+}
+
+#wpclubmanager_dashboard_upcoming .add-new-match-link {
+	text-align: right;
+}

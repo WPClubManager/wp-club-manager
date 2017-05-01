@@ -1,34 +1,20 @@
 <?php
 /**
- * Single Player Bio
+ * Single Match - Comp
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $wpclubmanager, $post;
+global $post;
 
-$post_id = $post->ID;
-$match = get_post( $post_id );
-$comps = get_the_terms( $match->ID, 'wpcm_comp' ); ?>
+$comp = wpcm_get_match_comp( $post->ID ); ?>
 
 <div class="wpcm-match-comp">
-
-<?php if ( is_array( $comps ) ) { ?>
-				
-	<?php foreach ( $comps as $comp ) { ?>
-
 	<span>
-
-		<?php echo $comp->name; ?>
-
+		<?php echo $comp[0] . '&nbsp;' . $comp[2]; ?>
 	</span>
-
-	<?php }
-
-} ?>
-
 </div>

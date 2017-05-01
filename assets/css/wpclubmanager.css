@@ -166,6 +166,9 @@ table {
 	.wpcm-players-shortcode table tbody td.position {
 		text-align: left;
 	}
+	.wpcm-sub-appearances {
+		font-size: 85%;
+	}
 
 
 /* Standings */
@@ -225,6 +228,77 @@ table {
 	}
 	.wpcm-fixtures-shortcode td span.lose {
 		background: red;
+	}
+
+ul.wpcm-matches-list {
+	list-style: none;
+	margin-bottom: 1.6em;
+	margin-left: 0 !important;
+	padding: 0;
+	width: 100%;
+}
+	li.wpcm-matches-list-item {
+		font-size: 1em;
+		list-style: none;
+		margin: 0 !important;
+	}
+	.wpcm-matches-list-col {
+		display: table-cell;
+		height: 36px;
+		overflow: hidden;
+		text-align: center;
+		vertical-align: middle;
+		white-space: no-wrap;
+	}
+	.wpcm-matches-list-link {
+		display: table;
+		outline: 0;
+    	table-layout: fixed;
+    	text-decoration: none;
+    	width: 100%;
+	}
+	.wpcm-matches-list-date {
+		font-size: .85em;
+		text-align: left;
+		width: 7em;
+	}
+	.wpcm-matches-list-club1,
+	.wpcm-matches-list-club2 {
+		text-overflow: ellipsis;
+	}
+	.wpcm-matches-list-club1 {
+		text-align: right;
+	}
+	.wpcm-matches-list-club2 {
+		text-align: left;
+	}
+	.wpcm-matches-list-status {
+		border-left: .3em solid transparent;
+		border-right: .3em solid transparent;
+		padding: 0;
+		width: 7em;
+	}
+	.wpcm-matches-list-time {
+		font-size: .85em;
+	}
+	.wpcm-matches-list-result {
+		border-radius: 3px;
+		color: #fff;
+		padding: 2px 4px;
+	}
+	.wpcm-matches-list-result.win {
+		background: green;
+	}
+	.wpcm-matches-list-result.draw {
+		background: #888;
+	}
+	.wpcm-matches-list-result.loss {
+		background: red;
+	}
+	.wpcm-matches-list-info {
+		font-size: .85em;
+		text-align: right;
+		width: 6.75em;
 	}
 
 /* Sponsors */
@@ -327,6 +401,50 @@ table {
 			padding: .5em;
 		}
 
+.wpcm-birthdays-widget {
+	
+}
+	.wpcm-birthdays-widget li {
+		float: left;
+		margin-bottom: 1.5em;
+		width: 100%;
+	}
+	.wpcm-birthdays-widget li h3.happy-birthday {
+		margin: 0;
+		padding: 0;
+	}
+	.wpcm-birthdays-widget li .birthday-post {
+		width: 100%;
+	}
+	.wpcm-birthdays-widget li .birthday-post,
+	.wpcm-birthdays-widget li .birthday-meta {
+		overflow:hidden;
+		_overflow:visible;
+		zoom:1;
+	}
+	.wpcm-birthdays-widget li .birthday-post .birthday-image {
+		float:left;
+		margin: 3px 10px 0 0;
+	}
+	.wpcm-birthdays-widget li .birthday-post .birthday-image img{
+		display:block;
+	}
+	.wpcm-birthdays-widget li .birthday-meta h4 {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+	.wpcm-birthdays-widget li .birthday-meta h4 span {
+		float: right;
+	}
+	.widget-area .widget p.birthdate,
+	.wpcm-birthdays-widget p.birthdate {
+		float: left;
+		font-size: .913em;
+		margin: 0;
+		padding: 0;
+	}
+
 
 /*
 *******************************************************
@@ -388,6 +506,13 @@ table {
 		font-size: 1em;
 		font-weight: 600;
 		line-height: 1em;
+	}
+
+.wpcm-match-status {
+	padding: .5em 0;
+}
+	.wpcm-match-overtime {
+		margin-right: 1em;
 	}
 
 .wpcm-match-meta {
@@ -487,8 +612,8 @@ table {
 	.wpcm-match-details h3 {
 		margin-bottom: 1.5em;
 	}
-	.wpcm-match-stats-start img.lineup-thumb,
-	.wpcm-match-stats-subs img.lineup-thumb {
+	.wpcm-match-stats-start img.wp-post-image,
+	.wpcm-match-stats-subs img.wp-post-image {
 		vertical-align: middle;	
 	}
 	.wpcm-match-stats-subs {
@@ -543,12 +668,20 @@ table {
 .wpcm-profile-stats {
 	margin-bottom: 2em;
 }
-	.wpcm-profile-stats .stats-tabs {
+	.wpcm-profile-stats-block {
+		margin-bottom: 1.5em;
+	}
+	.wpcm-profile-stats h4 {
+		margin-bottom: 1.5em;
+	}
+	.wpcm-profile-stats .stats-tabs,
+	.wpcm-profile-stats .stats-tabs-multi {
 		margin: 0;
 		border-bottom: 1px solid #ccc;
 		padding-left: 6px;
 	}
-	.wpcm-profile-stats .stats-tabs li {
+	.wpcm-profile-stats .stats-tabs li,
+	.wpcm-profile-stats .stats-tabs-multi li {
 		display: inline-block;
 		background: #e4e4e4;
 		border-color: #ccc;
@@ -559,22 +692,26 @@ table {
 		position: relative;
 		margin-bottom:-1px;
 	}
-	.wpcm-profile-stats .stats-tabs li a {
+	.wpcm-profile-stats .stats-tabs li a,
+	.wpcm-profile-stats .stats-tabs-multi li a {
 		color: #555;
 		display: inline-block;
 		padding: 8px 12px;
 		text-decoration: none;
 	}
-	.wpcm-profile-stats .stats-tabs .tabs {
+	.wpcm-profile-stats .stats-tabs li.tabs,
+	.wpcm-profile-stats .stats-tabs-multi li.tabs-multi {
 		background: #fff;
 		border-bottom: 1px solid #fff;
 	}
-	.wpcm-profile-stats .tabs-panel {
+	.wpcm-profile-stats .tabs-panel,
+	.wpcm-profile-stats .tabs-panel-multi {
 		height: auto;
 		overflow: auto;
 		margin-top: 1.4em;
 	}
-	.wpcm-profile-stats .tabs-panel table td {
+	.wpcm-profile-stats .tabs-panel table td,
+	.wpcm-profile-stats .tabs-panel-multi table td {
 		text-align: center;
 	}
 
@@ -654,6 +791,44 @@ table {
 .wpcm-club-map {
 	margin-bottom: 1.5em;
 }
+
+.wpcm-h2h-list {
+	display: table;
+	border-collapse: separate;
+	border-spacing:10px;
+	list-style: none;
+	margin: 10px auto;
+}
+	.wpcm-h2h-list li {
+		background: #f9f9f9;
+		font-size: ;
+		display: table-cell;
+		list-style: none;
+		padding: 20px;
+		text-align: center;
+	}
+	.wpcm-h2h-list li span.wpcm-h2h-list-count {
+		font-size: 2em;
+		font-weight: 600;
+	}
+	.wpcm-h2h-list li span.wpcm-h2h-list-desc {
+		font-size: 0.75em;
+		display: block;
+		margin-top: 5px;
+		text-transform: uppercase;
+	}
+	.wpcm-h2h-list li.p {
+	
+	}
+	.wpcm-h2h-list li.w {
+	
+	}
+	.wpcm-h2h-list li.d {
+	
+	}
+	.wpcm-h2h-list li.l {
+	
+	}
 
 
 /* Twentyfourteen theme specific styles */

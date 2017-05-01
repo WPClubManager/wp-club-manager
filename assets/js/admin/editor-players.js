@@ -33,8 +33,7 @@
 				'linktext': '',
 				'linkpage': '',
 				'stats': 'flag,number,name,position,age',
-				'title': '',
-				'type': ''
+				'title': ''
 				};
 			var shortcode = '[wpcm_players';
 			

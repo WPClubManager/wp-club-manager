@@ -1,13 +1,13 @@
 <?php
 /**
- * WPClubManager Match Functions. Some code adapted from Football Club theme by themeboy.
+ * WPClubManager Match Functions.
  *
  * Functions for matches.
  *
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.6
+ * @version     1.5.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,465 +16,37 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function match_title( $title, $id = null ) {
 	if ( get_post_type( $id ) == 'wpcm_match' ) {
 		
-		$default_club = get_option('wpcm_default_club');
-		$title_format = get_option('wpcm_match_title_format');
+		$default_club = get_default_club();
+		$title_format = get_match_title_format();
 		$separator = get_option('wpcm_match_clubs_separator');
 		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
 		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
 		$home_club = get_post( $home_id );
 		$away_club = get_post( $away_id );
-		$search = array( '%home%', 'vs', '%away%' );
-		$replace = array( $home_club->post_title, $separator, $away_club->post_title );
-		
-		if ( $away_id == $default_club ) {
-			//away
-			$title = str_replace( $search, $replace, $title_format );
-		} else {
-			// home
-			$title = str_replace( $search, $replace, $title_format );
+		if( $title_format == '%home% vs %away%') {
+			$side1 = $home_club->post_title;
+			$side2 = $away_club->post_title;
+		}else{
+			$side1 = $away_club->post_title;
+			$side2 = $home_club->post_title;
 		}
+		
+		$title = $side1 . ' ' . $separator . ' ' . $side2;
 	}
 	return $title;
 }
 add_filter( 'the_title', 'match_title', 10, 2 );
 
-// generate title
+// // generate title
 function match_wp_title( $title ) {
-	global $post;
 	if ( get_post_type( ) == 'wpcm_match' ) {
 
-		$id = $post->ID;
-		$home_id = (int)get_post_meta( $id, 'wpcm_home_club', true );
-		$away_id = (int)get_post_meta( $id, 'wpcm_away_club', true );
-		$home_club = get_post( $home_id );
-		$away_club = get_post( $away_id );
-		$title = match_title( $title, $id ) . ' | ' . get_the_date();
-
-		return $title;
+		$id = get_the_ID();
+		$title = match_title( $title, $id ) . ' | ' . get_the_date() . ' | ';
 	}
 	return $title;
 }
 add_filter( 'wp_title', 'match_wp_title', 10, 2 );
-
-/**
- * Match player subs dropdown.
- *
- * @access public
- * @param array
- * @param string $id
- * @param bool $disabled = false
- * @return void
- */
-function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = false ) {
-
-	global $post;
-	
-	$teams = get_the_terms( $post->ID, 'wpcm_team' );
-	$seasons = get_the_terms( $post->ID, 'wpcm_season' );
-
-	if ( is_array( $teams ) ) {
-						
-		$match_teams = array();
-
-		foreach ( $teams as $team ) {
-			
-			$match_teams[] = $team->term_id;
-		}
-	} else {
-		$match_teams = array();
-	}
-
-	if ( is_array( $seasons ) ) {
-						
-		$match_seasons = array();
-
-		foreach ( $seasons as $season ) {
-			
-			$match_seasons[] = $season->term_id;
-		}
-	}else {
-		$match_seasons = array();
-	}
-
-	$subs = get_posts( array (
-		'post_type' => 'wpcm_player',
-		'tax_query' => array(
-			'relation' => 'AND',
-			array(
-				'taxonomy' => 'wpcm_team',
-				'field' => 'term_id',
-				'terms' => $match_teams
-			),
-			array(
-				'taxonomy' => 'wpcm_season',
-				'field' => 'term_id',
-				'terms' => $match_seasons
-			)
-		),
-		'meta_key' => 'wpcm_number',
-		'orderby' => 'meta_value_num',
-		'order' => 'ASC',
-		'showposts' => -1
-	) ); ?>
-
-	<td>
-		<select name="wpcm_players[subs][<?php echo $id; ?>][sub]" data-player="<?php echo $id; ?>" class="postform" <?php disabled( true, $disabled ); ?>>
-			<option value="-1"><?php _e( 'None' ); ?></option>
-
-			<?php foreach( $subs as $sub ) { ?>
-			<option value="<?php echo $sub->ID; ?>"<?php echo ( $sub->ID == get_wpcm_stats_value( $players['subs'], $id, 'sub' ) ? ' selected' : '' ); ?>>
-				<?php echo get_post_meta( $sub->ID, 'wpcm_number', true ); ?>. <?php echo $sub->post_title; ?>
-			</option>
-			<?php } ?>
-		</select>
-	</td>
-<?php
-}
-
-/**
- * Match player minutes input.
- *
- * @access public
- * @param array
- * @param string $id
- * @param bool $disabled = false
- * @return void
- */
-function wpcm_player_subs_minutes( $players = array(), $id = null, $disabled = false ) {
-	global $player;
-
-	$players = array( 'lineup' => array(), 'subs' => array() ); ?>
-
-	<td>
-		<input type="text" data-player="<?php echo $id; ?>" name="wpcm_players[subs][<?php echo $id; ?>][subtime]" value="<?php echo get_wpcm_stats_value( $players['subs'], $id, 'subtime' ) ?>" size="2" <?php disabled( true, $disabled ); ?>/>
-	</td>
-<?php
-}
-
-/**
- * Player stats table.
- *
- * @access public
- * @param array
- * @param string $club
- * @param string $type
- * @param bool $keyarray = false
- * @return void
- */
-function wpcm_match_player_stats_table( $selected_players = array(), $type = 'lineup', $keyarray = false ) {
-
-	global $post, $player;
-
-	$teams = get_the_terms( $post->ID, 'wpcm_team' );
-	$seasons = get_the_terms( $post->ID, 'wpcm_season' );
-
-	if ( is_array( $teams ) ) {
-						
-		$match_teams = array();
-
-		foreach ( $teams as $team ) {
-			
-			$match_teams[] = $team->term_id;
-		}
-	} else {
-		$match_teams = array();
-	}
-
-	if ( is_array( $seasons ) ) {
-						
-		$match_seasons = array();
-
-		foreach ( $seasons as $season ) {
-			
-			$match_seasons[] = $season->term_id;
-		}
-	}else {
-		$match_seasons = array();
-	}
-
-	$args = array(
-		'post_type' => 'wpcm_player',
-		'meta_key' => 'wpcm_number',
-		'orderby' => 'menu_order meta_value_num',
-		'order' => 'ASC',
-		'showposts' => -1
-	);
-
-	if( $teams ) {
-		$args['tax_query'] = array(
-			'relation' => 'AND',
-			array(
-				'taxonomy' => 'wpcm_team',
-				'field' => 'term_id',
-				'terms' => $match_teams
-			),
-			array(
-				'taxonomy' => 'wpcm_season',
-				'field' => 'term_id',
-				'terms' => $match_seasons
-			)
-		);
-	}
-
-	$players = get_posts( $args );
-
-	if ( empty( $players ) ) { ?>
-
-		<div class="wpcm-notice-block">
-			<p>
-				<?php _e( 'No players found!', 'wpclubmanager' ); ?>
-			</p>
-		</div>
-	<?php
-	} else {
-
-		if ( ! is_array( $selected_players ) ) $selected_players = array();
-
-		$selected_players = array_merge( array( 'lineup' => array(), 'subs' => array() ), $selected_players );
-
-		$wpcm_player_stats_labels = wpcm_get_sports_stats_labels(); ?>
-
-		<p class="">
-			<?php _e( 'Click and drag players to reorder', 'wpclubmanager' ); ?>
-			<img src="<?php bloginfo('url'); ?>/wp-admin/images/loading.gif" id="loading-animation" />
-		</p>
-		<table class="wpcm-match-players-table">
-			<thead>
-				<tr class="player-stats-list-labels">
-					<th>&nbsp;</th>
-
-					<?php foreach( $wpcm_player_stats_labels as $key => $val ) { 
-
-						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-							<th<?php if( $key == 'greencards' ||$key == 'yellowcards' || $key == 'blackcards' || $key == 'redcards' ) echo ' class="th-checkbox"'; if( $key == 'mvp' ) echo ' class="th-radio"'; ?>><?php echo $val; ?></th>
-						<?php
-						endif;
-					}
-
-					if ( $type == 'subs' ) { ?>
-						<th><?php _e( 'Player Off', 'wpclubmanager' ); ?></th>
-					<?php } ?>
-
-				</tr>
-			</thead>
-			<tbody class="wpcm-sortable">
-				<?php foreach( $players as $player ) { ?>
-					<?php
-					$played = (
-						is_array( $selected_players ) &&
-						array_key_exists( $type, $selected_players ) &&
-						is_array( $selected_players[$type] ) &&
-						array_key_exists( $player->ID, $selected_players[$type] )&&
-						is_array( $selected_players[$type][$player->ID] )
-					);
-
-					$teams = get_the_terms( $player->ID, 'wpcm_team' );
-					$seasons = get_the_terms( $player->ID, 'wpcm_season' );
-
-					if($teams){
-						$teamclass = array();
-						foreach( $teams as $team ) {
-							$teamclass[] = 'team_' . $team->term_id . ' ';
-						}
-					}else{
-						$teamclass = array();
-					}
-					$player_teams = implode( '', $teamclass );
-
-					if($seasons > 0){
-						foreach( $seasons as $season ) {
-							$seasonclass = 'season_' . $season->term_id . ' ';
-						}
-					}else{
-						$seasonclass = 'season_0 ';
-					}
-
-					$number = get_post_meta( $player->ID, 'wpcm_number', true );
-
-					if( $number ) {
-						$squad_number = $number . '. ';
-					} else {
-						$squad_number = '';
-					} ?>
-
-					<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $player_teams; ?> <?php echo $seasonclass; ?> sortable sorted">
-						<td class="names">
-							<label class="selectit">
-								<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> /><span class="name">
-								<?php echo $squad_number; ?> <?php echo $player->post_title; ?></span>
-							</label>
-						</td>
-						<?php foreach( $wpcm_player_stats_labels as $key => $val ):
-
-							$keyarray = (
-									is_array( $selected_players ) &&
-									array_key_exists( $type, $selected_players ) &&
-									is_array( $selected_players[$type] ) &&
-									array_key_exists( $player->ID, $selected_players[$type] ) &&
-									is_array( $selected_players[$type][$player->ID] ) &&
-									array_key_exists( $key, $selected_players[$type][$player->ID] )
-								);
-
-							if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
-
-								if ( $key == 'greencards' ) { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="checkbox" data-card="green" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php } elseif ( $key == 'yellowcards' ) { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php } elseif ( $key == 'blackcards' ) { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="checkbox" data-card="black" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php } elseif ( $key == 'redcards' ) { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php } elseif ( $key == 'rating' ) { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php } elseif ( $key == 'mvp' ) { ?>
-
-									<td class="mvp">
-										<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
-									</td>
-
-								<?php } else { ?>
-
-									<td class="<?php echo $key; ?>">
-										<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $selected_players[$type], $player->ID, $key ); ?>"<?php if ( !$played ) echo ' disabled'; ?>/>
-									</td>
-
-								<?php }
-
-							endif;
-						
-						endforeach;
-
-						if ( $type == 'subs' ) {
-							
-							wpcm_player_subs_dropdown( $selected_players, $player->ID, !$played );
-							
-						} ?>
-					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	<?php
-	}
-}
-
-/**
- * Single page match player row.
- *
- * @access public
- * @param array
- * @param string $key
- * @param string $value
- * @param int $count
- * @return mixed $output
- */
-function wpcm_match_player_row( $key, $value, $count = 0 ) {
-
-	$number = get_post_meta( $key, 'wpcm_number', true );
-	$show_number = get_option('wpcm_player_profile_show_number');
-	$sport = get_option('wpcm_sport');
-	
-	if( $show_number == 'yes' && $number == true) {
-		$snumber = $number .'. ';
-	}else{
-		$snumber = '';
-	}
-
-	if( get_option('wpcm_results_show_image') == 'yes' ) {
-		if ( has_post_thumbnail( $key ) ) {			
-			$image = ' ' . get_the_post_thumbnail( $key, 'player_thumbnail', array( 'class' => 'lineup-thumb' ) ) . ' ';
-		} else {			
-			$image = ' ' . apply_filters( 'wpclubmanager_match_player_image', sprintf( '<img src="%s" alt="Placeholder" class="lineup-thumb" />', wpcm_placeholder_img_src() ), $post->ID ) . ' ';		
-		}
-	} else {
-		$image = '';
-	}
-
-	if ( isset( $value['mvp'] ) ) {
-		$mvp = '<span class="mvp" title="' . __( 'Man of Match', 'wpclubmanager' ) . '">&#9733;</span>';
-	} else {
-		$mvp = '';
-	}
-
-	$output = '';
-
-	$output .= '<tr>';
-
-	$output .= '<th class="name"><div>' . $snumber . '' . $image . '<a href="' . get_permalink( $key ) . '">' . get_the_title( $key ) . '</a>' . $mvp;
-
-	if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) {
-
-		$output .= '<span class="sub">&larr; ' . get_the_title( $value['sub'] ) . '</span>';
-	}
-
-	$output .= '</div></th>';
-
-	foreach( $value as $key => $stat ) {
-
-		if( $stat == '0' || $stat == null ) {
-			$stat = '&mdash;';
-		}
-
-		if( $key == 'checked' || $key == 'sub' || $key == 'greencards' || $key == 'yellowcards' || $key == 'blackcards' || $key == 'redcards' || $key == 'mvp' ) {
-			$output .= '';
-		} else {
-			if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
-				$output .= '<td class="'.$key.'">' . $stat . '</td>';
-			}
-		}
-	}
-
-	if( $sport == 'soccer' || $sport == 'rugby' || $sport == 'hockey_field' || $sport == 'footy' || $sport == 'floorball' || $sport == 'gaelic' || $sport == 'handball' ) {
-
-		$output .= '<td class="notes">';
-
-		if ( isset( $value['greencards'] ) ) {
-			
-			$output .= '<span class="greencard" title="' . __( 'Green Card', 'wpclubmanager' ) . '">' . __( 'Green Card', 'wpclubmanager' ) . '</span>';
-		}
-		
-		if ( isset( $value['yellowcards'] ) ) {
-			
-			$output .= '<span class="yellowcard" title="' . __( 'Yellow Card', 'wpclubmanager' ) . '">' . __( 'Yellow Card', 'wpclubmanager' ) . '</span>';
-		}
-
-		if ( isset( $value['blackcards'] ) ) {
-			
-			$output .= '<span class="blackcard" title="' . __( 'Black Card', 'wpclubmanager' ) . '">' . __( 'Black Card', 'wpclubmanager' ) . '</span>';
-		}
-		
-		if ( isset( $value['redcards'] ) ) {
-			$output .= '<span class="redcard" title="' . __( 'Red Card', 'wpclubmanager' ) . '">' . __( 'Red Card', 'wpclubmanager' ) . '</span>';
-		}
-
-		$output .= '</td>';
-
-	}
-
-	$output .= '</tr>';
-
-	return $output;
-}
 
 /**
  * Save ajax menu_order sortable
@@ -496,3 +68,365 @@ function wpcm_match_players_item_order() {
 }
 add_action('wp_ajax_item_sort', 'wpcm_match_players_item_order');
 add_action('wp_ajax_nopriv_item_sort', 'wpcm_match_players_item_order');
+
+/**
+ * Get match outcome - win, loss or draw.
+ *
+ * @access public
+ * @param int $post
+ * @return string $outcome
+ * @since 1.4.0
+ */
+function wpcm_get_match_outcome( $post ) {
+
+	$club = get_default_club();
+	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+	if( get_option('wpcm_sport' ) !== 'cricket' ) {
+		if( get_post_meta( $post, 'wpcm_shootout', true ) ) {
+			$home_goals = get_post_meta( $post, '_wpcm_home_shootout_goals', true );
+			$away_goals = get_post_meta( $post, '_wpcm_away_shootout_goals', true );
+		} else {
+			$home_goals = get_post_meta( $post, 'wpcm_home_goals', true );
+			$away_goals = get_post_meta( $post, 'wpcm_away_goals', true );
+		}
+	} else {
+		$runs = unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
+		$extras = unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
+		$home_goals = $runs['home'] + $extras['home'];
+		$away_goals = $runs['away'] + $extras['away'];
+	}
+
+	if ( $home_goals == $away_goals ) {
+		$outcome = 'draw';
+	}
+	if ( $club == $home_club ) {
+		if ( $home_goals > $away_goals ) {
+			$outcome = 'win';
+		}
+		if ( $home_goals < $away_goals ) {
+			$outcome = 'loss';
+		}
+	} else {
+		if ( $home_goals > $away_goals ) {
+			$outcome = 'loss';
+		}
+		if ( $home_goals < $away_goals ) {
+			$outcome = 'win';
+		}
+	}
+
+	return $outcome;
+}
+
+/**
+ * Get match result.
+ *
+ * @access public
+ * @param int $post
+ * @return string $result
+ * @since 1.4.6
+ */
+function wpcm_get_match_result( $post ) {
+
+	$sport = get_option( 'wpcm_sport' );
+	$format = get_match_title_format();
+	$hide = get_option( 'wpcm_hide_scores');
+	$delimiter = get_option( 'wpcm_match_goals_delimiter' );
+	$played = get_post_meta( $post, 'wpcm_played', true );
+	$home_goals = get_post_meta( $post, 'wpcm_home_goals', true );
+	$away_goals = get_post_meta( $post, 'wpcm_away_goals', true );
+	if( $sport == 'gaelic' ) {
+		$home_gaa_goals = get_post_meta( $post, 'wpcm_home_gaa_goals', true );
+		$home_gaa_points = get_post_meta( $post, 'wpcm_home_gaa_points', true );
+		$away_gaa_goals = get_post_meta( $post, 'wpcm_away_gaa_goals', true );
+		$away_gaa_points = get_post_meta( $post, 'wpcm_away_gaa_points', true );
+	}
+	if( $sport == 'cricket' ) {
+		$runs = unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
+		$extras = unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
+		$wickets = unserialize( get_post_meta( $post, '_wpcm_match_wickets', true ) );
+	}
+
+	if( $hide == 'yes' && ! is_user_logged_in() ) {
+		$result = ( $played ? __( 'x', 'wp-club-manager' ) . ' ' . $delimiter . ' ' . __( 'x', 'wp-club-manager' ) : '' );
+		$side1 = __( 'x', 'wp-club-manager' );
+		$side2 = __( 'x', 'wp-club-manager' );
+	} else {
+		if( $format == '%home% vs %away%' ) {
+			if( $sport == 'gaelic' ) {
+				$result = ( $played ? $home_gaa_goals . '-' . $home_gaa_points . ' ' . $delimiter . ' ' . $away_gaa_goals . '-' . $away_gaa_points : '' );
+				$side1 = ( $played ? $home_gaa_goals . '-' . $home_gaa_points : '-' );
+				$side2 = ( $played ? $away_gaa_goals . '-' . $away_gaa_points : '-' );
+
+			} elseif( $sport == 'cricket' ) {
+
+				$home_score = $runs['home'] + $extras['home'];
+				$away_score = $runs['away'] + $extras['away'];
+				$home_wickets = ( $wickets['home'] == '10' ? '' : '/' . $wickets['home'] );
+				$away_wickets = ( $wickets['away'] == '10' ? '' : '/' . $wickets['away'] );
+
+				$result = ( $played ? $home_score . $home_wickets . ' ' . $delimiter . ' ' . $away_score . $away_wickets : '' );
+				$side1 = ( $played ? $home_score . $home_wickets : '-' );
+				$side2 = ( $played ? $away_score . $away_wickets : '-' );
+
+			} else {
+
+				$result = ( $played ? $home_goals . ' ' . $delimiter . ' ' . $away_goals : '' );
+				$side1 = ( $played ? $home_goals : '' );
+				$side2 = ( $played ? $away_goals : '' );
+
+			}
+		} else {
+			if( $sport == 'gaelic' ) {
+
+				$result = ( $played ? $away_gaa_goals . '-' . $away_gaa_points . ' ' . $delimiter . ' ' . $home_gaa_goals . '-' . $home_gaa_points : '' );
+				$side1 = ( $played ? $away_gaa_goals . '-' . $away_gaa_points : '-' );
+				$side2 = ( $played ? $home_gaa_goals . '-' . $home_gaa_points : '-' );
+
+			} elseif( $sport == 'cricket' ) {
+
+				$home_score = $runs['home'] + $extras['home'];
+				$away_score = $runs['away'] + $extras['away'];
+				$home_wickets = ( $wickets['home'] == '10' ? '' : '/' . $wickets['home'] );
+				$away_wickets = ( $wickets['away'] == '10' ? '' : '/' . $wickets['away'] );
+
+				$result = ( $played ? $away_score . $away_wickets . ' ' . $delimiter . ' ' . $home_score . $home_wickets : '' );
+				$side1 = ( $played ? $away_score . $away_wickets : '-' );
+				$side2 = ( $played ? $home_score . $home_wickets : '-' );
+
+			} else {
+
+				$result = ( $played ? $away_goals . ' ' . $delimiter . ' ' . $home_goals : '' );
+				$side1 = ( $played ? $away_goals : '' );
+				$side2 = ( $played ? $home_goals : '' );
+			}
+		}
+	}
+
+	//return $result;
+
+	return array( $result, $side1, $side2, $delimiter );
+
+}
+
+/**
+ * Get match competition.
+ *
+ * @access public
+ * @param int $post
+ * @return array
+ * @since 1.4.0
+ */
+function wpcm_get_match_comp( $post ) {
+
+	$competitions = get_the_terms( $post, 'wpcm_comp' );
+	$status = get_post_meta( $post, 'wpcm_comp_status', true );
+
+	if ( is_array( $competitions ) ) {
+		foreach ( $competitions as $competition ):
+			$comp = $competition->name;
+			$competition = reset($competitions);
+			$t_id = $competition->term_id;
+			$competition_meta = get_option( "taxonomy_term_$t_id" );
+			$comp_label = $competition_meta['wpcm_comp_label'];
+			if ( $comp_label ) {
+				$label = $comp_label;
+			} else {
+				$label = $comp;
+			}
+		endforeach;
+	}
+
+	return array( $comp, $label, $status );
+}
+
+/**
+ * Get match team.
+ *
+ * @access public
+ * @param int $post
+ * @return array
+ * @since 1.4.0
+ */
+function wpcm_get_match_team( $post ) {
+
+	$teams = get_the_terms( $post, 'wpcm_team' );
+
+	if ( is_array( $teams ) ) {
+		foreach ( $teams as $team ) {
+			$name = $team->name;
+			$team = reset($teams);
+			$t_id = $team->term_id;
+			$team_meta = get_option( "taxonomy_term_$t_id" );
+			$team_label = $team_meta['wpcm_team_label'];
+			if ( $team_label ) {
+				$label = $team_label;
+			} else {
+				$label = $name;
+			}
+		}
+	} else {
+		$name = '';
+		$label = '';
+	}
+
+	return array( $name, $label );
+}
+
+/**
+ * Get match team names.
+ *
+ * @access public
+ * @param int $post
+ * @return array $side1 $side2
+ * @since 1.4.0
+ */
+function wpcm_get_match_clubs( $post ) {
+
+	$format = get_match_title_format();
+	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
+
+	if( $format == '%home% vs %away%' ) {
+		$side1 = wpcm_get_team_name( $home_club, $post );
+		$side2 = wpcm_get_team_name( $away_club, $post );
+	} else {
+		$side1 = wpcm_get_team_name( $away_club, $post );
+		$side2 = wpcm_get_team_name( $home_club, $post );
+	}
+
+	return array( $side1, $side2 );
+}
+
+/**
+ * Get match club badges.
+ *
+ * @access public
+ * @param int $post
+ * @return array $home_badge $away_badge
+ * @since 1.4.0
+ */
+function wpcm_get_match_badges( $post, $size = null, $args = null ) {
+
+	$format = get_match_title_format();
+	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
+
+	if( $format == '%home% vs %away%' ) {
+		if ( has_post_thumbnail( $home_club ) ) {
+			$badge1 = get_the_post_thumbnail( $home_club, $size, $args );
+		} else {
+			$badge1 = wpcm_crest_placeholder_img( $size );
+		}
+		if ( has_post_thumbnail( $away_club ) ) {
+			$badge2 = get_the_post_thumbnail( $away_club, $size, $args );
+		} else {
+			$badge2 = wpcm_crest_placeholder_img( $size );
+		}
+	}else{
+		if ( has_post_thumbnail( $away_club ) ) {
+			$badge1 = get_the_post_thumbnail( $away_club, $size, $args );
+		} else {
+			$badge1 = wpcm_crest_placeholder_img( $size );
+		}
+		if ( has_post_thumbnail( $home_club ) ) {
+			$badge2 = get_the_post_thumbnail( $home_club, $size, $args );
+		} else {
+			$badge2 = wpcm_crest_placeholder_img( $size );
+		}
+	}
+
+	return array( $badge1, $badge2 );
+}
+
+/**
+ * Get match venue.
+ *
+ * @access public
+ * @param int $post
+ * @return string $venue
+ * @since 1.4.6
+ */
+function wpcm_get_match_venue( $post ) {
+
+	$club = get_default_club();
+	$venues = get_the_terms( $post, 'wpcm_venue' );
+	$neutral = get_post_meta( $post, 'wpcm_neutral', true );
+	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+
+	if ( is_array( $venues ) ) {
+		$venue = reset($venues);
+		$name = $venue->name;
+		$t_id = $venue->term_id;
+		$venue_meta = get_option( "taxonomy_term_$t_id" );
+		$address = $venue_meta['wpcm_address'];
+	} else {
+		$name = null;
+		$address = null;
+	}
+
+	if ( $neutral ) {
+		$status = __('N', 'wp-club-manager');
+	} else {
+		if ( $club == $home_club ) {
+			$status = __('H', 'wp-club-manager');
+		} else {
+			$status = __('A', 'wp-club-manager');
+		}
+	}
+
+	return array( $name, $status, $address );
+}
+
+/**
+ * Get match opponents.
+ *
+ * @access public
+ * @param int $post
+ * @param bool $link_club
+ * @return string $opponent
+ * @since 1.4.0
+ */
+function wpcm_get_match_opponents( $post, $link_club = true ) {
+
+	$club = get_default_club();
+	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
+
+	if ( $club == $home_club ) {
+		$opponent = ( $link_club ? '<a href="' . get_post_permalink( $away_club, false, true ) . '">' : '' ) . '' . get_the_title( $away_club, true ) . '' . ( $link_club ? '</a>' : '');
+	} elseif ( $club == $away_club ) {
+		$opponent = ( $link_club ? '<a href="' . get_post_permalink( $home_club, false, true ) . '">' : '' ) . '' . get_the_title( $home_club, true ) . '' . ( $link_club ? '</a>' : '');
+	}
+
+	return $opponent;
+}
+
+/**
+ * Get match player stats.
+ *
+ * @access public
+ * @param string $post_id
+ * @return mixed $players
+ */
+if (!function_exists('get_wpcm_match_player_stats')) {
+	function get_wpcm_match_player_stats( $post_id = null ) {
+
+		if ( !$post_id ) global $post_id;
+
+		$players = unserialize( get_post_meta( $post_id, 'wpcm_players', true ) );
+		$output = array();
+
+		if( is_array( $players ) ):
+
+			foreach( $players as $id => $stats ):
+
+				if ( $stats['checked'] )
+
+					$output[$key] = $stats;
+			endforeach;
+		endif;
+
+		return $players;
+	}
+}

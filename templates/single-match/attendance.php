@@ -1,15 +1,15 @@
 <?php
 /**
- * Single Player Bio
+ * Single Match - Attendance
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $wpclubmanager, $post;
+global $post;
 
 $attendance = get_post_meta( $post->ID, 'wpcm_attendance', true );
 $show_attendance = get_option( 'wpcm_results_show_attendance' );
@@ -21,7 +21,7 @@ if ( $played ) {
 
 		<div class="wpcm-match-attendance">
 
-			<?php echo _e( 'Attendance' , 'wpclubmanager' ); ?>: <?php echo $attendance; ?>
+			<?php echo _e( 'Attendance', 'wp-club-manager' ); ?>: <?php echo $attendance; ?>
 
 		</div>
 

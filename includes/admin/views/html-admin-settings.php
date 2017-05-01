@@ -1,5 +1,5 @@
 <div class="wrap wpclubmanager">
-	<h2>WP Club Manager Settings</h2>
+	<h1><?php _e( 'WP Club Manager Settings', 'wp-club-manager' ); ?></h1>
 	<form method="post" id="mainform" action="" enctype="multipart/form-data">
 		<h2 class="nav-tab-wrapper wpcm-nav-tab-wrapper">
 			<?php
@@ -22,7 +22,7 @@
 
 					<p class="submit">
 			        	<?php if ( ! isset( $GLOBALS['hide_save_button'] ) ) : ?>
-			        		<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save changes', 'wpclubmanager' ); ?>" />
+			        		<input name="save" class="button-primary" type="submit" value="<?php _e( 'Save changes', 'wp-club-manager' ); ?>" />
 			        	<?php endif; ?>
 			        	<input type="hidden" name="subtab" id="last_tab" />
 			        	<?php wp_nonce_field( 'wpclubmanager-settings' ); ?>

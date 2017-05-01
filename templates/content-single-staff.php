@@ -6,7 +6,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.1.2
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -18,23 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	    <div class="wpcm-profile-image">
 			
-			<?php if ( has_post_thumbnail() ) {
-					
-				echo the_post_thumbnail( 'player_single' );
-				
-			} else {
-							
-				echo apply_filters( 'wpclubmanager_single_staff_image', sprintf( '<img src="%s" alt="Placeholder" />', wpcm_placeholder_img_src() ), $post->ID );
-						
-			} ?>
+			<?php echo wpcm_get_player_thumbnail( $post->ID, 'staff_single' ); ?>
 
 		</div>
 
 		<div class="wpcm-profile-meta">
 
 			<h1 class="entry-title"><?php the_title(); ?></h1>
-
-			<?php //$season = '0'; ?>
 
 			<table>
 							
@@ -46,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 						<tr>
 							<th>
-								<?php _e( 'Birthday', 'wpclubmanager' ); ?>
+								<?php _e( 'Birthday', 'wp-club-manager' ); ?>
 							</th>
 							<td>
 								<?php echo date_i18n( get_option( 'date_format' ), strtotime( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ); ?>
@@ -58,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 						<tr>
 							<th>
-								<?php _e( 'Age', 'wpclubmanager' ); ?>
+								<?php _e( 'Age', 'wp-club-manager' ); ?>
 							</th>
 							<td>
 								<?php echo get_age( get_post_meta( $post->ID, 'wpcm_dob', true ) ); ?>
@@ -81,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 							<tr>
 								<th>
-									<?php _e( 'Season', 'wpclubmanager' ); ?>
+									<?php _e( 'Season', 'wp-club-manager' ); ?>
 								</th>
 								<td>
 									<?php echo implode( ', ', $player_seasons ); ?>
@@ -106,7 +96,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 							<tr>
 								<th>
-									<?php _e( 'Team', 'wpclubmanager' ); ?>
+									<?php _e( 'Team', 'wp-club-manager' ); ?>
 								</th>
 								<td>
 									<?php echo implode( ', ', $player_teams ); ?>
@@ -131,7 +121,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 							<tr>
 								<th>
-									<?php _e( 'Job', 'wpclubmanager' ); ?>
+									<?php _e( 'Job', 'wp-club-manager' ); ?>
 								</th>
 								<td>
 									<?php echo implode( ', ', $player_jobs ); ?>
@@ -141,13 +131,43 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 						}
 					}
 
+					if ( get_option( 'wpcm_show_staff_email' ) == 'yes') {
+
+						$email = get_post_meta( $post->ID, '_wpcm_staff_email', true ); ?>
+
+						<tr>
+							<th>
+								<?php _e( 'Email', 'wp-club-manager' ); ?>
+							</th>
+							<td>
+								<a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+							</td>
+						</tr>
+					<?php
+					}
+
+					if ( get_option( 'wpcm_show_staff_phone' ) == 'yes') {
+
+						$phone = get_post_meta( $post->ID, '_wpcm_staff_phone', true ); ?>
+
+						<tr>
+							<th>
+								<?php _e( 'Phone', 'wp-club-manager' ); ?>
+							</th>
+							<td>
+								<?php echo $phone; ?>
+							</td>
+						</tr>
+					<?php
+					}
+
 					if ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes') {
 
 						$natl = get_post_meta( $post->ID, 'wpcm_natl', true ); ?>
 
 						<tr>
 							<th>
-								<?php _e( 'Nationality', 'wpclubmanager' ); ?>
+								<?php _e( 'Nationality', 'wp-club-manager' ); ?>
 							</th>
 							<td>
 								<img class="flag" src="<?php echo WPCM_URL; ?>assets/images/flags/<?php echo $natl; ?>.png" />
@@ -160,7 +180,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 						<tr>
 							<th>
-								<?php _e( 'Joined', 'wpclubmanager' ); ?>
+								<?php _e( 'Joined', 'wp-club-manager' ); ?>
 							</th>
 							<td>
 								<?php echo date_i18n( get_option( 'date_format' ), strtotime( $post->post_date ) ); ?>

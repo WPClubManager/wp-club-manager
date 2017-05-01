@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Classes
- * @version     1.1.0
+ * @version     1.5.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,6 +33,7 @@ class WPCM_Install {
 	 * @return void
 	 */
 	public function check_version() {
+
 		if ( ! defined( 'IFRAME_REQUEST' ) && ( get_option( 'wpclubmanager_version' ) != WPCM()->version ) ) {
 			$this->install();
 
@@ -47,13 +48,13 @@ class WPCM_Install {
 		
 		if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
 
-			$this->update();
+			$this->updates();
 
 			// Update complete
-			delete_option( '_wpcm_needs_update' );
-			delete_transient( '_wpcm_activation_redirect' );
+			//WPCM_Admin_Notices::remove_notice( 'update' );
 
 			// What's new redirect
+			delete_transient( '_wpcm_activation_redirect' );
 			wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
 			exit;
 		}
@@ -63,11 +64,18 @@ class WPCM_Install {
 	 * Install WPCM
 	 */
 	public function install() {
+
+		if ( ! defined( 'WPCM_INSTALLING' ) ) {
+			define( 'WPCM_INSTALLING', true );
+		}
+
+		// Ensure needed classes are loaded
+		include_once( 'admin/class-wpcm-admin-notices.php' );
+
 		$this->create_options();
 		$this->create_roles();
 
 		// Register post types
-		include_once( 'class-wpcm-post-types.php' );
 		WPCM_Post_Types::register_post_types();
 		WPCM_Post_Types::register_taxonomies();
 
@@ -76,38 +84,50 @@ class WPCM_Install {
 		if ( $current_version ) {
 			update_option( 'wpcm_version_upgraded_from', $current_version );
 		}
+
+		$this->updates();
 		
 		// Update version
+		//delete_option( 'wpclubmanager_version' );
 		update_option( 'wpclubmanager_version', WPCM()->version );
 
-		// Check if pages are needed
-		// if ( ! get_option( 'wpcm_sport' ) ) {
-		// 	update_option( '_wpcm_needs_welcome', 1 );
-		// }
-
-		// Bail if activating from network, or bulk
-		// if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
-		// 	return;
-		// }
+		add_option( 'wpcm_install_date', date( 'Y-m-d h:i:s' ) );
+		add_option( 'wpcm_rating', 'no' );
 
 		// Flush rules after install
 		flush_rewrite_rules();
 
 		// Redirect to welcome screen
-		set_transient( '_wpcm_activation_redirect', 1, 60 * 60 );
+		if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
+			set_transient( '_wpcm_activation_redirect', 1, 30 );
+		}
+
+		// Trigger action
+		do_action( 'wpclubmanager_installed' );
 
 	}
 
 	/**
 	 * Handle updates
 	 */
-	public function update() {
-		// Do updates
+	public function updates( $version = null ) {
+		
 		$current_version = get_option( 'wpclubmanager_version' );
 
 		if ( version_compare( $current_version, '1.1.0', '<' ) ) {
 			include( 'updates/wpclubmanager-update-1.1.0.php' );
-			update_option( 'wpclubmanager_version', '1.1.0' );
+		}
+
+		if ( version_compare( $current_version, '1.5.0', '<' ) ) {
+			include_once( 'updates/wpclubmanager-update-1.5.0.php' );
+		}
+
+		if ( version_compare( $current_version, '1.5.4', '<' ) ) {
+			include_once( 'updates/wpclubmanager-update-1.5.0.php' );
+		}
+
+		if ( version_compare( $current_version, '1.5.5', '<' ) ) {
+			include_once( 'updates/wpclubmanager-update-1.5.5.php' );
 		}
 
 		update_option( 'wpclubmanager_version', WPCM()->version );
@@ -151,184 +171,109 @@ class WPCM_Install {
 	public function create_roles() {
 		global $wp_roles;
 
-		if ( class_exists( 'WP_Roles' ) ) {
-			if ( ! isset( $wp_roles ) ) {
-				$wp_roles = new WP_Roles();
-			}
+		if ( ! class_exists( 'WP_Roles' ) ) {
+			return;
 		}
 
-		if ( is_object( $wp_roles ) ) {
+		if ( ! isset( $wp_roles ) ) {
+			$wp_roles = new WP_Roles();
+		}
 
-			// Player role
-			add_role( 'player', __( 'Player', 'wpclubmanager' ), array(
-				'level_1' 						=> true,
-				'level_0' 						=> true,
+		// Player role
+		add_role( 'player', __( 'Player', 'wp-club-manager' ), array(
+			'read' 						=> true
+		) );
 
-	            'read' 							=> true,
-	            'delete_posts' 					=> true,
-	            'edit_posts' 					=> true,
-	            'upload_files' 					=> true,
+		add_role( 'staff', __( 'Staff', 'wp-club-manager' ), array(
+            'level_9'                => true,
+			'level_8'                => true,
+			'level_7'                => true,
+			'level_6'                => true,
+			'level_5'                => true,
+			'level_4'                => true,
+			'level_3'                => true,
+			'level_2'                => true,
+			'level_1'                => true,
+			'level_0'                => true,
+			'read'                   => true,
+			'read_private_pages'     => true,
+			'read_private_posts'     => true,
+			'edit_users'             => true,
+			'edit_posts'             => true,
+			'edit_pages'             => true,
+			'edit_published_posts'   => true,
+			'edit_published_pages'   => true,
+			'edit_private_pages'     => true,
+			'edit_private_posts'     => true,
+			'edit_others_posts'      => true,
+			'edit_others_pages'      => true,
+			'publish_posts'          => true,
+			'publish_pages'          => true,
+			'delete_posts'           => true,
+			'delete_pages'           => true,
+			'delete_private_pages'   => true,
+			'delete_private_posts'   => true,
+			'delete_published_pages' => true,
+			'delete_published_posts' => true,
+			'delete_others_posts'    => true,
+			'delete_others_pages'    => true,
+			'manage_categories'      => true,
+			'manage_links'           => true,
+			'moderate_comments'      => true,
+			'unfiltered_html'        => true,
+			'upload_files'           => true,
+			'export'                 => true,
+			'import'                 => true,
+			'list_users'             => true
+		) );
 
-	            'edit_wpcm_player'				=> true,
-	            'read_wpcm_player'				=> true,
-	            'edit_wpcm_players' 			=> true,
-	            'edit_published_wpcm_players' 	=> true,
-				'assign_wpcm_player_terms' 		=> true,
-			) );
+		$capabilities = $this->get_core_capabilities();
 
-			add_role( 'staff', __( 'Staff', 'wpclubmanager' ), array(
-				'level_1' 						=> true,
-				'level_0' 						=> true,
-
-	            'read' 							=> true,
-	            'delete_posts' 					=> true,
-	            'edit_posts' 					=> true,
-	            'upload_files' 					=> true,
-
-	            'edit_wpcm_staff'				=> true,
-	            'read_wpcm_staff'				=> true,
-	            'edit_wpcm_staff' 				=> true,
-	            'edit_published_wpcm_staff' 	=> true,
-				'assign_wpcm_staff_terms' 		=> true,
-
-	            'edit_wpcm_player'				=> true,
-	            'read_wpcm_player'				=> true,
-	            'delete_wpcm_player'			=> true,
-	            'edit_wpcm_playeres' 			=> true,
-	            'publish_wpcm_players' 			=> true,
-	            'delete_wpcm_players' 			=> true,
-	            'delete_published_wpcm_players' => true,
-	            'edit_published_wpcm_players' 	=> true,
-				'assign_wpcm_player_terms' 		=> true,
-
-				'edit_wpcm_club'				=> true,
-	            'read_wpcm_club'				=> true,
-	            'delete_wpcm_club'				=> true,
-	            'edit_wpcm_clubes' 				=> true,
-	            'publish_wpcm_clubs' 			=> true,
-	            'delete_wpcm_clubs' 			=> true,
-	            'delete_published_wpcm_clubs' 	=> true,
-	            'edit_published_wpcm_clubs' 	=> true,
-				'assign_wpcm_club_terms' 		=> true,
-
-				'edit_wpcm_match'				=> true,
-	            'read_wpcm_match'				=> true,
-	            'delete_wpcm_match'				=> true,
-	            'edit_wpcm_matches' 			=> true,
-	            'publish_wpcm_matches' 			=> true,
-	            'delete_wpcm_matches' 			=> true,
-	            'delete_published_wpcm_matches' => true,
-	            'edit_published_wpcm_matches' 	=> true,
-				'assign_wpcm_match_terms' 		=> true,
-
-				'edit_wpcm_sponsor'				=> true,
-	            'read_wpcm_sponsor'				=> true,
-	            'delete_wpcm_sponsor'			=> true,
-	            'edit_wpcm_sponsores' 			=> true,
-	            'publish_wpcm_sponsors' 		=> true,
-	            'delete_wpcm_sponsors' 			=> true,
-	            'delete_published_wpcm_sponsors'=> true,
-	            'edit_published_wpcm_sponsors' 	=> true,
-				'assign_wpcm_sponsor_terms' 	=> true,
-		        )
-		    );
-
-			// Manager role
-			add_role( 'team_manager', __( 'Team Manager', 'wpclubmanager' ), array(
-				'level_2' 						=> true,
-				'level_1' 						=> true,
-				'level_0' 						=> true,
-
-	            'read' 							=> true,
-	            'delete_posts' 					=> true,
-	            'edit_posts' 					=> true,
-	            'delete_published_posts' 		=> true,
-	            'publish_posts' 				=> true,
-	            'upload_files' 					=> true,
-	            'edit_published_posts' 			=> true,
-
-	            'edit_wpcm_player'				=> true,
-	            'read_wpcm_player'				=> true,
-	            'delete_wpcm_player'			=> true,
-	            'edit_wpcm_players' 			=> true,
-	            'publish_wpcm_players' 			=> true,
-	            'delete_wpcm_players' 			=> true,
-	            'delete_published_wpcm_players' => true,
-	            'edit_published_wpcm_players' 	=> true,
-				'assign_wpcm_player_terms' 		=> true,
-
-	            'edit_wpcm_staff'				=> true,
-	            'read_wpcm_staff'				=> true,
-	            'delete_wpcm_staff'				=> true,
-	            'edit_wpcm_staffs' 				=> true,
-	            'publish_wpcm_staffs' 			=> true,
-	            'delete_wpcm_staffs' 			=> true,
-	            'delete_published_wpcm_staffs' 	=> true,
-	            'edit_published_wpcm_staffs' 	=> true,
-				'assign_wpcm_staff_terms' 		=> true,
-
-				'edit_wpcm_match'				=> true,
-	            'read_wpcm_match'				=> true,
-	            'delete_wpcm_match'				=> true,
-	            'edit_wpcm_matchs' 				=> true,
-	            'publish_wpcm_matchs' 			=> true,
-	            'delete_wpcm_matchs' 			=> true,
-	            'delete_published_wpcm_matchs' 	=> true,
-	            'edit_published_wpcm_matchs' 	=> true,
-				'assign_wpcm_match_terms' 		=> true,
-			) );
-
-			$capabilities = $this->get_core_capabilities();
-
-			foreach ( $capabilities as $cap_group ) {
-				foreach ( $cap_group as $cap ) {
-					$wp_roles->add_cap( 'player', $cap );
-					$wp_roles->add_cap( 'staff', $cap );
-					$wp_roles->add_cap( 'team_manager', $cap );
-					$wp_roles->add_cap( 'administrator', $cap );
-				}
+		foreach ( $capabilities as $cap_group ) {
+			foreach ( $cap_group as $cap ) {
+				$wp_roles->add_cap( 'staff', $cap );
+				$wp_roles->add_cap( 'administrator', $cap );
 			}
 		}
 	}
 
 	/**
-	 * Get capabilities for WooCommerce - these are assigned to admin/shop manager during installation or reset
+	 * Get capabilities for WP Club Manager - these are assigned to admin/shop manager during installation or reset
 	 *
 	 * @access public
 	 * @return array
 	 */
 	public function get_core_capabilities() {
+
 		$capabilities = array();
 
-		$capabilities['core'] = array(
-			'manage_wpclubmanager'
-		);
+		$capabilities['core'] = array( 'manage_wpclubmanager' );
 
-		$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_sponsor', 'wpcm_staff', 'wpcm_match' );
+		$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_sponsor' );
 
 		foreach ( $capability_types as $capability_type ) {
 
 			$capabilities[ $capability_type ] = array(
 				// Post type
-				"edit_{$capability_type}",
-				"read_{$capability_type}",
-				"delete_{$capability_type}",
-				"edit_{$capability_type}s",
-				"edit_others_{$capability_type}s",
-				"publish_{$capability_type}s",
-				"read_private_{$capability_type}s",
-				"delete_{$capability_type}s",
-				"delete_private_{$capability_type}s",
-				"delete_published_{$capability_type}s",
-				"delete_others_{$capability_type}s",
-				"edit_private_{$capability_type}s",
-				"edit_published_{$capability_type}s",
+				'edit_' . $capability_type,
+				'read_' . $capability_type,
+				'delete_' . $capability_type,
+				'edit_' . $capability_type . 's',
+				'edit_others_' . $capability_type . 's',
+				'publish_' . $capability_type . 's',
+				'read_private_' . $capability_type . 's',
+				'delete_' . $capability_type . 's',
+				'delete_private_' . $capability_type . 's',
+				'delete_published_' . $capability_type . 's',
+				'delete_others_' . $capability_type . 's',
+				'edit_private_' . $capability_type . 's',
+				'edit_published_' . $capability_type . 's',
 
 				// Terms
-				"manage_{$capability_type}_terms",
-				"edit_{$capability_type}_terms",
-				"delete_{$capability_type}_terms",
-				"assign_{$capability_type}_terms"
+				'manage_' . $capability_type . '_terms',
+				'edit_' . $capability_type . '_terms',
+				'delete_' . $capability_type . '_terms',
+				'assign_' . $capability_type . '_terms'
 			);
 		}
 
@@ -342,31 +287,28 @@ class WPCM_Install {
 	 * @return void
 	 */
 	public function remove_roles() {
+		
 		global $wp_roles;
 
-		if ( class_exists( 'WP_Roles' ) ) {
-			if ( ! isset( $wp_roles ) ) {
-				$wp_roles = new WP_Roles();
+		if ( ! class_exists( 'WP_Roles' ) ) {
+			return;
+		}
+
+		if ( ! isset( $wp_roles ) ) {
+			$wp_roles = new WP_Roles();
+		}
+
+		$capabilities = $this->get_core_capabilities();
+
+		foreach ( $capabilities as $cap_group ) {
+			foreach ( $cap_group as $cap ) {
+				$wp_roles->remove_cap( 'staff', $cap );
+				$wp_roles->remove_cap( 'administrator', $cap );
 			}
 		}
 
-		if ( is_object( $wp_roles ) ) {
-
-			$capabilities = $this->get_core_capabilities();
-
-			foreach ( $capabilities as $cap_group ) {
-				foreach ( $cap_group as $cap ) {
-					$wp_roles->remove_cap( 'player', $cap );
-					$wp_roles->remove_cap( 'staff', $cap );
-					$wp_roles->remove_cap( 'team_manager', $cap );
-					$wp_roles->remove_cap( 'administrator', $cap );
-				}
-			}
-
-			remove_role( 'player' );
-			remove_role( 'staff' );
-			remove_role( 'team_manager' );
-		}
+		remove_role( 'player' );
+		remove_role( 'staff' );
 	}
 
 	/**
@@ -425,7 +367,7 @@ class WPCM_Install {
 			if ( preg_match( $regexp, $response['body'], $matches ) ) {
 				$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
 
-				echo __( 'What\'s new:', 'wpclubmanager' ) . '<div style="font-weight: normal;">';
+				_e( 'What\'s new:', 'wp-club-manager' ) . '<div style="font-weight: normal;">';
 
 				$ul = false;
 

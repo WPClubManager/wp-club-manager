@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.1.1
+ * @version 	1.4.0
  * @extends 	WPCM_Widget
  */
 
@@ -23,14 +23,14 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 
 		/* Widget variable settings. */
 		$this->widget_cssclass    = 'wpcm-widget widget-fixtures';
-		$this->widget_description = __( 'Display upcoming fixtures.', 'wpclubmanager' );
+		$this->widget_description = __( 'Display upcoming fixtures.', 'wp-club-manager' );
 		$this->widget_id          = 'wpcm_fixtures';
-		$this->widget_name        = __( 'WPCM Fixtures', 'wpclubmanager' );
+		$this->widget_name        = __( 'WPCM Fixtures', 'wp-club-manager' );
 		$this->settings           = array(
 			'title'  => array(
 				'type'  => 'text',
-				'std'   => __( 'Fixtures', 'wpclubmanager' ),
-				'label' => __( 'Title', 'wpclubmanager' )
+				'std'   => __( 'Fixtures', 'wp-club-manager' ),
+				'label' => __( 'Title', 'wp-club-manager' )
 			),
 			'limit' => array(
 				'type'  => 'number',
@@ -38,66 +38,75 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				'min'   => 1,
 				'max'   => '',
 				'std'   => 3,
-				'label' => __( 'Limit', 'wpclubmanager' )
+				'label' => __( 'Limit', 'wp-club-manager' )
 			),
 			'comp' => array(
 				'type'  => 'tax_select',
 				'taxonomy'   => 'wpcm_comp',
-				'std'   => 'All',
-				'label' => __( 'Competition', 'wpclubmanager' ),
+				'std'   => '',
+				'label' => __( 'Competition', 'wp-club-manager' ),
 			),
 			'season' => array(
 				'type'  => 'tax_select',
 				'taxonomy'   => 'wpcm_season',
-				'std'   => 'All',
-				'label' => __( 'Season', 'wpclubmanager' ),
+				'std'   => '',
+				'label' => __( 'Season', 'wp-club-manager' ),
 			),
 			'team' => array(
 				'type'  => 'tax_select',
 				'taxonomy'   => 'wpcm_team',
-				'std'   => 'All',
-				'label' => __( 'Team', 'wpclubmanager' ),
+				'std'   => '',
+				'label' => __( 'Team', 'wp-club-manager' ),
 			),
 			'venue' => array(
-				'type'  => 'tax_select',
-				'taxonomy'   => 'wpcm_venue',
-				'std'   => 'All',
-				'label' => __( 'Venue', 'wpclubmanager' ),
-			),
-			'linktext'  => array(
-				'type'  => 'text',
-				'std'   => __( 'View all matches', 'wpclubmanager' ),
-				'label' => __( 'Link text', 'wpclubmanager' )
-			),
-			'linkpage' => array(
-				'type'  => 'pages_select',
-				'label' => __( 'Link page', 'wpclubmanager' ),
-				'std'   => 'None',
+				'type'  => 'select',
+				'std'   => 'all',
+				'label' => __( 'Venue', 'wp-club-manager' ),
+				'options' => array(
+					'all'  => __( 'All', 'wp-club-manager' ),
+					'home' => __( 'Home', 'wp-club-manager' ),
+					'away' => __( 'Away', 'wp-club-manager' ),
+				)
 			),
 			'display_options' => array(
 				'type'  => 'section_heading',
-				'label' => __( 'Display Options', 'wpclubmanager' ),
+				'label' => __( 'Display Options', 'wp-club-manager' ),
 				'std'   => '',
 			),
 			'show_date' => array(
 				'type'  => 'checkbox',
 				'std'   => 1,
-				'label' => __( 'Date', 'wpclubmanager' )
+				'label' => __( 'Date', 'wp-club-manager' )
 			),
 			'show_time' => array(
 				'type'  => 'checkbox',
 				'std'   => 1,
-				'label' => __( 'Kick Off', 'wpclubmanager' )
+				'label' => __( 'Kick Off', 'wp-club-manager' )
 			),
 			'show_comp' => array(
 				'type'  => 'checkbox',
 				'std'   => 1,
-				'label' => __( 'Competition', 'wpclubmanager' )
+				'label' => __( 'Competition', 'wp-club-manager' )
 			),
 			'show_team' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Team', 'wpclubmanager' )
+				'label' => __( 'Team', 'wp-club-manager' )
+			),
+			'link_options' => array(
+				'type'  => 'section_heading',
+				'label' => __( 'Link Options', 'wp-club-manager' ),
+				'std'   => '',
+			),
+			'linktext'  => array(
+				'type'  => 'text',
+				'std'   => __( 'View all standings', 'wp-club-manager' ),
+				'label' => __( 'Link text', 'wp-club-manager' )
+			),
+			'linkpage' => array(
+				'type'  => 'pages_select',
+				'label' => __( 'Link page', 'wp-club-manager' ),
+				'std'   => '',
 			),
 			
 		);
@@ -105,51 +114,23 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 	}
 
 	/**
-	 * widget function.
-	 *
-	 * @see WP_Widget
-	 * @access public
-	 * @param array $args
-	 * @param array $instance
-	 * @return void
+	 * Query the fixtures and return them.
+	 * @param  array $args
+	 * @param  array $instance
+	 * @return WP_Query
 	 */
-	public function widget( $args, $instance ) {
-
-		if ( $this->get_cached_widget( $args ) )
-			return;
-
-		ob_start();
-		extract( $args );
-
-		$title  = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
+	public function get_fixtures( $args, $instance ) {
 
 		$limit = absint( $instance['limit'] );
 		$comp = isset( $instance['comp'] ) ? $instance['comp'] : null;
 		$season = isset( $instance['season'] ) ? $instance['season'] : null;
 		$team = isset( $instance['team'] ) ? $instance['team'] : null;
 		$club = get_option( 'wpcm_default_club' );
-		$venue = isset( $instance['venue'] ) ? $instance['venue'] : null;
-		$linktext = $instance['linktext'];
-		$linkpage = $instance['linkpage'];
-		$show_date = ! empty( $instance['show_date'] );
-    	$show_time = ! empty( $instance['show_time'] );
-    	$show_comp = ! empty( $instance['show_comp'] );
-    	$show_team = ! empty( $instance['show_team'] );
-
-    	if ( $limit == 0 )
-			$limit = -1;
-		if ( $linkpage <= 0 )
-			$linkpage = null;
-		if ( $club <= 0  )
-			$club = null;
-		if ( $comp <= 0 )
-			$comp = null;
-		if ( $season <= 0  )
-			$season = null;
-		if ( $team <= 0  )
-			$team = null;
-		if ( $venue <= 0  )
-			$venue = null;
+		$venue = isset( $instance['venue'] ) ? $instance['venue'] : 'all';
+		if ( $limit == 0 ) $limit = -1;
+		if ( $comp <= 0 ) $comp = null;
+		if ( $season <= 0 ) $season = null;
+		if ( $team <= 0 ) $team = null;
 
 		$query_args = array(
 			'numberposts' => $limit,
@@ -166,17 +147,33 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 			'posts_per_page' => $limit,
 		);
 
-		$query_args['meta_query'] = array(
-			'relation' => 'OR',
-			array(
-				'key' => 'wpcm_home_club',
-				'value' => $club,
-			),
-			array(
-				'key' => 'wpcm_away_club',
-				'value' => $club,
-			)
-		);
+		if( isset( $venue ) && $venue == 'home' ) {
+			$query_args['meta_query'] = array(
+				array(
+					'key' => 'wpcm_home_club',
+					'value' => $club,
+				),
+			);
+		} elseif( isset( $venue ) && $venue == 'away' ) {
+			$query_args['meta_query'] = array(
+				array(
+					'key' => 'wpcm_away_club',
+					'value' => $club,
+				),
+			);
+		} else {
+			$query_args['meta_query'] = array(
+				'relation' => 'OR',
+				array(
+					'key' => 'wpcm_home_club',
+					'value' => $club,
+				),
+				array(
+					'key' => 'wpcm_away_club',
+					'value' => $club,
+				)
+			);
+		}
 
 		if ( isset( $comp ) )
 			$query_args['tax_query'][] = array(
@@ -199,50 +196,66 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				'field' => 'term_id',
 			);
 
-		if ( $venue > 0  )
-			$query_args['tax_query'][] = array(
-				'taxonomy' => 'wpcm_venue',
-				'terms' => $venue,
-				'field' => 'term_id',
-			);
+		return new WP_Query( apply_filters( 'wpclubmanager_fixtures_widget_query_args', $query_args ) );
+	}
 
-		echo $before_widget;
+	/**
+	 * widget function.
+	 *
+	 * @see WP_Widget
+	 * @access public
+	 * @param array $args
+	 * @param array $instance
+	 * @return void
+	 */
+	public function widget( $args, $instance ) {
 
-		if ( $title )
-			echo $before_title . $title . $after_title;
-
-		echo '<div class="wpcm-matches-widget clearfix"><ul>';
-
-		$r = new WP_Query( $query_args );
-
-		if ( $r->have_posts() ) {
-		
-			while ( $r->have_posts()) {
-				$r->the_post();
-				wpclubmanager_get_template( 'content-widget-fixtures.php', array( 'limit' => $limit, 'linktext' => $linktext, 'linkpage' => $linkpage, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, ) );
-			}	
-		} else {
-			echo '<li class="inner">'.__('No more matches scheduled.', 'wpclubmanager').'</li>';
+		if ( $this->get_cached_widget( $args ) ) {
+			return;
 		}
+
+		ob_start();
+
+		$this->widget_start( $args, $instance );
+
+		if ( ( $fixtures = $this->get_fixtures( $args, $instance ) ) && $fixtures->have_posts() ) {
+
+			echo apply_filters( 'wpclubmanager_before_widget_fixtures', '<ul class="wpcm-matches-widget">' );
 		
-		echo '</ul>';
+			while ( $fixtures->have_posts() ) : $fixtures->the_post();
 
-	
-		if ( isset( $linkpage ) )
-			echo '<a href="' . get_page_link( $linkpage ) . '" class="wpcm-view-link">' . $linktext . '</a>';
-	
-		echo '</div>';
+				$post = get_the_ID();
+				$sides = wpcm_get_match_clubs( $post );
+				$badges = wpcm_get_match_badges( $post, 'crest-medium' );
+				$comp = wpcm_get_match_comp( $post );
+				$team = wpcm_get_match_team( $post );
+				$show_date = ! empty( $instance['show_date'] );
+		    	$show_time = ! empty( $instance['show_time'] );
+		    	$show_comp = ! empty( $instance['show_comp'] );
+		    	$show_team = ! empty( $instance['show_team'] );
 
-		echo $after_widget;
+				wpclubmanager_get_template( 'content-widget-fixtures.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team ) );
+
+			endwhile;
+
+			echo apply_filters( 'wpclubmanager_after_widget_fixtures', '</ul>' );
+
+		} else {
+
+			echo '<p class="inner">'.__('No more matches scheduled.', 'wp-club-manager').'</p>';
+		}
 
 		wp_reset_postdata();
+		
+		$linktext = $instance['linktext'];
+		$linkpage = $instance['linkpage'];
+		if($linkpage <= 0) $linkpage = null;
 
-		$content = ob_get_clean();
+		if ( isset( $linkpage ) )
+			echo '<a href="' . get_page_link( $linkpage ) . '" class="wpcm-view-link">' . $linktext . '</a>';
 
-		echo $content;
+		$this->widget_end( $args );
 
-		$this->cache_widget( $args, $content );
+		echo $this->cache_widget( $args, ob_get_clean() );
 	}
 }
-
-register_widget( 'WPCM_Fixtures_Widget' );

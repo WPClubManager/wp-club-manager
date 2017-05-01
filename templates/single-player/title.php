@@ -1,6 +1,6 @@
 <?php
 /**
- * Single Player Title
+ * Single Player - Title
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates

@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     1.1.2
+ * @version     1.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -101,10 +101,12 @@ if ( ! is_admin() || defined('DOING_AJAX') ) {
 	 * @see wpclubmanager_template_single_match_home_club()
 	 * @see wpclubmanager_template_single_match_score()
 	 * @see wpclubmanager_template_single_match_away_club()
+	 * @see wpclubmanager_template_single_match_status()
 	 */
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_home_club', 5 );
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_score', 10 );
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_away_club', 20 );
+	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_status', 25 );
 
 	/**
 	 * Match Meta Box

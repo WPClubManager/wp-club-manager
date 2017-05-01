@@ -32,7 +32,7 @@
 				'order': 'ASC',
 				'linktext': '',
 				'linkpage': '',
-				'stats': 'flag,number,name,job,age',
+				'stats': 'flag,number,name,job,email,phone,age',
 				'title': ''
 				};
 			var shortcode = '[wpcm_staff';

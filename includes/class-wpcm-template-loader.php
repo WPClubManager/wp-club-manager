@@ -9,6 +9,8 @@
  * @author 		ClubPress
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class WPCM_Template_Loader {
 
 	/**

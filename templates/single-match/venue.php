@@ -1,31 +1,23 @@
 <?php
 /**
- * Single Player Bio
+ * Single Match - Venue
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.0.0
+ * @version     1.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $wpclubmanager, $post;
+global $post;
 
-$venues = get_the_terms( $post->ID, 'wpcm_venue' );
-
-if ( is_array( $venues ) ) {
-	$venue = reset($venues);
-	$t_id = $venue->term_id;
-	$venue_meta = get_option( "taxonomy_term_$t_id" );
-} else {
-	$venue = null;
-}
+$venue = wpcm_get_match_venue( $post->ID );
 
 if ( $venue ) { ?>
 
 	<div class="wpcm-match-venue">
 
-		<?php echo $venue->name; ?>
+		<?php echo $venue[0]; ?>
 
 	</div>
 

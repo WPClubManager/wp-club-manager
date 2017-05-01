@@ -19,7 +19,7 @@ class WPCM_Settings_Licenses extends WPCM_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'licenses';
-		$this->label = __( 'Licenses', 'wpclubmanager' );
+		$this->label = __( 'Licenses', 'wp-club-manager' );
 
 		add_filter( 'wpclubmanager_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 		add_action( 'wpclubmanager_settings_' . $this->id, array( $this, 'output' ) );
@@ -32,7 +32,7 @@ class WPCM_Settings_Licenses extends WPCM_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings() {
-		
+
 		return apply_filters( 'wpclubmanager_license_settings', array() );
 
 	}

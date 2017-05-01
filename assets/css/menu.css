@@ -75,3 +75,51 @@ i.mce-i-wpcm_staff_button:before {
 	padding: 15px;
 	width: 280px;
 }
+
+.widget div.wpcm-widget-admin table {
+	width: 100%;
+}
+.widget div.wpcm-widget-admin {
+	margin: 1em 0;
+}
+.widget div.wpcm-widget-admin select {
+	width: 100%;
+}
+.widget div.wpcm-widget-admin table td label {
+	display: block;
+}
+.widget div.wpcm-widget-admin table td {
+	padding: 2px 5px;
+}
+
+.wpcm-drag-drop-tax-placeholder { 
+	min-height: 57px;
+	height: 100%;
+}
+
+.taxonomy-wpcm_season #the-list tr:hover,
+.taxonomy-wpcm_team #the-list tr:hover,
+.wpcm-match-players-table tr:hover {
+	cursor: -webkit-grab; 
+	cursor: -moz-grab;
+}
+
+.taxonomy-wpcm_season #the-list tr.ui-sortable-helper:hover,
+.taxonomy-wpcm_team #the-list tr.ui-sortable-helper:hover,
+.wpcm-match-players-table tr.ui-sortable-helper:hover {
+	display: table;
+	cursor: -webkit-grabbing; 
+	cursor: -moz-grabbing;
+}
+
+.taxonomy-wpcm_season #the-list tr.no-items:hover,
+.taxonomy-wpcm_team #the-list tr.no-items:hover {
+	cursor: default;
+}
+
+.wpcm-simple-taxonomy-preloader {
+	margin: 0 0 0 8px;
+}
+.wpcm-match-players-desc {
+	line-height: 1.9;
+}

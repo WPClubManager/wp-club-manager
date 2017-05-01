@@ -31,12 +31,23 @@ jQuery( function($){
 		if (played) {
 			jQuery('.post-type-wpcm_match #poststuff #post-body-content').show();
 			jQuery('#wpclubmanager-match-result #results-table').show();
+			jQuery('.post-type-wpcm_match #poststuff #postexcerpt').hide();
 		} else {
 			jQuery('#wpclubmanager-match-result #results-table').hide();
 			jQuery('.post-type-wpcm_match #poststuff #post-body-content').hide();
 		}
 	});
 	jQuery('#wpclubmanager-match-result #wpcm_played').change();
+
+	jQuery('#wpclubmanager-match-result').on('change', '#wpcm_shootout', function() {
+		shootout = jQuery(this).prop('checked');
+		if (shootout) {
+			jQuery('#wpclubmanager-match-result .wpcm-results-shootout').show();
+		} else {
+			jQuery('#wpclubmanager-match-result .wpcm-results-shootout').hide();
+		}
+	});
+	jQuery('#wpclubmanager-match-result #wpcm_shootout').change();
 
 
 	jQuery('#wpcm_players table .names input[type="checkbox"]').on('change', function() {					
@@ -48,8 +59,12 @@ jQuery( function($){
 	});
 
 
-	jQuery('#wpcm_players table input[type="radio"]').click(function() {
-	    jQuery('input[type="radio"]').prop('checked', false);
+	jQuery('#wpcm_players table td.mvp input[type="radio"]').click(function() {
+	    jQuery('td.mvp input[type="radio"]').prop('checked', false);
+	    jQuery(this).prop('checked', true);        
+	});
+	jQuery('#wpcm_players table td.captain input[type="radio"]').click(function() {
+	    jQuery('td.captain input[type="radio"]').prop('checked', false);
 	    jQuery(this).prop('checked', true);        
 	});
 
@@ -99,17 +114,6 @@ jQuery( function($){
 	jQuery("#wpcm_lineup input:checkbox, #wpcm_subs input:checkbox").on("change", function() {
 		updateCounter();
 	});
-
-
-	jQuery('#wpclubmanager-player-stats input').change(function() {				
-		index = jQuery(this).attr('data-index');
-		value = 0;				
-		jQuery(this).closest('table').find('tbody tr').each(function() {					
-			value += parseInt(jQuery(this).find('input[data-index="' + index + '"]').val());
-		});				
-		jQuery(this).closest('table').find('tfoot tr input[data-index="' + index + '"]').val(value);
-	});
-
 
 	jQuery('#wpclubmanager-club-stats input').change(function() {
 		index = jQuery(this).attr('data-index');
@@ -184,6 +188,25 @@ jQuery( function($){
             jQuery.ajax(opts);
         }
     });
+
+    jQuery( '.colorpick' ).iris({
+		change: function( event, ui ) {
+			jQuery( this ).parent().find( '.colorpickpreview' ).css({ backgroundColor: ui.color.toString() });
+		},
+		hide: true,
+		border: true
+	}).click( function() {
+		jQuery( '.iris-picker' ).hide();
+		jQuery( this ).closest( 'p' ).find( '.iris-picker' ).show();
+	});
+
+	jQuery( 'body' ).click( function() {
+		jQuery( '.iris-picker' ).hide();
+	});
+
+	jQuery( '.colorpick' ).click( function( event ) {
+		event.stopPropagation();
+	});
 
 	// Video embed
 	jQuery(".wpcm-add-video").click(function() {

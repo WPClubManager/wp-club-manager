@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.2
+ * @version     1.5.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -100,5 +100,19 @@ if ( ! function_exists( 'is_ajax' ) ) {
 			return true;
 
 		return ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) ? true : false;
+	}
+}
+
+if ( ! function_exists( 'is_plugins_page' ) ) {
+	/**
+	 * is_plugins_page - Returns true when the page is plugins.php
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	function is_plugins_page() {
+	    global $pagenow;
+
+	    return ( 'plugins.php' === $pagenow );
 	}
 }

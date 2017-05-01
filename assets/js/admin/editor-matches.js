@@ -23,21 +23,52 @@
 			// defines the options and their default values
 			// again, this is not the most elegant way to do this
 			// but well, this gets the job done nonetheless
-			var options = { 
+			var options = {
+				'title': '',
+				'type': '1',
+				'format': '1',
+				'limit': '0',
 				'comp': '-1',
 				'season': '-1',
 				'team': '-1',
+				'month': '-1',
 				'venue': '-1',
+				'show_team': 0,
+				'show_comp': 1,
 				'linktext': '',
 				'linkpage': '',
-				'title': '',
 				'thumb': 1,
+				'link_club': 1,
 				};
 			var shortcode = '[wpcm_matches';
-			
+
 			for( var index in options) {
 				if ( index == 'thumb' ) {
 					values = form.find('[name="thumb"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				} else if ( index == 'link_club' ) {
+					values = form.find('[name="link_club"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				} else if ( index == 'show_team' ) {
+					values = form.find('[name="show_team"]');
+					var stats = new Array();
+					$.each( values, function( key, val) {
+						if ( $(val).attr( 'checked' ))
+							stats.push( $(val).val() );
+					});
+					value = stats;
+				}else if ( index == 'show_comp' ) {
+					values = form.find('[name="show_comp"]');
 					var stats = new Array();
 					$.each( values, function( key, val) {
 						if ( $(val).attr( 'checked' ))

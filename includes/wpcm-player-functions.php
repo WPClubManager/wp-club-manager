@@ -1,418 +1,498 @@
 <?php
 /**
- * WPClubManager Player Functions. Code adapted from Football Club theme by themeboy.
+ * WPClubManager Player Functions.
  *
- * Functions for players.
+ * Functions for players and staff.
  *
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.1.0
+ * @version     1.4.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Get empty player stats row.
+ * Get player labels.
  *
- * @access public
- * @return mixed $output
+ * @return array
  */
-if (!function_exists('get_wpcm_player_stats_empty_row')) {
-	function get_wpcm_player_stats_empty_row() {
+function wpcm_player_labels() {
 
-		$stats_labels = wpcm_get_sports_stats_labels();
+	$labels = array(
+		'number' => __( 'Number', 'wp-club-manager' ),
+		'thumb' => __( 'Image', 'wp-club-manager' ),
+		'name' => __( 'Name', 'wp-club-manager' ),
+		'flag' => __( 'Flag', 'wp-club-manager' ),
+		'position' => __( 'Position', 'wp-club-manager' ),
+		'age' => __( 'Age', 'wp-club-manager' ),
+		'height' => __( 'Height', 'wp-club-manager' ),
+		'weight' => __( 'Weight', 'wp-club-manager' ),
+		'team' => __( 'Team', 'wp-club-manager' ),
+		'season' => __( 'Season', 'wp-club-manager' ),
+		'dob' => __( 'Date of Birth', 'wp-club-manager' ),
+		'hometown' => __( 'Hometown', 'wp-club-manager' ),
+		'joined' => __( 'Joined', 'wp-club-manager' ),
+		'subs' => __( 'Sub Appearances', 'wp-club-manager' )
+	);
 
-		$output = array( 'appearances' => 0 );
+	return apply_filters( 'wpclubmanager_player_labels', $labels );
+}
 
-		foreach( $stats_labels as $key => $val ) {
-			$output[$key] = 0;
-		}
+/**
+ * Get player labels for table headers.
+ *
+ * @return array
+ */
+function wpcm_player_header_labels() {
 
-		return $output;
+	$labels = array(
+		'number' => '&nbsp;',
+		'thumb' => '&nbsp',
+		'name' => __( 'Name', 'wp-club-manager' ),
+		'flag' => '&nbsp;',
+		'position' => __( 'Position', 'wp-club-manager' ),
+		'age' => __( 'Age', 'wp-club-manager' ),
+		'height' => __( 'Height', 'wp-club-manager' ),
+		'weight' => __( 'Weight', 'wp-club-manager' ),
+		'team' => __( 'Team', 'wp-club-manager' ),
+		'season' => __( 'Season', 'wp-club-manager' ),
+		'dob' => __( 'Date of Birth', 'wp-club-manager' ),
+		'hometown' => __( 'Hometown', 'wp-club-manager' ),
+		'joined' => __( 'Joined', 'wp-club-manager' ),
+		'subs' => __( 'Sub Appearances', 'wp-club-manager' )
+	);
+
+	return apply_filters( 'wpclubmanager_player_header_labels', $labels );
+}
+
+/**
+ * Get appearance label.
+ *
+ * @return array
+ */
+function wpcm_get_appearance_labels() {
+
+	$appearances = array(
+		'appearances' => _x( 'PL', 'Games Played (Appearances)', 'wp-club-manager' )
+	);
+
+	return apply_filters( 'wpcm_get_appearance_labels', $appearances );
+}
+
+/**
+ * Get appearance and subs labels.
+ *
+ * @return array
+ */
+function wpcm_get_appearance_and_subs_labels() {
+
+	$apps = wpcm_get_appearance_labels();
+	$subs = array(
+		'subs' 		  => __( 'SUBS', 'Substitute Appearances', 'wp-club-manager' ),
+	);
+	$appearances = array_merge( $apps, $subs );
+
+	return apply_filters( 'wpcm_get_appearance_and_subs_labels', $appearances );
+}
+
+/**
+ * Get appearance name.
+ *
+ * @return array
+ */
+function wpcm_get_appearance_names() {
+
+	$appearances = array(
+		'appearances' => __( 'Played', 'wp-club-manager' ),
+	);
+
+	return apply_filters( 'wpcm_get_appearance_names', $appearances );
+}
+
+/**
+ * Get appearance and subs names.
+ *
+ * @return array
+ */
+function wpcm_get_appearance_and_subs_names() {
+
+	$apps = wpcm_get_appearance_names();
+	$subs = array(
+		'subs' 		  => __( 'Sub Appearances', 'wp-club-manager' ),
+	);
+	$appearances = array_merge( $apps, $subs );
+
+	return apply_filters( 'wpcm_get_appearance_and_subs_names', $appearances );
+}
+
+/**
+ * Get preset player stats labels with appearances and subs.
+ *
+ * @param bool $subs
+ * @return array
+ */
+function wpcm_get_player_stats_labels( $subs = false) {
+
+	if( $subs ) {
+		$appearance_label = wpcm_get_appearance_and_subs_labels();
+	} else {
+		$appearance_label = wpcm_get_appearance_labels();
 	}
-}
 
-/**
- * Get total player stats.
- *
- * @access public
- * @param string $post_id
- * @param string $team
- * @param string $season
- * @return mixed $output
- */
-if (!function_exists('get_wpcm_player_total_stats')) {
-	function get_wpcm_player_total_stats( $post_id = null, $team = null, $season = null ) {
-
-		$output = get_wpcm_player_stats_empty_row();
-		$autostats = get_wpcm_player_auto_stats( $post_id, $team, $season);
-		$manualstats = get_wpcm_player_manual_stats( $post_id, $team, $season);
-
-		foreach( $output as $key => $val ) {
-			$output[$key] = $autostats[$key] + $manualstats[$key];
+	$labels = wpcm_get_preset_labels();
+	foreach( $labels as $label => $value ) {
+		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
+			$output[$label] = $value;
 		}
-
-		return $output;
 	}
+
+	$stats_labels = array_merge( $appearance_label, $output );
+
+	return $stats_labels;
 }
 
 /**
- * Get manual player stats.
+ * Get all combined player labels.
  *
- * @access public
- * @param string $post_id
- * @param string $team
- * @param string $season
- * @return mixed $output
+ * @return array
  */
-if (!function_exists('get_wpcm_player_manual_stats')) {
-	function get_wpcm_player_manual_stats( $post_id = null, $team = null, $season = null ) {
+function wpcm_get_player_all_labels() {
 
-		$output = get_wpcm_player_stats_empty_row();
+	$appearance_labels = wpcm_get_appearance_and_subs_labels();
 
-		if ( empty ( $team ) ) $team = 0;
-		if ( empty ( $season ) ) $season = 0;
-
-		$stats = unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
-
-		if ( is_array( $stats ) && array_key_exists( $team, $stats ) ) {
-			if ( is_array( $stats[$team] ) && array_key_exists ( $season, $stats[$team] ) ) {
-				$output = $stats[$team][$season];
-			}
+	$labels = wpcm_get_preset_labels();
+	foreach( $labels as $label => $value ) {
+		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
+			$output[$label] = $value;
 		}
-
-		return $output;
 	}
+
+	$stats_labels = array_merge( wpcm_player_labels(), $appearance_labels, $output );
+
+	return $stats_labels;
 }
+
 /**
- * Get auto player stats.
+ * Get preset player stats names with appearances and subs.
  *
- * @access public
- * @param string $post_id
- * @param string $team_id
- * @param string $season_id
- * @return mixed $output
+ * @param bool $subs
+ * @return array
  */
-if (!function_exists('get_wpcm_player_auto_stats')) {
-	function get_wpcm_player_auto_stats( $post_id = null, $team_id = null, $season_id = null ) {
+function wpcm_get_player_stats_names( $subs = false) {
 
-		if ( !$post_id ) global $post_id;
-
-		$stats_labels = wpcm_get_sports_stats_labels();
-
-		$club_id = get_post_meta( $post_id, 'wpcm_club', true );
-		$output = get_wpcm_player_stats_empty_row();
-
-		// get all home matches
-		$args = array(
-			'post_type' => 'wpcm_match',
-			'tax_query' => array(),
-			'showposts' => -1,
-			'meta_query' => array(
-				array(
-					'key' => 'wpcm_home_club',
-					'value' => $club_id
-				)
-			)
-		);
-
-		if ( isset( $season_id ) ) {
-			$args['tax_query'][] = array(
-				'taxonomy' => 'wpcm_season',
-				'terms' => $season_id
-			);
-		}
-
-		$matches = get_posts( $args );
-
-		foreach( $matches as $match ) {
-
-			$all_players = unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
-
-			if ( is_array( $all_players ) ) {
-
-				foreach( $all_players as $players ) {
-
-					if ( is_array( $players ) && array_key_exists( $post_id, $players ) ) {
-
-						$stats = $players[$post_id];
-						$output['appearances'] ++;
-
-						foreach( $stats as $key => $value ) {
-							if ( array_key_exists( $key, $stats_labels ) )  {
-								if(isset($stats[ $key ])){ $output[ $key ] += $stats[ $key ]; }
-							}
-						}
-					}
-				}
-			}
-		}
-
-		// get all away matches
-		$args['meta_query'] = array(
-			array(
-				'key' => 'wpcm_away_club',
-				'value' => $club_id
-			)
-		);
-		$matches = get_posts( $args );
-
-		foreach( $matches as $match ) {
-
-			$all_players = unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
-
-			if ( is_array( $all_players ) ) {
-
-				foreach( $all_players as $players ) {
-
-					if ( is_array( $players ) && array_key_exists( $post_id, $players ) ) {
-
-						$stats = $players[$post_id];
-						$output['appearances'] ++;
-						
-						foreach( $stats as $key => $value ) {
-							if ( array_key_exists( $key, $stats_labels ) )  {
-								if(isset($stats[ $key ])){ $output[ $key ] += $stats[ $key ]; }
-							}
-						}
-					}
-				}
-			}
-		}
-
-		return $output;
+	if( $subs ) {
+		$appearance_label = wpcm_get_appearance_and_subs_names();
+	} else {
+		$appearance_label = wpcm_get_appearance_names();
 	}
-}
-
-/**
- * Get total player stats.
- *
- * @access public
- * @param string $post_id
- * @return mixed $output
- */
-if (!function_exists('get_wpcm_player_stats')) {
-	function get_wpcm_player_stats( $post_id = null ) {
-
-		if ( !$post_id ) global $post_id;
-
-		$output = array();
-		$teams = get_the_terms( $post_id, 'wpcm_team' );
-		$seasons = get_the_terms( $post_id, 'wpcm_season' );
-
-		// combined season stats for combined team
-		$stats = get_wpcm_player_auto_stats( $post_id );
-		$output[0][0] = array(
-			'auto' => $stats,
-			'total' => $stats
-		);
-
-		// isolated season stats for combined team
-		if ( is_array( $seasons ) ) {
-
-			foreach ( $seasons as $season ) {
-
-				$stats = get_wpcm_player_auto_stats( $post_id, null, $season->term_id );
-				$output[0][$season->term_id] = array(
-					'auto' => $stats,
-					'total' => $stats
-				);
-			}
+	$labels = wpcm_get_preset_labels( 'players', 'name' );
+	foreach( $labels as $label => $value ) {
+		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
+			$output[$label] = $value;
 		}
-
-		// manual stats
-		$stats = (array)unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
-		if ( is_array( $stats ) ):
-
-			foreach( $stats as $team_key => $team_val ):
-
-				if ( is_array( $team_val ) && array_key_exists( $team_key, $output ) ):
-
-					foreach( $team_val as $season_key => $season_val ):
-
-						if ( array_key_exists ( $season_key, $output[$team_key] ) ) {
-
-							$output[$team_key][$season_key]['manual'] = $season_val;
-
-							foreach( $output[$team_key][$season_key]['total'] as $index_key => &$index_val ) {
-
-								if ( array_key_exists( $index_key, $season_val ) )
-
-								 $index_val += $season_val[$index_key];
-							}
-						}
-					endforeach;
-				endif;
-			endforeach;
-		endif;
-
-		return $output;
 	}
+
+	$stats_labels = array_merge( $appearance_label, $output );
+
+	return $stats_labels;
 }
 
 /**
- * Player stats table.
+ * Get all combined player names.
  *
- * @access public
- * @param array
- * @param string $team
- * @param string $season
- * @return void
+ * @return array
  */
-function wpcm_player_stats_table( $stats = array(), $team = 0, $season = 0 ) {
+function wpcm_get_player_all_names() {
 
-	if ( array_key_exists( $team, $stats ) ):
+	$appearance_labels = wpcm_get_appearance_and_subs_names();
 
-		if ( array_key_exists( $season, $stats[$team] ) ):
+	$labels = wpcm_get_preset_labels( 'players', 'name' );
+	foreach( $labels as $label => $value ) {
+		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
+			$output[$label] = $value;
+		}
+	}
 
-			$stats = $stats[$team][$season];
-		endif;
-	endif;
+	$stats_labels = array_merge( wpcm_player_labels(), $appearance_labels, $output );
 
-	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
-
-	$stats_labels = array( 'appearances' => __( 'Apps', 'wpclubmanager' ) );
-	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels ); ?>
-
-	<table>
-		<thead>
-			<tr>
-				<td>&nbsp;</td>
-				<?php foreach( $stats_labels as $key => $val ):
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-						<th><?php echo $val; ?></th>
-					<?php endif;
-				endforeach; ?>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<th align="right">Total</th>
-				<?php foreach( $stats_labels as $key => $val ):
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-						<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo $key; ?>" readonly /></td>
-					<?php endif;
-				endforeach; ?>
-			</tr>
-		</tfoot>
-		<tbody>
-			<tr>
-				<td align="right"><?php _e( 'Auto' ); ?></td>
-				<?php foreach( $stats_labels as $key => $val ):
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-						<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo $key; ?>" readonly /></td>
-					<?php endif;
-				endforeach; ?>
-			</tr>
-			<tr>
-				<td align="right"><?php _e( 'Manual', 'wpclubmanager' ); ?></td>
-				<?php foreach( $stats_labels as $key => $val ):
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
-						<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>"<?php echo ( $season == 0 ? ' readonly' : '' ); ?> /></td>
-					<?php endif;
-				endforeach; ?>
-			</tr>
-		</tbody>
-	</table>
-	<script type="text/javascript">
-		(function($) {
-			<?php foreach( $stats_labels as $key => $val ) { ?>
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-manual-<?php echo $key; ?>').each(function(){
-					sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val(sum);
-
-				var sum = 0;
-				$('.stats-table-season .player-stats-auto-<?php echo $key; ?>').each(function(){
-					sum += Number($(this).val());
-				});
-				$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val(sum);
-
-				var a = +$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val();
-				var b = +$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val();
-				var total = a+b;
-				$('#wpcm_team-0_season-0 .player-stats-total-<?php echo $key; ?>').val(total);
-
-			<?php } ?>
-		})(jQuery);
-	</script>
-
-<?php
+	return $stats_labels;
 }
 
 /**
- * Player profile stats table.
+ * Filter keys to display.
+ *
+ * @return array
+ */
+function wpcm_exclude_keys() {
+
+	$exclude_keys = array();
+	$exclude_keys[] = 'checked';
+	$exclude_keys[] = 'sub';
+	$exclude_keys[] = 'greencards';
+	$exclude_keys[] = 'yellowcards';
+	$exclude_keys[] = 'blackcards';
+	$exclude_keys[] = 'redcards';
+	$exclude_keys[] = 'mvp';
+
+	return $exclude_keys;
+}
+
+/**
+ * Filter keys to display.
+ *
+ * @return array
+ */
+function wpcm_stats_cards() {
+
+	$exclude_keys = apply_filters( 'wpclubmanager_stats_cards', array(
+		'greencards',
+		'yellowcards',
+		'blackcards',
+		'redcards',
+	) );
+
+	return $exclude_keys;
+}
+
+/**
+ * Get player positions.
  *
  * @access public
- * @param array
- * @param string $team
- * @param string $season
- * @return void
+ * @param int $post
+ * @return mixed $position
+ * @since 1.4.0
  */
-function wpcm_profile_stats_table( $stats = array(), $team = 0, $season = 0 ) {
+function wpcm_get_player_positions( $post ) {
 
-	if ( array_key_exists( $team, $stats ) ):
+	$positions = wp_get_object_terms( $post, 'wpcm_position' );
 
-		if ( array_key_exists( $season, $stats[$team] ) ):
+	if ( is_array( $positions ) ) {
+		$player_positions = array();
+		foreach ( $positions as $position ) {
+			$player_positions[] = $position->name;
+		}
+		$position = implode( ', ', $player_positions );
+	} else {
+		$position = __( 'None', 'wp-club-manager' );
+	}
 
-			$stats = $stats[$team][$season];
-		endif;
-	endif;
+	return $position;
+}
 
-	$wpcm_player_stats_labels = wpcm_get_sports_stats_labels();
+/**
+ * Get player teams.
+ *
+ * @access public
+ * @param int $post
+ * @return mixed $team
+ * @since 1.4.0
+ */
+function wpcm_get_player_teams( $post ) {
 
-	$stats_labels = array( 'appearances' => '<a title="' . __('Games Played', 'wpclubmanager') . '">' . __( 'GP', 'wpclubmanager' ) . '</a>' );
-	$stats_labels = array_merge( $stats_labels, $wpcm_player_stats_labels ); ?>
+	$teams = wp_get_object_terms( $post, 'wpcm_team' );
 
-	<table>
-		<thead>
-			<tr>
-				<?php
-				foreach( $stats_labels as $key => $val ) { 
+	if ( is_array( $teams ) ) {
+		$player_teams = array();
+		foreach ( $teams as $team ) {
+			$player_teams[] = $team->name;
+		}
+		$team = implode( ', ', $player_teams );
+	} else {
+		$team = false;
+	}
 
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) { ?>
+	return $team;
 
-						<th><?php echo $val; ?></th>
-					<?php
-					}
+}
 
-				} ?>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<?php foreach( $stats_labels as $key => $val ) {
+/**
+ * Get player seasons.
+ *
+ * @access public
+ * @param int $post
+ * @return mixed $season
+ * @since 1.4.0
+ */
+function wpcm_get_player_seasons( $post ) {
 
-					if( $key == 'rating' ) {
+	$seasons = wp_get_object_terms( $post, 'wpcm_season' );
 
-						$rating = get_wpcm_stats_value( $stats, 'total', 'rating' );
-						$apps = get_wpcm_stats_value( $stats, 'total', 'appearances' );
-						if( $apps > 0 ) {
-							$avrating = $rating / $apps;
-						} else {
-							$avrating = 0;
-						}
+	if ( is_array( $seasons ) ) {
+		$player_seasons = array();
+		foreach ( $seasons as $season ) {
+			$player_seasons[] = $season->name;
+		}
+		$season = implode( ', ', $player_seasons );
+	}
 
-						if( get_option( 'wpcm_show_stats_rating' ) == 'yes' ) : ?>
-					
-							<td><span data-index="rating"><?php echo sprintf( "%01.2f", round($avrating, 2) ); ?></span></td>
-						<?php endif;
+	return $season;
+}
 
-					} else { 
+/**
+ * Get player thumbnail.
+ *
+ * @access public
+ * @param int $post
+ * @return mixed $thumb
+ * @since 1.4.0
+ */
+function wpcm_get_player_thumbnail( $post, $size = null, $args = null ) {
 
-						if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) { ?>
+	if ( has_post_thumbnail( $post ) ) {
+		$thumb = get_the_post_thumbnail( $post, $size, $args );
+	} else {
+		$thumb = wpcm_placeholder_img( $size );
+	}
 
-							<td><span data-index="<?php echo $key; ?>"><?php wpcm_stats_value( $stats, 'total', $key ); ?></span></td>
-						<?php
-						}
-					}
-				} ?>
-				
-			</tr>
-		</tbody>
-	</table>
-<?php
+	return $thumb;
+}
+
+/**
+ * Get average player rating - used in templates/shortcodes/players.php.
+ *
+ * @access public
+ * @param int $rating
+ * @param int $appearances
+ * @return int $average
+ * @since 1.4.0
+ */
+function wpcm_get_player_average_rating( $rating, $appearances ) {
+
+	if ( $rating > 0 ) {
+		$avrating = wpcm_divide( $rating, $appearances );
+		$average = sprintf( "%01.2f", round($avrating, 2) );
+	} else {
+		$average = '0';
+	}
+
+	return $average;
+
+}
+
+/**
+ * Get player appearances with/without subs - used in templates/shortcodes/players.php.
+ *
+ * @access public
+ * @param array $player_detail
+ * @return int $appearances
+ * @since 1.4.5
+ */
+function wpcm_get_player_appearances( $player_detail ) {
+
+	if ( array_key_exists( 'subs', $player_detail ) ) {
+		$subs = $player_detail['subs'];
+		if( $subs >= 1 ){
+			$appearances = $player_detail['appearances'] . ' <span class="wpcm-sub-appearances">(' . $subs . ')</span>';
+		} else {
+			$appearances = $player_detail['appearances'];
+		}
+	} else {
+		$appearances = $player_detail['appearances'];
+	}
+
+	return $appearances;
+}
+
+/**
+ * Get player stat - used in templates/shortcodes/players.php.
+ *
+ * @access public
+ * @param array $player_detail
+ * @param string $stat
+ * @return string $stat
+ * @since 1.4.0
+ */
+function wpcm_get_player_stat( $player_detail, $stat ) {
+
+	if ( $stat == 'rating' ) {
+		$stat = wpcm_get_player_average_rating( $player_detail['rating'], $player_detail['appearances'] );
+	} elseif ( $stat == 'appearances' ) {
+		$stat = wpcm_get_player_appearances( $player_detail );
+	} else {
+		$stat = $player_detail[$stat];
+	}
+
+	return $stat;
+}
+
+/**
+ * Get player stat value from presets - used in templates/shortcodes/players.php
+ *
+ * @access public
+ * @param array $player_details
+ * @param int $post
+ * @param array $player_stats
+ * @param string $stat
+ * @param int $team
+ * @param int $season
+ * @return array $player_details
+ * @since 1.4.0
+ */
+function wpcm_get_player_preset_stat( $player_details = array(), $post, $player_stats = array(), $stat, $team = 0, $season = 0 ) {
+
+	if ( $team ) {
+		if ( $season ) {
+			$player_details[$post][$stat] = $player_stats[$team][$season]['total'][$stat];
+		} else {
+			$player_details[$post][$stat] = $player_stats[$team][0]['total'][$stat];
+		}
+	} else {
+		if ( $season ) {
+			$player_details[$post][$stat] = $player_stats[0][$season]['total'][$stat];
+		} else {
+			$player_details[$post][$stat] = $player_stats[0][0]['total'][$stat];
+		}
+	}
+
+	return $player_details[$post][$stat];
+}
+
+/**
+ * Get staff labels.
+ *
+ * @return array
+ */
+function wpcm_staff_labels() {
+
+	$labels = array(
+		'flag' => '&nbsp;',
+		'number' => '&nbsp;',
+		'name' => __( 'Name', 'wp-club-manager' ),
+		'thumb' => '&nbsp',
+		'job' => __( 'Job', 'wp-club-manager' ),
+		'email' => __( 'Email', 'wp-club-manager' ),
+		'phone' => __( 'Phone', 'wp-club-manager' ),
+		'age' => __( 'Age', 'wp-club-manager' ),
+		'team' => __( 'Team', 'wp-club-manager' ),
+		'season' => __( 'Season', 'wp-club-manager' ),
+		'joined' => __( 'Joined', 'wp-club-manager' )
+	);
+
+	return $labels;
+}
+
+/**
+ * Get staff jobs.
+ *
+ * @access public
+ * @param int $post
+ * @return mixed $job
+ * @since 1.4.5
+ */
+function wpcm_get_staff_jobs( $post ) {
+
+	$jobs = wp_get_object_terms( $post, 'wpcm_jobs' );
+
+	if ( is_array( $jobs ) ) {
+		$employee_jobs = array();
+		foreach ( $jobs as $job ) {
+			$employee_jobs[] = $job->name;
+		}
+		$job = implode( ', ', $employee_jobs );
+	} else {
+		$job = __( 'None', 'wp-club-manager' );
+	}
+
+	return $job;
 }

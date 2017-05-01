@@ -1,39 +1,44 @@
-<div class="wrap wpclubmanager-extensions">
-	<h2>
-		<?php _e( 'WP Club Manager Extensions', 'wpclubmanager' ); ?>
-		<a href="https://wpclubmanager.com/extensions/" class="add-new-h2"><?php _e( 'Browse all extensions', 'wpclubmanager' ); ?></a>
-		<a href="https://wpclubmanager.com/themes/" class="add-new-h2"><?php _e( 'Browse themes', 'wpclubmanager' ); ?></a>
-	</h2>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+} ?>
 
-	<p><?php _e( 'These add-ons extend the functionality of WP Club Manager.', 'wpclubmanager' ); ?></p>
+<div class="wrap wpclubmanager-extensions">
+	<h1>
+		<?php _e( 'WP Club Manager Extensions', 'wp-club-manager' ); ?>
+		<a href="https://wpclubmanager.com/extensions/" class="page-title-action"><?php _e( 'Browse all extensions', 'wp-club-manager' ); ?></a>
+		<a href="https://wpclubmanager.com/themes/" class="page-title-action"><?php _e( 'Browse themes', 'wp-club-manager' ); ?></a>
+	</h1>
+
+	<p><?php _e( 'These add-ons extend the functionality of WP Club Manager.', 'wp-club-manager' ); ?></p>
 
 	<div class="">
-		<ul class="extensions">
-			<li class="extension">
-				<a href="https://wpclubmanager.com/extensions/players-gallery">
-					<img src="<?php echo WPCM()->plugin_url(); ?>/assets/images/extensions/wpcm-pg-280.png"/>
-				</a>
-				<h3>Players Gallery</h3>
-				<p>Display a gallery of your clubs players or staff anywhere on your site</p>
-				<a href="https://wpclubmanager.com/extensions/players-gallery" class="button right">Find out more</a>
-			</li>
-			<li class="extension">
-				<a href="https://wpclubmanager.com/extensions/score-summary">
-					<img src="<?php echo WPCM()->plugin_url(); ?>/assets/images/extensions/wpcm-ss-280.png"/>
-				</a>
-				<h3>Score Summary</h3>
-				<p>Keep record of the interval scores and add a score summary to your clubs matches</p>
-				<a href="https://wpclubmanager.com/extensions/score-summary" class="button right">Find out more</a>
-			</li>
-			<li class="extension">
-				<a href="https://wpclubmanager.com/extensions/player-appearances">
-					<img src="<?php echo WPCM()->plugin_url(); ?>/assets/images/extensions/wpcm-pa-280.png"/>
-				</a>
-				<h3>Player Appearances</h3>
-				<p>Display a list of a players matches, season by season, on their profile</p>
-				<a href="https://wpclubmanager.com/extensions/player-appearances" class="button right">Find out more</a>
-			</li>
-		</ul>
+
+		<?php if ( $extensions ) : 
+
+			$extensions = $extensions->featured; ?>
+
+			<ul class="extensions">
+
+				<?php foreach ( $extensions as $extension ) {
+
+					echo '<li class="extension">';
+					echo '<a href="' . $extension->link . '">';
+					echo '<img src="' . $extension->image . '"/>';
+					echo '</a>';
+					echo '<h3>' . $extension->title . '</h3>';
+					echo '<p>' . $extension->excerpt . '</p>';
+					echo '<a href="' . $extension->link . '" class="button right">Find out more</a>';
+					echo '</li>';
+				
+				} ?>
+
+			</ul>
+
+		<?php else : ?>
+			<p><?php printf( __( 'Our catalog of WP Club Manager Extensions can be found on wpclubmanager.com here: <a href="%s">WP Club Manager Extensions Catalog</a>', 'wp-club-manager' ), 'https://wpclubmanager.com/extensions/' ); ?></p>
+		<?php endif; ?>
+
 	</div>
 
 </div>
