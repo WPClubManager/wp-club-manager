@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.4.8
+ * @version 	2.1.0
  * @extends 	WPCM_Widget
  */
 
@@ -72,6 +72,11 @@ class WPCM_Results_Widget extends WPCM_Widget {
 				'type'  => 'section_heading',
 				'label' => __( 'Display Options', 'wp-club-manager' ),
 				'std'   => '',
+			),
+			'show_abbr' => array(
+				'type'  => 'checkbox',
+				'std'   => 0,
+				'label' => __( 'Abbreviations', 'wp-club-manager' )
 			),
 			'show_date' => array(
 				'type'  => 'checkbox',
@@ -242,13 +247,17 @@ class WPCM_Results_Widget extends WPCM_Widget {
 				$team = wpcm_get_match_team( $post );
 				$score = wpcm_get_match_result( $post );
 				$played = get_post_meta( $post, 'wpcm_played', true );
+				$show_abbr = ! empty( $instance['show_abbr'] );
 				$show_date = ! empty( $instance['show_date'] );
 		    	$show_time = ! empty( $instance['show_time'] );
 		    	$show_score = ! empty( $instance['show_score'] );
 		    	$show_comp = ! empty( $instance['show_comp'] );
-		    	$show_team = ! empty( $instance['show_team'] );
+				$show_team = ! empty( $instance['show_team'] );
+				if( $show_abbr == 1 ) {
+					$sides = wpcm_get_match_clubs( $post, true );
+				}
 
-				wpclubmanager_get_template( 'content-widget-results.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'score' => $score, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, 'show_score' => $show_score, 'played' => $played ) );
+				wpclubmanager_get_template( 'content-widget-results.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'score' => $score, 'show_abbr' => $show_abbr, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, 'show_score' => $show_score, 'played' => $played ) );
 
 			endwhile;
 

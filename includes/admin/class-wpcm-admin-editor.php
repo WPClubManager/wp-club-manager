@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.0
+ * @version     2.0.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,19 +21,23 @@ class WPCM_Admin_Editor {
 
 		add_action( 'admin_init', array( $this, 'add_shortcode_button' ) );
 		add_filter( 'tiny_mce_version', array( $this, 'refresh_mce' ) );
+		add_filter( 'mce_external_languages', array( $this, 'add_tinymce_lang' ), 10, 1 );
 	}
 
-	/**
-	* Add buttons for shortcodes to the WP editor.
-	*/
 	public function add_shortcode_button() {
+		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+			return;
+		}
 
-		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) return;
-
-		if ( get_user_option('rich_editing') == 'true' ) :
+		if ( 'true' == get_user_option( 'rich_editing' ) ) {
 			add_filter( 'mce_external_plugins', array( $this, 'add_shortcode_tinymce_plugin' ) );
-			add_filter( 'mce_buttons_3', array( $this, 'register_shortcode_button' ) );
-		endif;
+			add_filter( 'mce_buttons', array( $this, 'register_shortcode_button' ) );
+		}
+	}
+
+	public function add_tinymce_lang( $arr ) {
+	    $arr['wpcm_shortcodes_button'] = WPCM()->plugin_path() . '/assets/js/admin/editor-lang.php';
+	    return $arr;
 	}
 
 	/**
@@ -42,10 +46,9 @@ class WPCM_Admin_Editor {
 	 * @param array $buttons
 	 * @return array
 	 */
-	public function register_shortcode_button($buttons) {
-
-		array_push( $buttons, "wpcm_matches_button", "wpcm_standings_button", "|", "wpcm_players_button", "wpcm_staff_button", "|", "wpcm_map_button" );
-
+	
+	public function register_shortcode_button( $buttons ) {
+		array_push( $buttons, 'wpcm_shortcodes_button' );
 		return $buttons;
 	}
 
@@ -55,14 +58,9 @@ class WPCM_Admin_Editor {
 	 * @param array $plugin_array
 	 * @return array
 	 */
-	public function add_shortcode_tinymce_plugin($plugin_array) {
-
-		$plugin_array['matches']   = WPCM()->plugin_url() . '/assets/js/admin/editor-matches.js';
-		$plugin_array['standings'] = WPCM()->plugin_url() . '/assets/js/admin/editor-standings.js';
-		$plugin_array['players']   = WPCM()->plugin_url() . '/assets/js/admin/editor-players.js';
-		$plugin_array['staff']     = WPCM()->plugin_url() . '/assets/js/admin/editor-staff.js';
-		$plugin_array['map']       = WPCM()->plugin_url() . '/assets/js/admin/editor-map.js';
-
+	// 
+	public function add_shortcode_tinymce_plugin( $plugin_array ) {
+		$plugin_array['wpcm_shortcodes_button'] = WPCM()->plugin_url() . '/assets/js/admin/editor.js';
 		return $plugin_array;
 	}
 

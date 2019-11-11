@@ -4,14 +4,16 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.4.0
+ * @version     2.0.0
  */
 
 $template = get_option( 'template' );
 
 switch( $template ) {
 	case 'twentyeleven' :
-		echo '</div></div>';
+		echo '</div>';
+		get_sidebar();
+		echo '</div>';
 		break;
 	case 'twentytwelve' :
 		echo '</div></div>';
@@ -27,11 +29,10 @@ switch( $template ) {
 		echo '</div></div>';
 		break;
 	case 'twentysixteen' :
-		echo '</main>';
-		get_sidebar( 'content-bottom' );
-		echo '</div>';
+		echo '</main></div>';
 		break;
 	default :
-		echo '</div></div>';
+		//echo '</div></div>';
+		echo '</main></div>';
 		break;
 }

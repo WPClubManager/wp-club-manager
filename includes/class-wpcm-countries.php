@@ -5,7 +5,7 @@
  * The WPClubManager countries class stores country/state data.
  *
  * @class 		WPCM_Countries
- * @version		1.0.0
+ * @version		2.1.3
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -160,7 +160,7 @@ class WPCM_Countries {
 			'lt' => __( 'Lithuania', 'wp-club-manager' ),
 			'lu' => __( 'Luxembourg', 'wp-club-manager' ),
 			'mo' => __( 'Macao', 'wp-club-manager' ),
-			'mk' => __( 'Macedonia', 'wp-club-manager' ),
+			'mk' => __( 'North Macedonia', 'wp-club-manager' ),
 			'mg' => __( 'Madagascar', 'wp-club-manager' ),
 			'mw' => __( 'Malawi', 'wp-club-manager' ),
 			'my' => __( 'Malaysia', 'wp-club-manager' ),

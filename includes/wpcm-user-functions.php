@@ -154,5 +154,4 @@ function wpcm_disable_author_archives_for_players() {
 		}
 	}
 }
-
 add_action( 'template_redirect', 'wpcm_disable_author_archives_for_players' );

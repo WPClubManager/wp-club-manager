@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Classes
- * @version     1.4.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +19,7 @@ class WPCM_Cache_Helper {
 		add_action( 'create_plugin_transient_name', array( __CLASS__, 'create_plugin_transient_name' ) );
 		add_action( 'update_plugin_transient_keys', array( __CLASS__, 'update_plugin_transient_keys' ) );
 		add_action( 'delete_plugin_transients', array( __CLASS__, 'delete_plugin_transients' ) );
+		add_action( 'wp_ajax_wpcm_clear_transients', array( __CLASS__, 'wpcm_clear_transients' ) );
 	}
 
 	public static function create_plugin_transient_name( $atts, $type = 'players' ) {
@@ -47,7 +48,20 @@ class WPCM_Cache_Helper {
 		  	}
 		  	update_option( 'wpcm_transient_keys', array() );
 		}
-	} 
+	}
+
+	/**
+	 * Clear transients ajax
+	 */
+	public function wpcm_clear_transients() {
+		
+		if( !isset( $_POST['wpcm_nonce'] ) || !wp_verify_nonce($_POST['wpcm_nonce'], 'wpcm-nonce') )
+			die('Permissions check failed');	
+		
+		do_action( 'delete_plugin_transients' );
+		
+		exit();
+	}
 }
 
 WPCM_Cache_Helper::init();

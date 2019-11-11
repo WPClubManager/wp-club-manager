@@ -1,4 +1,4 @@
-.wpcm-club-medium-button {
+/* .wpcm-club-medium-button {
 	display: block;
 	width: 60px;
 	height: 60px;
@@ -47,7 +47,7 @@
 	}
 
 /* TinyMCE buttons */
-i.mce-ico {
+/* i.mce-ico {
 	font: 400 20px/1 dashicons;
 }
 i.mce-i-wpcm_standings_button:before {
@@ -64,6 +64,10 @@ i.mce-i-wpcm_players_button:before {
 }
 i.mce-i-wpcm_staff_button:before {
 	content: '\f338';
+} */
+
+.taxonomy-wpcm_venue .term-parent-wrap {
+	display: none;
 }
 
 .wpclubmanager-extensions li.extension {
@@ -97,8 +101,28 @@ i.mce-i-wpcm_staff_button:before {
 	height: 100%;
 }
 
+.wp-list-table .column-move {
+	text-align: center;
+	width: 24px;
+}
+.wp-list-table .column-move i.dashicons-move {
+	color: #ccc;
+	font-size: 16px;
+	margin-top: 4px;
+}
+.taxonomy-wpcm_season #the-list tr:hover i.dashicons-move,
+.taxonomy-wpcm_team #the-list tr:hover i.dashicons-move,
+.taxonomy-wpcm_comp #the-list tr:hover i.dashicons-move,
+.taxonomy-wpcm_position #the-list tr:hover i.dashicons-move,
+.taxonomy-wpcm_jobs #the-list tr:hover i.dashicons-move {
+	color: #868686;
+}
+
 .taxonomy-wpcm_season #the-list tr:hover,
 .taxonomy-wpcm_team #the-list tr:hover,
+.taxonomy-wpcm_comp #the-list tr:hover,
+.taxonomy-wpcm_position #the-list tr:hover,
+.taxonomy-wpcm_jobs #the-list tr:hover,
 .wpcm-match-players-table tr:hover {
 	cursor: -webkit-grab; 
 	cursor: -moz-grab;
@@ -106,6 +130,9 @@ i.mce-i-wpcm_staff_button:before {
 
 .taxonomy-wpcm_season #the-list tr.ui-sortable-helper:hover,
 .taxonomy-wpcm_team #the-list tr.ui-sortable-helper:hover,
+.taxonomy-wpcm_comp #the-list tr.ui-sortable-helper:hover,
+.taxonomy-wpcm_position #the-list tr.ui-sortable-helper:hover,
+.taxonomy-wpcm_jobs #the-list tr.ui-sortable-helper:hover,
 .wpcm-match-players-table tr.ui-sortable-helper:hover {
 	display: table;
 	cursor: -webkit-grabbing; 
@@ -113,13 +140,91 @@ i.mce-i-wpcm_staff_button:before {
 }
 
 .taxonomy-wpcm_season #the-list tr.no-items:hover,
-.taxonomy-wpcm_team #the-list tr.no-items:hover {
+.taxonomy-wpcm_team #the-list tr.no-items:hover,
+.taxonomy-wpcm_comp #the-list tr.no-items:hover
+.taxonomy-wpcm_position #the-list tr.no-items:hover
+.taxonomy-wpcm_jobs #the-list tr.no-items:hover {
 	cursor: default;
 }
 
 .wpcm-simple-taxonomy-preloader {
 	margin: 0 0 0 8px;
 }
-.wpcm-match-players-desc {
+/* .wpcm-match-players-desc {
 	line-height: 1.9;
+} */
+
+/* Prefs */
+.wpcm-thickbox-content label,
+.wpcm-column-options span {
+	display: inline-block;
+	width: 170px;
+	margin: 5px 0;
+}
+.wpcm-column-options-labels {
+	display: inline-block;
+	margin-top: -20px;
+	padding-left: 170px;
+}
+.wpcm-column-options .button {
+	font-weight: normal;
+	margin: 0 3px 4px 0;
+	padding: 0 7px 1px 5px;
+	width: auto;
+}
+.wpcm-column-options .button input[type=checkbox] {
+	background: transparent;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.wpcm-column-options .button input[type=checkbox]:before {
+	font: 400 14px/22px dashicons;
+	width: 22px;
+}
+
+.wpcm-column-options .button input[type=checkbox]:not(:checked):before {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	speak: none;
+	content: '\f147';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: -3px 0 0 -4px;
+	color: #ccc;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:  url('../fonts/icomoon.eot?i4vyjd');
+	src:  url('../fonts/icomoon.eot?i4vyjd#iefix') format('embedded-opentype'),
+	  url('../fonts/icomoon.ttf?i4vyjd') format('truetype'),
+	  url('../fonts/icomoon.woff?i4vyjd') format('woff'),
+	  url('../fonts/icomoon.svg?i4vyjd#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+  }
+/* .mce-toolbar i.mce-i-wpcm_shortcodes_button, .mce-toolbar span.mce_wpcm_shortcodes_button {
+	margin-right: 5px;
+} */
+i.mce-i-wpcm_shortcodes_button:before, span.mce_wpcm_shortcodes_button:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	content: "\e901";
+	font-size: 20px;
+}
+
+.form-field .wpcm-location-picker {
+	width: 95%;
+	height: 320px;
 }

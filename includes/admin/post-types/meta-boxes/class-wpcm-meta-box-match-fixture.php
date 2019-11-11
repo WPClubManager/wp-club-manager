@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.4.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,9 +21,16 @@ class WPCM_Meta_Box_Match_Fixture {
 
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 
+		$default_club = get_default_club();
 		$home_club = get_post_meta( $post->ID, 'wpcm_home_club', true );
 		$away_club = get_post_meta( $post->ID, 'wpcm_away_club', true );
-		$separator = get_option('wpcm_match_clubs_separator'); ?>
+		if( $home_club == '' && is_club_mode() ) {
+			$home_club = $default_club;
+		}
+		if( $away_club == '' && is_club_mode() ) {
+			$away_club = $default_club;
+		}
+		?>
 		
 		<p>
 			<label><?php _e( 'Home', 'wp-club-manager' ); ?></label>
@@ -56,7 +63,7 @@ class WPCM_Meta_Box_Match_Fixture {
 			));
 			?>
 		</p>
-		<input type="hidden" name="post_title" value="" />
+		
 	<?php }
 
 	/**
@@ -64,13 +71,16 @@ class WPCM_Meta_Box_Match_Fixture {
 	 */
 	public static function save( $post_id, $post ) {
 
-		update_post_meta( $post_id, 'wpcm_home_club', $_POST['wpcm_home_club'] );
-		update_post_meta( $post_id, 'wpcm_away_club', $_POST['wpcm_away_club'] );
+		if( isset( $_POST['wpcm_home_club'] ) ) {
+			update_post_meta( $post_id, 'wpcm_home_club', $_POST['wpcm_home_club'] );
+			wp_set_post_terms( $_POST['wpcm_home_club'], $_POST['wpcm_comp'], 'wpcm_comp', true );
+			wp_set_post_terms( $_POST['wpcm_home_club'], $_POST['wpcm_season'], 'wpcm_season', true );
+		}
+		if( isset( $_POST['wpcm_away_club'] ) ) {
+			update_post_meta( $post_id, 'wpcm_away_club', $_POST['wpcm_away_club'] );
+			wp_set_post_terms( $_POST['wpcm_away_club'], $_POST['wpcm_comp'], 'wpcm_comp', true );
+			wp_set_post_terms( $_POST['wpcm_away_club'], $_POST['wpcm_season'], 'wpcm_season', true );
+		}
 
-		// add comps and seasons to clubs
-		wp_set_post_terms( $_POST['wpcm_home_club'], $_POST['wpcm_comp'], 'wpcm_comp', true );
-		wp_set_post_terms( $_POST['wpcm_home_club'], $_POST['wpcm_season'], 'wpcm_season', true );
-		wp_set_post_terms( $_POST['wpcm_away_club'], $_POST['wpcm_comp'], 'wpcm_comp', true );
-		wp_set_post_terms( $_POST['wpcm_away_club'], $_POST['wpcm_season'], 'wpcm_season', true );
 	}
 }

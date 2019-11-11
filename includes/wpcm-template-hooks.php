@@ -107,6 +107,7 @@ if ( ! is_admin() || defined('DOING_AJAX') ) {
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_score', 10 );
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_away_club', 20 );
 	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_status', 25 );
+	add_action( 'wpclubmanager_single_match_fixture', 'wpclubmanager_template_single_match_box_scores', 30 );
 
 	/**
 	 * Match Meta Box

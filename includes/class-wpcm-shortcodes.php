@@ -3,7 +3,7 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		1.4.9
+ * @version		2.0.0
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -25,12 +25,24 @@ class WPCM_Shortcodes {
 
 		// Define shortcodes
 		$shortcodes = array(
+			'match_list'               		=> __CLASS__ . '::match_list',
+			'player_list'					=> __CLASS__ . '::player_list',
+			'player_gallery'				=> __CLASS__ . '::player_gallery',
+			'staff_list'					=> __CLASS__ . '::staff_list',
+			'league_table'					=> __CLASS__ . '::league_table',
+			'map_venue'						=> __CLASS__ . '::map_venue',
+
+			//OLD SHORTCODES
 			'wpcm_map'               		=> __CLASS__ . '::map',
 			'wpcm_matches'         			=> __CLASS__ . '::matches',
 			'wpcm_players'            		=> __CLASS__ . '::players',
 			'wpcm_staff'            		=> __CLASS__ . '::staff',
 			'wpcm_standings'              	=> __CLASS__ . '::standings',
 		);
+
+		if( is_club_mode() ){
+			$shortcodes['match_opponents'] = __CLASS__ . '::match_opponents';
+		}
 
 		foreach ( $shortcodes as $shortcode => $function ) {
 			add_shortcode( $shortcode, $function );
@@ -51,8 +63,10 @@ class WPCM_Shortcodes {
 			'class'  => 'wpcm-shortcode-wrapper',
 			'before' => null,
 			'after'  => null
-		)
-	) {
+		) ) {
+			
+		$wrapper = apply_filters( 'wpclubmanager_shortcode_wrapper', $wrapper, $function, $atts );
+
 		ob_start();
 
 		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
@@ -65,6 +79,98 @@ class WPCM_Shortcodes {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Match List shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function match_list( $atts ) {
+
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Match_List', 'output' ), $atts );
+	}
+
+	/**
+	 * League Match List shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function match_opponents( $atts ) {
+
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Match_Opponents', 'output' ), $atts );
+	}
+
+	/**
+	 * Player List shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function player_list( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Player_List', 'output' ), $atts );
+	}
+
+	/**
+	 * Player Roster shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function player_gallery( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Player_Gallery', 'output' ), $atts );
+	}
+
+	/**
+	 * Staff List shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function staff_list( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff_List', 'output' ), $atts );
+	}
+
+	
+	/**
+	 * Standings Table shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function league_table( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_League_Table', 'output' ), $atts );
+	}
+
+	/**
+	 * Map shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	 public static function map_venue( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Map_Venue', 'output' ), $atts );
+	}
+
+
+
+
+
+
+
+	//OLD SHORTCODES
 	/**
 	 * Matches shortcode.
 	 *
@@ -128,60 +234,52 @@ class WPCM_Shortcodes {
 			'marker'    	=> 1,
 			'infowindow'	=> false,
 		), $atts );
+		// if ( is_array( $venues ) ) {
+		// 	$venue = reset($venues);
+		// 	$name = $venue->name;
+		// 	$t_id = $venue->term_id;
+		// 	$venue_meta = get_option( "taxonomy_term_$t_id" );
+		// 	$address = $venue_meta['wpcm_address'];
+		// } else {
+		// 	$name = null;
+		// 	$address = null;
+		// }
 		
-		$api_key = urlencode( get_option( 'wpcm_google_map_api') );
-
+		//$api_key = urlencode( get_option( 'wpcm_google_map_api') );
+		
 		if ( $atts['address'] ) {
 			$coordinates = wpcm_decode_address( $atts['address'] );
 			if ( is_array ( $coordinates ) ) {
-				$atts['lat'] = $coordinates['lat'];
-				$atts['lng'] = $coordinates['lng'];
+				$latitude = $coordinates['lat'];
+				$longitude = $coordinates['lng'];
 			}
 		}
+		$address = urlencode($atts['address']);
 		
-		$map_id = uniqid( 'wpcm_map_' );
+		//$map_id = uniqid( 'wpcm_map_' );
 		
 		// show marker or not
-		$atts['marker'] = (int) $atts['marker'] ? true : false;
+		//$atts['marker'] = (int) $atts['marker'] ? true : false;
+		$api_key = get_option( 'wpcm_google_map_api' );
+		$zoom = get_option( 'wpcm_map_zoom', 15 );
+		$maptype = get_option( 'wpcm_map_type', 'roadmap' );
+		$maptype = strtolower( $maptype );
+		if ( '' === $address ) $address = '+';
+		if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
+		if( is_tax( 'wpcm_venue' ) ) $class = 'wpcm-venue-map';
 
-		ob_start(); ?>
-		<div class="wpcm_map_canvas" id="<?php echo esc_attr( $map_id ); ?>" style="height: <?php echo esc_attr( $atts['height'] ); ?>px; width: <?php echo esc_attr( $atts['width'] ); ?>px"></div>
-	    <script type="text/javascript">
-			var map_<?php echo $map_id; ?>;
-			var marker_<?php echo $map_id; ?>;
-			var infowindow_<?php echo $map_id; ?>;
-			//var geocoder = new google.maps.Geocoder();
-			function wp_gmaps_<?php echo $map_id; ?>() {
-				var location = { lat: <?php echo esc_attr( $atts['lat'] ); ?>, lng: <?php echo esc_attr( $atts['lng'] ); ?> };
-				var map_options = {
-					zoom: <?php echo esc_attr( $atts['zoom'] ) ?>,
-					center: location,
-					scrollwheel: false,
-					gestureHandling: 'cooperative',
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				}
-				map_<?php echo $map_id; ?> = new google.maps.Map(document.getElementById("<?php echo $map_id; ?>"), map_options);
-				
-				<?php if ( $atts['marker'] ): ?>
-					marker_<?php echo $map_id ?> = new google.maps.Marker({
-						position: location,
-						map: map_<?php echo $map_id; ?>
-					});
-				
-					<?php if ( $atts['infowindow'] ): ?>
-						infowindow_<?php echo $map_id; ?> = new google.maps.InfoWindow({
-							content: '<?php echo esc_attr( $atts['infowindow'] ) ?>'
-						});
-						google.maps.event.addListener(marker_<?php echo $map_id ?>, 'click', function() {
-							infowindow_<?php echo $map_id; ?>.open(map_<?php echo $map_id; ?>, marker_<?php echo $map_id ?>);
-						});
-					<?php endif; ?>
-				<?php endif; ?>
-			}
-			wp_gmaps_<?php echo $map_id; ?>();
-		</script>
-		<script async defer src="//maps.googleapis.com/maps/api/js?key=<?php echo $api_key ?>&callback=wp_gmaps_<?php echo $map_id; ?>"></script>
-		<?php
+		ob_start();
+		if ( $latitude != null && $longitude != null ):
+			?>
+			<iframe
+			class="wpcm-google-map <?php echo $class; ?>"
+			width="600"
+			height="320"
+			frameborder="0" style="border:0"
+			src="https://www.google.com/maps/embed/v1/search?key=<?php echo $api_key; ?>&amp;q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
+			</iframe>
+			<?php
+		endif;
 		
 		return ob_get_clean();
 	}

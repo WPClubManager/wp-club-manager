@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.4.0
+ * @version 	2.1.0
  * @extends 	WPCM_Widget
  */
 
@@ -73,6 +73,11 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				'label' => __( 'Display Options', 'wp-club-manager' ),
 				'std'   => '',
 			),
+			'show_abbr' => array(
+				'type'  => 'checkbox',
+				'std'   => 0,
+				'label' => __( 'Abbreviations', 'wp-club-manager' )
+			),
 			'show_date' => array(
 				'type'  => 'checkbox',
 				'std'   => 1,
@@ -92,6 +97,11 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				'type'  => 'checkbox',
 				'std'   => 0,
 				'label' => __( 'Team', 'wp-club-manager' )
+			),
+			'show_countdown' => array(
+				'type'  => 'checkbox',
+				'std'   => 0,
+				'label' => __( 'Countdown', 'wp-club-manager' )
 			),
 			'link_options' => array(
 				'type'  => 'section_heading',
@@ -229,12 +239,20 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				$badges = wpcm_get_match_badges( $post, 'crest-medium' );
 				$comp = wpcm_get_match_comp( $post );
 				$team = wpcm_get_match_team( $post );
+				$show_abbr = ! empty( $instance['show_abbr'] );
 				$show_date = ! empty( $instance['show_date'] );
 		    	$show_time = ! empty( $instance['show_time'] );
 		    	$show_comp = ! empty( $instance['show_comp'] );
-		    	$show_team = ! empty( $instance['show_team'] );
+				$show_team = ! empty( $instance['show_team'] );
+				$show_countdown = ! empty( $instance['show_countdown'] );
+				if( $show_countdown ) {
+					wp_enqueue_script( 'jquery-countdown', WPCM()->plugin_url() . '/assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
+				}
+				if( $show_abbr == 1 ) {
+					$sides = wpcm_get_match_clubs( $post, true );
+				}
 
-				wpclubmanager_get_template( 'content-widget-fixtures.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team ) );
+				wpclubmanager_get_template( 'content-widget-fixtures.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'show_abbr' => $show_abbr, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, 'show_countdown' => $show_countdown ) );
 
 			endwhile;
 

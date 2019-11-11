@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Classes
- * @version     1.5.5
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -34,7 +34,8 @@ class WPCM_Install {
 	 */
 	public function check_version() {
 
-		if ( ! defined( 'IFRAME_REQUEST' ) && ( get_option( 'wpclubmanager_version' ) != WPCM()->version ) ) {
+		if ( ! defined( 'IFRAME_REQUEST' ) && version_compare( get_option( 'wpclubmanager_version' ), WPCM()->version, '<' ) ) {
+
 			$this->install();
 
 			do_action( 'wpclubmanager_updated' );
@@ -53,11 +54,20 @@ class WPCM_Install {
 			// Update complete
 			//WPCM_Admin_Notices::remove_notice( 'update' );
 
+		}
+
+		if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) {
+
 			// What's new redirect
-			delete_transient( '_wpcm_activation_redirect' );
-			wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
+			//delete_transient( '_wpcm_activation_redirect' );
+			//wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
+			wp_safe_redirect( admin_url( 'admin.php?page=wpcm-settings' ) );
 			exit;
 		}
+	}
+
+	private function is_new_install() {
+		return is_null( get_option( 'wpclubmanager_version', null ) );
 	}
 
 	/**
@@ -72,12 +82,20 @@ class WPCM_Install {
 		// Ensure needed classes are loaded
 		include_once( 'admin/class-wpcm-admin-notices.php' );
 
-		$this->create_options();
+		$this->remove_roles();
 		$this->create_roles();
 
 		// Register post types
+		include_once( 'class-wpcm-post-types.php' );
 		WPCM_Post_Types::register_post_types();
 		WPCM_Post_Types::register_taxonomies();
+
+		$this->create_options();
+
+		if ( apply_filters( 'wpclubmanager_enable_setup_wizard', self::is_new_install() ) ) {
+			WPCM_Admin_Notices::add_notice( 'install' );
+			set_transient( '_wpcm_activation_redirect', 1, 30 );
+		}
 
 		// Queue upgrades
 		$current_version = get_option( 'wpclubmanager_version', null );
@@ -85,22 +103,22 @@ class WPCM_Install {
 			update_option( 'wpcm_version_upgraded_from', $current_version );
 		}
 
-		$this->updates();
+		$this->updates( $current_version );
 		
 		// Update version
 		//delete_option( 'wpclubmanager_version' );
 		update_option( 'wpclubmanager_version', WPCM()->version );
 
-		add_option( 'wpcm_install_date', date( 'Y-m-d h:i:s' ) );
-		add_option( 'wpcm_rating', 'no' );
+		//add_option( 'wpcm_install_date', date( 'Y-m-d h:i:s' ) );
+		//add_option( 'wpcm_rating', 'no' );
 
 		// Flush rules after install
 		flush_rewrite_rules();
 
 		// Redirect to welcome screen
-		if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
-			set_transient( '_wpcm_activation_redirect', 1, 30 );
-		}
+		// if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
+		// 	set_transient( '_wpcm_activation_redirect', 1, 30 );
+		// }
 
 		// Trigger action
 		do_action( 'wpclubmanager_installed' );
@@ -112,25 +130,27 @@ class WPCM_Install {
 	 */
 	public function updates( $version = null ) {
 		
-		$current_version = get_option( 'wpclubmanager_version' );
+		if ( empty( $version ) ) return;
 
-		if ( version_compare( $current_version, '1.1.0', '<' ) ) {
+		if ( version_compare( $version, '1.1.0', '<' ) ) {
 			include( 'updates/wpclubmanager-update-1.1.0.php' );
 		}
 
-		if ( version_compare( $current_version, '1.5.0', '<' ) ) {
+		if ( version_compare( $version, '1.5.0', '<' ) ) {
 			include_once( 'updates/wpclubmanager-update-1.5.0.php' );
 		}
 
-		if ( version_compare( $current_version, '1.5.4', '<' ) ) {
+		if ( version_compare( $version, '1.5.4', '<' ) ) {
 			include_once( 'updates/wpclubmanager-update-1.5.0.php' );
 		}
 
-		if ( version_compare( $current_version, '1.5.5', '<' ) ) {
+		if ( version_compare( $version, '1.5.5', '<' ) ) {
 			include_once( 'updates/wpclubmanager-update-1.5.5.php' );
 		}
 
-		update_option( 'wpclubmanager_version', WPCM()->version );
+		if ( version_compare( $version, '2.0.0', '<' ) ) {
+			include_once( 'updates/wpclubmanager-update-2.0.0.php' );
+		}
 	}
 
 	/**
@@ -156,12 +176,14 @@ class WPCM_Install {
 		}
 
 		if ( ! get_option( 'wpclubmanager_installed' ) ) {
+			add_option( 'wpcm_mode', 'club' );
 			// Configure default sport
-			$sport = 'soccer';
-			$options = wpcm_get_sport_presets();
-			WPCM_Admin_Settings::configure_sport( $options[ $sport ] );
-			update_option( 'wpcm_sport', $sport );
-			update_option( 'wpclubmanager_installed', 1 );
+			$post = 'soccer';
+			$sport = WPCM()->sports->$post;
+			WPCM_Admin_Settings::configure_sport( $sport );
+			add_option( 'wpcm_sport', $post );
+			add_option( 'wpcm_default_country', 'EN' );
+			add_option( 'wpclubmanager_installed', 1 );
 		}
 	}
 
@@ -249,7 +271,7 @@ class WPCM_Install {
 
 		$capabilities['core'] = array( 'manage_wpclubmanager' );
 
-		$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_sponsor' );
+		$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_table', 'wpcm_sponsor', 'wpcm_roster' );
 
 		foreach ( $capability_types as $capability_type ) {
 
@@ -290,25 +312,26 @@ class WPCM_Install {
 		
 		global $wp_roles;
 
-		if ( ! class_exists( 'WP_Roles' ) ) {
-			return;
-		}
-
-		if ( ! isset( $wp_roles ) ) {
-			$wp_roles = new WP_Roles();
-		}
-
-		$capabilities = $this->get_core_capabilities();
-
-		foreach ( $capabilities as $cap_group ) {
-			foreach ( $cap_group as $cap ) {
-				$wp_roles->remove_cap( 'staff', $cap );
-				$wp_roles->remove_cap( 'administrator', $cap );
+		if ( class_exists( 'WP_Roles' ) ) {
+			if ( ! isset( $wp_roles ) ) {
+				$wp_roles = new WP_Roles();
 			}
 		}
 
-		remove_role( 'player' );
-		remove_role( 'staff' );
+		if ( is_object( $wp_roles ) ) {
+
+			$capabilities = $this->get_core_capabilities();
+
+			foreach ( $capabilities as $cap_group ) {
+				foreach ( $cap_group as $cap ) {
+					$wp_roles->remove_cap( 'staff', $cap );
+					$wp_roles->remove_cap( 'administrator', $cap );
+				}
+			}
+
+			remove_role( 'player' );
+			remove_role( 'staff' );
+		}
 	}
 
 	/**

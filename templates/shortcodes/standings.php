@@ -61,9 +61,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 		</tbody>
 	</table>
+
 	<?php if ( isset( $linkpage ) ) { ?>
 		<a href="<?php echo get_page_link( $linkpage ); ?>" class="wpcm-view-link">
 			<?php echo $linktext; ?>
 		</a>
 	<?php } ?>
+	
 </div>

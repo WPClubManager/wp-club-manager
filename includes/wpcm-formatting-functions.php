@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.5.5
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -221,7 +221,8 @@ function wpcm_dropdown_posts( $args = array() ) {
 		'order' => 'ASC',
 		'name' => null,
 		'id' => null,
-		'selected' => null
+		'selected' => null,
+		'class' => null
 	);
 
 	$args = array_merge( $defaults, $args );
@@ -229,7 +230,7 @@ function wpcm_dropdown_posts( $args = array() ) {
 	if ( ! $args['id'] )
 
 		$args['id'] = $args['name'];
-		echo '<select name="' . $args['name'] . '" id="' . $args['id'] . '" class="postform chosen_select">';
+		echo '<select name="' . $args['name'] . '" id="' . $args['id'] . '" class="postform ' . $args['class'] . ' chosen_select">';
 		unset( $args['name'] );
 	if ( $args['show_option_none'])
 		
@@ -360,7 +361,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
  * @param string $atts
  * @return mixed $output
  */
-function form_dropdown($name, $arr = array(), $selected = null, $atts = null) {
+function wpcm_form_dropdown($name, $arr = array(), $selected = null, $atts = null) {
 
 	$output = '<select name="'.$name.'" class="'.$name.'" id="'.$name.'"';
 

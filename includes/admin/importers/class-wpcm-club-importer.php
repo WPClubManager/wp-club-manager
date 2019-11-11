@@ -5,7 +5,7 @@
  * @author      ClubPress
  * @category    Admin
  * @package     WPClubManager/Admin/Importers
- * @version     1.2.11
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -21,9 +21,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_label = __( 'Import Clubs', 'wp-club-manager' );
 			$this->columns = array(
 				'post_title' => __( 'Name', 'wp-club-manager' ),
-				'wpcm_comp' => __( 'Competitions', 'wp-club-manager' ),
-				'wpcm_team' => __( 'Teams', 'wp-club-manager' ),
-				'wpcm_season' => __( 'Seasons', 'wp-club-manager' ),
 				'wpcm_venue' => __( 'Venue', 'wp-club-manager' ),
 			);
 		}
@@ -69,18 +66,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 				// Flag as import
 				update_post_meta( $id, '_wpcm_import', 1 );
 
-				// Update competitions
-				$comps = explode( '|', wpcm_array_value( $meta, 'wpcm_comp' ) );
-				wp_set_object_terms( $id, $comps, 'wpcm_comp', false );
-
-				// Update teams
-				$teams = explode( '|', wpcm_array_value( $meta, 'wpcm_team' ) );
-				wp_set_object_terms( $id, $teams, 'wpcm_team', false );
-
-				// Update seasons
-				$seasons = explode( '|', wpcm_array_value( $meta, 'wpcm_season' ) );
-				wp_set_object_terms( $id, $seasons, 'wpcm_season', false );
-
 				// Update venues
 				$venues = explode( '|', wpcm_array_value( $meta, 'wpcm_venue' ) );
 				wp_set_object_terms( $id, $venues, 'wpcm_venue', false );
@@ -119,7 +104,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		public function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ).'</p>';
-			echo '<p>' . sprintf( __( 'Clubs need to be defined with columns in a specific order (5 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/club-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Clubs need to be defined with columns in a specific order (2 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/club-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=wpclubmanager_club_csv&step=1' );
 			echo '</div>';
 		}

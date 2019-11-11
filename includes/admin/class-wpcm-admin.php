@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.4.0
+ * @version     2.0.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -22,9 +22,19 @@ class WPCM_Admin {
 
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
+		//add_action( 'admin_init', array( $this, 'buffer' ), 1 );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
-		add_action( 'admin_footer', 'wpclubmanager_print_js', 25 );
+		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
+		add_action( 'admin_footer', array( $this, 'wpclubmanager_print_js' ), 25 );
 		add_filter( 'admin_footer_text', array( $this, 'wpclubmanager_admin_rate_us' ), 1 );
+		add_filter( 'admin_body_class', array( $this, 'wpclubmanager_admin_body_class' ) );
+	}
+
+	/**
+	 * Output buffering allows admin screens to make redirects later on.
+	 */
+	public function buffer() {
+		ob_start();
 	}
 
 	/**
@@ -39,13 +49,26 @@ class WPCM_Admin {
 		include_once( 'class-wpcm-admin-taxonomies.php' );
 
 		// Classes we only need if the ajax is not-ajax
-		if ( ! is_ajax() ) {
+		//if ( ! is_ajax() ) {
 			include( 'class-wpcm-admin-menus.php' );
-			include( 'class-wpcm-admin-welcome.php' );
 			include( 'class-wpcm-admin-notices.php' );
 			include( 'class-wpcm-admin-assets.php' );
 			include( 'class-wpcm-admin-permalink-settings.php' );
 			include( 'class-wpcm-admin-editor.php' );
+		//}
+
+		// Help Tabs
+		if ( apply_filters( 'wpclubmanager_enable_admin_help_tab', true ) ) {
+			include_once( 'class-wpcm-admin-help.php' );
+		}
+
+		// Setup/welcome
+		if ( ! empty( $_GET['page'] ) ) {
+			switch ( $_GET['page'] ) {
+				case 'wpcm-setup' :
+					include_once( 'class-wpcm-admin-setup-wizard.php' );
+				break;
+			}
 		}
 
 		// Importers
@@ -62,7 +85,7 @@ class WPCM_Admin {
 
 		switch ( $screen->id ) {
 			case 'dashboard' :
-				include( 'class-wpcm-admin-dashboard.php' );
+				include( 'class-wpcm-admin-dashboard-widgets.php' );
 			break;
 			case 'options-permalink' :
 				include( 'class-wpcm-admin-permalink-settings.php' );
@@ -73,6 +96,37 @@ class WPCM_Admin {
 			case 'user-edit' :
 				include( 'class-wpcm-admin-profile.php' );
 			break;
+		}
+	}
+
+	/**
+	 * Handle redirects to setup/welcome page after install and updates.
+	 *
+	 * For setup wizard, transient must be present, the user must have access rights, and we must ignore the network/bulk plugin updaters.
+	 */
+	public function admin_redirects() {
+
+		// Nonced plugin install redirects (whitelisted)
+		if ( ! empty( $_GET['wpcm-install-plugin-redirect'] ) ) {
+			$plugin_slug = wpcm_clean( $_GET['wpcm-install-plugin-redirect'] );
+			$url = admin_url( 'plugin-install.php?tab=search&type=term&s=' . $plugin_slug );
+			wp_safe_redirect( $url );
+			exit;
+		}
+
+		// Setup wizard redirect
+		if ( get_transient( '_wpcm_activation_redirect' ) ) {
+			delete_transient( '_wpcm_activation_redirect' );
+
+			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ) ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
+				return;
+			}
+
+			// If the user needs to install, send them to the setup wizard
+			if ( WPCM_Admin_Notices::has_notice( 'install' ) ) {
+				wp_safe_redirect( admin_url( 'index.php?page=wpcm-setup' ) );
+				exit;
+			}
 		}
 	}
 
@@ -95,13 +149,52 @@ class WPCM_Admin {
 	}
 
 	/**
+	 * Queue some JavaScript code to be output in the footer.
+	 *
+	 * @param string $code
+	 */
+	public function wpclubmanager_enqueue_js( $code ) {
+
+		global $wpclubmanager_queued_js;
+
+		if ( empty( $wpclubmanager_queued_js ) ) {
+			$wpclubmanager_queued_js = '';
+		}
+
+		$wpclubmanager_queued_js .= "\n" . $code . "\n";
+	}
+
+	/**
+	 * Output any queued javascript code in the footer.
+	 */
+	public function wpclubmanager_print_js() {
+
+		global $wpclubmanager_queued_js;
+
+		if ( ! empty( $wpclubmanager_queued_js ) ) {
+
+			echo "<!-- WP Club Manager JavaScript -->\n<script type=\"text/javascript\">\njQuery(function($) {";
+
+			// Sanitize
+			$wpclubmanager_queued_js = wp_check_invalid_utf8( $wpclubmanager_queued_js );
+			$wpclubmanager_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $wpclubmanager_queued_js );
+			$wpclubmanager_queued_js = str_replace( "\r", '', $wpclubmanager_queued_js );
+
+			echo $wpclubmanager_queued_js . "});\n</script>\n";
+
+			unset( $wpclubmanager_queued_js );
+		}
+	}
+
+	/**
 	 * Add rating links to the admin dashboard
 	 *
-	 * @since	    1.3.2
+	 * @since	    2.0.0
 	 * @param       string $footer_text
 	 * @return      string
 	 */
 	public function wpclubmanager_admin_rate_us( $footer_text ) {
+
 		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
 			return;
 		}
@@ -110,20 +203,30 @@ class WPCM_Admin {
 		$wpcm_pages     = wpcm_get_screen_ids();
 
 		if ( isset( $current_screen->id ) && apply_filters( 'wpclubmanager_display_admin_footer_text', in_array( $current_screen->id, $wpcm_pages ) ) ) {
+
 			if ( ! get_option( 'wpclubmanager_admin_footer_text_rated' ) ) {
+
 				$footer_text = sprintf( __( 'If you like <strong>WP Club Manager</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thank you in advance!', 'wp-club-manager' ), '<a href="https://wordpress.org/support/view/plugin-reviews/wp-club-manager?filter=5#postform" target="_blank" class="wpcm-rating-link" data-rated="' . esc_attr__( 'Many thanks :)', 'wp-club-manager' ) . '">', '</a>' );
-				wpclubmanager_enqueue_js( "
+				$this->wpclubmanager_enqueue_js( "
 					jQuery( 'a.wpcm-rating-link' ).click( function() {
 						jQuery.post( '" . WPCM()->ajax_url() . "', { action: 'wpclubmanager_rated' } );
 						jQuery( this ).parent().text( jQuery( this ).data( 'rated' ) );
 					});
 				" );
 			} else {
+
 				$footer_text = __( 'Thank you for managing your club with WP Club Manager, your support is much appreciated.', 'wp-club-manager' );
 			}
 		}
 
 		return $footer_text;
+	}
+
+	public function wpclubmanager_admin_body_class( $classes ) {
+
+		$sport = get_option( 'wpcm_sport' );
+
+		return $classes . ' ' . $sport;
 	}
 }
 

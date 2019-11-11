@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: WP Club Manager
- * Version: 1.5.7
+ * Version: 2.1.4
  * Plugin URI: https://wpclubmanager.com
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Requires at least: 4.2
- * Tested up to: 4.7
+ * Requires at least: 4.7
+ * Tested up to: 5.2
  * 
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
@@ -31,7 +31,7 @@ final class WPClubManager {
 	/**
 	 * @var string
 	 */
-	public $version = '1.5.7';
+	public $version = '2.1.4';
 
 	/**
 	 * @var WPClubManager The single instance of the class
@@ -94,16 +94,13 @@ final class WPClubManager {
 
 		$this->constants();
 		$this->includes();
-		$this->load_hooks();
 
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 		add_action( 'after_setup_theme', array( $this, 'compatibility' ) );
 		add_action( 'after_setup_theme', array( $this, 'include_template_functions' ), 11 );
+		add_action( 'after_setup_theme', array( $this, 'wpcm_template_debug_mode' ), 20 );
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'WPCM_Shortcodes', 'init' ) );
-		// if( is_admin() && is_plugins_page() ) {
-  //           add_filter( 'admin_footer', array( $this, 'wpcm_add_deactivation_feedback_modal' ) );
-  //       }
 
 		do_action( 'wpclubmanager_loaded' );
 	}
@@ -187,7 +184,6 @@ final class WPClubManager {
 
 		if ( $this->is_request( 'admin' ) ) {
 			include_once( 'includes/admin/class-wpcm-admin.php' );
-			include_once( 'includes/admin/class-wpcm-admin-feedback.php' );
 		}
 
 		if ( $this->is_request( 'ajax' ) ) {
@@ -227,6 +223,12 @@ final class WPClubManager {
 		include_once( 'includes/class-wpcm-template-loader.php' );
 		include_once( 'includes/class-wpcm-frontend-scripts.php' );
 		include_once( 'includes/class-wpcm-shortcodes.php' );
+		
+		include_once( 'includes/shortcodes/legacy/class-wpcm-shortcode-players.php' );
+		include_once( 'includes/shortcodes/legacy/class-wpcm-shortcode-matches.php' );
+		include_once( 'includes/shortcodes/legacy/class-wpcm-shortcode-staff.php' );
+		include_once( 'includes/shortcodes/legacy/class-wpcm-shortcode-standings.php' );
+		//include_once( 'includes/shortcodes/legacy/class-wpcm-shortcode-map.php' );
 	}
 
 
@@ -241,10 +243,22 @@ final class WPClubManager {
 		include_once( 'includes/wpcm-template-functions.php' );
 	}
 
-	public static function load_hooks() {
-	 if( is_admin() && is_plugins_page() ) {
-	     add_filter( 'admin_footer', 'wpcm_add_deactivation_feedback_modal' );
-	 }
+	/**
+	 * Enables template debug mode.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function wpcm_template_debug_mode() {
+
+		if ( ! defined( 'WPCM_TEMPLATE_DEBUG_MODE' ) ) {
+			$status_options = get_option( 'wpclubmanager_status_options', array() );
+			if ( ! empty( $status_options['template_debug_mode'] ) && current_user_can( 'manage_options' ) ) {
+				define( 'WPCM_TEMPLATE_DEBUG_MODE', true );
+			} else {
+				define( 'WPCM_TEMPLATE_DEBUG_MODE', false );
+			}
+		}
 	}
 
 	/**
@@ -270,82 +284,22 @@ final class WPClubManager {
 	}
 
 	/**
-	 * Loads the translation files.
+	 * Load Localisation files.
 	 *
-	 * @since  1.0.3
-	 * @access public
-	 * @return void
+	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
+	 *
+	 * Locales found in:
+	 *      - WP_LANG_DIR/wp-club-manager/wp-club-manager-LOCALE.mo
+	 *      - WP_LANG_DIR/plugins/wp-club-manager-LOCALE.mo
 	 */
 	public function load_plugin_textdomain() {
 
-		/*
-		 * Due to the introduction of language packs through translate.wordpress.org, loading our textdomain is complex
-		 *
-		 * In v1.3.5, our textdomain changed from "wpclubmanager" to "wp-club-manager"
-		 *
-		 * To support existing translation files from before the change, we must look for translation files in several places and under several names.
-		 *
-		 * - wp-content/languages/plugins/wp-club-manager (introduced with language packs)
-		 * - wp-content/languages/wpclubmanager/
-		 * - wp-content/plugins/wp-club-manager/languages/
-		 *
-		 * In wp-content/languages/wpclubmanager/ we must look for "wp-club-manager-{lang}_{country}.mo"
-		 * In wp-content/languages/wpclubmanager/ we must look for "wpclubmanager-{lang}_{country}.mo" as that was the old file naming convention
-		 * In wp-content/languages/plugins/wp-club-manager/ we only need to look for "wp-club-manager-{lang}_{country}.mo" as that is the new structure
-		 * In wp-content/plugins/wp-club-manager/languages/, we must look for both naming conventions. This is done by filtering "load_textdomain_mofile"
-		 *
-		 */
+		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+		$locale = apply_filters( 'plugin_locale', $locale, 'wp-club-manager' );
 
-		add_filter( 'load_textdomain_mofile', array( $this, 'load_old_textdomain' ), 10, 2 );
-
-		// Set filter for plugin's languages directory
-		$wpcm_lang_dir  = dirname( plugin_basename( WPCM_PLUGIN_FILE ) ) . '/languages/';
-		$wpcm_lang_dir  = apply_filters( 'wpclubmanager_languages_directory', $wpcm_lang_dir );
-
-		// Traditional WordPress plugin locale filter
-		$locale        = apply_filters( 'plugin_locale',  get_locale(), 'wp-club-manager' );
-		$mofile        = sprintf( '%1$s-%2$s.mo', 'wp-club-manager', $locale );
-
-		// Look for wp-content/languages/wpclubmanager/wp-club-manager-{lang}_{country}.mo
-		$mofile_global1 = WP_LANG_DIR . '/wpclubmanager/wp-club-manager-' . $locale . '.mo';
-
-		// Look for wp-content/languages/wpclubmanager/wpclubmanager-{lang}_{country}.mo
-		$mofile_global2 = WP_LANG_DIR . '/wpclubmanager/wpclubmanager-' . $locale . '.mo';
-
-		// Look in wp-content/languages/plugins/wp-club-manager
-		$mofile_global3 = WP_LANG_DIR . '/plugins/wp-club-manager/' . $mofile;
-
-		if ( file_exists( $mofile_global1 ) ) {
-
-			load_textdomain( 'wp-club-manager', $mofile_global1 );
-
-		} elseif ( file_exists( $mofile_global2 ) ) {
-
-			load_textdomain( 'wp-club-manager', $mofile_global2 );
-
-		} elseif ( file_exists( $mofile_global3 ) ) {
-
-			load_textdomain( 'wp-club-manager', $mofile_global3 );
-
-		} else {
-
-			// Load the default language files
-			load_plugin_textdomain( 'wp-club-manager', false, $wpcm_lang_dir );
-		}
-	}
-
-	/**
-	 * Load a .mo file for the old textdomain if one exists
-	 *
-	 * h/t: https://github.com/10up/grunt-wp-plugin/issues/21#issuecomment-62003284
-	 */
-	function load_old_textdomain( $mofile, $textdomain ) {
-
-		if ( $textdomain === 'wp-club-manager' && ! file_exists( $mofile ) ) {
-			$mofile = dirname( $mofile ) . DIRECTORY_SEPARATOR . str_replace( $textdomain, 'wpclubmanager', basename( $mofile ) );
-		}
-
-		return $mofile;
+		unload_textdomain( 'wp-club-manager' );
+		load_textdomain( 'wp-club-manager', WP_LANG_DIR . '/wp-club-manager/wp-club-manager-' . $locale . '.mo' );
+		load_plugin_textdomain( 'wp-club-manager', false, plugin_basename( dirname( WPCM_PLUGIN_FILE ) ) . '/languages' );
 	}
 
 	/**
@@ -366,10 +320,12 @@ final class WPClubManager {
 		}
 
 		// Add image sizes
-		$player_thumbnail = wpcm_get_image_size( 'player_thumbnail' );
-		$player_single	= wpcm_get_image_size( 'player_single' );
-		$staff_thumbnail = wpcm_get_image_size( 'staff_thumbnail' );
-		$staff_single	= wpcm_get_image_size( 'staff_single' );
+		$player_thumbnail 	= wpcm_get_image_size( 'player_thumbnail' );
+		$player_single		= wpcm_get_image_size( 'player_single' );
+		$staff_thumbnail 	= wpcm_get_image_size( 'staff_thumbnail' );
+		$staff_single		= wpcm_get_image_size( 'staff_single' );
+		$club_thumbnail 	= wpcm_get_image_size( 'club_thumbnail' );
+		$club_single		= wpcm_get_image_size( 'club_single' );
 
 		add_image_size( 'crest-large',  100, 100, false );
 		add_image_size( 'crest-medium',  50, 50, false );
@@ -378,6 +334,8 @@ final class WPClubManager {
 		add_image_size( 'player_single', $player_single['width'], $player_single['height'], $player_single['crop'] );
 		add_image_size( 'staff_thumbnail', $staff_thumbnail['width'], $staff_thumbnail['height'], $staff_thumbnail['crop'] );
 		add_image_size( 'staff_single', $staff_single['width'], $staff_single['height'], $staff_single['crop'] );
+		add_image_size( 'club_thumbnail', $club_thumbnail['width'], $club_thumbnail['height'], $club_thumbnail['crop'] );
+		add_image_size( 'club_single', $club_single['width'], $club_single['height'], $club_single['crop'] );
 	}
 
 	/** Helper functions ******************************************************/

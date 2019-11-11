@@ -7,10 +7,42 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.4.6
+ * @version     2.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Get player titles.
+ *
+ * @return string
+ * @since 2.0.0
+ */
+function get_player_title( $post, $format = 'full' ) {
+
+	$firstname = get_post_meta( $post, '_wpcm_firstname', true );
+	$lastname = get_post_meta( $post, '_wpcm_lastname', true );
+	$name = get_the_title( $post );
+
+	$name = trim( $name );
+	if( strpos( $name, ' ' ) === false ) {
+		return $name;
+	}
+
+	$first = strtok( $name, ' ' );
+	$start = strrpos( $name, ' ' ) + 1;
+	$last = substr( $name, $start );
+
+	if ( $format == 'first' ) {
+		$name = ( $firstname ? $firstname : $first );
+	} elseif ( $format == 'last' ) {
+		$name = ( $lastname ? $lastname : $last );
+	} elseif ( $format == 'initial' ) {
+		$name = ( $firstname ? substr( $firstname, 0, 1 ) . '. ' : '' ) . ( $lastname ? $lastname : substr( $first, 0, 1 ) . '. ' . $last );
+	}
+
+	return $name;
+}
 
 /**
  * Get player labels.
@@ -141,13 +173,18 @@ function wpcm_get_player_stats_labels( $subs = false) {
 	}
 
 	$labels = wpcm_get_preset_labels();
+	$output = false;
 	foreach( $labels as $label => $value ) {
 		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
 			$output[$label] = $value;
 		}
 	}
 
-	$stats_labels = array_merge( $appearance_label, $output );
+	if( is_array( $output ) ) {
+		$stats_labels = array_merge( $appearance_label, $output );
+	} else {
+		$stats_labels = $appearance_label;
+	}
 
 	return $stats_labels;
 }
@@ -162,13 +199,17 @@ function wpcm_get_player_all_labels() {
 	$appearance_labels = wpcm_get_appearance_and_subs_labels();
 
 	$labels = wpcm_get_preset_labels();
+	$output = false;
 	foreach( $labels as $label => $value ) {
 		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
 			$output[$label] = $value;
 		}
 	}
-
-	$stats_labels = array_merge( wpcm_player_labels(), $appearance_labels, $output );
+	if( is_array( $output ) ) {
+		$stats_labels = array_merge( wpcm_player_labels(), $appearance_labels, $output );
+	} else {
+		$stats_labels = $appearance_labels;
+	}
 
 	return $stats_labels;
 }
@@ -187,13 +228,17 @@ function wpcm_get_player_stats_names( $subs = false) {
 		$appearance_label = wpcm_get_appearance_names();
 	}
 	$labels = wpcm_get_preset_labels( 'players', 'name' );
+	$output = false;
 	foreach( $labels as $label => $value ) {
 		if( get_option( 'wpcm_show_stats_'. $label ) == 'yes' ) {
 			$output[$label] = $value;
 		}
 	}
-
-	$stats_labels = array_merge( $appearance_label, $output );
+	if( is_array( $output ) ) {
+		$stats_labels = array_merge( $appearance_label, $output );
+	} else {
+		$stats_labels = $appearance_label;
+	}
 
 	return $stats_labels;
 }
@@ -457,15 +502,12 @@ function wpcm_staff_labels() {
 
 	$labels = array(
 		'flag' => '&nbsp;',
-		'number' => '&nbsp;',
 		'name' => __( 'Name', 'wp-club-manager' ),
 		'thumb' => '&nbsp',
 		'job' => __( 'Job', 'wp-club-manager' ),
 		'email' => __( 'Email', 'wp-club-manager' ),
 		'phone' => __( 'Phone', 'wp-club-manager' ),
 		'age' => __( 'Age', 'wp-club-manager' ),
-		'team' => __( 'Team', 'wp-club-manager' ),
-		'season' => __( 'Season', 'wp-club-manager' ),
 		'joined' => __( 'Joined', 'wp-club-manager' )
 	);
 

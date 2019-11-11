@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 <div class="wpcm-players-shortcode">
 
-	<?php echo ( $title && ! $type == 'widget' ? '<h3 class="wpcm-sc-title">' . $title . '</h3>' : '' ); ?>
+	<?php echo ( $title && ! $type == 'widget' ? '<h3>' . $title . '</h3>' : '' ); ?>
 
 	<table>
 		<thead>

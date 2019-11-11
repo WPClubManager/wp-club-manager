@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.4.6
+ * @version     2.1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -94,6 +94,7 @@ function wpclubmanager_get_template( $template_name, $args = array(), $template_
  * @since 1.4.0
  */
 function wpcm_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
+
 	ob_start();
 	wpcm_get_template( $template_name, $args, $template_path, $default_path );
 	return ob_get_clean();
@@ -162,7 +163,7 @@ function wpcm_get_image_size( $image_size ) {
 
 		$image_size = $width . '_' . $height;
 
-	} elseif ( in_array( $image_size, array( 'player_single', 'staff_single','player_thumbnail', 'staff_thumbnail' ) ) ) {
+	} elseif ( in_array( $image_size, array( 'player_single', 'staff_single', 'player_thumbnail', 'staff_thumbnail', 'club_thumbnail', 'club_thumbnail' ) ) ) {
 
 		$size           = get_option( $image_size . '_image_size', array() );
 		$size['width']  = isset( $size['width'] ) ? $size['width'] : '300';
@@ -182,56 +183,23 @@ function wpcm_get_image_size( $image_size ) {
 }
 
 /**
- * Queue some JavaScript code to be output in the footer.
- *
- * @param string $code
+ * Function to flush rewrite rules
  */
-function wpclubmanager_enqueue_js( $code ) {
-	global $wpclubmanager_queued_js;
+function wpcm_flush_rewrite_rules() {
 
-	if ( empty( $wpclubmanager_queued_js ) ) {
-		$wpclubmanager_queued_js = '';
-	}
-
-	$wpclubmanager_queued_js .= "\n" . $code . "\n";
+    $post_types = new WPCM_Post_Types();
+    $post_types->register_taxonomies();
+    $post_types->register_post_types();
+    flush_rewrite_rules();
 }
 
 /**
- * Output any queued javascript code in the footer.
+ * Save WPCM nonce
  */
-function wpclubmanager_print_js() {
-	global $wpclubmanager_queued_js;
+function wpcm_nonce() {
 
-	if ( ! empty( $wpclubmanager_queued_js ) ) {
-
-		echo "<!-- WP Club Manager JavaScript -->\n<script type=\"text/javascript\">\njQuery(function($) {";
-
-		// Sanitize
-		$wpclubmanager_queued_js = wp_check_invalid_utf8( $wpclubmanager_queued_js );
-		$wpclubmanager_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $wpclubmanager_queued_js );
-		$wpclubmanager_queued_js = str_replace( "\r", '', $wpclubmanager_queued_js );
-
-		echo $wpclubmanager_queued_js . "});\n</script>\n";
-
-		unset( $wpclubmanager_queued_js );
-	}
+	wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 }
-
-/**
- * Enables template debug mode
- */
-function wpcm_template_debug_mode() {
-	if ( ! defined( 'WPCM_TEMPLATE_DEBUG_MODE' ) ) {
-		$status_options = get_option( 'wpclubmanager_status_options', array() );
-		if ( ! empty( $status_options['template_debug_mode'] ) && current_user_can( 'manage_options' ) ) {
-			define( 'WPCM_TEMPLATE_DEBUG_MODE', true );
-		} else {
-			define( 'WPCM_TEMPLATE_DEBUG_MODE', false );
-		}
-	}
-}
-add_action( 'after_setup_theme', 'wpcm_template_debug_mode', 20 );
-
 
 /**
  * Get information about available image sizes
@@ -269,7 +237,6 @@ function wpcm_get_image_sizes( $size = '' ) {
     return $sizes;
 }
 
-
 /**
  * Get the placeholder image URL for player, staff and club badges
  *
@@ -277,6 +244,7 @@ function wpcm_get_image_sizes( $size = '' ) {
  * @return string
  */
 function wpcm_placeholder_img_src() {
+
 	return apply_filters( 'wpclubmanager_placeholder_img_src', WPCM()->plugin_url() . '/assets/images/placeholder.png' );
 }
 
@@ -287,6 +255,7 @@ function wpcm_placeholder_img_src() {
  * @return string
  */
 function wpcm_placeholder_img( $size = 'player_thumbnail' ) {
+
 	$dimensions = wpcm_get_image_size( $size );
 
 	return apply_filters('wpclubmanager_placeholder_img', '<img src="' . wpcm_placeholder_img_src() . '" alt="Placeholder" width="' . esc_attr( $dimensions['width'] ) . '" class="wpclubmanager-placeholder wp-post-image" height="' . esc_attr( $dimensions['height'] ) . '" />' );
@@ -299,6 +268,7 @@ function wpcm_placeholder_img( $size = 'player_thumbnail' ) {
  * @return string
  */
 function wpcm_crest_placeholder_img_src() {
+
 	return apply_filters( 'wpclubmanager_crest_placeholder_img_src', WPCM()->plugin_url() . '/assets/images/crest-placeholder.png' );
 }
 
@@ -309,45 +279,10 @@ function wpcm_crest_placeholder_img_src() {
  * @return string
  */
 function wpcm_crest_placeholder_img( $size = 'crest-small' ) {
+
 	$dimensions = wpcm_get_image_sizes( $size );
 	
 	return apply_filters('wpclubmanager_crest_placeholder_img', '<img src="' . wpcm_crest_placeholder_img_src() . '" alt="Placeholder" width="' . esc_attr( $dimensions['width'] ) . '" class="wpclubmanager-crest-placeholder wp-post-image" height="' . esc_attr( $dimensions['height'] ) . '" />' );
-}
-
-function wpcm_flush_rewrite_rules() {
-    // Flush rewrite rules
-    $post_types = new WPCM_Post_Types();
-    $post_types->register_taxonomies();
-    $post_types->register_post_types();
-    flush_rewrite_rules();
-}
-
-function wpcm_nonce() {
-	wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
-}
-
-/**
- * Get the term slug from ID.
- *
- * @access public
- * @param string $term
- * @param string $taxonomy
- * @return mixed $slug
- */
-function wpcm_get_term_slug( $term, $taxonomy ) {
-
-	$slug = null;
-
-	if ( is_numeric( $term ) && $term > 0 ) {
-
-		$term_object = get_term( $term, $taxonomy );
-
-		if ( $term_object )
-
-			$slug = $term_object->slug;
-	}
-
-	return $slug;
 }
 
 /**
@@ -368,11 +303,11 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
 	    }
 	    if( !empty( $term_ids ) ) {
 
-	    	return get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids ) );
+	    	return get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids, 'meta_key' => 'tax_position', 'orderby' => 'tax_position' ) );
 
 	    } else {
 
-	    	return wp_get_object_terms( $post, $taxonomy );
+	    	return wp_get_object_terms( $post, $taxonomy, array('meta_key' => 'tax_position', 'orderby' => 'tax_position', 'order' => 'DESC' ) );
 	    	
 	    }
 
@@ -386,7 +321,13 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
  * @return mixed
  */
 function get_default_club() {
-	$club = get_option( 'wpcm_default_club' );
+
+	$default_club = get_option( 'wpcm_default_club' );
+	$club = false;
+	if( !empty( $default_club ) ) {
+		
+		$club = get_option( 'wpcm_default_club' );
+	}
 
 	return $club;
 }
@@ -398,6 +339,7 @@ function get_default_club() {
  * @return mixed
  */
 function get_match_title_format() {
+
 	$format = get_option( 'wpcm_match_title_format' );
 
 	return $format;
@@ -410,7 +352,8 @@ function get_match_title_format() {
  * @return array
  */
 function wpcm_get_core_supported_themes() {
-	return array( 'twentysixteen', 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' );
+
+	return array( 'twentyeighteen', 'twentyseventeen', 'twentysixteen', 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' );
 }
 
 /**
@@ -469,6 +412,7 @@ if (!function_exists('wpcm_get_team_name')) {
  * @return string
  */
 function wpcm_rand_hash() {
+
 	if ( function_exists( 'openssl_random_pseudo_bytes' ) ) {
 		return bin2hex( openssl_random_pseudo_bytes( 20 ) );
 	} else {
@@ -477,7 +421,88 @@ function wpcm_rand_hash() {
 }
 
 /**
- * Decode address
+ * Returns whether teams exist.
+ *
+ * @since  2.0.2
+ * @return boolean
+ */
+function has_teams() {
+
+	$teams = false;
+	if( taxonomy_exists( 'wpcm_team' ) ) {
+		$terms = get_terms( array(
+			'taxonomy' => 'wpcm_team',
+			'hide_empty' => false,
+		) );
+		if( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			$teams = true;
+		}
+	}
+
+	return $teams;
+}
+
+/**
+ * Get array of teams.
+ *
+ * @since  2.0.0
+ * @return array
+ */
+function get_the_teams( $post ) {
+
+	$teams = get_the_terms( $post, 'wpcm_team' );
+	if ( is_array( $teams ) ) {					
+		foreach ( $teams as $team ) {
+			$teams[] = $team->term_id;
+		}
+	} else {
+		$teams = array();
+	}
+	
+	return $teams;
+}
+
+/**
+ * Get array of seasons.
+ *
+ * @since  2.0.0
+ * @return array
+ */
+function get_the_seasons( $post ) {
+
+	$seasons = get_the_terms( $post, 'wpcm_season' );
+	if ( is_array( $seasons ) ) {					
+		foreach ( $seasons as $season ) {
+			$seasons[] = $season->term_id;
+		}
+	} else {
+		$seasons = array();
+	}
+	
+	return $seasons;
+}
+
+/**
+ * Sort biggest score.
+ *
+ * @since  2.0.0
+ * @return int
+ */
+function sort_biggest_score( $a, $b ) {
+	
+	if( $a['gd'] == $b['gd'] ) {
+		if( $a['f'] == $b['f'] ) {
+			return 0;
+		} else {
+			return ($a['f'] < $b['f']) ? -1 : 1;
+		}
+	}
+	return ($a['gd'] < $b['gd']) ? -1 : 1;
+
+}
+
+/**
+ * Decode address for Google Maps
  *
  * @access public
  * @param string $address
@@ -488,15 +513,14 @@ function wpcm_decode_address( $address ) {
     $address_hash = md5( $address );
     $coordinates = get_transient( $address_hash );
     $api_key = get_option( 'wpcm_google_map_api');
-	
 	if ( false === $coordinates ) {
 		$args = array( 
 			'address' => urlencode( $address ),
-			'api' => urlencode( $api_key )
+			'key' => urlencode( $api_key )
 		);
 		$url = add_query_arg( $args, 'https://maps.googleapis.com/maps/api/geocode/json' );
 
-     	$response = wp_remote_get( $url );
+		$response = wp_remote_get( $url );
 		
      	if ( is_wp_error( $response ) )
      		return;
@@ -535,19 +559,54 @@ function wpcm_decode_address( $address ) {
 	return $coordinates;
 }
 
-/**
- * Add row actions for clubs
- *
- * @since 1.4.5
- * @param  array $actions
- * @param  WP_Post $post
- * @return array
- */
-function  wpcm_club_row_actions( $actions, $post ) {
-	if ( 'wpcm_club' === $post->post_type ) {
-		return array_merge( array( 'id' => 'ID: ' . $post->ID ), $actions );
-	}
-
-	return $actions;
+function wpcm_club_rewrites() {
+	$permalink      = get_option( 'wpclubmanager_club_slug' );
+	$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
+    add_rewrite_rule( $club_permalink . '\/(.*)', 'index.php?post_type=wpcm_club&name=$matches[1]', 'top');
 }
-add_filter( 'post_row_actions', 'wpcm_club_row_actions', 2, 100 );
+add_action( 'init', 'wpcm_club_rewrites' );
+
+function wpcm_club_permalinks( $post_link, $post, $leavename ) {
+    if ( isset( $post->post_type ) && 'wpcm_club' == $post->post_type ) {
+
+		$permalink      = get_option( 'wpclubmanager_club_slug' );
+		$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
+
+        $post_link = home_url( $club_permalink . '/' . $post->post_name );
+    }
+
+    return $post_link;
+}
+add_filter( 'post_type_link', 'wpcm_club_permalinks', 10, 3 );
+
+function wpcm_prevent_slug_duplicates( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
+    $check_post_types = array(
+        'post',
+        'page',
+        'wpcm_club'
+    );
+
+    if ( ! in_array( $post_type, $check_post_types ) ) {
+        return $slug;
+    }
+
+    if ( 'wpcm_club' == $post_type ) {
+        // Saving a wpcm_club post, check for duplicates in POST or PAGE post types
+        $post_match = get_page_by_path( $slug, 'OBJECT', 'post' );
+        $page_match = get_page_by_path( $slug, 'OBJECT', 'page' );
+
+        if ( $post_match || $page_match ) {
+            $slug .= '-duplicate';
+        }
+    } else {
+        // Saving a POST or PAGE, check for duplicates in wpcm_club post type
+        $wpcm_club_match = get_page_by_path( $slug, 'OBJECT', 'wpcm_club' );
+
+        if ( $wpcm_club_match ) {
+            $slug .= '-duplicate';
+        }
+    }
+
+    return $slug;
+}
+add_filter( 'wp_unique_post_slug', 'wpcm_prevent_slug_duplicates', 10, 6 );

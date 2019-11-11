@@ -5,7 +5,7 @@
  * Registers post types.
  *
  * @class 		WPCM_Post_Types
- * @version		1.4.0
+ * @version		2.0.0
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
@@ -23,8 +23,10 @@ class WPCM_Post_Types {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'support_jetpack_omnisearch' ) );
-		add_filter('the_posts', array( __CLASS__, 'show_future_matches') );
+		add_filter( 'the_posts', array( __CLASS__, 'show_future_matches' ) );
 		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
+		// add_filter( 'post_type_link', array( __CLASS__, 'remove_custom_service_slug' ), 10, 2 );
+		// add_action( 'pre_get_posts', array( __CLASS__, 'add_cpt_post_names_to_main_query' ) );
 	}
 
 	/**
@@ -38,7 +40,7 @@ class WPCM_Post_Types {
 		do_action( 'wpclubmanager_register_taxonomy' );
 
 		register_taxonomy( 'wpcm_comp',
-			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_comp', array( 'wpcm_club' ) ),
+			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_comp', null ),
 			apply_filters( 'wpclubmanager_taxonomy_args_wpcm_comp', array(
 				'hierarchical' => true,
 				'labels' => array (
@@ -54,14 +56,14 @@ class WPCM_Post_Types {
 					'new_item_name'      => __( 'Competition', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
+				'tax_position' 		=> true,
 				'capabilities'          => array(
 					'manage_terms' => 'manage_wpcm_club_terms',
 					'edit_terms'   => 'edit_wpcm_club_terms',
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'competitions', 'slug', 'wp-club-manager' ) ),
+				'publicly_queryable' => false
 			) )
 		);
 
@@ -82,14 +84,14 @@ class WPCM_Post_Types {
 					'new_item_name'      => __( 'New Job Title', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
+				'tax_position' 		=> true,
 				'capabilities'          => array(
 					'manage_terms' => 'manage_wpcm_staff_terms',
 					'edit_terms'   => 'edit_wpcm_staff_terms',
 					'delete_terms' => 'delete_wpcm_staff_terms',
 					'assign_terms' => 'assign_wpcm_staff_terms',
 				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'jobs', 'slug', 'wp-club-manager' ) ),
+				'publicly_queryable' => false
 			) )
 		);
 
@@ -110,19 +112,19 @@ class WPCM_Post_Types {
 					'new_item_name'      => __( 'New Position Name', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
+				'tax_position' 		=> true,
 				'capabilities'      => array(
 					'manage_terms' => 'manage_wpcm_player_terms',
 					'edit_terms'   => 'edit_wpcm_player_terms',
 					'delete_terms' => 'delete_wpcm_player_terms',
 					'assign_terms' => 'assign_wpcm_player_terms',
 				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'positions', 'slug', 'wp-club-manager' ) ),
+				'publicly_queryable' => false
 			) )
 		);
 
 		register_taxonomy( 'wpcm_season',
-			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_season', array('wpcm_club','wpcm_player','wpcm_staff' ) ),
+			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_season', array( 'wpcm_player', 'wpcm_staff', 'wpcm_match'  ) ),
 			apply_filters( 'wpclubmanager_taxonomy_args_wpcm_season', array(
 				'hierarchical' => true,
 				'labels' => array(
@@ -145,42 +147,42 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'seasons', 'slug', 'wp-club-manager' ) ),
+				'publicly_queryable' => false
 			) )
 		);
 
-		register_taxonomy( 'wpcm_team',
-			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_team', array('wpcm_player','wpcm_staff') ),
-			apply_filters( 'wpclubmanager_taxonomy_args_wpcm_team', array(
-				'hierarchical' =>true,
-				'labels' => array(
-					'name'               => __( 'Teams', 'wp-club-manager' ),
-					'singular_name'      => __( 'Team', 'wp-club-manager' ),
-					'search_items'       =>  __( 'Search Teams', 'wp-club-manager' ),
-					'all_items'          => __( 'All Teams', 'wp-club-manager' ),
-					'parent_item'        => __( 'Parent Team', 'wp-club-manager' ),
-					'parent_item_colon'  => __( 'Parent Team:', 'wp-club-manager' ),
-					'edit_item'          => __( 'Edit Team', 'wp-club-manager' ),
-					'update_item'        => __( 'Update Team', 'wp-club-manager' ),
-					'add_new_item'       => __( 'Add New Team', 'wp-club-manager' ),
-					'new_item_name'      => __( 'Team', 'wp-club-manager' )
-				),
-				'show_in_nav_menus' => false,
-				'tax_position' 		=> true,
-				'capabilities'      => array(
-					'manage_terms' => 'manage_wpcm_player_terms',
-					'edit_terms'   => 'edit_wpcm_player_terms',
-					'delete_terms' => 'delete_wpcm_player_terms',
-					'assign_terms' => 'assign_wpcm_player_terms',
-				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'teams', 'slug', 'wp-club-manager' ) ),
-			) )
-		);
+		if( is_club_mode() ) {
+			register_taxonomy( 'wpcm_team',
+				apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_team', array( 'wpcm_player', 'wpcm_staff', 'wpcm_table' ) ),
+				apply_filters( 'wpclubmanager_taxonomy_args_wpcm_team', array(
+					'hierarchical' =>true,
+					'labels' => array(
+						'name'               => __( 'Teams', 'wp-club-manager' ),
+						'singular_name'      => __( 'Team', 'wp-club-manager' ),
+						'search_items'       =>  __( 'Search Teams', 'wp-club-manager' ),
+						'all_items'          => __( 'All Teams', 'wp-club-manager' ),
+						'parent_item'        => __( 'Parent Team', 'wp-club-manager' ),
+						'parent_item_colon'  => __( 'Parent Team:', 'wp-club-manager' ),
+						'edit_item'          => __( 'Edit Team', 'wp-club-manager' ),
+						'update_item'        => __( 'Update Team', 'wp-club-manager' ),
+						'add_new_item'       => __( 'Add New Team', 'wp-club-manager' ),
+						'new_item_name'      => __( 'Team', 'wp-club-manager' )
+					),
+					'show_in_nav_menus' => false,
+					'tax_position' 		=> true,
+					'capabilities'      => array(
+						'manage_terms' => 'manage_wpcm_player_terms',
+						'edit_terms'   => 'edit_wpcm_player_terms',
+						'delete_terms' => 'delete_wpcm_player_terms',
+						'assign_terms' => 'assign_wpcm_player_terms',
+					),
+					'publicly_queryable' => false
+				) )
+			);
+		}
 
 		register_taxonomy( 'wpcm_venue',
-			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_venue', array( 'wpcm_club' ) ),
+			apply_filters( 'wpclubmanager_taxonomy_objects_wpcm_venue', null ),
 			apply_filters( 'wpclubmanager_taxonomy_args_wpcm_venue', array(
 				'hierarchical' => true,
 				'labels' => array(
@@ -202,8 +204,7 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false,
-				//'rewrite' => array( 'slug' => _x( 'venues', 'slug', 'wp-club-manager' ) ),
+				'publicly_queryable' => false
 			) )
 		);
 
@@ -219,8 +220,8 @@ class WPCM_Post_Types {
 
 		do_action( 'wpclubmanager_register_post_type' );
 
-		$permalink      = get_option( 'wpclubmanager_club_slug' );
-		$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
+		// $permalink      = get_option( 'wpclubmanager_club_slug' );
+		// $club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
 
 		register_post_type( 'wpcm_club',
 			apply_filters( 'wpclubmanager_register_post_type_club',
@@ -240,8 +241,8 @@ class WPCM_Post_Types {
 						'parent_item_colon'   	=> __( 'Parent Club:', 'wp-club-manager' ),
 						'menu_name'           	=> __( 'Clubs', 'wp-club-manager' )
 					),
-					'hierarchical'         => false,
-					'supports'             => array( 'title', 'editor', 'thumbnail' ),
+					'hierarchical'         => true,
+					'supports'             => array( 'title', 'thumbnail', 'page-attributes' ),
 					'public'               => true,
 					'show_ui'              => true,
 					'show_in_menu'         => true,
@@ -252,9 +253,10 @@ class WPCM_Post_Types {
 					'has_archive'          => false,
 					'query_var'            => true,
 					'can_export'           => true,
-					'rewrite'              => $club_permalink ? array( 'slug' => untrailingslashit( $club_permalink ) ) : false,
+					'rewrite'              => false,
 					'capability_type'      => 'wpcm_club',
-					'map_meta_cap'        => true,
+					'map_meta_cap'         => true,
+					'taxonomies'		   => array( 'wpcm_venue' ),
 				)
 			)
 		);
@@ -281,7 +283,7 @@ class WPCM_Post_Types {
 						'menu_name'           => __( 'Players', 'wp-club-manager' )
 					),
 					'hierarchical'         => false,
-					'supports'             => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+					'supports'             => array( 'title', 'thumbnail' ),
 					'public'               => true,
 					'show_ui'              => true,
 					'show_in_menu'         => true,
@@ -294,7 +296,7 @@ class WPCM_Post_Types {
 					'can_export'           => true,
 					'rewrite'              => $player_permalink ? array( 'slug' => untrailingslashit( $player_permalink ) ) : false,
 					'capability_type'      => 'wpcm_player',
-					'map_meta_cap'        => true,
+					'map_meta_cap'        => true
 				)
 			)
 		);
@@ -321,7 +323,7 @@ class WPCM_Post_Types {
 						'menu_name'           => __( 'Staff', 'wp-club-manager' )
 					),
 					'hierarchical'         => false,
-					'supports'             => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+					'supports'             => array( 'title', 'thumbnail' ),
 					'public'               => true,
 					'show_ui'              => true,
 					'show_in_menu'         => true,
@@ -361,12 +363,12 @@ class WPCM_Post_Types {
 						'menu_name'           => __( 'Matches', 'wp-club-manager' )
 					),
 					'hierarchical'         => false,
-					'supports'             => array( 'editor', 'excerpt' ),
+					'supports'             => array( 'title' ),
 					'public'               => true,
 					'show_ui'              => true,
 					'show_in_menu'         => true,
 					'show_in_nav_menus'    => true,
-					'menu_icon'            => 'dashicons-awards',
+					'menu_icon'            => 'dashicons-calendar-alt',
 					'publicly_queryable'   => true,
 					'exclude_from_search'  => false,
 					'has_archive'          => false,
@@ -374,10 +376,81 @@ class WPCM_Post_Types {
 					'can_export'           => true,
 					'rewrite'              => $match_permalink ? array( 'slug' => untrailingslashit( $match_permalink ) ) : false,
 					'capability_type'      => 'wpcm_match',
-					'map_meta_cap'        => true,
+					'map_meta_cap'        => true
 				)
 			)
 		);
+
+		register_post_type( 'wpcm_table',
+			apply_filters( 'wpclubmanager_register_post_type_table',
+				array(
+					'labels' => array(
+						'name'                	=> __( 'League Tables', 'wp-club-manager' ),
+						'singular_name'       	=> __( 'League Table', 'wp-club-manager' ),
+						'add_new'             	=> __( 'Add New', 'wp-club-manager' ),
+						'all_items'           	=> __( 'All League Tables', 'wp-club-manager' ),
+						'add_new_item'        	=> __( 'Add New League Table', 'wp-club-manager' ),
+						'edit_item'           	=> __( 'Edit League Table', 'wp-club-manager' ),
+						'new_item'            	=> __( 'New League Table', 'wp-club-manager' ),
+						'view_item'           	=> __( 'View League Table', 'wp-club-manager' ),
+						'search_items'        	=> __( 'Search League Tables', 'wp-club-manager' ),
+						'not_found'           	=> __( 'No league tables found', 'wp-club-manager' ),
+						'not_found_in_trash'  	=> __( 'No league tables found in trash', 'wp-club-manager'),
+						'parent_item_colon'   	=> __( 'Parent League Table:', 'wp-club-manager' ),
+						'menu_name'           	=> __( 'League Tables', 'wp-club-manager' )
+					),
+					'hierarchical'         => false,
+					'supports'             => array( 'title' ),
+					'public'               => false,
+					'show_ui'              => true,
+					'show_in_menu'         => false,
+					'query_var'            => false,
+					'rewrite'              => false,
+					'capability_type'      => 'wpcm_table',
+					'map_meta_cap'         => true,
+					'show_in_admin_bar'   => true,
+					'taxonomies'		  => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
+				)
+			)
+		);
+
+		if( is_club_mode() ) {
+			register_post_type( 'wpcm_roster',
+				apply_filters( 'wpclubmanager_register_post_type_roster',
+					array(
+						'labels'              => array(
+							'name'                	=> __( 'Rosters', 'wp-club-manager' ),
+							'singular_name'       	=> __( 'Roster', 'wp-club-manager' ),
+							'add_new'             	=> __( 'Add New', 'wp-club-manager' ),
+							'all_items'           	=> __( 'All Rosters', 'wp-club-manager' ),
+							'add_new_item'        	=> __( 'Add New Roster', 'wp-club-manager' ),
+							'edit_item'           	=> __( 'Edit Roster', 'wp-club-manager' ),
+							'new_item'            	=> __( 'New Roster', 'wp-club-manager' ),
+							'view_item'           	=> __( 'View Roster', 'wp-club-manager' ),
+							'search_items'        	=> __( 'Search Rosters', 'wp-club-manager' ),
+							'not_found'           	=> __( 'No rosters found', 'wp-club-manager' ),
+							'not_found_in_trash'  	=> __( 'No rosters found in trash', 'wp-club-manager'),
+							'parent_item_colon'   	=> __( 'Parent Roster:', 'wp-club-manager' ),
+							'menu_name'           	=> __( 'Rosters', 'wp-club-manager' )
+						),
+						'public'              => false,
+						'show_ui'             => true,
+						'capability_type'     => 'wpcm_roster',
+						'map_meta_cap'        => true,
+						'publicly_queryable'  => false,
+						'exclude_from_search' => true,
+						'show_in_menu'        => false,
+						'hierarchical'        => false,
+						'rewrite'             => false,
+						'query_var'           => false,
+						'supports'            => array( 'title' ),
+						'show_in_nav_menus'   => false,
+						'show_in_admin_bar'   => true,
+						'taxonomies'		  => array( 'wpcm_team', 'wpcm_season' ),
+					)
+				)
+			);
+		}
 
 		register_post_type( 'wpcm_sponsor',
 			apply_filters( 'wpclubmanager_register_post_type_sponsor',
@@ -385,7 +458,7 @@ class WPCM_Post_Types {
 					'labels' => array(
 						'name'                => __( 'Sponsors', 'wp-club-manager' ),
 						'singular_name'       => __( 'Sponsor', 'wp-club-manager' ),
-						'add_new'             => __( 'Add New Sponsor', 'wp-club-manager' ),
+						'add_new'             => __( 'Add New', 'wp-club-manager' ),
 						'all_items'           => __( 'All Sponsors', 'wp-club-manager' ),
 						'add_new_item'        => __( 'Add New Sponsor', 'wp-club-manager' ),
 						'edit_item'           => __( 'Edit Sponsor', 'wp-club-manager' ),
@@ -441,6 +514,8 @@ class WPCM_Post_Types {
 			new Jetpack_Omnisearch_Posts( 'wpcm_player' );
 			new Jetpack_Omnisearch_Posts( 'wpcm_staff' );
 			new Jetpack_Omnisearch_Posts( 'wpcm_match' );
+			new Jetpack_Omnisearch_Posts( 'wpcm_roster' );
+			new Jetpack_Omnisearch_Posts( 'wpcm_table' );
 		}
 	}
 
@@ -455,6 +530,44 @@ class WPCM_Post_Types {
 
 		return $post_types;
 	}
+
+	public static function remove_custom_service_slug( $post_link, $post ) {
+		if ( 'wpcm_club' === $post->post_type && 'publish' === $post->post_status ) {
+			if( $post->post_parent ) {
+				$parent = get_post($post->post_parent);
+				$post_link = str_replace( '/' . $post->post_type . '/' . $parent->post_name . '/', '/', $post_link );
+			} else {
+				$post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
+			}
+		}
+		return $post_link;
+	}
+
+	/**
+	 * Have WordPress match postname to any of our public post types (post, page, race).
+	 * All of our public post types can have /post-name/ as the slug, so they need to be unique across all posts.
+	 * By default, WordPress only accounts for posts and pages where the slug is /post-name/.
+	 *
+	 * @param $query The current query.
+	 */
+	public static function add_cpt_post_names_to_main_query( $query ) {
+
+		// Bail if this is not the main query.
+		if ( ! $query->is_main_query() ) {
+			return;
+		}
+		// Bail if this query doesn't match our very specific rewrite rule.
+		if ( ! isset( $query->query['page'] ) || 2 !== count( $query->query ) ) {
+			return;
+		}
+		// Bail if we're not querying based on the post name.
+		if ( empty( $query->query['name'] ) ) {
+			return;
+		}
+		// Add CPT to the list of post types WP will include when it queries based on the post name.
+		$query->set( 'post_type', array( 'post', 'page', 'wpcm_club' ) );
+	}
+
 }
 
 new WPCM_Post_Types();

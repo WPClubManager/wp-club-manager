@@ -17,7 +17,7 @@ if ( $venue ) { ?>
 
 	<div class="wpcm-match-venue">
 
-		<?php echo $venue[0]; ?>
+		<?php echo $venue['name']; ?>
 
 	</div>
 

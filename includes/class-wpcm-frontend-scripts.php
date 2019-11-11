@@ -53,7 +53,14 @@ class WPCM_Frontend_Scripts {
 		wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
 
 		// Global frontend scripts
-		wp_enqueue_script( 'wpclubmanager', $frontend_script_path . 'wpclubmanager' . $suffix . '.js', array( 'jquery' ), WPCM_VERSION, true );
+		wp_enqueue_script( 'wpclubmanager', $frontend_script_path . 'wpclubmanager.js', array( 'jquery' ), WPCM_VERSION, true );
+
+		wp_localize_script( 'wpclubmanager', 'wpclubmanager_L10n', array(
+			'days' => __( 'day', 'wpclubmanager' ),
+			'hrs' => __( 'hrs', 'wpclubmanager' ),
+			'mins' => __( 'min', 'wpclubmanager' ),
+			'secs' => __( 'sec', 'wpclubmanager' )
+		));
 
 		// CSS Styles
 		$enqueue_styles = $this->get_styles();

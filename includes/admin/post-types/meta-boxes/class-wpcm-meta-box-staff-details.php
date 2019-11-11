@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.4.0
+ * @version     2.1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,11 +19,8 @@ class WPCM_Meta_Box_Staff_Details {
 	 */
 	public static function output( $post ) {
 
-		global $post, $wp_locale;
-
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 
-		$job_id = null;
 		$jobs = get_the_terms( $post->ID, 'wpcm_jobs' );
 		$job_ids = array();
 		if ( $jobs ):
@@ -32,60 +29,81 @@ class WPCM_Meta_Box_Staff_Details {
 			endforeach;
 		endif;
 
-		$dob = get_post_meta( $post->ID, 'wpcm_dob', true );
-
-		if ( empty( $dob ) ) {
-			$dob = '1988-01-01';
-		}
-
-		$dob_day = substr( $dob, 8, 2 );
-		$dob_month = substr( $dob, 5, 2 );
-		$dob_year = substr( $dob, 0, 4 );
-
-		$natl = get_post_meta( $post->ID, 'wpcm_natl', true );
-		$time_adj = current_time( 'timestamp' ); ?>
+		$club = get_post_meta( $post->ID, '_wpcm_staff_club', true );
+		$dob = ( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ? get_post_meta( $post->ID, 'wpcm_dob', true ) : '1990-01-01';
 		
-		<p>
-			<label><?php _e( 'Job Title', 'wp-club-manager' ); ?></label>
-			<?php
-				$args = array(
-					'taxonomy' => 'wpcm_jobs',
-					'name' => 'tax_input[wpcm_jobs][]',
-					'selected' => $job_ids,
-					'values' => 'term_id',
-					'placeholder' => sprintf( __( 'Choose %s', 'wp-club-manager' ), __( 'jobs', 'wp-club-manager' ) ),
-					'class' => '',
-					'attribute' => 'multiple',
-					'chosen' => true,
-				);
-				wpcm_dropdown_taxonomies( $args );
-			?>
-		</p>
+		wpclubmanager_wp_text_input( array( 
+			'id' => '_wpcm_firstname',
+			'label' => __( 'First Name', 'wp-club-manager' ),
+			'class' => 'regular-text'
+		) );
+
+		wpclubmanager_wp_text_input( array( 
+			'id' => '_wpcm_lastname',
+			'label' => __( 'Last Name', 'wp-club-manager' ),
+			'class' => 'regular-text'
+		) ); ?>
+
 		<?php
-		wpclubmanager_wp_text_input( array( 'id' => '_wpcm_staff_email', 'label' => __( 'Email Address', 'wp-club-manager' ), 'class' => 'regular-text' ) );
-
-		wpclubmanager_wp_text_input( array( 'id' => '_wpcm_staff_phone', 'label' => __( 'Contact Number', 'wp-club-manager' ), 'class' => 'regular-text' ) );
-		?>
-		<p>
-			<label><?php _e( 'Date of Birth', 'wp-club-manager' ); ?></label>
-			<select name="wpcm_dob_day" id="wpcm_dob_day" class="chosen_select_dob">
-				<?php for ( $i = 1; $i < 32; $i = $i +1 ): ?>
-					<option value="<?php echo zeroise($i, 2); ?>"<?php echo ($i == $dob_day ? ' selected="selected"' : ''); ?>>
-						<?php echo zeroise($i, 2); ?>
-					</option>
-				<?php endfor; ?>
-			</select>
-			<select name="wpcm_dob_month" id="wpcm_dob_month" class="chosen_select_dob">
-				<?php for ( $i = 1; $i < 13; $i = $i +1 ): ?>
-					<option value="<?php echo zeroise($i, 2); ?>"<?php echo ($i == $dob_month ? ' selected="selected"' : ''); ?>>
-						<?php echo zeroise($i, 2); ?>-<?php echo $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) ); ?>
-					</option>
-				<?php endfor; ?>
-			</select>
-			<input type="text" name="wpcm_dob_year" id="wpcm_dob_year" value="<?php echo $dob_year; ?>" size="4" maxlength="4" autocomplete="off" />
-		</p><?php
+		if( is_league_mode() ) { ?>
+			<p>
+				<label><?php _e( 'Current Club', 'wp-club-manager' ); ?></label>
+				<?php
+				wpcm_dropdown_posts( array(
+					'id'				=> '_wpcm_staff_club',
+					'name' 				=> '_wpcm_staff_club',
+					'post_type' 		=> 'wpcm_club',
+					'limit' 			=> -1,
+					'show_option_none'	=> __( 'Choose club', 'wp-club-manager' ),
+					'class'				=> 'chosen_select',
+					'selected'			=> $club
+				));
+				?>
+			</p>
+		<?php 
+		}
 		
-		wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wp-club-manager' ) ) );
+		//if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes') { ?>		
+			<p>
+				<label><?php _e( 'Job Title', 'wp-club-manager' ); ?></label>
+				<?php
+					$args = array(
+						'taxonomy' => 'wpcm_jobs',
+						'name' => 'tax_input[wpcm_jobs][]',
+						'selected' => $job_ids,
+						'values' => 'term_id',
+						'placeholder' => sprintf( __( 'Choose %s', 'wp-club-manager' ), __( 'jobs', 'wp-club-manager' ) ),
+						'class' => '',
+						'attribute' => 'multiple',
+						'chosen' => true,
+					);
+					wpcm_dropdown_taxonomies( $args );
+				?>
+			</p>
+		<?php
+		//}
+
+		//if ( get_option( 'wpcm_show_staff_email' ) == 'yes') {
+			wpclubmanager_wp_text_input( array( 'id' => '_wpcm_staff_email', 'label' => __( 'Email Address', 'wp-club-manager' ), 'class' => 'regular-text' ) );
+		//}
+		
+		//if ( get_option( 'wpcm_show_staff_phone' ) == 'yes') {
+			wpclubmanager_wp_text_input( array( 'id' => '_wpcm_staff_phone', 'label' => __( 'Contact Number', 'wp-club-manager' ), 'class' => 'regular-text' ) );
+		//}
+
+		//if ( get_option( 'wpcm_staff_profile_show_dob' ) == 'yes') {
+			wpclubmanager_wp_text_input( array( 'id' => 'wpcm_dob', 'label' => __( 'Date of Birth', 'wp-club-manager' ), 'placeholder' => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ), 'description' => '', 'value' => $dob,'class' => 'birth-date-picker', 'custom_attributes' => array( 'pattern' => "[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" ) ) );
+		//}
+
+		//if ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes') {
+			wpclubmanager_wp_text_input( array( 'id' => '_wpcm_staff_hometown', 'label' => __( 'Birthplace', 'wp-club-manager' ), 'class' => 'regular-text' ) );
+		//}
+		
+		//if ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes') {
+			wpclubmanager_wp_country_select( array( 'id' => 'wpcm_natl', 'label' => __( 'Nationality', 'wp-club-manager' ) ) );
+		//}
+
+		do_action('wpclubmanager_admin_staff_details', $post->ID );
 	}
 
 	/**
@@ -93,18 +111,33 @@ class WPCM_Meta_Box_Staff_Details {
 	 */
 	public static function save( $post_id, $post ) {
 
+		if( isset( $_POST['_wpcm_staff_club'] ) ) {
+			update_post_meta( $post_id, '_wpcm_staff_club', $_POST['_wpcm_staff_club'] );
+		}
+		if( isset( $_POST['wpcm_dob'] ) ) {
+			update_post_meta( $post_id, 'wpcm_dob', $_POST['wpcm_dob'] );
+		}
+		if( isset( $_POST['_wpcm_firstname'] ) ) {
+			update_post_meta( $post_id, '_wpcm_firstname', $_POST['_wpcm_firstname'] );
+		}
+		if( isset( $_POST['_wpcm_lastname'] ) ) {
+			update_post_meta( $post_id, '_wpcm_lastname', $_POST['_wpcm_lastname'] );
+		}
 		if( isset( $_POST['_wpcm_staff_email'] ) ) {
 			update_post_meta( $post_id, '_wpcm_staff_email', $_POST['_wpcm_staff_email'] );
 		}
 		if( isset( $_POST['_wpcm_staff_phone'] ) ) {
 			update_post_meta( $post_id, '_wpcm_staff_phone', $_POST['_wpcm_staff_phone'] );
 		}
+		if( isset( $_POST['_wpcm_staff_hometown'] ) ) {
+			update_post_meta( $post_id, '_wpcm_staff_hometown', $_POST['_wpcm_staff_hometown'] );
+		}
 		if( isset( $_POST['wpcm_natl'] ) ) {
 			update_post_meta( $post_id, 'wpcm_natl', $_POST['wpcm_natl'] );
 		}
-		$dob_year = substr( zeroise( (int) $_POST['wpcm_dob_year'], 4 ), 0, 4 );
-		$dob_month = substr( zeroise( (int) $_POST['wpcm_dob_month'], 2 ), 0, 2 );
-		$dob_day = substr( zeroise( (int) $_POST['wpcm_dob_day'], 2 ), 0, 2 );
-		update_post_meta( $post_id, 'wpcm_dob', $dob_year . '-' . $dob_month. '-' . $dob_day );
+
+		do_action('wpclubmanager_after_admin_staff_save', $post_id );
+
+		do_action( 'delete_plugin_transients' );
 	}
 }

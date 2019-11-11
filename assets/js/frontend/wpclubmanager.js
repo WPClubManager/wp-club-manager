@@ -1,6 +1,20 @@
 /**
  * WPClubManager Admin JS
  */
+jQuery(document).ready(function() {
+	// Next Match countdown
+	jQuery('[data-countdown]').each(function() {
+		var $this = jQuery(this), finalDate = jQuery(this).data('countdown');
+		$this.countdown(finalDate, function(event) {
+			var $this = jQuery(this).html(event.strftime(''
+			+ '<div class="countdown-unit"><span>%-D</span> '+wpclubmanager_L10n.days+'%!D</div> '
+			+ '<div class="countdown-unit"><span>%H</span> '+wpclubmanager_L10n.hrs+'</div> '
+			+ '<div class="countdown-unit"><span>%M</span> '+wpclubmanager_L10n.mins+'</div> '
+			+ '<div class="countdown-unit"><span>%S</span> '+wpclubmanager_L10n.secs+'</div> '));
+		});
+	});
+});
+
 jQuery(function(){
 
 	jQuery('.stats-tabs a').click(function(){

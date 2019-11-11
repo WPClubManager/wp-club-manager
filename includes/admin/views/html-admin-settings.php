@@ -1,6 +1,6 @@
 <div class="wrap wpclubmanager">
 	<h1><?php _e( 'WP Club Manager Settings', 'wp-club-manager' ); ?></h1>
-	<form method="post" id="mainform" action="" enctype="multipart/form-data">
+	<form method="<?php echo esc_attr( apply_filters( 'wpclubmanager_settings_form_method_tab_' . $current_tab, 'post' ) ); ?>" id="mainform" action="" enctype="multipart/form-data">
 		<h2 class="nav-tab-wrapper wpcm-nav-tab-wrapper">
 			<?php
 				foreach ( $tabs as $name => $label )
@@ -12,11 +12,15 @@
 
 		<div id="poststuff">
 
-			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
+			<div id="post-body" class="metabox-holder columns-2">
 
 				<div id="postbox-container-2" class="postbox-container">
 
 					<?php
+						do_action( 'wpclubmanager_sections_' . $current_tab );
+
+						//self::show_messages();
+
 						do_action( 'wpclubmanager_settings_' . $current_tab );
 					?>
 

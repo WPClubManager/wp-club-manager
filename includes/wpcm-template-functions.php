@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     1.5.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -258,7 +258,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 			$name = $number.'. '.get_the_title($post->ID);
 		}
 
-		echo form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
+		echo wpcm_form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
 	}
 }
 
@@ -314,7 +314,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 			$players[get_permalink($player_post->ID)] = get_the_title($player_post->ID);
 		endforeach;
 
-		echo form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
+		echo wpcm_form_dropdown('switch-player-profile', $players, get_permalink(), array('onchange' => 'window.location = this.value;'));
 	}
 }
 
@@ -448,6 +448,20 @@ if ( ! function_exists( 'wpclubmanager_template_single_match_status' ) ) {
 		if( $sport == 'soccer' ) {
 			wpclubmanager_get_template( 'single-match/status.php' );
 		}
+	}
+}
+
+if ( ! function_exists( 'wpclubmanager_template_single_match_box_scores' ) ) {
+
+	/**
+	 * Output the match box_scores.
+	 *
+	 * @access public
+	 * @subpackage	Match
+	 * @return void
+	 */
+	function wpclubmanager_template_single_match_box_scores() {
+		wpclubmanager_get_template( 'single-match/box-scores.php' );
 	}
 }
 

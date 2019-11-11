@@ -5,7 +5,7 @@
  * @author      WPClubManager
  * @category    Admin
  * @package     WPClubManager/Admin
- * @version     1.3
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -37,7 +37,7 @@ class WPCM_Admin_Permalink_Settings {
 	 */
 	public function settings_init() {
 		// Add a section to the permalinks page
-		add_settings_section( 'wpclubmanager-permalink', __( 'WP Club Manager Settings', 'wp-club-manager' ), array( $this, 'settings' ), 'permalink' );
+		add_settings_section( 'wpclubmanager-permalink', __( 'WP Club Manager Permalinks', 'wp-club-manager' ), array( $this, 'settings' ), 'permalink' );
 
 		// Add our settings
 		foreach ( $this->slugs as $slug ):
@@ -65,7 +65,7 @@ class WPCM_Admin_Permalink_Settings {
 	 * Show the settings
 	 */
 	public function settings() {
-		echo wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "default" permalinks above</strong>.', 'wp-club-manager' ) );
+		echo wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "Plain" permalinks above</strong>.', 'wp-club-manager' ) );
 	}
 
 	/**

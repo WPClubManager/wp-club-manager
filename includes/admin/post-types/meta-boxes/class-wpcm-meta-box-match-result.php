@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     1.5.7
+ * @version     2.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -24,15 +24,20 @@ class WPCM_Meta_Box_Match_Result {
 		$sport = get_option('wpcm_sport');
 
 		$played = get_post_meta( $post->ID, 'wpcm_played', true );
-		$friendly = get_post_meta( $post->ID, 'wpcm_friendly', true );
+		$postponed = get_post_meta( $post->ID, '_wpcm_postponed', true );
+		$walkover = get_post_meta( $post->ID, '_wpcm_walkover', true );
 
 		if( $sport == 'cricket' ){
-			$wpcm_match_runs = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_runs', true ) ) );
-			$wpcm_match_extras = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_extras', true ) ) );
-			$wpcm_match_wickets = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_wickets', true ) ) );
-			$wpcm_match_overs = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_overs', true ) ) );
+			$wpcm_match_runs = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_runs', true ) ) );
+			$wpcm_match_extras = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_extras', true ) ) );
+			$wpcm_match_wickets = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_wickets', true ) ) );
+			$wpcm_match_overs = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, '_wpcm_match_overs', true ) ) );
+			$wpcm_cricket_outcome = get_post_meta( $post->ID, '_wpcm_cricket_outcome', true );
+			if( ! is_array($wpcm_cricket_outcome) ) {
+				$wpcm_cricket_outcome = array( 0 => '', 1 => '', 2 => '' );
+			};
 		}else{
-			$goals = array_merge( array( 'total' => array( 'home' => 0, 'away' => 0	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
+			$goals = array_merge( array( 'total' => array( 'home' => '0', 'away' => '0'	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
 		}
 
 		if ( $sport !== 'volleyball' || $sport !== 'baseball' ) {
@@ -44,16 +49,16 @@ class WPCM_Meta_Box_Match_Result {
 
 		if ( $sport == 'soccer' ) {
 			$shootout = get_post_meta( $post->ID, 'wpcm_shootout', true );
-			$shootout_score = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_shootout_score', true ) ) );
+			$shootout_score = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_shootout_score', true ) ) );
 		}
 
 		if( $sport == 'rugby' ){
-			$bonus = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_bonus', true ) ) );
+			$bonus = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_bonus', true ) ) );
 		}
 
 		if( $sport == 'gaelic' ){
-			$gaa_goals = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_gaa_goals', true ) ) );
-			$gaa_points = array_merge( array( 'home' => 0, 'away' => 0	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_gaa_points', true ) ) );
+			$gaa_goals = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_gaa_goals', true ) ) );
+			$gaa_points = array_merge( array( 'home' => '0', 'away' => '0'	), (array)unserialize( get_post_meta( $post->ID, 'wpcm_gaa_points', true ) ) );
 		} ?>
 
 		<p>
@@ -62,10 +67,134 @@ class WPCM_Meta_Box_Match_Result {
 				<?php _e( 'Result', 'wp-club-manager' ); ?>
 			</label>
 		</p>
-		<div id="results-table">
-			<?php if ( $sport == 'cricket') { ?>
+		<p>
+			<label class="selectit">
+				<input type="checkbox" name="_wpcm_postponed" id="_wpcm_postponed" value="1" <?php checked( true, $postponed ); ?> />
+				<?php _e( 'Postponed', 'wp-club-manager' ); ?>
+			</label>
+		</p>
 
-				<table>
+		<?php wpclubmanager_wp_select( array( 'id' => '_wpcm_walkover', 'value' => $walkover, 'class' => 'chosen_select', 'label' => '', 'wrapper_class' => 'wpcm-postponed-result', 'options' => array(
+			'' => __( 'To be rescheduled', 'wp-club-manager' ),
+			'home_win' => __( 'Home win', 'wp-club-manager' ),
+			'away_win' => __( 'Away win', 'wp-club-manager' )
+		) ) ); ?>
+
+		<div id="results-table">
+
+		<?php
+		if( get_option( 'wpcm_results_box_scores' ) == 'yes' ) { ?>
+
+			<table class="box-scores-table">
+				<thead>
+					<tr>
+						<td>&nbsp;</td>
+						<th><?php _ex( 'Home', 'team', 'wp-club-manager' ); ?></th>
+						<th><?php _ex( 'Away', 'team', 'wp-club-manager' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+							
+					<?php
+					if( $sport == 'volleyball' ) :
+
+						$box_goals = array_merge( array( 'q1' => array( 'home' => '0', 'away' => '0'	) ), array( 'q2' => array( 'home' => '0', 'away' => '0'	) ), array( 'q3' => array( 'home' => '0', 'away' => '0'	) ), array( 'q4' => array( 'home' => '0', 'away' => '0'	) ), array( 'q5' => array( 'home' => '0', 'away' => '0'	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+
+						<tr>
+							<th align="right"><?php _e( '1st Set', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home" value="<?php echo (int)$box_goals['q1']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away" value="<?php echo (int)$box_goals['q1']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '2nd Set', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home" value="<?php echo (int)$box_goals['q2']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away" value="<?php echo (int)$box_goals['q2']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '3rd Set', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home" value="<?php echo (int)$box_goals['q3']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away" value="<?php echo (int)$box_goals['q3']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '4th Set', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q4][home]" id="wpcm_goals_q4_home" value="<?php echo (int)$box_goals['q4']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q4][away]" id="wpcm_goals_q4_away" value="<?php echo (int)$box_goals['q4']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr class="wpcm-ss-admin-tr-last">
+							<th align="right"><?php _e( '5th Set', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q5][home]" id="wpcm_goals_q5_home" value="<?php echo (int)$box_goals['q5']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q5][away]" id="wpcm_goals_q5_away" value="<?php echo (int)$box_goals['q5']['away']; ?>" size="3" /></td>
+						</tr>
+
+					<?php
+					elseif( $sport == 'basketball' || $sport == 'football' || $sport == 'footy' ) :
+
+						$box_goals = array_merge( array( 'q1' => array( 'home' => '0', 'away' => '0'	) ), array( 'q2' => array( 'home' => '0', 'away' => '0'	) ), array( 'q3' => array( 'home' => '0', 'away' => '0'	) ), array( 'q4' => array( 'home' => '0', 'away' => '0'	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+
+						<tr>
+							<th align="right"><?php _e( '1st Quarter', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home" value="<?php echo (int)$box_goals['q1']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away" value="<?php echo (int)$box_goals['q1']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '2nd Quarter', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home" value="<?php echo (int)$box_goals['q2']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away" value="<?php echo (int)$box_goals['q2']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '3rd Quarter', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home" value="<?php echo (int)$box_goals['q3']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away" value="<?php echo (int)$box_goals['q3']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr class="wpcm-ss-admin-tr-last">
+							<th align="right"><?php _e( '4th Quarter', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q4][home]" id="wpcm_goals_q4_home" value="<?php echo (int)$box_goals['q4']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q4][away]" id="wpcm_goals_q4_away" value="<?php echo (int)$box_goals['q4']['away']; ?>" size="3" /></td>
+						</tr>
+
+					<?php
+					elseif( $sport == 'hockey' || $sport == 'floorball' ) :
+
+						$box_goals = array_merge( array( 'q1' => array( 'home' => '0', 'away' => '0'	) ), array( 'q2' => array( 'home' => '0', 'away' => '0'	) ), array( 'q3' => array( 'home' => '0', 'away' => '0'	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+
+						<tr>
+							<th align="right"><?php _e( '1st Period', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home" value="<?php echo (int)$box_goals['q1']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away" value="<?php echo (int)$box_goals['q1']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr>
+							<th align="right"><?php _e( '2nd Period', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home" value="<?php echo (int)$box_goals['q2']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away" value="<?php echo (int)$box_goals['q2']['away']; ?>" size="3" /></td>
+						</tr>
+						<tr class="wpcm-ss-admin-tr-last">
+							<th align="right"><?php _e( '3rd Period', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home" value="<?php echo (int)$box_goals['q3']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away" value="<?php echo (int)$box_goals['q3']['away']; ?>" size="3" /></td>
+						</tr>
+
+					<?php
+					else :
+
+						$box_goals = array_merge( array( 'q1' => array( 'home' => '0', 'away' => '0'	) ), (array)unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+
+						<tr class="wpcm-ss-admin-tr-last">
+							<th align="right"><?php _e( 'Half Time', 'wp-club-manager' ); ?></th>
+							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home" value="<?php echo (int)$box_goals['q1']['home']; ?>" size="3" /></td>
+							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away" value="<?php echo (int)$box_goals['q1']['away']; ?>" size="3" /></td>
+						</tr>
+
+					<?php
+					endif; ?>
+
+				</tbody>
+			</table>
+
+		<?php
+		} ?>
+			<table class="final-score-table">
+				<?php
+				if( get_option( 'wpcm_results_box_scores' ) != 'yes' ) { ?>
 					<thead>
 						<tr>
 							<td>&nbsp;</td>
@@ -73,6 +202,10 @@ class WPCM_Meta_Box_Match_Result {
 							<th><?php _ex( 'Away', 'team', 'wp-club-manager' ); ?></th>
 						</tr>
 					</thead>
+				<?php
+				}
+				if ( $sport == 'cricket') { ?>
+
 					<tbody>
 						<tr>
 							<th align="right"><?php _e( 'Runs', 'wp-club-manager' ); ?></th>
@@ -95,27 +228,67 @@ class WPCM_Meta_Box_Match_Result {
 							<td><input type="text" name="wpcm_match_overs[away]" id="wpcm_match_overs_away" value="<?php echo (float)$wpcm_match_overs['away']; ?>" size="3" /></td>
 						</tr>
 					</tbody>
-				</table>
 
-			<?php }else{ ?>
+				<?php
+				} else { ?>
 
-				<table>
-					<thead>
-						<tr>
-							<td>&nbsp;</td>
-							<th><?php _ex( 'Home', 'team', 'wp-club-manager' ); ?></th>
-							<th><?php _ex( 'Away', 'team', 'wp-club-manager' ); ?></th>
-						</tr>
-					</thead>
 					<tbody>
+						
 						<?php do_action('wpclubmanager_admin_results_table', $post->ID ); ?>
 						<tr>
-							<th align="right"><?php _e( 'Score', 'wp-club-manager' ); ?></th>
+							<th align="right"><?php _e( 'Final Score', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[total][home]" id="wpcm_goals_total_home" value="<?php echo (int)$goals['total']['home']; ?>" size="3" /></td>
 							<td><input type="text" name="wpcm_goals[total][away]" id="wpcm_goals_total_away" value="<?php echo (int)$goals['total']['away']; ?>" size="3" /></td>
 						</tr>
 					</tbody>
-				</table>
+
+				<?php } ?>
+
+			</table>
+
+			<?php if ( $sport == 'cricket') { ?>
+
+				<p class="wpcm-results-outcome-title">
+					<?php _e( 'Match Outcome', 'wp-club-manager' ); ?>
+				</p>
+
+				<div class="wpcm-results-outcome">
+
+					<?php
+					wpclubmanager_wp_select( array( 
+						'id' => 'cricket_outcome_0',
+						'value' => $wpcm_cricket_outcome[0],
+						'class' => 'chosen_select_outcome',
+						'label' => '',
+						'wrapper_class' => 'wpcm_cricket_outcome',
+						'options' => array(
+							'' => '',
+							'won_by' => __( 'Won by', 'wp-club-manager' ),
+							'lost_by' => __( 'Lost by', 'wp-club-manager' ),
+							'drawn' => __( 'Draw', 'wp-club-manager' )
+						)
+					));
+					?>
+
+					<input type="number" class="wpcm_cricket_outcome" name="cricket_outcome_1" min="0" max="999" value="<?php echo $wpcm_cricket_outcome[1]; ?>" />
+
+					<?php
+					wpclubmanager_wp_select( array( 
+						'id' => 'cricket_outcome_2',
+						'value' => $wpcm_cricket_outcome[2],
+						'class' => 'chosen_select_outcome',
+						'label' => '',
+						'wrapper_class' => 'wpcm_cricket_outcome',
+						'options' => array(
+							'' => '',
+							'runs' => __( 'runs', 'wp-club-manager' ),
+							'wickets' => __( 'wickets', 'wp-club-manager' ),
+							'innings' => __( 'innings', 'wp-club-manager' )
+						)
+					));
+					?>
+
+				</div>
 
 			<?php } ?>
 
@@ -203,12 +376,6 @@ class WPCM_Meta_Box_Match_Result {
 			<?php } ?>
 
 		</div>
-		<p>
-			<label class="selectit">
-				<input type="checkbox" name="wpcm_friendly" id="wpcm_friendly" value="1" <?php checked( true, $friendly ); ?> />
-				<?php _e( 'Friendly', 'wp-club-manager' ); ?>
-			</label>
-		</p>
 
 		<?php do_action('wpclubmanager_admin_after_results_table', $post->ID );
 
@@ -221,17 +388,50 @@ class WPCM_Meta_Box_Match_Result {
 
 		$sport = get_option('wpcm_sport');
 
-		if( isset( $_POST['wpcm_played'] ) ) {
+		if( ! empty( $_POST['wpcm_played'] ) ) {
 			update_post_meta( $post_id, 'wpcm_played', $_POST['wpcm_played'] );
+		} else {
+			update_post_meta( $post_id, 'wpcm_played', '' );
 		}
-		if( isset( $_POST['wpcm_friendly'] ) ) {
-			update_post_meta( $post_id, 'wpcm_friendly', $_POST['wpcm_friendly'] );
+		if( ! empty( $_POST['_wpcm_postponed'] ) ) {
+			update_post_meta( $post_id, '_wpcm_postponed', $_POST['_wpcm_postponed'] );
+		} else {
+			update_post_meta( $post_id, '_wpcm_postponed', '' );
 		}
-		if( isset( $_POST['wpcm_goals'] ) ) {
-			$goals = $_POST['wpcm_goals'];
-			update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
-			update_post_meta( $post_id, 'wpcm_home_goals', $goals['total']['home'] );
-			update_post_meta( $post_id, 'wpcm_away_goals', $goals['total']['away'] );
+		if( isset( $_POST['_wpcm_walkover'] ) ) {
+			update_post_meta( $post_id, '_wpcm_walkover', $_POST['_wpcm_walkover'] );
+		}
+		if ( $sport == 'cricket' ) {
+			if( isset( $_POST['wpcm_match_runs'] ) ) {
+				$wpcm_match_runs = $_POST['wpcm_match_runs'];
+				update_post_meta( $post_id, '_wpcm_match_runs', serialize( $wpcm_match_runs ) );
+			}
+			if( isset( $_POST['wpcm_match_extras'] ) ) {
+				$wpcm_match_extras = $_POST['wpcm_match_extras'];
+				update_post_meta( $post_id, '_wpcm_match_extras', serialize( $wpcm_match_extras ) );
+			}
+			if( isset( $_POST['wpcm_match_wickets'] ) ) {
+				$wpcm_match_wickets = $_POST['wpcm_match_wickets'];
+				update_post_meta( $post_id, '_wpcm_match_wickets', serialize( $wpcm_match_wickets ) );
+			}
+			if( isset( $_POST['wpcm_match_overs'] ) ) {
+				$wpcm_match_overs = $_POST['wpcm_match_overs'];
+				update_post_meta( $post_id, '_wpcm_match_overs', serialize( $wpcm_match_overs ) );
+			}
+			if( $_POST['cricket_outcome_0'] != '' ) {
+				$outcome_0 = $_POST['cricket_outcome_0'];
+				$outcome_1 = $_POST['cricket_outcome_1'];
+				$outcome_2 = $_POST['cricket_outcome_2'];
+				$cricket_outcome = array( $outcome_0, $outcome_1, $outcome_2 );
+				update_post_meta( $post_id, '_wpcm_cricket_outcome', $cricket_outcome );
+			}
+		} else {
+			if( isset( $_POST['wpcm_goals'] ) ) {
+				$goals = $_POST['wpcm_goals'];
+				update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
+				update_post_meta( $post_id, 'wpcm_home_goals', $goals['total']['home'] );
+				update_post_meta( $post_id, 'wpcm_away_goals', $goals['total']['away'] );
+			}
 		}
 
 		if ( $sport == 'rugby' && isset( $_POST['wpcm_bonus'] ) ) {
@@ -265,24 +465,6 @@ class WPCM_Meta_Box_Match_Result {
 				update_post_meta( $post_id, 'wpcm_gaa_points', serialize( $gaa_points ) );
 				update_post_meta( $post_id, 'wpcm_home_gaa_points', $gaa_points['home'] );
 				update_post_meta( $post_id, 'wpcm_away_gaa_points', $gaa_points['away'] );
-			}
-		}
-		if ( $sport == 'cricket' ) {
-			if( isset( $_POST['wpcm_match_runs'] ) ) {
-				$wpcm_match_runs = $_POST['wpcm_match_runs'];
-				update_post_meta( $post_id, '_wpcm_match_runs', serialize( $wpcm_match_runs ) );
-			}
-			if( isset( $_POST['wpcm_match_extras'] ) ) {
-				$wpcm_match_extras = $_POST['wpcm_match_extras'];
-				update_post_meta( $post_id, '_wpcm_match_extras', serialize( $wpcm_match_extras ) );
-			}
-			if( isset( $_POST['wpcm_match_wickets'] ) ) {
-				$wpcm_match_wickets = $_POST['wpcm_match_wickets'];
-				update_post_meta( $post_id, '_wpcm_match_wickets', serialize( $wpcm_match_wickets ) );
-			}
-			if( isset( $_POST['wpcm_match_overs'] ) ) {
-				$wpcm_match_overs = $_POST['wpcm_match_overs'];
-				update_post_meta( $post_id, '_wpcm_match_overs', serialize( $wpcm_match_overs ) );
 			}
 		}
 

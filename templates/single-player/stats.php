@@ -12,7 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 global $post;
 
 $stats = get_wpcm_player_stats( $post->ID );
-$teams = wpcm_get_ordered_post_terms( $post->ID, 'wpcm_team' );
+if( is_club_mode() ) {
+	$teams = wpcm_get_ordered_post_terms( $post->ID, 'wpcm_team' );
+}else{
+	$teams = null;
+}
 $seasons = wpcm_get_ordered_post_terms( $post->ID, 'wpcm_season' );
 
 if( is_array( $teams ) && count( $teams ) > 1 ) {

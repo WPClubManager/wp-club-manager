@@ -19,9 +19,9 @@ class WPCM_Meta_Box_Sponsor_Url {
 	 */
 	public static function output( $post ) {
 
-		$link_new_window = get_post_meta( $post->ID, 'wpcm_link_nw', true );
-
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
+		
+		$link_new_window = get_post_meta( $post->ID, 'wpcm_link_nw', true );
 
 		do_action('wpclubmanager_before_admin_sponsors_meta', $post->ID );
 

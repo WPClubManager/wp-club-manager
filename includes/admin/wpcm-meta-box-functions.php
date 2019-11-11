@@ -5,7 +5,7 @@
 * @author      ClubPress
 * @category    Core
 * @package     WPClubManager/Admin/Functions
-* @version     1.4.0
+* @version     2.1.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -27,8 +27,10 @@ function wpclubmanager_wp_text_input( $field ) {
 	$field['value']         = isset( $field['value'] ) ? $field['value'] : get_post_meta( $thepostid, $field['id'], true );
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
 	$field['type']          = isset( $field['type'] ) ? $field['type'] : 'text';
+	$field['maxlength']     = isset( $field['maxlength'] ) ? $field['maxlength'] : '';
 
-	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><input type="' . esc_attr( $field['type'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" /> ';
+	( ! empty( $field['maxlength'] ) ? $maxlength = 'maxlength="' . esc_attr( $field['maxlength'] ) . '"' : $maxlength = '' );
+	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><input type="' . esc_attr( $field['type'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" ' . $maxlength . ' /> ';
 
 	if ( ! empty( $field['description'] ) ) {
 
@@ -134,7 +136,7 @@ function wpclubmanager_wp_select( $field ) {
 
 	foreach ( $field['options'] as $key => $value ) {
 
-		echo '<option value="' . esc_attr( $value ) . '" ' . selected( esc_attr( $field['value'] ), esc_attr( $value ), false ) . '>' . esc_html( $value ) . '</option>';
+		echo '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $field['value'] ), esc_attr( $key ), false ) . '>' . esc_html( $value ) . '</option>';
 
 	}
 
@@ -213,7 +215,7 @@ function wpclubmanager_wp_color_input( $field ) {
 	$field['name']          = isset( $field['name'] ) ? $field['name'] : $field['id'];
 	$field['type']          = isset( $field['type'] ) ? $field['type'] : 'text';
 
-	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><span class="colorpickpreview" style="background: ' . esc_attr( $field['value'] ) . ';"></span><input type="' . esc_attr( $field['type'] ) . '" class="colorpick" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" /></p>';
+	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><span class="colorpickpreview" style="background: ' . ( esc_attr( $field['value'] ) ? esc_attr( $field['value'] ) : esc_attr( $field['placeholder'] ) ) . ';"></span><input type="' . esc_attr( $field['type'] ) . '" class="colorpick" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" /></p>';
 }
 
 /**

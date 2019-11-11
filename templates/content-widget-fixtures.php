@@ -4,7 +4,7 @@
  *
  * @author 		Clubpress
  * @package 	WPClubManager/Templates
- * @version     1.4.1
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
@@ -43,6 +43,11 @@ global $post; ?>
 			echo ( $show_time ? ' - ' : '' );
 			echo ( $show_time ? the_time('g:i a') : '' );
 			?>
-		</div>			
+		</div>
+		<?php if( $show_countdown ) { ?>
+			<div class="wpcm-countdown">
+				<div class="wpcm-ticker-countdown" data-countdown="<?php echo $post->post_date; ?>"></div>
+			</div>
+		<?php } ?>			
 	</div>
 </li>

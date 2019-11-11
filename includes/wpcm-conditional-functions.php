@@ -13,7 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * is_wpclubmanager - Returns true if on a page which uses WPClubManager templates (cart and checkout are standard pages with shortcodes and thus are not included)
+ * is_wpclubmanager - Returns true if on a page which uses WPClubManager templates (rosters and tables are standard pages with shortcodes and thus are not included)
  *
  * @access public
  * @return bool
@@ -114,5 +114,45 @@ if ( ! function_exists( 'is_plugins_page' ) ) {
 	    global $pagenow;
 
 	    return ( 'plugins.php' === $pagenow );
+	}
+}
+
+if ( ! function_exists( 'is_league_mode' ) ) {
+	/**
+	 * is_league_mode - Returns true when league mode is activated
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	function is_league_mode() {
+
+		$mode = false;
+		if( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'league' ) {
+			
+			$mode = true;
+
+		}
+
+		return $mode;
+	}
+}
+
+if ( ! function_exists( 'is_club_mode' ) ) {
+	/**
+	 * is_club_mode - Returns true when club mode is activated
+	 *
+	 * @access public
+	 * @return bool
+	 */
+	function is_club_mode() {
+		
+		$mode = false;
+		if( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'club' ) {
+			
+			$mode = true;
+
+		}
+
+		return $mode;
 	}
 }

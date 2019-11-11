@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.4.5
+ * @version 	2.1.0
  * @extends 	WPCM_Widget
  */
 
@@ -23,14 +23,24 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 
 		/* Widget variable settings. */
 		$this->widget_cssclass 	= 'wpcm-widget widget-standings';
-		$this->widget_description 	= __( 'Display your clubs league standings.', 'wp-club-manager' );
+		$this->widget_description 	= __( 'Display your clubs league tables.', 'wp-club-manager' );
 		$this->widget_idbase 		= 'wpcm-standings-widget';
-		$this->widget_name 		= __( 'WPCM Standings', 'wp-club-manager' );
+		$this->widget_name 		= __( 'WPCM League Tables', 'wp-club-manager' );
 		$this->settings     			= array(
 			'title'  => array(
 				'type'  		=> 'text',
-				'std'   		=> __( 'Standings', 'wp-club-manager' ),
-				'label' 		=> __( 'Title', 'wp-club-manager' )
+				'std'   		=> '',
+				'label' 		=> __( 'Widget Title', 'wp-club-manager' )
+			),
+			'id' => array(
+				'type'  => 'posts_select',
+				'post_type'   => 'wpcm_table',
+				'show_option_none'   => false,
+				'orderby' => 'pts',
+				'order' => 'DESC',
+				'limit' => -1,
+				'label' => __( 'Choose League Table', 'wp-club-manager' ),
+				'std'   		=> null,
 			),
 			'limit' => array(
 				'type'  => 'number',
@@ -40,40 +50,29 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 				'std'   => 7,
 				'label' => __( 'Limit', 'wp-club-manager' )
 			),
-			'comp' => array(
-				'type'  => 'tax_select',
-				'taxonomy'   => 'wpcm_comp',
-				'std'   => 'All',
-				'label' => __( 'Competition', 'wp-club-manager' ),
+			'focus' => array(
+				'type'  => 'focus_select',
+				'std'   => '',
+				'label' => __( 'Focus', 'wp-club-manager' )
 			),
-			'season' => array(
-				'type'  => 'tax_select',
-				'taxonomy'   => 'wpcm_season',
-				'std'   => 'All',
-				'label' => __( 'Season', 'wp-club-manager' ),
-			),
-			'orderby' => array(
-				'type'  => 'orderby_standings_columns',
-				'std'   => 'pts',
-				'label' => __( 'Order by', 'wp-club-manager' ),
-			),
-			'order' => array(
-				'type'  => 'select',
-				'std'   => 'DESC',
-				'label' => _x( 'Order', 'Sorting order', 'wp-club-manager' ),
-				'options' => array(
-					'ASC'  => __( 'Lowest to highest', 'wp-club-manager' ),
-					'DESC' => __( 'Highest to lowest', 'wp-club-manager' ),
-				)
+			'abbr' => array(
+				'type'  => 'checkbox',
+				'std'   => 0,
+				'label' => __( 'Use club abbreviations', 'wp-club-manager' )
 			),
 			'thumb' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
 				'label' => __( 'Show club badge', 'wp-club-manager' )
 			),
-			'linkclub' => array(
+			'notes' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
+				'label' => __( 'Display Notes', 'wp-club-manager' )
+			),
+			'linkclub' => array(
+				'type'  => 'checkbox',
+				'std'   => 1,
 				'label' => __( 'Link to club pages', 'wp-club-manager' )
 			),
 			'display_columns' => array(
@@ -81,7 +80,7 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 				'label' => __( 'Display Columns', 'wp-club-manager' ),
 				'std'   => '',
 			),
-			'stats'  => array(
+			'columns'  => array(
 				'type'  => 'standings_columns',
 				'std'   => 'p,w,pts',
 			),
@@ -99,12 +98,7 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 				'type'  => 'pages_select',
 				'label' => __( 'Link page', 'wp-club-manager' ),
 				'std'   => 'None',
-			),
-			'excludes' => array(
-				'type'  => 'text',
-				'label' => __( 'Exclude clubs', 'wp-club-manager' ),
-				'std'	=> '',
-			),
+			)
 		);
 		parent::__construct();
 	}
@@ -127,7 +121,7 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		echo do_shortcode('[wpcm_standings' . $options_string . ' type="widget"]');
+		echo do_shortcode('[league_table' . $options_string . ' type="widget"]');
 
 		$this->widget_end( $args );
 	}

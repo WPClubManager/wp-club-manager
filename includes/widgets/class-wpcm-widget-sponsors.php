@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	1.4.0
+ * @version 	2.0.0
  * @extends 	WPCM_Widget
  */
 
@@ -35,11 +35,12 @@ class WPCM_Sponsors_Widget extends WPCM_Widget {
 			'id' => array(
 				'type'  		=> 'posts_select',
 				'post_type'   	=> 'wpcm_sponsor',
-				'std'   		=> 'None',
+				'show_option_none'   => false,
 				'label' 		=> __( 'Choose a sponsor', 'wp-club-manager' ),
 				'orderby' 		=> 'post_date',
 				'order' 		=> 'DESC',
-				'limit' 		=> -1
+				'limit' 		=> -1,
+				'std'   		=> null
 			),
 		);
 		parent::__construct();

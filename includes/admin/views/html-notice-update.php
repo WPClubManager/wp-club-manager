@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<div id="message" class="updated wpclubmanager-message wpcm-connect">
+<div id="message" class="updated wpclubmanager-message">
 	<p><?php _e( '<strong>WP Club Manager Data Update Required</strong> &#8211; We just need to update your install to the latest version', 'wp-club-manager' ); ?></p>
 	<p class="submit"><a href="<?php echo esc_url( add_query_arg( 'do_update_wpclubmanager', 'true', admin_url( 'admin.php?page=wpcm-settings' ) ) ); ?>" class="wpcm-update-now button-primary"><?php _e( 'Run the updater', 'wp-club-manager' ); ?></a></p>
 </div>

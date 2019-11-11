@@ -10,12 +10,12 @@
 		clear: both;
 	}
 
-.right {
+/* .right {
 	float: right !important;
 }
 .left {
 	float: left !important;
-}
+} */
 
 .wpcm_map_canvas img {
 	max-width: none !important;
@@ -214,7 +214,8 @@ table {
 	}
 	.wpcm-fixtures-shortcode td span.win,
 	.wpcm-fixtures-shortcode td span.draw,
-	.wpcm-fixtures-shortcode td span.lose {
+	.wpcm-fixtures-shortcode td span.loss,
+	.wpcm-fixtures-shortcode td span.postponed {
 		background: green;
 		border-radius: 10px;
 		color: #fff;
@@ -226,8 +227,11 @@ table {
 	.wpcm-fixtures-shortcode td span.draw {
 		background: #dcdcdc;
 	}
-	.wpcm-fixtures-shortcode td span.lose {
+	.wpcm-fixtures-shortcode td span.loss {
 		background: red;
+	}
+	.wpcm-fixtures-shortcode td span.postponed {
+		background: #363636;
 	}
 
 ul.wpcm-matches-list {
@@ -283,17 +287,19 @@ ul.wpcm-matches-list {
 	}
 	.wpcm-matches-list-result {
 		border-radius: 3px;
-		color: #fff;
 		padding: 2px 4px;
 	}
 	.wpcm-matches-list-result.win {
 		background: green;
+		color: #fff;
 	}
 	.wpcm-matches-list-result.draw {
 		background: #888;
+		color: #fff;
 	}
 	.wpcm-matches-list-result.loss {
 		background: red;
+		color: #fff;
 	}
 	.wpcm-matches-list-info {
 		font-size: .85em;
@@ -392,6 +398,11 @@ ul.wpcm-matches-list {
 			font-size: 1.4em;
 			font-weight: bold;
 		}
+		.wpcm-matches-widget .cricket-score {
+			float: left;
+			font-weight: bold;
+			width: 100%;
+		}
 	.wpcm-matches-widget .wpcm-date {
 		float: left;
 		margin-top: 1em;
@@ -400,6 +411,34 @@ ul.wpcm-matches-list {
 		.wpcm-matches-widget .kickoff {
 			padding: .5em;
 		}
+	.wpcm-countdown {
+		display: block;
+		margin: 10px 0;
+		text-align: center;
+		width: 100%;
+	}
+	.wpcm-ticker-countdown {
+		vertical-align: middle;
+	}
+	.wpcm-ticker-countdown div {
+		color: #444;
+		display: inline-block;
+		font-size: .9em;
+		margin-left: 4px;
+		text-align: center;
+	}
+	.wpcm-ticker-countdown div:first-of-type {
+		margin-left: 0;
+	}
+	.wpcm-ticker-countdown div span {
+		background: #eee;
+		display: block;
+		font-size: 1.5em;
+		font-weight: 600;
+		width: 32px;
+		height: 32px;
+		line-height: 32px;
+	}
 
 .wpcm-birthdays-widget {
 	
@@ -801,7 +840,6 @@ ul.wpcm-matches-list {
 }
 	.wpcm-h2h-list li {
 		background: #f9f9f9;
-		font-size: ;
 		display: table-cell;
 		list-style: none;
 		padding: 20px;
@@ -907,4 +945,102 @@ ul.wpcm-matches-list {
 		margin-left: 16px;
 		color: #e5c100;
 	}
+}
+
+[class*="block-grid-"] > li,
+[class*="block-grid-"] > li:before,
+[class*="block-grid-"] > li:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+[class*="block-grid-"] {
+	display: block;
+	padding: 0;
+	margin: 0 -0.625rem;
+}
+[class*="block-grid-"]:before,
+[class*="block-grid-"]:after {
+	content: " ";
+	display: table;
+}
+[class*="block-grid-"]:after {
+    clear: both;
+}
+[class*="block-grid-"] > li {
+    display: block;
+    height: auto;
+    float: left;
+    padding: 0 0.625rem 1.25rem;
+    margin-left: 0 !important;
+}
+[class*="block-grid-"] > li img {
+	display: block;
+	max-width: 100%;
+}
+.small-block-grid-2 > li {
+	width: 50%;
+	list-style: none;
+}
+.small-block-grid-2 > li:nth-of-type(1n) {
+	clear: none;
+}
+.small-block-grid-2 > li:nth-of-type(2n+1) {
+	clear: both;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.medium-block-grid-2 > li {
+		width: 50%;
+		list-style: none;
+	}
+	.medium-block-grid-2 > li:nth-of-type(1n) {
+		clear: none;
+	}
+	.medium-block-grid-2 > li:nth-of-type(2n+1) {
+		clear: both;
+	}
+	.medium-block-grid-3 > li {
+		width: 33.33333%;
+		list-style: none;
+	}
+	.medium-block-grid-3 > li:nth-of-type(1n) {
+		clear: none;
+	}
+	.medium-block-grid-3 > li:nth-of-type(3n+1) {
+		clear: both;
+	}
+	.medium-block-grid-4 > li {
+		width: 25%;
+		list-style: none;
+	}
+	.medium-block-grid-4 > li:nth-of-type(1n) {
+		clear: none;
+	}
+	.medium-block-grid-4 > li:nth-of-type(4n+1) {
+		clear: both;
+	}
+	.medium-block-grid-5 > li {
+		width: 20%;
+		list-style: none;
+	}
+	.medium-block-grid-5 > li:nth-of-type(1n) {
+		clear: none;
+	}
+	.medium-block-grid-5 > li:nth-of-type(5n+1) {
+		clear: both;
+	}
+	.medium-block-grid-6 > li {
+		width: 16.66667%;
+		list-style: none;
+	}
+	.medium-block-grid-6 > li:nth-of-type(1n) {
+		clear: none;
+	}
+	.medium-block-grid-6 > li:nth-of-type(6n+1) {
+		clear: both;
+	}
+}
+.wpcm-players-gallery-li h4 a {
+	display: block;
 }

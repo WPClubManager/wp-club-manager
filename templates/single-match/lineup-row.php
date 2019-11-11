@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.5.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -24,14 +24,14 @@ global $post; ?>
 			if( get_option('wpcm_results_show_image') == 'yes' ) {
 				echo wpcm_get_player_thumbnail( $key, 'player_thumbnail', array( 'class' => 'lineup-thumb' ) );
 			} ?>
-			<a href="<?php echo get_permalink( $key ); ?>"><?php echo get_the_title( $key ); ?></a>
+			<a href="<?php echo get_permalink( $key ); ?>"><?php echo get_player_title( $key, get_option( 'wpcm_name_format' ) ); ?></a>
 			<?php echo ( get_post_meta( $post->ID, '_wpcm_match_captain', true ) == $key ? ' (c) ' : '' );
 			if ( isset( $value['mvp'] ) ) { ?>
 				<span class="mvp" title="<?php _e( 'Player of Match', 'wp-club-manager' ); ?>">&#9733;</span>
 			<?php }
 
 			if ( array_key_exists( 'sub', $value ) && $value['sub'] > 0 ) { ?>
-				<span class="sub">&larr; <?php echo get_the_title( $value['sub'] ); ?></span>
+				<span class="sub">&larr; <?php echo get_player_title( $value['sub'], get_option( 'wpcm_name_format' ) ); ?></span>
 			<?php } ?>
 		</div>
 	</th>

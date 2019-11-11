@@ -4,7 +4,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.5.5
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -29,7 +29,7 @@ global $post; ?>
 		if ( get_option( 'wpcm_player_profile_show_dob' ) == 'yes') { ?>
 			<tr>
 				<th>
-					<?php _e( 'Birthday', 'wp-club-manager' ); ?>
+					<?php _e( 'Date of Birth', 'wp-club-manager' ); ?>
 				</th>
 				<td>
 					<?php echo date_i18n( get_option( 'date_format' ), strtotime( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ); ?>
@@ -103,13 +103,13 @@ global $post; ?>
 			</tr>
 		<?php }
 
-		if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes') { ?>
+		if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes' || get_option( 'wpcm_player_profile_show_nationality' ) == 'yes' ) { ?>
 			<tr>
 				<th>
 					<?php _e( 'Birthplace', 'wp-club-manager' ); ?>
 				</th>
 				<td>
-					<?php echo get_post_meta( $post->ID, 'wpcm_hometown', true ); ?> <img class="flag" src="<?php echo WPCM_URL; ?>assets/images/flags/<?php echo get_post_meta( $post->ID, 'wpcm_natl', true ); ?>.png" />
+					<?php echo ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes' ?get_post_meta( $post->ID, 'wpcm_hometown', true ) : '' ); ?> <?php echo ( get_option( 'wpcm_player_profile_show_nationality' ) == 'yes' ? '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . get_post_meta( $post->ID, 'wpcm_natl', true ) . '.png" />' : '' ); ?>
 				</td>
 			</tr>
 		<?php }

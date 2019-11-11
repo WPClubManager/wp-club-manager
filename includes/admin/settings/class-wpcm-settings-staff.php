@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.0.1
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,118 +33,139 @@ class WPCM_Settings_Staff extends WPCM_Settings_Page {
 	 */
 	public function get_settings() {
 		
-		return apply_filters( 'wpclubmanager_staff_settings', array(
+		$settings = array(
 
-			array( 'title' => __( 'Staff Profile Options', 'wp-club-manager' ), 'type' => 'title', 'desc' => __( '<p>Choose which fields to display on staff profile pages.</p>', 'wp-club-manager' ), 'id' => 'staff_options' ),
+			array( 'title' => __( 'Staff Profile', 'wp-club-manager' ), 'type' => 'title', 'id' => 'staff_options' ),
 
 			array(
-				'title' => __( 'Birthday', 'wp-club-manager' ),
-				'desc' 		=> '',
+				'title' 	=> __( 'Display', 'wp-club-manager' ),
+				'desc' 		=> __( 'Date of Birth', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_staff_profile_show_dob',
 				'default'	=> 'no',
-				'type' 		=> 'checkbox'
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => 'start'
 			),
 
 			array(
-				'title' => __( 'Age', 'wp-club-manager' ),
-				'desc' 		=> '',
+				'desc' => __( 'Age', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_staff_profile_show_age',
 				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => ''
 			),
 
 			array(
-				'title' => __( 'Season', 'wp-club-manager' ),
-				'desc' 		=> '',
+				'desc' => __( 'Season', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_staff_profile_show_season',
 				'default'	=> 'no',
-				'type' 		=> 'checkbox'
-			),
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => ''
+			)
+		
+		);
 
-			array(
-				'title' => __( 'Team', 'wp-club-manager' ),
-				'desc' 		=> '',
+		if( is_club_mode() ) {
+			$settings[] = array(
+				'desc' => __( 'Team', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_staff_profile_show_team',
 				'default'	=> 'no',
-				'type' 		=> 'checkbox'
+				'type' 		=> 'checkbox',
+				'checkboxgroup' => ''
+			);
+		}
+
+		$settings[] = array(
+			'desc' => __( 'Job Title', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_staff_profile_show_jobs',
+			'default'	=> 'yes',
+			'type' 		=> 'checkbox',
+			'checkboxgroup' => ''
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Email', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_show_staff_email',
+			'default'	=> 'no',
+			'type' 		=> 'checkbox',
+			'checkboxgroup' => ''
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Phone', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_show_staff_phone',
+			'default'	=> 'no',
+			'type' 		=> 'checkbox',
+			'checkboxgroup' => ''
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Date Joined', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_staff_profile_show_joined',
+			'default'	=> 'yes',
+			'type' 		=> 'checkbox',
+			'checkboxgroup' => ''
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Experience', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_staff_profile_show_exp',
+			'default'	=> 'no',
+			'type' 		=> 'checkbox',
+			'checkboxgroup'	=> '',
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Birthplace', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_staff_profile_show_hometown',
+			'default'	=> 'yes',
+			'type' 		=> 'checkbox',
+			'checkboxgroup'	=> '',
+		);
+
+		$settings[] = array(
+			'desc' => __( 'Nationality', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_staff_profile_show_nationality',
+			'default'	=> 'yes',
+			'type' 		=> 'checkbox',
+			'checkboxgroup' => 'end'
+		);
+
+		$settings[] = array( 'type' => 'sectionend', 'id' => 'staff_options');
+
+		$settings[] = array(	'title' => __( 'Staff Image Sizes', 'wp-club-manager' ), 'type' => 'title','desc' => sprintf(__( 'These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.', 'wp-club-manager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' );
+
+		$settings[] = array(
+			'title' => __( 'Staff Profile Image', 'wp-club-manager' ),
+			'desc' 		=> '',
+			'id' 		=> 'staff_single_image_size',
+			'css' 		=> '',
+			'type' 		=> 'image_width',
+			'default'	=> array(
+				'width' 	=> '300',
+				'height'	=> '300',
+				'crop'		=> 1
 			),
+			'desc_tip'	=>  true,
+		);
 
-			array(
-				'title' => __( 'Job Title', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_staff_profile_show_jobs',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
+		$settings[] = array(
+			'title' => __( 'Staff Thumbnails', 'wp-club-manager' ),
+			'desc' 		=> '',
+			'id' 		=> 'staff_thumbnail_image_size',
+			'css' 		=> '',
+			'type' 		=> 'image_width',
+			'default'	=> array(
+				'width' 	=> '90',
+				'height'	=> '90',
+				'crop'		=> 1
 			),
+			'desc_tip'	=>  true,
+		);
 
-			array(
-				'title' => __( 'Email', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_show_staff_email',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox'
-			),
+		$settings[] = array( 'type' => 'sectionend', 'id' => 'image_options' );
 
-			array(
-				'title' => __( 'Phone', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_show_staff_phone',
-				'default'	=> 'no',
-				'type' 		=> 'checkbox'
-			),
+		return apply_filters( 'wpclubmanager_staff_settings', $settings );
 
-			array(
-				'title' => __( 'Nationality', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_staff_profile_show_nationality',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array(
-				'title' => __( 'Joined', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'wpcm_staff_profile_show_joined',
-				'default'	=> 'yes',
-				'type' 		=> 'checkbox'
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'staff_options'),
-
-			array(	'title' => __( 'Staff Image Sizes', 'wp-club-manager' ), 'type' => 'title','desc' => sprintf(__( 'These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.', 'wp-club-manager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/'), 'id' => 'image_options' ),
-
-			array(
-				'title' => __( 'Staff Profile Image', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'staff_single_image_size',
-				'css' 		=> '',
-				'type' 		=> 'image_width',
-				'default'	=> array(
-					'width' 	=> '300',
-					'height'	=> '300',
-					'crop'		=> 1
-				),
-				'desc_tip'	=>  true,
-			),
-
-			array(
-				'title' => __( 'Staff Thumbnails', 'wp-club-manager' ),
-				'desc' 		=> '',
-				'id' 		=> 'staff_thumbnail_image_size',
-				'css' 		=> '',
-				'type' 		=> 'image_width',
-				'default'	=> array(
-					'width' 	=> '90',
-					'height'	=> '90',
-					'crop'		=> 1
-				),
-				'desc_tip'	=>  true,
-			),
-
-			array( 'type' => 'sectionend', 'id' => 'image_options' ),
-
-
-		)); // End team settings
 	}
 
 	/**

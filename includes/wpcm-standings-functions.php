@@ -7,22 +7,10 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.4.0
+ * @version     2.0.6
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-function wpcm_get_standings_stats_selection( $stats ) {
-
-	$stats = explode( ',', $stats );
-	foreach( $stats as $key => $value ) {
-		$stats[$key] = strtolower( trim( $value ) );
-		if ( !array_key_exists( $stats[$key], wpcm_get_preset_labels( 'standings', 'label' ) ) )
-			unset( $stats[$key] );
-	}
-
-	return $stats;
-}
 
 /**
  * Standing table sorting.
@@ -35,31 +23,35 @@ function wpcm_get_standings_stats_selection( $stats ) {
 if ( !function_exists( 'wpcm_club_standings_sort' ) ) {
 	function wpcm_club_standings_sort( $a, $b ) {
 
-		if ( $a->wpcm_stats['pts'] > $b->wpcm_stats['pts'] ) {
+		$priority_1 = get_option( 'wpcm_standings_orderby' );
+		$priority_2 = get_option( 'wpcm_standings_orderby_2' );
+		$priority_3 = get_option( 'wpcm_standings_orderby_3' );
+
+		if ( $a->wpcm_stats[$priority_1] > $b->wpcm_stats[$priority_1] ) {
 
 			return -1;
 
-		} elseif  ( $a->wpcm_stats['pts'] < $b->wpcm_stats['pts'] ) {
+		} elseif  ( $a->wpcm_stats[$priority_1] < $b->wpcm_stats[$priority_1] ) {
 
 			return 1;
 
 		} else {
 
-			if ( $a->wpcm_stats['gd'] > $b->wpcm_stats['gd'] ) {
+			if ( $a->wpcm_stats[$priority_2] > $b->wpcm_stats[$priority_2] ) {
 
 				return -1;
 
-			} elseif  ($a->wpcm_stats['gd'] < $b->wpcm_stats['gd']) {
+			} elseif  ($a->wpcm_stats[$priority_2] < $b->wpcm_stats[$priority_2]) {
 
 				return 1;
 
 			} else {
 
-				if ( $a->wpcm_stats['f'] > $b->wpcm_stats['f'] ) {
+				if ( $a->wpcm_stats[$priority_3] > $b->wpcm_stats[$priority_3] ) {
 
 					return -1;
 
-				} elseif ( $a->wpcm_stats['f'] < $b->wpcm_stats['f']  ) {
+				} elseif ( $a->wpcm_stats[$priority_3] < $b->wpcm_stats[$priority_3]  ) {
 
 					return 1;
 
@@ -163,5 +155,102 @@ if (!function_exists('wpcm_club_standings_sort_by')) {
 		}
 
 		return array();
+	}
+}
+
+/**
+ * Get total club stats.
+ *
+ * @access public
+ * @param string $post_id
+ * @param string $comp
+ * @param string $season
+ * @return mixed $output
+ */
+if (!function_exists('get_wpcm_table_total_stats')) {
+	function get_wpcm_table_total_stats( $post_id = null, $comp = null, $season = null, $manualstats = null, $team = null ) {
+
+		$sport = get_option( 'wpcm_sport' );
+		$output = get_wpcm_club_stats_empty_row();
+		$autostats = get_wpcm_club_auto_stats( $post_id, $comp, $season, $team );
+
+		foreach( $output as $key => $val ) {
+
+			if( $key == 'pct' ){
+
+				$combined_win = $autostats['w'] + $manualstats['w'];
+				$combined_played = $autostats['p'] + $manualstats['p'];
+				if( $combined_win > 0 || $combined_played > 0 ) {
+					$wpct = $combined_win / $combined_played;
+				}else{
+					$wpct = '0';
+				}
+
+				$output[$key] = round( $wpct, 3 );
+
+			} elseif( $sport == 'footy' && $key == 'gd' ){
+
+				$combined_for = $autostats['f'] + $manualstats['f'];
+				$combined_against = $autostats['a'] + $manualstats['a'];
+				if( $combined_for > 0 || $combined_against > 0 ) {
+					$gdpct = ( $combined_for / $combined_against ) * 100;
+				}else{
+					$gdpct = '0';
+				}
+
+				$output[$key] = round( $gdpct, 2 );
+
+			} else {
+
+				$output[$key] = $autostats[$key];
+				if( array_key_exists( $key, $manualstats ) ) {
+					$output[$key] += $manualstats[$key];
+				}
+			}
+		}
+
+		return $output;
+	}
+}
+
+if ( !function_exists( 'wpcm_table_priorities' ) ) {
+	function wpcm_table_priorities () {
+
+		$priorities = array(
+			array( 'column' => get_option( 'wpcm_standings_orderby' ), 'order' => get_option( 'wpcm_standings_priority_order' ) ),
+			array( 'column' => get_option( 'wpcm_standings_orderby_2' ), 'order' => get_option( 'wpcm_standings_priority_order_2' ) ),
+			array( 'column' => get_option( 'wpcm_standings_orderby_3' ), 'order' => get_option( 'wpcm_standings_priority_order_3' ) ),
+		);
+		return $priorities;
+	}
+}
+
+if ( !function_exists( 'wpcm_sort_table_clubs' ) ) {
+	function wpcm_sort_table_clubs ( $a, $b ) {
+
+		$priorities = wpcm_table_priorities();
+
+		// Loop through priorities
+		foreach( $priorities as $priority ) {
+
+			if( $priority['column'] == 'compare' ) {
+				
+			} elseif ( wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) != wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 ) ) {
+
+				// Compare column values
+				$output = wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) - wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 );
+
+				// Flip value if descending order
+				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
+
+				return ( $output > 0 );
+
+			}
+
+		}
+
+		// Default sort by alphabetical
+		//return strcmp( wpcm_array_value( $a, 'name', '' ), wpcm_array_value( $b, 'name', '' ) );
+		return strcmp( $a->post_name, $b->post_name );
 	}
 }

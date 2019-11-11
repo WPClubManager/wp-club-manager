@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.5.7
+ * @version     2.1.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -837,15 +837,15 @@ function wpcm_get_sport_presets() {
 				),
 				'f' => array(
 					'name' 	=> __( 'Points For', 'wp-club-manager' ),
-					'label' => _x( 'F', 'Points For', 'wp-club-manager' ),
+					'label' => _x( 'PF', 'Points For', 'wp-club-manager' ),
 				),
 				'a' => array(
 					'name' 	=> __( 'Points Against', 'wp-club-manager' ),
-					'label' => _x( 'A', 'Points Against', 'wp-club-manager' ),
+					'label' => _x( 'PA', 'Points Against', 'wp-club-manager' ),
 				),
 				'gd' => array(
 					'name' 	=> __( 'Points Difference', 'wp-club-manager' ),
-					'label' => _x( 'PD', 'Points Difference', 'wp-club-manager' ),
+					'label' => _x( 'PD%', 'Points Difference', 'wp-club-manager' ),
 				),
 				'pts' => array(
 					'name' 	=> __( 'Points', 'wp-club-manager' ),
@@ -1176,6 +1176,10 @@ function wpcm_get_sport_presets() {
 				'a' => array(
 					'name' 		=> __( 'Assists', 'wp-club-manager' ),
 					'label' 	=> _x( 'A', 'Assists', 'wp-club-manager' ),
+				),
+				'pts' => array(
+					'name' 		=> __( 'Points', 'wp-club-manager' ),
+					'label' 	=> _x( 'P', 'Points', 'wp-club-manager' ),
 				),
 				'plusminus' => array(
 					'name'		=> __( 'Plus/Minus Rating', 'wp-club-manager' ),

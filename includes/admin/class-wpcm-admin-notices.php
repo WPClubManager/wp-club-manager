@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.5.5
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,11 +20,13 @@ class WPCM_Admin_Notices {
 	 * @var array
 	 */
 	private $notices = array(
+		'install'             => 'install_notice',
 		'update'              => 'update_notice',
 		'template_files'      => 'template_file_check_notice',
 		'theme_support'       => 'theme_check_notice',
-		'wpcm_rating'		  => 'wpcm_rating_notice',
-		'club_check'		  => 'club_check_notice'
+		//'club_check'		  => 'club_check_notice',
+		'cricket_addon'		  => 'cricket_addon_notice',
+		'version_update'	  => 'version_update_notice',
 	);
 
 	/**
@@ -44,13 +46,23 @@ class WPCM_Admin_Notices {
 	 */
 	public function reset_admin_notices() {
 
+		if ( is_null( get_option( 'wpclubmanager_version', null ) ) ) {
+			self::add_notice( 'install' );
+		}
+		
 		if ( ! current_theme_supports( 'wpclubmanager' ) && ! in_array( get_option( 'template' ), wpcm_get_core_supported_themes() ) ) {
 			self::add_notice( 'theme_support' );
 		}
 
 		self::add_notice( 'template_files' );
-		self::add_notice( 'wpcm_rating' );
-		self::add_notice( 'club_check' );
+
+		if ( get_option( 'wpcm_sport' ) == 'cricket' && ! in_array( 'wpcm-cricket/wpcm-cricket.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			self::add_notice( 'cricket_addon' );
+		}
+
+		if ( version_compare( get_option( 'wpcm_version_upgraded_from' ), '2.0.0', '<' ) ) {
+			self::add_notice( 'version_update' );
+		}
 	}
 
 	/**
@@ -71,9 +83,6 @@ class WPCM_Admin_Notices {
 
 		$notices = array_diff( get_option( 'wpclubmanager_admin_notices', array() ), array( $name ) );
 		update_option( 'wpclubmanager_admin_notices', $notices );
-		if( $name == 'wpcm_rating' ) {
-			update_option( 'wpcm_rating', 'yes' );
-		}
 	}
 
 	/**
@@ -114,6 +123,11 @@ class WPCM_Admin_Notices {
 		$screen = get_current_screen();
 		$notices = get_option( 'wpclubmanager_admin_notices', array() );
 
+		if ( ! empty( $_GET['hide_install_notice'] ) ) {
+			$notices = array_diff( $notices, array( 'install' ) );
+			update_option( 'wpclubmanager_admin_notices', $notices );
+		}
+
 		if ( ! empty( $_GET['hide_theme_support_notice'] ) ) {
 			$notices = array_diff( $notices, array( 'theme_support' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
@@ -124,14 +138,24 @@ class WPCM_Admin_Notices {
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_wpcm_rating_notice'] ) ) {
-			$notices = array_diff( $notices, array( 'wpcm_rating' ) );
+		// if ( ! empty( $_GET['hide_club_check_notice'] ) ) {
+		// 	$notices = array_diff( $notices, array( 'club_check' ) );
+		// 	update_option( 'wpclubmanager_admin_notices', $notices );
+		// }
+
+		if ( ! empty( $_GET['hide_cricket_addon_notice'] ) ) {
+			$notices = array_diff( $notices, array( 'cricket_addon' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_club_check_notice'] ) ) {
-			$notices = array_diff( $notices, array( 'club_check' ) );
+		if ( ! empty( $_GET['hide_version_update_notice'] ) ) {
+			$notices = array_diff( $notices, array( 'version_update' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
+		}
+
+		if ( in_array( 'install', $notices ) ) {
+			wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
 		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $screen->id, array( 'toplevel_page_wpcm-settings', 'dashboard_page_wpcm-about', 'dashboard_page_wpcm-getting-started', 'dashboard_page_wpcm-translators' ) ) ) {
@@ -148,16 +172,31 @@ class WPCM_Admin_Notices {
 			add_action( 'admin_notices', array( $this, 'template_file_check_notice' ) );
 		}
 
-		if ( in_array( 'wpcm_rating', $notices ) ) {
+		// if ( in_array( 'club_check', $notices ) ) {
+		// 	wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+		// 	add_action( 'admin_notices', array( $this, 'club_check_notice' ) );
+		// }
+
+		if ( in_array( 'cricket_addon', $notices ) ) {
 			wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
-			add_action( 'admin_notices', array( $this, 'wpcm_rating_notice' ) );
+			add_action( 'admin_notices', array( $this, 'cricket_addon_notice' ) );
 		}
 
-		if ( in_array( 'club_check', $notices ) ) {
+		if ( in_array( 'version_update', $notices ) ) {
 			wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
-			add_action( 'admin_notices', array( $this, 'club_check_notice' ) );
+			add_action( 'admin_notices', array( $this, 'version_update_notice' ) );
 		}
 
+	}
+
+	/**
+	 * If we need to update, include a message with the update button
+	 */
+	public function install_notice() {
+
+		if ( is_null( get_option( 'wpclubmanager_version', null ) ) ) {
+			include( 'views/html-notice-install.php' );
+		}
 	}
 
 	/**
@@ -216,29 +255,30 @@ class WPCM_Admin_Notices {
 		}
 	}
 
-	/**
-	 * Show a notice highlighting bad template files
-	 */
-	public function wpcm_rating_notice() {
+	// public function club_check_notice() {
 
-		$install_date = get_option( 'wpcm_install_date' );
-		$display_date = date( 'Y-m-d h:i:s' );
-	    $datetime1 = new DateTime( $install_date );
-	    $datetime2 = new DateTime( $display_date );
-	    $diff_intrval = round( ($datetime2->format( 'U' ) - $datetime1->format( 'U' )) / (60 * 60 * 24) );
-	    if( $diff_intrval >= 84 && get_option( 'wpcm_rating' ) == "no" ) {
+	// 	if( get_option( 'wpcm_default_club' ) == "" ) {
 
-	    	include( 'views/html-notice-rating.php' );
+	//     	include( 'views/html-notice-club-check.php' );
+	//     }
+	// }
+
+	public function cricket_addon_notice() {
+
+		if ( get_option( 'wpcm_sport' ) == 'cricket' && ! in_array( 'wpcm-cricket/wpcm-cricket.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+			add_thickbox();
+
+	    	include( 'views/html-notice-cricket-addon.php' );
 	    }
-
 	}
 
-	public function club_check_notice() {
+	public function version_update_notice() {
 
-		if( get_option( 'wpcm_default_club' ) == "" ) {
+		if ( version_compare( get_option( 'wpcm_version_upgraded_from' ), '2.0.0', '<' ) ) {
 
-	    	include( 'views/html-notice-club-check.php' );
-	    }
+			include( 'views/html-notice-version-update.php' );
+	  	}
 	}
 }
 

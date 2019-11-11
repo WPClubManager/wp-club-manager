@@ -5,7 +5,7 @@
  * @author      ClubPress
  * @category    Admin
  * @package     WPClubManager/Admin/Importers
- * @version     1.2.11
+ * @version     2.0.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,10 +20,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_page = 'wpclubmanager_staff_csv';
 			$this->import_label = __( 'Import Staff', 'wp-club-manager' );
 			$this->columns = array(
-				'post_title' => __( 'Name', 'wp-club-manager' ),
+				'wpcm_first_name' => __( 'First Name', 'wp-club-manager' ),
+				'wpcm_last_name' => __( 'Last Name', 'wp-club-manager' ),
 				'wpcm_jobs' => __( 'Jobs', 'wp-club-manager' ),
-				'wpcm_team' => __( 'Teams', 'wp-club-manager' ),
-				'wpcm_season' => __( 'Seasons', 'wp-club-manager' ),
 				'wpcm_dob' => __( 'Date of Birth', 'wp-club-manager' ),
 				'wpcm_natl' => __( 'Nationality', 'wp-club-manager' ),
 				'wpcm_email' => __( 'Email', 'wp-club-manager' ),
@@ -36,7 +35,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 *
 		 * @param mixed $file
 		 */
-		function import( $array = array(), $columns = array( 'post_title' ) ) {
+		function import( $array = array(), $columns = array() ) {
 			$this->imported = $this->skipped = 0;
 
 			if ( ! is_array( $array ) || ! sizeof( $array ) ):
@@ -58,7 +57,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$meta[ $key ] = wpcm_array_value( $row, $index );
 				endforeach;
 
-				$name = wpcm_array_value( $meta, 'post_title' );
+				$name = wpcm_array_value( $meta, 'wpcm_name' );
 
 				if ( ! $name ):
 					$this->skipped++;
@@ -72,17 +71,19 @@ if ( class_exists( 'WP_Importer' ) ) {
 				// Flag as import
 				update_post_meta( $id, '_wpcm_import', 1 );
 
+				$parts = explode( ' ', $name );
+				$lname = array_pop( $parts );
+				$fname = implode( ' ', $parts );
+
+				// Update first name
+				update_post_meta( $id, '_wpcm_firstname', $fname );
+
+				// Update last name
+				update_post_meta( $id, '_wpcm_lastname', $lname );
+
 				// Update positions
 				$jobs = explode( '|', wpcm_array_value( $meta, 'wpcm_jobs' ) );
 				wp_set_object_terms( $id, $jobs, 'wpcm_jobs', false );
-
-				// Update teams
-				$teams = explode( '|', wpcm_array_value( $meta, 'wpcm_team' ) );
-				wp_set_object_terms( $id, $teams, 'wpcm_team', false );
-
-				// Update seasons
-				$seasons = explode( '|', wpcm_array_value( $meta, 'wpcm_season' ) );
-				wp_set_object_terms( $id, $seasons, 'wpcm_season', false );
 
 				// Update date of birth
 				update_post_meta( $id, 'wpcm_dob', wpcm_array_value( $meta, 'wpcm_dob' ) );
@@ -132,7 +133,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		public function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ).'</p>';
-			echo '<p>' . sprintf( __( 'Staff need to be defined with columns in a specific order (8 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/staff-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/staff-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=wpclubmanager_staff_csv&step=1' );
 			echo '</div>';
 		}

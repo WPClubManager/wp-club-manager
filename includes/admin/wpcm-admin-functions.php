@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.4.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -16,15 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return array
  */
 function wpcm_get_screen_ids() {
-	$wpcm_screen_id = strtolower( __( 'wpcm-settings', 'wpclubmanager' ) );
+	$wpcm_screen_id = strtolower( __( 'club-manager', 'wpclubmanager' ) );
 
     return apply_filters( 'wpclubmanager_screen_ids', array(
-    	'dashboard_page_wpcm-getting-started',
-    	'toplevel_page_' . $wpcm_screen_id,
+		'toplevel_page_' . $wpcm_screen_id,
+    	$wpcm_screen_id . '_page_wpcm-getting-started',
     	$wpcm_screen_id . '_page_wpcm-settings',
     	$wpcm_screen_id . '_page_wpcm-addons',
-    	'club-manager_page_wpcm-status',
-    	'club-manager_page_wpcm-tools',
+    	$wpcm_screen_id . '_page_wpcm-status',
     	'edit-wpcm_club',
     	'wpcm_club',
     	'edit-wpcm_match',
@@ -34,8 +33,18 @@ function wpcm_get_screen_ids() {
     	'edit-wpcm_staff',
     	'wpcm_staff',
     	'edit-wpcm_sponsor',
-    	'wpcm_sponsor',
-    	'edit-wpcm_club_cat'
+		'wpcm_sponsor',
+		'edit-wpcm_table',
+		'wpcm_table',
+		'edit-wpcm_roster',
+    	'wpcm_roster',
+		'edit-wpcm_club_cat',
+		'edit-wpcm_season',
+		'edit-wpcm_team',
+		'edit-wpcm_comp',
+		'edit-wpcm_position',
+		'edit-wpcm_jobs',
+		'edit-wpcm_venue'
     ) );
 }
 

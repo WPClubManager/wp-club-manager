@@ -4,7 +4,7 @@
  *
  * @author 		Clubpress
  * @package 	WPClubManager/Templates
- * @version     1.4.0
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
@@ -14,23 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 	<?php echo ( $title ? '<h3>' . $title . '</h3>' : ''); ?>
 	
 	<table>
-		<thead>
-			<tr>
-				<th class="wpcm-date"><?php _e( 'Date', 'wp-club-manager'); ?></th>
-				<th class="venue"><?php _e( 'Venue', 'wp-club-manager'); ?></th>
-				<?php if ( $thumb == '1' ) { ?>
-					<th class="club-thumb">&nbsp;</th>
-				<?php } ?>
-				<th class="opponent"><?php _e( 'Opponent', 'wp-club-manager'); ?></th>
-				<?php if ( $show_team == '1' ) { ?>
-					<th class="team"><?php _e( 'Team', 'wp-club-manager'); ?></th>
-				<?php } ?>
-				<?php if ( $show_comp == '1' ) { ?>
-					<th class="competition"><?php _e( 'Competition', 'wp-club-manager'); ?></th>
-				<?php } ?>
-				<th class="result"><?php _e( 'Result', 'wp-club-manager'); ?></th>
-			</tr>
-		</thead>
 		<tbody>
 
 		<?php foreach( $matches as $match ) {
@@ -44,16 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 			$team = wpcm_get_match_team( $match->ID );
 			$comp = wpcm_get_match_comp( $match->ID );
 			$result = wpcm_get_match_result( $match->ID );
-			$opponent = wpcm_get_match_opponents( $match->ID, $link_club );
+			$opponent = wpcm_get_match_opponents( $match->ID, false );
 			$class = wpcm_get_match_outcome( $match->ID );
-
-			if( $class == 'win' ) {
-				$outcome = '<span class="win"></span>';
-			}elseif( $class == 'draw' ) {
-				$outcome = '<span class="draw"></span>';
-			}elseif( $class == 'loss' ) {
-				$outcome = '<span class="lose"></span>';
-			}
 
 			// Display Badge
 			if( $thumb == '1' ) {
@@ -69,18 +44,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 						<?php echo date_i18n( 'd M', $timestamp ); ?>, <?php echo date_i18n( $time_format, $timestamp ); ?>
 					</a>
 				</td>
-				<td class="venue"><?php echo $venue[1]; ?></td>
+				<td class="venue"><?php echo $venue['status']; ?></td>
 				<?php if( $thumb == '1' ) {
 					echo ( $club == $home_club ? $away_badge : $home_badge );
 				} ?>
 				<td class="opponent"><?php echo $opponent; ?></td>
 				<?php if( $show_team == '1' ) { ?>
-					<td class="team"><?php echo $team[1]; ?></td>
+					<td class="team"><?php echo $team[0]; ?></td>
 				<?php } ?>
 				<?php if( $show_comp == '1' ) { ?>
 					<td class="competition"><?php echo $comp[1]; ?></td>
 				<?php } ?>
-				<td class="result <?php echo $class; ?>"><?php echo $result[0]; ?> <?php echo ( $played ? $outcome : '' ); ?></td>
+				<td class="result <?php echo $class; ?>"><?php echo $result[0]; ?> <?php echo ( $played ? '<span class="' . $class . '"></span>' : '' ); ?></td>
 			</tr>
 			
 		<?php

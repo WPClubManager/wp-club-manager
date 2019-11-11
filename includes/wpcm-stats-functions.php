@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     1.5.6
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -329,7 +329,7 @@ if (!function_exists('get_wpcm_player_auto_stats')) {
  * @return mixed $output
  */
 if (!function_exists('get_wpcm_club_auto_stats')) {
-	function get_wpcm_club_auto_stats( $post_id = null, $comp = null, $season = null ) {
+	function get_wpcm_club_auto_stats( $post_id = null, $comp = null, $season = null, $team = null ) {
 
 		if ( !$post_id ) global $post_id;
 
@@ -360,16 +360,25 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 			);
 		}
 
+		if ( isset( $team ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'wpcm_team',
+				'terms' => $team,
+				'field' => 'term_id'
+			);
+		}
+
 		$matches = get_posts( $args );
 
 		foreach( $matches as $match ) {
 
 			$played = get_post_meta( $match->ID, 'wpcm_played', true );
 			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
-
+			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
 			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+			$walkover = get_post_meta( $match->ID, '_wpcm_walkover', true );
 
-			if ( $played && !$friendly ) {
+			if ( $played && !$friendly && !$postponed ) {
 
 				if( get_option( 'wpcm_sport' ) == 'cricket' ) {
 					$runs = unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
@@ -412,6 +421,15 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 				}
 				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $lost * get_option( 'wpcm_standings_loss_points' );
 			}
+			if( $postponed && $walkover == 'home_win' ) {
+				$output['p'] ++;
+				$output['w'] += 1;
+				$output['pts'] += get_option( 'wpcm_standings_win_points' );
+			} elseif ( $postponed && $walkover == 'away_win' ) {
+				$output['p'] ++;
+				$output['l'] += 1;
+				$output['pts'] += get_option( 'wpcm_standings_loss_points' );
+			}
 		}
 
 		$args['meta_key'] = 'wpcm_away_club';
@@ -422,10 +440,11 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 
 			$played = get_post_meta( $match->ID, 'wpcm_played', true );
 			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
-
+			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
 			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+			$walkover = get_post_meta( $match->ID, '_wpcm_walkover', true );
 
-			if ( $played && !$friendly ) {
+			if ( $played && !$friendly && !$postponed ) {
 
 				if( get_option( 'wpcm_sport' ) == 'cricket' ) {
 					$runs = unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
@@ -468,6 +487,15 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 				}
 				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) +  $lost * get_option( 'wpcm_standings_loss_points' );
 			}
+			if( $postponed && $walkover == 'away_win' ) {
+				$output['p'] ++;
+				$output['w'] += 1;
+				$output['pts'] += get_option( 'wpcm_standings_win_points' );
+			} elseif ( $postponed && $walkover == 'home_win' ) {
+				$output['p'] ++;
+				$output['l'] += 1;
+				$output['pts'] += get_option( 'wpcm_standings_loss_points' );
+			}
 		}
 
 		return $output;
@@ -487,8 +515,8 @@ if (!function_exists('get_wpcm_player_stats')) {
 		if ( !$post ) global $post;
 
 		$output = array();
-		$teams = wp_get_object_terms( $post, 'wpcm_team' );
-		$seasons = wp_get_object_terms( $post, 'wpcm_season' );
+		$teams = wp_get_object_terms( $post, 'wpcm_team', array( 'orderby' => 'tax_position' ) );
+		$seasons = wp_get_object_terms( $post, 'wpcm_season', array( 'orderby' => 'tax_position' ) );
 
 		// isolated team stats
 		if ( is_array( $teams ) ) {

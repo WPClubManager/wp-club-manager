@@ -22,5 +22,30 @@ jQuery(window).load(function(){
 			window.onbeforeunload = '';
 		});
 	});
+
+	// Clear plugin transients button
+	jQuery('button#wpcm_submit').click(function(e) {
+		e.stopPropagation();
+		jQuery('#wpcm_loading').show();
+		jQuery('#wpcm_submit').attr('disabled', true);
+		
+		data = {
+			action: 'wpcm_clear_transients',
+			wpcm_nonce: wpclubmanager_settings_params.wpcm_nonce
+		};
+
+     	jQuery.post(ajaxurl, data, function (response) {
+			jQuery('#wpcm_loading').hide();
+			jQuery('button#wpcm_submit').attr('disabled', false);
+		});	
+		
+		return false;
+	});
+
+	jQuery('.wpcm-default-time-picker').timepicker({
+		timeFormat: 'H:i',
+		step: '15',
+		scrollDefault: '15:00'
+	});
 	
 });

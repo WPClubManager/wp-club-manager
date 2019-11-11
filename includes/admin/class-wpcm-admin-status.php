@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.3.8
+ * @version     2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

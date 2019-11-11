@@ -6,7 +6,7 @@
  * https://wordpress.org/plugins/simple-taxonomy-ordering/
  *
  * @class 		WPCM_Taxonomy_Order
- * @version		1.4.6
+ * @version		2.0.0
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
@@ -92,18 +92,30 @@ class WPCM_Taxonomy_Order {
 	 * @return array $pieces
 	 */
 	public function wpcm_alter_tax_order( $pieces, $taxonomies, $args ) {
-		$x = 1;
+		
 		foreach( $taxonomies as $taxonomy ) {
 			// confirm the tax is set to hierarchical -- else do not allow sorting
 			if( $this->wpcm_is_taxonomy_position_enabled( $taxonomy ) ) {
-
 				global $wpdb;
-				$pieces['join'] .= " INNER JOIN $wpdb->termmeta AS term_meta_" . $x . " ON t.term_id = term_meta_" . $x . ".term_id AND term_meta_" . $x . ".meta_key = 'tax_position'";
-				$pieces['orderby'] = "ORDER BY term_meta_" . $x . ".meta_value";
-				$x++;
+
+				$join_statement = " LEFT JOIN $wpdb->termmeta AS term_meta ON t.term_id = term_meta.term_id AND term_meta.meta_key = 'tax_position'";
+
+				if ( ! $this->wpcm_does_substring_exist( $pieces['join'], $join_statement ) ) {
+					$pieces['join'] .= $join_statement;
+				}
+				$pieces['orderby'] = "ORDER BY CAST( term_meta.meta_value AS UNSIGNED )";
 			}
 		}
 		return $pieces;
+	}
+
+	/**
+	* Check if a substring exists inside a string
+	*/
+	protected function wpcm_does_substring_exist( $string, $substring ) {
+		
+		// Check if the $substring exists already in the $string
+		return ( strstr( $string, $substring ) === false ) ? false : true;
 	}
 		
 	/**
@@ -137,7 +149,7 @@ class WPCM_Taxonomy_Order {
 		$tax_object = get_taxonomy( $taxonomy_name );
 		if( $tax_object && is_object( $tax_object ) ) {
 			
-			$enabled_taxonomies = array( 'wpcm_season', 'wpcm_team' );
+			$enabled_taxonomies = array( 'wpcm_season', 'wpcm_team', 'wpcm_comp', 'wpcm_position', 'wpcm_jobs' );
 			//if 'tax_position' => true || is set on the settings page
 			if( isset( $tax_object->tax_position ) && $tax_object->tax_position || in_array( $taxonomy_name, $enabled_taxonomies ) ) {
 				return true;
