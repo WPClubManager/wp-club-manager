@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     1.1.0
+ * @version     2.1.5
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -80,11 +80,22 @@ class WPCM_Frontend_Scripts {
 	 */
 	public function load_json_ld( $post ) {
 
-		global $post, $wpclubmanager;
+		global $post;
 
 		$club = get_option( 'wpcm_default_club' );
 		$post_url = get_permalink();
-		$post_thumb = wp_get_attachment_url( get_post_thumbnail_id( $club ) );
+		if( is_league_mode() ) {
+			//$post_thumb = the_custom_logo();
+			$custom_logo_id = get_theme_mod( 'custom_logo' );
+			$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+			if ( has_custom_logo() ) {
+				$post_thumb = $logo[0];
+			} else {
+				$post_thumb = '';
+			}
+		} else {
+			$post_thumb = wp_get_attachment_url( get_post_thumbnail_id( $club ) );
+		}
 
 		if (is_front_page()) :
 
