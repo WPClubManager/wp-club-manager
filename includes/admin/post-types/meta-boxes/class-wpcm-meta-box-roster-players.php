@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.0.0
+ * @version     2.1.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -131,24 +131,36 @@ class WPCM_Meta_Box_Roster_Players {
 
         if( isset( $_POST['wpcm_roster_players'] ) ){
             $players = $_POST['wpcm_roster_players'];
-        } else {
-            $players = array();
-        }
-
-        if( is_array( $players ) ) {
-            $teams = wp_get_post_terms( $post_id, 'wpcm_team' );
-            $team = $teams[0]->term_id;
-            foreach( $players as $player ) {
-                wp_set_post_terms( $player, $team, 'wpcm_team', true );
+            if( is_array( $players ) ) {
+                $teams = wp_get_post_terms( $post_id, 'wpcm_team' );
+                $team = $teams[0]->term_id;
+                $seasons = wp_get_post_terms( $post_id, 'wpcm_season' );
+                $season = $seasons[0]->term_id;
+                foreach( $players as $player ) {
+                    wp_set_post_terms( $player, $team, 'wpcm_team', true );
+                    wp_set_post_terms( $player, $season, 'wpcm_season', true );
+                }
             }
-            $seasons = wp_get_post_terms( $post_id, 'wpcm_season' );
-            $season = $seasons[0]->term_id;
-            foreach( $players as $player ) {
-                wp_set_post_terms( $player, $season, 'wpcm_season', true );
-            }
-        }
+    
+            update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
+        } //else {
+            //$players = array();
+        //}
 
-        update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
+        // if( is_array( $players ) ) {
+        //     $teams = wp_get_post_terms( $post_id, 'wpcm_team' );
+        //     $team = $teams[0]->term_id;
+        //     foreach( $players as $player ) {
+        //         wp_set_post_terms( $player, $team, 'wpcm_team', true );
+        //     }
+        //     $seasons = wp_get_post_terms( $post_id, 'wpcm_season' );
+        //     $season = $seasons[0]->term_id;
+        //     foreach( $players as $player ) {
+        //         wp_set_post_terms( $player, $season, 'wpcm_season', true );
+        //     }
+        // }
+
+        // update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
 
         do_action( 'delete_plugin_transients' );
     }
