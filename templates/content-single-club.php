@@ -112,7 +112,9 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 	
 	if( is_club_mode() ) {
 
-		if( get_option( 'wpcm_club_settings_h2h' ) == 'yes' || get_option( 'wpcm_club_settings_matches' ) == 'yes' ) { ?>
+		if( get_option( 'wpcm_club_settings_h2h' ) == 'yes' || get_option( 'wpcm_club_settings_matches' ) == 'yes' ) {
+			
+			$matches = wpcm_head_to_heads( $post->ID ); ?>
 
 			<h3><?php printf( __( 'Matches against %s', 'wp-club-manager'), $post->post_title ); ?></h3>
 
@@ -121,7 +123,7 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 
 		if( get_option( 'wpcm_club_settings_h2h' ) == 'yes' ) {
 		
-			$matches = wpcm_head_to_heads( $post->ID );
+			//$matches = wpcm_head_to_heads( $post->ID );
 			$outcome = wpcm_head_to_head_count( $matches ); ?>
 
 			<ul class="wpcm-h2h-list">
@@ -147,14 +149,6 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 			<ul class="wpcm-matches-list">
 
 				<?php
-				if( is_club_mode() ) {
-					if( get_option( 'wpcm_club_settings_h2h' ) == 'no' ) {
-						$matches = wpcm_head_to_heads( $post->ID );
-					}
-				} else {
-					$matches = wpcm_head_to_heads( $post->ID );
-				}
-				
 				foreach( $matches as $match ) {
 
 					$played = get_post_meta( $match->ID, 'wpcm_played', true );
@@ -196,8 +190,53 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 		}
 	}
 
-	if( is_league_mode() ) {
+	if( is_league_mode() ) { ?>
 
+		<h3><?php _e( 'Matches', 'wp-club-manager'); ?></h3>
+
+		<ul class="wpcm-matches-list">
+
+			<?php
+			$matches = club_matches_list( $post->ID );
+			
+			foreach( $matches as $match ) {
+
+				$played = get_post_meta( $match->ID, 'wpcm_played', true );
+				$timestamp = strtotime( $match->post_date );
+				$time_format = get_option( 'time_format' );
+				$class = wpcm_get_match_outcome( $match->ID );	
+				$comp = wpcm_get_match_comp( $match->ID );
+				$sides = wpcm_get_match_clubs( $match->ID );
+				$result = wpcm_get_match_result( $match->ID ); ?>
+
+				<li class="wpcm-matches-list-item <?php echo $class; ?>">
+					<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">
+						<span class="wpcm-matches-list-col wpcm-matches-list-date">
+							<?php echo date_i18n( 'D d M', $timestamp ); ?>	
+						</span>
+						<span class="wpcm-matches-list-col wpcm-matches-list-club1">
+							<?php echo $sides[0]; ?>
+						</span>
+						<span class="wpcm-matches-list-col wpcm-matches-list-status">
+							<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo $class; ?>">
+								<?php echo ( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ); ?>
+							</span>
+						</span>
+						<span class="wpcm-matches-list-col wpcm-matches-list-club2">
+							<?php echo $sides[1]; ?>
+						</span>
+						<span class="wpcm-matches-list-col wpcm-matches-list-info">
+							<?php echo $comp[1]; ?>
+						</span>
+					</a>
+				</li>
+
+			<?php
+			} ?>
+
+		</ul>
+
+	<?php
 	}
 	
 	do_action( 'wpclubmanager_after_single_club_content' ); ?>
