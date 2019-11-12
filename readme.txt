@@ -165,6 +165,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
+= 2.1.5 /10/2019
+
+* New - Added import of players or staff from existing rosters
+
 = 2.1.4 23/09/2019
 
 * Fix - Fixed broken birthdays widget
