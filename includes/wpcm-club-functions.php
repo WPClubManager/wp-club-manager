@@ -214,3 +214,45 @@ function get_club_abbreviation( $post_id ) {
 
 	return strtoupper( $abbr );
 }
+
+/**
+ * Return matches for a club.
+ *
+ * @access public
+ * @param int $post_id
+ * @return Array
+ * @since 2.1.5
+ */
+function club_matches_list( $post_id ) {
+
+	$args = array(
+		'post_type' => 'wpcm_match',
+		'posts_per_page' => -1,
+		'post_status' => array('publish','future'),
+		'meta_query' => array(
+			array(
+				'relation' => 'OR',
+				array(
+					'key' => 'wpcm_home_club',
+					'value' => $post_id
+				),
+				array(
+					'key' => 'wpcm_away_club',
+					'value' => $post_id
+				)
+			)
+		)
+	);
+
+	$season = get_current_season();
+	$current_season = $season['id'];
+	$args['tax_query'][] = array(
+		'taxonomy' => 'wpcm_season',
+		'terms' => $current_season,
+		'field' => 'term_id'
+	);
+
+	$matches = get_posts( $args );
+
+	return $matches;
+}
