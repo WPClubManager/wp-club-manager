@@ -483,6 +483,28 @@ function get_the_seasons( $post ) {
 }
 
 /**
+ * Return current seaason.
+ *
+ * @since  2.1.5
+ * @return array
+ */
+function get_current_season() {
+
+	$seasons = get_terms( array(
+		'taxonomy' => 'wpcm_season',
+		'orderby' => 'tax_position',
+		'meta_key' => 'tax_position',
+		'hide_empty' => false,
+	) );
+	$season = $seasons[0];
+	$current['id'] = $season->term_id;
+	$current['name'] = $season->name;
+	$current['slug'] = $season->slug;
+
+	return $current;
+}
+
+/**
  * Sort biggest score.
  *
  * @since  2.0.0
