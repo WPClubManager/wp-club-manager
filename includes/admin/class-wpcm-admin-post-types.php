@@ -259,19 +259,23 @@ class WPCM_Admin_Post_Types {
 
 		if ( $data['post_type'] == 'wpcm_player' ) :
 
-			$firstname = '';
 			if( isset( $_POST['_wpcm_firstname'] ) ) {
 				$firstname = $_POST['_wpcm_firstname'];
+			} else {
+				$firstname = '';
 			}
-			$lastname = '';
 			if( isset( $_POST['_wpcm_lastname'] ) ) {
 				$lastname = $_POST['_wpcm_lastname'];
+			} else {
+				$lastname = '';
 			}
 
-			$title = sanitize_title_with_dashes( $firstname . '-' . $lastname );
+			if( isset( $_POST['_wpcm_firstname'] ) || isset( $_POST['_wpcm_lastname'] ) ) {
+				$title = sanitize_title_with_dashes( $firstname . '-' . $lastname );
 
-			$data['post_title'] = $firstname . ' ' . $lastname;
-			$data['post_name'] = $title;
+				$data['post_title'] = $firstname . ' ' . $lastname;
+				$data['post_name'] = $title;
+			}
 
 		endif;
 
