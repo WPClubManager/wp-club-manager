@@ -15,7 +15,7 @@ jQuery(function($){
 
 	// Chosen multiselects
 	jQuery("select.wpcm-chosen-multiple").chosen({
-		width: '100%'
+		width: '90%'
 	});
 	if( jQuery('#input-order').length ) {
 		jQuery('select.wpcm-chosen-multiple').on('change', function(e) {
