@@ -21,8 +21,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$this->import_label = __( 'Import Players', 'wp-club-manager' );
 			$this->columns = array(
 				'wpcm_number' => __( 'Number', 'wp-club-manager' ),
-				'wpcm_first_name' => __( 'First Name', 'wp-club-manager' ),
-				'wpcm_last_name' => __( 'Last Name', 'wp-club-manager' ),
+				'_wpcm_firstname' => __( 'First Name', 'wp-club-manager' ),
+				'_wpcm_lastname' => __( 'Last Name', 'wp-club-manager' ),
 				'wpcm_position' => __( 'Positions', 'wp-club-manager' ),
 				'wpcm_dob' => __( 'Date of Birth', 'wp-club-manager' ),
 				'wpcm_height' => __( 'Height', 'wp-club-manager' ),
@@ -38,7 +38,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 *
 		 * @param mixed $file
 		 */
-		function import( $array = array(), $columns = array() ) {
+		function import( $array = array(), $columns = array( 'post_title' ) ) {
 			$this->imported = $this->skipped = 0;
 
 			if ( ! is_array( $array ) || ! sizeof( $array ) ):
@@ -60,16 +60,28 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$meta[ $key ] = wpcm_array_value( $row, $index );
 				endforeach;
 
-				$name = wpcm_array_value( $meta, 'wpcm_name' );
+				$first_name = wpcm_array_value( $meta, '_wpcm_firstname' );
+				$last_name = wpcm_array_value( $meta, '_wpcm_lastname' );
+				$name = $first_name . ' ' . $last_name;
+				$post_name = sanitize_title_with_dashes( $name );
 
 				if ( ! $name ):
 					$this->skipped++;
 					continue;
 				endif;
 
-				$args = array( 'post_type' => 'wpcm_player', 'post_status' => 'publish', 'post_title' => $name );
+				$args = array( 
+					'post_type' => 'wpcm_player',
+					'post_status' => 'publish',
+					'post_title' => $name,
+					'post_name' => $post_name
+				);
 
 				$id = wp_insert_post( $args );
+
+				//$post_name = sanitize_title_with_dashes( $name );
+
+				//wp_update_post( array( 'ID' => $id, 'post_name' => $post_name, 'post_title' => $name ) );
 
 				// Flag as import
 				update_post_meta( $id, '_wpcm_import', 1 );
@@ -77,15 +89,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 				// Update number
 				update_post_meta( $id, 'wpcm_number', wpcm_array_value( $meta, 'wpcm_number' ) );
 
-				$parts = explode( ' ', $name );
-				$lname = array_pop( $parts );
-				$fname = implode( ' ', $parts );
-
 				// Update first name
-				update_post_meta( $id, '_wpcm_firstname', $fname );
+				update_post_meta( $id, '_wpcm_firstname', $first_name );
 
 				// Update last name
-				update_post_meta( $id, '_wpcm_lastname', $lname );
+				update_post_meta( $id, '_wpcm_lastname', $last_name );
 
 				// Update positions
 				$positions = explode( '|', wpcm_array_value( $meta, 'wpcm_position' ) );
@@ -145,7 +153,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		public function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ).'</p>';
-			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (9 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/player-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Players need to be defined with columns in a specific order (10 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/player-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=wpclubmanager_player_csv&step=1' );
 			echo '</div>';
 		}
