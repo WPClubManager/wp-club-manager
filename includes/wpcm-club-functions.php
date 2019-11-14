@@ -120,7 +120,7 @@ function wpcm_head_to_head_count( $matches ) {
  * @access public
  * @param array $post
  * @return array $venue_info
- * @since 2.1.0
+ * @since 2.1.5
  */
 function get_club_venue( $post ) {
 
@@ -132,14 +132,9 @@ function get_club_venue( $post ) {
 		$venue_info['id'] = $venue->term_id;
 		$venue_info['description'] = $venue->description;
 		$venue_meta = get_option( "taxonomy_term_".$venue_info['id']."" );
-		$venue_info['address'] = $venue_meta['wpcm_address'];
-		$venue_info['capacity'] = $venue_meta['wpcm_capacity'];
+		$venue_info['address'] = ( isset( $venue_meta['wpcm_address'] ) ? $venue_meta['wpcm_address'] : false );
+		$venue_info['capacity'] = ( isset( $venue_meta['wpcm_capacity'] ) ? $venue_meta['wpcm_capacity'] : false );
 	} else {
-		// $venue_info['name'] = null;
-		// $venue_info['id'] = null;
-		// $venue_info['description'] = null;
-		// $venue_info['address'] = null;
-		// $venue_info['capacity'] = null;
 		$venue_info = false;
 	}
 	return $venue_info;
