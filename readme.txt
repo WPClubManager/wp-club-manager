@@ -165,9 +165,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.5 /10/2019
+= 2.1.5 13/11/2019
 
-* New - Added import of players or staff from existing rosters
+* Tweak - Added import of players from existing rosters
+* Tweak - Added import of staff from existing rosters
+* Tweak - Added current season matches to club page in league mode
+* Tweak - Added get_current_season() function
+* Tweak - Updated admin CSS styles for WP 5.3
+* Fix - Fixed capacity undefined index warning in club List_Table
+* Fix - Fixed players import
 
 = 2.1.4 23/09/2019
 
