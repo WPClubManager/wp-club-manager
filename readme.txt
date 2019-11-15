@@ -3,8 +3,8 @@ Contributors: clubpress, leonterry, leabu85
 Tags: club, teams, sports, sports club, club management, club website, league management, league tables, team rosters, fixtures, results 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
-Tested up to: 5.2
-Stable tag: 2.1.4
+Tested up to: 5.3
+Stable tag: 2.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -165,7 +165,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.5 13/11/2019
+= 2.1.5 15/11/2019
 
 * Tweak - Added import of players from existing rosters
 * Tweak - Added import of staff from existing rosters
