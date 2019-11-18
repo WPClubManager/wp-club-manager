@@ -62,7 +62,7 @@ class WPCM_Meta_Box_Match_Details {
 				$venue = -1;
 			}
 		}
-		$time =  ( $post->post_status == 'publish' || $post->post_status == 'future' ? get_the_time() : get_option( 'wpcm_match_time', '15:00' ) );
+		$time =  ( $post->post_status == 'publish' || $post->post_status == 'future' ? get_the_time( 'H:i' ) : get_option( 'wpcm_match_time', '15:00' ) );
 
 		$date = get_the_date( 'Y-m-d' );
 
@@ -175,6 +175,13 @@ class WPCM_Meta_Box_Match_Details {
 	 * Save meta box data
 	 */
 	public static function save( $post_id, $post ) {
+
+		if( isset( $_POST['wpcm_match_date'] ) ){
+			$date = $_POST['wpcm_match_date'];
+			$kickoff = $_POST['wpcm_match_kickoff'];
+			$datetime = $date . ' ' . $kickoff . ':00';
+			update_post_meta( $post_id, '_wpcm_match_datetime', $datetime );
+		}
 
 		if( isset( $_POST['wpcm_comp'] ) ){
 			wp_set_post_terms( $post_id, $_POST['wpcm_comp'], 'wpcm_comp' );
