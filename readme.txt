@@ -4,7 +4,7 @@ Tags: club, teams, sports, sports club, club management, club website, league ma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -102,6 +102,8 @@ The WP Club Manager plugin has a growing catalogue of themes to add extra functi
 
 Translators can contribute to WP Club Manager translations at [GlotPress](https://translate.wordpress.org/projects/wp-plugins/wp-club-manager).
 
+Extensible, adaptable, and open source — WP Club Manager is created with developers in mind. Contribute on [GitHub](https://github.com/ClubPress/wp-club-manager).
+
 = Please Rate and Enjoy! =
 Please take a moment to leave a review on WordPress.org. Your feedback is much appreciated and helps towards the continued improvement of WP Club Manager.
 
@@ -164,6 +166,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.1.6 18/11/2019
+
+* Fix - Fixed match date and time issue
 
 = 2.1.5 15/11/2019
 

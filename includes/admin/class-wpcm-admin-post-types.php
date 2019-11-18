@@ -246,11 +246,12 @@ class WPCM_Admin_Post_Types {
 				$date = $_POST['wpcm_match_date'];
 				$kickoff = $_POST['wpcm_match_kickoff'];
 				$datetime = $date . ' ' . $kickoff . ':00';
+				$datetime_gmt = get_gmt_from_date( $datetime );
 				
 				$data['post_date'] = $datetime;
-				$data['post_date_gmt'] = $datetime;
+				$data['post_date_gmt'] = $datetime_gmt;
 
-				if( strtotime($datetime) > strtotime('now')  ) {
+				if( $datetime_gmt > gmdate( 'Y-m-d H:i:59' )  ) {
 					$data['post_status'] = 'future';
 				}
 			}
