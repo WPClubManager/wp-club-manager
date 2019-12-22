@@ -274,7 +274,7 @@ class WPCM_Admin_Setup_Wizard {
 			$club_location = sanitize_text_field( $_POST['club_location'] );
 			update_option( 'wpcm_default_country', $club_location );
 		}
-		if( isset( $_POST['club_sport'] ) && ! empty( $_POST['club_sport'] ) && get_option( 'wpcm_sport' ) != $_POST['club_sport'] ) {
+		if( isset( $_POST['club_sport'] ) && ! empty( $_POST['club_sport'] ) ) {
 			$post = $_POST['club_sport'];
 			$sport = WPCM()->sports->$post;
 			WPCM_Admin_Settings::configure_sport( $sport );

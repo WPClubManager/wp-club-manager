@@ -10,7 +10,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $post;
-
 if ( array_key_exists( $team, $stats ) ):
 	if ( array_key_exists( $season, $stats[$team] ) ):
 		$stats = $stats[$team][$season];

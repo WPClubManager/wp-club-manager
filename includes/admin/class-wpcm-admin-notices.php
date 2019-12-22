@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -158,10 +158,10 @@ class WPCM_Admin_Notices {
 			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
-		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $screen->id, array( 'toplevel_page_wpcm-settings', 'dashboard_page_wpcm-about', 'dashboard_page_wpcm-getting-started', 'dashboard_page_wpcm-translators' ) ) ) {
+		if ( in_array( 'theme_support', $notices ) && ! current_theme_supports( 'wpclubmanager' ) ) {
 			$template = get_option( 'template' );
-
-			if ( ! in_array( $template, array( 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' ) ) ) {
+			$core_themes = wpcm_get_core_supported_themes();
+			if ( ! in_array( $template, $core_themes ) ) {
 				wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
 				add_action( 'admin_notices', array( $this, 'theme_check_notice' ) );
 			}
@@ -275,7 +275,7 @@ class WPCM_Admin_Notices {
 
 	public function version_update_notice() {
 
-		if ( version_compare( get_option( 'wpcm_version_upgraded_from' ), '2.0.0', '<' ) ) {
+		if ( get_option( 'wpcm_version_upgraded_from' ) && version_compare( get_option( 'wpcm_version_upgraded_from' ), '2.0.0', '<' ) ) {
 
 			include( 'views/html-notice-version-update.php' );
 	  	}

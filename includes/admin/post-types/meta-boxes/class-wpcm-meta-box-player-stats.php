@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.0.0
+ * @version     2.1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -164,10 +164,16 @@ class WPCM_Meta_Box_Player_Stats {
 
 					<div class="wpcm-player-stat-season">
 						<?php if( is_array( $seasons ) ): foreach( $seasons as $season ): ?>
-							<div class="wpcm_team-0_season-<?php echo $season->term_id; ?> hidden">
+							<div class="wpcm_team-0_season-<?php echo $season->term_id; ?> stats-table-season">
 								<?php self::wpcm_player_stats_table( $stats, 0, $season->term_id ); ?>
 							</div>
 						<?php endforeach; endif; ?>
+					</div>
+					
+					<div class="wpcm-player-stat-total" style="display:none;">
+						<div id="wpcm_team-0_season-0">
+							<?php self::wpcm_player_stats_table( $stats, 0, 0 ); ?>
+						</div>
 					</div>
 
 					<script type="text/javascript">
@@ -185,10 +191,17 @@ class WPCM_Meta_Box_Player_Stats {
 									$('.stats-table-season .player-stats-manual-<?php echo $key; ?>').each(function(){
 										sum += Number($(this).val());
 									});
+									$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val(sum);
 									var sum = 0;
 									$('.stats-table-season .player-stats-auto-<?php echo $key; ?>').each(function(){
 										sum += Number($(this).val());
 									});
+									$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val(sum);
+
+									var a = +$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val();
+									var b = +$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val();
+									var total = a+b;
+									$('#wpcm_team-0_season-0 .player-stats-total-<?php echo $key; ?>').val(total);
 								<?php
 								} ?>
 							});

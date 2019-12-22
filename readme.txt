@@ -1,10 +1,10 @@
 === WP Club Manager - WordPress Sports Club Plugin===
-Contributors: clubpress, leonterry, leabu85
+Contributors: clubpress, leonterry
 Tags: club, teams, sports, sports club, club management, club website, league management, league tables, team rosters, fixtures, results 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 2.1.6
+Stable tag: 2.1.7-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -166,6 +166,17 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.1.7 22/12/2019
+
+* Fix - Fixed player stats manual totals
+* Fix - Fixed undefined object id warning in setup wizard
+* Fix - Fixed soccer player positions not being created in setup wizard
+* Fix - Fixed version upgrade notice on fresh install
+* Fix - Fixed count warning in rosters list table rows when empty
+* Fix - Fixed undefined warning in empty post type list tables
+* Fix - Date format matches WP date options in Matches list table
+* Fix - Updated WP core themes compatibility
 
 = 2.1.6 18/11/2019
 
