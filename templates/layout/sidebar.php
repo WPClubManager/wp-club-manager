@@ -9,4 +9,6 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-get_sidebar(); ?>
+get_sidebar();
+
+/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
