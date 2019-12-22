@@ -4,7 +4,7 @@ Tags: club, teams, sports, sports club, club management, club website, league ma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 2.1.7-beta
+Stable tag: 2.1.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
