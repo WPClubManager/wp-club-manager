@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.1.2
+ * @version     2.1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -348,12 +348,12 @@ function get_match_title_format() {
 /**
  * WP Club Manager Core Supported Themes
  *
- * @since 1.3
+ * @since 2.1.7
  * @return array
  */
 function wpcm_get_core_supported_themes() {
 
-	return array( 'twentyeighteen', 'twentyseventeen', 'twentysixteen', 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' );
+	return array( 'twentytwenty','twentynineteen','twentyeighteen', 'twentyseventeen', 'twentysixteen', 'twentyfifteen', 'twentyfourteen', 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten' );
 }
 
 /**
