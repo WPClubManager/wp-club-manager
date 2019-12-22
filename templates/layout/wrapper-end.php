@@ -31,6 +31,19 @@ switch( $template ) {
 	case 'twentysixteen' :
 		echo '</main></div>';
 		break;
+	case 'twentyseventeen' :
+		echo '</main>';
+		echo '</div>';
+		get_sidebar();
+		echo '</div>';
+	case 'twentynineteen' :
+		echo '</section>';
+		echo '</main';
+		break;
+	case 'twentytwenty' :
+		echo '</section>';
+		echo '</main>';
+		break;
 	default :
 		//echo '</div></div>';
 		echo '</main></div>';

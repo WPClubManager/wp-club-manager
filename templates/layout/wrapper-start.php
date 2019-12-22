@@ -30,9 +30,20 @@ switch( $template ) {
 	case 'twentysixteen' :
 		echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main">';
 		break;
+	case 'twentyseventeen' :
+		echo '<div class="wrap">';
+		echo '<div id="primary" class="content-area twentyseventeen">';
+		echo '<main id="main" class="site-main" role="main">';
+		break;
+	case 'twentynineteen' :
+		echo '<section id="primary" class="content-area">';
+		echo '<main id="main" class="site-main">';
+		break;
+	case 'twentytwenty' :
+		echo '<section id="primary" class="content-area">';
+		echo '<main id="main" class="site-main">';
+		break;
 	default :
-		// echo '<div id="primary"><div id="content" role="main" class="site-content entry-content content-area">';
-		//echo '<div id="container"><div id="content" role="main">';
 		echo '<div id="primary" class="content-area"><main id="main" class="site-main" role="main">';
 		break;
 }
