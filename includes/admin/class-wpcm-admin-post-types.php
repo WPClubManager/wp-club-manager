@@ -583,7 +583,7 @@ class WPCM_Admin_Post_Types {
 				echo $date;
 				?>
 				<br>
-				<abbr title="<?php echo get_the_date ( 'Y/m/d' ) . ' ' . get_the_time ( 'H:i:s' ); ?>"><?php echo get_the_date ( 'Y/m/d' ); ?></abbr>
+				<abbr title="<?php echo get_the_date ( 'Y/m/d' ) . ' ' . get_the_time ( 'H:i:s' ); ?>"><?php echo get_the_date ( get_option ( 'date_format' ) ); ?></abbr>
 				<?php
 			break;
 			case 'kickoff' :
@@ -885,11 +885,11 @@ class WPCM_Admin_Post_Types {
 			break;
 			case 'players' :
 				$players = unserialize( get_post_meta( $post->ID, '_wpcm_roster_players', true ) );
-				echo count($players);
+				echo ( $players ? count($players) : '0' );
 			break;
 			case 'staff' :
 				$staff = unserialize( get_post_meta( $post->ID, '_wpcm_roster_staff', true ) );
-				echo count($staff);
+				echo ( $staff ? count($staff) : '0' );
 			break;
 		}
 	}
@@ -1366,21 +1366,23 @@ class WPCM_Admin_Post_Types {
 		$screen = get_current_screen();
 
 		if( $screen !== null && in_array( $screen->id, array( 'wpcm_match', 'edit-wpcm_match', 'wpcm_player', 'edit-wpcm_player', 'edit-wpcm_staff' ) ) ) {
-			if( $post->post_type == 'wpcm_match' ) { ?>
-				<style type="text/css">#wpclubmanager-match-fixture{margin-top:-20px;}.misc-pub-curtime{display:none;}#titlediv{display:none;}</style>
-				<?php
-			} elseif( $post->post_type == 'wpcm_player' && $post->post_status !== 'publish' ) { ?>
-				<style type="text/css">#titlediv{display:none;}#wpclubmanager-player-details{margin-top:-20px;}</style>
-				<?php
-			} elseif( $post->post_type == 'wpcm_player' && $post->post_status == 'publish' ) { ?>
-				<style type="text/css">#titlewrap{display:none;}</style>
-				<?php
-			} elseif( $post->post_type == 'wpcm_staff' && $post->post_status !== 'publish' ) { ?>
-				<style type="text/css">#titlediv{display:none;}#wpclubmanager-staff-details{margin-top:-20px;}</style>
-				<?php
-			} elseif( $post->post_type == 'wpcm_staff' && $post->post_status == 'publish' ) { ?>
-				<style type="text/css">#titlewrap{display:none;}</style>
-				<?php
+			if( $post != null ) {
+				if( $post->post_type == 'wpcm_match' ) { ?>
+					<style type="text/css">#wpclubmanager-match-fixture{margin-top:-20px;}.misc-pub-curtime{display:none;}#titlediv{display:none;}</style>
+					<?php
+				} elseif( $post->post_type == 'wpcm_player' && $post->post_status !== 'publish' ) { ?>
+					<style type="text/css">#titlediv{display:none;}#wpclubmanager-player-details{margin-top:-20px;}</style>
+					<?php
+				} elseif( $post->post_type == 'wpcm_player' && $post->post_status == 'publish' ) { ?>
+					<style type="text/css">#titlewrap{display:none;}</style>
+					<?php
+				} elseif( $post->post_type == 'wpcm_staff' && $post->post_status !== 'publish' ) { ?>
+					<style type="text/css">#titlediv{display:none;}#wpclubmanager-staff-details{margin-top:-20px;}</style>
+					<?php
+				} elseif( $post->post_type == 'wpcm_staff' && $post->post_status == 'publish' ) { ?>
+					<style type="text/css">#titlewrap{display:none;}</style>
+					<?php
+				}
 			}
 		}
 	}
