@@ -547,9 +547,11 @@ if (!function_exists('get_wpcm_player_stats')) {
 
 		// combined season stats for combined team
 		$stats = get_wpcm_player_auto_stats( $post );
+		$manual_stats = get_wpcm_player_manual_stats( $post, $team->term_id, $season->term_id );
 		$output[0][0] = array(
 			'auto' => $stats,
-			'total' => $stats
+			'total' => $stats,
+			'manual' => $manual_stats
 		);
 
 		// isolated season stats for combined team
@@ -566,14 +568,15 @@ if (!function_exists('get_wpcm_player_stats')) {
 		}
 
 		// manual stats
-		$stats = (array)unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
-		if ( is_array( $stats ) ):
+		$manual_stats = (array)unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
+		
+		if ( is_array( $manual_stats ) ) {
 
-			foreach( $stats as $team_key => $team_val ):
+			foreach( $manual_stats as $team_key => $team_val ) {
 
-				if ( is_array( $team_val ) && array_key_exists( $team_key, $output ) ):
+				if ( is_array( $team_val ) && array_key_exists( $team_key, $output ) ) {
 
-					foreach( $team_val as $season_key => $season_val ):
+					foreach( $team_val as $season_key => $season_val ) {
 
 						if ( array_key_exists ( $season_key, $output[$team_key] ) ) {
 
@@ -584,15 +587,22 @@ if (!function_exists('get_wpcm_player_stats')) {
 								if ( array_key_exists( $index_key, $season_val ) )
 
 								 $index_val += $season_val[$index_key];
+
 							}
+
 						}
-					endforeach;
-				endif;
-			endforeach;
-		endif;
+
+					}
+
+				}
+
+			}
+
+		}
 
 		return $output;
 	}
+
 }
 
 /**
@@ -661,13 +671,13 @@ if (!function_exists('get_wpcm_club_stats')) {
 		// manual stats
 		$stats = (array)unserialize( get_post_meta( $post->ID, 'wpcm_stats', true ) );
 
-		if ( is_array( $stats ) ):
+		if ( is_array( $stats ) ) {
 
-			foreach( $stats as $comp_key => $comp_val ):
+			foreach( $stats as $comp_key => $comp_val ) {
 
-				if ( is_array( $comp_val ) && array_key_exists( $comp_key, $output ) ):
+				if ( is_array( $comp_val ) && array_key_exists( $comp_key, $output ) ) {
 
-					foreach( $comp_val as $season_key => $season_val ):
+					foreach( $comp_val as $season_key => $season_val ) {
 
 						if ( array_key_exists ( $season_key, $output[$comp_key] ) ) {
 
@@ -678,12 +688,18 @@ if (!function_exists('get_wpcm_club_stats')) {
 								if ( array_key_exists( $index_key, $season_val ) )
 
 								 $index_val += $season_val[$index_key];
+
 							}
+
 						}
-					endforeach;
-				endif;
-			endforeach;
-		endif;
+
+					}
+
+				}
+
+			}
+
+		}
 
 		return $output;
 	}
