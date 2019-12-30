@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     2.0.0
+ * @version     2.1.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -80,6 +80,74 @@ function wpcm_post_class( $classes ) {
 	}
 
 	return $classes;
+}
+
+/**
+ * Template pages
+ */
+
+if ( ! function_exists( 'wpclubmanager_content' ) ) {
+
+	/**
+	 * Output WPClubManager content.
+	 *
+	 * This function is only used in the optional 'wpclubmanager.php' template.
+	 * which people can add to their themes to add basic wpclubmanager support.
+	 * without hooks or modifying core templates.
+	 */
+	function wpclubmanager_content() {
+
+		do_action('wpclubmanager_before_main_content');
+
+		if ( is_singular( 'wpcm_match' ) ) {
+
+			while ( have_posts() ) :
+
+				the_post();
+				wpclubmanager_get_template_part( 'content', 'single-match' );
+
+			endwhile;
+
+		} elseif ( is_singular( 'wpcm_player' ) ) {
+
+			while ( have_posts() ) :
+
+				the_post();
+				wpclubmanager_get_template_part( 'content', 'single-player' );
+
+			endwhile;
+
+		} elseif ( is_singular( 'wpcm_staff' ) ) {
+
+			while ( have_posts() ) :
+
+				the_post();
+				wpclubmanager_get_template_part( 'content', 'single-staff' );
+
+			endwhile;
+
+		} elseif ( is_singular( 'wpcm_club' ) ) {
+
+			while ( have_posts() ) :
+				
+				the_post();
+				wpclubmanager_get_template_part( 'content', 'single-club' );
+
+			endwhile;
+
+		} else {
+			
+			while ( have_posts() ) :
+				
+				the_post();
+				the_content();
+
+			endwhile;
+
+		}
+
+		do_action('wpclubmanager_after_main_content');
+	}
 }
 
 
