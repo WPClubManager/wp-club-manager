@@ -4,11 +4,7 @@ Tags: club, teams, sports, sports club, club management, club website, league ma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
 Tested up to: 5.3
-<<<<<<< Updated upstream
-Stable tag: 2.1.7-beta
-=======
-Stable tag: 2.1.8-beta
->>>>>>> Stashed changes
+Stable tag: 2.1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -171,9 +167,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.8 23/12/2019
+= 2.1.8 30/12/2019
 
-* New - Added wpclubmanager_content() function
+* New - Added wpclubmanager_content() template function
+* Fix - Fixed warning in list table when no positions/jobs set
 
 = 2.1.7 22/12/2019
 
