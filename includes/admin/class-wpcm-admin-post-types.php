@@ -5,7 +5,7 @@
  * @author   ClubPress
  * @category Admin
  * @package  WPClubManager/Admin
- * @version  2.1.0
+ * @version  2.1.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -741,11 +741,13 @@ class WPCM_Admin_Post_Types {
 			break;
 			case 'position':
 				$terms = get_the_terms($post->ID, 'wpcm_position');
-				foreach( $terms as $term ) {
-					$positions[] = $term->name;
-				}				 
-				$output = join( ', ', $positions );
-				echo $output;
+				if( $terms ) {
+					foreach( $terms as $term ) {
+						$positions[] = $term->name;
+					}				 
+					$output = join( ', ', $positions );
+					echo $output;
+				}
 			break;
 			case 'club':
 				$club = get_post_meta($post->ID, '_wpcm_player_club', true);		
@@ -826,11 +828,13 @@ class WPCM_Admin_Post_Types {
 			break;
 			case 'jobs':
 			$terms = get_the_terms($post->ID, 'wpcm_jobs');
-			foreach( $terms as $term ) {
-				$jobs[] = $term->name;
-			}				 
-			$output = join( ', ', $jobs );
-			echo $output;
+			if( $terms ) {
+				foreach( $terms as $term ) {
+					$jobs[] = $term->name;
+				}				 
+				$output = join( ', ', $jobs );
+				echo $output;
+			}
 			break;
 			case 'email':
 				$email = get_post_meta($post->ID, '_wpcm_staff_email', true);		
