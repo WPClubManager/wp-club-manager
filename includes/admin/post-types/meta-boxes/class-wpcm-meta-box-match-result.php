@@ -194,7 +194,7 @@ class WPCM_Meta_Box_Match_Result {
 		} ?>
 			<table class="final-score-table">
 				<?php
-				if( get_option( 'wpcm_results_box_scores' ) != 'yes' ) { ?>
+				if( get_option( 'wpcm_match_box_scores' ) != 'yes' ) { ?>
 					<thead>
 						<tr>
 							<td>&nbsp;</td>
