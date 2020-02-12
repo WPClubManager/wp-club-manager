@@ -16,7 +16,7 @@ WP Club Manager is a sports plugin used to create and manage a club or league we
 
 = Endorsed by USA Rugby =
 
-> "*It's perfect for the professional sports web developer and the first-time team administrator. Incredibly easy to customize and integrate, I highly recommend WP Club Manager to any sports teams that wants a better website!*"
+> "*It's perfect for the professional sports web developer and the first-time team administrator. Incredibly easy to customize and integrate, I highly recommend WP Club Manager to any sports teams that want a better website!*"
 Davey Jacobson, *Information Systems Developer*, [USA Rugby](https://www.usa.rugby)
 
 = Features Include =
