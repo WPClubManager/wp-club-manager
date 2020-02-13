@@ -4,23 +4,17 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     1.4.0
+ * @version     2.1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $post;
 
-$badges = wpcm_get_match_badges( $post->ID, 'crest-medium', array( 'class' => 'home-logo' ) );
-$format = get_match_title_format();
-if( $format == '%home% vs %away%') {
-	$badge = $badges[0];
-} else {
-	$badge = $badges[1];
-} ?>
+$badges = wpcm_get_match_badges( $post->ID, 'crest-medium', array( 'class' => 'home-logo' ) ); ?>
 
 <div class="wpcm-match-home-club-badge">
 
-	<?php echo $badge; ?>
+	<?php echo $badges[0]; ?>
 
 </div>
