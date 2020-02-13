@@ -4,7 +4,7 @@ Tags: club, teams, sports, sports club, club management, club website, league ma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 2.1.8
+Stable tag: 2.1.9-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -166,6 +166,15 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.1.9 /02/2019
+
+* Fix - Fixed box scores display issue
+* Fix - Fixed badges in reverse match format issue
+* Tweak - Increased start time field width
+* Tweak - Added Rest API support to post types and taxonomies
+* Template - '/single-match/home-badge.php' - Fixed badge display
+* Template - '/single-match/away-badge.php' - Fixed badge display
 
 = 2.1.8 30/12/2019
 
