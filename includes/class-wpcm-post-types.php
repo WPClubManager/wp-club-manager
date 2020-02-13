@@ -5,7 +5,7 @@
  * Registers post types.
  *
  * @class 		WPCM_Post_Types
- * @version		2.0.0
+ * @version		2.1.9
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
