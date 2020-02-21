@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.1.0
+ * @version     2.1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -83,7 +83,7 @@ class WPCM_Meta_Box_Match_Result {
 		<div id="results-table">
 
 		<?php
-		if( get_option( 'wpcm_results_box_scores' ) == 'yes' ) { ?>
+		if( get_option( 'wpcm_match_box_scores' ) == 'yes' ) { ?>
 
 			<table class="box-scores-table">
 				<thead>
@@ -94,7 +94,7 @@ class WPCM_Meta_Box_Match_Result {
 					</tr>
 				</thead>
 				<tbody>
-							
+
 					<?php
 					if( $sport == 'volleyball' ) :
 
@@ -194,7 +194,7 @@ class WPCM_Meta_Box_Match_Result {
 		} ?>
 			<table class="final-score-table">
 				<?php
-				if( get_option( 'wpcm_results_box_scores' ) != 'yes' ) { ?>
+				if( get_option( 'wpcm_match_box_scores' ) != 'yes' ) { ?>
 					<thead>
 						<tr>
 							<td>&nbsp;</td>
@@ -233,7 +233,7 @@ class WPCM_Meta_Box_Match_Result {
 				} else { ?>
 
 					<tbody>
-						
+
 						<?php do_action('wpclubmanager_admin_results_table', $post->ID ); ?>
 						<tr>
 							<th align="right"><?php _e( 'Final Score', 'wp-club-manager' ); ?></th>
@@ -255,7 +255,7 @@ class WPCM_Meta_Box_Match_Result {
 				<div class="wpcm-results-outcome">
 
 					<?php
-					wpclubmanager_wp_select( array( 
+					wpclubmanager_wp_select( array(
 						'id' => 'cricket_outcome_0',
 						'value' => $wpcm_cricket_outcome[0],
 						'class' => 'chosen_select_outcome',
@@ -273,7 +273,7 @@ class WPCM_Meta_Box_Match_Result {
 					<input type="number" class="wpcm_cricket_outcome" name="cricket_outcome_1" min="0" max="999" value="<?php echo $wpcm_cricket_outcome[1]; ?>" />
 
 					<?php
-					wpclubmanager_wp_select( array( 
+					wpclubmanager_wp_select( array(
 						'id' => 'cricket_outcome_2',
 						'value' => $wpcm_cricket_outcome[2],
 						'class' => 'chosen_select_outcome',
@@ -337,7 +337,7 @@ class WPCM_Meta_Box_Match_Result {
 			<?php } ?>
 
 			<?php if ( $sport == 'hockey' || $sport == 'handball' ) { ?>
-				
+
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_shootout" id="wpcm_shootout" value="1" <?php checked( true, $shootout ); ?> />
@@ -348,7 +348,7 @@ class WPCM_Meta_Box_Match_Result {
 			<?php } ?>
 
 			<?php if ( $sport == 'soccer' ) { ?>
-				
+
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_overtime" id="wpcm_overtime" value="1" <?php checked( true, $overtime ); ?> />

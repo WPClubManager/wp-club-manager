@@ -5,7 +5,7 @@
  * Registers post types.
  *
  * @class 		WPCM_Post_Types
- * @version		2.0.0
+ * @version		2.1.9
  * @package		WPClubManager/Classes/
  * @category	Class
  * @author 		ClubPress
@@ -63,7 +63,8 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false
+				'publicly_queryable' => false,
+				'show_in_rest'		=> true
 			) )
 		);
 
@@ -91,7 +92,8 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_staff_terms',
 					'assign_terms' => 'assign_wpcm_staff_terms',
 				),
-				'publicly_queryable' => false
+				'publicly_queryable' => false,
+				'show_in_rest'		=> true
 			) )
 		);
 
@@ -120,6 +122,8 @@ class WPCM_Post_Types {
 					'assign_terms' => 'assign_wpcm_player_terms',
 				),
 				'publicly_queryable' => false
+				,
+				'show_in_rest'		=> true
 			) )
 		);
 
@@ -147,7 +151,8 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false
+				'publicly_queryable' => false,
+				'show_in_rest'		=> true
 			) )
 		);
 
@@ -176,7 +181,8 @@ class WPCM_Post_Types {
 						'delete_terms' => 'delete_wpcm_player_terms',
 						'assign_terms' => 'assign_wpcm_player_terms',
 					),
-					'publicly_queryable' => false
+					'publicly_queryable' => false,
+					'show_in_rest'		=> true
 				) )
 			);
 		}
@@ -204,7 +210,8 @@ class WPCM_Post_Types {
 					'delete_terms' => 'delete_wpcm_club_terms',
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
-				'publicly_queryable' => false
+				'publicly_queryable' => false,
+				'show_in_rest'		=> true
 			) )
 		);
 
@@ -257,6 +264,7 @@ class WPCM_Post_Types {
 					'capability_type'      => 'wpcm_club',
 					'map_meta_cap'         => true,
 					'taxonomies'		   => array( 'wpcm_venue' ),
+					'show_in_rest'		=> true
 				)
 			)
 		);
@@ -296,7 +304,8 @@ class WPCM_Post_Types {
 					'can_export'           => true,
 					'rewrite'              => $player_permalink ? array( 'slug' => untrailingslashit( $player_permalink ) ) : false,
 					'capability_type'      => 'wpcm_player',
-					'map_meta_cap'        => true
+					'map_meta_cap'        => true,
+					'show_in_rest'		=> true
 				)
 			)
 		);
@@ -337,6 +346,7 @@ class WPCM_Post_Types {
 					'rewrite'              => $staff_permalink ? array( 'slug' => untrailingslashit( $staff_permalink ) ) : false,
 					'capability_type'      => 'wpcm_staff',
 					'map_meta_cap'        => true,
+					'show_in_rest'		=> true
 				)
 			)
 		);
@@ -376,7 +386,8 @@ class WPCM_Post_Types {
 					'can_export'           => true,
 					'rewrite'              => $match_permalink ? array( 'slug' => untrailingslashit( $match_permalink ) ) : false,
 					'capability_type'      => 'wpcm_match',
-					'map_meta_cap'        => true
+					'map_meta_cap'        => true,
+					'show_in_rest'		=> true
 				)
 			)
 		);
@@ -410,6 +421,7 @@ class WPCM_Post_Types {
 					'map_meta_cap'         => true,
 					'show_in_admin_bar'   => true,
 					'taxonomies'		  => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
+					'show_in_rest'		=> true
 				)
 			)
 		);
@@ -447,6 +459,7 @@ class WPCM_Post_Types {
 						'show_in_nav_menus'   => false,
 						'show_in_admin_bar'   => true,
 						'taxonomies'		  => array( 'wpcm_team', 'wpcm_season' ),
+						'show_in_rest'		=> true
 					)
 				)
 			);
@@ -485,6 +498,7 @@ class WPCM_Post_Types {
 					'rewrite'              => array( 'with_front' => false, 'slug' => 'sponsors' ),
 					'capability_type'      => 'wpcm_sponsor',
 					'map_meta_cap'        => true,
+					'show_in_rest'		=> true
 				)
 			)
 		);
