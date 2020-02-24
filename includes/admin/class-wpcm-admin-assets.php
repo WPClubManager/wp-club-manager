@@ -93,7 +93,7 @@ class WPCM_Admin_Assets {
 
 		wp_register_script( 'wpclubmanager-admin-locationpicker', WPCM()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), WPCM_VERSION, true );
 
-		if ( is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) ) {
+		if ( ! wp_script_is( 'acf-timepicker' ) ) {
 			wp_register_script( 'jquery-timepicker', WPCM()->plugin_url() . '/assets/js/jquery.timepicker' .$suffix . '.js', array( 'jquery' ), '1.11.13', true );
 		}
 
