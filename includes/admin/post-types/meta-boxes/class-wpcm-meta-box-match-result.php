@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.1.0
+ * @version     2.1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -83,7 +83,7 @@ class WPCM_Meta_Box_Match_Result {
 		<div id="results-table">
 
 		<?php
-		if( get_option( 'wpcm_results_box_scores' ) == 'yes' ) { ?>
+		if( get_option( 'wpcm_match_box_scores' ) == 'yes' ) { ?>
 
 			<table class="box-scores-table">
 				<thead>

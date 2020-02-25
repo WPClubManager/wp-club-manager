@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.4
+ * @version     2.1.9
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -46,8 +46,7 @@ class WPCM_Settings_Matches extends WPCM_Settings_Page {
 				'options' => array(
 					'%home% vs %away%'  => __( 'Default - <i>Home v Away</i>', 'wp-club-manager' ),
 					'%away% vs %home%'	=> __( 'Reverse - <i>Away v Home</i>', 'wp-club-manager' ),
-				),
-				'desc_tip'	=>  false
+				)
 			),
 
 			array(
@@ -69,7 +68,7 @@ class WPCM_Settings_Matches extends WPCM_Settings_Page {
 			array(
 				'title' 	=> __( 'Start Time', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_match_time',
-				'css' 		=> 'width:50px;',
+				'css' 		=> 'width:70px;',
 				'type' 		=> 'text',
 				'class'     => 'wpcm-default-time-picker',
 				'default'   => '15:00',
