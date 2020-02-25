@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.1.0
+ * @version     2.1.10
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -62,7 +62,7 @@ class WPCM_Admin_Assets {
 	/**
 	 * Loads the scripts for the backend.
 	 *
-	 * @since  1.1
+	 * @since  2.1.10
 	 * @access public
 	 * @return void
 	 */
