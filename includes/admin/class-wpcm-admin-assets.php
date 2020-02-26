@@ -60,7 +60,7 @@ class WPCM_Admin_Assets {
 	/**
 	 * Loads the scripts for the backend.
 	 *
-	 * @since  1.1
+	 * @since  2.1.10
 	 * @access public
 	 * @return void
 	 */
