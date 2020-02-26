@@ -91,12 +91,12 @@ class WPCM_Admin_Assets {
 		wp_register_script( 'wpclubmanager-admin-locationpicker', WPCM()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), WPCM_VERSION, true );
 
 		if ( ! wp_script_is( 'acf-timepicker', 'registered' ) ) {
-			wp_register_script( 'jquery-timepicker', WPCM()->plugin_url() . '/assets/js/jquery.timepicker' .$suffix . '.js', array( 'jquery' ), '1.11.13', true );
+			wp_register_script( 'jquery-timepicker', WPCM()->plugin_url() . '/assets/js/jquery.timepicker' . $suffix . '.js', array( 'jquery' ), '1.11.13', true );
 		}
 
-		wp_register_script( 'wpclubmanager-admin-combify', WPCM()->plugin_url() . '/assets/js/admin/combify' .$suffix . '.js', array( 'jquery' ), WPCM_VERSION, true );
+		wp_register_script( 'wpclubmanager-admin-combify', WPCM()->plugin_url() . '/assets/js/admin/combify' . $suffix . '.js', array( 'jquery' ), WPCM_VERSION, true );
 
-		wp_register_script( 'wpclubmanager_admin_meta_boxes', WPCM()->plugin_url() . '/assets/js/admin/meta-boxes' .$suffix . '.js', array( 'jquery', 'chosen', 'order-chosen', 'iris', 'jquery-timepicker', 'wpcm-tax-order', 'jquery-ui-datepicker', 'wpclubmanager-admin-combify' ), WPCM_VERSION );
+		wp_register_script( 'wpclubmanager_admin_meta_boxes', WPCM()->plugin_url() . '/assets/js/admin/meta-boxes' . $suffix . '.js', array( 'jquery', 'chosen', 'order-chosen', 'iris', 'jquery-timepicker', 'wpcm-tax-order', 'jquery-ui-datepicker', 'wpclubmanager-admin-combify' ), WPCM_VERSION );
 
 		if ( in_array( $screen_id, array( 'edit-wpcm_match', 'edit-wpcm_player', 'edit-wpcm_staff' ) ) ) {
 			wp_register_script( 'wpclubmanager_quick-edit', WPCM()->plugin_url() . '/assets/js/admin/quick-edit.js', array( 'jquery', 'wpclubmanager_admin' ), WPCM_VERSION );
