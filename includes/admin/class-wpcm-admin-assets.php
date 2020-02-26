@@ -2,10 +2,10 @@
 /**
  * Load assets.
  *
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Admin
- * @version	 	2.1.10
+ * @author   ClubPress
+ * @category Admin
+ * @package  WPClubManager/Admin
+ * @version  2.1.10
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -67,11 +67,11 @@ class WPCM_Admin_Assets {
 	public function admin_scripts( $hook ) {
 		global $wp_query, $post;
 
-		$screen	   		= get_current_screen();
-		$screen_id	  	= $screen ? $screen->id : '';
-		$wpcm_screen_id = strtolower( __( 'WPClubManager', 'wp-club-manager' ) );
-		$suffix	   		= defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-		$api_key	  	= get_option( 'wpcm_google_map_api');
+		$screen			= get_current_screen();
+		$screen_id		= $screen ? $screen->id : '';
+		$wpcm_screen_id	= strtolower( __( 'WPClubManager', 'wp-club-manager' ) );
+		$suffix			= defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$api_key		= get_option( 'wpcm_google_map_api');
 
 		// Register scripts
 		wp_register_script( 'wpclubmanager_admin', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-ui-sortable' ), WPCM_VERSION );
