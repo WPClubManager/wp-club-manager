@@ -18,7 +18,6 @@ class WPCM_Admin_Assets {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 	}
@@ -38,7 +37,6 @@ class WPCM_Admin_Assets {
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, wpcm_get_screen_ids() ) ) {
-
 			$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.9.2';
 
 			wp_enqueue_style( 'wpclubmanager_admin_styles', WPCM()->plugin_url() . '/assets/css/admin.css', array(), WPCM_VERSION );
@@ -67,7 +65,6 @@ class WPCM_Admin_Assets {
 	 * @return void
 	 */
 	public function admin_scripts( $hook ) {
-
 		global $wp_query, $post;
 
 		$screen       	= get_current_screen();
@@ -93,7 +90,7 @@ class WPCM_Admin_Assets {
 
 		wp_register_script( 'wpclubmanager-admin-locationpicker', WPCM()->plugin_url() . '/assets/js/admin/locationpicker.js', array( 'jquery', 'google-maps', 'jquery-locationpicker' ), WPCM_VERSION, true );
 
-		if ( ! wp_script_is( 'acf-timepicker' ) ) {
+		if ( ! wp_script_is( 'acf-timepicker', 'registered' ) ) {
 			wp_register_script( 'jquery-timepicker', WPCM()->plugin_url() . '/assets/js/jquery.timepicker' .$suffix . '.js', array( 'jquery' ), '1.11.13', true );
 		}
 
@@ -111,9 +108,9 @@ class WPCM_Admin_Assets {
 			wp_enqueue_script( 'jquery-ui-sortable' );
 			wp_enqueue_script( 'wpcm-tax-order' );
 			wp_localize_script( 'wpcm-tax-order', 'localized_data', array(
-				'ajax_url' => esc_url( admin_url( 'admin-ajax.php' ) ),
+				'ajax_url'      => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'preloader_url' => esc_url( admin_url( 'images/wpspin_light.gif' ) ),
-			) );
+			));
 		}
 
 		// Edit venue pages
@@ -125,23 +122,24 @@ class WPCM_Admin_Assets {
 
 		// WPlubManager admin pages
 	    if ( in_array( $screen_id, wpcm_get_screen_ids() ) ) {
-
 	    	wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'ajax-chosen' );
 			wp_enqueue_script( 'order-chosen' );
 	    	wp_enqueue_script( 'chosen' );
-			wp_enqueue_script( 'jquery-timepicker' );
+            if ( ! wp_script_is( 'acf-timepicker', 'enqueued' ) ) {
+    			wp_enqueue_script( 'jquery-timepicker' );
+            }
 	    	wp_enqueue_script( 'wpclubmanager_admin' );
-
 	    }
 
 	    if ( in_array( $screen_id, array( 'wpcm_player', 'wpcm_club', 'wpcm_staff', 'wpcm_sponsor', 'wpcm_table', 'wpcm_roster', 'wpcm_match' ) ) ) {
-
 			wp_enqueue_script( 'ajax-chosen' );
 			wp_enqueue_script( 'order-chosen' );
 			wp_enqueue_script( 'chosen' );
 			wp_enqueue_script( 'iris' );
-			wp_enqueue_script( 'jquery-timepicker' );
+            if ( ! wp_script_is( 'acf-timepicker', 'enqueued' ) ) {
+                wp_enqueue_script( 'jquery-timepicker' );
+            }
 			wp_enqueue_script( 'wpclubmanager-admin-combify' );
 			wp_enqueue_script( 'wpclubmanager_admin_meta_boxes' );
 		}
