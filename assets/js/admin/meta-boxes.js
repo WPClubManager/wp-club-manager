@@ -1,4 +1,4 @@
-( function( $ ) {
+jQuery(function( $ ) {
 
     // Chosen selects
     $( 'select.chosen_select' ).chosen({
@@ -350,4 +350,4 @@
         $( '.combify-input' ).combify();
     });
 
-}( jQuery ) );
+});
