@@ -326,12 +326,6 @@ jQuery( function($){
 		step: '15'
 	});
 
-	jQuery('.wpcm-default-time-picker').timepicker({
-		timeFormat: 'H:i',
-		step: '15',
-		scrollDefault: '15:00'
-	});
-
 	$(document).ready(function(){
 		$(".combify-input").combify();
 	});
