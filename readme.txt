@@ -3,7 +3,7 @@ Contributors: clubpress, leonterry, daveyjake
 Tags: club, teams, sports, sports club, club management, club website, league management, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.7
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 2.1.10-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
