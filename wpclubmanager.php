@@ -7,7 +7,7 @@
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
  * Requires at least: 4.7
- * Tested up to: 5.3
+ * Tested up to: 5.4
  * 
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
