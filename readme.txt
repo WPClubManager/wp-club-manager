@@ -9,7 +9,7 @@ Stable tag: 2.1.11-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WP Club Manager is easy to set-up and has everything you need to build and manage a pro sports club or league website.
+WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club or league website.
 
 == Description ==
 = Build A Pro Sports Club or League Website =
@@ -168,7 +168,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.11 013/05/2020
+= 2.1.11 13/05/2020
 
 * Tweak - Added Classic Editor activation
 
