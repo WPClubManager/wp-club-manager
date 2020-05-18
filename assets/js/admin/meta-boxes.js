@@ -321,7 +321,7 @@ jQuery( function($){
 		});
 	}).trigger( 'wpcm-init-datepickers' );
 
-	$('.wpcm-time-picker').timepicker({
+	$('.wpcm-time-picker').jquery_timepicker({
 		timeFormat: 'H:i',
 		step: '15'
 	});
