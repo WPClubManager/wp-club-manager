@@ -168,9 +168,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.11 13/05/2020
+= 2.1.11 18/05/2020
 
-* Tweak - Added Classic Editor activation
+* Fix - Fixed media uploader
+* Fix - Fixed timepicker display
+* Tweak - Added Classic Editor activation tool
 
 = 2.1.10 01/05/2020
 
