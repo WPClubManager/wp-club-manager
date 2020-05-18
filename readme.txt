@@ -1,14 +1,15 @@
 === WP Club Manager - WordPress Sports Club Plugin===
 Contributors: clubpress, leonterry, daveyjake
-Tags: club, teams, sports, sports club, club management, club website, league management, league tables, team rosters, fixtures, results
+Tags: club, teams, sport, sports club, club management, club website, league management, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
-Requires at least: 4.7
+Requires at least: 4.9
 Tested up to: 5.4
-Stable tag: 2.1.10
+Requires PHP: 5.6
+Stable tag: 2.1.11-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WP Club Manager is easy to set-up and has everything you need to build and manage a pro sports club or league website.
+WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club or league website.
 
 == Description ==
 = Build A Pro Sports Club or League Website =
@@ -166,6 +167,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.1.11 18/05/2020
+
+* Fix - Fixed media uploader
+* Fix - Fixed timepicker display
+* Tweak - Added Classic Editor activation tool
 
 = 2.1.10 01/05/2020
 

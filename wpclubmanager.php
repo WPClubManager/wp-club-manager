@@ -1,14 +1,11 @@
 <?php
 /**
  * Plugin Name: WP Club Manager
- * Version: 2.1.10
  * Plugin URI: https://wpclubmanager.com
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Requires at least: 4.7
- * Tested up to: 5.4
- * 
+ * Version: 2.1.10
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  *
@@ -101,6 +98,7 @@ final class WPClubManager {
 		add_action( 'after_setup_theme', array( $this, 'wpcm_template_debug_mode' ), 20 );
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_action( 'init', array( 'WPCM_Shortcodes', 'init' ) );
+		add_action( 'tgmpa_register', array( $this, 'wp_club_manager_register_required_plugins' ) );
 
 		do_action( 'wpclubmanager_loaded' );
 	}
@@ -197,6 +195,7 @@ final class WPClubManager {
 		include_once( 'includes/class-wpcm-post-types.php' );
 		include_once( 'includes/class-wpcm-countries.php' );
 		include_once( 'includes/class-wpcm-license-handler.php' );
+		include_once( 'includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php' );
 	}
 
 	/**
@@ -262,7 +261,7 @@ final class WPClubManager {
 	}
 
 	/**
-	 * Init WooCommerce when WordPress Initialises.
+	 * Init WPClubManager when WordPress Initialises.
 	 *
 	 * @access public
 	 * @return void
@@ -336,6 +335,53 @@ final class WPClubManager {
 		add_image_size( 'staff_single', $staff_single['width'], $staff_single['height'], $staff_single['crop'] );
 		add_image_size( 'club_thumbnail', $club_thumbnail['width'], $club_thumbnail['height'], $club_thumbnail['crop'] );
 		add_image_size( 'club_single', $club_single['width'], $club_single['height'], $club_single['crop'] );
+	}
+
+	/**
+	 * This file represents an example of the code that themes would use to register
+	 * the required plugins.
+	 *
+	 * It is expected that theme authors would copy and paste this code into their
+	 * functions.php file, and amend to suit.
+	 *
+	 * @see http://tgmpluginactivation.com/configuration/ for detailed documentation.
+	 *
+	 * @package    TGM-Plugin-Activation
+	 * @subpackage Example
+	 * @version    2.6.1 for plugin Wp Club Manager
+	 * @author     Thomas Griffin, Gary Jones, Juliette Reinders Folmer
+	 * @copyright  Copyright (c) 2011, Thomas Griffin
+	 * @license    http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
+	 * @link       https://github.com/TGMPA/TGM-Plugin-Activation
+	 * 
+	 * @since 2.1.11
+	 */
+	public function wp_club_manager_register_required_plugins() {
+	
+		$plugins = array(
+	
+			array(
+				'name'         => 'Classic Editor', 
+				'slug'         => 'classic-editor',
+				'required'     => true,
+			)
+	
+		);
+	
+		$config = array(
+			'id'           => 'wp-club-manager', 
+			'default_path' => '', 
+			'menu'         => 'tgmpa-install-plugins',
+			'parent_slug'  => 'plugins.php',
+			'capability'   => 'manage_options',
+			'has_notices'  => true,
+			'dismissable'  => true,
+			'dismiss_msg'  => '',
+			'is_automatic' => false,
+			'message'      => '',
+		);
+	
+		tgmpa( $plugins, $config );
 	}
 
 	/** Helper functions ******************************************************/

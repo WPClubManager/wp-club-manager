@@ -42,7 +42,7 @@ jQuery(window).load(function(){
 		return false;
 	});
 
-	jQuery('.wpcm-default-time-picker').timepicker({
+	jQuery('.wpcm-default-time-picker').jquery_timepicker({
 		timeFormat: 'H:i',
 		step: '15',
 		scrollDefault: '15:00'
