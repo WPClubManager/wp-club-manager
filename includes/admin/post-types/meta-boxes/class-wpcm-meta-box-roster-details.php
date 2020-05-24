@@ -33,7 +33,7 @@ class WPCM_Meta_Box_Roster_Details {
 			$team = $teams[0]->term_id;
 		} else {
 			$team = -1;
-		} ?>
+        }?>
         
         <p>
             <label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
