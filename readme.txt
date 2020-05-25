@@ -168,6 +168,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
+= 2.1.12 TBC
+
+* Fix - Fixed terms setup from wizard
+* Fix - Fixed columns default setup
+
 = 2.1.11 18/05/2020
 
 * Fix - Fixed media uploader
