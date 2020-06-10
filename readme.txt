@@ -1,19 +1,19 @@
 === WP Club Manager - WordPress Sports Club Plugin===
 Contributors: clubpress, leonterry, daveyjake
-Tags: club, teams, sport, sports club, club management, club website, league management, league tables, team rosters, fixtures, results
+Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 2.1.12-beta
+Stable tag: 2.2.0-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club or league website.
+WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club website.
 
 == Description ==
-= Build A Pro Sports Club or League Website =
-WP Club Manager is a sports plugin used to create and manage a club or league website with WordPress. Quick and easy to set-up, you can manage clubs, player profiles and performance data, staff, sponsors, league tables, keep track of your fixtures and results and loads more.
+= Build A Pro Sports Club Website =
+WP Club Manager is a sports plugin used to create and manage a club website with WordPress. Quick and easy to set-up, you can manage clubs, player profiles and performance data, staff, sponsors, league tables, keep track of your fixtures and results and loads more.
 
 = Endorsed by USA Rugby =
 
@@ -22,12 +22,11 @@ Davey Jacobson, *Information Systems Developer*, [USA Rugby](https://www.usa.rug
 
 = Features Include =
 
-* Club or League Mode
 * Manage multiple teams in your club
 * Player and staff profiles
 * Player performance ratings
 * Full player statistics
-* Club profiles with club stats
+* Inofrmative club profiles with club stats
 * Fixtures and results
 * Automatically updated league tables
 * Match statistics and reports
@@ -168,10 +167,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.1.12 TBC
+= 2.2.0 TBC
 
-* Fix - Fixed terms setup from wizard
-* Fix - Fixed columns default setup
+* New - Added OpenStreetMaps service option
+* Fix - Fixed terms positioning when using setup wizard
+* Fix - Fixed league table columns default setup
+* Fix - Removed season submenu from Matches
 
 = 2.1.11 18/05/2020
 
