@@ -48,7 +48,12 @@ class WPCM_Shortcode_Map_Venue {
 		if ( '' === $address ) $address = '+';
 		if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
-		$api_key = get_option( 'wpcm_google_map_api' );
+		$key = get_option( 'wpcm_map_select', 'google' );
+		if( $key == 'osm' ) {
+			$api_key = get_option( 'wpcm_mapbox_api' );
+		} else {
+			$api_key = get_option( 'wpcm_google_map_api' );
+		}
 
 		//ob_start();
 
