@@ -32,6 +32,12 @@ class WPCM_Frontend_Scripts {
 				'version' => WPCM_VERSION,
 				'media'   => 'all'
 			),
+			'leaflet-styles' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/js/leaflet/leaflet.css',
+				'deps'    => '',
+				'version' => '1.6.0',
+				'media'   => 'all'
+			),
 		) );
 	}
 
@@ -51,6 +57,8 @@ class WPCM_Frontend_Scripts {
 		$frontend_script_path = $assets_path . 'js/frontend/';
 
 		wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
+
+		wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
 
 		// Global frontend scripts
 		wp_enqueue_script( 'wpclubmanager', $frontend_script_path . 'wpclubmanager.js', array( 'jquery' ), WPCM_VERSION, true );
