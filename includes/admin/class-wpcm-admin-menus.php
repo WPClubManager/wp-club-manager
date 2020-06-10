@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -45,6 +45,7 @@ class WPCM_Admin_Menus {
 		remove_submenu_page('edit.php?post_type=wpcm_staff', 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_staff');
 		remove_submenu_page('edit.php?post_type=wpcm_club', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_club');
 		remove_submenu_page('edit.php?post_type=wpcm_club', 'edit-tags.php?taxonomy=wpcm_comp&amp;post_type=wpcm_club');
+		remove_submenu_page('edit.php?post_type=wpcm_match', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_match');
 	}
 
 	/**
