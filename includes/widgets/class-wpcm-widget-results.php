@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	2.1.0
+ * @version 	2.1.12
  * @extends 	WPCM_Widget
  */
 
@@ -241,7 +241,11 @@ class WPCM_Results_Widget extends WPCM_Widget {
 			while ( $results->have_posts() ) : $results->the_post();
 
 				$post = get_the_ID();
-				$sides = wpcm_get_match_clubs( $post );
+				if( $show_abbr == 1 ) {
+					$sides = wpcm_get_match_clubs( $post, true );
+				}else{
+					$sides = wpcm_get_match_clubs( $post );
+				}
 				$badges = wpcm_get_match_badges( $post, 'crest-medium' );
 				$comp = wpcm_get_match_comp( $post );
 				$team = wpcm_get_match_team( $post );
@@ -253,9 +257,6 @@ class WPCM_Results_Widget extends WPCM_Widget {
 		    	$show_score = ! empty( $instance['show_score'] );
 		    	$show_comp = ! empty( $instance['show_comp'] );
 				$show_team = ! empty( $instance['show_team'] );
-				if( $show_abbr == 1 ) {
-					$sides = wpcm_get_match_clubs( $post, true );
-				}
 
 				wpclubmanager_get_template( 'content-widget-results.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'score' => $score, 'show_abbr' => $show_abbr, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, 'show_score' => $show_score, 'played' => $played ) );
 
