@@ -280,6 +280,13 @@ class WPCM_Admin_Setup_Wizard {
 			WPCM_Admin_Settings::configure_sport( $sport );
 			$club_sport = sanitize_text_field( $_POST['club_sport'] );
 			update_option( 'wpcm_sport', $club_sport );
+			// Set table columns
+			$cols = wpcm_get_preset_labels( 'standings' );
+			foreach( $cols as $col => $val ) {
+				$columns[] = $col;
+			}
+			$default_cols = implode( $columns, ',' );
+			update_option( 'wpcm_standings_columns_display', $default_cols);
 		}
 
 		wpcm_flush_rewrite_rules();
