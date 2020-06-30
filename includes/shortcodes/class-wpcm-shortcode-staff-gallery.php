@@ -109,7 +109,7 @@ class WPCM_Shortcode_Staff_Gallery {
 					if ( has_post_thumbnail( $employee->ID ) ) {
 						$thumb = get_the_post_thumbnail( $employee->ID, 'player-medium' );
 					} else {
-						$thumb = wpcm_placeholder_img( $size = 'player_medium' );
+						$thumb = wpcm_placeholder_img( $size = 'full' );
 					}
 
 					$employee_details[$employee->ID]['image'] = '<a href="' . get_permalink( $employee->ID ) . '">' . $thumb . '</a>';
