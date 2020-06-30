@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.1.5
+ * @version     2.2.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -55,10 +55,13 @@ class WPCM_Frontend_Scripts {
 		$suffix               = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$assets_path          = str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/';
 		$frontend_script_path = $assets_path . 'js/frontend/';
+		$map_service = get_option( 'wpcm_map_select', 'google' );
 
-		wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
-
-		wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
+		if( $map_service == 'google' ) {
+			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
+		} elseif( $map_service == 'osm' ) {
+			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
+		}
 
 		// Global frontend scripts
 		wp_enqueue_script( 'wpclubmanager', $frontend_script_path . 'wpclubmanager.js', array( 'jquery' ), WPCM_VERSION, true );
