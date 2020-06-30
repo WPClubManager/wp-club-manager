@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -114,12 +114,12 @@ class WPCM_Shortcode_Player_Gallery {
 					if ( has_post_thumbnail( $player->ID ) ) {
 						$thumb = get_the_post_thumbnail( $player->ID, 'player-medium' );
 					} else {
-						$thumb = '<img src="' . get_template_directory_uri() . '/includes/images/player-medium.jpg"/>';
+						$thumb = wpcm_placeholder_img( $size = 'player_medium' );
 					}
 
 					$player_details[$player->ID]['image'] = '<a href="' . get_permalink( $player->ID ) . '">' . $thumb . '</a>';
 
-					$player_details[$player->ID]['title'] = '<a href="' . get_permalink( $player->ID ) . '">' . $player->post_title . '</a>';
+					$player_details[$player->ID]['title'] = '<a href="' . get_permalink( $player->ID ) . '">' . get_player_title( $player->ID, $name_format ) . '</a>';
 
 					if ( array_key_exists( $orderby, $player_stats_labels ) )  {
 						if ( $team ) {
