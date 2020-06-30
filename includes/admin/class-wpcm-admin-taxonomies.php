@@ -3,7 +3,7 @@
  * Handles taxonomies in admin
  *
  * @class 		WPCM_Admin_Taxonomies
- * @version		2.0.1
+ * @version		2.2.0
  * @package		WPClubManager/Admin
  * @category	Class
  * @author 		ClubPress
@@ -319,28 +319,30 @@ class WPCM_Admin_Taxonomies {
 			$latitude = $term_meta['wpcm_latitude'];
 			$longitude = $term_meta['wpcm_longitude'];
 		} else {
-			$address = __( 'London Stadium, London E20 2ST', 'wp-club-manager' );
+			$address = 'London Stadium, London, E20 2ST UK';
 			$latitude = '51.5391098892326';
 			$longitude = '-0.016526945751934363';
 		}
+		$map_service = get_option( 'wpcm_map_select', 'google' );
 		?>
 
 		<div class="form-field">
 			<label for="term_meta[wpcm_address]"><?php _e('Venue Address', 'wp-club-manager'); ?></label>
 			<input type="text" class="wpcm-address" name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" value="<?php echo esc_attr( $address ); ?>">
-			<p><div class="wpcm-location-picker"></div></p>
-			<p class="description">
-				<?php _e( "Drag the marker to the venue's location.", 'wp-club-manager' ); ?>
-			</p>
+			<?php
+			if( $map_service == 'google' ) { ?>
+				<p><div class="wpcm-location-picker"></div></p>
+				<p class="description">
+					<?php _e( "Drag the marker to the venue's location.", 'wp-club-manager' ); ?>
+				</p>
+			<?php
+			} ?>
 		</div>
-		<div class="form-field">
-			<label for="term_meta[wpcm_latitude]"><?php _e('Latitude', 'wp-club-manager'); ?></label>
-			<input type="text" class="wpcm-latitude" name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
-		</div>
-		<div class="form-field">
-			<label for="term_meta[wpcm_longitude]"><?php _e('Longitude', 'wp-club-manager'); ?></label>
-			<input type="text" class="wpcm-longitude" name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
-		</div>
+		
+		<input type="hidden" class="wpcm-latitude" name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo esc_attr( $latitude ); ?>">
+
+		<input type="hidden" class="wpcm-longitude" name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo esc_attr( $longitude ); ?>">
+
 		<div class="form-field">
 			<label for="term_meta[wpcm_capacity]"><?php _e('Venue Capacity', 'wp-club-manager'); ?></label>
 			<input name="term_meta[wpcm_capacity]" id="term_meta[wpcm_capacity]" type="text" value="<?php echo (isset($term_meta['wpcm_capacity'])&&!empty($term_meta['wpcm_capacity'])) ? $term_meta['wpcm_capacity'] : '' ?>" size="8">
@@ -360,37 +362,42 @@ class WPCM_Admin_Taxonomies {
 		$term_meta = get_option( "taxonomy_term_$t_id" );
 		$address = $term_meta['wpcm_address'];
 		if( $address ) {
-			$coordinates = wpcm_decode_address( $address );
-			if ( is_array ( $coordinates ) ) {
-				$latitude = $coordinates['lat'];
-				$longitude = $coordinates['lng'];
-			}
+			$coordinates = new WPCM_Geocoder( $address );
+			$latitude = $coordinates->lat;
+			$longitude = $coordinates->lng;
 		}
-		//$latitude = '51.5391098892326';
-		//$longitude = '-0.016526945751934363'; ?>
+
+		// $t_id = $tag->term_id;
+		// $term_meta = get_option( "taxonomy_term_$t_id" );
+		// $address = $term_meta['wpcm_address'];
+		// if( $address ) {
+		// 	$coordinates = wpcm_decode_address( $address );
+		// 	if ( is_array ( $coordinates ) ) {
+		// 		$latitude = $coordinates['lat'];
+		// 		$longitude = $coordinates['lng'];
+		// 	}
+		// }
+		$map_service = get_option( 'wpcm_map_select', 'google' );?>
 		
 		<tr class="form-field">
 			<th scope="row" valign="top"><label for="term_meta[wpcm_address]"><?php _e( 'Address', 'wp-club-manager' ); ?></label></th>
 			<td>
 				<input type="text" class="wpcm-address" name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" value="<?php echo (isset($term_meta['wpcm_address'])&&!empty($term_meta['wpcm_address'])) ? $term_meta['wpcm_address'] : '' ?>">
-				<p><div class="wpcm-location-picker"></div></p>
-				<p class="description">
-					<?php _e( "Drag the marker to the venue's location.", 'wp-club-manager' ); ?>
-				</p>
+				<?php
+				if( $map_service == 'google' ) { ?>
+					<p><div class="wpcm-location-picker"></div></p>
+					<p class="description">
+						<?php _e( "Drag the marker to the venue's location.", 'wp-club-manager' ); ?>
+					</p>
+					<?php
+				} ?>
 			</td>
 		</tr>
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[wpcm_latitude]"><?php _e( 'Latitude', 'wp-club-manager' ); ?></label></th>
-			<td>
-				<input type="text" class="wpcm-latitude" name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo (isset($term_meta['wpcm_latitude'])&&!empty($term_meta['wpcm_latitude'])) ? $term_meta['wpcm_latitude'] : $latitude ?>">
-			</td>
-		</tr>
-		<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_meta[wpcm_longitude]"><?php _e( 'Longitude', 'wp-club-manager' ); ?></label></th>
-			<td>
-				<input type="text" class="wpcm-longitude" name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo (isset($term_meta['wpcm_longitude'])&&!empty($term_meta['wpcm_longitude'])) ? $term_meta['wpcm_longitude'] : $longitude ?>">
-			</td>
-		</tr>
+
+		<input type="hidden" <?php echo $map_service == 'google' ? 'class="wpcm-latitude"' : '' ; ?> name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo (isset($term_meta['wpcm_latitude'])&&!empty($term_meta['wpcm_latitude'])) ? $term_meta['wpcm_latitude'] : $latitude ?>">
+
+		<input type="hidden" <?php echo $map_service == 'google' ? 'class="wpcm-longitude"' : '' ; ?> name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo (isset($term_meta['wpcm_longitude'])&&!empty($term_meta['wpcm_longitude'])) ? $term_meta['wpcm_longitude'] : $longitude ?>">
+		
 		<tr class="form-field">
 			<th scope="row" valign="top">
 				<label for="term_meta[wpcm_capacity]"><?php _e('Venue Capacity', 'wp-club-manager'); ?></label>
@@ -409,17 +416,38 @@ class WPCM_Admin_Taxonomies {
 	 * @return array
 	 */
 	public function save_venue_extra_fields( $term_id ) {
-		
-		if ( isset( $_POST['term_meta'] ) ) {
-			$t_id = $term_id;
-			$term_meta = get_option( "taxonomy_term_$t_id" );
-			$cat_keys = array_keys( $_POST['term_meta'] );
-				foreach ( $cat_keys as $key ){
-				if ( isset( $_POST['term_meta'][$key] ) ){
-					$term_meta[$key] = $_POST['term_meta'][$key];
-				}
+
+		$map_service = get_option( 'wpcm_map_select', 'google' );
+
+		if( $map_service == 'osm' ) {
+
+			if( isset( $_POST['term_meta'] ) ) {
+				$t_id = $term_id;
+				$term_meta = get_option( "taxonomy_term_$t_id" );
+				$address = $_POST['term_meta']['wpcm_address'];
+				$location = new WPCM_Geocoder( $address );
+				$lat = $location->lat;
+				$lng = $location->lng;
+				$term_meta['wpcm_address'] = $_POST['term_meta']['wpcm_address'];
+				$term_meta['wpcm_latitude'] = $lat;
+				$term_meta['wpcm_longitude'] = $lng;
+				$term_meta['wpcm_capacity'] = $_POST['term_meta']['wpcm_capacity'];
+				update_option( 'taxonomy_term_' . $t_id, $term_meta );
 			}
-			update_option( "taxonomy_term_$t_id", $term_meta );
+
+		} else {
+		
+			if ( isset( $_POST['term_meta'] ) ) {
+				$t_id = $term_id;
+				$term_meta = get_option( "taxonomy_term_$t_id" );
+				$cat_keys = array_keys( $_POST['term_meta'] );
+					foreach ( $cat_keys as $key ){
+					if ( isset( $_POST['term_meta'][$key] ) ){
+						$term_meta[$key] = $_POST['term_meta'][$key];
+					}
+				}
+				update_option( "taxonomy_term_$t_id", $term_meta );
+			}
 		}
 	}
 
