@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.1.10
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -75,9 +75,10 @@ class WPCM_Admin_Assets {
 		$wpcm_screen_id = strtolower( __( 'WPClubManager', 'wp-club-manager' ) );
 		$suffix       	= defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$api_key      	= get_option( 'wpcm_google_map_api');
+		$map			= get_option( 'wpcm_map_select', 'google' );
 
 		// Register scripts
-		wp_register_script( 'wpclubmanager_admin', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_admin' . $suffix . '.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-ui-sortable' ), WPCM_VERSION );
+		wp_register_script( 'wpclubmanager_admin', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_admin.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-ui-sortable' ), WPCM_VERSION );
 
 		wp_register_script( 'ajax-chosen', WPCM()->plugin_url() . '/assets/js/jquery-chosen/ajax-chosen.jquery' . $suffix . '.js', array('jquery', 'chosen'), WPCM_VERSION );
 
@@ -115,7 +116,7 @@ class WPCM_Admin_Assets {
 		}
 
 		// Edit venue pages
-	    if ( in_array( $screen_id, array( 'edit-wpcm_venue' ) ) ) {
+	    if ( in_array( $screen_id, array( 'edit-wpcm_venue' ) ) && $map == 'google' ) {
 	    	wp_enqueue_script( 'google-maps' );
 	    	wp_enqueue_script( 'jquery-locationpicker' );
 	    	wp_enqueue_script( 'wpclubmanager-admin-locationpicker' );
