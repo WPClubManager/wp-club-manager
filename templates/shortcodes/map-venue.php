@@ -4,7 +4,7 @@
  *
  * @author 		Clubpress
  * @package 	WPClubManager/Templates
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -13,26 +13,48 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 <div class="wpcm-map_venue-shortcode wpcm-map-venue">
 
     <?php echo ( $title ? '<h3>' . $title . '</h3>' : ''); 
-    
-    $map_service = get_option( 'wpcm_map_select', 'google' );
-    if( $map_service == 'osm' ) { ?>
 
-        <div id="mapid" style="height:280px;"></div>
+    if( $service == 'osm' ) { ?>
+        
+        <div id="wpcm-osm-map" style="height:<?php echo $height; ?>px;"></div>
 
         <script>
 
-            var mymap = L.map('mapid').setView([<?php echo $latitude; ?>, <?php echo $longitude; ?>], <?php echo $zoom; ?>);
+            var mapOptions = {
+                center: [<?php echo $latitude; ?>, <?php echo $longitude; ?>],
+                zoom: <?php echo $zoom; ?>
+            }
+            var wpcm_map = new L.map('wpcm-osm-map', mapOptions);
+            var myIcon = new L.Icon.Default();
+            myIcon.options.shadowSize = [0,0];
+            var marker = L.marker([<?php echo $latitude; ?>, <?php echo $longitude; ?>], {icon: myIcon});
+            
+            <?php
+            if( $layers === 'mapbox' ) { ?>
 
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: '<?php echo $api_key; ?>'
-            }).addTo(mymap);
+                var layer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    maxZoom: 18,
+                    id: '<?php echo $maptype; ?>',
+                    tileSize: 512,
+                    zoomOffset: -1,
+                    accessToken: '<?php echo $api_key; ?>'
+                });
 
-        </script>
+            <?php
+            } else { ?>
+
+                var layer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+                });
+
+            <?php
+            } ?>
+            
+            wpcm_map.addLayer(layer);
+            marker.addTo(wpcm_map);
+
+      </script>
 
     <?php
     } else { ?>
