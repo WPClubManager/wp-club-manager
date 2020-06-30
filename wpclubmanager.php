@@ -196,6 +196,7 @@ final class WPClubManager {
 
 		include_once( 'includes/class-wpcm-post-types.php' );
 		include_once( 'includes/class-wpcm-countries.php' );
+		include_once( 'includes/class-wpcm-geocoder.php' );
 		include_once( 'includes/class-wpcm-license-handler.php' );
 		include_once( 'includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php' );
 	}
