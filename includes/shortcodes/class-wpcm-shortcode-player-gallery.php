@@ -114,7 +114,7 @@ class WPCM_Shortcode_Player_Gallery {
 					if ( has_post_thumbnail( $player->ID ) ) {
 						$thumb = get_the_post_thumbnail( $player->ID, 'player-medium' );
 					} else {
-						$thumb = wpcm_placeholder_img( $size = 'player_medium' );
+						$thumb = wpcm_placeholder_img( $size = 'full' );
 					}
 
 					$player_details[$player->ID]['image'] = '<a href="' . get_permalink( $player->ID ) . '">' . $thumb . '</a>';
