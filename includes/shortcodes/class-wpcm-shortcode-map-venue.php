@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -32,30 +32,52 @@ class WPCM_Shortcode_Map_Venue {
 
 		$term_meta = get_option( "taxonomy_term_$id" );
 		$address = $term_meta['wpcm_address'];
+
 		$latitude = ( isset( $term_meta['wpcm_latitude'] ) ? $term_meta['wpcm_latitude'] : null );
 		$longitude = ( isset( $term_meta['wpcm_longitude'] ) ? $term_meta['wpcm_longitude'] : null );
+
         if ( $latitude == null && $longitude == null ) {
-			$coordinates = wpcm_decode_address( $address );
-			if ( is_array ( $coordinates ) ) {
-				$latitude = $coordinates['lat'];
-				$longitude = $coordinates['lng'];
-			}
+
+			$coordinates = new WPCM_Geocoder( $address );
+				$latitude = $coordinates->lat;
+				$longitude = $coordinates->lng;
+				
 		}
-        $address = urlencode($address);
+
+        //$address = urlencode($address);
+		//$maptype = strtolower( $maptype );
+		//if ( '' === $address ) $address = '+';
+		//if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
+
+		$service = get_option( 'wpcm_map_select', 'google' );
 		$zoom = get_option( 'wpcm_map_zoom', 15 );
-		$maptype = get_option( 'wpcm_map_type', 'roadmap' );
-		$maptype = strtolower( $maptype );
-		if ( '' === $address ) $address = '+';
-		if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
-		$key = get_option( 'wpcm_map_select', 'google' );
-		if( $key == 'osm' ) {
-			$api_key = get_option( 'wpcm_mapbox_api' );
+		if( $service == 'osm' ) {
+
+			//$assets_path = WPCM()->plugin_url() . '/assets/';
+			//wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js', array(), '1.6.0', false );
+
+			$layers = get_option( 'wpcm_osm_layer', 'standard' );
+
+			if( $layers = 'mapbox' ){
+
+				$api_key = get_option( 'wpcm_mapbox_api' );
+				$maptype = get_option( 'wpcm_mapbox_type', 'mapbox/streets-v11' );
+
+			} else {
+
+				$api_key = false;
+				$maptype = false;
+			}
+
 		} else {
-			$api_key = get_option( 'wpcm_google_map_api' );
-		}
 
-		//ob_start();
+			$address = urlencode($address);
+			$api_key = get_option( 'wpcm_google_map_api' );
+			$maptype = get_option( 'wpcm_map_type', 'roadmap' );
+			$layers = '';
+
+		}
 
 		if ( $latitude != null && $longitude != null ) {
 
@@ -68,12 +90,12 @@ class WPCM_Shortcode_Map_Venue {
 				'latitude' 	=> $latitude,
 				'zoom' 		=> $zoom,
 				'maptype' 	=> $maptype,
-				'api_key'	=> $api_key
+				'api_key'	=> $api_key,
+				'service' 	=> $service,
+				'layers'	=> $layers
 			) );
 
 		}
-		
-		//return ob_get_clean();
         
     }
 }
