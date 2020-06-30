@@ -5,7 +5,7 @@
  * AJAX Event Handler
  *
  * @class 		WPCM_AJAX
- * @version		2.1.0
+ * @version		2.2.0
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -26,6 +26,7 @@ class WPCM_AJAX {
 			'player_list_shortcode' => false,
 			'player_gallery_shortcode' => false,
 			'staff_list_shortcode' => false,
+			'staff_gallery_shortcode' => false,
 			'league_table_shortcode' => false,
 			'map_venue_shortcode' => false,
 			'rated' => false
@@ -771,6 +772,118 @@ class WPCM_AJAX {
 	}
 
 	/**
+	* staff_list_shortcode_ajax function.
+	*/
+	public function staff_gallery_shortcode() { ?>
+		
+		<div id="wpcm-thickbox-player_gallery" class="wrap wpcm-thickbox-content">
+			<p>
+				<label for="title"><?php _e( 'Title', 'wp-club-manager' ); ?></label>
+				<input type="text" name="title" class="regular-text" />
+			</p>
+			<p>
+				<label for="id"><?php _e( 'Roster', 'wp-club-manager' ); ?></label>
+				<?php
+				wpcm_dropdown_posts( array(
+					'name' 				=> 'id',
+					'id' 				=> 'id',
+					'post_type' 		=> 'wpcm_roster',
+					'limit' 			=> -1,
+					'class'				=> 'chosen_select'
+				));
+				?>
+			</p>
+			<p>
+				<label for="limit"><?php _e( 'Limit', 'wp-club-manager' ); ?></label>
+				<input type="number" id="limit" name="limit" value="" size="3" />
+			</p>
+			
+			<p>
+				<label for="position"><?php _e( 'Job', 'wp-club-manager' ); ?></label>
+				<?php
+				$args = array(
+					'taxonomy' => 'wpcm_jobs',
+					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'option_none_value' => '',
+					'name' => 'jobs',
+					'value_field' => 'term_id',
+					'orderby' => 'tax_position',
+					'meta_key' => 'tax_position',
+					'hide_empty' => false
+				);
+				wp_dropdown_categories( $args );
+				?>
+			</p>
+			<p>
+				<label><?php _e( 'Sort by', 'wp-club-manager' ); ?></label>
+				<select id="orderby" name="orderby">
+					<option value="name"><?php _e( 'Alphabetical', 'wp-club-manager' ); ?></option>
+					<option value="menu_order"><?php _e( 'Page order', 'wp-club-manager' ); ?></option>
+					<?php foreach ( $player_stats_names as $key => $val ) { ?>
+						<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+					<?php } ?>
+				</select>
+			</p>
+			<p>
+				<label for="order"><?php _e( 'Order', 'wp-club-manager' ); ?></label>
+				<select id="order" name="order">
+					<option value="ASC"><?php _e( 'Ascending', 'wp-club-manager' ); ?></option>
+					<option value="DESC"><?php _e( 'Descending', 'wp-club-manager' ); ?></option>
+				</select>
+			</p>
+			<?php
+			$columns = array(
+				'2' => __( '2', 'wp-club-manager' ),
+				'3' => __( '3', 'wp-club-manager' ),
+				'4' => __( '4', 'wp-club-manager' ),
+				'5' => __( '5', 'wp-club-manager' ),
+				'6' => __( '6', 'wp-club-manager' )
+			);
+			?>
+			<p>
+				<label for="columns"><?php _e( 'Number of Columns', 'wp-club-manager' ); ?></label>
+				<select id="columns" name="columns">
+					<?php foreach ( $columns as $key => $val ) { ?>
+						<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+					<?php } ?>
+				</select>
+			</p>
+			<p>
+				<label><?php _e( 'Name Format', 'wp-club-manager' ); ?></label>
+				<select id="name_format" name="name_format">
+					<option value="full"><?php _e( 'First Last', 'wp-club-manager' ); ?></option>
+					<option value="last"><?php _e( 'Last', 'wp-club-manager' ); ?></option>
+					<option value="initial"><?php _e( 'F. Last', 'wp-club-manager' ); ?></option>
+				</select>
+			</p>
+			<p>
+				<label for="linktext"><?php _e( 'Link text', 'wp-club-manager' ); ?></label>
+				<input type="text" id="linktext" name="linktext" />
+			</p>
+			<p>
+				<label for="linkpage"><?php _e( 'Link page', 'wp-club-manager' ); ?></label>
+				<?php
+				wp_dropdown_pages( array(
+					'show_option_none' => __( 'None', 'wp-club-manager' ),
+					'name' => 'linkpage',
+					'id' => 'linkpage'
+				) ); ?>
+			</p>
+
+			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'staff_gallery' ); ?>
+			<p class="submit">
+				<input type="button" id="option-submit" class="button-primary" value="<?php printf( __( 'Insert %s', 'wp-club-manager' ), __( 'Staff Gallery', 'wp-club-manager' ) ); ?>" onclick="insertWPClubManager('staff_gallery');" />
+				<a class="button-secondary" onclick="tb_remove();" title="<?php _e( 'Cancel', 'wp-club-manager' ); ?>"><?php _e( 'Cancel', 'wp-club-manager' ); ?></a>
+			</p>
+			
+		</div>
+
+		<?php
+		self::scripts();
+		die();
+	}
+
+	/**
 	* standings_table_shortcode_ajax function.
 	*/
 	public function league_table_shortcode() {
@@ -998,6 +1111,17 @@ class WPCM_AJAX {
 					args.linktext = $div.find('[name=linktext]').val();
 					args.linkpage = $div.find('[name=linkpage]').val();
 					args.columns = $div.find('[name="columns[]"]:checked').map(function() { return this.value; }).get().join(',');
+				} else if ( 'staff_gallery' == type ) {
+					args.title = $div.find('[name=title]').val();
+					args.id = $div.find('[name=id]').val();
+					args.limit = $div.find('[name=limit]').val();
+					args.jobs = $div.find('[name=jobs]').val();
+					args.orderby = $div.find('[name=orderby]').val();
+					args.order = $div.find('[name=order]').val();
+					args.linktext = $div.find('[name=linktext]').val();
+					args.linkpage = $div.find('[name=linkpage]').val();
+					args.columns = $div.find('[name=columns]').val();
+					args.name_format = $div.find('[name=name_format]').val();
 				} else if ( 'league_table' == type ) {
                     args.title = $div.find('[name=title]').val();
 					args.id = $div.find('[name=id]').val();
