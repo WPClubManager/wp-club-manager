@@ -167,12 +167,20 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.0 TBC
+= 2.2.0 30/06/2020
 
-* New - Added OpenStreetMaps service option
+* New - Added OpenStreetMaps option
+* New - Added Nominatim Geocoder for OpenStreetMaps
+* New - Added Staff Gallery shortcode
+* Tweak - Player dropdown on player profile now filters by current season
 * Fix - Fixed terms positioning when using setup wizard
 * Fix - Fixed league table columns default setup
-* Fix - Removed season submenu from Matches
+* Fix - Removed season submenu from Matches admin menu
+* Fix - Fixed subs not used de-selection issue
+* Fix - Fixed name formats in Player Gallery and Staff List shortcodes
+* Fix - Fixed player placeholder in Players Gallery shortcode
+* Template - '/shortcodes/map-venue.php' - Added OpenStreetMaps
+* Template - '/shortcodes/staff-gallery.php - New template
 
 = 2.1.11 18/05/2020
 
