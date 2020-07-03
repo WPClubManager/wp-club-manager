@@ -64,7 +64,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 				'title' 	=> __( 'Default Location', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_default_country',
 				'css' 		=> 'min-width:350px;',
-				'default'	=> 'EN',
+				'default'	=> 'us',
 				'type' 		=> 'single_select_country'
 			)
 		);
@@ -134,7 +134,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 		);
 
 		$settings[] = array(
-			'title' 	=> __( 'Map Type', 'wp-club-manager' ),
+			'title' 	=> __( 'Mapbox Layer Style', 'wp-club-manager' ),
 			'desc' 		=> '',
 			'id' 		=> 'wpcm_mapbox_type',
 			'default'	=> 'mapbox/streets-v11',
