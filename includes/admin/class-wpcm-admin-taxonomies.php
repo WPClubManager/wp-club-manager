@@ -228,7 +228,8 @@ class WPCM_Admin_Taxonomies {
 			"cb" => "<input type=\"checkbox\" />",
 			"move" => "",
 			"name" => __('Name', 'wp-club-manager'),
-			"label" => __('Label', 'wp-club-manager')
+			"label" => __('Label', 'wp-club-manager'),
+			"more" => __('Tax Order', 'wp-club-manager')
 		);
 
 		return $columns;
@@ -246,6 +247,7 @@ class WPCM_Admin_Taxonomies {
 		global $post;
 
 		$term_meta = get_option( "taxonomy_term_$t_id" );
+		$meta = get_term_meta( $t_id, 'tax_position', true );
 
 		switch ($column) {
 		case 'move':
@@ -253,6 +255,9 @@ class WPCM_Admin_Taxonomies {
 		break;
 		case 'label':
 			echo $term_meta['wpcm_comp_label'];
+		break;
+		case 'more':
+			echo $meta;
 		break;
 		}
 	}
@@ -269,7 +274,8 @@ class WPCM_Admin_Taxonomies {
 		$columns = array(
 			"cb" => "<input type=\"checkbox\" />",
 			"move" => "",
-			"name" => __('Name', 'wp-club-manager')
+			"name" => __('Name', 'wp-club-manager'),
+			"more" => "Tax Position Meta"
 		);
 
 		return $columns;
@@ -287,11 +293,15 @@ class WPCM_Admin_Taxonomies {
 		global $post;
 
 		$term_meta = get_option( "taxonomy_term_$t_id" );
+		$meta = get_term_meta( $t_id, 'tax_position', true );
 
 		switch ($column) {
 		case 'move':
 			echo '<i class="dashicons dashicons-move"></i>';
-			break;
+		break;
+		case 'more':
+			echo $meta;
+		break;
 		}
 	}
 
