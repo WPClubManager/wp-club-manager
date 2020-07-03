@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.0.4
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -77,10 +77,13 @@ class WPCM_Meta_Box_Match_Details {
 			<?php
 			wp_dropdown_categories(array(
 				//'show_option_none' => __( 'None' ),
-				'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-				'hide_empty' => false,
 				'taxonomy' => 'wpcm_comp',
+				'hide_empty' => false,
+				'meta_key' => 'tax_position',
+				'orderby' => 'tax_position',
+				//'meta_key' => 'tax_position',
+				// 'hide_empty' => false,
+				// 'taxonomy' => 'wpcm_comp',
 				'selected' => $comp,
 				'name' => 'wpcm_comp',
 				'class' => 'chosen_select'
@@ -93,10 +96,16 @@ class WPCM_Meta_Box_Match_Details {
 			<?php
 			wp_dropdown_categories(array(
 				//'show_option_none' => __( 'None' ),
-				'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-				'hide_empty' => false,
+				//'meta_key' => 'tax_position',
+				//'orderby' => 'tax_position',
+				//'meta_key' => 'tax_position',
+				//'hide_empty' => false,
 				'taxonomy' => 'wpcm_season',
+				'hide_empty' => false,
+				'meta_key' => 'tax_position',
+				//'orderby' => 'tax_position',
+				'meta_compare'  => 'NUMERIC',
+    			'orderby'       => 'meta_value_num',
 				'selected' => $season,
 				'name' => 'wpcm_season',
 				'class' => 'chosen_select'
@@ -111,7 +120,7 @@ class WPCM_Meta_Box_Match_Details {
 				wp_dropdown_categories(array(
 					//'show_option_all' => __( 'All' ),
 					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
+					//'meta_key' => 'tax_position',
 					'hide_empty' => false,
 					'taxonomy' => 'wpcm_team',
 					'selected' => $team,
