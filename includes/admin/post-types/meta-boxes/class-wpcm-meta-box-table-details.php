@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.1.3
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -51,10 +51,10 @@ class WPCM_Meta_Box_Table_Details {
             <label><?php _e( 'Competition', 'wp-club-manager' ); ?></label>
             <?php
             wp_dropdown_categories(array(
-                'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-                'hide_empty' => false,
                 'taxonomy' => 'wpcm_comp',
+                'meta_key' => 'tax_position',
+                'orderby' => 'tax_position',
+                'hide_empty' => false,
                 'selected' => $comp,
                 'name' => 'wpcm_table_comp',
                 'class' => 'chosen_select'
@@ -65,10 +65,10 @@ class WPCM_Meta_Box_Table_Details {
             <label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
             <?php
             wp_dropdown_categories(array(
-                'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-                'hide_empty' => false,
                 'taxonomy' => 'wpcm_season',
+                'meta_key' => 'tax_position',
+                'orderby' => 'tax_position',
+                'hide_empty' => false,
                 'selected' => $season,
                 'name' => 'wpcm_table_season',
                 'class' => 'chosen_select'
@@ -81,10 +81,10 @@ class WPCM_Meta_Box_Table_Details {
                 <label><?php _e( 'Team', 'wp-club-manager' ); ?></label>
                 <?php
                 wp_dropdown_categories(array(
-                    'orderby' => 'tax_position',
-                    'meta_key' => 'tax_position',
-                    'hide_empty' => false,
                     'taxonomy' => 'wpcm_team',
+                    'meta_key' => 'tax_position',
+                    'orderby' => 'tax_position',
+                    'hide_empty' => false,
                     'selected' => $team,
                     'name' => 'wpcm_table_team',
                     'class' => 'chosen_select'
