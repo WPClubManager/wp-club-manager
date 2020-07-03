@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.1.7
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -303,11 +303,20 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
 	    }
 	    if( !empty( $term_ids ) ) {
 
-	    	return get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids, 'meta_key' => 'tax_position', 'orderby' => 'tax_position' ) );
+	    	return get_terms( array( 
+				'taxonomy' => $taxonomy,
+				'include' => $term_ids,
+				//'meta_key' => 'tax_position',
+				'orderby' => 'tax_position'
+			) );
 
 	    } else {
 
-	    	return wp_get_object_terms( $post, $taxonomy, array('meta_key' => 'tax_position', 'orderby' => 'tax_position', 'order' => 'DESC' ) );
+	    	return wp_get_object_terms( $post, $taxonomy, array(
+				//'meta_key' => 'tax_position',
+				'orderby' => 'tax_position',
+				'order' => 'DESC'
+			) );
 	    	
 	    }
 
@@ -485,7 +494,7 @@ function get_the_seasons( $post ) {
 /**
  * Return current seaason.
  *
- * @since  2.1.5
+ * @since  2.2.0
  * @return array
  */
 function get_current_season() {
@@ -493,7 +502,7 @@ function get_current_season() {
 	$seasons = get_terms( array(
 		'taxonomy' => 'wpcm_season',
 		'orderby' => 'tax_position',
-		'meta_key' => 'tax_position',
+		//'meta_key' => 'tax_position',
 		'hide_empty' => false,
 	) );
 	$season = $seasons[0];
