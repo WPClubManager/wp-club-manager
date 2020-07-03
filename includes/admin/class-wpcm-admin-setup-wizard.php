@@ -202,7 +202,7 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_general() {
 		$mode          = get_option( 'wpcm_mode', 'club' );
-		$country       = get_option( 'wpcm_default_country', 'EN' );
+		$country       = get_option( 'wpcm_default_country', 'us' );
 		$sport         = get_option( 'wpcm_sport', 'soccer' );
 		$sport_options = wpcm_get_sport_options();
 		?>
