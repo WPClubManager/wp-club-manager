@@ -86,7 +86,7 @@ class WPCM_Admin_Assets {
 
 		wp_register_script( 'chosen', WPCM()->plugin_url() . '/assets/js/jquery-chosen/chosen.jquery' . $suffix . '.js', array('jquery'), '1.8.2' );
 
-		wp_register_script('wpcm-tax-order', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager_tax_order' . $suffix . '.js', array('jquery-ui-core', 'jquery-ui-sortable'), WPCM_VERSION );
+		//wp_register_script('wpcm-tax-order', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager-tax-drag-drop.js', array('jquery-ui-core', 'jquery-ui-sortable'), WPCM_VERSION );
 
 		wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=' . $api_key . '&libraries=places' );
 
