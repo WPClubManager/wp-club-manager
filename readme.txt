@@ -169,18 +169,22 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 = 2.2.0 30/06/2020
 
-* New - Added OpenStreetMaps option
+* New - Added OpenStreetMaps as an option for venue maps
 * New - Added Nominatim Geocoder for OpenStreetMaps
 * New - Added Staff Gallery shortcode
 * Tweak - Player dropdown on player profile now filters by current season
-* Fix - Fixed terms positioning when using setup wizard
+* Fix - Fixed taxonomy terms not appearing in dropdowns on setup
+* Fix - Fixed new seasons not registering in some instances
 * Fix - Fixed league table columns default setup
 * Fix - Removed season submenu from Matches admin menu
 * Fix - Fixed subs not used de-selection issue
 * Fix - Fixed name formats in Player Gallery and Staff List shortcodes
 * Fix - Fixed player placeholder in Players Gallery shortcode
+* Fix - Fixed 'Trying to access array offset' warning on match pages
+* Fix - Fixed missing venue address in Match Schema
 * Template - '/shortcodes/map-venue.php' - Added OpenStreetMaps
 * Template - '/shortcodes/staff-gallery.php - New template
+* Localisation - Updated wpclubmanager.pot
 
 = 2.1.11 18/05/2020
 
