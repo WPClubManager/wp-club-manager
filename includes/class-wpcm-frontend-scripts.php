@@ -85,7 +85,7 @@ class WPCM_Frontend_Scripts {
 	/**
 	 * Loads the JSON-LD structured data.
 	 *
-	 * @since  1.3
+	 * @since  2.2.0
 	 * @access public
 	 * @return void
 	 */
@@ -128,11 +128,13 @@ class WPCM_Frontend_Scripts {
 			if ( is_array( $venues ) ) {
 				$venue = reset($venues);
 				$t_id = $venue->term_id;
-				$venue_meta = get_option( 'taxonomy_term_$t_id' );
+				$venue_name = $venue->name;
+				$venue_meta = get_option( 'taxonomy_term_' . $t_id );
+			}
+			if( is_array( $venue_meta ) ) {
 				$address = $venue_meta['wpcm_address'];
 			} else {
-				$venue = null;
-				$address = null;
+				$address = '';
 			}
 
 			$data['@context'] = 'http://schema.org/';
@@ -142,7 +144,7 @@ class WPCM_Frontend_Scripts {
 			$data['url'] = $post_url;
 			$data['location'] = array(
 				'@type' => 'Place',
-				'name' => $venue->name,
+				'name' => $venue_name,
 				'address' => array(
 					'@type' => 'PostalAddress',
 					'name' => $address
