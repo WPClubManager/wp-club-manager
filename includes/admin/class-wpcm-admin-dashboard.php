@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.3
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -35,8 +35,8 @@ class WPCM_Admin_Dashboard {
 					} else {
 						$teams = get_terms( array(
 							'taxonomy' => 'wpcm_team',
-							'orderby' => 'tax_position',
 							'meta_key' => 'tax_position',
+							'orderby' => 'tax_position',
 							'hide_empty' => false,
 						) );
 						if( $teams ) {
@@ -52,8 +52,8 @@ class WPCM_Admin_Dashboard {
 					// Setup
 					$seasons = get_terms( array(
 						'taxonomy' => 'wpcm_season',
-						'orderby' => 'tax_position',
 						'meta_key' => 'tax_position',
+						'orderby' => 'tax_position',
 						'hide_empty' => false,
 					) );
 					$season = $seasons[0];
