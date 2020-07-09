@@ -52,9 +52,10 @@ class WPCM_Meta_Box_Table_Details {
             <?php
             wp_dropdown_categories(array(
                 'taxonomy' => 'wpcm_comp',
-                'meta_key' => 'tax_position',
-                'orderby' => 'tax_position',
                 'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $comp,
                 'name' => 'wpcm_table_comp',
                 'class' => 'chosen_select'
@@ -66,9 +67,10 @@ class WPCM_Meta_Box_Table_Details {
             <?php
             wp_dropdown_categories(array(
                 'taxonomy' => 'wpcm_season',
-                'meta_key' => 'tax_position',
-                'orderby' => 'tax_position',
                 'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $season,
                 'name' => 'wpcm_table_season',
                 'class' => 'chosen_select'
@@ -82,9 +84,10 @@ class WPCM_Meta_Box_Table_Details {
                 <?php
                 wp_dropdown_categories(array(
                     'taxonomy' => 'wpcm_team',
-                    'meta_key' => 'tax_position',
-                    'orderby' => 'tax_position',
                     'hide_empty' => false,
+                    'meta_key' => 'tax_position',
+		            'meta_compare'  => 'NUMERIC',
+    	            'orderby'       => 'meta_value_num',
                     'selected' => $team,
                     'name' => 'wpcm_table_team',
                     'class' => 'chosen_select'
