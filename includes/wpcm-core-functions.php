@@ -314,7 +314,9 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
 	    } else {
 
 	    	return wp_get_object_terms( $post, $taxonomy, array(
-				'orderby' => 'tax_position',
+				'meta_key' => 'tax_position',
+				'meta_compare' => 'NUMERIC',
+    			'orderby' => 'meta_value_num',
 				'order' => 'DESC'
 			) );
 	    	
@@ -512,25 +514,6 @@ function get_current_season() {
 	$current['slug'] = $season->slug;
 
 	return $current;
-}
-
-/**
- * Sort biggest score.
- *
- * @since  2.0.0
- * @return int
- */
-function sort_biggest_score( $a, $b ) {
-	
-	if( $a['gd'] == $b['gd'] ) {
-		if( $a['f'] == $b['f'] ) {
-			return 0;
-		} else {
-			return ($a['f'] < $b['f']) ? -1 : 1;
-		}
-	}
-	return ($a['gd'] < $b['gd']) ? -1 : 1;
-
 }
 
 /**
