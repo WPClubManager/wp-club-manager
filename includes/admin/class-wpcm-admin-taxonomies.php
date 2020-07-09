@@ -317,6 +317,8 @@ class WPCM_Admin_Taxonomies {
 		
 		global $post;
 
+		$term_meta = get_option( "taxonomy_term_$t_id" );
+
 		switch ($column) {
 		case 'move':
 			echo '<i class="dashicons dashicons-move"></i>';
