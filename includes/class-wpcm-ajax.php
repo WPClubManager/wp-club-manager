@@ -88,12 +88,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_comp',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'comp',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'class' => 'chosen_select',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -105,12 +106,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_season',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'season',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'class' => 'chosen_select',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args ); ?>
 			</p>
@@ -121,12 +123,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_team',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'team',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'class' => 'chosen_select',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -232,7 +235,7 @@ class WPCM_AJAX {
 			<p>
 				<label for="format"><?php _e( 'Status', 'wp-club-manager' ); ?></label>
 				<select id="format" name="format">
-					<option value=""><?php _e( 'All Matches', 'wp-club-manager' ); ?></option>
+					<option value=""><?php _e( 'All', 'wp-club-manager' ); ?></option>
 					<option value="fixtures"><?php _e( 'Fixtures Only', 'wp-club-manager' ); ?></option>
 					<option value="results"><?php _e( 'Results Only', 'wp-club-manager' ); ?></option>
 				</select>
@@ -246,14 +249,15 @@ class WPCM_AJAX {
 				<?php
 				$args = array(
 					'taxonomy' => 'wpcm_comp',
-					'show_option_none' => __( 'All Competitions', 'wp-club-manager' ),
+					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'comp',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'class' => 'chosen_select',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -263,14 +267,15 @@ class WPCM_AJAX {
 				<?php
 				$args = array(
 					'taxonomy' => 'wpcm_season',
-					'show_option_none' => __( 'All Seasons', 'wp-club-manager' ),
+					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'season',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'class' => 'chosen_select',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args ); ?>
 			</p>
@@ -281,14 +286,15 @@ class WPCM_AJAX {
 					<?php
 					$args = array(
 						'taxonomy' => 'wpcm_team',
-						'show_option_none' => __( 'All Teams', 'wp-club-manager' ),
+						'show_option_none' => __( 'All', 'wp-club-manager' ),
 						'option_none_value' => '',
+						'hide_empty' => false,
+                		'meta_key' => 'tax_position',
+		        		'meta_compare'  => 'NUMERIC',
+    	        		'orderby'       => 'meta_value_num',
 						'name' => 'team',
 						'value_field' => 'term_id',
-						'orderby' => 'tax_position',
-						'meta_key' => 'tax_position',
-						'class' => 'chosen_select',
-						'hide_empty' => false
+						'class' => 'chosen_select'
 					);
 					wp_dropdown_categories( $args );
 					?>
@@ -444,11 +450,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_position',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'position',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -558,11 +566,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_position',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+                	'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'position',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -702,11 +712,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_jobs',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+					'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'job',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -805,11 +817,13 @@ class WPCM_AJAX {
 					'taxonomy' => 'wpcm_jobs',
 					'show_option_none' => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
+					'hide_empty' => false,
+					'meta_key' => 'tax_position',
+		        	'meta_compare'  => 'NUMERIC',
+    	        	'orderby'       => 'meta_value_num',
 					'name' => 'jobs',
 					'value_field' => 'term_id',
-					'orderby' => 'tax_position',
-					'meta_key' => 'tax_position',
-					'hide_empty' => false
+					'class' => 'chosen_select'
 				);
 				wp_dropdown_categories( $args );
 				?>

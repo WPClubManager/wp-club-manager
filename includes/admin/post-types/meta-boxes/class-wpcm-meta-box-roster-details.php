@@ -40,9 +40,10 @@ class WPCM_Meta_Box_Roster_Details {
             <?php
             wp_dropdown_categories(array(
                 'taxonomy' => 'wpcm_season',
-                'meta_key' => 'tax_position',
-                'orderby' => 'tax_position',
                 'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $season,
                 'name' => 'wpcm_roster_season',
                 'class' => 'chosen_select'
@@ -54,9 +55,10 @@ class WPCM_Meta_Box_Roster_Details {
             <?php
             wp_dropdown_categories(array(
                 'taxonomy' => 'wpcm_team',
-                'meta_key' => 'tax_position',
-                'orderby' => 'tax_position',
                 'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $team,
                 'name' => 'wpcm_roster_team',
                 'class' => 'chosen_select'
@@ -73,8 +75,7 @@ class WPCM_Meta_Box_Roster_Details {
 				'limit' 			=> -1,
 				'show_option_none'	=> __( 'None', 'wp-club-manager' ),
 				'class'				=> 'chosen_select',
-				'echo' 				=> false,
-                //'selected' 			=> $home_club,
+				'echo' 				=> false
 			));
 			?>
 		</p>
@@ -88,8 +89,7 @@ class WPCM_Meta_Box_Roster_Details {
 				'limit' 			=> -1,
 				'show_option_none'	=> __( 'None', 'wp-club-manager' ),
 				'class'				=> 'chosen_select',
-				'echo' 				=> false,
-				//'selected' 			=> $home_club
+				'echo' 				=> false
 			));
 			?>
 		</p>

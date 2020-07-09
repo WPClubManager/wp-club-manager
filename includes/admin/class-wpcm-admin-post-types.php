@@ -5,7 +5,7 @@
  * @author   ClubPress
  * @category Admin
  * @package  WPClubManager/Admin
- * @version  2.1.8
+ * @version  2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -611,7 +611,6 @@ class WPCM_Admin_Post_Types {
 
 		switch ($column) {
 			case 'image' :
-				//echo get_the_post_thumbnail( $post->ID, 'crest-small' );
 				echo $defaults['badge'];
 			break;
 			case 'name' :
@@ -625,16 +624,10 @@ class WPCM_Admin_Post_Types {
 
 				echo '</strong>';
 
-				// if ( $post->post_parent > 0 ) {
-				// 	echo '&nbsp;&nbsp;&larr; <a href="'. get_edit_post_link( $post->post_parent ) .'">'. get_the_title( $post->post_parent ) .'</a>';
-				// }
-
 				// Excerpt view
 				if ( isset( $_GET['mode'] ) && 'excerpt' == $_GET['mode'] ) {
 					echo apply_filters( 'the_excerpt', $post->post_excerpt );
 				}
-
-				//$this->_render_match_row_actions( $post, $title );
 
 				get_inline_data( $post );
 
@@ -653,21 +646,15 @@ class WPCM_Admin_Post_Types {
 
 			break;
 			case 'abbr' :
-				//$abbr = get_post_meta($post->ID, '_wpcm_club_abbr', true);
 				$abbr = get_club_abbreviation( $post->ID );
 				echo $abbr;
 			break;
 			case 'venue' :
-				// $terms = get_the_terms($post->ID, 'wpcm_venue');
-				// if ( is_array( $terms ) ) {
-				// 	foreach( $terms as $term ) {
-				// 		$venues[] = $term->name;
-				// 	}				 
-				// 	$output = join( ', ', $venues );
-				// 	echo $output;
-				// }
-				//$venue = get_club_venue( $post->ID );
-				echo $defaults['venue']['name'];
+				if( $defaults['venue'] == false ) {
+					echo '';
+				} else {
+					echo $defaults['venue']['name'];
+				}
 			break;
 		}
 	}

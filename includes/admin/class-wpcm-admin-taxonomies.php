@@ -18,37 +18,95 @@ class WPCM_Admin_Taxonomies {
 	 */
 	public function __construct() {
 
-		add_action( 'wpcm_team_add_form_fields', array( $this, 'team_add_new_extra_fields' ), 10, 2 );
-		add_action('wpcm_team_edit_form_fields', array( $this, 'team_edit_extra_fields' ), 10, 2);
+		add_action( 'create_wpcm_season', array( $this, 'save_season_tax_positions' ), 10, 2 );
+		add_action( 'create_wpcm_position', array( $this, 'save_position_tax_positions' ), 10, 2 );
+		add_action( 'create_wpcm_jobs', array( $this, 'save_jobs_tax_positions' ), 10, 2 );
 
-		add_action('edited_wpcm_team', array( $this, 'save_team_extra_fields' ), 10, 2);
+		add_action( 'wpcm_team_add_form_fields', array( $this, 'team_add_new_extra_fields' ), 10, 2 );
+		add_action( 'wpcm_team_edit_form_fields', array( $this, 'team_edit_extra_fields' ), 10, 2);
+
+		add_action( 'edited_wpcm_team', array( $this, 'save_team_extra_fields' ), 10, 2);
 		add_action( 'create_wpcm_team', array( $this, 'save_team_extra_fields' ), 10, 2 );
 
 		add_action( 'wpcm_comp_add_form_fields', array( $this, 'comp_add_new_extra_fields' ), 10, 2 );
-		add_action('wpcm_comp_edit_form_fields',array( $this, 'comp_edit_extra_fields' ), 10, 2);
+		add_action( 'wpcm_comp_edit_form_fields',array( $this, 'comp_edit_extra_fields' ), 10, 2);
 
-		add_action('edited_wpcm_comp', array( $this, 'save_comp_extra_fields' ), 10, 2);
+		add_action( 'edited_wpcm_comp', array( $this, 'save_comp_extra_fields' ), 10, 2);
 		add_action( 'create_wpcm_comp', array( $this, 'save_comp_extra_fields' ), 10, 2 );
 
-		add_action('manage_wpcm_comp_custom_column', array( $this, 'comp_custom_columns' ), 5,3);
-		add_action('manage_wpcm_season_custom_column', array( $this, 'season_custom_columns' ), 5,3);
-		add_action('manage_wpcm_team_custom_column', array( $this, 'team_custom_columns' ), 5,3);
-		add_action('manage_wpcm_venue_custom_column', array( $this, 'venue_custom_columns' ), 5,3);
-		add_action('manage_wpcm_position_custom_column', array( $this, 'position_custom_columns' ), 5,3);
-		add_action('manage_wpcm_jobs_custom_column', array( $this, 'position_custom_columns' ), 5,3);
-
 		add_action( 'wpcm_venue_add_form_fields', array( $this, 'venue_add_new_extra_fields' ), 10, 2 );
-		add_action('wpcm_venue_edit_form_fields', array( $this, 'venue_edit_extra_fields' ), 10, 2);
+		add_action( 'wpcm_venue_edit_form_fields', array( $this, 'venue_edit_extra_fields' ), 10, 2);
 
 		add_action('edited_wpcm_venue', array( $this, 'save_venue_extra_fields' ), 10, 2);
 		add_action( 'create_wpcm_venue', array( $this, 'save_venue_extra_fields' ), 10, 2 );
 
-		add_filter('manage_edit-wpcm_comp_columns', array( $this, 'comp_edit_columns') );
-		add_filter('manage_edit-wpcm_season_columns', array( $this, 'season_edit_columns') );
-		add_filter('manage_edit-wpcm_team_columns', array( $this, 'team_edit_columns') );
-		add_filter('manage_edit-wpcm_venue_columns', array( $this, 'venue_edit_columns') );
-		add_filter('manage_edit-wpcm_position_columns', array( $this, 'position_edit_columns') );
-		add_filter('manage_edit-wpcm_jobs_columns', array( $this, 'position_edit_columns') );
+		add_action( 'manage_wpcm_comp_custom_column', array( $this, 'comp_custom_columns' ), 5,3);
+		add_action( 'manage_wpcm_season_custom_column', array( $this, 'season_custom_columns' ), 5,3);
+		add_action( 'manage_wpcm_team_custom_column', array( $this, 'team_custom_columns' ), 5,3);
+		add_action( 'manage_wpcm_venue_custom_column', array( $this, 'venue_custom_columns' ), 5,3);
+		add_action( 'manage_wpcm_position_custom_column', array( $this, 'position_custom_columns' ), 5,3);
+		add_action( 'manage_wpcm_jobs_custom_column', array( $this, 'position_custom_columns' ), 5,3);
+
+		add_filter( 'manage_edit-wpcm_comp_columns', array( $this, 'comp_edit_columns') );
+		add_filter( 'manage_edit-wpcm_season_columns', array( $this, 'season_edit_columns') );
+		add_filter( 'manage_edit-wpcm_team_columns', array( $this, 'team_edit_columns') );
+		add_filter( 'manage_edit-wpcm_venue_columns', array( $this, 'venue_edit_columns') );
+		add_filter( 'manage_edit-wpcm_position_columns', array( $this, 'position_edit_columns') );
+		add_filter( 'manage_edit-wpcm_jobs_columns', array( $this, 'position_edit_columns') );
+	}
+
+	/**
+	 * Thumbnail column added to category admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function save_season_tax_positions( $term_id ) {
+
+		$terms = get_terms( 'wpcm_season', array( 'hide_empty' => false, 'exclude' => $term_id ) );
+
+		foreach( $terms as $term ) {
+			$pos = get_term_meta( $term->term_id, 'tax_position', true );
+			update_term_meta( $term->term_id, 'tax_position', $pos + 1 );
+		}
+		update_term_meta( $term_id, 'tax_position', 1 );
+	}
+
+	/**
+	 * Thumbnail column added to category admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function save_position_tax_positions( $term_id ) {
+
+		$terms = get_terms( 'wpcm_position', array( 'hide_empty' => false, 'exclude' => $term_id ) );
+
+		foreach( $terms as $term ) {
+			$pos = get_term_meta( $term->term_id, 'tax_position', true );
+			update_term_meta( $term->term_id, 'tax_position', $pos + 1 );
+		}
+		update_term_meta( $term_id, 'tax_position', 1 );
+	}
+
+	/**
+	 * Thumbnail column added to category admin.
+	 *
+	 * @access public
+	 * @param mixed $columns
+	 * @return array
+	 */
+	public function save_jobs_tax_positions( $term_id ) {
+
+		$terms = get_terms( 'wpcm_jobs', array( 'hide_empty' => false, 'exclude' => $term_id ) );
+
+		foreach( $terms as $term ) {
+			$pos = get_term_meta( $term->term_id, 'tax_position', true );
+			update_term_meta( $term->term_id, 'tax_position', $pos + 1 );
+		}
+		update_term_meta( $term_id, 'tax_position', 1 );
 	}
 
 	/**
@@ -110,6 +168,13 @@ class WPCM_Admin_Taxonomies {
 			}
 			update_option( "taxonomy_term_$t_id", $term_meta );
 		}
+		$terms = get_terms( 'wpcm_team', array( 'hide_empty' => false, 'exclude' => $term_id ) );
+
+		foreach( $terms as $term ) {
+			$pos = get_term_meta( $term->term_id, 'tax_position', true );
+			update_term_meta( $term->term_id, 'tax_position', $pos + 1 );
+		}
+		update_term_meta( $term_id, 'tax_position', 1 );
 	}
 
 	/**
@@ -213,6 +278,13 @@ class WPCM_Admin_Taxonomies {
 			}
 			update_option( "taxonomy_term_$t_id", $term_meta );
 		}
+		$terms = get_terms( 'wpcm_season', array( 'hide_empty' => false, 'exclude' => $term_id ) );
+
+		foreach( $terms as $term ) {
+			$pos = get_term_meta( $term->term_id, 'tax_position', true );
+			update_term_meta( $term->term_id, 'tax_position', $pos + 1 );
+		}
+		update_term_meta( $term_id, 'tax_position', 1 );
 	}
 
 	/**
@@ -228,8 +300,7 @@ class WPCM_Admin_Taxonomies {
 			"cb" => "<input type=\"checkbox\" />",
 			"move" => "",
 			"name" => __('Name', 'wp-club-manager'),
-			"label" => __('Label', 'wp-club-manager'),
-			"more" => __('Tax Order', 'wp-club-manager')
+			"label" => __('Label', 'wp-club-manager')
 		);
 
 		return $columns;
@@ -247,7 +318,6 @@ class WPCM_Admin_Taxonomies {
 		global $post;
 
 		$term_meta = get_option( "taxonomy_term_$t_id" );
-		$meta = get_term_meta( $t_id, 'tax_position', true );
 
 		switch ($column) {
 		case 'move':
@@ -255,9 +325,6 @@ class WPCM_Admin_Taxonomies {
 		break;
 		case 'label':
 			echo $term_meta['wpcm_comp_label'];
-		break;
-		case 'more':
-			echo $meta;
 		break;
 		}
 	}
@@ -274,8 +341,7 @@ class WPCM_Admin_Taxonomies {
 		$columns = array(
 			"cb" => "<input type=\"checkbox\" />",
 			"move" => "",
-			"name" => __('Name', 'wp-club-manager'),
-			"more" => "Tax Position Meta"
+			"name" => __('Name', 'wp-club-manager')
 		);
 
 		return $columns;
@@ -292,15 +358,9 @@ class WPCM_Admin_Taxonomies {
 		
 		global $post;
 
-		$term_meta = get_option( "taxonomy_term_$t_id" );
-		$meta = get_term_meta( $t_id, 'tax_position', true );
-
 		switch ($column) {
 		case 'move':
 			echo '<i class="dashicons dashicons-move"></i>';
-		break;
-		case 'more':
-			echo $meta;
 		break;
 		}
 	}

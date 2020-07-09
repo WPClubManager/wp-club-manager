@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.1.12
+ * @version     2.2.0
 */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -364,13 +364,13 @@ class WPCM_Admin_Setup_Wizard {
 		if( isset( $_POST['setup_season'] ) ){
 			$season = sanitize_text_field( $_POST['setup_season'] );
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
-			update_term_meta( $season_id, 'tax_position', '1' );
+			update_term_meta( $season_id, 'tax_position', 1 );
 		}
 		
 		if( isset( $_POST['setup_comp'] ) ){
 			$comp = sanitize_text_field( $_POST['setup_comp'] );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
-			update_term_meta( $comp_id, 'tax_position', '1' );
+			update_term_meta( $comp_id, 'tax_position', 1 );
 		}
 
 		if( is_club_mode() ) {
@@ -388,7 +388,7 @@ class WPCM_Admin_Setup_Wizard {
 
 				$team = __( 'First Team', 'wp-club-manager' );
 				$team_id = wp_insert_term( $team, 'wpcm_team' );
-				update_term_meta( $team_id, 'tax_position', '1' );
+				update_term_meta( $team_id, 'tax_position', 1 );
 
 				if( isset( $_POST['setup_opponent'] ) ){
 					$opponent = sanitize_text_field( $_POST['setup_opponent'] );
