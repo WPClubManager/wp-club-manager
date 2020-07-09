@@ -167,7 +167,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.0 06/07/2020
+= 2.2.0 09/07/2020
 
 * New - Added OpenStreetMaps as an option for venue maps
 * New - Added Nominatim Geocoder for OpenStreetMaps
@@ -182,6 +182,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed player placeholder in Players Gallery shortcode
 * Fix - Fixed 'Trying to access array offset' warning on match pages
 * Fix - Fixed missing venue address in Match Schema
+* Fix - Fixed various new PHP 7 warnings
 * Template - '/shortcodes/map-venue.php' - Added OpenStreetMaps
 * Template - '/shortcodes/staff-gallery.php - New template
 * Localisation - Updated wpclubmanager.pot
