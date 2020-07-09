@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Widgets
  * @package 	WPClubManager/Abstracts
- * @version 	2.0.6
+ * @version 	2.2.0
  * @extends 	WP_Widget
  */
 
@@ -209,10 +209,11 @@ abstract class WPCM_Widget extends WP_Widget {
 						<?php
 						$args = array(
 							'show_option_none' 	=> __( 'All', 'wp-club-manager' ),
-							'hide_empty' 		=> 0,
-							'orderby' => 'tax_position',
-							'meta_key' => 'tax_position',
 							'taxonomy' 			=> $setting['taxonomy'],
+							'hide_empty' 		=> false,
+							'meta_key' 			=> 'tax_position',
+							'meta_compare'  	=> 'NUMERIC',
+    						'orderby'       	=> 'meta_value_num',
 							'selected' 			=> $value,
 							'name' 				=> $this->get_field_name( $key ),
 							'id' 				=> $this->get_field_id( $key )
