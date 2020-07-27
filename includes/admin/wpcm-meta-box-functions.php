@@ -5,7 +5,7 @@
 * @author      ClubPress
 * @category    Core
 * @package     WPClubManager/Admin/Functions
-* @version     2.1.0
+* @version     2.2.0
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -234,10 +234,8 @@ function wpclubmanager_wp_country_select( $field ) {
 	if( $country_setting ) {
 		$country = $country_setting;
 	} else {
-		$country = get_option('wpcm_default_country');
+		$country = get_option('wpcm_default_country', 'us' );
 	}
-
-	$countries = WPCM()->countries->countries;
 
 	$thepostid 				= empty( $thepostid ) ? $post->ID : $thepostid;
 	$field['class'] 		= isset( $field['class'] ) ? $field['class'] : 'chosen_select';
@@ -248,7 +246,7 @@ function wpclubmanager_wp_country_select( $field ) {
 
 	echo '<select name="' . esc_attr( $field['id'] ) . '" data-placeholder="' . __( 'Choose a country&hellip;', 'wp-club-manager' ) . '" title="Country" class="' . esc_attr( $field['class'] ) . '">';
 
-	WPCM()->countries->country_dropdown_options( $country = $country );
+	WPCM()->countries->country_dropdown_options( $country );
 
 	echo '</select>';
 				        

@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.0.4
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -116,7 +116,7 @@ class WPCM_Shortcode_Staff_List {
 								$staff_details[$employee->ID][$stat] = '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . get_post_meta( $employee->ID, 'wpcm_natl', true ) . '.png" />';
 								break;
 							case 'name':
-								$staff_details[$employee->ID][$stat] = '<a href="' . get_permalink( $employee->ID ) . '">' . $employee->post_title . '</a>';
+								$staff_details[$employee->ID][$stat] = '<a href="' . get_permalink( $employee->ID ) . '">' . get_player_title( $employee->ID, $name_format ) . '</a>';
 								break;
 							case 'job':
 								$staff_details[$employee->ID][$stat] = wpcm_get_staff_jobs( $employee->ID );

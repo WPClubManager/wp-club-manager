@@ -27,7 +27,7 @@ class WPCM_Countries {
 	 * @return void
 	 */
 	public function __construct() {
-		global $wpclubmanager;
+		// global $wpclubmanager;
 
 		$this->countries = apply_filters( 'wpclubmanager_countries', array(
 			'af' => __( 'Afghanistan', 'wp-club-manager' ),

@@ -255,99 +255,92 @@ jQuery(function( $ ) {
 
             $.ajax( opts );
         }
-    });
+	});
 
-    // players roster selection
-    $( '.wpcm-player-roster-add-row' ).click( function() {
-        var id     = $( '.player-id option:selected' ).text();
-        var val    = $( '.player-id option:selected' ).val();
-        var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_players[]" value="' + val + '">' + id + '</td></tr>';
-        $( '#wpcm-player-roster-stats table tbody' ).append( markup );
-        $( '.wpcm-player-roster-delete-row' ).removeClass( 'hidden-button' );
-    });
-    $( '.wpcm-player-roster-delete-row' ).click( function() {
-        $( '#wpcm-player-roster-stats table tbody' ).find( 'input[name="record"]' ).each( function() {
-            if ( $( this ).is( ':checked' ) ) {
-                $( this ).parents( 'tr' ).remove();
-            }
-        });
-    });
+	// players roster selection
+	jQuery('.wpcm-player-roster-add-row').click(function(){
+		var id = jQuery('.player-id option:selected').text();
+		var val = jQuery('.player-id option:selected').val();
+		var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_players[]" value="' + val + '">' + id + '</td></tr>';
+		jQuery('#wpcm-player-roster-stats table tbody').append(markup);
+		jQuery('.wpcm-player-roster-delete-row').removeClass('hidden-button');
+	});
+	jQuery('.wpcm-player-roster-delete-row').click(function(){
+		jQuery('#wpcm-player-roster-stats table tbody').find('input[name="record"]').each(function(){
+			if(jQuery(this).is(':checked')){
+				jQuery(this).parents('tr').remove();
+			}
+		});
+	});
 
-    // staff roster selection
-    $( '.wpcm-staff-roster-add-row' ).click( function() {
-        var id     = $( '.staff-id option:selected' ).text();
-        var val    = $( '.staff-id option:selected' ).val();
-        var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_staff[]" value="' + val + '">' + id + '</td></tr>';
-        $( '#wpcm-staff-roster-stats table tbody' ).append( markup );
-        $( '.wpcm-staff-roster-delete-row' ).removeClass( 'hidden-button' );
-    });
-    $( '.wpcm-staff-roster-delete-row' ).click( function() {
-        $( '#wpcm-staff-roster-stats table tbody' ).find( 'input[name="record"]' ).each( function() {
-            if ( $( this ).is( ':checked' ) ) {
-                $( this ).parents( 'tr' ).remove();
-            }
-        });
-    });
+	// staff roster selection
+	jQuery('.wpcm-staff-roster-add-row').click(function(){
+		var id = jQuery('.staff-id option:selected').text();
+		var val = jQuery('.staff-id option:selected').val();
+		var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_staff[]" value="' + val + '">' + id + '</td></tr>';
+		jQuery('#wpcm-staff-roster-stats table tbody').append(markup);
+		jQuery('.wpcm-staff-roster-delete-row').removeClass('hidden-button');
+	});
+	jQuery('.wpcm-staff-roster-delete-row').click(function(){
+		jQuery('#wpcm-staff-roster-stats table tbody').find('input[name="record"]').each(function(){
+			if(jQuery(this).is(':checked')){
+				jQuery(this).parents('tr').remove();
+			}
+		});
+	});
 
-    $( '.colorpick' ).iris({
-        change: function( event, ui ) {
-            $( this ).parent().find( '.colorpickpreview' ).css({ backgroundColor: ui.color.toString() });
-        },
-        hide: true,
-        border: true
-    }).click( function() {
-        $( '.iris-picker' ).hide();
-        $( this ).closest( 'p' ).find( '.iris-picker' ).show();
-    });
+    jQuery( '.colorpick' ).iris({
+		change: function( event, ui ) {
+			jQuery( this ).parent().find( '.colorpickpreview' ).css({ backgroundColor: ui.color.toString() });
+		},
+		hide: true,
+		border: true
+	}).click( function() {
+		jQuery( '.iris-picker' ).hide();
+		jQuery( this ).closest( 'p' ).find( '.iris-picker' ).show();
+	});
 
-    $( 'body' ).click( function() {
-        $( '.iris-picker' ).hide();
-    });
+	jQuery( 'body' ).click( function() {
+		jQuery( '.iris-picker' ).hide();
+	});
 
-    $( '.colorpick' ).click( function( event ) {
-        event.stopPropagation();
-    });
+	jQuery( '.colorpick' ).click( function( event ) {
+		event.stopPropagation();
+	});
 
-    // Video embed
-    $( '.wpcm-add-video' ).click( function() {
-        $( this ).closest( 'fieldset' ).hide().siblings( '.wpcm-video-field' ).show();
-        return false;
-    });
+	// Video embed
+	jQuery(".wpcm-add-video").click(function() {
+		jQuery(this).closest("fieldset").hide().siblings(".wpcm-video-field").show();
+		return false;
+	});
 
-    // Removing video embed
-    $( '.wpcm-remove-video' ).click( function() {
-        $( this ).closest( 'fieldset' ).hide().siblings( '.wpcm-video-adder' ).show().siblings( '.wpcm-video-field' ).find( 'input' ).val( null );
-        return false;
-    });
+	// Removing video embed
+	jQuery(".wpcm-remove-video").click(function() {
+		jQuery(this).closest("fieldset").hide().siblings(".wpcm-video-adder").show().siblings(".wpcm-video-field").find("input").val(null);
+		return false;
+	});
 
-    // Date Picker
-    $( document.body ).on( 'wpcm-init-datepickers', function() {
-        $( '.wpcm-date-picker' ).datepicker({
-            dateFormat: 'yy-mm-dd',
-            numberOfMonths: 1,
-            showButtonPanel: true
-        });
-        $( '.wpcm-birth-date-picker' ).datepicker({
-            dateFormat: 'yy-mm-dd',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '-90:+0'
-        });
-    }).trigger( 'wpcm-init-datepickers' );
+	// Date Picker
+	$( document.body ).on( 'wpcm-init-datepickers', function() {
+		$( '.wpcm-date-picker' ).datepicker( {
+			dateFormat: 'yy-mm-dd',
+			numberOfMonths: 1,
+			showButtonPanel: true
+		});
+		$( '.wpcm-birth-date-picker' ).datepicker( {
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+			yearRange:'-90:+0'
+		});
+	}).trigger( 'wpcm-init-datepickers' );
 
-    $( '.wpcm-time-picker' ).wpcmtimepicker({
-        timeFormat: 'H:i',
-        step: '15'
-    });
+	$('.wpcm-time-picker').jquery_timepicker({
+		timeFormat: 'H:i',
+		step: '15'
+	});
 
-    $( '.wpcm-default-time-picker' ).wpcmtimepicker({
-        timeFormat: 'H:i',
-        step: '15',
-        scrollDefault: '15:00'
-    });
-
-    $( document ).ready( function() {
-        $( '.combify-input' ).combify();
-    });
-
+	$(document).ready(function(){
+		$(".combify-input").combify();
+	});
 });

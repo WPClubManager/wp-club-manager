@@ -36,7 +36,6 @@ jQuery( document ).ready( function() {
 					'action': 'update_taxonomy_order',
 					'updated_array': updated_array 
 				};
-				
 				// Run the ajax request
 				jQuery.post( localized_data.ajax_url, data, function( response ) {
 					jQuery( '.wpcm-simple-taxonomy-preloader' ).remove();

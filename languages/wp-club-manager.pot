@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager\n"
-"POT-Creation-Date: 2019-08-09 16:52+0100\n"
+"POT-Creation-Date: 2020-07-09 14:48+0100\n"
 "PO-Revision-Date: 2017-03-28 17:24-0000\n"
 "Last-Translator: \n"
 "Language-Team: Clupress\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_c;"
@@ -27,18 +27,19 @@ msgstr ""
 #: ../assets/js/admin/editor-lang.php:33
 #: ../includes/admin/class-wpcm-admin-permalink-settings.php:28
 #: ../includes/admin/settings/class-wpcm-settings-matches.php:22
-#: ../includes/class-wpcm-post-types.php:351
-#: ../includes/class-wpcm-post-types.php:363
+#: ../includes/class-wpcm-post-types.php:361
+#: ../includes/class-wpcm-post-types.php:373
+#: ../templates/content-single-club.php:195
 msgid "Matches"
 msgstr ""
 
 #: ../assets/js/admin/editor-lang.php:34
 #: ../includes/admin/class-wpcm-admin-meta-boxes.php:133
 #: ../includes/admin/class-wpcm-admin-permalink-settings.php:26
-#: ../includes/admin/class-wpcm-admin-post-types.php:439
+#: ../includes/admin/class-wpcm-admin-post-types.php:444
 #: ../includes/admin/settings/class-wpcm-settings-players.php:22
-#: ../includes/class-wpcm-post-types.php:271
-#: ../includes/class-wpcm-post-types.php:283
+#: ../includes/class-wpcm-post-types.php:279
+#: ../includes/class-wpcm-post-types.php:291
 #: ../includes/shortcodes/class-wpcm-shortcode-player-list.php:43
 #: ../includes/shortcodes/legacy/class-wpcm-shortcode-players.php:44
 #: ../includes/widgets/class-wpcm-widget-players.php:32
@@ -48,12 +49,12 @@ msgstr ""
 #: ../assets/js/admin/editor-lang.php:35
 #: ../includes/admin/class-wpcm-admin-meta-boxes.php:134
 #: ../includes/admin/class-wpcm-admin-permalink-settings.php:27
-#: ../includes/admin/class-wpcm-admin-post-types.php:440
+#: ../includes/admin/class-wpcm-admin-post-types.php:445
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:22
 #: ../includes/class-wpcm-install.php:209
-#: ../includes/class-wpcm-post-types.php:311
-#: ../includes/class-wpcm-post-types.php:312
-#: ../includes/class-wpcm-post-types.php:323
+#: ../includes/class-wpcm-post-types.php:320
+#: ../includes/class-wpcm-post-types.php:321
+#: ../includes/class-wpcm-post-types.php:332
 #: ../includes/shortcodes/class-wpcm-shortcode-staff-list.php:33
 #: ../includes/shortcodes/legacy/class-wpcm-shortcode-staff.php:26
 msgid "Staff"
@@ -68,37 +69,42 @@ msgstr ""
 msgid "Maps"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:38 ../includes/class-wpcm-ajax.php:211
+#: ../assets/js/admin/editor-lang.php:38 ../includes/class-wpcm-ajax.php:215
 msgid "Match Opponents"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:39 ../includes/class-wpcm-ajax.php:378
+#: ../assets/js/admin/editor-lang.php:39 ../includes/class-wpcm-ajax.php:385
 msgid "Match List"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:40 ../includes/class-wpcm-ajax.php:512
+#: ../assets/js/admin/editor-lang.php:40 ../includes/class-wpcm-ajax.php:521
 msgid "Player List"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:41 ../includes/class-wpcm-ajax.php:628
+#: ../assets/js/admin/editor-lang.php:41 ../includes/class-wpcm-ajax.php:639
 msgid "Player Gallery"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:42 ../includes/class-wpcm-ajax.php:762
+#: ../assets/js/admin/editor-lang.php:42 ../includes/class-wpcm-ajax.php:775
 msgid "Staff List"
 msgstr ""
 
-#: ../assets/js/admin/editor-lang.php:43
-#: ../includes/admin/views/html-admin-page-dashboard.php:317
-#: ../includes/class-wpcm-ajax.php:792 ../includes/class-wpcm-ajax.php:858
-#: ../includes/class-wpcm-post-types.php:389
-msgid "League Table"
+#: ../assets/js/admin/editor-lang.php:43 ../includes/class-wpcm-ajax.php:889
+#: ../includes/shortcodes/class-wpcm-shortcode-staff-gallery.php:36
+msgid "Staff Gallery"
 msgstr ""
 
 #: ../assets/js/admin/editor-lang.php:44
+#: ../includes/admin/views/html-admin-page-dashboard.php:318
+#: ../includes/class-wpcm-ajax.php:919 ../includes/class-wpcm-ajax.php:985
+#: ../includes/class-wpcm-post-types.php:400
+msgid "League Table"
+msgstr ""
+
+#: ../assets/js/admin/editor-lang.php:45
 #: ../includes/admin/settings/class-wpcm-settings-clubs.php:74
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:148
-#: ../includes/class-wpcm-ajax.php:902
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:147
+#: ../includes/class-wpcm-ajax.php:1029
 msgid "Venue Map"
 msgstr ""
 
@@ -118,17 +124,19 @@ msgid ""
 msgstr ""
 
 #: ../includes/abstracts/abstract-wpcm-widget.php:211
-#: ../includes/class-wpcm-ajax.php:58 ../includes/class-wpcm-ajax.php:88
-#: ../includes/class-wpcm-ajax.php:105 ../includes/class-wpcm-ajax.php:121
-#: ../includes/class-wpcm-ajax.php:163 ../includes/class-wpcm-ajax.php:427
-#: ../includes/class-wpcm-ajax.php:444 ../includes/class-wpcm-ajax.php:558
-#: ../includes/class-wpcm-ajax.php:702
+#: ../includes/class-wpcm-ajax.php:59 ../includes/class-wpcm-ajax.php:89
+#: ../includes/class-wpcm-ajax.php:107 ../includes/class-wpcm-ajax.php:124
+#: ../includes/class-wpcm-ajax.php:167 ../includes/class-wpcm-ajax.php:238
+#: ../includes/class-wpcm-ajax.php:252 ../includes/class-wpcm-ajax.php:270
+#: ../includes/class-wpcm-ajax.php:289 ../includes/class-wpcm-ajax.php:434
+#: ../includes/class-wpcm-ajax.php:451 ../includes/class-wpcm-ajax.php:567
+#: ../includes/class-wpcm-ajax.php:713 ../includes/class-wpcm-ajax.php:818
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:66
 #: ../includes/widgets/class-wpcm-widget-results.php:66
 msgid "All"
 msgstr ""
 
-#: ../includes/abstracts/abstract-wpcm-widget.php:230
+#: ../includes/abstracts/abstract-wpcm-widget.php:231
 #: ../includes/admin/class-wpcm-admin-settings.php:470
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-parent.php:45
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-table.php:31
@@ -137,39 +145,42 @@ msgstr ""
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:58
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-roster.php:31
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php:70
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:76
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:90
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-staff-roster.php:31
-#: ../includes/class-wpcm-ajax.php:152 ../includes/class-wpcm-ajax.php:203
-#: ../includes/class-wpcm-ajax.php:316 ../includes/class-wpcm-ajax.php:370
-#: ../includes/class-wpcm-ajax.php:504 ../includes/class-wpcm-ajax.php:620
-#: ../includes/class-wpcm-ajax.php:754 ../includes/class-wpcm-ajax.php:850
+#: ../includes/class-wpcm-ajax.php:156 ../includes/class-wpcm-ajax.php:207
+#: ../includes/class-wpcm-ajax.php:323 ../includes/class-wpcm-ajax.php:377
+#: ../includes/class-wpcm-ajax.php:513 ../includes/class-wpcm-ajax.php:631
+#: ../includes/class-wpcm-ajax.php:767 ../includes/class-wpcm-ajax.php:881
+#: ../includes/class-wpcm-ajax.php:977
 #: ../includes/wpcm-player-functions.php:322
 #: ../includes/wpcm-player-functions.php:536
 #: ../templates/single-player/meta.php:145
 msgid "None"
 msgstr ""
 
-#: ../includes/abstracts/abstract-wpcm-widget.php:272
-#: ../includes/abstracts/abstract-wpcm-widget.php:316
+#: ../includes/abstracts/abstract-wpcm-widget.php:273
+#: ../includes/abstracts/abstract-wpcm-widget.php:317
 #: ../includes/widgets/class-wpcm-widget-players.php:62
 msgid "Order by"
 msgstr ""
 
-#: ../includes/abstracts/abstract-wpcm-widget.php:357
+#: ../includes/abstracts/abstract-wpcm-widget.php:358
 #: ../includes/admin/settings/class-wpcm-settings-general.php:74
 #: ../includes/admin/views/html-admin-page-status.php:304
-#: ../includes/class-wpcm-ajax.php:811
+#: ../includes/class-wpcm-ajax.php:938
 msgid "Default Club"
-msgstr ""
-
-#: ../includes/abstracts/abstract-wpcm-widget.php:358
-#: ../includes/abstracts/abstract-wpcm-widget.php:363
-#: ../includes/class-wpcm-ajax.php:814
-msgid "Top"
 msgstr ""
 
 #: ../includes/abstracts/abstract-wpcm-widget.php:359
 #: ../includes/abstracts/abstract-wpcm-widget.php:364
-#: ../includes/class-wpcm-ajax.php:815
+#: ../includes/class-wpcm-ajax.php:941
+msgid "Top"
+msgstr ""
+
+#: ../includes/abstracts/abstract-wpcm-widget.php:360
+#: ../includes/abstracts/abstract-wpcm-widget.php:365
+#: ../includes/class-wpcm-ajax.php:942
 msgid "Bottom"
 msgstr ""
 
@@ -193,7 +204,7 @@ msgid "No upcoming matches."
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-dashboard-widgets.php:210
-#: ../includes/class-wpcm-post-types.php:355
+#: ../includes/class-wpcm-post-types.php:365
 msgid "Add New Match"
 msgstr ""
 
@@ -297,69 +308,70 @@ msgstr ""
 msgid "Club Manager"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:55
+#: ../includes/admin/class-wpcm-admin-menus.php:56
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:76
 #: ../includes/admin/views/html-admin-page-status.php:210
-#: ../includes/class-wpcm-post-types.php:131
+#: ../includes/class-wpcm-post-types.php:135
 #: ../templates/single-player/stats.php:40
 #: ../templates/single-player/stats.php:91
 msgid "Seasons"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:56
+#: ../includes/admin/class-wpcm-admin-menus.php:57
 #: ../includes/admin/views/html-admin-page-status.php:221
 #: ../includes/class-wpcm-post-types.php:47
 msgid "Competitions"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:58
+#: ../includes/admin/class-wpcm-admin-menus.php:59
 #: ../includes/admin/views/html-admin-page-status.php:199
-#: ../includes/class-wpcm-post-types.php:160
+#: ../includes/class-wpcm-post-types.php:165
 msgid "Teams"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:59
+#: ../includes/admin/class-wpcm-admin-menus.php:60
 #: ../includes/admin/views/html-notice-version-update.php:21
-#: ../includes/class-wpcm-post-types.php:422
 #: ../includes/class-wpcm-post-types.php:434
+#: ../includes/class-wpcm-post-types.php:446
 msgid "Rosters"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:61
+#: ../includes/admin/class-wpcm-admin-menus.php:62
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:22
 #: ../includes/admin/views/html-notice-version-update.php:22
-#: ../includes/class-wpcm-post-types.php:388
-#: ../includes/class-wpcm-post-types.php:400
+#: ../includes/class-wpcm-post-types.php:399
+#: ../includes/class-wpcm-post-types.php:411
 msgid "League Tables"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:68
+#: ../includes/admin/class-wpcm-admin-menus.php:69
 msgid "WP Club Manager Dashboard"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:68
+#: ../includes/admin/class-wpcm-admin-menus.php:69
 msgid "Dashboard"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:75
+#: ../includes/admin/class-wpcm-admin-menus.php:76
 #: ../includes/admin/views/html-admin-page-status.php:14
 msgid "WP Club Manager Status"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:75
-#: ../includes/class-wpcm-ajax.php:56 ../includes/class-wpcm-ajax.php:232
+#: ../includes/admin/class-wpcm-admin-menus.php:76
+#: ../includes/class-wpcm-ajax.php:57 ../includes/class-wpcm-ajax.php:236
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2647
 msgid "Status"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:82
+#: ../includes/admin/class-wpcm-admin-menus.php:83
 msgid "WP Club Manager Extensions"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:82
+#: ../includes/admin/class-wpcm-admin-menus.php:83
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-menus.php:89 ../wpclubmanager.php:116
+#: ../includes/admin/class-wpcm-admin-menus.php:90 ../wpclubmanager.php:116
 msgid "Settings"
 msgstr ""
 
@@ -445,7 +457,7 @@ msgid "Player Image"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-meta-boxes.php:184
-msgid "Add to Player Roster"
+msgid "Add Player to Roster"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-meta-boxes.php:187
@@ -503,16 +515,16 @@ msgstr ""
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-notices.php:109 ../wpclubmanager.php:74
-#: ../wpclubmanager.php:83
+#: ../includes/admin/class-wpcm-admin-notices.php:109 ../wpclubmanager.php:73
+#: ../wpclubmanager.php:82
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-permalink-settings.php:25
-#: ../includes/admin/class-wpcm-admin-post-types.php:461
+#: ../includes/admin/class-wpcm-admin-post-types.php:466
 #: ../includes/admin/settings/class-wpcm-settings-clubs.php:22
-#: ../includes/class-wpcm-post-types.php:230
-#: ../includes/class-wpcm-post-types.php:242
+#: ../includes/class-wpcm-post-types.php:237
+#: ../includes/class-wpcm-post-types.php:249
 msgid "Clubs"
 msgstr ""
 
@@ -834,26 +846,26 @@ msgid ""
 "Table</a>"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:314
+#: ../includes/admin/class-wpcm-admin-post-types.php:319
 msgid "Fixture"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:317
-#: ../includes/admin/class-wpcm-admin-post-types.php:437
-#: ../includes/admin/class-wpcm-admin-post-types.php:459
+#: ../includes/admin/class-wpcm-admin-post-types.php:322
+#: ../includes/admin/class-wpcm-admin-post-types.php:442
+#: ../includes/admin/class-wpcm-admin-post-types.php:464
 #: ../includes/admin/importers/class-wpcm-match-importer.php:30
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:109
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:53
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php:81
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:115
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:54
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php:83
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:114
 #: ../includes/admin/settings/class-wpcm-settings-players.php:93
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:69
 #: ../includes/admin/views/html-bulk-edit-match.php:20
 #: ../includes/admin/views/html-quick-edit-match.php:24
-#: ../includes/class-wpcm-ajax.php:117 ../includes/class-wpcm-ajax.php:184
-#: ../includes/class-wpcm-ajax.php:279 ../includes/class-wpcm-ajax.php:352
-#: ../includes/class-wpcm-post-types.php:161
-#: ../includes/class-wpcm-post-types.php:169
+#: ../includes/class-wpcm-ajax.php:120 ../includes/class-wpcm-ajax.php:188
+#: ../includes/class-wpcm-ajax.php:285 ../includes/class-wpcm-ajax.php:359
+#: ../includes/class-wpcm-post-types.php:166
+#: ../includes/class-wpcm-post-types.php:174
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:59
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:99
 #: ../includes/widgets/class-wpcm-widget-results.php:59
@@ -865,14 +877,14 @@ msgstr ""
 msgid "Team"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:320
-#: ../includes/admin/class-wpcm-admin-post-types.php:455
+#: ../includes/admin/class-wpcm-admin-post-types.php:325
+#: ../includes/admin/class-wpcm-admin-post-types.php:460
 #: ../includes/admin/importers/class-wpcm-match-importer.php:28
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:76
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php:51
 #: ../includes/admin/views/html-quick-edit-match.php:39
-#: ../includes/class-wpcm-ajax.php:84 ../includes/class-wpcm-ajax.php:181
-#: ../includes/class-wpcm-ajax.php:244 ../includes/class-wpcm-ajax.php:349
+#: ../includes/class-wpcm-ajax.php:85 ../includes/class-wpcm-ajax.php:185
+#: ../includes/class-wpcm-ajax.php:248 ../includes/class-wpcm-ajax.php:356
 #: ../includes/class-wpcm-post-types.php:48
 #: ../includes/class-wpcm-post-types.php:56
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:47
@@ -882,19 +894,19 @@ msgstr ""
 msgid "Competition"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:321
-#: ../includes/admin/class-wpcm-admin-post-types.php:434
-#: ../includes/admin/class-wpcm-admin-post-types.php:456
+#: ../includes/admin/class-wpcm-admin-post-types.php:326
+#: ../includes/admin/class-wpcm-admin-post-types.php:439
+#: ../includes/admin/class-wpcm-admin-post-types.php:461
 #: ../includes/admin/importers/class-wpcm-match-importer.php:29
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:92
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:39
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php:65
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php:66
 #: ../includes/admin/settings/class-wpcm-settings-players.php:82
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:58
 #: ../includes/admin/views/html-quick-edit-match.php:58
-#: ../includes/class-wpcm-ajax.php:101 ../includes/class-wpcm-ajax.php:261
-#: ../includes/class-wpcm-post-types.php:132
-#: ../includes/class-wpcm-post-types.php:140
+#: ../includes/class-wpcm-ajax.php:103 ../includes/class-wpcm-ajax.php:266
+#: ../includes/class-wpcm-post-types.php:136
+#: ../includes/class-wpcm-post-types.php:144
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:53
 #: ../includes/widgets/class-wpcm-widget-results.php:53
 #: ../includes/wpcm-player-functions.php:64
@@ -904,7 +916,7 @@ msgstr ""
 msgid "Season"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:322
+#: ../includes/admin/class-wpcm-admin-post-types.php:327
 #: ../includes/admin/importers/class-wpcm-match-importer.php:23
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:71
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:84
@@ -912,75 +924,75 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:323
+#: ../includes/admin/class-wpcm-admin-post-types.php:328
 #: ../includes/admin/importers/class-wpcm-match-importer.php:24
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:73
 msgid "Time"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:324
+#: ../includes/admin/class-wpcm-admin-post-types.php:329
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:369
 #: ../includes/admin/views/html-quick-edit-match.php:134
 #: ../includes/widgets/class-wpcm-widget-results.php:94
 msgid "Score"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:345
-#: ../includes/admin/class-wpcm-admin-post-types.php:371
-#: ../includes/admin/class-wpcm-admin-post-types.php:405
+#: ../includes/admin/class-wpcm-admin-post-types.php:350
+#: ../includes/admin/class-wpcm-admin-post-types.php:376
+#: ../includes/admin/class-wpcm-admin-post-types.php:410
 #: ../includes/admin/class-wpcm-admin-setup-wizard.php:63
 #: ../includes/admin/settings/class-wpcm-settings-general.php:48
 #: ../includes/admin/views/html-quick-edit-player.php:39
 #: ../includes/admin/views/html-quick-edit-staff.php:39
-#: ../includes/class-wpcm-ajax.php:66 ../includes/class-wpcm-ajax.php:419
-#: ../includes/class-wpcm-ajax.php:679
-#: ../includes/class-wpcm-post-types.php:231
+#: ../includes/class-wpcm-ajax.php:67 ../includes/class-wpcm-ajax.php:426
+#: ../includes/class-wpcm-ajax.php:690
+#: ../includes/class-wpcm-post-types.php:238
 msgid "Club"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:346
-#: ../includes/class-wpcm-ajax.php:180 ../includes/class-wpcm-ajax.php:348
+#: ../includes/admin/class-wpcm-admin-post-types.php:351
+#: ../includes/class-wpcm-ajax.php:184 ../includes/class-wpcm-ajax.php:355
 msgid "Badge"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:347
+#: ../includes/admin/class-wpcm-admin-post-types.php:352
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php:26
-#: ../includes/class-wpcm-ajax.php:179 ../includes/class-wpcm-ajax.php:347
+#: ../includes/class-wpcm-ajax.php:183 ../includes/class-wpcm-ajax.php:354
 msgid "Abbreviation"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:348
+#: ../includes/admin/class-wpcm-admin-post-types.php:353
 #: ../includes/admin/class-wpcm-admin-setup-wizard.php:68
 #: ../includes/admin/importers/class-wpcm-club-importer.php:24
 #: ../includes/admin/importers/class-wpcm-match-importer.php:31
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:126
 #: ../includes/admin/views/html-quick-edit-match.php:72
-#: ../includes/class-wpcm-ajax.php:161 ../includes/class-wpcm-ajax.php:186
-#: ../includes/class-wpcm-ajax.php:327 ../includes/class-wpcm-ajax.php:354
-#: ../includes/class-wpcm-ajax.php:879
-#: ../includes/class-wpcm-post-types.php:190
-#: ../includes/class-wpcm-post-types.php:198
+#: ../includes/class-wpcm-ajax.php:165 ../includes/class-wpcm-ajax.php:190
+#: ../includes/class-wpcm-ajax.php:334 ../includes/class-wpcm-ajax.php:361
+#: ../includes/class-wpcm-ajax.php:1006
+#: ../includes/class-wpcm-post-types.php:196
+#: ../includes/class-wpcm-post-types.php:204
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:64
 #: ../includes/widgets/class-wpcm-widget-results.php:64
 msgid "Venue"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:368
-#: ../includes/admin/class-wpcm-admin-post-types.php:402
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:127
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:230
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:272
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:437
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:480
+#: ../includes/admin/class-wpcm-admin-post-types.php:373
+#: ../includes/admin/class-wpcm-admin-post-types.php:407
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:192
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:302
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:344
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:535
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:578
 #: ../includes/admin/importers/class-wpcm-club-importer.php:23
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-players.php:42
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-staff.php:42
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php:73
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-staff.php:75
-#: ../includes/admin/views/html-admin-page-dashboard.php:263
-#: ../includes/admin/views/html-admin-page-dashboard.php:414
+#: ../includes/admin/views/html-admin-page-dashboard.php:264
+#: ../includes/admin/views/html-admin-page-dashboard.php:415
 #: ../includes/admin/views/html-admin-page-status.php:242
-#: ../includes/class-wpcm-ajax.php:646 ../includes/wpcm-player-functions.php:57
+#: ../includes/class-wpcm-ajax.php:657 ../includes/wpcm-player-functions.php:57
 #: ../includes/wpcm-player-functions.php:84
 #: ../includes/wpcm-player-functions.php:505
 #: ../templates/single-match/lineup.php:37
@@ -988,19 +1000,19 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:369
-#: ../includes/admin/class-wpcm-admin-post-types.php:403
-#: ../includes/class-wpcm-ajax.php:647 ../includes/wpcm-player-functions.php:56
+#: ../includes/admin/class-wpcm-admin-post-types.php:374
+#: ../includes/admin/class-wpcm-admin-post-types.php:408
+#: ../includes/class-wpcm-ajax.php:658 ../includes/wpcm-player-functions.php:56
 msgid "Image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:374
+#: ../includes/admin/class-wpcm-admin-post-types.php:379
 #: ../templates/single-player/meta.php:21
 msgid "Squad No."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:377
-#: ../includes/admin/class-wpcm-admin-post-types.php:408
+#: ../includes/admin/class-wpcm-admin-post-types.php:382
+#: ../includes/admin/class-wpcm-admin-post-types.php:413
 #: ../includes/admin/importers/class-wpcm-player-importer.php:31
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:27
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:113
@@ -1010,11 +1022,11 @@ msgstr ""
 msgid "Nationality"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:380
-#: ../includes/admin/class-wpcm-admin-post-types.php:411
+#: ../includes/admin/class-wpcm-admin-post-types.php:385
+#: ../includes/admin/class-wpcm-admin-post-types.php:416
 #: ../includes/admin/settings/class-wpcm-settings-players.php:58
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:50
-#: ../includes/class-wpcm-ajax.php:651 ../includes/wpcm-player-functions.php:60
+#: ../includes/class-wpcm-ajax.php:662 ../includes/wpcm-player-functions.php:60
 #: ../includes/wpcm-player-functions.php:87
 #: ../includes/wpcm-player-functions.php:510
 #: ../templates/content-single-staff.php:51
@@ -1022,42 +1034,42 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:382
+#: ../includes/admin/class-wpcm-admin-post-types.php:387
 #: ../includes/admin/importers/class-wpcm-player-importer.php:26
-#: ../includes/class-wpcm-post-types.php:103
+#: ../includes/class-wpcm-post-types.php:105
 msgid "Positions"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:414
+#: ../includes/admin/class-wpcm-admin-post-types.php:419
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:28
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:86
-#: ../includes/class-wpcm-ajax.php:649
+#: ../includes/class-wpcm-ajax.php:660
 #: ../includes/wpcm-player-functions.php:508
 #: ../templates/content-single-staff.php:140
 msgid "Email"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:417
+#: ../includes/admin/class-wpcm-admin-post-types.php:422
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:29
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:94
-#: ../includes/class-wpcm-ajax.php:650
+#: ../includes/class-wpcm-ajax.php:661
 #: ../includes/wpcm-player-functions.php:509
 #: ../templates/content-single-staff.php:155
 msgid "Phone"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:419
+#: ../includes/admin/class-wpcm-admin-post-types.php:424
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:25
-#: ../includes/class-wpcm-post-types.php:75
+#: ../includes/class-wpcm-post-types.php:76
 msgid "Jobs"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:433
-#: ../includes/admin/class-wpcm-admin-post-types.php:454
-#: ../includes/class-wpcm-ajax.php:52 ../includes/class-wpcm-ajax.php:228
-#: ../includes/class-wpcm-ajax.php:400 ../includes/class-wpcm-ajax.php:533
-#: ../includes/class-wpcm-ajax.php:660 ../includes/class-wpcm-ajax.php:788
-#: ../includes/class-wpcm-ajax.php:875
+#: ../includes/admin/class-wpcm-admin-post-types.php:438
+#: ../includes/admin/class-wpcm-admin-post-types.php:459
+#: ../includes/class-wpcm-ajax.php:53 ../includes/class-wpcm-ajax.php:232
+#: ../includes/class-wpcm-ajax.php:407 ../includes/class-wpcm-ajax.php:542
+#: ../includes/class-wpcm-ajax.php:671 ../includes/class-wpcm-ajax.php:793
+#: ../includes/class-wpcm-ajax.php:915 ../includes/class-wpcm-ajax.php:1002
 #: ../includes/widgets/class-wpcm-widget-birthdays.php:33
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:33
 #: ../includes/widgets/class-wpcm-widget-results.php:33
@@ -1065,20 +1077,20 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:562
+#: ../includes/admin/class-wpcm-admin-post-types.php:567
 msgid "Scheduled"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:567
+#: ../includes/admin/class-wpcm-admin-post-types.php:572
 msgid "Awaiting result"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:570
+#: ../includes/admin/class-wpcm-admin-post-types.php:575
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:73
 msgid "Postponed"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:572
+#: ../includes/admin/class-wpcm-admin-post-types.php:577
 #: ../includes/wpcm-player-functions.php:139
 #: ../includes/wpcm-preset-functions.php:111
 #: ../includes/wpcm-preset-functions.php:246
@@ -1099,133 +1111,133 @@ msgstr ""
 msgid "Played"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:617
+#: ../includes/admin/class-wpcm-admin-post-types.php:621
 msgid "Default"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1206
-#: ../includes/admin/class-wpcm-admin-post-types.php:1216
-#: ../includes/admin/class-wpcm-admin-post-types.php:1227
-#: ../includes/admin/class-wpcm-admin-post-types.php:1241
-#: ../includes/admin/class-wpcm-admin-post-types.php:1251
-#: ../includes/admin/class-wpcm-admin-post-types.php:1263
-#: ../includes/admin/class-wpcm-admin-post-types.php:1274
-#: ../includes/admin/class-wpcm-admin-post-types.php:1286
-#: ../includes/admin/class-wpcm-admin-post-types.php:1298
-#: ../includes/admin/class-wpcm-admin-post-types.php:1308
-#: ../includes/admin/class-wpcm-admin-post-types.php:1321
-#: ../includes/admin/class-wpcm-admin-post-types.php:1331
-#: ../includes/admin/class-wpcm-admin-post-types.php:1342
+#: ../includes/admin/class-wpcm-admin-post-types.php:1202
+#: ../includes/admin/class-wpcm-admin-post-types.php:1212
+#: ../includes/admin/class-wpcm-admin-post-types.php:1223
+#: ../includes/admin/class-wpcm-admin-post-types.php:1237
+#: ../includes/admin/class-wpcm-admin-post-types.php:1247
+#: ../includes/admin/class-wpcm-admin-post-types.php:1259
+#: ../includes/admin/class-wpcm-admin-post-types.php:1270
+#: ../includes/admin/class-wpcm-admin-post-types.php:1282
+#: ../includes/admin/class-wpcm-admin-post-types.php:1294
+#: ../includes/admin/class-wpcm-admin-post-types.php:1304
+#: ../includes/admin/class-wpcm-admin-post-types.php:1317
+#: ../includes/admin/class-wpcm-admin-post-types.php:1327
+#: ../includes/admin/class-wpcm-admin-post-types.php:1338
 #, php-format
 msgid "Show all %s"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1206
-#: ../includes/admin/class-wpcm-admin-post-types.php:1241
-#: ../includes/admin/class-wpcm-admin-post-types.php:1321
+#: ../includes/admin/class-wpcm-admin-post-types.php:1202
+#: ../includes/admin/class-wpcm-admin-post-types.php:1237
+#: ../includes/admin/class-wpcm-admin-post-types.php:1317
 msgid "competitions"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1216
-#: ../includes/admin/class-wpcm-admin-post-types.php:1251
-#: ../includes/admin/class-wpcm-admin-post-types.php:1286
-#: ../includes/admin/class-wpcm-admin-post-types.php:1298
-#: ../includes/admin/class-wpcm-admin-post-types.php:1331
+#: ../includes/admin/class-wpcm-admin-post-types.php:1212
+#: ../includes/admin/class-wpcm-admin-post-types.php:1247
+#: ../includes/admin/class-wpcm-admin-post-types.php:1282
+#: ../includes/admin/class-wpcm-admin-post-types.php:1294
+#: ../includes/admin/class-wpcm-admin-post-types.php:1327
 msgid "seasons"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1227
-#: ../includes/admin/class-wpcm-admin-post-types.php:1274
-#: ../includes/admin/class-wpcm-admin-post-types.php:1308
-#: ../includes/admin/class-wpcm-admin-post-types.php:1342
+#: ../includes/admin/class-wpcm-admin-post-types.php:1223
+#: ../includes/admin/class-wpcm-admin-post-types.php:1270
+#: ../includes/admin/class-wpcm-admin-post-types.php:1304
+#: ../includes/admin/class-wpcm-admin-post-types.php:1338
 msgid "teams"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1263
+#: ../includes/admin/class-wpcm-admin-post-types.php:1259
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:84
 msgid "positions"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1393
+#: ../includes/admin/class-wpcm-admin-post-types.php:1391
 msgid "Enter club name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1396
+#: ../includes/admin/class-wpcm-admin-post-types.php:1394
 msgid "Enter roster name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1399
+#: ../includes/admin/class-wpcm-admin-post-types.php:1397
 msgid "Enter table name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1402
+#: ../includes/admin/class-wpcm-admin-post-types.php:1400
 msgid "Enter sponsor name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1414
-#: ../includes/admin/class-wpcm-admin-post-types.php:1417
-#: ../includes/admin/class-wpcm-admin-post-types.php:1420
-#: ../includes/admin/class-wpcm-admin-post-types.php:1423
+#: ../includes/admin/class-wpcm-admin-post-types.php:1412
+#: ../includes/admin/class-wpcm-admin-post-types.php:1415
+#: ../includes/admin/class-wpcm-admin-post-types.php:1418
+#: ../includes/admin/class-wpcm-admin-post-types.php:1421
 msgid "Set featured image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1414
-#: ../includes/admin/class-wpcm-admin-post-types.php:1440
-#: ../includes/admin/class-wpcm-admin-post-types.php:1441
+#: ../includes/admin/class-wpcm-admin-post-types.php:1412
+#: ../includes/admin/class-wpcm-admin-post-types.php:1438
+#: ../includes/admin/class-wpcm-admin-post-types.php:1439
 msgid "Set club badge"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1415
-#: ../includes/admin/class-wpcm-admin-post-types.php:1418
-#: ../includes/admin/class-wpcm-admin-post-types.php:1421
-#: ../includes/admin/class-wpcm-admin-post-types.php:1424
+#: ../includes/admin/class-wpcm-admin-post-types.php:1413
+#: ../includes/admin/class-wpcm-admin-post-types.php:1416
+#: ../includes/admin/class-wpcm-admin-post-types.php:1419
+#: ../includes/admin/class-wpcm-admin-post-types.php:1422
 msgid "Remove featured image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1415
+#: ../includes/admin/class-wpcm-admin-post-types.php:1413
 msgid "Remove club badge"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1417
-#: ../includes/admin/class-wpcm-admin-post-types.php:1443
-#: ../includes/admin/class-wpcm-admin-post-types.php:1444
+#: ../includes/admin/class-wpcm-admin-post-types.php:1415
+#: ../includes/admin/class-wpcm-admin-post-types.php:1441
+#: ../includes/admin/class-wpcm-admin-post-types.php:1442
 msgid "Set player image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1418
+#: ../includes/admin/class-wpcm-admin-post-types.php:1416
 msgid "Remove player image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1420
-#: ../includes/admin/class-wpcm-admin-post-types.php:1446
-#: ../includes/admin/class-wpcm-admin-post-types.php:1447
+#: ../includes/admin/class-wpcm-admin-post-types.php:1418
+#: ../includes/admin/class-wpcm-admin-post-types.php:1444
+#: ../includes/admin/class-wpcm-admin-post-types.php:1445
 msgid "Set staff image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1421
+#: ../includes/admin/class-wpcm-admin-post-types.php:1419
 msgid "Remove staff image"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1423
-#: ../includes/admin/class-wpcm-admin-post-types.php:1449
-#: ../includes/admin/class-wpcm-admin-post-types.php:1450
+#: ../includes/admin/class-wpcm-admin-post-types.php:1421
+#: ../includes/admin/class-wpcm-admin-post-types.php:1447
+#: ../includes/admin/class-wpcm-admin-post-types.php:1448
 msgid "Set sponsor logo"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1424
+#: ../includes/admin/class-wpcm-admin-post-types.php:1422
 msgid "Remove sponsor logo"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-post-types.php:1463
-#: ../includes/admin/class-wpcm-admin-post-types.php:1471
+#: ../includes/admin/class-wpcm-admin-post-types.php:1461
+#: ../includes/admin/class-wpcm-admin-post-types.php:1469
 #, php-format
 msgid "Joins on: <b>%1$s</b>"
 msgstr ""
 
+#: ../includes/admin/class-wpcm-admin-post-types.php:1463
 #: ../includes/admin/class-wpcm-admin-post-types.php:1465
-#: ../includes/admin/class-wpcm-admin-post-types.php:1467
+#: ../includes/admin/class-wpcm-admin-post-types.php:1471
 #: ../includes/admin/class-wpcm-admin-post-types.php:1473
-#: ../includes/admin/class-wpcm-admin-post-types.php:1475
 #, php-format
 msgid "Joined on: <b>%1$s</b>"
 msgstr ""
@@ -1255,7 +1267,7 @@ msgid "Select a page&hellip;"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-settings.php:528
-#: ../includes/admin/wpcm-meta-box-functions.php:249
+#: ../includes/admin/wpcm-meta-box-functions.php:247
 msgid "Choose a country&hellip;"
 msgstr ""
 
@@ -1352,202 +1364,191 @@ msgid "Choose your default sport:"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-setup-wizard.php:255
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:341
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:487
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:348
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:497
 msgid "Save &amp; continue"
 msgstr ""
 
 #: ../includes/admin/class-wpcm-admin-setup-wizard.php:256
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:342
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:488
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:349
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:498
 msgid "Skip this step"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:298
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:305
 msgctxt "example"
 msgid "eg."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:300
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:307
 msgid "Club Setup"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:302
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:309
 msgid "Add your club, competition and season so get started."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:311
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:318
 msgid "Enter your club name:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:312
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:319
 msgid "eg. West Ham United"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:318
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:325
 msgid "Enter a competition:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:319
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:326
 msgid "eg. Division One"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:323
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:330
 msgid "Enter a season:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:330
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:337
 msgid "Add your next opponent:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:333
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:340
 msgid "Add a club:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:336
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:343
 msgid "eg. Manchester United"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:380
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:389
 msgid "First Team"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:462
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:472
 msgid "Venue Setup"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:464
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:474
 msgid "Setup your clubs home venue."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:471
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:481
 msgid "Home venue name:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:472
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:482
 msgid "eg. London Stadium"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:476
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:486
 msgid "Home venue address:"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:477
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:322
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:487
 msgid "London Stadium, London E20 2ST"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:531
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:541
 msgid "Your website is almost ready to go!"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:538
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:548
 msgid "What Next?"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:540
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:550
 msgid ""
 "The Setup Wizard has created your first season and setup some basic settings "
 "but before you can start adding matches we suggest that you go to the plugin "
 "settings and configure them to your needs."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:543
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:553
 msgid "Go to plugin settings"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:547
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:557
 msgid "Need help?"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:549
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:559
 msgid ""
 "Our documentation provides all the information you need to setup and run "
 "your club or league website."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:552
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:562
 msgid ""
 "If you need further help or need to report an issue please visit our support "
 "forum."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:555
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:565
 msgid "WP Club Manager documentation"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:556
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:566
 msgid "Getting started checklist"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-setup-wizard.php:557
+#: ../includes/admin/class-wpcm-admin-setup-wizard.php:567
 msgid "Community support forum"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:64
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:84
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:122
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:142
 msgid "Display Name"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:66
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:88
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:124
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:146
 msgid "The team label is used to display a shortened version of the team name."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:128
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:231
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:193
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:303
 msgid "Label"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:167
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:187
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:232
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:252
 msgid "Competition Label"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:169
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:191
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:234
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:256
 msgid ""
 "The competition label is used to display a shortened version of the "
 "competition name."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:329
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:400
 #: ../templates/single-match/venue-info.php:34
 msgid "Venue Address"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:333
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:378
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:406
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:460
 msgid "Drag the marker to the venue's location."
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:337
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:383
-msgid "Latitude"
-msgstr ""
-
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:341
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:389
-msgid "Longitude"
-msgstr ""
-
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:345
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:396
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:417
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:473
 msgid "Venue Capacity"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:373
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:438
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:453
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:536
 #: ../templates/content-single-club.php:61
 msgid "Address"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:439
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:537
 #: ../templates/content-single-club.php:53
 msgid "Capacity"
 msgstr ""
 
-#: ../includes/admin/class-wpcm-admin-taxonomies.php:481
+#: ../includes/admin/class-wpcm-admin-taxonomies.php:579
 msgid "Count"
 msgstr ""
 
@@ -1582,7 +1583,7 @@ msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-club-importer.php:89
 #: ../includes/admin/importers/class-wpcm-match-importer.php:256
-#: ../includes/admin/importers/class-wpcm-player-importer.php:130
+#: ../includes/admin/importers/class-wpcm-player-importer.php:138
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:118
 msgid "All done!"
 msgstr ""
@@ -1593,7 +1594,7 @@ msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-club-importer.php:106
 #: ../includes/admin/importers/class-wpcm-match-importer.php:273
-#: ../includes/admin/importers/class-wpcm-player-importer.php:147
+#: ../includes/admin/importers/class-wpcm-player-importer.php:155
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:135
 msgid "Choose a .csv file to upload, then click \"Upload file and import\"."
 msgstr ""
@@ -1650,7 +1651,7 @@ msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-match-importer.php:32
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:145
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:105
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:104
 #: ../includes/admin/views/html-quick-edit-match.php:94
 #: ../templates/single-match/attendance.php:24
 msgid "Attendance"
@@ -1659,14 +1660,14 @@ msgstr ""
 #: ../includes/admin/importers/class-wpcm-match-importer.php:33
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:153
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php:165
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:124
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:123
 #: ../includes/admin/views/html-quick-edit-match.php:86
 #: ../templates/single-match/referee.php:21
 msgid "Referee"
 msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-match-importer.php:34
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:156
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:155
 #: ../templates/single-match/lineup.php:25
 msgid "Lineup"
 msgstr ""
@@ -1690,12 +1691,13 @@ msgid ""
 msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-player-importer.php:21
-#: ../includes/admin/importers/class-wpcm-player-importer.php:139
+#: ../includes/admin/importers/class-wpcm-player-importer.php:147
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:69
 msgid "Import Players"
 msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-player-importer.php:23
-#: ../includes/class-wpcm-ajax.php:460 ../includes/class-wpcm-ajax.php:573
+#: ../includes/class-wpcm-ajax.php:469 ../includes/class-wpcm-ajax.php:584
 #: ../includes/widgets/class-wpcm-widget-players.php:64
 #: ../includes/wpcm-player-functions.php:55
 msgid "Number"
@@ -1734,7 +1736,8 @@ msgstr ""
 #: ../includes/admin/importers/class-wpcm-player-importer.php:28
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:101
 #: ../includes/admin/settings/class-wpcm-settings-players.php:66
-#: ../includes/class-wpcm-ajax.php:896 ../includes/wpcm-player-functions.php:61
+#: ../includes/class-wpcm-ajax.php:1023
+#: ../includes/wpcm-player-functions.php:61
 #: ../includes/wpcm-player-functions.php:88
 #: ../templates/single-player/meta.php:54
 msgid "Height"
@@ -1766,26 +1769,27 @@ msgstr ""
 msgid "Previous Clubs"
 msgstr ""
 
-#: ../includes/admin/importers/class-wpcm-player-importer.php:120
+#: ../includes/admin/importers/class-wpcm-player-importer.php:128
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> players and skipped <strong>"
 "%s</strong>."
 msgstr ""
 
-#: ../includes/admin/importers/class-wpcm-player-importer.php:130
+#: ../includes/admin/importers/class-wpcm-player-importer.php:138
 msgid "View Players"
 msgstr ""
 
-#: ../includes/admin/importers/class-wpcm-player-importer.php:148
+#: ../includes/admin/importers/class-wpcm-player-importer.php:156
 #, php-format
 msgid ""
-"Players need to be defined with columns in a specific order (9 columns). <a "
+"Players need to be defined with columns in a specific order (10 columns). <a "
 "href=\"%s\">Click here to download a sample</a>."
 msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:21
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:127
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php:83
 msgid "Import Staff"
 msgstr ""
 
@@ -1797,7 +1801,7 @@ msgid ""
 msgstr ""
 
 #: ../includes/admin/importers/class-wpcm-staff-importer.php:118
-#: ../includes/class-wpcm-post-types.php:318
+#: ../includes/class-wpcm-post-types.php:327
 msgid "View Staff"
 msgstr ""
 
@@ -1872,7 +1876,7 @@ msgid "Friendly"
 msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:36
-#: ../includes/class-wpcm-ajax.php:164
+#: ../includes/class-wpcm-ajax.php:168
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:67
 #: ../includes/widgets/class-wpcm-widget-results.php:67
 msgid "Home"
@@ -1885,7 +1889,7 @@ msgid "Choose club"
 msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php:52
-#: ../includes/class-wpcm-ajax.php:165
+#: ../includes/class-wpcm-ajax.php:169
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:68
 #: ../includes/widgets/class-wpcm-widget-results.php:68
 msgid "Away"
@@ -2142,10 +2146,10 @@ msgid "URL"
 msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-video.php:36
-#: ../includes/class-wpcm-ajax.php:212 ../includes/class-wpcm-ajax.php:379
-#: ../includes/class-wpcm-ajax.php:513 ../includes/class-wpcm-ajax.php:629
-#: ../includes/class-wpcm-ajax.php:763 ../includes/class-wpcm-ajax.php:859
-#: ../includes/class-wpcm-ajax.php:903
+#: ../includes/class-wpcm-ajax.php:216 ../includes/class-wpcm-ajax.php:386
+#: ../includes/class-wpcm-ajax.php:522 ../includes/class-wpcm-ajax.php:640
+#: ../includes/class-wpcm-ajax.php:776 ../includes/class-wpcm-ajax.php:890
+#: ../includes/class-wpcm-ajax.php:986 ../includes/class-wpcm-ajax.php:1030
 msgid "Cancel"
 msgstr ""
 
@@ -2165,9 +2169,9 @@ msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:77
 #: ../includes/admin/settings/class-wpcm-settings-players.php:102
-#: ../includes/admin/views/html-admin-page-dashboard.php:415
-#: ../includes/class-wpcm-ajax.php:440 ../includes/class-wpcm-ajax.php:554
-#: ../includes/class-wpcm-post-types.php:104
+#: ../includes/admin/views/html-admin-page-dashboard.php:416
+#: ../includes/class-wpcm-ajax.php:447 ../includes/class-wpcm-ajax.php:563
+#: ../includes/class-wpcm-post-types.php:106
 #: ../includes/widgets/class-wpcm-widget-players.php:57
 #: ../includes/wpcm-player-functions.php:59
 #: ../includes/wpcm-player-functions.php:86
@@ -2197,11 +2201,11 @@ msgstr ""
 msgid "All %s"
 msgstr ""
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:252
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:265
 msgid "Auto"
 msgstr ""
 
-#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:260
+#: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php:273
 msgid "Manual"
 msgstr ""
 
@@ -2235,8 +2239,8 @@ msgstr ""
 
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php:94
 #: ../includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-staff.php:96
-#: ../includes/admin/views/html-admin-page-dashboard.php:273
-#: ../includes/admin/views/html-admin-page-dashboard.php:427
+#: ../includes/admin/views/html-admin-page-dashboard.php:274
+#: ../includes/admin/views/html-admin-page-dashboard.php:428
 msgid "Edit"
 msgstr ""
 
@@ -2304,7 +2308,7 @@ msgid "Club Profile"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-clubs.php:41
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:104
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:103
 #: ../includes/admin/settings/class-wpcm-settings-players.php:41
 #: ../includes/admin/settings/class-wpcm-settings-players.php:160
 #: ../includes/admin/settings/class-wpcm-settings-staff.php:41
@@ -2373,31 +2377,72 @@ msgid "Enable (Recommended)"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:101
-msgid "Google Maps Settings"
+msgid "Map Settings"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-general.php:104
-msgid "Maps API Key"
+msgid "Choose Map Service"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-general.php:109
+#: ../includes/admin/settings/class-wpcm-settings-general.php:110
+msgid "Google Maps"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:111
+msgid "OpenStreetMap"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:116
+msgid "OSM Layer Service"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:122
+msgid "Standard"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:123
+msgid "Mapbox"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:128
+msgid "Mapbox API Key"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:133
+#: ../includes/admin/settings/class-wpcm-settings-general.php:154
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">Get API Key</a>"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-general.php:113
+#: ../includes/admin/settings/class-wpcm-settings-general.php:137
+msgid "Mapbox Layer Style"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:143
+msgid "Streets"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:144
+msgid "Satellite/Streets"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:149
+msgid "Google Maps API Key"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-general.php:158
 msgid "Map Type"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-general.php:119
+#: ../includes/admin/settings/class-wpcm-settings-general.php:164
 msgid "Roadmap"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-general.php:120
-msgid "Satelitte"
+#: ../includes/admin/settings/class-wpcm-settings-general.php:165
+msgid "Satellite"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-general.php:125
+#: ../includes/admin/settings/class-wpcm-settings-general.php:170
 msgid "Map Zoom"
 msgstr ""
 
@@ -2421,95 +2466,95 @@ msgstr ""
 msgid "Reverse - <i>Away v Home</i>"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:54
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:53
 msgid "Clubs Separator"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:62
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:61
 msgid "Goals Delimiter"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:70
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:69
 msgid "Start Time"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:79
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:78
 msgid "Match Duration"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:84
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:83
 msgid "minutes"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:88
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:87
 msgid "Box Scores"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:89
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:88
 msgid "Check this box to activate an interval score summary."
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:96
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:95
 msgid "Hide Scores"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:97
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:96
 msgid "Check this box to hide scores from guests."
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:132
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:131
 msgid "Preview"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:140
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:139
 msgid "Report"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:165
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:164
 msgid "Match Lineup"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:168
-#: ../includes/class-wpcm-ajax.php:478 ../includes/class-wpcm-ajax.php:605
-#: ../includes/class-wpcm-ajax.php:728
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:167
+#: ../includes/class-wpcm-ajax.php:487 ../includes/class-wpcm-ajax.php:616
+#: ../includes/class-wpcm-ajax.php:741 ../includes/class-wpcm-ajax.php:866
 #: ../includes/widgets/class-wpcm-widget-players.php:89
 msgid "Name Format"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:174
-#: ../includes/class-wpcm-ajax.php:480 ../includes/class-wpcm-ajax.php:607
-#: ../includes/class-wpcm-ajax.php:730
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:173
+#: ../includes/class-wpcm-ajax.php:489 ../includes/class-wpcm-ajax.php:618
+#: ../includes/class-wpcm-ajax.php:743 ../includes/class-wpcm-ajax.php:868
 #: ../includes/widgets/class-wpcm-widget-players.php:91
 msgid "First Last"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:175
-#: ../includes/class-wpcm-ajax.php:481 ../includes/class-wpcm-ajax.php:608
-#: ../includes/class-wpcm-ajax.php:731
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:174
+#: ../includes/class-wpcm-ajax.php:490 ../includes/class-wpcm-ajax.php:619
+#: ../includes/class-wpcm-ajax.php:744 ../includes/class-wpcm-ajax.php:869
 #: ../includes/widgets/class-wpcm-widget-players.php:92
 msgid "Last"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:176
-#: ../includes/class-wpcm-ajax.php:482 ../includes/class-wpcm-ajax.php:609
-#: ../includes/class-wpcm-ajax.php:732
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:175
+#: ../includes/class-wpcm-ajax.php:491 ../includes/class-wpcm-ajax.php:620
+#: ../includes/class-wpcm-ajax.php:745 ../includes/class-wpcm-ajax.php:870
 #: ../includes/widgets/class-wpcm-widget-players.php:93
 msgid "F. Last"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:181
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:180
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:104
-#: ../includes/class-wpcm-ajax.php:176 ../includes/class-wpcm-ajax.php:344
-#: ../includes/class-wpcm-ajax.php:486 ../includes/class-wpcm-ajax.php:736
-#: ../includes/class-wpcm-ajax.php:835
+#: ../includes/class-wpcm-ajax.php:180 ../includes/class-wpcm-ajax.php:351
+#: ../includes/class-wpcm-ajax.php:495 ../includes/class-wpcm-ajax.php:749
+#: ../includes/class-wpcm-ajax.php:962
 msgid "Columns"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:182
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:181
 msgid "Shirt Numbers"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-matches.php:190
+#: ../includes/admin/settings/class-wpcm-settings-matches.php:189
 msgid "Player Images"
 msgstr ""
 
@@ -2610,9 +2655,9 @@ msgid "League Table Display"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:91
-#: ../includes/class-wpcm-ajax.php:169 ../includes/class-wpcm-ajax.php:337
-#: ../includes/class-wpcm-ajax.php:471 ../includes/class-wpcm-ajax.php:581
-#: ../includes/class-wpcm-ajax.php:721
+#: ../includes/class-wpcm-ajax.php:173 ../includes/class-wpcm-ajax.php:344
+#: ../includes/class-wpcm-ajax.php:480 ../includes/class-wpcm-ajax.php:592
+#: ../includes/class-wpcm-ajax.php:734 ../includes/class-wpcm-ajax.php:842
 msgid "Order"
 msgstr ""
 
@@ -2626,31 +2671,31 @@ msgstr ""
 msgid "Lowest to highest"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:111
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:112
 msgid "League Table Sorting"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:118
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:119
 msgid "Priority 1"
-msgstr ""
-
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:133
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:154
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:175
-msgid "DESC"
 msgstr ""
 
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:134
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:155
 #: ../includes/admin/settings/class-wpcm-settings-standings.php:176
+msgid "DESC"
+msgstr ""
+
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:135
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:156
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:177
 msgid "ASC"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:139
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:140
 msgid "Priority 2"
 msgstr ""
 
-#: ../includes/admin/settings/class-wpcm-settings-standings.php:160
+#: ../includes/admin/settings/class-wpcm-settings-standings.php:161
 msgid "Priority 3"
 msgstr ""
 
@@ -2662,19 +2707,19 @@ msgstr ""
 msgid "Choose Team"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:34
+#: ../includes/admin/views/html-admin-page-dashboard.php:35
 msgid "Apply"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:52
+#: ../includes/admin/views/html-admin-page-dashboard.php:53
 msgid "Performance Stats"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:54
+#: ../includes/admin/views/html-admin-page-dashboard.php:55
 msgid "All competitions"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:61
+#: ../includes/admin/views/html-admin-page-dashboard.php:62
 #: ../includes/wpcm-preset-functions.php:123
 #: ../includes/wpcm-preset-functions.php:270
 #: ../includes/wpcm-preset-functions.php:680
@@ -2682,82 +2727,82 @@ msgstr ""
 msgid "Win Percentage"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:69
+#: ../includes/admin/views/html-admin-page-dashboard.php:70
 msgid "Biggest Win"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:108
+#: ../includes/admin/views/html-admin-page-dashboard.php:109
 msgid "Latest Results"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:144
+#: ../includes/admin/views/html-admin-page-dashboard.php:145
 msgctxt "To be confirmed"
 msgid "TBC"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:168
+#: ../includes/admin/views/html-admin-page-dashboard.php:169
 msgid "There are no results yet."
-msgstr ""
-
-#: ../includes/admin/views/html-admin-page-dashboard.php:177
-#: ../includes/admin/views/html-admin-page-dashboard.php:244
-msgid "Manage matches"
 msgstr ""
 
 #: ../includes/admin/views/html-admin-page-dashboard.php:178
 #: ../includes/admin/views/html-admin-page-dashboard.php:245
+msgid "Manage matches"
+msgstr ""
+
+#: ../includes/admin/views/html-admin-page-dashboard.php:179
+#: ../includes/admin/views/html-admin-page-dashboard.php:246
 msgid "Add new match"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:187
+#: ../includes/admin/views/html-admin-page-dashboard.php:188
 msgid "Next Fixtures"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:235
+#: ../includes/admin/views/html-admin-page-dashboard.php:236
 msgid "You have no matches scheduled."
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:253
+#: ../includes/admin/views/html-admin-page-dashboard.php:254
 msgid "Staff Roster"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:264
-#: ../includes/admin/views/html-admin-page-dashboard.php:416
+#: ../includes/admin/views/html-admin-page-dashboard.php:265
+#: ../includes/admin/views/html-admin-page-dashboard.php:417
 msgid "Actions"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:285
-#: ../includes/admin/views/html-admin-page-dashboard.php:438
+#: ../includes/admin/views/html-admin-page-dashboard.php:286
+#: ../includes/admin/views/html-admin-page-dashboard.php:439
 msgid "Manage roster"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:293
-#: ../includes/admin/views/html-admin-page-dashboard.php:446
+#: ../includes/admin/views/html-admin-page-dashboard.php:294
+#: ../includes/admin/views/html-admin-page-dashboard.php:447
 msgid "You have not created a roster yet."
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:299
-#: ../includes/admin/views/html-admin-page-dashboard.php:452
+#: ../includes/admin/views/html-admin-page-dashboard.php:300
+#: ../includes/admin/views/html-admin-page-dashboard.php:453
 msgid "Create new roster"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:379
+#: ../includes/admin/views/html-admin-page-dashboard.php:380
 msgid "Manage table"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:387
+#: ../includes/admin/views/html-admin-page-dashboard.php:388
 msgid "You have not created a league table yet."
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:392
+#: ../includes/admin/views/html-admin-page-dashboard.php:393
 msgid "Create new league table"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:403
+#: ../includes/admin/views/html-admin-page-dashboard.php:404
 msgid "Players Roster"
 msgstr ""
 
-#: ../includes/admin/views/html-admin-page-dashboard.php:413
+#: ../includes/admin/views/html-admin-page-dashboard.php:414
 msgctxt "Squad Number"
 msgid "No."
 msgstr ""
@@ -2894,6 +2939,7 @@ msgid "Theme"
 msgstr ""
 
 #: ../includes/admin/views/html-admin-page-status.php:246
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2646
 msgid "Version"
 msgstr ""
 
@@ -3141,19 +3187,20 @@ msgstr ""
 msgid "club-manager"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:59
+#: ../includes/class-wpcm-ajax.php:60
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:32
 msgid "Fixtures"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:60
+#: ../includes/class-wpcm-ajax.php:61
 #: ../includes/widgets/class-wpcm-widget-results.php:32
 msgid "Results"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:80 ../includes/class-wpcm-ajax.php:240
-#: ../includes/class-wpcm-ajax.php:435 ../includes/class-wpcm-ajax.php:549
-#: ../includes/class-wpcm-ajax.php:693 ../includes/class-wpcm-ajax.php:804
+#: ../includes/class-wpcm-ajax.php:81 ../includes/class-wpcm-ajax.php:244
+#: ../includes/class-wpcm-ajax.php:442 ../includes/class-wpcm-ajax.php:558
+#: ../includes/class-wpcm-ajax.php:704 ../includes/class-wpcm-ajax.php:809
+#: ../includes/class-wpcm-ajax.php:931
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:41
 #: ../includes/widgets/class-wpcm-widget-players.php:51
 #: ../includes/widgets/class-wpcm-widget-results.php:41
@@ -3161,82 +3208,83 @@ msgstr ""
 msgid "Limit"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:136 ../includes/class-wpcm-ajax.php:300
+#: ../includes/class-wpcm-ajax.php:140 ../includes/class-wpcm-ajax.php:307
 msgid "January"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:137 ../includes/class-wpcm-ajax.php:301
+#: ../includes/class-wpcm-ajax.php:141 ../includes/class-wpcm-ajax.php:308
 msgid "February"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:138 ../includes/class-wpcm-ajax.php:302
+#: ../includes/class-wpcm-ajax.php:142 ../includes/class-wpcm-ajax.php:309
 msgid "March"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:139 ../includes/class-wpcm-ajax.php:303
+#: ../includes/class-wpcm-ajax.php:143 ../includes/class-wpcm-ajax.php:310
 msgid "April"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:140 ../includes/class-wpcm-ajax.php:304
+#: ../includes/class-wpcm-ajax.php:144 ../includes/class-wpcm-ajax.php:311
 msgid "May"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:141 ../includes/class-wpcm-ajax.php:305
+#: ../includes/class-wpcm-ajax.php:145 ../includes/class-wpcm-ajax.php:312
 msgid "June"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:142 ../includes/class-wpcm-ajax.php:306
+#: ../includes/class-wpcm-ajax.php:146 ../includes/class-wpcm-ajax.php:313
 msgid "July"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:143 ../includes/class-wpcm-ajax.php:307
+#: ../includes/class-wpcm-ajax.php:147 ../includes/class-wpcm-ajax.php:314
 msgid "August"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:144 ../includes/class-wpcm-ajax.php:308
+#: ../includes/class-wpcm-ajax.php:148 ../includes/class-wpcm-ajax.php:315
 msgid "September"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:145 ../includes/class-wpcm-ajax.php:309
+#: ../includes/class-wpcm-ajax.php:149 ../includes/class-wpcm-ajax.php:316
 msgid "October"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:146 ../includes/class-wpcm-ajax.php:310
+#: ../includes/class-wpcm-ajax.php:150 ../includes/class-wpcm-ajax.php:317
 msgid "November"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:147 ../includes/class-wpcm-ajax.php:311
+#: ../includes/class-wpcm-ajax.php:151 ../includes/class-wpcm-ajax.php:318
 msgid "December"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:150 ../includes/class-wpcm-ajax.php:314
+#: ../includes/class-wpcm-ajax.php:154 ../includes/class-wpcm-ajax.php:321
 #: ../includes/widgets/class-wpcm-widget-birthdays.php:53
 msgid "Date Range"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:153 ../includes/class-wpcm-ajax.php:317
+#: ../includes/class-wpcm-ajax.php:157 ../includes/class-wpcm-ajax.php:324
 msgid "Last 7 Days"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:154 ../includes/class-wpcm-ajax.php:318
+#: ../includes/class-wpcm-ajax.php:158 ../includes/class-wpcm-ajax.php:325
 msgid "Next 7 Days"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:171 ../includes/class-wpcm-ajax.php:339
-#: ../includes/class-wpcm-ajax.php:473 ../includes/class-wpcm-ajax.php:583
-#: ../includes/class-wpcm-ajax.php:723
+#: ../includes/class-wpcm-ajax.php:175 ../includes/class-wpcm-ajax.php:346
+#: ../includes/class-wpcm-ajax.php:482 ../includes/class-wpcm-ajax.php:594
+#: ../includes/class-wpcm-ajax.php:736 ../includes/class-wpcm-ajax.php:844
 msgid "Ascending"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:172 ../includes/class-wpcm-ajax.php:340
-#: ../includes/class-wpcm-ajax.php:474 ../includes/class-wpcm-ajax.php:584
-#: ../includes/class-wpcm-ajax.php:724
+#: ../includes/class-wpcm-ajax.php:176 ../includes/class-wpcm-ajax.php:347
+#: ../includes/class-wpcm-ajax.php:483 ../includes/class-wpcm-ajax.php:595
+#: ../includes/class-wpcm-ajax.php:737 ../includes/class-wpcm-ajax.php:845
 msgid "Descending"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:196 ../includes/class-wpcm-ajax.php:363
-#: ../includes/class-wpcm-ajax.php:497 ../includes/class-wpcm-ajax.php:613
-#: ../includes/class-wpcm-ajax.php:747 ../includes/class-wpcm-ajax.php:843
+#: ../includes/class-wpcm-ajax.php:200 ../includes/class-wpcm-ajax.php:370
+#: ../includes/class-wpcm-ajax.php:506 ../includes/class-wpcm-ajax.php:624
+#: ../includes/class-wpcm-ajax.php:760 ../includes/class-wpcm-ajax.php:874
+#: ../includes/class-wpcm-ajax.php:970
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:114
 #: ../includes/widgets/class-wpcm-widget-players.php:104
 #: ../includes/widgets/class-wpcm-widget-results.php:114
@@ -3244,9 +3292,10 @@ msgstr ""
 msgid "Link text"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:200 ../includes/class-wpcm-ajax.php:367
-#: ../includes/class-wpcm-ajax.php:501 ../includes/class-wpcm-ajax.php:617
-#: ../includes/class-wpcm-ajax.php:751 ../includes/class-wpcm-ajax.php:847
+#: ../includes/class-wpcm-ajax.php:204 ../includes/class-wpcm-ajax.php:374
+#: ../includes/class-wpcm-ajax.php:510 ../includes/class-wpcm-ajax.php:628
+#: ../includes/class-wpcm-ajax.php:764 ../includes/class-wpcm-ajax.php:878
+#: ../includes/class-wpcm-ajax.php:974
 #: ../includes/widgets/class-wpcm-widget-fixtures.php:118
 #: ../includes/widgets/class-wpcm-widget-players.php:108
 #: ../includes/widgets/class-wpcm-widget-results.php:118
@@ -3254,110 +3303,91 @@ msgstr ""
 msgid "Link page"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:211 ../includes/class-wpcm-ajax.php:378
-#: ../includes/class-wpcm-ajax.php:512 ../includes/class-wpcm-ajax.php:628
-#: ../includes/class-wpcm-ajax.php:762 ../includes/class-wpcm-ajax.php:858
-#: ../includes/class-wpcm-ajax.php:902
+#: ../includes/class-wpcm-ajax.php:215 ../includes/class-wpcm-ajax.php:385
+#: ../includes/class-wpcm-ajax.php:521 ../includes/class-wpcm-ajax.php:639
+#: ../includes/class-wpcm-ajax.php:775 ../includes/class-wpcm-ajax.php:889
+#: ../includes/class-wpcm-ajax.php:985 ../includes/class-wpcm-ajax.php:1029
 #, php-format
 msgid "Insert %s"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:234
-#: ../includes/class-wpcm-post-types.php:354
-msgid "All Matches"
-msgstr ""
-
-#: ../includes/class-wpcm-ajax.php:235
+#: ../includes/class-wpcm-ajax.php:239
 msgid "Fixtures Only"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:236
+#: ../includes/class-wpcm-ajax.php:240
 msgid "Results Only"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:248 ../includes/class-wpcm-post-types.php:50
-msgid "All Competitions"
-msgstr ""
-
-#: ../includes/class-wpcm-ajax.php:265
-#: ../includes/class-wpcm-post-types.php:134
-msgid "All Seasons"
-msgstr ""
-
-#: ../includes/class-wpcm-ajax.php:283
-#: ../includes/class-wpcm-post-types.php:163
-msgid "All Teams"
-msgstr ""
-
-#: ../includes/class-wpcm-ajax.php:329
+#: ../includes/class-wpcm-ajax.php:336
 msgid "Home and Away"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:330
+#: ../includes/class-wpcm-ajax.php:337
 msgid "Home Only"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:331
+#: ../includes/class-wpcm-ajax.php:338
 msgid "Away Only"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:405 ../includes/class-wpcm-ajax.php:537
-#: ../includes/class-wpcm-ajax.php:665
-#: ../includes/class-wpcm-post-types.php:423
+#: ../includes/class-wpcm-ajax.php:412 ../includes/class-wpcm-ajax.php:546
+#: ../includes/class-wpcm-ajax.php:676 ../includes/class-wpcm-ajax.php:797
+#: ../includes/class-wpcm-post-types.php:435
 msgid "Roster"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:456 ../includes/class-wpcm-ajax.php:570
-#: ../includes/class-wpcm-ajax.php:714
+#: ../includes/class-wpcm-ajax.php:465 ../includes/class-wpcm-ajax.php:581
+#: ../includes/class-wpcm-ajax.php:727 ../includes/class-wpcm-ajax.php:832
 msgid "Sort by"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:463 ../includes/class-wpcm-ajax.php:574
-#: ../includes/class-wpcm-ajax.php:717
+#: ../includes/class-wpcm-ajax.php:472 ../includes/class-wpcm-ajax.php:585
+#: ../includes/class-wpcm-ajax.php:730 ../includes/class-wpcm-ajax.php:835
 msgid "Page order"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:464 ../includes/class-wpcm-ajax.php:572
-#: ../includes/class-wpcm-ajax.php:716
+#: ../includes/class-wpcm-ajax.php:473 ../includes/class-wpcm-ajax.php:583
+#: ../includes/class-wpcm-ajax.php:729 ../includes/class-wpcm-ajax.php:834
 msgid "Alphabetical"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:589
+#: ../includes/class-wpcm-ajax.php:600 ../includes/class-wpcm-ajax.php:850
 msgid "2"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:590
+#: ../includes/class-wpcm-ajax.php:601 ../includes/class-wpcm-ajax.php:851
 msgid "3"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:591
+#: ../includes/class-wpcm-ajax.php:602 ../includes/class-wpcm-ajax.php:852
 msgid "4"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:592
+#: ../includes/class-wpcm-ajax.php:603 ../includes/class-wpcm-ajax.php:853
 msgid "5"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:593
+#: ../includes/class-wpcm-ajax.php:604 ../includes/class-wpcm-ajax.php:854
 msgid "6"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:597
+#: ../includes/class-wpcm-ajax.php:608 ../includes/class-wpcm-ajax.php:858
 msgid "Number of Columns"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:645 ../includes/wpcm-player-functions.php:58
+#: ../includes/class-wpcm-ajax.php:656 ../includes/wpcm-player-functions.php:58
 msgid "Flag"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:648 ../includes/class-wpcm-ajax.php:698
-#: ../includes/class-wpcm-post-types.php:76
+#: ../includes/class-wpcm-ajax.php:659 ../includes/class-wpcm-ajax.php:709
+#: ../includes/class-wpcm-ajax.php:814 ../includes/class-wpcm-post-types.php:77
 #: ../includes/wpcm-player-functions.php:507
 #: ../templates/content-single-staff.php:124
 msgid "Job"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:652 ../includes/wpcm-player-functions.php:67
+#: ../includes/class-wpcm-ajax.php:663 ../includes/wpcm-player-functions.php:67
 #: ../includes/wpcm-player-functions.php:94
 #: ../includes/wpcm-player-functions.php:511
 #: ../templates/content-single-staff.php:179
@@ -3365,30 +3395,30 @@ msgstr ""
 msgid "Joined"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:808
+#: ../includes/class-wpcm-ajax.php:935
 #: ../includes/widgets/class-wpcm-widget-standings.php:56
 msgid "Focus"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:819
+#: ../includes/class-wpcm-ajax.php:946
 msgid "Club Abbreviations"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:823
+#: ../includes/class-wpcm-ajax.php:950
 #: ../includes/widgets/class-wpcm-widget-standings.php:66
 msgid "Show club badge"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:827
+#: ../includes/class-wpcm-ajax.php:954
 #: ../includes/widgets/class-wpcm-widget-standings.php:71
 msgid "Display Notes"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:831
+#: ../includes/class-wpcm-ajax.php:958
 msgid "Link to club"
 msgstr ""
 
-#: ../includes/class-wpcm-ajax.php:892
+#: ../includes/class-wpcm-ajax.php:1019
 msgid "Width"
 msgstr ""
 
@@ -3913,7 +3943,7 @@ msgid "Macao"
 msgstr ""
 
 #: ../includes/class-wpcm-countries.php:163
-msgid "Macedonia"
+msgid "North Macedonia"
 msgstr ""
 
 #: ../includes/class-wpcm-countries.php:164
@@ -4392,24 +4422,24 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
-#: ../includes/class-wpcm-frontend-scripts.php:59
+#: ../includes/class-wpcm-frontend-scripts.php:70
 msgid "day"
 msgstr ""
 
-#: ../includes/class-wpcm-frontend-scripts.php:60
+#: ../includes/class-wpcm-frontend-scripts.php:71
 msgid "hrs"
 msgstr ""
 
-#: ../includes/class-wpcm-frontend-scripts.php:61
+#: ../includes/class-wpcm-frontend-scripts.php:72
 msgid "min"
 msgstr ""
 
-#: ../includes/class-wpcm-frontend-scripts.php:62
+#: ../includes/class-wpcm-frontend-scripts.php:73
 msgid "sec"
 msgstr ""
 
 #: ../includes/class-wpcm-install.php:205
-#: ../includes/class-wpcm-post-types.php:272
+#: ../includes/class-wpcm-post-types.php:280
 msgid "Player"
 msgstr ""
 
@@ -4455,6 +4485,10 @@ msgstr ""
 msgid "Search Competitions"
 msgstr ""
 
+#: ../includes/class-wpcm-post-types.php:50
+msgid "All Competitions"
+msgstr ""
+
 #: ../includes/class-wpcm-post-types.php:51
 msgid "Parent Competition"
 msgstr ""
@@ -4475,427 +4509,868 @@ msgstr ""
 msgid "Add New Competition"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:77
+#: ../includes/class-wpcm-post-types.php:78
 msgid "Search Jobs"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:78
+#: ../includes/class-wpcm-post-types.php:79
 msgid "All Jobs"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:79
+#: ../includes/class-wpcm-post-types.php:80
 msgid "Parent Job"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:80
+#: ../includes/class-wpcm-post-types.php:81
 msgid "Parent Job:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:81
+#: ../includes/class-wpcm-post-types.php:82
 msgid "Edit Job"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:82
+#: ../includes/class-wpcm-post-types.php:83
 msgid "Update Job"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:83
+#: ../includes/class-wpcm-post-types.php:84
 msgid "Add New Job"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:84
+#: ../includes/class-wpcm-post-types.php:85
 msgid "New Job Title"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:105
+#: ../includes/class-wpcm-post-types.php:107
 msgid "Search Positions"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:106
+#: ../includes/class-wpcm-post-types.php:108
 msgid "All Positions"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:107
+#: ../includes/class-wpcm-post-types.php:109
 msgid "Parent Position"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:108
+#: ../includes/class-wpcm-post-types.php:110
 msgid "Parent Position:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:109
+#: ../includes/class-wpcm-post-types.php:111
 msgid "Edit Position"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:110
+#: ../includes/class-wpcm-post-types.php:112
 msgid "Update Position"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:111
+#: ../includes/class-wpcm-post-types.php:113
 msgid "Add New Position"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:112
+#: ../includes/class-wpcm-post-types.php:114
 msgid "New Position Name"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:133
+#: ../includes/class-wpcm-post-types.php:137
 msgid "Search Seasons"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:135
-msgid "Parent Season"
-msgstr ""
-
-#: ../includes/class-wpcm-post-types.php:136
-msgid "Parent Season:"
-msgstr ""
-
-#: ../includes/class-wpcm-post-types.php:137
-msgid "Edit Season"
-msgstr ""
-
 #: ../includes/class-wpcm-post-types.php:138
-msgid "Update Season"
+msgid "All Seasons"
 msgstr ""
 
 #: ../includes/class-wpcm-post-types.php:139
+msgid "Parent Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:140
+msgid "Parent Season:"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:141
+msgid "Edit Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:142
+msgid "Update Season"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:143
 msgid "Add New Season"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:162
+#: ../includes/class-wpcm-post-types.php:167
 msgid "Search Teams"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:164
+#: ../includes/class-wpcm-post-types.php:168
+msgid "All Teams"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:169
 msgid "Parent Team"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:165
+#: ../includes/class-wpcm-post-types.php:170
 msgid "Parent Team:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:166
+#: ../includes/class-wpcm-post-types.php:171
 msgid "Edit Team"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:167
+#: ../includes/class-wpcm-post-types.php:172
 msgid "Update Team"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:168
+#: ../includes/class-wpcm-post-types.php:173
 msgid "Add New Team"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:189
+#: ../includes/class-wpcm-post-types.php:195
 msgid "Venues"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:191
+#: ../includes/class-wpcm-post-types.php:197
 msgid "Search Venues"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:192
+#: ../includes/class-wpcm-post-types.php:198
 msgid "All Venues"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:193
+#: ../includes/class-wpcm-post-types.php:199
 msgid "Parent Venue"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:194
+#: ../includes/class-wpcm-post-types.php:200
 msgid "Parent Venue:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:195
+#: ../includes/class-wpcm-post-types.php:201
 msgid "Edit Venue"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:196
+#: ../includes/class-wpcm-post-types.php:202
 msgid "Update Venue"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:197
+#: ../includes/class-wpcm-post-types.php:203
 msgid "Add New Venue"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:232
-#: ../includes/class-wpcm-post-types.php:273
-#: ../includes/class-wpcm-post-types.php:313
-#: ../includes/class-wpcm-post-types.php:353
-#: ../includes/class-wpcm-post-types.php:390
-#: ../includes/class-wpcm-post-types.php:424
-#: ../includes/class-wpcm-post-types.php:461
+#: ../includes/class-wpcm-post-types.php:239
+#: ../includes/class-wpcm-post-types.php:281
+#: ../includes/class-wpcm-post-types.php:322
+#: ../includes/class-wpcm-post-types.php:363
+#: ../includes/class-wpcm-post-types.php:401
+#: ../includes/class-wpcm-post-types.php:436
+#: ../includes/class-wpcm-post-types.php:474
 msgid "Add New"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:233
+#: ../includes/class-wpcm-post-types.php:240
 msgid "All Clubs"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:234
+#: ../includes/class-wpcm-post-types.php:241
 msgid "Add New Club"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:235
+#: ../includes/class-wpcm-post-types.php:242
 msgid "Edit Club"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:236
+#: ../includes/class-wpcm-post-types.php:243
 msgid "New Club"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:237
+#: ../includes/class-wpcm-post-types.php:244
 msgid "View Club"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:238
+#: ../includes/class-wpcm-post-types.php:245
 msgid "Search Clubs"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:239
+#: ../includes/class-wpcm-post-types.php:246
 msgid "No clubs found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:240
+#: ../includes/class-wpcm-post-types.php:247
 msgid "No clubs found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:241
+#: ../includes/class-wpcm-post-types.php:248
 msgid "Parent Club:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:265
+#: ../includes/class-wpcm-post-types.php:273
 msgctxt "slug"
 msgid "player"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:274
+#: ../includes/class-wpcm-post-types.php:282
 msgid "All Players"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:275
+#: ../includes/class-wpcm-post-types.php:283
 msgid "Add New Player"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:276
+#: ../includes/class-wpcm-post-types.php:284
 msgid "Edit Player"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:277
+#: ../includes/class-wpcm-post-types.php:285
 msgid "New Player"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:278
+#: ../includes/class-wpcm-post-types.php:286
 msgid "View Player"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:279
+#: ../includes/class-wpcm-post-types.php:287
 msgid "Search Players"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:280
+#: ../includes/class-wpcm-post-types.php:288
 msgid "No players found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:281
+#: ../includes/class-wpcm-post-types.php:289
 msgid "No players found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:282
+#: ../includes/class-wpcm-post-types.php:290
 msgid "Parent Player:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:305
+#: ../includes/class-wpcm-post-types.php:314
 msgctxt "slug"
 msgid "staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:314
+#: ../includes/class-wpcm-post-types.php:323
 msgid "All Staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:315
+#: ../includes/class-wpcm-post-types.php:324
 msgid "Add New Staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:316
+#: ../includes/class-wpcm-post-types.php:325
 msgid "Edit Staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:317
+#: ../includes/class-wpcm-post-types.php:326
 msgid "New Staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:319
+#: ../includes/class-wpcm-post-types.php:328
 msgid "Search Staff"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:320
+#: ../includes/class-wpcm-post-types.php:329
 msgid "No staff found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:321
+#: ../includes/class-wpcm-post-types.php:330
 msgid "No staff found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:322
+#: ../includes/class-wpcm-post-types.php:331
 msgid "Parent Staff:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:345
+#: ../includes/class-wpcm-post-types.php:355
 msgctxt "slug"
 msgid "match"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:352
+#: ../includes/class-wpcm-post-types.php:362
 msgid "Match"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:356
+#: ../includes/class-wpcm-post-types.php:364
+msgid "All Matches"
+msgstr ""
+
+#: ../includes/class-wpcm-post-types.php:366
 msgid "Edit Match"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:357
+#: ../includes/class-wpcm-post-types.php:367
 msgid "New Match"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:358
+#: ../includes/class-wpcm-post-types.php:368
 msgid "View Match"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:359
+#: ../includes/class-wpcm-post-types.php:369
 msgid "Search Matches"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:360
+#: ../includes/class-wpcm-post-types.php:370
 msgid "No matches found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:361
+#: ../includes/class-wpcm-post-types.php:371
 msgid "No matches found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:362
+#: ../includes/class-wpcm-post-types.php:372
 msgid "Parent Match:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:391
+#: ../includes/class-wpcm-post-types.php:402
 msgid "All League Tables"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:392
+#: ../includes/class-wpcm-post-types.php:403
 msgid "Add New League Table"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:393
+#: ../includes/class-wpcm-post-types.php:404
 msgid "Edit League Table"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:394
+#: ../includes/class-wpcm-post-types.php:405
 msgid "New League Table"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:395
+#: ../includes/class-wpcm-post-types.php:406
 msgid "View League Table"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:396
+#: ../includes/class-wpcm-post-types.php:407
 msgid "Search League Tables"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:397
+#: ../includes/class-wpcm-post-types.php:408
 msgid "No league tables found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:398
+#: ../includes/class-wpcm-post-types.php:409
 msgid "No league tables found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:399
+#: ../includes/class-wpcm-post-types.php:410
 msgid "Parent League Table:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:425
+#: ../includes/class-wpcm-post-types.php:437
 msgid "All Rosters"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:426
+#: ../includes/class-wpcm-post-types.php:438
 msgid "Add New Roster"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:427
+#: ../includes/class-wpcm-post-types.php:439
 msgid "Edit Roster"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:428
+#: ../includes/class-wpcm-post-types.php:440
 msgid "New Roster"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:429
+#: ../includes/class-wpcm-post-types.php:441
 msgid "View Roster"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:430
+#: ../includes/class-wpcm-post-types.php:442
 msgid "Search Rosters"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:431
+#: ../includes/class-wpcm-post-types.php:443
 msgid "No rosters found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:432
+#: ../includes/class-wpcm-post-types.php:444
 msgid "No rosters found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:433
+#: ../includes/class-wpcm-post-types.php:445
 msgid "Parent Roster:"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:459
-#: ../includes/class-wpcm-post-types.php:471
+#: ../includes/class-wpcm-post-types.php:472
+#: ../includes/class-wpcm-post-types.php:484
 #: ../includes/widgets/class-wpcm-widget-sponsors.php:32
 msgid "Sponsors"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:460
+#: ../includes/class-wpcm-post-types.php:473
 msgid "Sponsor"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:462
+#: ../includes/class-wpcm-post-types.php:475
 msgid "All Sponsors"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:463
+#: ../includes/class-wpcm-post-types.php:476
 msgid "Add New Sponsor"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:464
+#: ../includes/class-wpcm-post-types.php:477
 msgid "Edit Sponsor"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:465
+#: ../includes/class-wpcm-post-types.php:478
 msgid "New Sponsor"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:466
+#: ../includes/class-wpcm-post-types.php:479
 msgid "View Sponsor"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:467
+#: ../includes/class-wpcm-post-types.php:480
 msgid "Search Sponsors"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:468
+#: ../includes/class-wpcm-post-types.php:481
 msgid "No sponsors found"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:469
+#: ../includes/class-wpcm-post-types.php:482
 msgid "No sponsors found in trash"
 msgstr ""
 
-#: ../includes/class-wpcm-post-types.php:470
+#: ../includes/class-wpcm-post-types.php:483
 msgid "Parent Sponsor:"
+msgstr ""
+
+#: ../includes/class-wpcm-taxonomy-order.php:53
+msgid "Taxonomy Ordering"
+msgstr ""
+
+#: ../includes/class-wpcm-taxonomy-order.php:54
+msgid ""
+"To reposition a taxonomy in the list, simply click on a taxonomy and drag & "
+"drop it into the desired position. Each time you reposition a taxonomy, the "
+"data will update in the database and on the front end of your site."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:343
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:349
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:355
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:361
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:378
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:388
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:393
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:920
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3673
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:394
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3252
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:395
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3045
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:725
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:1214
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3041
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2075
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2366
+msgid "Required"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2369
+msgid "Recommended"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2385
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2388
+msgid "External Source"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2391
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2408
+msgid "Not Installed"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2412
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2414
+msgid "Active"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2420
+msgid "Required Update not Available"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2423
+msgid "Requires Update"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2426
+msgid "Update recommended"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2435
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2481
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2489
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2493
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2575
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2583
+msgid "Installed version:"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2591
+msgid "Minimum required version:"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2603
+msgid "Available version:"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2640
+msgid "Plugin"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2641
+msgid "Source"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2642
+msgid "Type"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2696
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2701
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2707
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2777
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2810
+msgid "Install"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2816
+msgid "Update"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2819
+msgid "Activate"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2850
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2852
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2893
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:2895
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3001
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3027
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3251
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3591
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3596
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+msgid "Show Details"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+msgid "Hide Details"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3603
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3608
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3611
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php:3613
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
 #: ../includes/shortcodes/class-wpcm-shortcode-player-gallery.php:36
@@ -4908,6 +5383,7 @@ msgstr ""
 msgid "View all players"
 msgstr ""
 
+#: ../includes/shortcodes/class-wpcm-shortcode-staff-gallery.php:42
 #: ../includes/shortcodes/class-wpcm-shortcode-staff-list.php:30
 #: ../includes/shortcodes/legacy/class-wpcm-shortcode-staff.php:33
 msgid "View all staff"
@@ -5017,8 +5493,8 @@ msgstr ""
 msgid "Link Options"
 msgstr ""
 
-#: ../includes/widgets/class-wpcm-widget-fixtures.php:263
-#: ../includes/widgets/class-wpcm-widget-results.php:268
+#: ../includes/widgets/class-wpcm-widget-fixtures.php:264
+#: ../includes/widgets/class-wpcm-widget-results.php:269
 msgid "No more matches scheduled."
 msgstr ""
 
@@ -5089,24 +5565,8 @@ msgstr ""
 msgid "Link to club pages"
 msgstr ""
 
-#: ../includes/wpcm-core-functions.php:547
-msgid "No location found for the entered address."
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:549
-msgid "Invalid request. Address is missing"
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:551
-msgid "Something went wrong while retrieving your map."
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:554
-msgid "Unable to contact Google API service."
-msgstr ""
-
-#: ../includes/wpcm-core-functions.php:564
-#: ../includes/wpcm-core-functions.php:573
+#: ../includes/wpcm-core-functions.php:527
+#: ../includes/wpcm-core-functions.php:542
 msgctxt "slug"
 msgid "club"
 msgstr ""
@@ -6802,24 +7262,24 @@ msgstr ""
 msgid "Visit website"
 msgstr ""
 
-#: ../templates/content-single-club.php:117
+#: ../templates/content-single-club.php:119
 #, php-format
 msgid "Matches against %s"
 msgstr ""
 
-#: ../templates/content-single-club.php:129
+#: ../templates/content-single-club.php:131
 msgid "games"
 msgstr ""
 
-#: ../templates/content-single-club.php:132
+#: ../templates/content-single-club.php:134
 msgid "wins"
 msgstr ""
 
-#: ../templates/content-single-club.php:135
+#: ../templates/content-single-club.php:137
 msgid "draws"
 msgstr ""
 
-#: ../templates/content-single-club.php:138
+#: ../templates/content-single-club.php:140
 msgid "losses"
 msgstr ""
 

@@ -8,7 +8,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Templates
- * @version     2.1.8
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -278,6 +278,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 		global $post;
 		
 		$teams = wp_get_object_terms( $post->ID, 'wpcm_team' );
+		$season = get_current_season();
 
 		if ( is_array( $teams ) ) {
 							
@@ -303,6 +304,14 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 				'taxonomy' => 'wpcm_team',
 				'field' => 'term_id',
 				'terms' => $player_teams
+			);
+		}
+
+		if ( is_array( $season ) ) {
+			$args['tax_query'][] = array(
+				'taxonomy' => 'wpcm_season',
+				'field' => 'term_id',
+				'terms' => $season['id'],
 			);
 		}
 

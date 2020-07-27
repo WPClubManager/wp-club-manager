@@ -1468,3 +1468,8 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 .ui-corner-br {
 	border-bottom-right-radius: 0 !important;
 }
+#wpcm_osm_layer-row,
+#wpcm_mapbox_api-row,
+#wpcm_mapbox_type-row {
+	display: none;
+}

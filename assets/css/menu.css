@@ -147,7 +147,8 @@ i.mce-i-wpcm_staff_button:before {
 	cursor: default;
 }
 
-.wpcm-simple-taxonomy-preloader {
+.wpcm-simple-taxonomy-preloader,
+.wpcm-taxonomy-preloader {
 	margin: 0 0 0 8px;
 }
 /* .wpcm-match-players-desc {

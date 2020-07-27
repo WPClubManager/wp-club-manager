@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -64,7 +64,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 				'title' 	=> __( 'Default Location', 'wp-club-manager' ),
 				'id' 		=> 'wpcm_default_country',
 				'css' 		=> 'min-width:350px;',
-				'default'	=> 'EN',
+				'default'	=> 'us',
 				'type' 		=> 'single_select_country'
 			)
 		);
@@ -98,10 +98,55 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'general_options');
 
-		$settings[] = array( 'title' => __( 'Google Maps Settings', 'wp-club-manager' ), 'type' => 'title', 'desc' => '', 'id' => 'map_options' );
+		$settings[] = array( 'title' => __( 'Map Settings', 'wp-club-manager' ), 'type' => 'title', 'desc' => '', 'id' => 'map_options' );
 
 		$settings[] = array(
-			'title' 	=> __( 'Maps API Key', 'wp-club-manager' ),
+			'title' 	=> __( 'Choose Map Service', 'wp-club-manager' ),
+			'desc' 		=> '',
+			'id' 		=> 'wpcm_map_select',
+			'default'	=> 'google',
+			'type' 		=> 'radio',
+			'options' => array(
+				'google'  => __( 'Google Maps', 'wp-club-manager' ),
+				'osm'	=> __( 'OpenStreetMap', 'wp-club-manager' ),
+			)
+		);
+
+		$settings[] = array(
+			'title' 	=> __( 'OSM Layer Service', 'wp-club-manager' ),
+			'desc' 		=> '',
+			'id' 		=> 'wpcm_osm_layer',
+			'default'	=> 'standard',
+			'type' 		=> 'radio',
+			'options' => array(
+				'standard'  => __( 'Standard', 'wp-club-manager' ),
+				'mapbox'	=> __( 'Mapbox', 'wp-club-manager' ),
+			)
+		);
+
+		$settings[] = array(
+			'title' 	=> __( 'Mapbox API Key', 'wp-club-manager' ),
+			'id' 		=> 'wpcm_mapbox_api',
+			'css' 		=> 'width: 100%;max-width:350px;',
+			'default'	=> '',
+			'type' 		=> 'text',
+			'desc'		=>  sprintf( __( '<a href="%s" target="_blank">Get API Key</a>', 'wp-club-manager' ), 'https://account.mapbox.com/auth/signup/' )
+		);
+
+		$settings[] = array(
+			'title' 	=> __( 'Mapbox Layer Style', 'wp-club-manager' ),
+			'desc' 		=> '',
+			'id' 		=> 'wpcm_mapbox_type',
+			'default'	=> 'mapbox/streets-v11',
+			'type' 		=> 'radio',
+			'options' => array(
+				'mapbox/streets-v11'  => __( 'Streets', 'wp-club-manager' ),
+				'mapbox/satellite-streets-v11'	=> __( 'Satellite/Streets', 'wp-club-manager' ),
+			)
+		);
+
+		$settings[] = array(
+			'title' 	=> __( 'Google Maps API Key', 'wp-club-manager' ),
 			'id' 		=> 'wpcm_google_map_api',
 			'css' 		=> 'width: 100%;max-width:350px;',
 			'default'	=> '',
@@ -117,7 +162,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 			'type' 		=> 'radio',
 			'options' => array(
 				'roadmap'  => __( 'Roadmap', 'wp-club-manager' ),
-				'satellite'	=> __( 'Satelitte', 'wp-club-manager' ),
+				'satellite'	=> __( 'Satellite', 'wp-club-manager' ),
 			)
 		);
 
@@ -131,7 +176,7 @@ class WPCM_Settings_General extends WPCM_Settings_Page {
 				'min' 	=> 0,
 				'max' 	=> 21,
 				'step' 	=> 1
-			),
+			)
 		);
 
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'map_options');

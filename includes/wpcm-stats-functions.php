@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -297,6 +297,8 @@ if (!function_exists('get_wpcm_player_auto_stats')) {
 			$all_players = unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
 
 			if ( is_array( $all_players ) ) {
+
+				unset( $all_players['subs_not_used']);
 
 				foreach( $all_players as $players ) {
 

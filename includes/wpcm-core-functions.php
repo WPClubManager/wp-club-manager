@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.1.7
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -303,11 +303,22 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
 	    }
 	    if( !empty( $term_ids ) ) {
 
-	    	return get_terms( array( 'taxonomy' => $taxonomy, 'include' => $term_ids, 'meta_key' => 'tax_position', 'orderby' => 'tax_position' ) );
+	    	return get_terms( array( 
+				'taxonomy' => $taxonomy,
+				'include' => $term_ids,
+				'meta_key' => 'tax_position',
+				'meta_compare'  => 'NUMERIC',
+    			'orderby'       => 'meta_value_num',
+			) );
 
 	    } else {
 
-	    	return wp_get_object_terms( $post, $taxonomy, array('meta_key' => 'tax_position', 'orderby' => 'tax_position', 'order' => 'DESC' ) );
+	    	return wp_get_object_terms( $post, $taxonomy, array(
+				'meta_key' => 'tax_position',
+				'meta_compare' => 'NUMERIC',
+    			'orderby' => 'meta_value_num',
+				'order' => 'DESC'
+			) );
 	    	
 	    }
 
@@ -485,15 +496,16 @@ function get_the_seasons( $post ) {
 /**
  * Return current seaason.
  *
- * @since  2.1.5
+ * @since  2.2.0
  * @return array
  */
 function get_current_season() {
 
 	$seasons = get_terms( array(
 		'taxonomy' => 'wpcm_season',
-		'orderby' => 'tax_position',
 		'meta_key' => 'tax_position',
+		'meta_compare'  => 'NUMERIC',
+    	'orderby'       => 'meta_value_num',
 		'hide_empty' => false,
 	) );
 	$season = $seasons[0];
@@ -505,82 +517,11 @@ function get_current_season() {
 }
 
 /**
- * Sort biggest score.
+ * Rewrite hierachical club URLs.
  *
  * @since  2.0.0
- * @return int
+ * @return string
  */
-function sort_biggest_score( $a, $b ) {
-	
-	if( $a['gd'] == $b['gd'] ) {
-		if( $a['f'] == $b['f'] ) {
-			return 0;
-		} else {
-			return ($a['f'] < $b['f']) ? -1 : 1;
-		}
-	}
-	return ($a['gd'] < $b['gd']) ? -1 : 1;
-
-}
-
-/**
- * Decode address for Google Maps
- *
- * @access public
- * @param string $address
- * @return mixed $coordinates
- */
-function wpcm_decode_address( $address ) {
-
-    $address_hash = md5( $address );
-    $coordinates = get_transient( $address_hash );
-    $api_key = get_option( 'wpcm_google_map_api');
-	if ( false === $coordinates ) {
-		$args = array( 
-			'address' => urlencode( $address ),
-			'key' => urlencode( $api_key )
-		);
-		$url = add_query_arg( $args, 'https://maps.googleapis.com/maps/api/geocode/json' );
-
-		$response = wp_remote_get( $url );
-		
-     	if ( is_wp_error( $response ) )
-     		return;
-
-		if ( $response['response']['code'] == 200 ) {
-	     	$data = wp_remote_retrieve_body( $response );
-			
-	     	if ( is_wp_error( $data ) )
-	     		return;
-			
-			$data = json_decode( $data );
-
-			if ( $data->status === 'OK' ) {
-			  	$coordinates = $data->results[0]->geometry->location;
-
-			  	$cache_value['lat'] = $coordinates->lat;
-			  	$cache_value['lng'] = $coordinates->lng;
-
-			  	// cache coordinates for 1 month
-			  	set_transient( $address_hash, $cache_value, 3600*24*30 );
-				$coordinates = $cache_value;
-
-			} elseif ( $data->status === 'ZERO_RESULTS' ) {
-			  	return __( 'No location found for the entered address.', 'wp-club-manager' );
-			} elseif( $data->status === 'INVALID_REQUEST' ) {
-			   	return __( 'Invalid request. Address is missing', 'wp-club-manager' );
-			} else {
-				return __( 'Something went wrong while retrieving your map.', 'wp-club-manager' );
-			}
-		} else {
-		 	return __( 'Unable to contact Google API service.', 'wp-club-manager' );
-		}
-		
-	}
-	
-	return $coordinates;
-}
-
 function wpcm_club_rewrites() {
 	$permalink      = get_option( 'wpclubmanager_club_slug' );
 	$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
@@ -588,6 +529,12 @@ function wpcm_club_rewrites() {
 }
 add_action( 'init', 'wpcm_club_rewrites' );
 
+/**
+ * Fix club permalinks.
+ *
+ * @since  2.0.0
+ * @return string
+ */
 function wpcm_club_permalinks( $post_link, $post, $leavename ) {
     if ( isset( $post->post_type ) && 'wpcm_club' == $post->post_type ) {
 
@@ -601,6 +548,12 @@ function wpcm_club_permalinks( $post_link, $post, $leavename ) {
 }
 add_filter( 'post_type_link', 'wpcm_club_permalinks', 10, 3 );
 
+/**
+ * Prevent slug duplicates in Clubs.
+ *
+ * @since  2.0.0
+ * @return string
+ */
 function wpcm_prevent_slug_duplicates( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
     $check_post_types = array(
         'post',
