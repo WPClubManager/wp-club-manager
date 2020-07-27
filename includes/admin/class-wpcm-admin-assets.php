@@ -106,10 +106,10 @@ class WPCM_Admin_Assets {
 		}
 
 		// Edit venue pages
-	    if ( in_array( $screen_id, array( 'edit-wpcm_venue' ) ) && $map == 'google' ) {
-	    	wp_enqueue_script( 'google-maps' );
-	    	wp_enqueue_script( 'jquery-locationpicker' );
-	    	wp_enqueue_script( 'wpclubmanager-admin-locationpicker' );
+		if ( in_array( $screen_id, array( 'edit-wpcm_venue' ) ) && $map == 'google' ) {
+			wp_enqueue_script( 'google-maps' );
+			wp_enqueue_script( 'jquery-locationpicker' );
+			wp_enqueue_script( 'wpclubmanager-admin-locationpicker' );
 		}
 
 		// WPlubManager admin pages
