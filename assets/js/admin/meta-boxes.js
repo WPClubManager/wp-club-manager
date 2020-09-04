@@ -47,7 +47,7 @@ jQuery( function($){
 	});
 
 	// player stats season dropdown.
-	jQuery( '.type_box' ).appendTo( '#wpclubmanager-player-stats .hndle span' );
+	jQuery( '.type_box' ).appendTo( '#wpclubmanager-player-stats .hndle' );
 	
 		jQuery( function() {
 			// Prevent inputs in meta box headings opening/closing contents.
