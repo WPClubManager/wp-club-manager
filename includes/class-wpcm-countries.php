@@ -5,7 +5,7 @@
  * The WPClubManager countries class stores country/state data.
  *
  * @class 		WPCM_Countries
- * @version		2.1.3
+ * @version		2.2.1
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -27,7 +27,7 @@ class WPCM_Countries {
 	 * @return void
 	 */
 	public function __construct() {
-		global $wpclubmanager;
+		// global $wpclubmanager;
 
 		$this->countries = apply_filters( 'wpclubmanager_countries', array(
 			'af' => __( 'Afghanistan', 'wp-club-manager' ),
@@ -268,8 +268,8 @@ class WPCM_Countries {
 			'uy' => __( 'Uruguay', 'wp-club-manager' ),
 			'um' => __( 'US Minor Outlying Islands', 'wp-club-manager' ),
 			'uz' => __( 'Uzbekistan', 'wp-club-manager' ),
-			'vu' => __( 'Vanuata', 'wp-club-manager' ),
-			've' => __( 'Venezuala', 'wp-club-manager' ),
+			'vu' => __( 'Vanuatu', 'wp-club-manager' ),
+			've' => __( 'Venezuela', 'wp-club-manager' ),
 			'vn' => __( 'Vietnam', 'wp-club-manager' ),
 			'vg' => __( 'Virgin Islands, British', 'wp-club-manager' ),
 			'vi' => __( 'Virgin Islands, U.S.', 'wp-club-manager' ),

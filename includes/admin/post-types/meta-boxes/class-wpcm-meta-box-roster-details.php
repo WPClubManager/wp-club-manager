@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.1.5
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,16 +33,17 @@ class WPCM_Meta_Box_Roster_Details {
 			$team = $teams[0]->term_id;
 		} else {
 			$team = -1;
-		} ?>
+        }?>
         
         <p>
             <label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
             <?php
             wp_dropdown_categories(array(
-                'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-                'hide_empty' => false,
                 'taxonomy' => 'wpcm_season',
+                'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $season,
                 'name' => 'wpcm_roster_season',
                 'class' => 'chosen_select'
@@ -53,10 +54,11 @@ class WPCM_Meta_Box_Roster_Details {
             <label><?php _e( 'Team', 'wp-club-manager' ); ?></label>
             <?php
             wp_dropdown_categories(array(
-                'orderby' => 'tax_position',
-				'meta_key' => 'tax_position',
-                'hide_empty' => false,
                 'taxonomy' => 'wpcm_team',
+                'hide_empty' => false,
+                'meta_key' => 'tax_position',
+		        'meta_compare'  => 'NUMERIC',
+    	        'orderby'       => 'meta_value_num',
                 'selected' => $team,
                 'name' => 'wpcm_roster_team',
                 'class' => 'chosen_select'
@@ -73,8 +75,7 @@ class WPCM_Meta_Box_Roster_Details {
 				'limit' 			=> -1,
 				'show_option_none'	=> __( 'None', 'wp-club-manager' ),
 				'class'				=> 'chosen_select',
-				'echo' 				=> false,
-                //'selected' 			=> $home_club,
+				'echo' 				=> false
 			));
 			?>
 		</p>
@@ -88,8 +89,7 @@ class WPCM_Meta_Box_Roster_Details {
 				'limit' 			=> -1,
 				'show_option_none'	=> __( 'None', 'wp-club-manager' ),
 				'class'				=> 'chosen_select',
-				'echo' 				=> false,
-				//'selected' 			=> $home_club
+				'echo' 				=> false
 			));
 			?>
 		</p>

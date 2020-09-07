@@ -5,9 +5,11 @@
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Version: 2.1.11
+ * Version: 2.2.1
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
  * @package   WPClubManager
  * @category  Core
@@ -28,7 +30,7 @@ final class WPClubManager {
 	/**
 	 * @var string
 	 */
-	public $version = '2.1.11';
+	public $version = '2.2.1';
 
 	/**
 	 * @var WPClubManager The single instance of the class
@@ -194,6 +196,7 @@ final class WPClubManager {
 
 		include_once( 'includes/class-wpcm-post-types.php' );
 		include_once( 'includes/class-wpcm-countries.php' );
+		include_once( 'includes/class-wpcm-geocoder.php' );
 		include_once( 'includes/class-wpcm-license-handler.php' );
 		include_once( 'includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php' );
 	}

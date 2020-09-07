@@ -20,7 +20,7 @@ class WPCM_Meta_Box_Table_Notes {
 	public static function output( $post ) {
         
         wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
-        
+    
         wpclubmanager_wp_textarea_input( array( 'id' => '_wpcm_table_notes', 'label' => __( 'Add notes', 'wp-club-manager' ), 'class' => 'regular-text' ) );
 
     }

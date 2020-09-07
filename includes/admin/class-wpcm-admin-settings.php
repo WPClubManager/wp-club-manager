@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -256,7 +256,7 @@ class WPCM_Admin_Settings {
 	            	$class 			= '';
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
 
-	            	<tr>
+	            	<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						
@@ -280,7 +280,7 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr>
+	            	?><tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						
@@ -305,7 +305,7 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr>
+	            	?><tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							
@@ -343,7 +343,7 @@ class WPCM_Admin_Settings {
 
 	            	$option_value 	= self::get_option( $value['id'], $value['default'] );
 
-	            	?><tr>
+	            	?><tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
 						</th>
@@ -476,7 +476,7 @@ class WPCM_Admin_Settings {
 	            	if( isset( $value['args'] ) )
 	            		$args = wp_parse_args( $value['args'], $args );
 
-	            	?><tr>
+	            	?><tr class="<?php echo esc_attr( $value['id'] ); ?>-row">
 	                    <th scope="row" class="titledesc"><label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ) ?></label></th>
 	                    <td class="forminp">
 				        	<?php wpcm_dropdown_posts( $args ); ?> <?php echo $description; ?>
@@ -567,7 +567,7 @@ class WPCM_Admin_Settings {
 					$stats = wpcm_get_preset_labels( 'standings' );
 					$stats_names = wpcm_get_preset_labels( 'standings', 'name' ); ?>
 					
-					<tr>
+					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 							
@@ -593,7 +593,7 @@ class WPCM_Admin_Settings {
 
 				case 'cache_button': ?>
 
-					<tr>
+					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>							
 						</th>
@@ -602,6 +602,153 @@ class WPCM_Admin_Settings {
 							<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" class="waiting" id="wpcm_loading" style="display:none;"/>
 						</td>
 	                </tr>
+				<?php
+				break;
+
+				case 'osm_radio':
+
+					$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+					
+					<tr class="osm hidden">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<fieldset>
+	                    		<?php echo $description; ?>
+	                    		<ul>
+	                    		<?php
+	                    			foreach ( $value['options'] as $key => $val ) {
+			                        	?>
+			                        	<li>
+			                        		<label><input
+				                        		name="<?php echo esc_attr( $value['id'] ); ?>"
+				                        		value="<?php echo $key; ?>"
+				                        		type="radio"
+					                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+					                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+					                    		<?php echo implode( ' ', $custom_attributes ); ?>
+					                    		<?php checked( $key, $option_value ); ?>
+				                        		/> <?php echo $val ?></label>
+			                        	</li>
+			                        	<?php
+			                        }
+	                    		?>
+	                    		</ul>
+	                    	</fieldset>
+	                    </td>
+	                </tr>
+				<?php
+				break;
+
+				case 'osm_text':
+
+					$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+
+	            	<tr class="osm hidden">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+						
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<input
+	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		type="<?php echo esc_attr( $type ); ?>"
+	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+	                    		value="<?php echo esc_attr( $option_value ); ?>"
+	                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+	                    		<?php echo implode( ' ', $custom_attributes ); ?>
+	                    		/> <?php echo $description; ?>
+	                    </td>
+	                </tr>
+				
+				<?php
+				break;
+
+				case 'gmap_radio':
+
+					$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+					
+					<tr class="gmap hidden">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<fieldset>
+	                    		<?php echo $description; ?>
+	                    		<ul>
+	                    		<?php
+	                    			foreach ( $value['options'] as $key => $val ) {
+			                        	?>
+			                        	<li>
+			                        		<label><input
+				                        		name="<?php echo esc_attr( $value['id'] ); ?>"
+				                        		value="<?php echo $key; ?>"
+				                        		type="radio"
+					                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+					                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+					                    		<?php echo implode( ' ', $custom_attributes ); ?>
+					                    		<?php checked( $key, $option_value ); ?>
+				                        		/> <?php echo $val ?></label>
+			                        	</li>
+			                        	<?php
+			                        }
+	                    		?>
+	                    		</ul>
+	                    	</fieldset>
+	                    </td>
+	                </tr>
+				<?php
+				break;
+
+				case 'gmap_text':
+
+					$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+
+	            	<tr class="gmap hidden">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+						
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<input
+	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		type="<?php echo esc_attr( $type ); ?>"
+	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+	                    		value="<?php echo esc_attr( $option_value ); ?>"
+	                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+	                    		<?php echo implode( ' ', $custom_attributes ); ?>
+	                    		/> <?php echo $description; ?>
+	                    </td>
+	                </tr>
+				
+				<?php
+				break;
+
+				case 'map_zoom':
+
+					$option_value 	= self::get_option( $value['id'], $value['default'] ); ?>
+
+	            	<tr class="zoom hidden">
+						<th scope="row" class="titledesc">
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+						
+						</th>
+	                    <td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+	                    	<input
+	                    		name="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		id="<?php echo esc_attr( $value['id'] ); ?>"
+	                    		type="<?php echo esc_attr( $type ); ?>"
+	                    		style="<?php echo esc_attr( $value['css'] ); ?>"
+	                    		value="<?php echo esc_attr( $option_value ); ?>"
+	                    		class="<?php echo esc_attr( $value['class'] ); ?>"
+	                    		<?php echo implode( ' ', $custom_attributes ); ?>
+	                    		/> <?php echo $description; ?>
+	                    </td>
+	                </tr>
+				
 				<?php
 				break;
 
@@ -673,7 +820,12 @@ class WPCM_Admin_Settings {
 		    	case "single_select_page" :
 		    	case "single_select_country" :
 		    	case 'radio' :
-		    	case 'license_key' :
+				case 'license_key' :
+				case 'osm_radio' ;
+				case 'osm_text' :
+				case 'gmap_radio' :
+				case 'gmap_text' :
+				case 'map_zoom' :
 
 		    		if ( isset( $_POST[$value['id']] ) ) {
 			        	$option_value = wpcm_clean( stripslashes( $_POST[ $value['id'] ] ) );

@@ -7,7 +7,7 @@ $options = array(
         'player_list', 'player_gallery'
     ),
     'staff' => array(
-        'staff_list'
+        'staff_list', 'staff_gallery'
     ),
     'match' => array(
         'match_opponents', 'match_list'
@@ -40,6 +40,7 @@ $raw = apply_filters( 'wpclubmanager_tinymce_strings', array(
     'player_list' => __( 'Player List', 'wp-club-manager' ),
     'player_gallery' => __( 'Player Gallery', 'wp-club-manager' ),
     'staff_list' => __( 'Staff List', 'wp-club-manager' ),
+    'staff_gallery' => __( 'Staff Gallery', 'wp-club-manager' ),
     'league_table' => __( 'League Table', 'wp-club-manager' ),
     'map_venue' =>  __( 'Venue Map', 'wp-club-manager' ),
 ));

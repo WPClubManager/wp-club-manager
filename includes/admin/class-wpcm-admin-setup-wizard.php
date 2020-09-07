@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.2.0
 */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -202,7 +202,7 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_general() {
 		$mode          = get_option( 'wpcm_mode', 'club' );
-		$country       = get_option( 'wpcm_default_country', 'EN' );
+		$country       = get_option( 'wpcm_default_country', 'us' );
 		$sport         = get_option( 'wpcm_sport', 'soccer' );
 		$sport_options = wpcm_get_sport_options();
 		?>
@@ -280,6 +280,13 @@ class WPCM_Admin_Setup_Wizard {
 			WPCM_Admin_Settings::configure_sport( $sport );
 			$club_sport = sanitize_text_field( $_POST['club_sport'] );
 			update_option( 'wpcm_sport', $club_sport );
+			// Set table columns
+			$cols = wpcm_get_preset_labels( 'standings' );
+			foreach( $cols as $col => $val ) {
+				$columns[] = $col;
+			}
+			$default_cols = implode( $columns, ',' );
+			update_option( 'wpcm_standings_columns_display', $default_cols);
 		}
 
 		wpcm_flush_rewrite_rules();
@@ -357,11 +364,13 @@ class WPCM_Admin_Setup_Wizard {
 		if( isset( $_POST['setup_season'] ) ){
 			$season = sanitize_text_field( $_POST['setup_season'] );
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
+			update_term_meta( $season_id, 'tax_position', 1 );
 		}
 		
 		if( isset( $_POST['setup_comp'] ) ){
 			$comp = sanitize_text_field( $_POST['setup_comp'] );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
+			update_term_meta( $comp_id, 'tax_position', 1 );
 		}
 
 		if( is_club_mode() ) {
@@ -379,6 +388,7 @@ class WPCM_Admin_Setup_Wizard {
 
 				$team = __( 'First Team', 'wp-club-manager' );
 				$team_id = wp_insert_term( $team, 'wpcm_team' );
+				update_term_meta( $team_id, 'tax_position', 1 );
 
 				if( isset( $_POST['setup_opponent'] ) ){
 					$opponent = sanitize_text_field( $_POST['setup_opponent'] );

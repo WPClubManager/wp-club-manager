@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin/Meta Boxes
- * @version     2.0.4
+ * @version     2.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -398,19 +398,7 @@ class WPCM_Meta_Box_Match_Players {
 						<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $player_teams; ?> <?php echo $seasonclass; ?> sortable sorted">
 							<?php echo apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ); ?>
 
-							<?php
-							if( $type == 'subs_not_used' ) { ?>
-								<td class="names">
-									<i class="dashicons dashicons-move"></i>
-									<label class="selectit">
-										<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_match_subs_not_used[<?php echo $player->ID; ?>]" class="player-select" value="" <?php checked( array_key_exists( $player->ID, $not_used ) ); ?> />
-										<span class="name">
-											<?php echo apply_filters( 'wpcm_player_squad_number_output', $squad_number, $player->ID ); ?> <?php echo get_player_title( $player->ID ); ?>
-										</span>
-									</label>
-								</td>
-							<?php
-							} else { ?>
+							
 								<td class="names">
 									<i class="dashicons dashicons-move"></i>
 									<label class="selectit">
@@ -421,7 +409,7 @@ class WPCM_Meta_Box_Match_Players {
 									</label>
 								</td>
 							<?php
-							}
+							
 
 							do_action( 'wpclubmanager_admin_before_lineup_stats', $selected_players, $player->ID, !$played );
 
@@ -530,6 +518,7 @@ class WPCM_Meta_Box_Match_Players {
 					$players['subs_not_used'] = array_filter( $players['subs_not_used'], 'wpcm_array_filter_checked' );
 			}
 			update_post_meta( $post_id, 'wpcm_players', serialize( $players ) );
+			update_post_meta( $post_id, '_wpcm_match_subs_not_used', $players['subs_not_used'] );
 		}
 
 		if(isset($_POST['wpcm_match_captain'])){

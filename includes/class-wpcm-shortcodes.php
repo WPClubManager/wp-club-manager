@@ -3,7 +3,7 @@
  * WPCM_Shortcodes class.
  *
  * @class 		WPCM_Shortcodes
- * @version		2.0.0
+ * @version		2.2.0
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
@@ -29,6 +29,7 @@ class WPCM_Shortcodes {
 			'player_list'					=> __CLASS__ . '::player_list',
 			'player_gallery'				=> __CLASS__ . '::player_gallery',
 			'staff_list'					=> __CLASS__ . '::staff_list',
+			'staff_gallery'					=> __CLASS__ . '::staff_gallery',
 			'league_table'					=> __CLASS__ . '::league_table',
 			'map_venue'						=> __CLASS__ . '::map_venue',
 
@@ -137,6 +138,18 @@ class WPCM_Shortcodes {
 	public static function staff_list( $atts ) {
 		
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff_List', 'output' ), $atts );
+	}
+
+	/**
+	 * Staff Gellery shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function staff_gallery( $atts ) {
+		
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff_Gallery', 'output' ), $atts );
 	}
 
 	
