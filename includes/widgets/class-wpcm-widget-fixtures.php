@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Widgets
  * @package 	WPClubManager/Widgets
- * @version 	2.1.0
+ * @version 	2.1.12
  * @extends 	WPCM_Widget
  */
 
@@ -235,7 +235,11 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 			while ( $fixtures->have_posts() ) : $fixtures->the_post();
 
 				$post = get_the_ID();
-				$sides = wpcm_get_match_clubs( $post );
+				if( $show_abbr == 1 ) {
+					$sides = wpcm_get_match_clubs( $post, true );
+				}else{
+					$sides = wpcm_get_match_clubs( $post );
+				}
 				$badges = wpcm_get_match_badges( $post, 'crest-medium' );
 				$comp = wpcm_get_match_comp( $post );
 				$team = wpcm_get_match_team( $post );
@@ -247,9 +251,6 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				$show_countdown = ! empty( $instance['show_countdown'] );
 				if( $show_countdown ) {
 					wp_enqueue_script( 'jquery-countdown', WPCM()->plugin_url() . '/assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
-				}
-				if( $show_abbr == 1 ) {
-					$sides = wpcm_get_match_clubs( $post, true );
 				}
 
 				wpclubmanager_get_template( 'content-widget-fixtures.php', array( 'team' => $team, 'comp' => $comp, 'sides' => $sides, 'badges' => $badges, 'show_abbr' => $show_abbr, 'show_date' => $show_date, 'show_time' => $show_time, 'show_comp' => $show_comp, 'show_team' => $show_team, 'show_countdown' => $show_countdown ) );

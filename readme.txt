@@ -1,19 +1,19 @@
 === WP Club Manager - WordPress Sports Club Plugin===
 Contributors: clubpress, leonterry, daveyjake
-Tags: club, teams, sport, sports club, club management, club website, league management, league tables, team rosters, fixtures, results
+Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.1.11
+Stable tag: 2.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club or league website.
+WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club website.
 
 == Description ==
-= Build A Pro Sports Club or League Website =
-WP Club Manager is a sports plugin used to create and manage a club or league website with WordPress. Quick and easy to set-up, you can manage clubs, player profiles and performance data, staff, sponsors, league tables, keep track of your fixtures and results and loads more.
+= Build A Pro Sports Club Website =
+WP Club Manager is a sports plugin used to create and manage a club website with WordPress. Quick and easy to set-up, you can manage clubs, player profiles and performance data, staff, sponsors, league tables, keep track of your fixtures and results and loads more.
 
 = Endorsed by USA Rugby =
 
@@ -22,12 +22,11 @@ Davey Jacobson, *Information Systems Developer*, [USA Rugby](https://www.usa.rug
 
 = Features Include =
 
-* Club or League Mode
 * Manage multiple teams in your club
 * Player and staff profiles
 * Player performance ratings
 * Full player statistics
-* Club profiles with club stats
+* Inofrmative club profiles with club stats
 * Fixtures and results
 * Automatically updated league tables
 * Match statistics and reports
@@ -167,6 +166,33 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.1 07/09/2020
+
+* Fix - Fixed missing function warning in plugin dashboard
+* Fix - Fixed season dropdown in admin player stats table
+* Fix - Corrected misspelled country names
+* Fix - Fixed vertical alignment of multiple choice input options
+
+= 2.2.0 09/07/2020
+
+* New - Added OpenStreetMaps as an option for venue maps
+* New - Added Nominatim Geocoder for OpenStreetMaps
+* New - Added Staff Gallery shortcode
+* Tweak - Player dropdown on player profile now filters by current season
+* Fix - Fixed taxonomy terms not appearing in dropdowns on setup
+* Fix - Fixed new seasons/teams/comps not registering in some instances
+* Fix - Fixed league table columns default setup
+* Fix - Removed season submenu from Matches admin menu
+* Fix - Fixed subs not used de-selection issue
+* Fix - Fixed name formats in Player Gallery and Staff List shortcodes
+* Fix - Fixed player placeholder in Players Gallery shortcode
+* Fix - Fixed 'Trying to access array offset' warning on match pages
+* Fix - Fixed missing venue address in Match Schema
+* Fix - Fixed various new PHP 7 warnings
+* Template - '/shortcodes/map-venue.php' - Added OpenStreetMaps
+* Template - '/shortcodes/staff-gallery.php - New template
+* Localisation - Updated wpclubmanager.pot
 
 = 2.1.11 18/05/2020
 

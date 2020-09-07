@@ -103,7 +103,8 @@ class WPCM_Settings_Standings extends WPCM_Settings_Page {
 		$settings[] = array(
 			'title' => __( 'Columns', 'wp-club-manager' ),
 			'id' 		=> 'wpcm_standings_columns_display',
-			'type' 		=> 'standings_columns'
+			'type' 		=> 'standings_columns',
+			'default'	=> 'p,w,d,l,f,a,pts'
 		);
 
 		$settings[] = array( 'type' => 'sectionend', 'id' => 'display_options');

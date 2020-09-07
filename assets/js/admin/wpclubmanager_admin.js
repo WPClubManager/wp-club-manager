@@ -42,4 +42,54 @@ jQuery(function($){
 		return event.keyCode != 13;
 	});
 
+	var map = jQuery('input[type="radio"][name="wpcm_map_select"]:checked').val();
+	var mapbox = jQuery('input[type="radio"][name="wpcm_osm_layer"]:checked').val();
+
+	if( map == 'osm') {
+		jQuery('#wpcm_osm_layer-row').show();
+		jQuery('#wpcm_google_map_api-row').hide();
+		jQuery('#wpcm_map_type-row').hide();
+		if( mapbox == 'mapbox' )  {
+			jQuery('#wpcm_mapbox_api-row').show();
+			jQuery('#wpcm_mapbox_type-row').show();
+		}
+	}
+	if( map == 'google') {
+		jQuery('#wpcm_google_map_api-row').show();
+	}
+
+	jQuery('input[type="radio"][name="wpcm_map_select"]').on('change', function() {
+		switch (jQuery(this).val()) {
+		  	case 'osm':
+				jQuery('#wpcm_osm_layer-row').show();
+				jQuery('#wpcm_google_map_api-row').hide();
+				jQuery('#wpcm_map_type-row').hide();
+				if( mapbox == 'mapbox' )  {
+					jQuery('#wpcm_mapbox_api-row').show();
+					jQuery('#wpcm_mapbox_type-row').show();
+				}
+			break;
+		  	case 'google':
+				jQuery('#wpcm_osm_layer-row').hide();
+				jQuery('#wpcm_mapbox_api-row').hide();
+				jQuery('#wpcm_mapbox_type-row').hide();
+				jQuery('#wpcm_google_map_api-row').show();
+				jQuery('#wpcm_map_type-row').show();
+			break;
+		}
+	});
+
+	jQuery('input[type="radio"][name="wpcm_osm_layer"]').on('change', function() {
+		switch (jQuery(this).val()) {
+			case 'mapbox':
+				jQuery('#wpcm_mapbox_api-row').show();
+				jQuery('#wpcm_mapbox_type-row').show();
+			break;
+			case 'standard':
+				jQuery('#wpcm_mapbox_api-row').hide();
+				jQuery('#wpcm_mapbox_type-row').hide();
+			break;
+		}
+	});
+
 });

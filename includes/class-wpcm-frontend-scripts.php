@@ -5,7 +5,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.1.5
+ * @version     2.2.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -32,6 +32,12 @@ class WPCM_Frontend_Scripts {
 				'version' => WPCM_VERSION,
 				'media'   => 'all'
 			),
+			'leaflet-styles' => array(
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/js/leaflet/leaflet.css',
+				'deps'    => '',
+				'version' => '1.6.0',
+				'media'   => 'all'
+			),
 		) );
 	}
 
@@ -49,8 +55,13 @@ class WPCM_Frontend_Scripts {
 		$suffix               = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$assets_path          = str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/';
 		$frontend_script_path = $assets_path . 'js/frontend/';
+		$map_service = get_option( 'wpcm_map_select', 'google' );
 
-		wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
+		if( $map_service == 'google' ) {
+			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
+		} elseif( $map_service == 'osm' ) {
+			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
+		}
 
 		// Global frontend scripts
 		wp_enqueue_script( 'wpclubmanager', $frontend_script_path . 'wpclubmanager.js', array( 'jquery' ), WPCM_VERSION, true );
@@ -74,7 +85,7 @@ class WPCM_Frontend_Scripts {
 	/**
 	 * Loads the JSON-LD structured data.
 	 *
-	 * @since  1.3
+	 * @since  2.2.0
 	 * @access public
 	 * @return void
 	 */
@@ -117,11 +128,13 @@ class WPCM_Frontend_Scripts {
 			if ( is_array( $venues ) ) {
 				$venue = reset($venues);
 				$t_id = $venue->term_id;
-				$venue_meta = get_option( 'taxonomy_term_$t_id' );
+				$venue_name = $venue->name;
+				$venue_meta = get_option( 'taxonomy_term_' . $t_id );
+			}
+			if( is_array( $venue_meta ) ) {
 				$address = $venue_meta['wpcm_address'];
 			} else {
-				$venue = null;
-				$address = null;
+				$address = '';
 			}
 
 			$data['@context'] = 'http://schema.org/';
@@ -131,7 +144,7 @@ class WPCM_Frontend_Scripts {
 			$data['url'] = $post_url;
 			$data['location'] = array(
 				'@type' => 'Place',
-				'name' => $venue->name,
+				'name' => $venue_name,
 				'address' => array(
 					'@type' => 'PostalAddress',
 					'name' => $address

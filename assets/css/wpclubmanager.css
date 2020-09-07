@@ -1041,6 +1041,11 @@ ul.wpcm-matches-list {
 		clear: both;
 	}
 }
-.wpcm-players-gallery-li h4 a {
+.wpcm-players-gallery-li h4 a,
+.wpcm-staff-gallery-li h4 a {
 	display: block;
+}
+
+.leaflet-marker-icon {
+	box-shadow: none !important;
 }
