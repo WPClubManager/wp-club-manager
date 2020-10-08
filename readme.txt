@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club website.
 
 == Description ==
-= Build A Pro Sports Club Website =
+= Build A Pro Sports Club Website With No Hassle =
 WP Club Manager is a sports plugin used to create and manage a club website with WordPress. Quick and easy to set-up, you can manage clubs, player profiles and performance data, staff, sponsors, league tables, keep track of your fixtures and results and loads more.
 
 = Endorsed by USA Rugby =
