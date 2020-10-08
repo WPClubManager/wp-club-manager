@@ -5,7 +5,7 @@
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Version: 2.2.1
+ * Version: 2.2.2
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -30,7 +30,7 @@ final class WPClubManager {
 	/**
 	 * @var string
 	 */
-	public $version = '2.2.1';
+	public $version = '2.2.2';
 
 	/**
 	 * @var WPClubManager The single instance of the class
@@ -114,7 +114,7 @@ final class WPClubManager {
 	public function plugin_action_links( $links ) {
 		$action_links = array(
 			'settings' => '<a href="' . admin_url( 'admin.php?page=wpcm-settings' ) . '" title="' . esc_attr( __( 'View WP Club Manager Settings', 'wp-club-manager' ) ) . '">' . __( 'Settings', 'wp-club-manager' ) . '</a>',
-			'docs'    => '<a href="' . esc_url( apply_filters( 'wpclubmanager_docs_url', 'http://docs.wpclubmanager.com', 'wp-club-manager' ) ) . '" title="' . esc_attr( __( 'View WP Club Manager Documentation', 'wp-club-manager' ) ) . '">' . __( 'Docs', 'wp-club-manager' ) . '</a>',
+			'docs'    => '<a href="' . esc_url( apply_filters( 'wpclubmanager_docs_url', 'https://wpclubmanager.com/documentation/', 'wp-club-manager' ) ) . '" title="' . esc_attr( __( 'View WP Club Manager Documentation', 'wp-club-manager' ) ) . '">' . __( 'Docs', 'wp-club-manager' ) . '</a>',
 	 		'support' => '<a href="' . esc_url( apply_filters( 'wpclubmanager_support_url', 'http://wpclubmanager.com/support/' ) ) . '" title="' . esc_attr( __( 'Support', 'wp-club-manager' ) ) . '">' . __( 'Support', 'wp-club-manager' ) . '</a>',
 		);
 

@@ -4,7 +4,7 @@
  *
  * @author 		Clubpress
  * @package 	WPClubManager/Templates
- * @version     1.4.0
+ * @version     2.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
@@ -39,9 +39,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 	<div class="wpcm-date">
 		<div class="kickoff">
 			<?php
-			echo ( $show_date ? the_time('j M Y') : '' ); 
-			echo ( $show_time ? ' - ' : '' );
-			echo ( $show_time ? the_time('g:i a') : '' );
+			echo ( $show_date ? the_date( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ) ) : '' ); 
+			echo ( $show_date && $show_time ? ' - ' : '' );
+			echo ( $show_time ? the_time( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ) ) : '' );
 			?>
 		</div>			
 	</div>

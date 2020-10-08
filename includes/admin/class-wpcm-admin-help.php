@@ -5,7 +5,7 @@
  * @author      WPClubManager
  * @category    Admin
  * @package     WPClubManager/Admin
- * @version     2.0.0
+ * @version     2.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -43,7 +43,7 @@ class WPCM_Admin_Help {
 				'<h2>' . __( 'Help &amp; Support', 'wp-club-manager' ) . '</h2>' .
 				'<p>' . sprintf(
 					__( 'Should you need help understanding, using, or extending WP Club Manager, %splease read our documentation%s. You will find all kinds of resources including snippets, tutorials and much more.' , 'wp-club-manager' ),
-					'<a href="https://docs.wpclubmanager.com/?utm_source=helptab&utm_medium=settings&utm_content=docs&utm_campaign=wpclubmanagerplugin" target="_blank">',
+					'<a href="https://wpclubmanager.com/documentation/?utm_source=helptab&utm_medium=settings&utm_content=docs&utm_campaign=wpclubmanagerplugin" target="_blank">',
 					'</a>'
 				) . '</p>' .
 				'<p>' . sprintf(
