@@ -21,8 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 			$home_club = get_post_meta( $match->ID, 'wpcm_home_club', true );
 			$played = get_post_meta( $match->ID, 'wpcm_played', true );
 			$timestamp = strtotime( $match->post_date );
-			$time_format = get_option( 'time_format' );
-
 			$venue = wpcm_get_match_venue( $match->ID );
 			$team = wpcm_get_match_team( $match->ID );
 			$comp = wpcm_get_match_comp( $match->ID );
@@ -45,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 			<tr data-url="<?php echo get_post_permalink( $match->ID, false, true ); ?>">
 				<td class="wpcm-date">
 					<a class="wpcm-matches-href" href="<?php echo get_post_permalink( $match->ID, false, true ); ?>">
-						<?php echo date_i18n( 'D d M', $timestamp ); ?>, <?php echo date_i18n( $time_format, $timestamp ); ?>
+						<?php echo date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_date_format', 'D d M' ), $timestamp ); ?>, <?php echo date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_time_format', get_option( 'time_format' ) ), $timestamp ); ?>
 					</a>
 				</td>
 				<td class="venue"><?php echo $venue['status']; ?></td>
