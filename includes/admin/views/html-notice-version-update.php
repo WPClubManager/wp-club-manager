@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</ul>
 
 		<em><a href='https://wpclubmanager.com/version-2-upgrade-guide/' target='_blank'><?php _e( 'Find out more about how this update will affect your website', 'wp-club-manager' ); ?></a></em><br>
-		<em><a href='https://docs.wpclubmanager.com' target='_blank'><?php _e( 'Check out our updated documentation', 'wp-club-manager' ); ?></a></em>
+		<em><a href='https://wpclubmanager.com/documentation/' target='_blank'><?php _e( 'Check out our updated documentation', 'wp-club-manager' ); ?></a></em>
 	</p>
 
 	<?php

@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Admin
  * @package 	WPClubManager/Admin
- * @version     2.2.0
+ * @version     2.2.2
 */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -562,8 +562,8 @@ class WPCM_Admin_Setup_Wizard {
 						<?php _e( 'If you need further help or need to report an issue please visit our support forum.', 'wp-club-manager' ); ?>
 					</p>
 					<div class="ui bulleted list">
-						<a class="item" href="https://docs.wpclubmanager.com/" target="_blank"><?php _e( 'WP Club Manager documentation', 'wp-club-manager' ); ?></a>
-						<a class="item" href="https://docs.wpclubmanager.com/" target="_blank"><?php _e( 'Getting started checklist', 'wp-club-manager' ); ?></a>
+						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php _e( 'WP Club Manager documentation', 'wp-club-manager' ); ?></a>
+						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php _e( 'Getting started checklist', 'wp-club-manager' ); ?></a>
 						<a class="item" href="https://wordpress.org/support/plugin/wp-club-manager" target="_blank"><?php _e( 'Community support forum', 'wp-club-manager' ); ?></a>
 					</div>
 				</div>
