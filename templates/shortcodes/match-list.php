@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 		<li class="wpcm-matches-list-item">
 			<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">
 				<span class="wpcm-matches-list-col wpcm-matches-list-date">
-					<?php echo date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_date_format', 'D d M' ), $timestamp ); ?>	
+					<?php echo date_i18n( apply_filters( 'wpclubmanager_match_date_format', 'D d M' ), $timestamp ); ?>	
 				</span>
 				<span class="wpcm-matches-list-col wpcm-matches-list-club1">
 					<?php echo $side1; ?>
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 				<?php echo $home_badge; ?>
 				<span class="wpcm-matches-list-col wpcm-matches-list-status">
 					<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?>">
-						<?php echo ( $played ? $result[0] : date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_time_format', get_option( 'time_format' ) ), $timestamp ) ); ?>
+						<?php echo ( $played ? $result[0] : date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ); ?>
 					</span>
 				</span>
 				<?php echo $away_badge; ?>

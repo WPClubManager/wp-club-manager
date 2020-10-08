@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 			<tr data-url="<?php echo get_post_permalink( $match->ID, false, true ); ?>">
 				<td class="wpcm-date">
 					<a class="wpcm-matches-href" href="<?php echo get_post_permalink( $match->ID, false, true ); ?>">
-						<?php echo date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_date_format', 'D d M' ), $timestamp ); ?>, <?php echo date_i18n( apply_filters( 'wpclubmanager_match_shortcodes_time_format', get_option( 'time_format' ) ), $timestamp ); ?>
+						<?php echo date_i18n( apply_filters( 'wpclubmanager_match_date_format', 'D d M' ), $timestamp ); ?>, <?php echo date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ); ?>
 					</a>
 				</td>
 				<td class="venue"><?php echo $venue['status']; ?></td>

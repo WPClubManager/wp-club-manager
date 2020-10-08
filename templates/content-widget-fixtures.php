@@ -39,9 +39,9 @@ global $post; ?>
 	<div class="wpcm-date">
 		<div class="kickoff">
 			<?php 
-			echo ( $show_date ? the_date( apply_filters( 'wpclubmanager_match_widgets_date_format', get_option( 'date_format' ) ) ) : '' ); 
+			echo ( $show_date ? the_date( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ) ) : '' ); 
 			echo ( $show_date && $show_time ? ' - ' : '' );
-			echo ( $show_time ? the_time( apply_filters( 'wpclubmanager_match_widgets_time_format', get_option( 'time_format' ) ) ) : '' );
+			echo ( $show_time ? the_time( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ) ) : '' );
 			?>
 		</div>
 		<?php if( $show_countdown ) { ?>
