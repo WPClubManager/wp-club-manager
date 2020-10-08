@@ -5,7 +5,7 @@
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Version: 2.2.1
+ * Version: 2.2.2
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -30,7 +30,7 @@ final class WPClubManager {
 	/**
 	 * @var string
 	 */
-	public $version = '2.2.1';
+	public $version = '2.2.2';
 
 	/**
 	 * @var WPClubManager The single instance of the class

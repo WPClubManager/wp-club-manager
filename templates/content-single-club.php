@@ -6,7 +6,7 @@
  *
  * @author 		ClubPress
  * @package 	WPClubManager/Templates
- * @version     2.1.5
+ * @version     2.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
