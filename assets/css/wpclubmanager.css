@@ -61,7 +61,7 @@ table {
 	table thead tr td,
 	table tfoot tr th,
 	table tfoot tr td {
-		padding: 0.5rem 0.625 0.625rem;
+		padding: 0.5rem 0.625rem;
 		font-weight: bold;
 		text-align: left;
 	}
@@ -77,9 +77,9 @@ table {
 		display: table-cell;
 		line-height: 1.125rem;
 	}
-	.entry-content td {
+	/* .entry-content td {
 	  	padding-left: 0.625rem !important;
-	}
+	} */
 	.wpcm-fixtures-shortcode tbody tr:hover {
 		cursor: pointer;
 	}
