@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.2.1
+Stable tag: 2.2.2-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -59,7 +59,7 @@ Find out more about all each feature and more, please visit [our site](https://w
 * Rugby Union
 * Volleyball
 
-Find extensive [documentation](http://docs.wpclubmanager.com) and [friendly support](https://wpclubmanager.com/support/) at our [plugin website](https://wpclubmanager.com).
+Find extensive [documentation](https://wpclubmanager.com/documentation/) and [friendly support](https://wpclubmanager.com/support/) at our [plugin website](https://wpclubmanager.com).
 
 = Themes & Extensions =
 
@@ -141,11 +141,11 @@ If your sport is not supported please [contact us](https://wpclubmanager.com/con
 
 = Where can I find documentation and support for the WP Club Manager plugin? =
 
-You can find documentation for the plugin at [WP Club Manager documentation](http://docs.wpclubmanager.com) or get [Support](https://wpclubmanager.com/support/)
+You can find documentation for the plugin at [WP Club Manager documentation](https://wpclubmanager.com/documentation/) or get [Support](https://wpclubmanager.com/support/)
 
 = Will WP Club Manager work with my theme? =
 
-Yes; WP Club Manager will work with any theme, but may require some styling to make it match nicely. Please see our [docs](https://docs.wpclubmanager.com/) for help. If you're looking for a theme with built in WP Club Manager integration we recommend [Victory](https://wpclubmanager.com/products/victory).
+Yes; WP Club Manager will work with any theme, but may require some styling to make it match nicely. Please see our [docs](https://wpclubmanager.com/documentation/) for help. If you're looking for a theme with built in WP Club Manager integration we recommend [Victory](https://wpclubmanager.com/products/victory).
 
 = Where can I report bugs or contribute to the project? =
 
@@ -166,6 +166,21 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.2 08/10/2020
+
+* Fix - Fixed warning message when sorting players in matches
+* Tweak - Fixtures/Results widgets now use date/time format from WP general settings
+* Tweak - Added filters to all plugin date/time functions
+* Tweak - Added some filters to players gallery shortcode
+* Tweak - Removed some conflicting CSS from tables
+* Tweak - Updated documentation links
+* Template - '/shortcodes/match-list.php' - Added date/time filter
+* Template - '/shortcodes/match-opponents.php' - Added date/time filter
+* Template - '/content-widget-fixtures.php' - Added date/time filter
+* Template - '/content-widget-results.php' - Added date/time filter
+* Template - '/content-single-club.php' - Added date/time filter
+* Template - '/single-match/date.php' - Added date/time filter
 
 = 2.2.1 07/09/2020
 
