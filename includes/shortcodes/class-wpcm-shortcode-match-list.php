@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.1.0
+ * @version     2.2.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -78,11 +78,11 @@ class WPCM_Shortcode_Match_List {
 		if( $output === false ) {
 
 			if( $format == '' ){
-				$format = array('publish','future');
+				$post_status = array('publish','future');
 			}elseif( $format == 'fixtures' ){
-				$format = 'future';
+				$post_status = 'future';
 			}elseif( $format == 'results' ){
-				$format = 'publish';
+				$post_status = 'publish';
 			}
 
 			// get matches
@@ -91,7 +91,7 @@ class WPCM_Shortcode_Match_List {
 				'order' => $order,
 				'orderby' => 'post_date',
 				'post_type' => 'wpcm_match',
-				'post_status' => $format,
+				'post_status' => $post_status,
 				'posts_per_page' => $limit
 			);
 
