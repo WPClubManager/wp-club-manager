@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag: 2.2.2
+Stable tag: 2.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -133,7 +133,7 @@ Automatic updates should work as expected but as always, it is recommended that 
 
 = Is this plugin suitable for managing a league website? =
 
-Yes! Since version 2 WP Club Manager is built to manage either a single club or league website.
+Yes! Since version 2 WP Club Manager is built to manage either a single club or league website. Please note that league mode does have some limitations and will not record player statistics for matches.
 
 = My sport is not supported. How can I add my sport? =
 
@@ -166,6 +166,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.3 22/10/2020
+
+* Fix - Fixed staff importer
+* Fix - Fixed unplayed matches showing in Match List shortcode in results format
 
 = 2.2.2 09/10/2020
 
