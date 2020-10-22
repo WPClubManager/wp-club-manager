@@ -5,7 +5,7 @@
  * @author      ClubPress
  * @category    Admin
  * @package     WPClubManager/Admin/Importers
- * @version     2.0.2
+ * @version     2.2.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -133,7 +133,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		public function greet() {
 			echo '<div class="narrow">';
 			echo '<p>' . __( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ).'</p>';
-			echo '<p>' . sprintf( __( 'Staff need to be defined with columns in a specific order (6 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/staff-sample.csv' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Staff need to be defined with columns in a specific order (7 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/staff-sample.csv' ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=wpclubmanager_staff_csv&step=1' );
 			echo '</div>';
 		}
