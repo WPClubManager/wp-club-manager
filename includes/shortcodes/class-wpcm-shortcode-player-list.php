@@ -273,6 +273,7 @@ class WPCM_Shortcode_Player_List {
 					'count' 		 => $count,
 					'limit' 		 => $limit,
 					'stats_labels' 	 => $stats_labels,
+					'name_format'	 => $name_format,
 					'linkpage' 		 => $linkpage,
 					'linktext'  	 => $linktext
 					) );
