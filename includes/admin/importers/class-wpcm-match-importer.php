@@ -5,7 +5,7 @@
  * @author      ClubPress
  * @category    Admin
  * @package     WPClubManager/Admin/Importers
- * @version     2.0.4
+ * @version     2.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -228,7 +228,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						}
 
 						$selected = array( 'checked' => '1' );
-						$stats_array = $selected + $stats_combine;
+						$stats_array = array_merge( $selected, $stats_combine );
 						$players_array[$player_id] = $stats_array;
 					}
 					$players = array( 
