@@ -169,6 +169,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 = 2.2.4 TBC
 
+* Fix - Fixed unsupported operand error in match importer
 * Fix - Fixed player name in Player Gallery title
 * Tweak - Improved player list shortcode themeing
 
