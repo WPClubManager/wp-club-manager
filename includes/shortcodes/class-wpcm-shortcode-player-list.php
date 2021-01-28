@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.0.2
+ * @version     2.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -182,6 +182,9 @@ class WPCM_Shortcode_Player_List {
 				foreach( $players as $player ) {
 
 					$player_details[$player->ID] = array();
+
+					$player_details[$player->ID]['id'] = $player->ID;
+
 					//$count++;
 					if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) ) {
 						$player_stats = get_wpcm_player_stats( $player->ID );
@@ -270,6 +273,7 @@ class WPCM_Shortcode_Player_List {
 					'count' 		 => $count,
 					'limit' 		 => $limit,
 					'stats_labels' 	 => $stats_labels,
+					'name_format'	 => $name_format,
 					'linkpage' 		 => $linkpage,
 					'linktext'  	 => $linktext
 					) );

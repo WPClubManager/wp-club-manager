@@ -3,9 +3,9 @@ Contributors: clubpress, leonterry, daveyjake
 Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
-Tested up to: 5.5
+Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -166,6 +166,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.4 28/01/2021
+
+* Fix - Fixed variable not defined error in match widgets
+* Fix - Fixed unsupported operand error in match importer
+* Fix - Fixed player name in Player Gallery title
+* Tweak - Improved player list shortcode themeing
+* Template - '/shortcodes/match-opponents.php' - Fixed variable not defined error
 
 = 2.2.3 22/10/2020
 
