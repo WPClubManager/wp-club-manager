@@ -4,7 +4,7 @@
  *
  * @author      Clubpress
  * @package     WPClubManager/Templates
- * @version     2.2.2
+ * @version     2.2.4
  */
 
 if (! defined('ABSPATH')) {
