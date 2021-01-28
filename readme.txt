@@ -169,9 +169,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 = 2.2.4 28/01/2021
 
+* Fix - Fixed variable not defined error in match widgets
 * Fix - Fixed unsupported operand error in match importer
 * Fix - Fixed player name in Player Gallery title
 * Tweak - Improved player list shortcode themeing
+* Template - '/shortcodes/match-opponents.php' - Fixed variable not defined error
 
 = 2.2.3 22/10/2020
 
