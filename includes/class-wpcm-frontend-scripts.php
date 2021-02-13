@@ -162,7 +162,7 @@ class WPCM_Frontend_Scripts {
 			$data['startDate'] = $post->post_date;
 
 			/**
-			 * Filters the front page LD+JSON schema.
+			 * Filters the SportsEvent LD+JSON schema.
 			 *
 			 * @since 2.2.5
 			 *
