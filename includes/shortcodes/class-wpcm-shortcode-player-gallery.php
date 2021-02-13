@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.2.0
+ * @version     2.2.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -109,17 +109,17 @@ class WPCM_Shortcode_Player_Gallery {
 
 					$player_details[$player->ID] = array();
 
+					$player_details[$player->ID]['id'] = $player->ID;
+
 					$player_stats = get_wpcm_player_stats( $player->ID );
 
-					if ( has_post_thumbnail( $player->ID ) ) {
-						$thumb = get_the_post_thumbnail( $player->ID, 'player-medium' );
-					} else {
-						$thumb = wpcm_placeholder_img( $size = 'full' );
-					}
+					$thumb = wpcm_get_player_thumbnail( $player->ID, 'player_full' );
+					$url = get_permalink( $player->ID );
+					$player_title = get_player_title( $player->ID, $name_format );
 
-					$player_details[$player->ID]['image'] = '<a href="' . get_permalink( $player->ID ) . '">' . $thumb . '</a>';
+					$player_details[$player->ID]['image'] = apply_filters( 'wpclubmanager_player_gallery_image', '<a href="' . $url . '">' . $thumb . '</a>', $url, $thumb );
 
-					$player_details[$player->ID]['title'] = '<a href="' . get_permalink( $player->ID ) . '">' . get_player_title( $player->ID, $name_format ) . '</a>';
+					$player_details[$player->ID]['title'] = apply_filters( 'wpclubmanager_player_gallery_title', '<a href="' . $url . '">' . $player_title . '</a>', $url, $player_title );
 
 					if ( array_key_exists( $orderby, $player_stats_labels ) )  {
 						if ( $team ) {
@@ -159,6 +159,7 @@ class WPCM_Shortcode_Player_Gallery {
 					'orderby'		 => $orderby,
 					'player_details' => $player_details,
 					'limit' 		 => $limit,
+					'name_format'	 => $name_format,
 					'linkpage' 		 => $linkpage,
 					'linktext'  	 => $linktext,
 					'columns'		 => $columns

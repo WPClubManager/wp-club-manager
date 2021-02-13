@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.2.0
+ * @version     2.2.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -514,6 +514,25 @@ function get_current_season() {
 	$current['slug'] = $season->slug;
 
 	return $current;
+}
+
+/**
+ * Sort biggest score.
+ *
+ * @since  2.0.0
+ * @return int
+ */
+function sort_biggest_score( $a, $b ) {
+	
+	if( $a['gd'] == $b['gd'] ) {
+		if( $a['f'] == $b['f'] ) {
+			return 0;
+		} else {
+			return ($a['f'] < $b['f']) ? -1 : 1;
+		}
+	}
+	return ($a['gd'] < $b['gd']) ? -1 : 1;
+
 }
 
 /**

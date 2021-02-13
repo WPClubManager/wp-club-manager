@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</p>
 	<p class="submit">
 		<a href="<?php echo esc_url( apply_filters( 'wpclubmanager_themes_url', 'https://wpclubmanager.com/themes/', 'theme-collection' ) ); ?>" class="button-primary" target="_blank"><?php _e( 'Compatible themes', 'wp-club-manager' ); ?></a>
-		<a href="<?php echo esc_url( apply_filters( 'wpclubmanager_docs_url', 'https://docs.wpclubmanager.com/article/64-third-party-theme-compatibility', 'theme-compatibility' ) ); ?>" class="button-primary" target="_blank"><?php _e( 'Theme integration guide', 'wp-club-manager' ); ?></a>
+		<a href="<?php echo esc_url( apply_filters( 'wpclubmanager_docs_url', 'https://wpclubmanager.com/documentation/third-party-theme-compatibility', 'theme-compatibility' ) ); ?>" class="button-primary" target="_blank"><?php _e( 'Theme integration guide', 'wp-club-manager' ); ?></a>
 		<a class="skip button-secondary" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wpcm-hide-notice', 'theme_support' ), 'wpclubmanager_hide_notices_nonce', '_wpcm_notice_nonce' ) ); ?>"><?php _e( 'Hide this notice', 'wp-club-manager' ); ?></a>
 	</p>
 </div>

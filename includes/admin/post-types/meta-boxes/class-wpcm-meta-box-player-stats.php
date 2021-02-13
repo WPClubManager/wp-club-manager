@@ -31,12 +31,12 @@ class WPCM_Meta_Box_Player_Stats {
 		$stats = get_wpcm_player_stats( $post->ID );
 		$stats_labels = array_merge( array( 'appearances' => _x( 'PL', 'Played', 'wp-club-manager' ) ), wpcm_get_preset_labels() );
 		?>
-		<div class="">
+		<div>
 
-			<span class="type_box hidden"> &mdash; 
+			<span class="type_box"> &mdash; 
 
-				<label for="victory-player-stats-dropdown">
-					<select id="victory-player-stats-dropdown" class="wpcm-player-season-select" data-target=".wpcm-player-stat-season">
+				<label for="player-stats-season-dropdown">
+					<select id="player-stats-season-dropdown" class="wpcm-player-season-select" data-target=".wpcm-player-stat-season">
 
 						<?php if( is_array( $seasons ) ): foreach( $seasons as $season ): ?>
 

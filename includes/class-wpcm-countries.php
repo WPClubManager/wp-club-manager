@@ -5,7 +5,7 @@
  * The WPClubManager countries class stores country/state data.
  *
  * @class 		WPCM_Countries
- * @version		2.1.3
+ * @version		2.2.1
  * @package		WPClubManager/Classes
  * @category	Class
  * @author 		ClubPress
