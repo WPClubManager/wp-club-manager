@@ -79,7 +79,7 @@ class WPCM_Frontend_Scripts {
 		if ( $enqueue_styles )
 			foreach ( $enqueue_styles as $handle => $args )
 				wp_enqueue_style( $handle, $args['src'], $args['deps'], $args['version'], $args['media'] );
-		
+
 	}
 
 	/**
@@ -116,6 +116,15 @@ class WPCM_Frontend_Scripts {
 			$data['logo'] = $post_thumb;
 			$data['url'] = site_url();
 
+			/**
+			 * Filters the front page LD+JSON schema.
+			 *
+			 * @since 2.2.5
+			 *
+			 * @param array $data SchemaOrg attribute-value pairs.
+			 */
+			$data = apply_filters( 'wpclubmanager_schema_front_page', $data );
+
 			echo '<script type="application/ld+json">';
 			echo json_encode( $data );
 			echo '</script>';
@@ -151,6 +160,15 @@ class WPCM_Frontend_Scripts {
 				)
 			);
 			$data['startDate'] = $post->post_date;
+
+			/**
+			 * Filters the front page LD+JSON schema.
+			 *
+			 * @since 2.2.5
+			 *
+			 * @param array $data SchemaOrg attribute-value pairs.
+			 */
+			$data = apply_filters( 'wpclubmanager_schema_sports_event', $data );
 
 			echo '<script type="application/ld+json">';
 			echo json_encode( $data );
