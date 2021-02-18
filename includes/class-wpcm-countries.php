@@ -30,6 +30,7 @@ class WPCM_Countries {
 		// global $wpclubmanager;
 
 		$this->countries = apply_filters( 'wpclubmanager_countries', array(
+			''   => __( 'Select Country', 'wp-club-manager' ),
 			'af' => __( 'Afghanistan', 'wp-club-manager' ),
 			'ax' => __( '&#197;land Islands', 'wp-club-manager' ),
 			'al' => __( 'Albania', 'wp-club-manager' ),
