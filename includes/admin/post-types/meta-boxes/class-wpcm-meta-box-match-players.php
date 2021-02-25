@@ -21,10 +21,10 @@ class WPCM_Meta_Box_Match_Players {
 
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 
-		$players = unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) ); ?>
-		
+		$players = maybe_unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) ); ?>
+
 			<div class="playersdiv" id="wpcm_players">
-					
+
 				<ul class="wpcm_stats-tabs">
 					<li class="tabs"><a href="#wpcm_lineup" tabindex="3"><?php _e( 'Starting Lineup', 'wp-club-manager' ); ?></a></li>
 					<li class="hide-if-no-js"><a href="#wpcm_subs" tabindex="3"><?php _e( 'Substitutes Used', 'wp-club-manager' ); ?></a></li>
@@ -59,16 +59,16 @@ class WPCM_Meta_Box_Match_Players {
 	public static function wpcm_player_subs_dropdown( $players = array(), $id = null, $disabled = false ) {
 
 		global $post;
-		
+
 		$teams = get_the_terms( $post->ID, 'wpcm_team' );
 		$seasons = get_the_terms( $post->ID, 'wpcm_season' );
 
 		if ( is_array( $teams ) ) {
-							
+
 			$match_teams = array();
 
 			foreach ( $teams as $team ) {
-				
+
 				$match_teams[] = $team->term_id;
 			}
 		} else {
@@ -76,11 +76,11 @@ class WPCM_Meta_Box_Match_Players {
 		}
 
 		if ( is_array( $seasons ) ) {
-							
+
 			$match_seasons = array();
 
 			foreach ( $seasons as $season ) {
-				
+
 				$match_seasons[] = $season->term_id;
 			}
 		}else {
@@ -138,12 +138,12 @@ class WPCM_Meta_Box_Match_Players {
 			}
 
 			$subs = get_posts( $args );
-		
+
 		} else {
 
 			$post_id = $roster[0]->ID;
 
-			$picked_players = (array)unserialize( get_post_meta( $post_id, '_wpcm_roster_players', true ) );
+			$picked_players = (array) maybe_unserialize( get_post_meta( $post_id, '_wpcm_roster_players', true ) );
 
 			$args = array(
 				'post_type' => 'wpcm_player',
@@ -216,13 +216,13 @@ class WPCM_Meta_Box_Match_Players {
 		if( !is_array( $not_used ) ) {
 			$not_used = array();
 		}
-		if ( is_array( $teams ) ) {					
+		if ( is_array( $teams ) ) {
 			$team = $teams[0]->term_id;
 		} else {
 			$team = null;
 		}
 		if ( is_array( $seasons ) ) {
-			$season = $seasons[0]->term_id;			
+			$season = $seasons[0]->term_id;
 		} else {
 			$season = null;
 		}
@@ -284,7 +284,7 @@ class WPCM_Meta_Box_Match_Players {
 
 			$post_id = $roster[0]->ID;
 
-			$picked_players = (array)unserialize( get_post_meta( $post_id, '_wpcm_roster_players', true ) );
+			$picked_players = (array) maybe_unserialize( get_post_meta( $post_id, '_wpcm_roster_players', true ) );
 
 			$args = array(
 				'post_type' => 'wpcm_player',
@@ -329,7 +329,7 @@ class WPCM_Meta_Box_Match_Players {
 
 						<?php
 						if( $type !== 'subs_not_used' ) {
-							foreach( $wpcm_player_stats_labels as $key => $val ) { 
+							foreach( $wpcm_player_stats_labels as $key => $val ) {
 
 								if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) : ?>
 									<th<?php if( $key == 'greencards' ||$key == 'yellowcards' || $key == 'blackcards' || $key == 'redcards' ) echo ' class="th-checkbox"'; if( $key == 'mvp' ) echo ' class="th-radio"'; ?>><?php echo $val; ?></th>
@@ -388,7 +388,7 @@ class WPCM_Meta_Box_Match_Players {
 						}
 
 						$count++;
-						
+
 						if( $show_shirt == 'yes' ) {
 							$shirt = '<td class="shirt-number">'.$count.'</td>';
 						}else{
@@ -398,7 +398,7 @@ class WPCM_Meta_Box_Match_Players {
 						<tr id="<?php echo $player->ID; ?>" data-player="<?php echo $player->ID; ?>" class="player-stats-list <?php echo $player_teams; ?> <?php echo $seasonclass; ?> sortable sorted">
 							<?php echo apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ); ?>
 
-							
+
 								<td class="names">
 									<i class="dashicons dashicons-move"></i>
 									<label class="selectit">
@@ -409,7 +409,7 @@ class WPCM_Meta_Box_Match_Players {
 									</label>
 								</td>
 							<?php
-							
+
 
 							do_action( 'wpclubmanager_admin_before_lineup_stats', $selected_players, $player->ID, !$played );
 
@@ -472,7 +472,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php }
 
 									endif;
-								
+
 								endforeach;
 
 								if ( $type == 'lineup' ) { ?>
@@ -485,12 +485,12 @@ class WPCM_Meta_Box_Match_Players {
 								<?php }
 
 								if ( $type == 'subs' ) {
-									
+
 									self::wpcm_player_subs_dropdown( $selected_players, $player->ID, !$played );
-									
+
 								}
 							}
-							
+
 							do_action( 'wpclubmanager_admin_after_lineup_stats'); ?>
 
 						</tr>
@@ -501,7 +501,7 @@ class WPCM_Meta_Box_Match_Players {
 		}
 	}
 
-	
+
 	/**
 	 * Save meta box data
 	 */
