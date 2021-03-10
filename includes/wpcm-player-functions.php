@@ -7,7 +7,7 @@
  * @author 		ClubPress
  * @category 	Core
  * @package 	WPClubManager/Functions
- * @version     2.1.1
+ * @version     2.2.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -33,12 +33,14 @@ function get_player_title( $post, $format = 'full' ) {
 	$start = strrpos( $name, ' ' ) + 1;
 	$last = substr( $name, $start );
 
-	if ( $format == 'first' ) {
-		$name = ( $firstname ? $firstname : $first );
+	if ( $format == 'full' ) {
+		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' ) . ' ' . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
+	} elseif ( $format == 'first' ) {
+		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' );
 	} elseif ( $format == 'last' ) {
-		$name = ( $lastname ? $lastname : $last );
+		$name = ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
 	} elseif ( $format == 'initial' ) {
-		$name = ( $firstname ? substr( $firstname, 0, 1 ) . '. ' : '' ) . ( $lastname ? $lastname : substr( $first, 0, 1 ) . '. ' . $last );
+		$name = ( $firstname ? '<span class="first-name">' . substr( $firstname, 0, 1 ) . '.</span> ' : '' ) . ( $lastname ? '<span class="first-name">' . $lastname : substr( $first, 0, 1 ) . '.</span> <span class="last-name">' . $last . '</span>' );
 	}
 
 	return $name;
