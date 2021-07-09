@@ -9,7 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
 
-global $post; ?>
+global $post;
+$timestamp = strtotime( $post->post_date ); ?>
 
 <li class="fixture">
 	<div class="fixture-meta">
@@ -39,9 +40,9 @@ global $post; ?>
 	<div class="wpcm-date">
 		<div class="kickoff">
 			<?php 
-			echo ( $show_date ? get_the_date( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ) ) : '' ); 
+			echo ( $show_date ? date_i18n( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ), $timestamp ) : '' ); 
 			echo ( $show_date && $show_time ? ' - ' : '' );
-			echo ( $show_time ? the_time( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ) ) : '' );
+			echo ( $show_time ? date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) : '' );
 			?>
 		</div>
 		<?php if( $show_countdown ) { ?>
