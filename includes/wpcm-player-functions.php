@@ -40,7 +40,9 @@ function get_player_title( $post, $format = 'full' ) {
 	} elseif ( $format == 'last' ) {
 		$name = ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
 	} elseif ( $format == 'initial' ) {
-		$name = ( $firstname ? '<span class="first-name">' . substr( $firstname, 0, 1 ) . '.</span> ' : '' ) . ( $lastname ? '<span class="first-name">' . $lastname : substr( $first, 0, 1 ) . '.</span> <span class="last-name">' . $last . '</span>' );
+		$name = ( $firstname ? '<span class="first-name">' . substr( $firstname, 0, 1 ) . '.</span> ' : '<span class="first-name">' . substr( $first, 0, 1 ) . '.</span>' ) . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
+	} else {
+		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' ) . ' ' . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' ); 
 	}
 
 	return $name;
