@@ -167,10 +167,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.5 09/07/2021
+= 2.2.5 10/07/2021
 
+* Tweak - Added two filters to enable SchemaOrg LD+JSON customization
 * Tweak - Added html markup to first/last names
 * Fix - Fixed date display for matches on same day
+* Fix - Fixed match players serialization issues
 * Template - '/content-widget-fixtures.php'
 * Template - '/content-widget-results.php'
 
