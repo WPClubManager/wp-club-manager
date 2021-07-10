@@ -392,6 +392,27 @@ final class WPClubManager
             'dismiss_msg'  => '',
             'is_automatic' => false,
             'message'      => '',
+            'strings'      => array(
+                'notice_can_install_required'     => _n_noop(
+                    /* translators: 1: plugin name(s). */
+                    'WP Club Manager requires the following plugin: %1$s.',
+                    'WP Club Manager requires the following plugins: %1$s.',
+                    'wp-club-manager'
+                ),
+                'notice_can_install_recommended'  => _n_noop(
+                    /* translators: 1: plugin name(s). */
+                    'WP Club Manager recommends the following plugin: %1$s.',
+                    'WP Club Manager recommends the following plugins: %1$s.',
+                    'wp-club-manager'
+                ),
+                'notice_ask_to_update'            => _n_noop(
+                    /* translators: 1: plugin name(s). */
+                    'The following plugin needs to be updated to its latest version to ensure maximum compatibility with WP Club Manager: %1$s.',
+                    'The following plugins need to be updated to their latest version to ensure maximum compatibility with WP Club Manager: %1$s.',
+                    'wp-club-manager'
+                ),
+                'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this plugin. Please update the plugin.', 'wp-club-manager' ),
+            )
         );
     
         tgmpa($plugins, $config);

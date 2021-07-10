@@ -53,6 +53,7 @@ class WPCM_Admin_Taxonomies {
 		add_filter( 'manage_edit-wpcm_venue_columns', array( $this, 'venue_edit_columns') );
 		add_filter( 'manage_edit-wpcm_position_columns', array( $this, 'position_edit_columns') );
 		add_filter( 'manage_edit-wpcm_jobs_columns', array( $this, 'position_edit_columns') );
+
 	}
 
 	/**
@@ -601,6 +602,7 @@ class WPCM_Admin_Taxonomies {
 			break;
 		}
 	}
+	
 }
 
 new WPCM_Admin_Taxonomies();
