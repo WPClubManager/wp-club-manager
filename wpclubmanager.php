@@ -377,6 +377,12 @@ final class WPClubManager
                 'name'         => 'Classic Editor',
                 'slug'         => 'classic-editor',
                 'required'     => true,
+            ),
+            
+            array(
+                'name'         => 'Classic Widgets',
+                'slug'         => 'classic-widgets',
+                'required'     => true,
             )
     
         );
