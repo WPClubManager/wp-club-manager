@@ -53,7 +53,9 @@ class WPCM_Post_Types {
 					'edit_item'          => __( 'Edit Competition', 'wp-club-manager' ),
 					'update_item'        => __( 'Update Competition', 'wp-club-manager' ),
 					'add_new_item'       => __( 'Add New Competition', 'wp-club-manager' ),
-					'new_item_name'      => __( 'Competition', 'wp-club-manager' )
+					'new_item_name'      => __( 'Competition', 'wp-club-manager' ),
+					'name_field_description'	=> __( 'The name is how it appears on your site. You can create a shorter version of the competition name in the label field below.', 'wp-club-manager' ),
+					'parent_field_description'	=> __( 'You can assign a parent competition to create a hierarchy. For example, Eastern Conference could be the parent of Division One.', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
 				'tax_position' 		=> true,
@@ -82,7 +84,8 @@ class WPCM_Post_Types {
 					'edit_item'          => __( 'Edit Job', 'wp-club-manager' ),
 					'update_item'        => __( 'Update Job', 'wp-club-manager' ),
 					'add_new_item'       => __( 'Add New Job', 'wp-club-manager' ),
-					'new_item_name'      => __( 'New Job Title', 'wp-club-manager' )
+					'new_item_name'      => __( 'New Job Title', 'wp-club-manager' ),
+					'parent_field_description'	=> __( 'You can assign a parent job to create a hierarchy.', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
 				'tax_position' 		=> true,
@@ -111,7 +114,8 @@ class WPCM_Post_Types {
 					'edit_item'          => __( 'Edit Position', 'wp-club-manager' ),
 					'update_item'        => __( 'Update Position', 'wp-club-manager' ),
 					'add_new_item'       => __( 'Add New Position', 'wp-club-manager' ),
-					'new_item_name'      => __( 'New Position Name', 'wp-club-manager' )
+					'new_item_name'      => __( 'New Position Name', 'wp-club-manager' ),
+					'parent_field_description'	=> __( 'You can assign a parent position to create a hierarchy. For example, Defense could be the parent of Linebacker', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
 				'tax_position' 		=> true,
@@ -141,7 +145,9 @@ class WPCM_Post_Types {
 					'edit_item'          => __( 'Edit Season', 'wp-club-manager' ),
 					'update_item'        => __( 'Update Season', 'wp-club-manager' ),
 					'add_new_item'       => __( 'Add New Season', 'wp-club-manager' ),
-					'new_item_name'      => __( 'Season', 'wp-club-manager' )
+					'new_item_name'      => __( 'Season', 'wp-club-manager' ),
+					'name_field_description'	=> __( 'The name is how it appears on your site.', 'wp-club-manager' ),
+					'parent_field_description'	=> __( 'You can assign a parent season to create a hierarchy. For example, 2022 could be a parent of Summer.', 'wp-club-manager' )
 				),
 				'show_in_nav_menus' => false,
 				'tax_position' 		=> true,
@@ -171,7 +177,9 @@ class WPCM_Post_Types {
 						'edit_item'          => __( 'Edit Team', 'wp-club-manager' ),
 						'update_item'        => __( 'Update Team', 'wp-club-manager' ),
 						'add_new_item'       => __( 'Add New Team', 'wp-club-manager' ),
-						'new_item_name'      => __( 'Team', 'wp-club-manager' )
+						'new_item_name'      => __( 'Team', 'wp-club-manager' ),
+						'name_field_description'	=> __( 'The full name of the team, for example, First Team. You can create an alternative version to be displayed on the frontend of your site in the display name field below.', 'wp-club-manager' ),
+						'parent_field_description'	=> __( 'You can assign a parent team to create a hierarchy. For example, Senior could be the parent of First Team.', 'wp-club-manager' )
 					),
 					'show_in_nav_menus' => false,
 					'tax_position' 		=> true,
