@@ -3,7 +3,7 @@ Contributors: clubpress, leonterry, daveyjake
 Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.6
 Stable tag: 2.2.6
 License: GPLv3
@@ -133,7 +133,7 @@ Automatic updates should work as expected but as always, it is recommended that 
 
 = Is this plugin suitable for managing a league website? =
 
-Yes! Since version 2 WP Club Manager is built to manage either a single club or league website. Please note that league mode does have some limitations and will not record player statistics for matches.
+Sorry but we are removing support for leagues as from version 3 so we do not recommend using the league feature available in the current version 2 branch!
 
 = My sport is not supported. How can I add my sport? =
 
@@ -167,9 +167,9 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.6 10/07/2021
+= 2.2.6 24/01/2022
 
-* Tweak - Added Classic Widgets plugin to TGM plugin activation
+* New - Added new labels available in WP 5.9 to taxonomies
 
 = 2.2.5 10/07/2021
 
