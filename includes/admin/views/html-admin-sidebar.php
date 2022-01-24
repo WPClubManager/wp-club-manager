@@ -7,6 +7,7 @@
 				<?php echo '<img src="' . WPCM()->plugin_url() . '/assets/images/admin/wpcm-victory-preview.jpg" style="max-width:100%" />'; ?>
 				<p>A clean, versatile theme, Victory integrates seamlessly with WP Club Manager to give your sports club website a fresh new look.</p>
 				<p><a href="https://wpclubmanager.com/products/victory/" target="_blank">Check it out!</a></p>
+				<p class="sale" style="font-size: 16px;font-weight: bold;background: #9d1919;color: #fff;text-align: center">Get 25% off with this code: <br>25PERCENT</p>
 			</div>
 		</div>
 	<?php
