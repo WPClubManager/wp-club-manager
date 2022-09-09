@@ -513,7 +513,17 @@ class WPCM_Admin_Post_Types {
 					$team = null;
 				}
 				$comp = get_the_terms( $post->ID, 'wpcm_comp' );
+				if( $comp ) {
+					$comp = $comp[0]->name;
+				} else {
+					$comp = '';
+				}
 				$season = get_the_terms( $post->ID, 'wpcm_season' );
+				if( $season ) {
+					$season = $season[0]->slug;
+				} else {
+					$season = '';
+				}
 				//$venue = wpcm_get_match_venue( $post->ID );
 				$venue = get_the_terms( $post->ID, 'wpcm_venue' );
 				//$home_goals = get_post_meta( $post->ID, 'wpcm_home_goals', true );
@@ -526,8 +536,8 @@ class WPCM_Admin_Post_Types {
 				echo '
 					<div class="hidden" id="wpclubmanager_inline_' . $post->ID . '">
 						' . ( $team ? '<div class="team">' . $team[0]->slug . '</div>' : '' ) .'
-						<div class="comp">' . $comp[0]->slug . '</div>
-						<div class="season">' . $season[0]->slug . '</div>
+						<div class="comp">' . $comp . '</div>
+						<div class="season">' . $season . '</div>
 						<div class="venue">' . $venue[0]->slug . '</div>
 						<div class="played">' . $played . '</div>
 						<div class="score">' . $score[0] . '</div>
@@ -555,12 +565,22 @@ class WPCM_Admin_Post_Types {
 				}
 			break;
 			case 'comp' :
-				$terms = get_the_terms( $post->ID, 'wpcm_comp' );
-				echo $terms[0]->name;
+				$comp = get_the_terms( $post->ID, 'wpcm_comp' );
+				if( $comp ) {
+					$comp = $comp[0]->name;
+				} else {
+					$comp = '';
+				}
+				echo $comp;
 			break;
 			case 'season' :
-				$terms = get_the_terms( $post->ID, 'wpcm_season' );
-				echo $terms[0]->name;
+				$season = get_the_terms( $post->ID, 'wpcm_season' );
+				if( $season ) {
+					$season = $season[0]->slug;
+				} else {
+					$season = '';
+				}
+				echo $season;
 			break;
 			case 'dates' :
 				if( get_post_status( $post->ID ) == 'future' ) {
