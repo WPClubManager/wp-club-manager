@@ -463,8 +463,10 @@ function wpcm_get_match_venue( $post ) {
 		$venue_info['id'] = $venue->term_id;
 		$venue_info['description'] = $venue->description;
 		$venue_meta = get_option( "taxonomy_term_".$venue_info['id']."" );
-		$venue_info['address'] = $venue_meta['wpcm_address'];
-		$venue_info['capacity'] = $venue_meta['wpcm_capacity'];
+		if( $venue_meta ) {
+			$venue_info['address'] = $venue_meta['wpcm_address'];
+			$venue_info['capacity'] = $venue_meta['wpcm_capacity'];
+		}
 	} else {
 		$venue_info['name'] = null;
 		$venue_info['id'] = null;
