@@ -99,7 +99,7 @@ class WPCM_Shortcode_Match_List {
 				$query_args['meta_query'] = array(
 					array(
 						'key' => 'wpcm_played',
-						'value' => false
+						'value' => true
 					)
 				);
 			}
