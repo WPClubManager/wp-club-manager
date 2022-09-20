@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.2.3
+ * @version     2.2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
