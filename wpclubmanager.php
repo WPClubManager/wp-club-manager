@@ -6,7 +6,7 @@
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: Clubpress
  * Author URI: https://wpclubmanager.com
- * Require PHP: 7.2
+ * Requires PHP: 7.2
  * Version: 2.2.7
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
