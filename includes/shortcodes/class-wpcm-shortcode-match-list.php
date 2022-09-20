@@ -5,7 +5,7 @@
  * @author 		Clubpress
  * @category 	Shortcodes
  * @package 	WPClubManager/Shortcodes
- * @version     2.2.3
+ * @version     2.2.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -99,7 +99,7 @@ class WPCM_Shortcode_Match_List {
 				$query_args['meta_query'] = array(
 					array(
 						'key' => 'wpcm_played',
-						'value' => false
+						'value' => true
 					)
 				);
 			}

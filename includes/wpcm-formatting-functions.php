@@ -94,7 +94,7 @@ function subval_sort($a,$subkey) {
 
 	foreach($a as $k=>$v) {
 
-		$b[$k] = strtolower($v[$subkey]);
+		$b[$k] = strtolower($v[$subkey] ?? '');
 	}
 
 	if ($b != null) {

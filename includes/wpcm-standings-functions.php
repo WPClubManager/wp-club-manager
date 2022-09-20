@@ -243,7 +243,7 @@ if ( !function_exists( 'wpcm_sort_table_clubs' ) ) {
 				// Flip value if descending order
 				if ( $priority['order'] == 'DESC' ) $output = 0 - $output;
 
-				return ( $output > 0 );
+				return ( $output > 0 ? 1 : -1 );
 
 			}
 

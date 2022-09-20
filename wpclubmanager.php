@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: WP Club Manager
  * Plugin URI: https://wpclubmanager.com
@@ -27,8 +28,7 @@ if (! class_exists('WPClubManager')) :
  *
  * @class WPClubManager
  */
-final class WPClubManager
-{
+final class WPClubManager {
 
     /**
      * @var string

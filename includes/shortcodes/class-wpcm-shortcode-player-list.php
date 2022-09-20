@@ -196,15 +196,15 @@ class WPCM_Shortcode_Player_List {
 						if ( array_key_exists( $stat, $player_stats_labels ) )  {
 							if ( $team ) {
 								if ( $season ) {
-									$player_details[$player->ID][$stat] = $player_stats[$team][$season]['total'][$stat];
+									$player_details[$player->ID][$stat] = isset( $player_stats[$team][$season]['total'][$stat] ) ? $player_stats[$team][$season]['total'][$stat] : '0';
 								} else {
-									$player_details[$player->ID][$stat] = $player_stats[$team][0]['total'][$stat];
+									$player_details[$player->ID][$stat] = isset( $player_stats[$team][0]['total'][$stat] ) ? $player_stats[$team][0]['total'][$stat] : '0';
 								}
 							} else {
 								if ( $season ) {
-									$player_details[$player->ID][$stat] = $player_stats[0][$season]['total'][$stat];
+									$player_details[$player->ID][$stat] = isset( $player_stats[0][$season]['total'][$stat] ) ? $player_stats[0][$season]['total'][$stat] : '0';
 								} else {
-									$player_details[$player->ID][$stat] = $player_stats[0][0]['total'][$stat];
+									$player_details[$player->ID][$stat] = isset( $player_stats[0][0]['total'][$stat] ) ? $player_stats[0][0]['total'][$stat] : '0';
 								}
 							}
 						} else {
