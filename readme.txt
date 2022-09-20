@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.0
 Requires PHP: 7.4
-Stable tag: 2.2.7-beta
+Stable tag: 2.2.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -167,9 +167,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.7 TBC
+= 2.2.7 20/09/2022
 
 * Fix - Fixed taxonomy ordering
+* Fix - Fixed results shortcode issue (Thanks klowdo)
 * Fix - Fixed PHP 8 warnings
 
 = 2.2.6 24/01/2022
