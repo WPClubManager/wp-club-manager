@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.0
 Requires PHP: 7.2
-Stable tag: 2.2.8-beta
+Stable tag: 3.0.0-beta
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
