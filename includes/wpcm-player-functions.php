@@ -459,7 +459,7 @@ function wpcm_get_player_stat( $player_detail, $stat ) {
 	} elseif ( $stat == 'appearances' ) {
 		$stat = wpcm_get_player_appearances( $player_detail );
 	} else {
-		$stat = $player_detail[$stat] ?? '';
+		$stat = $player_detail[$stat] ?? null;
 	}
 
 	return $stat;
@@ -478,7 +478,7 @@ function wpcm_get_player_stat( $player_detail, $stat ) {
  * @return array $player_details
  * @since 1.4.0
  */
-function wpcm_get_player_preset_stat( $player_details, $post, $player_stats, $stat, $team = 0, $season = 0 ) {
+function wpcm_get_player_preset_stat( $post, $stat, $player_details = array(), $player_stats = array(), $team = 0, $season = 0 ) {
 
 	if ( $team ) {
 		if ( $season ) {

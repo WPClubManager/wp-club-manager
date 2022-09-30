@@ -158,7 +158,7 @@ class WPCM_Meta_Box_Table_Stats {
 
                             <?php foreach( $stats as $stat ) { ?>
                                 
-                                <td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo $stat; ?>" value="<?php echo ($auto_stats?$auto_stats[$stat]:'0'); ?>" size="2" tabindex="-1" readonly /></td>
+                                <td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo $stat; ?>" value="<?php echo $auto_stats[$stat] ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
                             <?php } ?>
 
@@ -188,7 +188,7 @@ class WPCM_Meta_Box_Table_Stats {
 
                             <?php foreach( $stats as $stat ) { ?>
                                 
-                                <td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo $stat; ?>"><input type="number" data-index="<?php echo $stat; ?>" value="<?php echo $total_stats[$stat]; ?>" <?php echo ($stat == 'gd' ? 'readonly' : '') ?>/></td>
+                                <td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo $stat; ?>"><input type="number" data-index="<?php echo $stat; ?>" value="<?php echo $total_stats[$stat] ?? '0'; ?>" <?php echo ($stat == 'gd' ? 'readonly' : '') ?>/></td>
 
                             <?php } ?>
 
@@ -202,7 +202,7 @@ class WPCM_Meta_Box_Table_Stats {
 
                             <?php foreach( $stats as $stat ) { ?>
                                 
-                                <td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo $stat; ?>" name="wpcm_table_stats[<?php echo $club->ID; ?>][<?php echo $stat; ?>]" value="<?php echo ($manual_stats?$manual_stats[$stat]:'0'); ?>" size="2" tabindex="-1" readonly /></td>
+                                <td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo $stat; ?>" name="wpcm_table_stats[<?php echo $club->ID; ?>][<?php echo $stat; ?>]" value="<?php echo $manual_stats[$stat] ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
                             <?php } ?>
 
