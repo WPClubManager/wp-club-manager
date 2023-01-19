@@ -381,7 +381,7 @@ function wpcm_get_match_opponents( $post, $abbr = false ) {
 	$club = get_default_club();
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
-
+	$opponent = '';
 	if( $abbr == false) {
 		if ( $club == $home_club ) {
 			$opponent = get_the_title( $away_club, true );
