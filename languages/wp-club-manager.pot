@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Club Manager 2.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-club-manager\n"
-"POT-Creation-Date: 2023-01-26 22:31:42+00:00\n"
+"POT-Creation-Date: 2023-01-26 22:33:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-menus.php:90 wpclubmanager.php:124
+#: includes/admin/class-wpcm-admin-menus.php:90 wpclubmanager.php:123
 msgid "Settings"
 msgstr ""
 
@@ -471,8 +471,8 @@ msgstr ""
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-notices.php:109 wpclubmanager.php:79
-#: wpclubmanager.php:89
+#: includes/admin/class-wpcm-admin-notices.php:109 wpclubmanager.php:78
+#: wpclubmanager.php:88
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -6159,23 +6159,23 @@ msgstr ""
 msgid "Pens:"
 msgstr ""
 
-#: wpclubmanager.php:124
+#: wpclubmanager.php:123
 msgid "View WP Club Manager Settings"
 msgstr ""
 
-#: wpclubmanager.php:125
+#: wpclubmanager.php:124
 msgid "View WP Club Manager Documentation"
 msgstr ""
 
-#: wpclubmanager.php:125
+#: wpclubmanager.php:124
 msgid "Docs"
 msgstr ""
 
-#: wpclubmanager.php:126
+#: wpclubmanager.php:125
 msgid "Support"
 msgstr ""
 
-#: wpclubmanager.php:415
+#: wpclubmanager.php:414
 #. translators: 1: plugin name(s).
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this plugin. "
