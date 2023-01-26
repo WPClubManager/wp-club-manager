@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.1
 Requires PHP: 7.2
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,7 +26,7 @@ Davey Jacobson, *Information Systems Developer*, [USA Rugby](https://www.usa.rug
 * Player and staff profiles
 * Player performance ratings
 * Full player statistics
-* Inofrmative club profiles with club stats
+* Informative club profiles with club stats
 * Fixtures and results
 * Automatically updated league tables
 * Match statistics and reports
@@ -166,6 +166,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.9 - 26th January 2023 =
+
+- Fix: Warning: Trying to access array offset on value of type bool in includes/wpcm-match-functions.php
+- Tested up to WordPress 6.1
 
 = 2.2.8 - 30/09/2022 =
 

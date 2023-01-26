@@ -7,7 +7,7 @@
  * Author: WP Club Manager
  * Author URI: https://wpclubmanager.com
  * Requires PHP: 7.2
- * Version: 2.2.8
+ * Version: 2.2.9
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -34,7 +34,7 @@ final class WPClubManager {
     /**
      * @var string
      */
-    public $version = '2.2.8';
+    public $version = '2.2.9';
 
     /**
      * @var WPClubManager The single instance of the class
