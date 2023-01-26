@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: WP Club Manager
  * Plugin URI: https://wpclubmanager.com
