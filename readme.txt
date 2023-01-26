@@ -1,11 +1,11 @@
 === WP Club Manager - WordPress Sports Club Plugin===
-Contributors: clubpress, leonterry, daveyjake
+Contributors: wpclubmanager, leonterry, daveyjake
 Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 7.2
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,7 +26,7 @@ Davey Jacobson, *Information Systems Developer*, [USA Rugby](https://www.usa.rug
 * Player and staff profiles
 * Player performance ratings
 * Full player statistics
-* Inofrmative club profiles with club stats
+* Informative club profiles with club stats
 * Fixtures and results
 * Automatically updated league tables
 * Match statistics and reports
@@ -167,21 +167,26 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
-= 2.2.8 30/09/2022
+= 2.2.9 - 26th January 2023 =
+
+- Fix: Warning: Trying to access array offset on value of type bool in includes/wpcm-match-functions.php
+- Tested up to WordPress 6.1
+
+= 2.2.8 - 30/09/2022 =
 
 * Fix - Fixed more PHP 8 compatibility issues
 
-= 2.2.7 20/09/2022
+= 2.2.7 - 20/09/2022 =
 
 * Fix - Fixed taxonomy ordering
 * Fix - Fixed results shortcode issue (Thanks klowdo)
 * Fix - Fixed PHP 8 warnings
 
-= 2.2.6 24/01/2022
+= 2.2.6 - 24/01/2022 =
 
 * New - Added new labels available in WP 5.9 to taxonomies
 
-= 2.2.5 10/07/2021
+= 2.2.5 - 10/07/2021 =
 
 * Tweak - Added two filters to enable SchemaOrg LD+JSON customization
 * Tweak - Added html markup to first/last names
@@ -190,7 +195,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Template - '/content-widget-fixtures.php'
 * Template - '/content-widget-results.php'
 
-= 2.2.4 28/01/2021
+= 2.2.4 - 28/01/2021 =
 
 * Fix - Fixed variable not defined error in match widgets
 * Fix - Fixed unsupported operand error in match importer
@@ -198,12 +203,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Tweak - Improved player list shortcode themeing
 * Template - '/shortcodes/match-opponents.php' - Fixed variable not defined error
 
-= 2.2.3 22/10/2020
+= 2.2.3 - 22/10/2020 =
 
 * Fix - Fixed staff importer
 * Fix - Fixed unplayed matches showing in Match List shortcode in results format
 
-= 2.2.2 09/10/2020
+= 2.2.2 - 09/10/2020 =
 
 * Fix - Fixed warning message when sorting players in matches
 * Tweak - Fixtures/Results widgets now use date/time format from WP general settings
@@ -218,14 +223,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Template - '/content-single-club.php' - Added date/time filter
 * Template - '/single-match/date.php' - Added date/time filter
 
-= 2.2.1 07/09/2020
+= 2.2.1 - 07/09/2020 =
 
 * Fix - Fixed missing function warning in plugin dashboard
 * Fix - Fixed season dropdown in admin player stats table
 * Fix - Corrected misspelled country names
 * Fix - Fixed vertical alignment of multiple choice input options
 
-= 2.2.0 09/07/2020
+= 2.2.0 - 09/07/2020 =
 
 * New - Added OpenStreetMaps as an option for venue maps
 * New - Added Nominatim Geocoder for OpenStreetMaps
@@ -245,18 +250,18 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Template - '/shortcodes/staff-gallery.php - New template
 * Localisation - Updated wpclubmanager.pot
 
-= 2.1.11 18/05/2020
+= 2.1.11 - 18/05/2020 =
 
 * Fix - Fixed media uploader
 * Fix - Fixed timepicker display
 * Tweak - Added Classic Editor activation tool
 
-= 2.1.10 01/05/2020
+= 2.1.10 - 01/05/2020 =
 
 * Fix - Fixed ACF timepicker conflict
 * Tweak - Updated jquery.timepicker.min.js
 
-= 2.1.9 21/02/2020
+= 2.1.9 - 21/02/2020 =
 
 * Fix - Fixed box scores display issue
 * Fix - Fixed badges in reverse match format issue
@@ -265,12 +270,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Template - '/single-match/home-badge.php' - Fixed badge display
 * Template - '/single-match/away-badge.php' - Fixed badge display
 
-= 2.1.8 30/12/2019
+= 2.1.8 - 30/12/2019 =
 
 * New - Added wpclubmanager_content() template function
 * Fix - Fixed warning in list table when no positions/jobs set
 
-= 2.1.7 22/12/2019
+= 2.1.7 - 22/12/2019 =
 
 * Fix - Fixed player stats manual totals
 * Fix - Fixed undefined object id warning in setup wizard
@@ -281,11 +286,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Date format matches WP date options in Matches list table
 * Fix - Updated WP core themes compatibility
 
-= 2.1.6 18/11/2019
+= 2.1.6 - 18/11/2019 =
 
 * Fix - Fixed match date and time issue
 
-= 2.1.5 15/11/2019
+= 2.1.5 - 15/11/2019 =
 
 * Tweak - Added import of players from existing rosters
 * Tweak - Added import of staff from existing rosters
@@ -295,28 +300,28 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed capacity undefined index warning in club List_Table
 * Fix - Fixed players import
 
-= 2.1.4 23/09/2019
+= 2.1.4 - 23/09/2019 =
 
 * Fix - Fixed broken birthdays widget
 
-= 2.1.3 - 20/09/2019
+= 2.1.3 - 20/09/2019 =
 
 * Fix - Fixed team display names in league tables
 * Fix - Removed warning from birthday widget when no roster selected
 * Fix - Updated Macedonia to North Macedonia in countries list
 * Tweak - Added more admin hooks
 
-= 2.1.2 - 09/08/2019
+= 2.1.2 - 09/08/2019 =
 
 * Fix - Fixed url issues
 
-= 2.1.1 - 07/08/2019
+= 2.1.1 - 07/08/2019 =
 
 * Tweak - Added points to Ice Hockey player stats
 * Fix - Fixed head to head match count
 * Fix - Fixed notices when no player stats selected
 
-= 2.1.0 - 02/08/2019
+= 2.1.0 - 02/08/2019 =
 
 * New - Added parent/child relationships to clubs
 * New - Added club abbreviations
@@ -336,7 +341,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Template - '/content-single-club.php' - Included new get_club_details function
 * Localisation - Updated wpclubmanager.pot
 
-= 2.0.8 - 29/04/2019
+= 2.0.8 - 29/04/2019 =
 
 * New - Added cricket match outcome options
 * Tweak - Updated cricket results with match outcome
@@ -345,11 +350,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed correct box scores display option in admin
 * Localisation - Updated wpclubmanager.pot
 
-= 2.0.7 - 08/04/2019
+= 2.0.7 - 08/04/2019 =
 
 * Fix - Version bump to fix synch SVN
 
-= 2.0.6 - 05/04/2019
+= 2.0.6 - 05/04/2019 =
 
 * Tweak - Added top/bottom options to league table shortcode/widget
 * Tweak - Auto calculation of GD/PD league table column
@@ -359,11 +364,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed Players List  shortcode limit issues
 * Localisation - Updated wp-club-manager.pot
 
-= 2.0.5 - 19/03/2019
+= 2.0.5 - 19/03/2019 =
 
 * Fix - Fixed the head to head match list I broke yesterday!
 
-= 2.0.4 - 18/03/2019
+= 2.0.4 - 18/03/2019 =
 
 * Tweak - Added filter to shirt number in match player list
 * Fix - Fixed staff list shortcode columns display
@@ -371,14 +376,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed js conflict issues with date and time pickers
 * Fix - Fixed post_name and post_title when importing matches
 
-= 2.0.3 - 11/03/2019
+= 2.0.3 - 11/03/2019 =
 
 * Fix - Fixed team filter in Matches List shortcode
 * Fix - Fixed subs dropdown in match player list
 * Fix - Fixed de-selection of postponed matches
 * Fix - Fixed roster list in admin dashboard
 
-= 2.0.2 - 08/03/2019
+= 2.0.2 - 08/03/2019 =
 
 * Tweak - Added player and staff list to club admin pages in League Mode
 * Fix - Fixed cases of missing Team dropdown in matches
@@ -387,11 +392,11 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Fix - Fixed player name import issue
 * Template - '/content-single-club.php' - Removed head to head in League Mode
 
-= 2.0.1 - 01/03/2019
+= 2.0.1 - 01/03/2019 =
 
 * Fix - Fixed existing venue issues
 
-= 2.0.0 - 26/02/2019
+= 2.0.0 - 26/02/2019 =
 
 * New - Added League mode
 * New - Added new League tables
@@ -437,28 +442,28 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Localisation - Updated all language files
 * Localisation - Updated wp-club-manager.pot
 
-= 1.5.10 - 17/11/2017
+= 1.5.10 - 17/11/2017 =
 
 * Fix - Fixed broken match imports
 
-= 1.5.9 - 02/08/2017
+= 1.5.9 - 02/08/2017 =
 
 * Tweak - Improved performance of head to head (Props to emco)
 * Tweak - Added some extra admin filters
 
-= 1.5.8 - 04/07/2017
+= 1.5.8 - 04/07/2017 =
 
 * Tweak - Added more admin notices
 * Localisation - Updated wp-club-manager.pot
 * Localisation - Updated Turkish language (Thanks Kanaturye)
 
-= 1.5.7 - 30/04/2017
+= 1.5.7 - 30/04/2017 =
 
 * Fix - Fixed a missing section field in cricket preset
 * Tweak - Added overs total for cricket matches
 * Tweak - Added more admin hooks
 
-= 1.5.6 - 12/04/2017
+= 1.5.6 - 12/04/2017 =
 
 * New - Added cricket to preset sports
 * Tweak - Added more admin notices
@@ -467,18 +472,18 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 * Localisation - Updated Lithuanian language (Thanks as.giedrius)
 * Localisation - Updated wp-club-manager.pot
 
-= 1.5.5 - 06/04/2017
+= 1.5.5 - 06/04/2017 =
 
 * New - Added birthdays widget
 * Fix - Fixed non-static php warning in plugin admin page
 * Tweak - Improved admin notices
 * Localisation - Updated wp-club-manager.pot
 
-= 1.5.4 - 29/03/2017
+= 1.5.4 - 29/03/2017 =
 
 * Fixed update functions
 
-= 1.5.0 - 28/03/2017
+= 1.5.0 - 28/03/2017 =
 
 * New - Added ability to set which player stats to display for each player
 * New - Added player stats display options for matche lineups

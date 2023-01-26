@@ -4,10 +4,10 @@
  * Plugin Name: WP Club Manager
  * Plugin URI: https://wpclubmanager.com
  * Description: A plugin to help you run a sports club website easily and quickly.
- * Author: Clubpress
+ * Author: WP Club Manager
  * Author URI: https://wpclubmanager.com
  * Requires PHP: 7.2
- * Version: 2.2.8
+ * Version: 2.2.9
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -34,7 +34,7 @@ final class WPClubManager {
     /**
      * @var string
      */
-    public $version = '2.2.8';
+    public $version = '2.2.9';
 
     /**
      * @var WPClubManager The single instance of the class
@@ -234,7 +234,7 @@ final class WPClubManager {
         include_once('includes/class-wpcm-template-loader.php');
         include_once('includes/class-wpcm-frontend-scripts.php');
         include_once('includes/class-wpcm-shortcodes.php');
-        
+
         include_once('includes/shortcodes/legacy/class-wpcm-shortcode-players.php');
         include_once('includes/shortcodes/legacy/class-wpcm-shortcode-matches.php');
         include_once('includes/shortcodes/legacy/class-wpcm-shortcode-staff.php');
@@ -373,15 +373,15 @@ final class WPClubManager {
     public function wp_club_manager_register_required_plugins()
     {
         $plugins = array(
-    
+
             array(
                 'name'         => 'Classic Editor',
                 'slug'         => 'classic-editor',
                 'required'     => true,
             )
-    
+
         );
-    
+
         $config = array(
             'id'           => 'wp-club-manager',
             'default_path' => '',
@@ -415,7 +415,7 @@ final class WPClubManager {
                 'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this plugin. Please update the plugin.', 'wp-club-manager' ),
             )
         );
-    
+
         tgmpa($plugins, $config);
     }
 

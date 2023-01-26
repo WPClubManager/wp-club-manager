@@ -1,0 +1,17 @@
+.DS_Store
+phpcs.xml
+phpunit.xml
+wp-cli.local.yml
+node_modules/
+*.sql
+*.tar.gz
+*.zip
+/vendor
+yarn-error.log
+.sass-cache
+release
+.idea
+
+/tests/reports
+/tests/codeception.yml
+/tests/.env.local

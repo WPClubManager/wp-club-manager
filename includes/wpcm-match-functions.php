@@ -289,9 +289,8 @@ function wpcm_get_match_comp( $post ) {
 			$competition = reset($competitions);
 			$t_id = $competition->term_id;
 			$competition_meta = get_option( "taxonomy_term_$t_id" );
-			$comp_label = $competition_meta['wpcm_comp_label'];
-			if ( $comp_label ) {
-				$label = $comp_label;
+			if ( is_array( $competition_meta ) && ! empty( $competition_meta['wpcm_comp_label'] ) ) {
+				$label = $competition_meta['wpcm_comp_label'];
 			} else {
 				$label = $comp;
 			}
@@ -319,9 +318,8 @@ function wpcm_get_match_team( $post ) {
 			$team = reset($teams);
 			$t_id = $team->term_id;
 			$team_meta = get_option( "taxonomy_term_$t_id" );
-			$team_label = $team_meta['wpcm_team_label'];
-			if ( $team_label ) {
-				$label = $team_label;
+			if ( is_array( $team_meta ) && ! empty( $team_meta['wpcm_team_label'] ) ) {
+				$label = $competition_meta['wpcm_team_label'];
 			} else {
 				$label = $name;
 			}
@@ -383,7 +381,7 @@ function wpcm_get_match_opponents( $post, $abbr = false ) {
 	$club = get_default_club();
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
-
+	$opponent = '';
 	if( $abbr == false) {
 		if ( $club == $home_club ) {
 			$opponent = get_the_title( $away_club, true );
