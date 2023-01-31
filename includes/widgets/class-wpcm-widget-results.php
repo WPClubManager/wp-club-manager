@@ -79,32 +79,32 @@ class WPCM_Results_Widget extends WPCM_Widget
             ),
             'show_abbr' => array(
                 'type'  => 'checkbox',
-                'std'   => 0,
+                'std'   => '',
                 'label' => __('Abbreviations', 'wp-club-manager')
             ),
             'show_date' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Date', 'wp-club-manager')
             ),
             'show_time' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Kick Off', 'wp-club-manager')
             ),
             'show_score' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Score', 'wp-club-manager')
             ),
             'show_comp' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Competition', 'wp-club-manager')
             ),
             'show_team' => array(
                 'type'  => 'checkbox',
-                'std'   => 0,
+                'std'   => '',
                 'label' => __('Team', 'wp-club-manager')
             ),
             'link_options' => array(
