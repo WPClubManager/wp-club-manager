@@ -131,7 +131,7 @@ abstract class WPCM_Widget extends WP_Widget {
 					$instance[ $key ] = wp_kses( trim( wp_unslash( $new_instance[ $key ] ) ), wp_kses_allowed_html( 'post' ) );
 				break;
 				case 'checkbox' :
-					$instance[ $key ] = is_null( $new_instance[ $key ] ) ? 0 : 1;
+					$instance[ $key ] = sanitize_text_field( $new_instance[ $key ] );
 				break;
 				case 'player_stats' :
 					if ( is_array( $new_instance[ $key ] ) ) $new_instance[ $key ] = implode(',', $new_instance[ $key ]);
@@ -261,7 +261,7 @@ abstract class WPCM_Widget extends WP_Widget {
 				case "checkbox" :
 					?>
 					 <p class="wpcm-widget-admin">
-						<input id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, 1 ); ?> />
+						<input id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, '1' ); ?> />
 						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 					</p>
 					<?php
