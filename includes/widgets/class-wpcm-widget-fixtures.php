@@ -79,32 +79,32 @@ class WPCM_Fixtures_Widget extends WPCM_Widget
             ),
             'show_abbr' => array(
                 'type'  => 'checkbox',
-                'std'   => 0,
+                'std'   => '',
                 'label' => __('Abbreviations', 'wp-club-manager')
             ),
             'show_date' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Date', 'wp-club-manager')
             ),
             'show_time' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Kick Off', 'wp-club-manager')
             ),
             'show_comp' => array(
                 'type'  => 'checkbox',
-                'std'   => 1,
+                'std'   => '1',
                 'label' => __('Competition', 'wp-club-manager')
             ),
             'show_team' => array(
                 'type'  => 'checkbox',
-                'std'   => 0,
+                'std'   => '',
                 'label' => __('Team', 'wp-club-manager')
             ),
             'show_countdown' => array(
                 'type'  => 'checkbox',
-                'std'   => 0,
+                'std'   => '',
                 'label' => __('Countdown', 'wp-club-manager')
             ),
             'link_options' => array(
@@ -122,7 +122,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget
                 'label' => __('Link page', 'wp-club-manager'),
                 'std'   => '',
             ),
-            
+
         );
         parent::__construct();
     }
@@ -245,7 +245,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget
 
         if (($fixtures = $this->get_fixtures($args, $instance)) && $fixtures->have_posts()) {
             echo apply_filters('wpclubmanager_before_widget_fixtures', '<ul class="wpcm-matches-widget">');
-        
+
             while ($fixtures->have_posts()) : $fixtures->the_post();
 
             $post = get_the_ID();
@@ -277,7 +277,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget
         }
 
         wp_reset_postdata();
-        
+
         $linktext = $instance['linktext'];
         $linkpage = $instance['linkpage'];
         if ($linkpage <= 0) {

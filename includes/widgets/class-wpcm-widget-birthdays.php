@@ -44,7 +44,7 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 			),
 			'include_staff'=> array(
 				'type'  => 'checkbox',
-				'std'   => 1,
+				'std'   => '1',
 				'label' => __( 'Include Staff', 'wp-club-manager' )
 			),
 			'date' => array(
@@ -61,10 +61,10 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 			),
 			'show_age'=> array(
 				'type'  => 'checkbox',
-				'std'   => 1,
+				'std'   => '1',
 				'label' => __( 'Show Age', 'wp-club-manager' )
 			)
-			
+
 		);
 		parent::__construct();
 	}
@@ -121,7 +121,7 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 			$month_day = date( $m.'-'.$d );
 			$timespan = date( 'm-d', strtotime( $date ) );
 			if( $month_day <= $timespan && $month_day >= date( 'm-d' ) ) {
-				 
+
 				$new_posts[$post] = $month_day;
 			}
 		}
