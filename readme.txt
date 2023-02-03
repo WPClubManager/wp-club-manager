@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.1
 Requires PHP: 7.2
-Stable Tag: 2.2.9
+Stable Tag: 2.2.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -166,6 +166,10 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.10 - 3rd February 2023 =
+
+- Fix: Widget checkbox settings now saving correctly when using the Widget Block Editor
 
 = 2.2.9 - 26th January 2023 =
 
