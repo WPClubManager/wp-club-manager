@@ -57,22 +57,22 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 			),
 			'abbr' => array(
 				'type'  => 'checkbox',
-				'std'   => 0,
+				'std'   => '',
 				'label' => __( 'Use club abbreviations', 'wp-club-manager' )
 			),
 			'thumb' => array(
 				'type'  => 'checkbox',
-				'std'   => 0,
+				'std'   => '',
 				'label' => __( 'Show club badge', 'wp-club-manager' )
 			),
 			'notes' => array(
 				'type'  => 'checkbox',
-				'std'   => 0,
+				'std'   => '',
 				'label' => __( 'Display Notes', 'wp-club-manager' )
 			),
 			'linkclub' => array(
 				'type'  => 'checkbox',
-				'std'   => 1,
+				'std'   => '',
 				'label' => __( 'Link to club pages', 'wp-club-manager' )
 			),
 			'display_columns' => array(
@@ -115,7 +115,7 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 	function widget( $args, $instance ) {
 
 		$options_string = '';
-		foreach( $instance as $key => $value ) {	
+		foreach( $instance as $key => $value ) {
 			if ( $value != -1 ) $options_string .= ' ' . $key . '="' . $value . '"';
 		}
 
