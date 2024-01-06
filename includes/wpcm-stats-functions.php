@@ -374,10 +374,10 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 
 		foreach( $matches as $match ) {
 
-			$played = get_post_meta( $match->ID, 'wpcm_played', true );
-			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
-			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
-			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+			$played = ( int ) get_post_meta( $match->ID, 'wpcm_played', true );
+			$friendly = ( int ) get_post_meta( $match->ID, 'wpcm_friendly', true );
+			$postponed = ( int ) get_post_meta( $match->ID, '_wpcm_postponed', true );
+			$overtime = ( int ) get_post_meta( $match->ID, 'wpcm_overtime', true );
 			$walkover = get_post_meta( $match->ID, '_wpcm_walkover', true );
 
 			if ( $played && !$friendly && !$postponed ) {
@@ -392,11 +392,11 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 					$a = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				}
 				$hb = get_post_meta( $match->ID, 'wpcm_home_bonus', true );
-				$won = $overtime == 0 && (int)( $f > $a );
-				$draw = (int)( $f == $a );
-				$lost = $overtime == 0 && (int)( $f < $a );
-				$otw = $overtime == 1 && (int)( $f > $a );
-				$otl = $overtime == 1 && (int)( $f < $a );
+				$won = $overtime == 0 && ( int )( $f > $a );
+				$draw = ( int )( $f == $a );
+				$lost = $overtime == 0 && ( int )( $f < $a );
+				$otw = $overtime == 1 && ( int )( $f > $a );
+				$otl = $overtime == 1 && ( int )( $f < $a );
 				$output['p'] ++;
 				$output['w'] += $won;
 				if( array_key_exists( 'd', $output ) ){
@@ -440,10 +440,10 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 
 		foreach( $matches as $match ) {
 
-			$played = get_post_meta( $match->ID, 'wpcm_played', true );
-			$friendly = get_post_meta( $match->ID, 'wpcm_friendly', true );
-			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
-			$overtime = get_post_meta( $match->ID, 'wpcm_overtime', true );
+			$played = ( int ) get_post_meta( $match->ID, 'wpcm_played', true );
+			$friendly = ( int ) get_post_meta( $match->ID, 'wpcm_friendly', true );
+			$postponed = ( int ) get_post_meta( $match->ID, '_wpcm_postponed', true );
+			$overtime = ( int ) get_post_meta( $match->ID, 'wpcm_overtime', true );
 			$walkover = get_post_meta( $match->ID, '_wpcm_walkover', true );
 
 			if ( $played && !$friendly && !$postponed ) {
@@ -451,20 +451,21 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 				if( get_option( 'wpcm_sport' ) == 'cricket' ) {
 					$runs = unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
 					$extras = unserialize( get_post_meta( $match->ID, '_wpcm_match_extras', true ) );
-					$f = $runs['away'] + $extras['away'];
-					$a = $runs['home'] + $extras['home'];
+					$f = ( int ) $runs['away'] + ( int ) $extras['away'];
+					$a = ( int ) $runs['home'] + ( int ) $extras['home'];
 				} else {
-					$f = get_post_meta( $match->ID, 'wpcm_away_goals', true );
-					$a = get_post_meta( $match->ID, 'wpcm_home_goals', true );
+					$f = ( int ) get_post_meta( $match->ID, 'wpcm_away_goals', true );
+					$a = ( int ) get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				}
-				$ab = get_post_meta( $match->ID, 'wpcm_away_bonus', true );
-				$won = $overtime == 0 && (int)( $f > $a );
-				$draw = (int)( $f == $a );
-				$lost = $overtime == 0 && (int)( $f < $a );
-				$otw = $overtime == 1 && (int)( $f > $a );
-				$otl = $overtime == 1 && (int)( $f < $a );
+				$ab = ( int ) get_post_meta( $match->ID, 'wpcm_away_bonus', true );
+				$won = $overtime == 0 && ( $f > $a ) ? 1 : 0;
+				$draw = ( $f == $a ) ? 1 : 0;
+				$lost = $overtime == 0 && ( $f < $a ) ? 1 : 0;
+				$otw = $overtime == 1 && ( $f > $a ) ? 1 : 0;
+				$otl = $overtime == 1 && ( $f < $a ) ? 1 : 0;
 				$output['p'] ++;
 				$output['w'] += $won;
+
 				if( array_key_exists( 'd', $output ) ){
 					$output['d'] += $draw;
 					$output['pts'] += $draw * get_option( 'wpcm_standings_draw_points' );
@@ -487,7 +488,8 @@ if (!function_exists('get_wpcm_club_auto_stats')) {
 					$output['b'] += $ab;
 					$output['pts'] += $ab;
 				}
-				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) +  $lost * get_option( 'wpcm_standings_loss_points' );
+
+				$output['pts'] += $won * ( float ) get_option( 'wpcm_standings_win_points' ) +  $lost * ( float ) get_option( 'wpcm_standings_loss_points' );
 			}
 			if( $postponed && $walkover == 'away_win' ) {
 				$output['p'] ++;
