@@ -149,7 +149,7 @@ function wpclubmanager_locate_template( $template_name, $template_path = '', $de
  * @return array
  */
 function wpcm_get_image_size( $image_size ) {
-	
+
 	if ( is_array( $image_size ) ) {
 		$width  = isset( $image_size[0] ) ? $image_size[0] : '300';
 		$height = isset( $image_size[1] ) ? $image_size[1] : '300';
@@ -171,7 +171,7 @@ function wpcm_get_image_size( $image_size ) {
 		$size['crop']   = isset( $size['crop'] ) ? $size['crop'] : 1;
 
 	} else {
-		
+
 		$size = array(
 			'width'  => '300',
 			'height' => '300',
@@ -205,12 +205,12 @@ function wpcm_nonce() {
  * Get information about available image sizes
  */
 function wpcm_get_image_sizes( $size = '' ) {
- 
+
     global $_wp_additional_image_sizes;
- 
+
     $sizes = array();
     $get_intermediate_image_sizes = get_intermediate_image_sizes();
- 
+
     // Create the full array with sizes and crop info
     foreach( $get_intermediate_image_sizes as $_size ) {
         if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
@@ -218,14 +218,14 @@ function wpcm_get_image_sizes( $size = '' ) {
             $sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
             $sizes[ $_size ]['crop'] = (bool) get_option( $_size . '_crop' );
         } elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
-            $sizes[ $_size ] = array( 
+            $sizes[ $_size ] = array(
                 'width' => $_wp_additional_image_sizes[ $_size ]['width'],
                 'height' => $_wp_additional_image_sizes[ $_size ]['height'],
                 'crop' =>  $_wp_additional_image_sizes[ $_size ]['crop']
             );
         }
     }
- 
+
     // Get only 1 size if found
     if ( $size ) {
         if( isset( $sizes[ $size ] ) ) {
@@ -281,7 +281,7 @@ function wpcm_crest_placeholder_img_src() {
 function wpcm_crest_placeholder_img( $size = 'crest-small' ) {
 
 	$dimensions = wpcm_get_image_sizes( $size );
-	
+
 	return apply_filters('wpclubmanager_crest_placeholder_img', '<img src="' . wpcm_crest_placeholder_img_src() . '" alt="Placeholder" width="' . esc_attr( $dimensions['width'] ) . '" class="wpclubmanager-crest-placeholder wp-post-image" height="' . esc_attr( $dimensions['height'] ) . '" />' );
 }
 
@@ -303,7 +303,7 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
 	    }
 	    if( !empty( $term_ids ) ) {
 
-	    	return get_terms( array( 
+	    	return get_terms( array(
 				'taxonomy' => $taxonomy,
 				'include' => $term_ids,
 				'meta_key' => 'tax_position',
@@ -319,7 +319,7 @@ function wpcm_get_ordered_post_terms( $post, $taxonomy ) {
     			'orderby' => 'meta_value_num',
 				'order' => 'DESC'
 			) );
-	    	
+
 	    }
 
 	}
@@ -336,7 +336,7 @@ function get_default_club() {
 	$default_club = get_option( 'wpcm_default_club' );
 	$club = false;
 	if( !empty( $default_club ) ) {
-		
+
 		$club = get_option( 'wpcm_default_club' );
 	}
 
@@ -390,7 +390,7 @@ if (!function_exists('wpcm_get_team_name')) {
 					$team = reset($teams);
 					$t_id = $team->term_id;
 					$team_meta = get_option( "taxonomy_term_$t_id" );
-					$team_label = $team_meta['wpcm_team_label'];
+					$team_label = isset( $team_meta['wpcm_team_label'] ) ? $team_meta['wpcm_team_label'] : false;
 
 					if ( $team_label ) {
 						$team_name =  $team_label;
@@ -462,14 +462,14 @@ function has_teams() {
 function get_the_teams( $post ) {
 
 	$teams = get_the_terms( $post, 'wpcm_team' );
-	if ( is_array( $teams ) ) {					
+	if ( is_array( $teams ) ) {
 		foreach ( $teams as $team ) {
 			$teams[] = $team->term_id;
 		}
 	} else {
 		$teams = array();
 	}
-	
+
 	return $teams;
 }
 
@@ -482,14 +482,14 @@ function get_the_teams( $post ) {
 function get_the_seasons( $post ) {
 
 	$seasons = get_the_terms( $post, 'wpcm_season' );
-	if ( is_array( $seasons ) ) {					
+	if ( is_array( $seasons ) ) {
 		foreach ( $seasons as $season ) {
 			$seasons[] = $season->term_id;
 		}
 	} else {
 		$seasons = array();
 	}
-	
+
 	return $seasons;
 }
 
@@ -523,7 +523,7 @@ function get_current_season() {
  * @return int
  */
 function sort_biggest_score( $a, $b ) {
-	
+
 	if( $a['gd'] == $b['gd'] ) {
 		if( $a['f'] == $b['f'] ) {
 			return 0;
