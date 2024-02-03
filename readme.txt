@@ -174,6 +174,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 - Fix: Fatal error during onboarding wizard when selecting the sport
 - Fix: Undefined variable on match report if venue not set
 - Fix: Undefined $competition_meta in wpcm_get_match_team(). Thanks to touxico
+- Fix: Age calculation error if no date of birth
 
 = 2.2.10 - 3rd February 2023 =
 
