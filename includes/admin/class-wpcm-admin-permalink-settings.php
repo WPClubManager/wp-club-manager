@@ -41,7 +41,7 @@ class WPCM_Admin_Permalink_Settings {
 
 		// Add our settings
 		foreach ( $this->slugs as $slug ):
-			add_settings_field(	
+			add_settings_field(
 				$slug[0],								// id
 				$slug[1],								// setting title
 				array( $this, 'slug_input' ),			// display callback
@@ -72,22 +72,38 @@ class WPCM_Admin_Permalink_Settings {
 	 * Save the settings
 	 */
 	public function settings_save() {
-		if ( ! is_admin() )
+		if ( ! is_admin() ) {
 			return;
+		}
 
-		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['wpclubmanager_club_slug'] ) ):
-			foreach ( $this->slugs as $slug ):
-				$key = 'wpclubmanager_' . $slug[0] . '_slug';
-				$value = null;
-				if ( isset( $_POST[ $key ] ) )
-					$value = sanitize_text_field( $_POST[ $key ] );
-				if ( empty( $value ) )
-					delete_option( $key );
-				else
-					update_option( $key, $value );
-			endforeach;
-			wpcm_flush_rewrite_rules();
-		endif;
+		if ( ! isset( $_POST['wpclubmanager_club_slug'] ) ) {
+			return;
+		}
+
+		if ( ! check_admin_referer( 'update-permalink' ) ) {
+			return;
+		}
+
+		// Bail if no cap
+		if ( ! current_user_can( 'manage_options' ) ) {
+			_doing_it_wrong( __FUNCTION__, esc_html( _x( 'You have no rights to access this page', '_doing_it_wrong error message', 'wp-club-manager' ) ), '2.2.11' );
+			return;
+		}
+
+		foreach ( $this->slugs as $slug ) {
+			$key   = 'wpclubmanager_' . $slug[0] . '_slug';
+			$value = null;
+			if ( isset( $_POST[ $key ] ) ) {
+				$value = sanitize_text_field( $_POST[ $key ] );
+			}
+			if ( empty( $value ) ) {
+				delete_option( $key );
+			} else {
+				update_option( $key, $value );
+			}
+		}
+
+		wpcm_flush_rewrite_rules();
 	}
 
 }
