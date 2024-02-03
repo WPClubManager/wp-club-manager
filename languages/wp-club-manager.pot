@@ -1,14 +1,14 @@
-# Copyright (C) 2023 WP Club Manager
+# Copyright (C) 2024 WP Club Manager
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Club Manager 2.2.10\n"
+"Project-Id-Version: WP Club Manager 2.2.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-club-manager\n"
-"POT-Creation-Date: 2023-02-03 10:52:18+00:00\n"
+"POT-Creation-Date: 2024-02-03 10:33:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -1025,127 +1025,127 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1222
-#: includes/admin/class-wpcm-admin-post-types.php:1232
-#: includes/admin/class-wpcm-admin-post-types.php:1243
-#: includes/admin/class-wpcm-admin-post-types.php:1257
-#: includes/admin/class-wpcm-admin-post-types.php:1267
-#: includes/admin/class-wpcm-admin-post-types.php:1279
-#: includes/admin/class-wpcm-admin-post-types.php:1290
-#: includes/admin/class-wpcm-admin-post-types.php:1302
-#: includes/admin/class-wpcm-admin-post-types.php:1314
-#: includes/admin/class-wpcm-admin-post-types.php:1324
-#: includes/admin/class-wpcm-admin-post-types.php:1337
-#: includes/admin/class-wpcm-admin-post-types.php:1347
-#: includes/admin/class-wpcm-admin-post-types.php:1358
+#: includes/admin/class-wpcm-admin-post-types.php:1226
+#: includes/admin/class-wpcm-admin-post-types.php:1236
+#: includes/admin/class-wpcm-admin-post-types.php:1247
+#: includes/admin/class-wpcm-admin-post-types.php:1261
+#: includes/admin/class-wpcm-admin-post-types.php:1271
+#: includes/admin/class-wpcm-admin-post-types.php:1283
+#: includes/admin/class-wpcm-admin-post-types.php:1294
+#: includes/admin/class-wpcm-admin-post-types.php:1306
+#: includes/admin/class-wpcm-admin-post-types.php:1318
+#: includes/admin/class-wpcm-admin-post-types.php:1328
+#: includes/admin/class-wpcm-admin-post-types.php:1341
+#: includes/admin/class-wpcm-admin-post-types.php:1351
+#: includes/admin/class-wpcm-admin-post-types.php:1362
 msgid "Show all %s"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1222
-#: includes/admin/class-wpcm-admin-post-types.php:1257
-#: includes/admin/class-wpcm-admin-post-types.php:1337
+#: includes/admin/class-wpcm-admin-post-types.php:1226
+#: includes/admin/class-wpcm-admin-post-types.php:1261
+#: includes/admin/class-wpcm-admin-post-types.php:1341
 msgid "competitions"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1232
-#: includes/admin/class-wpcm-admin-post-types.php:1267
-#: includes/admin/class-wpcm-admin-post-types.php:1302
-#: includes/admin/class-wpcm-admin-post-types.php:1314
-#: includes/admin/class-wpcm-admin-post-types.php:1347
+#: includes/admin/class-wpcm-admin-post-types.php:1236
+#: includes/admin/class-wpcm-admin-post-types.php:1271
+#: includes/admin/class-wpcm-admin-post-types.php:1306
+#: includes/admin/class-wpcm-admin-post-types.php:1318
+#: includes/admin/class-wpcm-admin-post-types.php:1351
 msgid "seasons"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1243
-#: includes/admin/class-wpcm-admin-post-types.php:1290
-#: includes/admin/class-wpcm-admin-post-types.php:1324
-#: includes/admin/class-wpcm-admin-post-types.php:1358
+#: includes/admin/class-wpcm-admin-post-types.php:1247
+#: includes/admin/class-wpcm-admin-post-types.php:1294
+#: includes/admin/class-wpcm-admin-post-types.php:1328
+#: includes/admin/class-wpcm-admin-post-types.php:1362
 msgid "teams"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1279
+#: includes/admin/class-wpcm-admin-post-types.php:1283
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-details.php:84
 msgid "positions"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1411
+#: includes/admin/class-wpcm-admin-post-types.php:1415
 msgid "Enter club name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1414
+#: includes/admin/class-wpcm-admin-post-types.php:1418
 msgid "Enter roster name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1417
+#: includes/admin/class-wpcm-admin-post-types.php:1421
 msgid "Enter table name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1420
+#: includes/admin/class-wpcm-admin-post-types.php:1424
 msgid "Enter sponsor name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1432
-#: includes/admin/class-wpcm-admin-post-types.php:1435
-#: includes/admin/class-wpcm-admin-post-types.php:1438
-#: includes/admin/class-wpcm-admin-post-types.php:1441
+#: includes/admin/class-wpcm-admin-post-types.php:1436
+#: includes/admin/class-wpcm-admin-post-types.php:1439
+#: includes/admin/class-wpcm-admin-post-types.php:1442
+#: includes/admin/class-wpcm-admin-post-types.php:1445
 msgid "Set featured image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1432
-#: includes/admin/class-wpcm-admin-post-types.php:1458
-#: includes/admin/class-wpcm-admin-post-types.php:1459
+#: includes/admin/class-wpcm-admin-post-types.php:1436
+#: includes/admin/class-wpcm-admin-post-types.php:1462
+#: includes/admin/class-wpcm-admin-post-types.php:1463
 msgid "Set club badge"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1433
-#: includes/admin/class-wpcm-admin-post-types.php:1436
-#: includes/admin/class-wpcm-admin-post-types.php:1439
-#: includes/admin/class-wpcm-admin-post-types.php:1442
+#: includes/admin/class-wpcm-admin-post-types.php:1437
+#: includes/admin/class-wpcm-admin-post-types.php:1440
+#: includes/admin/class-wpcm-admin-post-types.php:1443
+#: includes/admin/class-wpcm-admin-post-types.php:1446
 msgid "Remove featured image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1433
+#: includes/admin/class-wpcm-admin-post-types.php:1437
 msgid "Remove club badge"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1435
-#: includes/admin/class-wpcm-admin-post-types.php:1461
-#: includes/admin/class-wpcm-admin-post-types.php:1462
+#: includes/admin/class-wpcm-admin-post-types.php:1439
+#: includes/admin/class-wpcm-admin-post-types.php:1465
+#: includes/admin/class-wpcm-admin-post-types.php:1466
 msgid "Set player image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1436
+#: includes/admin/class-wpcm-admin-post-types.php:1440
 msgid "Remove player image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1438
-#: includes/admin/class-wpcm-admin-post-types.php:1464
-#: includes/admin/class-wpcm-admin-post-types.php:1465
+#: includes/admin/class-wpcm-admin-post-types.php:1442
+#: includes/admin/class-wpcm-admin-post-types.php:1468
+#: includes/admin/class-wpcm-admin-post-types.php:1469
 msgid "Set staff image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1439
+#: includes/admin/class-wpcm-admin-post-types.php:1443
 msgid "Remove staff image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1441
-#: includes/admin/class-wpcm-admin-post-types.php:1467
-#: includes/admin/class-wpcm-admin-post-types.php:1468
+#: includes/admin/class-wpcm-admin-post-types.php:1445
+#: includes/admin/class-wpcm-admin-post-types.php:1471
+#: includes/admin/class-wpcm-admin-post-types.php:1472
 msgid "Set sponsor logo"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1442
+#: includes/admin/class-wpcm-admin-post-types.php:1446
 msgid "Remove sponsor logo"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1481
-#: includes/admin/class-wpcm-admin-post-types.php:1489
+#: includes/admin/class-wpcm-admin-post-types.php:1485
+#: includes/admin/class-wpcm-admin-post-types.php:1493
 msgid "Joins on: <b>%1$s</b>"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1483
-#: includes/admin/class-wpcm-admin-post-types.php:1485
-#: includes/admin/class-wpcm-admin-post-types.php:1491
-#: includes/admin/class-wpcm-admin-post-types.php:1493
+#: includes/admin/class-wpcm-admin-post-types.php:1487
+#: includes/admin/class-wpcm-admin-post-types.php:1489
+#: includes/admin/class-wpcm-admin-post-types.php:1495
+#: includes/admin/class-wpcm-admin-post-types.php:1497
 msgid "Joined on: <b>%1$s</b>"
 msgstr ""
 
@@ -1258,125 +1258,125 @@ msgid "Choose your default sport:"
 msgstr ""
 
 #: includes/admin/class-wpcm-admin-setup-wizard.php:237
-#: includes/admin/class-wpcm-admin-setup-wizard.php:319
-#: includes/admin/class-wpcm-admin-setup-wizard.php:444
+#: includes/admin/class-wpcm-admin-setup-wizard.php:320
+#: includes/admin/class-wpcm-admin-setup-wizard.php:445
 msgid "Save &amp; continue"
 msgstr ""
 
 #: includes/admin/class-wpcm-admin-setup-wizard.php:238
-#: includes/admin/class-wpcm-admin-setup-wizard.php:320
-#: includes/admin/class-wpcm-admin-setup-wizard.php:445
+#: includes/admin/class-wpcm-admin-setup-wizard.php:321
+#: includes/admin/class-wpcm-admin-setup-wizard.php:446
 msgid "Skip this step"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:289
+#: includes/admin/class-wpcm-admin-setup-wizard.php:290
 msgid "Club Setup"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:291
+#: includes/admin/class-wpcm-admin-setup-wizard.php:292
 msgid "Add your club, competition and season so get started."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:298
+#: includes/admin/class-wpcm-admin-setup-wizard.php:299
 msgid "Enter your club name:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:299
+#: includes/admin/class-wpcm-admin-setup-wizard.php:300
 msgid "eg. West Ham United"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:303
+#: includes/admin/class-wpcm-admin-setup-wizard.php:304
 msgid "Enter a competition:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:304
+#: includes/admin/class-wpcm-admin-setup-wizard.php:305
 msgid "eg. Division One"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:308
+#: includes/admin/class-wpcm-admin-setup-wizard.php:309
 msgid "Enter a season:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:313
+#: includes/admin/class-wpcm-admin-setup-wizard.php:314
 msgid "Add your next opponent:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:314
+#: includes/admin/class-wpcm-admin-setup-wizard.php:315
 msgid "eg. Manchester United"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:359
+#: includes/admin/class-wpcm-admin-setup-wizard.php:360
 msgid "First Team"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:419
+#: includes/admin/class-wpcm-admin-setup-wizard.php:420
 msgid "Venue Setup"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:421
+#: includes/admin/class-wpcm-admin-setup-wizard.php:422
 msgid "Setup your clubs home venue."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:428
+#: includes/admin/class-wpcm-admin-setup-wizard.php:429
 msgid "Home venue name:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:429
+#: includes/admin/class-wpcm-admin-setup-wizard.php:430
 msgid "eg. London Stadium"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:433
+#: includes/admin/class-wpcm-admin-setup-wizard.php:434
 msgid "Home venue address:"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:434
+#: includes/admin/class-wpcm-admin-setup-wizard.php:435
 msgid "London Stadium, London E20 2ST"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:488
+#: includes/admin/class-wpcm-admin-setup-wizard.php:489
 msgid "Your website is almost ready to go!"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:495
+#: includes/admin/class-wpcm-admin-setup-wizard.php:496
 msgid "What Next?"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:497
+#: includes/admin/class-wpcm-admin-setup-wizard.php:498
 msgid ""
 "The Setup Wizard has created your first season and setup some basic "
 "settings but before you can start adding matches we suggest that you go to "
 "the plugin settings and configure them to your needs."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:500
+#: includes/admin/class-wpcm-admin-setup-wizard.php:501
 msgid "Go to plugin settings"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:504
+#: includes/admin/class-wpcm-admin-setup-wizard.php:505
 msgid "Need help?"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:506
+#: includes/admin/class-wpcm-admin-setup-wizard.php:507
 msgid ""
 "Our documentation provides all the information you need to setup and run "
 "your club or league website."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:509
+#: includes/admin/class-wpcm-admin-setup-wizard.php:510
 msgid ""
 "If you need further help or need to report an issue please visit our "
 "support forum."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:512
+#: includes/admin/class-wpcm-admin-setup-wizard.php:513
 msgid "WP Club Manager documentation"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:513
+#: includes/admin/class-wpcm-admin-setup-wizard.php:514
 msgid "Getting started checklist"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:514
+#: includes/admin/class-wpcm-admin-setup-wizard.php:515
 msgid "Community support forum"
 msgstr ""
 
@@ -6190,7 +6190,12 @@ msgstr ""
 msgid "A plugin to help you run a sports club website easily and quickly."
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-setup-wizard.php:287
+#: includes/admin/class-wpcm-admin-permalink-settings.php:89
+msgctxt "_doing_it_wrong error message"
+msgid "You have no rights to access this page"
+msgstr ""
+
+#: includes/admin/class-wpcm-admin-setup-wizard.php:288
 msgctxt "example"
 msgid "eg."
 msgstr ""
