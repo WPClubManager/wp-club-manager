@@ -3,9 +3,9 @@ Contributors: wpclubmanager, leonterry, daveyjake
 Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
-Tested up to: 6.1
+Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.10
+Stable Tag: 2.2.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -166,6 +166,14 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.11 - 3rd February 2024 =
+
+- Security Fix: Permalink settings save now protected with a capability and nonce check. Thanks to Francesco Carlucci via Wordfence for the responsible disclosure
+- Fix: Undefined $team_meta['wpcm_team_label'] notice
+- Fix: Fatal error during onboarding wizard when selecting the sport
+- Fix: Undefined variable on match report if venue not set
+- Fix: Undefined $competition_meta in wpcm_get_match_team(). Thanks to touxico
 
 = 2.2.10 - 3rd February 2023 =
 

@@ -319,7 +319,7 @@ function wpcm_get_match_team( $post ) {
 			$t_id = $team->term_id;
 			$team_meta = get_option( "taxonomy_term_$t_id" );
 			if ( is_array( $team_meta ) && ! empty( $team_meta['wpcm_team_label'] ) ) {
-				$label = $competition_meta['wpcm_team_label'];
+				$label = $team_meta['wpcm_team_label'];
 			} else {
 				$label = $name;
 			}

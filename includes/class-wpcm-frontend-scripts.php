@@ -134,13 +134,15 @@ class WPCM_Frontend_Scripts {
 		if ( is_match() ) :
 
 			$venues = get_the_terms( $post->ID, 'wpcm_venue' );
-			if ( is_array( $venues ) ) {
+			$venue_meta = false;
+			$venue_name = '';
+		if ( is_array( $venues ) ) {
 				$venue = reset($venues);
 				$t_id = $venue->term_id;
 				$venue_name = $venue->name;
 				$venue_meta = get_option( 'taxonomy_term_' . $t_id );
 			}
-			if( is_array( $venue_meta ) ) {
+			if ( $venue_meta && is_array( $venue_meta ) ) {
 				$address = $venue_meta['wpcm_address'];
 			} else {
 				$address = '';

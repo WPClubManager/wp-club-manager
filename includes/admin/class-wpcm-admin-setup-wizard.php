@@ -193,7 +193,7 @@ class WPCM_Admin_Setup_Wizard {
 
 		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated primary button button-next"><?php _e( 'Let\'s Go!', 'wp-club-manager' ); ?></a>
 		<a href="<?php echo esc_url( admin_url() ); ?>" class="ui large right floated button"><?php _e( 'Not right now', 'wp-club-manager' ); ?></a>
-	
+
 		<?php
 	}
 
@@ -264,10 +264,11 @@ class WPCM_Admin_Setup_Wizard {
 			update_option( 'wpcm_sport', $club_sport );
 			// Set table columns
 			$cols = wpcm_get_preset_labels( 'standings' );
-			foreach( $cols as $col => $val ) {
+			$columns = array();
+			foreach ( $cols as $col => $val ) {
 				$columns[] = $col;
 			}
-			$default_cols = implode( $columns, ',' );
+			$default_cols = implode( ',', $columns );
 			update_option( 'wpcm_standings_columns_display', $default_cols);
 		}
 
@@ -318,7 +319,7 @@ class WPCM_Admin_Setup_Wizard {
 
 			<input type="submit" class="ui large right floated primary button button-next" value="<?php esc_attr_e( 'Save &amp; continue', 'wp-club-manager' ); ?>" name="save_step" />
 			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php _e( 'Skip this step', 'wp-club-manager' ); ?></a>
-			
+
 			<?php wp_nonce_field( 'wpcm-setup' ); ?>
 
 		</form>
@@ -337,7 +338,7 @@ class WPCM_Admin_Setup_Wizard {
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
 			update_term_meta( $season_id, 'tax_position', 1 );
 		}
-		
+
 		if( isset( $_POST['setup_comp'] ) ){
 			$comp = sanitize_text_field( $_POST['setup_comp'] );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
@@ -353,7 +354,7 @@ class WPCM_Admin_Setup_Wizard {
 			);
 			$wpcm_default_club = wp_insert_post( $post );
 			update_option( 'wpcm_default_club', $wpcm_default_club );
-			
+
 			//wpcm_flush_rewrite_rules();
 
 			$team = __( 'First Team', 'wp-club-manager' );
@@ -423,7 +424,7 @@ class WPCM_Admin_Setup_Wizard {
 		<div class="ui hidden divider"></div>
 
 		<form class="ui form" method="post">
-		
+
 			<div class="inline field">
 				<label><?php _e( 'Home venue name:', 'wp-club-manager' ); ?></label>
 				<input type="text" id="setup_home" name="setup_home" placeholder="<?php esc_attr_e( 'eg. London Stadium', 'wp-club-manager' ); ?>" />
@@ -486,7 +487,7 @@ class WPCM_Admin_Setup_Wizard {
 	public function wpcm_setup_ready() { ?>
 
 		<h2><?php _e( 'Your website is almost ready to go!', 'wp-club-manager' ); ?></h2>
-						
+
 		<div class="ui hidden divider"></div>
 
 		<div class="ui two column stackable left aligned grid">

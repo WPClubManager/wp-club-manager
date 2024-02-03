@@ -49,11 +49,11 @@ class WPCM_Admin_Post_Types {
 		add_filter( 'bulk_actions-edit-wpcm_match', array( $this, 'wpcm_match_bulk_actions' ) );
         add_filter( 'list_table_primary_column', array( $this, 'list_table_primary_column' ), 10, 2 );
         add_filter( 'post_row_actions', array( $this, 'row_actions' ), 2, 100 );
-		
+
 		// Quick edit
 		add_action( 'quick_edit_custom_box',  array( $this, 'quick_edit' ), 10, 2 );
 		add_action( 'save_post', array( $this, 'quick_edit_save_post' ), 10, 2 );
-		
+
 		// Filters
 		add_action( 'restrict_manage_posts', array( $this, 'request_filter_dropdowns' ) );
 
@@ -63,14 +63,14 @@ class WPCM_Admin_Post_Types {
 		add_filter( 'admin_post_thumbnail_html', array( $this, 'custom_admin_post_thumbnail_html' ) );
 		add_filter( 'media_view_strings', array( $this, 'media_view_strings' ), 10, 2 );
 		add_filter( 'gettext', array( $this, 'text_replace' ), 20, 3 );
-        
+
         // Disable post type view mode options
 		add_filter( 'view_mode_post_types', array( $this, 'disable_view_mode_options' ) );
 
 		// if( $typenow == 'wpcm_player' ) {
 		// 	add_filter('months_dropdown_results', '__return_empty_array');
 		// }
-		
+
 		include_once( 'class-wpcm-admin-meta-boxes.php' );
 
     }
@@ -234,7 +234,7 @@ class WPCM_Admin_Post_Types {
 					$side1 = $away_club;
 					$side2 = $home_club;
 				}
-				
+
 				$title = $side1 . ' ' . $separator . ' ' . $side2;
 				$post_name = sanitize_title_with_dashes( $postarr['ID'] . '-' . $title );
 
@@ -247,7 +247,7 @@ class WPCM_Admin_Post_Types {
 				$kickoff = $_POST['wpcm_match_kickoff'];
 				$datetime = $date . ' ' . $kickoff . ':00';
 				$datetime_gmt = get_gmt_from_date( $datetime );
-				
+
 				$data['post_date'] = $datetime;
 				$data['post_date_gmt'] = $datetime_gmt;
 
@@ -331,7 +331,7 @@ class WPCM_Admin_Post_Types {
 		return array_merge( $columns, $existing_columns );
 
 	}
-	
+
 	/**
 	 * Define custom columns for clubs.
 	 * @param  array $existing_columns
@@ -386,7 +386,7 @@ class WPCM_Admin_Post_Types {
 		}
 		$columns['position']  	= __( 'Positions', 'wp-club-manager' );
 
-		return array_merge( $columns, $existing_columns );	
+		return array_merge( $columns, $existing_columns );
 	}
 
 	/**
@@ -432,7 +432,7 @@ class WPCM_Admin_Post_Types {
 	 * @return array
 	 */
 	public function roster_columns($columns) {
-        
+
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'wp-club-manager' ),
@@ -453,7 +453,7 @@ class WPCM_Admin_Post_Types {
 	 * @return array
 	 */
 	public function table_columns($columns) {
-		
+
 		$columns = array(
 			'cb' => '<input type="checkbox" />',
 			'title' => __( 'Title', 'wp-club-manager' ),
@@ -464,10 +464,10 @@ class WPCM_Admin_Post_Types {
 			$columns['team'] = __( 'Team', 'wp-club-manager' );
 		}
 		$columns['clubs'] = __( 'Clubs', 'wp-club-manager' );
-		
+
 		return $columns;
 	}
-    
+
     /**
 	 * Ouput custom columns for matches.
 	 *
@@ -556,7 +556,7 @@ class WPCM_Admin_Post_Types {
 					if( $terms ) {
 						foreach( $terms as $term ) {
 							$teams[] = $term->name;
-						}				 
+						}
 						$output = join( ', ', $teams );
 					} else {
 						$output = '';
@@ -685,12 +685,12 @@ class WPCM_Admin_Post_Types {
 	 * @param string $column
 	 */
 	public function render_player_columns($column) {
-		
+
 		global $post;
 
 		switch ($column) {
 			case 'number':
-				$number = get_post_meta($post->ID, 'wpcm_number', true);		
+				$number = get_post_meta($post->ID, 'wpcm_number', true);
 				echo $number;
 			break;
 			case 'image' :
@@ -751,22 +751,26 @@ class WPCM_Admin_Post_Types {
 				if( $terms ) {
 					foreach( $terms as $term ) {
 						$positions[] = $term->name;
-					}				 
+					}
 					$output = join( ', ', $positions );
 					echo $output;
 				}
 			break;
 			case 'club':
-				$club = get_post_meta($post->ID, '_wpcm_player_club', true);		
+				$club = get_post_meta($post->ID, '_wpcm_player_club', true);
 				echo get_the_title( $club );
 			break;
 			case 'flag':
-				$nationality = get_post_meta($post->ID, 'wpcm_natl', true);		
+				$nationality = get_post_meta($post->ID, 'wpcm_natl', true);
 				echo '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . $nationality . '.png" />';
 			break;
 			case 'age':
-				$dob = get_post_meta($post->ID, 'wpcm_dob', true);		
-				echo get_age( $dob );
+				$dob = get_post_meta( $post->ID, 'wpcm_dob', true );
+				if ( empty( $dob ) ) {
+					echo '';
+				} else {
+					echo get_age( $dob );
+				}
 			break;
 		}
 	}
@@ -838,29 +842,29 @@ class WPCM_Admin_Post_Types {
 			if( $terms ) {
 				foreach( $terms as $term ) {
 					$jobs[] = $term->name;
-				}				 
+				}
 				$output = join( ', ', $jobs );
 				echo $output;
 			}
 			break;
 			case 'email':
-				$email = get_post_meta($post->ID, '_wpcm_staff_email', true);		
+				$email = get_post_meta($post->ID, '_wpcm_staff_email', true);
 				echo '<a href="mailto:' . $email . '">' . $email . '</a>';
 			break;
 			case 'phone':
-				$phone = get_post_meta($post->ID, '_wpcm_staff_phone', true);		
+				$phone = get_post_meta($post->ID, '_wpcm_staff_phone', true);
 				echo $phone;
 			break;
 			case 'club':
-				$club = get_post_meta($post->ID, '_wpcm_staff_club', true);		
+				$club = get_post_meta($post->ID, '_wpcm_staff_club', true);
 				echo get_the_title( $club );
 			break;
 			case 'flag':
-				$nationality = get_post_meta($post->ID, 'wpcm_natl', true);		
+				$nationality = get_post_meta($post->ID, 'wpcm_natl', true);
 				echo '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . $nationality . '.png" />';
 			break;
 			case 'age':
-				$dob = get_post_meta($post->ID, 'wpcm_dob', true);		
+				$dob = get_post_meta($post->ID, 'wpcm_dob', true);
 				echo get_age( $dob );
 			break;
 		}
@@ -961,7 +965,7 @@ class WPCM_Admin_Post_Types {
 		);
 		return wp_parse_args( $custom, $columns );
 	}
-	
+
 	/**
 	 * Remove edit from the bulk actions.
 	 *
@@ -976,7 +980,7 @@ class WPCM_Admin_Post_Types {
 
 		return $actions;
 	}
-    
+
     /**
 	 * Set list table primary column for post types.
 	 * Support for WordPress 4.3.
@@ -1292,7 +1296,7 @@ class WPCM_Admin_Post_Types {
 					'name' => 'wpcm_team',
 					'selected' => $selected
 				);
-			
+
 				wpcm_dropdown_taxonomies($args);
 				echo PHP_EOL;
 			}
@@ -1427,7 +1431,7 @@ class WPCM_Admin_Post_Types {
 	public function custom_admin_post_thumbnail_html( $content ) {
 
 	    global $current_screen;
-	 
+
 	    if( 'wpcm_club' == $current_screen->post_type ) {
 	        $content = str_replace( __( 'Set featured image' ), __( 'Set club badge', 'wp-club-manager' ), $content);
 	    	$content = str_replace( __( 'Remove featured image' ), __( 'Remove club badge', 'wp-club-manager' ), $content );
@@ -1471,7 +1475,7 @@ class WPCM_Admin_Post_Types {
 
 		return $strings;
 	}
-	
+
 	public function text_replace( $translated_text, $text, $domain ) {
 
 		global $typenow;
@@ -1496,7 +1500,7 @@ class WPCM_Admin_Post_Types {
 
 		return $translated_text;
 	}
-    
+
     /**
 	 * Removes products, orders, and coupons from the list of post types that support "View Mode" switching.
 	 * View mode is seen on posts where you can switch between list or excerpt. Our post types don't support
