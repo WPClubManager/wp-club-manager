@@ -399,7 +399,7 @@ class WPCM_Meta_Box_Match_Players {
 							<?php echo apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ); ?>
 
 
-								<td class="names">
+								<td scope="row" class="names">
 									<i class="dashicons dashicons-move"></i>
 									<label class="selectit">
 										<input type="checkbox" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
@@ -429,43 +429,42 @@ class WPCM_Meta_Box_Match_Players {
 
 										if ( $key == 'greencards' ) { ?>
 
-											<td class="<?php echo $key; ?>">
+											<td data-label="GC" class="<?php echo $key; ?>">
 												<input type="checkbox" data-card="green" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
 										<?php } elseif ( $key == 'yellowcards' ) { ?>
 
-											<td class="<?php echo $key; ?>">
+											<td data-label="YC" class="<?php echo $key; ?>">
 												<input type="checkbox" data-card="yellow" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
 										<?php } elseif ( $key == 'blackcards' ) { ?>
 
-											<td class="<?php echo $key; ?>">
+											<td data-label="BC" class="<?php echo $key; ?>">
 												<input type="checkbox" data-card="black" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
 										<?php } elseif ( $key == 'redcards' ) { ?>
 
-											<td class="<?php echo $key; ?>">
+											<td data-label="RC" class="<?php echo $key; ?>">
 												<input type="checkbox" data-card="red" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
 										<?php } elseif ( $key == 'rating' ) { ?>
 
-											<td class="<?php echo $key; ?>">
+											<td data-label="RAT" class="<?php echo $key; ?>">
 												<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php echo ( $type == 'subs_not_used' ? '0' : wpcm_stats_value( $selected_players[$type], $player->ID, $key ) ); ?>" min="0" max="10"<?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
 										<?php } elseif ( $key == 'mvp' ) { ?>
 
-											<td class="mvp">
+											<td data-label="POM" class="mvp">
 												<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="1" <?php checked( true, $keyarray ); ?><?php if ( !$played ) echo ' disabled'; ?> />
 											</td>
 
 										<?php } else { ?>
-
-											<td class="<?php echo $key; ?>">
+											<td data-label="<?php echo $wpcm_player_stats_labels[ $key ]; ?>" class="<?php echo $key; ?>">
 												<input type="number" data-player="<?php echo $player->ID; ?>" name="wpcm_players[<?php echo $type; ?>][<?php echo $player->ID; ?>][<?php echo $key; ?>]" value="<?php echo ( $type == 'subs_not_used' ? '0' : wpcm_stats_value( $selected_players[$type], $player->ID, $key ) ); ?>"<?php if ( !$played ) echo ' disabled'; ?>/>
 											</td>
 
@@ -477,7 +476,7 @@ class WPCM_Meta_Box_Match_Players {
 
 								if ( $type == 'lineup' ) { ?>
 
-									<td class="captain">
+									<td data-label="CAP" class="captain">
 
 										<input type="radio" data-player="<?php echo $player->ID; ?>" name="wpcm_match_captain" value="<?php echo $player->ID; ?>"<?php checked($captain, $player->ID); ?><?php if ( !$played ) echo ' disabled'; ?> />
 									</td>

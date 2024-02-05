@@ -326,6 +326,9 @@ jQuery( function($){
 
 	$(document).ready(function(){
 		$(".combify-input").combify();
+		$(".wpcm-match-players-table td input").on("click", function() {
+			$(this).focus();
+		});
 	});
 
 });
