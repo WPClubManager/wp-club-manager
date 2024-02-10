@@ -458,7 +458,7 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
-		if( isset( $_POST['setup_home'] ) ){
+		if( isset( $_POST['setup_home'] ) && ! empty( $_POST['setup_home'] ) ){
 			$home = sanitize_text_field( $_POST['setup_home'] );
 			$post_id = get_option( 'wpcm_default_club' );
 			$terms = wp_insert_term( $home, 'wpcm_venue' );
