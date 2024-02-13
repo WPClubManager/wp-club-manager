@@ -151,6 +151,10 @@ Yes; WP Club Manager will work with any theme, but may require some styling to m
 
 You can help improve this plugin by reporting any bugs or contributing to the source code at our [Github repository](https://github.com/ClubPress/wpclubmanager).
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/wp-club-manager)
+
 == Screenshots ==
 
 1. General plugin settings
