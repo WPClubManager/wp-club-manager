@@ -2,17 +2,19 @@
 /**
  * Single Player - Stats Table
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     1.5.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
-if ( array_key_exists( $team, $stats ) ):
-	if ( array_key_exists( $season, $stats[$team] ) ):
-		$stats = $stats[$team][$season];
+if ( array_key_exists( $team, $stats ) ) :
+	if ( array_key_exists( $season, $stats[ $team ] ) ) :
+		$stats = $stats[ $team ][ $season ];
 	endif;
 endif;
 
@@ -24,62 +26,66 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 	<thead>
 		<tr>
 			<?php
-			foreach( $stats_labels as $key => $val ) { 
+			foreach ( $stats_labels as $key => $val ) {
 
-				if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' && array_key_exists( $key, $custom_stats ) ) { ?>
+				if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' && array_key_exists( $key, $custom_stats ) ) {
+					?>
 
 					<th><?php echo $val; ?></th>
 
-				<?php }
-
-			} ?>
+					<?php
+				}
+			}
+			?>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<?php
-			foreach( $stats_labels as $key => $val ) {
+			foreach ( $stats_labels as $key => $val ) {
 
-				if( $key == 'appearances' ) {
+				if ( $key == 'appearances' ) {
 
-					if( get_option( 'wpcm_show_stats_appearances' ) == 'yes' && array_key_exists( 'appearances', $custom_stats ) ) { 
+					if ( get_option( 'wpcm_show_stats_appearances' ) == 'yes' && array_key_exists( 'appearances', $custom_stats ) ) {
 
-						if( get_option( 'wpcm_show_stats_subs' ) == 'yes' ) { 
+						if ( get_option( 'wpcm_show_stats_subs' ) == 'yes' ) {
 							$subs = get_player_subs_total( $post->ID, $season, $team );
-							if( $subs > 0 ) {
+							if ( $subs > 0 ) {
 								$sub = ' <span class="sub-appearances">(' . $subs . ')</span>';
-							}else{
+							} else {
 								$sub = '';
 							}
-						} ?>
+						}
+						?>
 				
 						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo ( get_option( 'wpcm_show_stats_subs' ) == 'yes' ? $sub : '' ); ?></span></td>
 
-					<?php
+						<?php
 					}
+				} elseif ( $key == 'rating' ) {
 
-				} elseif( $key == 'rating' ) {
-
-					$rating = get_wpcm_stats_value( $stats, 'total', 'rating' );
-					$apps = get_wpcm_stats_value( $stats, 'total', 'appearances' );
+					$rating   = get_wpcm_stats_value( $stats, 'total', 'rating' );
+					$apps     = get_wpcm_stats_value( $stats, 'total', 'appearances' );
 					$avrating = wpcm_divide( $rating, $apps );
 
-					if( get_option( 'wpcm_show_stats_rating' ) == 'yes' && array_key_exists( 'rating', $custom_stats ) ) { ?>
+					if ( get_option( 'wpcm_show_stats_rating' ) == 'yes' && array_key_exists( 'rating', $custom_stats ) ) {
+						?>
 				
-						<td><span data-index="rating"><?php echo sprintf( "%01.2f", round($avrating, 2) ); ?></span></td>
+						<td><span data-index="rating"><?php printf( '%01.2f', round( $avrating, 2 ) ); ?></span></td>
 
-					<?php
+						<?php
 					}
+				} elseif ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' && array_key_exists( $key, $custom_stats ) ) {
 
-				} else { 
-
-					if( get_option( 'wpcm_show_stats_' . $key ) == 'yes' && array_key_exists( $key, $custom_stats ) ) { ?>
+					?>
 
 						<td><span data-index="<?php echo $key; ?>"><?php wpcm_stats_value( $stats, 'total', $key ); ?></span></td>
 						
-					<?php }
+						<?php
+
 				}
-			} ?>
+			}
+			?>
 			
 		</tr>
 	</tbody>

@@ -17,32 +17,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php do_action( 'wpclubmanager_staff_quick_edit_left_start' ); ?>
 
-        <div class="staff_fields">
+		<div class="staff_fields">
 
-            <label class="alignleft">
+			<label class="alignleft">
 				<span class="title"><?php _e( 'First Name', 'wp-club-manager' ); ?></span>
 				<span class="input-text-wrap">
 					<input type="text" name="_wpcm_firstname" class="text fname" value="">
 				</span>
 			</label>
 
-            <label class="alignleft">
+			<label class="alignleft">
 				<span class="title"><?php _e( 'Last Name', 'wp-club-manager' ); ?></span>
 				<span class="input-text-wrap">
 					<input type="text" name="_wpcm_lastname" class="text lname" value="">
 				</span>
-            </label>
-            <br>
+			</label>
+			<br>
 
-            <?php if ( is_league_mode() ) : ?>
-            <label class="alignleft">
+			<?php if ( is_league_mode() ) : ?>
+			<label class="alignleft">
 				<span class="title"><?php _e( 'Club', 'wp-club-manager' ); ?></span>
 				<span class="input-text-wrap">
 					<select class="staff_club" name="_wpcm_staff_club" id="post_club">
 						<?php
-							foreach ( $clubs as $key => $value ) {
-								echo '<option value="' . esc_attr( $value->post_name ) . '">'. $value->post_title .'</option>';
-							}
+						foreach ( $clubs as $key => $value ) {
+							echo '<option value="' . esc_attr( $value->post_name ) . '">' . $value->post_title . '</option>';
+						}
 						?>
 					</select>
 				</span>

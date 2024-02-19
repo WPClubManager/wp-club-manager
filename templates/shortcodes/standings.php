@@ -2,25 +2,27 @@
 /**
  * Standings
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div class="wpcm-standings-shortcode wpcm-standings">
 
-	<?php echo ( $title && ! $type == 'widget' ? '<h3>' . $title . '</h3>' : ''); ?>
+	<?php echo ( $title && ! $type == 'widget' ? '<h3>' . $title . '</h3>' : '' ); ?>
 	
 	<table>
 		<thead>
 			<tr>
 				<th></th>
 				<th></th>
-				<?php foreach( $stats as $stat ) { ?>
+				<?php foreach ( $stats as $stat ) { ?>
 					
-					<th class="<?php echo $stat; ?>"><?php echo $stats_labels[$stat]; ?></th>
+					<th class="<?php echo $stat; ?>"><?php echo $stats_labels[ $stat ]; ?></th>
 				
 				<?php } ?>
 			
@@ -31,8 +33,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 		<?php
 		$rownum = 0;
 		foreach ( $clubs as $club ) {
-			$rownum ++;
-			$club_stats = $club->wpcm_stats; ?>
+			++$rownum;
+			$club_stats = $club->wpcm_stats;
+			?>
 			
 			<tr class="<?php echo ( $center == $club->ID ? 'highlighted ' : '' ) . ( $rownum % 2 == 0 ? 'even' : 'odd' ) . ( $rownum == $limit ? ' last' : '' ); ?>">
 
@@ -41,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 				</td>
 
 				<td class="club">
-					<?php 
+					<?php
 					echo $club->thumb;
 					echo ( $link_club == 1 ? '<a href="' . get_the_permalink( $club->ID ) . '">' : '' );
 					echo $club->post_title;
@@ -49,9 +52,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 					?>
 				</td>
 
-				<?php foreach( $stats as $stat ) { ?>
+				<?php foreach ( $stats as $stat ) { ?>
 					
-					<td class="<?php echo $stat; ?>"><?php echo $club_stats[$stat]; ?></td>
+					<td class="<?php echo $stat; ?>"><?php echo $club_stats[ $stat ]; ?></td>
 
 				<?php } ?>
 

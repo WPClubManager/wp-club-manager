@@ -2,14 +2,16 @@
 /**
  * WPClubManager sports. Code adapted from SportsPress
  *
- * @class 		WPCM_Sports
- * @version		1.1.0
- * @package		WPClubManager/Classes
- * @category	Class
- * @author 		Clubpress
+ * @class       WPCM_Sports
+ * @version     1.1.0
+ * @package     WPClubManager/Classes
+ * @category    Class
+ * @author      Clubpress
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_Sports {
 
@@ -30,7 +32,7 @@ class WPCM_Sports {
 		return ( array_key_exists( $key, $this->data ) ? $this->data[ $key ] : null );
 	}
 
-	public function __set( $key, $value ){
+	public function __set( $key, $value ) {
 		$this->data[ $key ] = $value;
 	}
 }

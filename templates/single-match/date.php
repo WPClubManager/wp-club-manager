@@ -2,12 +2,14 @@
 /**
  * Single Match - Date
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     2.2.2
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
 

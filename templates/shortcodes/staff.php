@@ -2,12 +2,14 @@
 /**
  * Staff shortcode template
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div class="wpcm-players-shortcode">
 
@@ -17,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 		<thead>
 			<tr>
 			
-			<?php foreach( $stats as $stat ) { ?>
+			<?php foreach ( $stats as $stat ) { ?>
 				
 				<th class="<?php echo $stat; ?>">
-					<?php echo $stats_labels[$stat]; ?>
+					<?php echo $stats_labels[ $stat ]; ?>
 				</th>
 			
 			<?php } ?>
@@ -29,18 +31,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 		</thead>
 		<tbody>
 
-		<?php $count = 0;
-		foreach( $staff_details as $staff_detail ) {
-			$count++;
-			if ( $limit > 0 && $count > $limit )
-				break; ?>
+		<?php
+		$count = 0;
+		foreach ( $staff_details as $staff_detail ) {
+			++$count;
+			if ( $limit > 0 && $count > $limit ) {
+				break;
+			}
+			?>
 
 			<tr>
 			
-			<?php foreach( $stats as $stat ) { ?>
+			<?php foreach ( $stats as $stat ) { ?>
 
 				<td class="<?php echo $stat; ?>">
-					<?php echo $staff_detail[$stat]; ?>
+					<?php echo $staff_detail[ $stat ]; ?>
 				</td>
 
 			<?php } ?>

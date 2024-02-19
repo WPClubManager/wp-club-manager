@@ -2,12 +2,14 @@
 /**
  * Players Gallery
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div id="wpcm-players-gallery">
 
@@ -17,10 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 		<?php
 		$count = 0;
-		foreach( $player_details as $player_detail ) {
-			$count++;
-			if ( $limit > 0 && $count > $limit )
-				break; ?>
+		foreach ( $player_details as $player_detail ) {
+			++$count;
+			if ( $limit > 0 && $count > $limit ) {
+				break;
+			}
+			?>
 
 			<li class="wpcm-players-gallery-li">
 
@@ -30,8 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 					<h4><?php echo $player_detail['title']; ?></h4>
 
-					<?php 
-					if( $orderby != 'name' && $orderby != 'number' && $orderby != 'menu_order' ) { ?>
+					<?php
+					if ( $orderby != 'name' && $orderby != 'number' && $orderby != 'menu_order' ) {
+						?>
 					
 						<span class="victory-player-module-stat">
 
@@ -39,14 +44,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 						</span>
 					
-					<?php
-					} ?>
+						<?php
+					}
+					?>
 
 				</div>			
 
 			</li>
-		<?php
-		} ?>
+			<?php
+		}
+		?>
 
 	</ul>
 

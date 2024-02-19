@@ -2,18 +2,21 @@
 /**
  * WP Club Manager Autoloader
  *
- * @class 		WPCM_Autoloader
- * @version		1.3.0
- * @package		WPClubManager/Classes/
- * @category	Class
- * @author 		Clubpress
+ * @class       WPCM_Autoloader
+ * @version     1.3.0
+ * @package     WPClubManager/Classes/
+ * @category    Class
+ * @author      Clubpress
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_Autoloader {
 
 	/**
 	 * Path to the includes directory
+	 *
 	 * @var string
 	 */
 	private $include_path = '';
@@ -22,8 +25,8 @@ class WPCM_Autoloader {
 	 * The Constructor
 	 */
 	public function __construct() {
-		if ( function_exists( "__autoload" ) ) {
-			spl_autoload_register( "__autoload" );
+		if ( function_exists( '__autoload' ) ) {
+			spl_autoload_register( '__autoload' );
 		}
 
 		spl_autoload_register( array( $this, 'autoload' ) );
@@ -33,6 +36,7 @@ class WPCM_Autoloader {
 
 	/**
 	 * Take a class name and turn it into a file name
+	 *
 	 * @param  string $class
 	 * @return string
 	 */
@@ -42,12 +46,13 @@ class WPCM_Autoloader {
 
 	/**
 	 * Include a class file
+	 *
 	 * @param  string $path
 	 * @return bool successful or not
 	 */
 	private function load_file( $path ) {
 		if ( $path && is_readable( $path ) ) {
-			include_once( $path );
+			include_once $path;
 			return true;
 		}
 		return false;
@@ -63,7 +68,6 @@ class WPCM_Autoloader {
 		$file  = $this->get_file_name_from_class( $class );
 		$path  = '';
 
-		
 		if ( strpos( $class, 'wpcm_shortcode_' ) === 0 ) {
 			$path = $this->include_path . 'shortcodes/';
 		} elseif ( strpos( $class, 'wpcm_meta_box' ) === 0 ) {

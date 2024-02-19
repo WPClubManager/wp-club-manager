@@ -2,13 +2,15 @@
 /**
  * WPCM_Cache_Helper class.
  *
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Classes
+ * @author      ClubPress
+ * @category    Admin
+ * @package     WPClubManager/Classes
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_Cache_Helper {
 
@@ -24,7 +26,7 @@ class WPCM_Cache_Helper {
 
 	public static function create_plugin_transient_name( $atts, $type = 'players' ) {
 
-		$names = implode( '-', $atts);
+		$names          = implode( '-', $atts );
 		$transient_name = 'wpcm_' . $type . '_' . md5( $names );
 
 		return $transient_name;
@@ -32,21 +34,21 @@ class WPCM_Cache_Helper {
 
 	public static function update_plugin_transient_keys( $key ) {
 
-		$transient_keys = get_option( 'wpcm_transient_keys' );
-	  	$transient_keys[] = $key;
-	  
-	  	update_option( 'wpcm_transient_keys', $transient_keys );
+		$transient_keys   = get_option( 'wpcm_transient_keys' );
+		$transient_keys[] = $key;
+
+		update_option( 'wpcm_transient_keys', $transient_keys );
 	}
 
 	public static function delete_plugin_transients() {
 
-	  	$transient_keys = get_option( 'wpcm_transient_keys' );
-	  	
-	  	if( ! empty( $transient_keys ) ) {
-		  	foreach( $transient_keys as $t ) {
-		    	delete_transient( $t );
-		  	}
-		  	update_option( 'wpcm_transient_keys', array() );
+		$transient_keys = get_option( 'wpcm_transient_keys' );
+
+		if ( ! empty( $transient_keys ) ) {
+			foreach ( $transient_keys as $t ) {
+				delete_transient( $t );
+			}
+			update_option( 'wpcm_transient_keys', array() );
 		}
 	}
 
@@ -54,12 +56,13 @@ class WPCM_Cache_Helper {
 	 * Clear transients ajax
 	 */
 	public function wpcm_clear_transients() {
-		
-		if( !isset( $_POST['wpcm_nonce'] ) || !wp_verify_nonce($_POST['wpcm_nonce'], 'wpcm-nonce') )
-			die('Permissions check failed');	
-		
+
+		if ( ! isset( $_POST['wpcm_nonce'] ) || ! wp_verify_nonce( $_POST['wpcm_nonce'], 'wpcm-nonce' ) ) {
+			die( 'Permissions check failed' );
+		}
+
 		do_action( 'delete_plugin_transients' );
-		
+
 		exit();
 	}
 }

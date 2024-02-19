@@ -51,31 +51,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</tr>
 						<tr>
 							<td data-export-label="WP Version"><?php _e( 'WP Version', 'wp-club-manager' ); ?>:</td>
-							<td><?php bloginfo('version'); ?></td>
+							<td><?php bloginfo( 'version' ); ?></td>
 						</tr>
 						<tr>
 							<td data-export-label="WP Multisite"><?php _e( 'WP Multisite', 'wp-club-manager' ); ?>:</td>
-							<td><?php if ( is_multisite() ) echo '<mark class="yes">' . '&#10003;' . '</mark>'; else echo '<mark class="no">' . '&#10007;' . '</mark>'; ?></td>
+							<td>
+							<?php
+							if ( is_multisite() ) {
+								echo '<mark class="yes">' . '&#10003;' . '</mark>';
+							} else {
+								echo '<mark class="no">' . '&#10007;' . '</mark>';
+							}
+							?>
+							</td>
 						</tr>
 						<tr>
 							<td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								$memory = wpcm_let_to_num( WP_MEMORY_LIMIT );
 
-								if ( $memory < 67108864 ) {
-									echo '<mark class="error">' . sprintf( __( '%s - We recommend setting memory to at least 64MB. See: <a href="%s" target="_blank">Increasing memory allocated to PHP</a>', 'wp-club-manager' ), size_format( $memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
-								} else {
-									echo '<mark class="yes">' . size_format( $memory ) . '</mark>';
-								}
-							?></td>
+							if ( $memory < 67108864 ) {
+								echo '<mark class="error">' . sprintf( __( '%1$s - We recommend setting memory to at least 64MB. See: <a href="%2$s" target="_blank">Increasing memory allocated to PHP</a>', 'wp-club-manager' ), size_format( $memory ), 'http://codex.wordpress.org/Editing_wp-config.php#Increasing_memory_allocated_to_PHP' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . size_format( $memory ) . '</mark>';
+							}
+							?>
+							</td>
 						</tr>
 						<tr>
 							<td data-export-label="WP Debug Mode"><?php _e( 'WP Debug Mode', 'wp-club-manager' ); ?>:</td>
-							<td><?php if ( defined('WP_DEBUG') && WP_DEBUG ) echo '<mark class="yes">' . '&#10003;' . '</mark>'; else echo '<mark class="no">' . '&#10007;' . '</mark>'; ?></td>
+							<td>
+							<?php
+							if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+								echo '<mark class="yes">' . '&#10003;' . '</mark>';
+							} else {
+								echo '<mark class="no">' . '&#10007;' . '</mark>';
+							}
+							?>
+							</td>
 						</tr>
 						<tr>
 							<td data-export-label="Language"><?php _e( 'Language', 'wp-club-manager' ); ?>:</td>
-							<td><?php echo get_locale() ?></td>
+							<td><?php echo get_locale(); ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -92,33 +110,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</tr>
 						<tr>
 							<td data-export-label="PHP Version"><?php _e( 'PHP Version', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								// Check if phpversion function exists
-								if ( function_exists( 'phpversion' ) ) {
-									$php_version = phpversion();
+							if ( function_exists( 'phpversion' ) ) {
+								$php_version = phpversion();
 
-									if ( version_compare( $php_version, '5.4', '<' ) ) {
-										echo '<mark class="error">' . sprintf( __( '%s - We recommend a minimum PHP version of 5.4. See: <a href="%s" target="_blank">How to update your PHP version</a>', 'wp-club-manager' ), esc_html( $php_version ), 'http://docs.woothemes.com/document/how-to-update-your-php-version/' ) . '</mark>';
-									} else {
-										echo '<mark class="yes">' . esc_html( $php_version ) . '</mark>';
-									}
+								if ( version_compare( $php_version, '5.4', '<' ) ) {
+									echo '<mark class="error">' . sprintf( __( '%1$s - We recommend a minimum PHP version of 5.4. See: <a href="%2$s" target="_blank">How to update your PHP version</a>', 'wp-club-manager' ), esc_html( $php_version ), 'http://docs.woothemes.com/document/how-to-update-your-php-version/' ) . '</mark>';
 								} else {
-									_e( "Couldn't determine PHP version because phpversion() doesn't exist.", 'wp-club-manager' );
+									echo '<mark class="yes">' . esc_html( $php_version ) . '</mark>';
 								}
-								?></td>
+							} else {
+								_e( "Couldn't determine PHP version because phpversion() doesn't exist.", 'wp-club-manager' );
+							}
+							?>
+								</td>
 						</tr>
 						<?php if ( function_exists( 'ini_get' ) ) : ?>
 							<tr>
 								<td data-export-label="PHP Post Max Size"><?php _e( 'PHP Post Max Size', 'wp-club-manager' ); ?>:</td>
-								<td><?php echo size_format( wpcm_let_to_num( ini_get('post_max_size') ) ); ?></td>
+								<td><?php echo size_format( wpcm_let_to_num( ini_get( 'post_max_size' ) ) ); ?></td>
 							</tr>
 							<tr>
 								<td data-export-label="PHP Time Limit"><?php _e( 'PHP Time Limit', 'wp-club-manager' ); ?>:</td>
-								<td><?php echo ini_get('max_execution_time'); ?></td>
+								<td><?php echo ini_get( 'max_execution_time' ); ?></td>
 							</tr>
 							<tr>
 								<td data-export-label="PHP Max Input Vars"><?php _e( 'PHP Max Input Vars', 'wp-club-manager' ); ?>:</td>
-								<td><?php echo ini_get('max_input_vars'); ?></td>
+								<td><?php echo ini_get( 'max_input_vars' ); ?></td>
 							</tr>
 						<?php endif; ?>
 						<tr>
@@ -137,13 +157,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</tr>
 						<tr>
 							<td data-export-label="Default Timezone is UTC"><?php _e( 'Default Timezone is UTC', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								$default_timezone = date_default_timezone_get();
-								if ( 'UTC' !== $default_timezone ) {
-									echo '<mark class="error">' . '&#10005; ' . sprintf( __( 'Default timezone is %s - it should be UTC', 'wp-club-manager' ), $default_timezone ) . '</mark>';
-								} else {
-									echo '<mark class="yes">' . '&#10003;' . '</mark>';
-								} ?>
+							if ( 'UTC' !== $default_timezone ) {
+								echo '<mark class="error">' . '&#10005; ' . sprintf( __( 'Default timezone is %s - it should be UTC', 'wp-club-manager' ), $default_timezone ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . '&#10003;' . '</mark>';
+							}
+							?>
 							</td>
 						</tr>
 					</tbody>
@@ -175,8 +197,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 								$plugin_name = esc_html( $plugin_data['Name'] );
 
 								if ( ! empty( $plugin_data['PluginURI'] ) ) {
-									$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . __( 'Visit plugin homepage' , 'wp-club-manager' ) . '" target="_blank">' . $plugin_name . '</a>';
-								} ?>
+									$plugin_name = '<a href="' . esc_url( $plugin_data['PluginURI'] ) . '" title="' . __( 'Visit plugin homepage', 'wp-club-manager' ) . '" target="_blank">' . $plugin_name . '</a>';
+								}
+								?>
 								<tr>
 									<td><?php echo $plugin_name; ?></td>
 									<td class="help">&nbsp;</td>
@@ -197,36 +220,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<tbody>
 						<tr>
 							<td data-export-label="Teams"><?php _e( 'Teams', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								$display_terms = array();
-								$terms = get_terms( 'wpcm_team', array( 'hide_empty' => 0 ) );
-								foreach ( $terms as $term ) {
-									$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
-								}
+								$terms         = get_terms( 'wpcm_team', array( 'hide_empty' => 0 ) );
+							foreach ( $terms as $term ) {
+								$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
+							}
 								echo implode( ', ', array_map( 'esc_html', $display_terms ) );
-							?></td>
+							?>
+							</td>
 						</tr>
 						<tr>
 							<td data-export-label="Seasons"><?php _e( 'Seasons', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								$display_terms = array();
-								$terms = get_terms( 'wpcm_season', array( 'hide_empty' => 0 ) );
-								foreach ( $terms as $term ) {
-									$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
-								}
+								$terms         = get_terms( 'wpcm_season', array( 'hide_empty' => 0 ) );
+							foreach ( $terms as $term ) {
+								$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
+							}
 								echo implode( ', ', array_map( 'esc_html', $display_terms ) );
-							?></td>
+							?>
+							</td>
 						</tr>
 						<tr>
 							<td data-export-label="Competitions"><?php _e( 'Competitions', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								$display_terms = array();
-								$terms = get_terms( 'wpcm_comp', array( 'hide_empty' => 0 ) );
-								foreach ( $terms as $term ) {
-									$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
-								}
+								$terms         = get_terms( 'wpcm_comp', array( 'hide_empty' => 0 ) );
+							foreach ( $terms as $term ) {
+								$display_terms[] = strtolower( $term->name ) . ' (' . $term->slug . ')';
+							}
 								echo implode( ', ', array_map( 'esc_html', $display_terms ) );
-							?></td>
+							?>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -252,21 +281,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</tr>
 						<tr>
 							<td data-export-label="Child Theme"><?php _e( 'Child Theme', 'wp-club-manager' ); ?>:</td>
-							<td><?php
+							<td>
+							<?php
 								echo is_child_theme() ? '<mark class="yes">' . '&#10003;' . '</mark>' : '<mark class="no">' . '&#10007;' . '</mark>';
-							?></td>
+							?>
+							</td>
 						</tr>
 						<?php
-						if( is_child_theme() ) :
+						if ( is_child_theme() ) :
 							$parent_theme = wp_get_theme( $active_theme->Template );
-						?>
+							?>
 						<tr>
 							<td data-export-label="Parent Theme Name"><?php _e( 'Parent Theme Name', 'wp-club-manager' ); ?>:</td>
 							<td><?php echo $parent_theme->Name; ?></td>
 						</tr>
 						<tr>
 							<td data-export-label="Parent Theme Version"><?php _e( 'Parent Theme Version', 'wp-club-manager' ); ?>:</td>
-							<td><?php echo  $parent_theme->Version; ?></td>
+							<td><?php echo $parent_theme->Version; ?></td>
 						</tr>
 						<tr>
 							<td data-export-label="Parent Theme Author URL"><?php _e( 'Parent Theme Author URL', 'wp-club-manager' ); ?>:</td>
@@ -275,13 +306,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php endif ?>
 						<tr>
 							<td data-export-label="WP Club Manager Support"><?php _e( 'WP Club Manager Support', 'wp-club-manager' ); ?>:</td>
-							<td><?php
-								if ( ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $active_theme->template, wpcm_get_core_supported_themes() ) ) {
-									echo '<mark class="error">' . __( 'Not Declared', 'wp-club-manager' ) . '</mark>';
-								} else {
-									echo '<mark class="yes">' . '&#10003;' . '</mark>';
-								}
-							?></td>
+							<td>
+							<?php
+							if ( ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $active_theme->template, wpcm_get_core_supported_themes() ) ) {
+								echo '<mark class="error">' . __( 'Not Declared', 'wp-club-manager' ) . '</mark>';
+							} else {
+								echo '<mark class="yes">' . '&#10003;' . '</mark>';
+							}
+							?>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -294,7 +327,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<tbody>
 						<?php
 							$default_club = get_default_club();
-							$sport = get_option( 'wpcm_sport' );
+							$sport        = get_option( 'wpcm_sport' );
 						?>
 						<tr>
 							<td data-export-label="Preset Sport"><?php _e( 'Preset Sport', 'wp-club-manager' ); ?>:</td>
@@ -320,62 +353,62 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$found_files        = array();
 							$outdated_templates = false;
 
-							foreach ( $template_paths as $plugin_name => $template_path ) {
-								$scanned_files[ $plugin_name ] = WPCM_Admin_Status::scan_template_files( $template_path );
-							}
+						foreach ( $template_paths as $plugin_name => $template_path ) {
+							$scanned_files[ $plugin_name ] = WPCM_Admin_Status::scan_template_files( $template_path );
+						}
 
-							foreach ( $scanned_files as $plugin_name => $files ) {
-								foreach ( $files as $file ) {
-									if ( file_exists( get_stylesheet_directory() . '/' . $file ) ) {
-										$theme_file = get_stylesheet_directory() . '/' . $file;
-									} elseif ( file_exists( get_stylesheet_directory() . '/wpclubmanager/' . $file ) ) {
-										$theme_file = get_stylesheet_directory() . '/wpclubmanager/' . $file;
-									} elseif ( file_exists( get_template_directory() . '/' . $file ) ) {
-										$theme_file = get_template_directory() . '/' . $file;
-									} elseif( file_exists( get_template_directory() . '/wpclubmanager/' . $file ) ) {
-										$theme_file = get_template_directory() . '/wpclubmanager/' . $file;
-									} else {
-										$theme_file = false;
-									}
+						foreach ( $scanned_files as $plugin_name => $files ) {
+							foreach ( $files as $file ) {
+								if ( file_exists( get_stylesheet_directory() . '/' . $file ) ) {
+									$theme_file = get_stylesheet_directory() . '/' . $file;
+								} elseif ( file_exists( get_stylesheet_directory() . '/wpclubmanager/' . $file ) ) {
+									$theme_file = get_stylesheet_directory() . '/wpclubmanager/' . $file;
+								} elseif ( file_exists( get_template_directory() . '/' . $file ) ) {
+									$theme_file = get_template_directory() . '/' . $file;
+								} elseif ( file_exists( get_template_directory() . '/wpclubmanager/' . $file ) ) {
+									$theme_file = get_template_directory() . '/wpclubmanager/' . $file;
+								} else {
+									$theme_file = false;
+								}
 
-									if ( $theme_file ) {
-										$core_version  = WPCM_Admin_Status::get_file_version( WPCM()->plugin_path() . '/templates/' . $file );
-										$theme_version = WPCM_Admin_Status::get_file_version( $theme_file );
+								if ( $theme_file ) {
+									$core_version  = WPCM_Admin_Status::get_file_version( WPCM()->plugin_path() . '/templates/' . $file );
+									$theme_version = WPCM_Admin_Status::get_file_version( $theme_file );
 
-										if ( $core_version && ( empty( $theme_version ) || version_compare( $theme_version, $core_version, '<' ) ) ) {
-											if ( ! $outdated_templates ) {
-												$outdated_templates = true;
-											}
-											$found_files[ $plugin_name ][] = sprintf( __( '<code>%s</code> version <strong style="color:red">%s</strong> is out of date. The core version is %s', 'wp-club-manager' ), str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ), $theme_version ? $theme_version : '-', $core_version );
-										} else {
-											$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ) );
+									if ( $core_version && ( empty( $theme_version ) || version_compare( $theme_version, $core_version, '<' ) ) ) {
+										if ( ! $outdated_templates ) {
+											$outdated_templates = true;
 										}
+										$found_files[ $plugin_name ][] = sprintf( __( '<code>%1$s</code> version <strong style="color:red">%2$s</strong> is out of date. The core version is %3$s', 'wp-club-manager' ), str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ), $theme_version ? $theme_version : '-', $core_version );
+									} else {
+										$found_files[ $plugin_name ][] = sprintf( '<code>%s</code>', str_replace( WP_CONTENT_DIR . '/themes/', '', $theme_file ) );
 									}
 								}
 							}
+						}
 
-							if ( $found_files ) {
-								foreach ( $found_files as $plugin_name => $found_plugin_files ) {
-									?>
+						if ( $found_files ) {
+							foreach ( $found_files as $plugin_name => $found_plugin_files ) {
+								?>
 									<tr>
 										<td data-export-label="Overrides"><?php _e( 'Overrides', 'wp-club-manager' ); ?> (<?php echo $plugin_name; ?>):</td>
 										<td><?php echo implode( ', <br/>', $found_plugin_files ); ?></td>
 									</tr>
 									<?php
-								}
-							} else {
-								?>
+							}
+						} else {
+							?>
 								<tr>
 									<td data-export-label="Overrides"><?php _e( 'Overrides', 'wp-club-manager' ); ?>:</td>
 									<td>&ndash;</td>
 								</tr>
 								<?php
-							}
+						}
 						?>
 					</tbody>
 				</table>
 			</div>
-			<?php include 'html-admin-sidebar.php'; ?>
+			<?php require 'html-admin-sidebar.php'; ?>
 		</div>
 	</div>
 </div>

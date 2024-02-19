@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<select class="team" name="_team">
 					<option value=""><?php _e( '— No Change —', 'wp-club-manager' ); ?></option>
 				<?php
-					foreach ( $teams as $key => $value ) {
-						echo '<option value="' . esc_attr( $value->slug ) . '">'. $value->name .'</option>';
-					}
+				foreach ( $teams as $key => $value ) {
+					echo '<option value="' . esc_attr( $value->slug ) . '">' . $value->name . '</option>';
+				}
 				?>
 				</select>
 			</span>

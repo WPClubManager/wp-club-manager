@@ -1,6 +1,6 @@
 <div id="postbox-container-1" class="postbox-container">
 
-	<?php if( 'Victory' != wp_get_theme() ) { ?>
+	<?php if ( 'Victory' != wp_get_theme() ) { ?>
 		<div id="wpcm-support" class="stuffbox ">
 			<h3>Victory Theme</h3>
 			<div class="inside">
@@ -10,8 +10,9 @@
 				<p class="sale" style="font-size: 16px;font-weight: bold;background: #9d1919;color: #fff;text-align: center">Get 25% off with this code: <br>25PERCENT</p>
 			</div>
 		</div>
-	<?php
-	} ?>
+		<?php
+	}
+	?>
 
 	<div id="wpcm-like-plugin" class="stuffbox ">
 		<h3>Do You Like WP Club Manager?</h3>

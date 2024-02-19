@@ -2,12 +2,14 @@
 /**
  * Players
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div class="wpcm-players-shortcode">
 
@@ -17,29 +19,37 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 		<thead>
 			<tr>
 
-				<?php foreach( $stats as $stat ) {
-					if ( $stat !== 'subs' ) { ?>
+				<?php
+				foreach ( $stats as $stat ) {
+					if ( $stat !== 'subs' ) {
+						?>
 
-						<th class="<?php echo $stat; ?>"><?php echo $stats_labels[$stat]; ?></th>
+						<th class="<?php echo $stat; ?>"><?php echo $stats_labels[ $stat ]; ?></th>
 
-					<?php }
-				} ?>
+						<?php
+					}
+				}
+				?>
 
 			</tr>
 		</thead>
 		<tbody>
 
-		<?php $count = 0;
-		foreach( $player_details as $player_detail ) {
-			$count++;
+		<?php
+		$count = 0;
+		foreach ( $player_details as $player_detail ) {
+			++$count;
 			if ( $limit > 0 && $count > $limit ) {
 				break;
-			} ?>
+			}
+			?>
 
 			<tr>
 
-			<?php foreach( $stats as $stat ) {
-				if ( $stat !== 'subs' ) { ?>
+			<?php
+			foreach ( $stats as $stat ) {
+				if ( $stat !== 'subs' ) {
+					?>
 
 					<td class="<?php echo $stat; ?>">
 
@@ -47,8 +57,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 					</td>
 
-				<?php }
-			} ?>
+					<?php
+				}
+			}
+			?>
 
 			</tr>
 

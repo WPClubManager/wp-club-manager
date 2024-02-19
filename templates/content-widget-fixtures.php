@@ -2,24 +2,28 @@
 /**
  * Fixtures Widget
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     2.2.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
 $timestamp = strtotime( $post->post_date ); ?>
 
 <li class="fixture">
 	<div class="fixture-meta">
-		<?php if( $show_team ) { ?>
+		<?php if ( $show_team ) { ?>
 			<div class="team">
 				<span><?php echo $team[0]; ?></span>
 			</div>
-		<?php }
-		if( $show_comp ) { ?>
+			<?php
+		}
+		if ( $show_comp ) {
+			?>
 			<div class="competition">
 				<span><?php echo $comp[0]; ?>&nbsp;<?php echo $comp[2]; ?></span>
 			</div>
@@ -39,13 +43,13 @@ $timestamp = strtotime( $post->post_date ); ?>
 	</a>
 	<div class="wpcm-date">
 		<div class="kickoff">
-			<?php 
-			echo ( $show_date ? date_i18n( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ), $timestamp ) : '' ); 
+			<?php
+			echo ( $show_date ? date_i18n( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ), $timestamp ) : '' );
 			echo ( $show_date && $show_time ? ' - ' : '' );
 			echo ( $show_time ? date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) : '' );
 			?>
 		</div>
-		<?php if( $show_countdown ) { ?>
+		<?php if ( $show_countdown ) { ?>
 			<div class="wpcm-countdown">
 				<div class="wpcm-ticker-countdown" data-countdown="<?php echo $post->post_date; ?>"></div>
 			</div>

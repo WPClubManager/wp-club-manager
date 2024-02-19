@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php do_action( 'wpclubmanager_match_quick_edit_left_start' ); ?>
 
-        <div class="match_fields">
+		<div class="match_fields">
 
 			<?php if ( is_club_mode() ) : ?>
 				<label class="alignleft">
@@ -25,9 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="input-text-wrap">
 						<select class="team" name="wpcm_team" id="post_team">
 							<?php
-								foreach ( $teams as $key => $value ) {
-									echo '<option value="' . esc_attr( $value->slug ) . '">'. $value->name .'</option>';
-								}
+							foreach ( $teams as $key => $value ) {
+								echo '<option value="' . esc_attr( $value->slug ) . '">' . $value->name . '</option>';
+							}
 							?>
 						</select>
 					</span>
@@ -40,18 +40,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="input-text-wrap">
 					<select class="team" name="wpcm_comp" id="post_comp">
 						<?php
-							foreach ( $comps as $key => $value ) {
-								echo '<option value="' . esc_attr( $value->slug ) . '">'. $value->name .'</option>';
-							}
+						foreach ( $comps as $key => $value ) {
+							echo '<option value="' . esc_attr( $value->slug ) . '">' . $value->name . '</option>';
+						}
 						?>
 					</select>
 				</span>
 			</label>
 
 			<label class="alignleft friendly">
-                <input type="checkbox" name="wpcm_friendly" value="1">
-                <span class="checkbox-title"><?php _e( 'Friendly?', 'wp-club-manager' ); ?></span>
-            </label>
+				<input type="checkbox" name="wpcm_friendly" value="1">
+				<span class="checkbox-title"><?php _e( 'Friendly?', 'wp-club-manager' ); ?></span>
+			</label>
 			<br class="clear" />
 
 			<label class="alignleft">
@@ -59,9 +59,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="input-text-wrap">
 					<select class="team" name="wpcm_season" id="post_season">
 						<?php
-							foreach ( $seasons as $key => $value ) {
-								echo '<option value="' . esc_attr( $value->slug ) . '">'. $value->name .'</option>';
-							}
+						foreach ( $seasons as $key => $value ) {
+							echo '<option value="' . esc_attr( $value->slug ) . '">' . $value->name . '</option>';
+						}
 						?>
 					</select>
 				</span>
@@ -73,9 +73,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="input-text-wrap">
 					<select class="venue" name="wpcm_venue" id="post_venue">
 						<?php
-							foreach ( $venues as $key => $value ) {
-								echo '<option value="' . esc_attr( $value->slug ) . '">'. $value->name .'</option>';
-							}
+						foreach ( $venues as $key => $value ) {
+							echo '<option value="' . esc_attr( $value->slug ) . '">' . $value->name . '</option>';
+						}
 						?>
 					</select>
 				</span>
@@ -115,10 +115,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="result">
 
-            <label class="alignleft played">
-                <input type="checkbox" name="wpcm_played" value="1">
-                <span class="checkbox-title"><?php _e( 'Played?', 'wp-club-manager' ); ?></span>
-            </label>
+			<label class="alignleft played">
+				<input type="checkbox" name="wpcm_played" value="1">
+				<span class="checkbox-title"><?php _e( 'Played?', 'wp-club-manager' ); ?></span>
+			</label>
 			<br class="clear" />
 			
 			<table>

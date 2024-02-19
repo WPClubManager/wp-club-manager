@@ -2,30 +2,34 @@
 /**
  * Matches - New matches shortcode layout
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div class="wpcm-fixtures-shortcode">
 
-	<?php echo ( $title ? '<h3>' . $title . '</h3>' : ''); ?>
+	<?php echo ( $title ? '<h3>' . $title . '</h3>' : '' ); ?>
 
 	<ul class="wpcm-matches-list">
 
-	<?php foreach( $matches as $match ) {
+	<?php
+	foreach ( $matches as $match ) {
 
-		$played = get_post_meta( $match->ID, 'wpcm_played', true );
-		$timestamp = strtotime( $match->post_date );
+		$played      = get_post_meta( $match->ID, 'wpcm_played', true );
+		$timestamp   = strtotime( $match->post_date );
 		$time_format = get_option( 'time_format' );
-		$class = wpcm_get_match_outcome( $match->ID );	
-		$comp = wpcm_get_match_comp( $match->ID );
-		$sides = wpcm_get_match_clubs( $match->ID );
-		$side1 = $sides[0];
-		$side2 = $sides[1];
-		$result = wpcm_get_match_result( $match->ID ); ?>
+		$class       = wpcm_get_match_outcome( $match->ID );
+		$comp        = wpcm_get_match_comp( $match->ID );
+		$sides       = wpcm_get_match_clubs( $match->ID );
+		$side1       = $sides[0];
+		$side2       = $sides[1];
+		$result      = wpcm_get_match_result( $match->ID );
+		?>
 
 		<li class="wpcm-matches-list-item <?php echo $class; ?>">
 			<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">

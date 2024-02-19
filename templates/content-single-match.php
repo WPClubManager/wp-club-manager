@@ -4,12 +4,14 @@
  *
  * Override this template by copying it to yourtheme/wpclubmanager/content-single-match.php
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
 
@@ -19,9 +21,9 @@ global $post;
 
 	<?php do_action( 'wpclubmanager_before_single_match' ); ?>
 
-    <div class="wpcm-match-info wpcm-row">
+	<div class="wpcm-match-info wpcm-row">
 
-     	<?php
+		<?php
 			/**
 			 * wpclubmanager_single_match_info hook
 			 *
@@ -33,11 +35,11 @@ global $post;
 			do_action( 'wpclubmanager_single_match_info' );
 		?>
 
-    </div>
+	</div>
 
-    <div class="wpcm-match-fixture wpcm-row">
+	<div class="wpcm-match-fixture wpcm-row">
 
-    	<?php
+		<?php
 			/**
 			 * wpclubmanager_single_match_fixture hook
 			 *
@@ -48,9 +50,9 @@ global $post;
 			do_action( 'wpclubmanager_single_match_fixture' );
 		?>
 
-    </div>
+	</div>
 
-    <div class="wpcm-match-meta wpcm-row">
+	<div class="wpcm-match-meta wpcm-row">
 
 		<div class="wpcm-match-meta-left">
 
@@ -80,9 +82,9 @@ global $post;
 
 		</div>
 
-    </div>
+	</div>
 
-    <div class="wpcm-match-details wpcm-row">
+	<div class="wpcm-match-details wpcm-row">
 
 		<?php
 			/**
@@ -104,8 +106,8 @@ global $post;
 			do_action( 'wpclubmanager_single_match_details' );
 		?>
 
-    </div>
+	</div>
 
-    <?php do_action( 'wpclubmanager_after_single_match' ); ?>
+	<?php do_action( 'wpclubmanager_after_single_match' ); ?>
 
 </article>

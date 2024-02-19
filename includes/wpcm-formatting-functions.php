@@ -4,13 +4,15 @@
  *
  * Functions for formatting data.
  *
- * @author 		ClubPress
- * @category 	Core
- * @package 	WPClubManager/Functions
+ * @author      ClubPress
+ * @category    Core
+ * @package     WPClubManager/Functions
  * @version     2.2.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Sanitize taxonomy names. Slug format (no spaces, lowercase).
@@ -23,12 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 // function wpcm_sanitize_taxonomy_name( $taxonomy ) {
 
-// 	$filtered = strtolower( remove_accents( stripslashes( strip_tags( $taxonomy ) ) ) );
-// 	$filtered = preg_replace( '/&.+?;/', '', $filtered ); // Kill entities
-// 	$filtered = str_replace( array( '.', '\'', '"' ), '', $filtered ); // Kill quotes and full stops.
-// 	$filtered = str_replace( array( ' ', '_' ), '-', $filtered ); // Replace spaces and underscores.
+// $filtered = strtolower( remove_accents( stripslashes( strip_tags( $taxonomy ) ) ) );
+// $filtered = preg_replace( '/&.+?;/', '', $filtered ); // Kill entities
+// $filtered = str_replace( array( '.', '\'', '"' ), '', $filtered ); // Kill quotes and full stops.
+// $filtered = str_replace( array( ' ', '_' ), '-', $filtered ); // Replace spaces and underscores.
 
-// 	return apply_filters( 'sanitize_taxonomy_name', $filtered, $taxonomy );
+// return apply_filters( 'sanitize_taxonomy_name', $filtered, $taxonomy );
 // }
 
 /**
@@ -53,17 +55,17 @@ function wpcm_clean( $var ) {
  */
 // function wpcm_array_overlay( $a1, $a2 ) {
 
-//     foreach( $a1 as $k => $v ) {
-//         if ( ! array_key_exists( $k, $a2 ) ) {
-//         	continue;
-//         }
-//         if ( is_array( $v ) && is_array( $a2[ $k ] ) ) {
-//             $a1[ $k ] = wpcm_array_overlay( $v, $a2[ $k ] );
-//         } else {
-//             $a1[ $k ] = $a2[ $k ];
-//         }
-//     }
-//     return $a1;
+// foreach( $a1 as $k => $v ) {
+// if ( ! array_key_exists( $k, $a2 ) ) {
+// continue;
+// }
+// if ( is_array( $v ) && is_array( $a2[ $k ] ) ) {
+// $a1[ $k ] = wpcm_array_overlay( $v, $a2[ $k ] );
+// } else {
+// $a1[ $k ] = $a2[ $k ];
+// }
+// }
+// return $a1;
 // }
 
 /**
@@ -77,9 +79,9 @@ function wpcm_clean( $var ) {
  * @return string Short month name
  */
 // function month_num_to_name( $n ) {
-// 	$timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
+// $timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
 
-// 	return date_i18n( "M", $timestamp );
+// return date_i18n( "M", $timestamp );
 // }
 
 /**
@@ -90,20 +92,20 @@ function wpcm_clean( $var ) {
  * @param string $subkey
  * @return array
  */
-function subval_sort($a,$subkey) {
+function subval_sort( $a, $subkey ) {
 
-	foreach($a as $k=>$v) {
+	foreach ( $a as $k => $v ) {
 
-		$b[$k] = strtolower($v[$subkey] ?? '');
+		$b[ $k ] = strtolower( $v[ $subkey ] ?? '' );
 	}
 
-	if ($b != null) {
+	if ( $b != null ) {
 
-		asort($b);
+		asort( $b );
 
-		foreach($b as $key=>$val) {
+		foreach ( $b as $key => $val ) {
 
-			$c[] = $a[$key];
+			$c[] = $a[ $key ];
 		}
 
 		return $c;
@@ -117,14 +119,14 @@ function wpcm_array_value( $arr = array(), $key = 0, $default = null ) {
 }
 
 // function wpcm_array_combine( $keys = array(), $values = array() ) {
-// 	$output = array();
-// 	foreach ( $keys as $key ):
-// 		if ( is_array( $values ) && array_key_exists( $key, $values ) )
-// 			$output[ $key ] = $values[ $key ];
-// 		else
-// 			$output[ $key ] = array();
-// 	endforeach;
-// 	return $output;
+// $output = array();
+// foreach ( $keys as $key ):
+// if ( is_array( $values ) && array_key_exists( $key, $values ) )
+// $output[ $key ] = $values[ $key ];
+// else
+// $output[ $key ] = array();
+// endforeach;
+// return $output;
 // }
 
 /**
@@ -135,10 +137,10 @@ function wpcm_array_value( $arr = array(), $key = 0, $default = null ) {
  * @param string $key
  * @return void
  */
-if (!function_exists('wpcm_array_values_to_int')) {
+if ( ! function_exists( 'wpcm_array_values_to_int' ) ) {
 	function wpcm_array_values_to_int( &$value, $key ) {
 
-		$value = (int)$value;
+		$value = (int) $value;
 	}
 }
 
@@ -149,9 +151,9 @@ if (!function_exists('wpcm_array_values_to_int')) {
  * @param string $value
  * @return mixed
  */
-if (!function_exists('wpcm_array_filter_checked')) {
-	function wpcm_array_filter_checked( $value) {
-		
+if ( ! function_exists( 'wpcm_array_filter_checked' ) ) {
+	function wpcm_array_filter_checked( $value ) {
+
 		return ( array_key_exists( 'checked', $value ) );
 	}
 }
@@ -164,7 +166,7 @@ if (!function_exists('wpcm_array_filter_checked')) {
  */
 // function wpcm_date_format() {
 
-// 	return apply_filters( 'wpclubmanager_date_format', get_option( 'date_format' ) );
+// return apply_filters( 'wpclubmanager_date_format', get_option( 'date_format' ) );
 // }
 
 /**
@@ -174,8 +176,8 @@ if (!function_exists('wpcm_array_filter_checked')) {
  * @return string
  */
 // function wpcm_time_format() {
-	
-// 	return apply_filters( 'wpclubmanager_time_format', get_option( 'time_format' ) );
+
+// return apply_filters( 'wpclubmanager_time_format', get_option( 'time_format' ) );
 // }
 
 /**
@@ -215,26 +217,28 @@ function wpcm_dropdown_posts( $args = array() ) {
 
 	$defaults = array(
 		'show_option_none' => false,
-		'numberposts' => -1,
-		'posts_per_page' => -1,
-		'orderby' => 'title',
-		'order' => 'ASC',
-		'name' => null,
-		'id' => null,
-		'selected' => null,
-		'class' => null
+		'numberposts'      => -1,
+		'posts_per_page'   => -1,
+		'orderby'          => 'title',
+		'order'            => 'ASC',
+		'name'             => null,
+		'id'               => null,
+		'selected'         => null,
+		'class'            => null,
 	);
 
 	$args = array_merge( $defaults, $args );
 
-	if ( ! $args['id'] )
+	if ( ! $args['id'] ) {
 
 		$args['id'] = $args['name'];
+	}
 		echo '<select name="' . $args['name'] . '" id="' . $args['id'] . '" class="postform ' . $args['class'] . ' chosen_select">';
 		unset( $args['name'] );
-	if ( $args['show_option_none'])
-		
+	if ( $args['show_option_none'] ) {
+
 		echo '<option value=""' . ( '' == $args['selected'] ? ' selected' : '' ) . '>' . $args['show_option_none'] . '</option>';
+	}
 
 	$posts = get_posts( $args );
 
@@ -244,9 +248,9 @@ function wpcm_dropdown_posts( $args = array() ) {
 
 		if ( isset( $args['post_type'] ) && $args['post_type'] == 'wpcm_match' ) {
 
-			$timestamp = strtotime( $post->post_date );
+			$timestamp   = strtotime( $post->post_date );
 			$date_format = get_option( 'date_format' );
-			$name = date_i18n( $date_format, $timestamp ) . ' - ' . $name; 
+			$name        = date_i18n( $date_format, $timestamp ) . ' - ' . $name;
 		}
 
 		echo '<option class="level-0" value="' . $post->ID . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . $name . '</option>';
@@ -265,33 +269,35 @@ function wpcm_dropdown_posts( $args = array() ) {
 function wpcm_dropdown_taxonomies( $args = array() ) {
 
 	$defaults = array(
-		'show_option_all' => false,
+		'show_option_all'  => false,
 		'show_option_none' => false,
-		'taxonomy' => null,
-		'name' => null,
-		'id' => null,
-		'selected' => null,
-		'hide_empty' => false,
-		'meta_key' => 'tax_position',
-		'meta_compare' => 'NUMERIC',
-    	'orderby' => 'meta_value_num',
-		'values' => 'slug',
-	    'class' => null,
-	    'attribute' => null,
-	    'placeholder' => null,
-		'chosen' => false,
+		'taxonomy'         => null,
+		'name'             => null,
+		'id'               => null,
+		'selected'         => null,
+		'hide_empty'       => false,
+		'meta_key'         => 'tax_position',
+		'meta_compare'     => 'NUMERIC',
+		'orderby'          => 'meta_value_num',
+		'values'           => 'slug',
+		'class'            => null,
+		'attribute'        => null,
+		'placeholder'      => null,
+		'chosen'           => false,
 	);
 
-	$args = array_merge( $defaults, $args ); 
+	$args = array_merge( $defaults, $args );
 
-	if ( ! $args['taxonomy'] ) return false;
+	if ( ! $args['taxonomy'] ) {
+		return false;
+	}
 
 	$get_terms_args = $args;
 	unset( $get_terms_args['name'] );
 
 	$terms = get_terms( $args['taxonomy'], $get_terms_args );
-	$name = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
-	$id = ( $args['id'] ) ? $args['id'] : $name;
+	$name  = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
+	$id    = ( $args['id'] ) ? $args['id'] : $name;
 
 	unset( $args['name'] );
 	unset( $args['id'] );
@@ -313,19 +319,19 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 
 	printf( '<input type="hidden" name="tax_input[%s][]" value="0">', $args['taxonomy'] );
 
-	if ( $terms ):
+	if ( $terms ) :
 
 		printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen_select' : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $attribute );
 
-		if ( strpos( $attribute, 'multiple' ) === false ):
+		if ( strpos( $attribute, 'multiple' ) === false ) :
 
-			if ( $args['show_option_all'] ):
+			if ( $args['show_option_all'] ) :
 
 				printf( '<option value="0">%s</option>', $args['show_option_all'] );
 
 			endif;
 
-			if ( $args['show_option_none'] ):
+			if ( $args['show_option_none'] ) :
 
 				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
 
@@ -333,22 +339,22 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 
 		endif;
 
-		foreach ( $terms as $term ):
-			if ( $args['values'] == 'term_id' ):
+		foreach ( $terms as $term ) :
+			if ( $args['values'] == 'term_id' ) :
 				$this_value = $term->term_id;
-			else:
+			else :
 				$this_value = $term->slug;
 			endif;
-			if ( strpos( $attribute, 'multiple' ) !== false ):
+			if ( strpos( $attribute, 'multiple' ) !== false ) :
 				$selected_attribute = in_array( $this_value, $selected ) ? 'selected' : '';
-			else:
+			else :
 				$selected_attribute = selected( $this_value, $selected, false );
 			endif;
 			printf( '<option value="%s" %s>%s</option>', $this_value, $selected_attribute, $term->name );
 		endforeach;
 		print( '</select>' );
 		return true;
-	else:
+	else :
 		return false;
 
 	endif;
@@ -364,23 +370,23 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
  * @param string $atts
  * @return mixed $output
  */
-function wpcm_form_dropdown($name, $arr = array(), $selected = null, $atts = null) {
+function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = null ) {
 
-	$output = '<select name="'.$name.'" class="'.$name.'" id="'.$name.'"';
+	$output = '<select name="' . $name . '" class="' . $name . '" id="' . $name . '"';
 
-	if ($atts):
+	if ( $atts ) :
 
-		foreach ($atts as $key => $value):
+		foreach ( $atts as $key => $value ) :
 
-			$output .= ' '.$key.'="'.$value.'"';
+			$output .= ' ' . $key . '="' . $value . '"';
 		endforeach;
 	endif;
 
 	$output .= '>';
 
-	foreach($arr as $key => $value) {
+	foreach ( $arr as $key => $value ) {
 
-		$output .= '<option'.($selected == $key ? ' selected' : '').' value="'.$key.'">'.$value.'</option>';
+		$output .= '<option' . ( $selected == $key ? ' selected' : '' ) . ' value="' . $key . '">' . $value . '</option>';
 	}
 
 	$output .= '</select>';
@@ -397,9 +403,9 @@ function wpcm_form_dropdown($name, $arr = array(), $selected = null, $atts = nul
  */
 function get_age( $p_strDate ) {
 
-	list($Y,$m,$d)    = explode("-",$p_strDate);
+	list($Y, $m, $d) = explode( '-', $p_strDate );
 
-	return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
+	return( date( 'md' ) < $m . $d ? date( 'Y' ) - $Y - 1 : date( 'Y' ) - $Y );
 }
 
 /**
@@ -409,11 +415,13 @@ function get_age( $p_strDate ) {
  * @param string $p_strDate
  * @return mixed
  */
-function compare_dates($a, $b) {
+function compare_dates( $a, $b ) {
 
-    if ($a == $b) return 0;
-      
-    return (strtotime($a) < strtotime($b))? -1 : 1;
+	if ( $a == $b ) {
+		return 0;
+	}
+
+	return ( strtotime( $a ) < strtotime( $b ) ) ? -1 : 1;
 }
 
 /**
@@ -423,11 +431,11 @@ function compare_dates($a, $b) {
  * @param string $p_strDate
  * @return mixed
  */
-function wpcm_divide($a, $b){
-   if($b != 0){
-     $result = $a/$b;
-   }else{
-     $result = 0;
-   }
-   return $result;
+function wpcm_divide( $a, $b ) {
+	if ( $b != 0 ) {
+		$result = $a / $b;
+	} else {
+		$result = 0;
+	}
+	return $result;
 }

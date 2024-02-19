@@ -2,12 +2,14 @@
 /**
  * Staff Gallery
  *
- * @author 		Clubpress
- * @package 	WPClubManager/Templates
+ * @author      Clubpress
+ * @package     WPClubManager/Templates
  * @version     2.2.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly ?>
 
 <div id="wpcm-staff-gallery">
 
@@ -17,10 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
 		<?php
 		$count = 0;
-		foreach( $employee_details as $employee_detail ) {
-			$count++;
-			if ( $limit > 0 && $count > $limit )
-				break; ?>
+		foreach ( $employee_details as $employee_detail ) {
+			++$count;
+			if ( $limit > 0 && $count > $limit ) {
+				break;
+			}
+			?>
 
 			<li class="wpcm-staff-gallery-li">
 
@@ -33,8 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 				</div>			
 
 			</li>
-		<?php
-		} ?>
+			<?php
+		}
+		?>
 
 	</ul>
 

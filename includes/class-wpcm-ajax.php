@@ -4,14 +4,16 @@
  *
  * AJAX Event Handler
  *
- * @class 		WPCM_AJAX
- * @version		2.2.0
- * @package		WPClubManager/Classes
- * @category	Class
- * @author 		ClubPress
+ * @class       WPCM_AJAX
+ * @version     2.2.0
+ * @package     WPClubManager/Classes
+ * @category    Class
+ * @author      ClubPress
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_AJAX {
 
@@ -21,17 +23,17 @@ class WPCM_AJAX {
 	public function __construct() {
 
 		$ajax_events = array(
-			'match_list_shortcode' => false,
+			'match_list_shortcode'      => false,
 			'match_opponents_shortcode' => false,
-			'player_list_shortcode' => false,
-			'player_gallery_shortcode' => false,
-			'staff_list_shortcode' => false,
-			'staff_gallery_shortcode' => false,
-			'league_table_shortcode' => false,
-			'map_venue_shortcode' => false,
-			'rated' => false
+			'player_list_shortcode'     => false,
+			'player_gallery_shortcode'  => false,
+			'staff_list_shortcode'      => false,
+			'staff_gallery_shortcode'   => false,
+			'league_table_shortcode'    => false,
+			'map_venue_shortcode'       => false,
+			'rated'                     => false,
 
-			//'send_feedback' => false,
+			// 'send_feedback' => false,
 		);
 
 		foreach ( $ajax_events as $ajax_event => $nopriv ) {
@@ -44,9 +46,10 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* match_list_shortcode_ajax function.
-	*/
-	public function match_opponents_shortcode() { ?>
+	 * match_list_shortcode_ajax function.
+	 */
+	public function match_opponents_shortcode() {
+		?>
 
 		<div id="wpcm-thickbox-match_opponents" class="wrap wpcm-thickbox-content">
 			<p>
@@ -62,21 +65,23 @@ class WPCM_AJAX {
 				</select>
 			</p>
 			<?php
-			if( is_league_mode() ) { ?>
+			if ( is_league_mode() ) {
+				?>
 				<p>
 					<label for="id"><?php _e( 'Club', 'wp-club-manager' ); ?></label>
 					<?php
 					wpcm_dropdown_posts( array(
-						'name' 				=> 'id',
-						'id' 				=> 'id',
-						'post_type' 		=> 'wpcm_club',
-						'limit' 			=> -1,
-						'class'				=> 'chosen_select'
+						'name'      => 'id',
+						'id'        => 'id',
+						'post_type' => 'wpcm_club',
+						'limit'     => -1,
+						'class'     => 'chosen_select',
 					));
 					?>
 				</p>
-			<?php
-			} ?>
+				<?php
+			}
+			?>
 			<p>
 				<label for="limit"><?php _e( 'Limit', 'wp-club-manager' ); ?></label>
 				<input type="number" id="limit" name="limit" value="" size="3" />
@@ -85,16 +90,16 @@ class WPCM_AJAX {
 				<label for="comp"><?php _e( 'Competition', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_comp',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_comp',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'comp',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'comp',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -103,33 +108,34 @@ class WPCM_AJAX {
 				<label for="season"><?php _e( 'Season', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_season',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_season',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'season',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'season',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
-				wp_dropdown_categories( $args ); ?>
+				wp_dropdown_categories( $args );
+				?>
 			</p>
 			<p>
 				<label for="team"><?php _e( 'Team', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_team',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_team',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'team',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'team',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -137,18 +143,18 @@ class WPCM_AJAX {
 			<p>
 				<?php
 				$months = array(
-					'1' => __( 'January', 'wp-club-manager' ),
-					'2' => __( 'February', 'wp-club-manager' ),
-					'3' => __( 'March', 'wp-club-manager' ),
-					'4' => __( 'April', 'wp-club-manager' ),
-					'5' => __( 'May', 'wp-club-manager' ),
-					'6' => __( 'June', 'wp-club-manager' ),
-					'7' => __( 'July', 'wp-club-manager' ),
-					'8' => __( 'August', 'wp-club-manager' ),
-					'9' => __( 'September', 'wp-club-manager' ),
+					'1'  => __( 'January', 'wp-club-manager' ),
+					'2'  => __( 'February', 'wp-club-manager' ),
+					'3'  => __( 'March', 'wp-club-manager' ),
+					'4'  => __( 'April', 'wp-club-manager' ),
+					'5'  => __( 'May', 'wp-club-manager' ),
+					'6'  => __( 'June', 'wp-club-manager' ),
+					'7'  => __( 'July', 'wp-club-manager' ),
+					'8'  => __( 'August', 'wp-club-manager' ),
+					'9'  => __( 'September', 'wp-club-manager' ),
 					'10' => __( 'October', 'wp-club-manager' ),
 					'11' => __( 'November', 'wp-club-manager' ),
-					'12' => __( 'December', 'wp-club-manager' )
+					'12' => __( 'December', 'wp-club-manager' ),
 				);
 				?>
 				<label for="date_range"><?php _e( 'Date Range', 'wp-club-manager' ); ?></label>
@@ -180,21 +186,23 @@ class WPCM_AJAX {
 				<span><?php _e( 'Columns', 'wp-club-manager' ); ?></span>
 				<?php
 				$columns = array(
-					'show_abbr' => __( 'Abbreviation', 'wp-club-manager' ),
+					'show_abbr'  => __( 'Abbreviation', 'wp-club-manager' ),
 					'show_thumb' => __( 'Badge', 'wp-club-manager' ),
-					'show_comp' => __( 'Competition', 'wp-club-manager' )
+					'show_comp'  => __( 'Competition', 'wp-club-manager' ),
 				);
-				if( is_club_mode() ) {
+				if ( is_club_mode() ) {
 					$columns['show_team'] = __( 'Team', 'wp-club-manager' );
 				}
 				$columns['show_venue'] = __( 'Venue', 'wp-club-manager' );
 
-				foreach( $columns as $key => $value ) { ?>
+				foreach ( $columns as $key => $value ) {
+					?>
 					<label for="<?php echo $key; ?>" class="button">
 						<input type="checkbox" name="<?php echo $key; ?>" value="<?php echo $key; ?>" <?php echo ( $key == 'show_abbr' ? '' : 'checked="checked"' ); ?>><?php echo $value; ?>
 					</label>
-				<?php
-				} ?>
+					<?php
+				}
+				?>
 			</p>
 			<p>
 				<label for="linktext"><?php _e( 'Link text', 'wp-club-manager' ); ?></label>
@@ -205,9 +213,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'match_opponents' ); ?>
@@ -223,9 +232,11 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* match_list_shortcode_ajax function.
-	*/
-	public function match_list_shortcode() { ?>
+	 * match_list_shortcode_ajax function.
+	 */
+	public function match_list_shortcode() {
+
+		?>
 
 		<div id="wpcm-thickbox-match_list" class="wrap wpcm-thickbox-content">
 			<p>
@@ -248,16 +259,16 @@ class WPCM_AJAX {
 				<label for="comp"><?php _e( 'Competition', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_comp',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_comp',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'comp',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'comp',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -266,56 +277,59 @@ class WPCM_AJAX {
 				<label for="season"><?php _e( 'Season', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_season',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_season',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'season',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'season',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
-				wp_dropdown_categories( $args ); ?>
+				wp_dropdown_categories( $args );
+				?>
 			</p>
 			<?php
-			if( is_club_mode() ){ ?>
+			if ( is_club_mode() ) {
+				?>
 				<p>
 					<label for="team"><?php _e( 'Team', 'wp-club-manager' ); ?></label>
 					<?php
 					$args = array(
-						'taxonomy' => 'wpcm_team',
-						'show_option_none' => __( 'All', 'wp-club-manager' ),
+						'taxonomy'          => 'wpcm_team',
+						'show_option_none'  => __( 'All', 'wp-club-manager' ),
 						'option_none_value' => '',
-						'hide_empty' => false,
-                		'meta_key' => 'tax_position',
-		        		'meta_compare'  => 'NUMERIC',
-    	        		'orderby'       => 'meta_value_num',
-						'name' => 'team',
-						'value_field' => 'term_id',
-						'class' => 'chosen_select'
+						'hide_empty'        => false,
+						'meta_key'          => 'tax_position',
+						'meta_compare'      => 'NUMERIC',
+						'orderby'           => 'meta_value_num',
+						'name'              => 'team',
+						'value_field'       => 'term_id',
+						'class'             => 'chosen_select',
 					);
 					wp_dropdown_categories( $args );
 					?>
 				</p>
-			<?php
-			} ?>
+				<?php
+			}
+			?>
 			<p>
 				<?php
 				$months = array(
-					'1' => __( 'January', 'wp-club-manager' ),
-					'2' => __( 'February', 'wp-club-manager' ),
-					'3' => __( 'March', 'wp-club-manager' ),
-					'4' => __( 'April', 'wp-club-manager' ),
-					'5' => __( 'May', 'wp-club-manager' ),
-					'6' => __( 'June', 'wp-club-manager' ),
-					'7' => __( 'July', 'wp-club-manager' ),
-					'8' => __( 'August', 'wp-club-manager' ),
-					'9' => __( 'September', 'wp-club-manager' ),
+					'1'  => __( 'January', 'wp-club-manager' ),
+					'2'  => __( 'February', 'wp-club-manager' ),
+					'3'  => __( 'March', 'wp-club-manager' ),
+					'4'  => __( 'April', 'wp-club-manager' ),
+					'5'  => __( 'May', 'wp-club-manager' ),
+					'6'  => __( 'June', 'wp-club-manager' ),
+					'7'  => __( 'July', 'wp-club-manager' ),
+					'8'  => __( 'August', 'wp-club-manager' ),
+					'9'  => __( 'September', 'wp-club-manager' ),
 					'10' => __( 'October', 'wp-club-manager' ),
 					'11' => __( 'November', 'wp-club-manager' ),
-					'12' => __( 'December', 'wp-club-manager' )
+					'12' => __( 'December', 'wp-club-manager' ),
 				);
 				?>
 				<label for="date_range"><?php _e( 'Date Range', 'wp-club-manager' ); ?></label>
@@ -329,7 +343,8 @@ class WPCM_AJAX {
 				</select>
 			</p>
 			<?php
-			if( is_club_mode() ){ ?>
+			if ( is_club_mode() ) {
+				?>
 				<p>
 					<label for="venue"><?php _e( 'Venue', 'wp-club-manager' ); ?></label>
 					<select id="venue" name="venue">
@@ -338,8 +353,9 @@ class WPCM_AJAX {
 						<option value="away"><?php _e( 'Away Only', 'wp-club-manager' ); ?></option>
 					</select>
 				</p>
-			<?php
-			} ?>
+				<?php
+			}
+			?>
 			<p>
 				<label for="order"><?php _e( 'Order', 'wp-club-manager' ); ?></label>
 				<select id="order" name="order">
@@ -351,20 +367,22 @@ class WPCM_AJAX {
 				<span><?php _e( 'Columns', 'wp-club-manager' ); ?></span>
 				<?php
 				$columns = array(
-					'show_abbr' => __( 'Abbreviation', 'wp-club-manager' ),
+					'show_abbr'  => __( 'Abbreviation', 'wp-club-manager' ),
 					'show_thumb' => __( 'Badge', 'wp-club-manager' ),
-					'show_comp' => __( 'Competition', 'wp-club-manager' )
+					'show_comp'  => __( 'Competition', 'wp-club-manager' ),
 				);
-				if( is_club_mode() ) {
+				if ( is_club_mode() ) {
 					$columns['show_team'] = __( 'Team', 'wp-club-manager' );
 				}
 				$columns['show_venue'] = __( 'Venue', 'wp-club-manager' );
-				foreach( $columns as $key => $value ) { ?>
+				foreach ( $columns as $key => $value ) {
+					?>
 					<label for="<?php echo $key; ?>" class="button">
 						<input type="checkbox" name="<?php echo $key; ?>" value="<?php echo $key; ?>" <?php echo ( $key == 'show_abbr' ? '' : 'checked="checked"' ); ?>><?php echo $value; ?>
 					</label>
-				<?php
-				} ?>
+					<?php
+				}
+				?>
 			</p>
 			<p>
 				<label for="linktext"><?php _e( 'Link text', 'wp-club-manager' ); ?></label>
@@ -375,9 +393,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'match_list' ); ?>
@@ -393,13 +412,13 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* player_list_shortcode_ajax function.
-	*/
+	 * player_list_shortcode_ajax function.
+	 */
 	public function player_list_shortcode() {
 
 		$player_stats_names = wpcm_get_player_stats_names();
-		$stats = wpcm_get_player_all_names();
-		$defaults = array( 'number', 'name', 'thumb', 'position' )
+		$stats              = wpcm_get_player_all_names();
+		$defaults           = array( 'number', 'name', 'thumb', 'position' )
 		?>
 		
 		<div id="wpcm-thickbox-player_list" class="wrap wpcm-thickbox-content">
@@ -412,32 +431,34 @@ class WPCM_AJAX {
 					<label for="id"><?php _e( 'Roster', 'wp-club-manager' ); ?></label>
 					<?php
 					wpcm_dropdown_posts( array(
-						'name' 				=> 'id',
-						'id' 				=> 'id',
-						'post_type' 		=> 'wpcm_roster',
-						'limit' 			=> -1,
-						'class'				=> 'chosen_select'
+						'name'      => 'id',
+						'id'        => 'id',
+						'post_type' => 'wpcm_roster',
+						'limit'     => -1,
+						'class'     => 'chosen_select',
 					));
 					?>
 				</p>
-			<?php
-			} else { ?>
+				<?php
+			} else {
+				?>
 				<p>
 					<label for="id"><?php _e( 'Club', 'wp-club-manager' ); ?></label>
 					<?php
 					wpcm_dropdown_posts( array(
-						'name' 				=> 'id',
-						'id' 				=> 'id',
-						'post_type' 		=> 'wpcm_club',
-						'limit' 			=> -1,
-						'class'				=> 'chosen_select',
-						'show_option_none' 	=> __( 'All', 'wp-club-manager' ),
+						'name'              => 'id',
+						'id'                => 'id',
+						'post_type'         => 'wpcm_club',
+						'limit'             => -1,
+						'class'             => 'chosen_select',
+						'show_option_none'  => __( 'All', 'wp-club-manager' ),
 						'option_none_value' => '',
 					));
 					?>
 				</p>
-			<?php
-			} ?>
+				<?php
+			}
+			?>
 			<p>
 				<label for="limit"><?php _e( 'Limit', 'wp-club-manager' ); ?></label>
 				<input type="number" id="limit" name="limit" value="" size="3" />
@@ -447,16 +468,16 @@ class WPCM_AJAX {
 				<label for="position"><?php _e( 'Position', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_position',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_position',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'position',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'position',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -465,10 +486,12 @@ class WPCM_AJAX {
 				<label><?php _e( 'Sort by', 'wp-club-manager' ); ?></label>
 				<select id="orderby" name="orderby">
 					<?php
-					if( get_option( 'wpcm_player_profile_show_number', 'yes' ) == 'yes' ) { ?>
+					if ( get_option( 'wpcm_player_profile_show_number', 'yes' ) == 'yes' ) {
+						?>
 						<option value="number"><?php _e( 'Number', 'wp-club-manager' ); ?></option>
-					<?php
-					} ?>
+						<?php
+					}
+					?>
 					<option value="menu_order"><?php _e( 'Page order', 'wp-club-manager' ); ?></option>
 					<option value="name"><?php _e( 'Alphabetical', 'wp-club-manager' ); ?></option>
 					<?php foreach ( $player_stats_names as $key => $val ) { ?>
@@ -495,7 +518,8 @@ class WPCM_AJAX {
 				<span><?php _e( 'Columns', 'wp-club-manager' ); ?></span>
 				<div class="wpcm-column-options-labels">
 					<?php
-					foreach ( $stats as $key => $value ) { ?>
+					foreach ( $stats as $key => $value ) {
+						?>
 						<label for="<?php echo $key; ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo $key; ?>" name="columns[]" value="<?php echo $key; ?>"<?php echo ( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo $value; ?>
 						</label>
@@ -511,9 +535,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'player_list' ); ?>
@@ -530,8 +555,8 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* player_list_shortcode_ajax function.
-	*/
+	 * player_list_shortcode_ajax function.
+	 */
 	public function player_gallery_shortcode() {
 
 		$player_stats_names = wpcm_get_player_stats_names();
@@ -546,11 +571,11 @@ class WPCM_AJAX {
 				<label for="id"><?php _e( 'Roster', 'wp-club-manager' ); ?></label>
 				<?php
 				wpcm_dropdown_posts( array(
-					'name' 				=> 'id',
-					'id' 				=> 'id',
-					'post_type' 		=> 'wpcm_roster',
-					'limit' 			=> -1,
-					'class'				=> 'chosen_select'
+					'name'      => 'id',
+					'id'        => 'id',
+					'post_type' => 'wpcm_roster',
+					'limit'     => -1,
+					'class'     => 'chosen_select',
 				));
 				?>
 			</p>
@@ -563,16 +588,16 @@ class WPCM_AJAX {
 				<label for="position"><?php _e( 'Position', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_position',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_position',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-                	'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'position',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'position',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -601,7 +626,7 @@ class WPCM_AJAX {
 				'3' => __( '3', 'wp-club-manager' ),
 				'4' => __( '4', 'wp-club-manager' ),
 				'5' => __( '5', 'wp-club-manager' ),
-				'6' => __( '6', 'wp-club-manager' )
+				'6' => __( '6', 'wp-club-manager' ),
 			);
 			?>
 			<p>
@@ -629,9 +654,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'player_gallery' ); ?>
@@ -648,19 +674,19 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* staff_list_shortcode_ajax function.
-	*/
+	 * staff_list_shortcode_ajax function.
+	 */
 	public function staff_list_shortcode() {
 
 		$columns = array(
-			'flag' => __( 'Flag', 'wp-club-manager' ),
-			'name' => __( 'Name', 'wp-club-manager' ),
-			'thumb' => __( 'Image', 'wp-club-manager' ),
-			'job' => __( 'Job', 'wp-club-manager' ),
-			'email' => __( 'Email', 'wp-club-manager' ),
-			'phone' => __( 'Phone', 'wp-club-manager' ),
-			'age' => __( 'Age', 'wp-club-manager' ),
-			'joined' => __( 'Joined', 'wp-club-manager' )
+			'flag'   => __( 'Flag', 'wp-club-manager' ),
+			'name'   => __( 'Name', 'wp-club-manager' ),
+			'thumb'  => __( 'Image', 'wp-club-manager' ),
+			'job'    => __( 'Job', 'wp-club-manager' ),
+			'email'  => __( 'Email', 'wp-club-manager' ),
+			'phone'  => __( 'Phone', 'wp-club-manager' ),
+			'age'    => __( 'Age', 'wp-club-manager' ),
+			'joined' => __( 'Joined', 'wp-club-manager' ),
 		);
 
 		$defaults = array( 'name', 'thumb', 'job' );
@@ -676,30 +702,32 @@ class WPCM_AJAX {
 					<label for="id"><?php _e( 'Roster', 'wp-club-manager' ); ?></label>
 					<?php
 					wpcm_dropdown_posts( array(
-						'name' 				=> 'id',
-						'id' 				=> 'id',
-						'post_type' 		=> 'wpcm_roster',
-						'limit' 			=> -1,
-						'class'				=> 'chosen_select'
+						'name'      => 'id',
+						'id'        => 'id',
+						'post_type' => 'wpcm_roster',
+						'limit'     => -1,
+						'class'     => 'chosen_select',
 					));
 					?>
 				</p>
-			<?php
-			} else { ?>
+				<?php
+			} else {
+				?>
 				<p>
 					<label for="id"><?php _e( 'Club', 'wp-club-manager' ); ?></label>
 					<?php
 					wpcm_dropdown_posts( array(
-						'name' 				=> 'id',
-						'id' 				=> 'id',
-						'post_type' 		=> 'wpcm_club',
-						'limit' 			=> -1,
-						'class'				=> 'chosen_select'
+						'name'      => 'id',
+						'id'        => 'id',
+						'post_type' => 'wpcm_club',
+						'limit'     => -1,
+						'class'     => 'chosen_select',
 					));
 					?>
 				</p>
-			<?php
-			} ?>
+				<?php
+			}
+			?>
 			<p>
 				<label for="limit"><?php _e( 'Limit', 'wp-club-manager' ); ?></label>
 				<input type="number" id="limit" name="limit" value="" size="3" />
@@ -709,16 +737,16 @@ class WPCM_AJAX {
 				<label for="job"><?php _e( 'Job', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_jobs',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_jobs',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-					'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'job',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'job',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -749,7 +777,8 @@ class WPCM_AJAX {
 				<span><?php _e( 'Columns', 'wp-club-manager' ); ?></span>
 				<div class="wpcm-column-options-labels">
 					<?php
-					foreach ( $columns as $key => $value ) { ?>
+					foreach ( $columns as $key => $value ) {
+						?>
 						<label for="<?php echo $key; ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo $key; ?>" name="columns[]" value="<?php echo $key; ?>"<?php echo ( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo $value; ?>
 						</label>
@@ -765,9 +794,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'staff_list' ); ?>
@@ -784,9 +814,11 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* staff_list_shortcode_ajax function.
-	*/
-	public function staff_gallery_shortcode() { ?>
+	 * staff_list_shortcode_ajax function.
+	 */
+	public function staff_gallery_shortcode() {
+
+		?>
 		
 		<div id="wpcm-thickbox-player_gallery" class="wrap wpcm-thickbox-content">
 			<p>
@@ -797,11 +829,11 @@ class WPCM_AJAX {
 				<label for="id"><?php _e( 'Roster', 'wp-club-manager' ); ?></label>
 				<?php
 				wpcm_dropdown_posts( array(
-					'name' 				=> 'id',
-					'id' 				=> 'id',
-					'post_type' 		=> 'wpcm_roster',
-					'limit' 			=> -1,
-					'class'				=> 'chosen_select'
+					'name'      => 'id',
+					'id'        => 'id',
+					'post_type' => 'wpcm_roster',
+					'limit'     => -1,
+					'class'     => 'chosen_select',
 				));
 				?>
 			</p>
@@ -814,16 +846,16 @@ class WPCM_AJAX {
 				<label for="position"><?php _e( 'Job', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_jobs',
-					'show_option_none' => __( 'All', 'wp-club-manager' ),
+					'taxonomy'          => 'wpcm_jobs',
+					'show_option_none'  => __( 'All', 'wp-club-manager' ),
 					'option_none_value' => '',
-					'hide_empty' => false,
-					'meta_key' => 'tax_position',
-		        	'meta_compare'  => 'NUMERIC',
-    	        	'orderby'       => 'meta_value_num',
-					'name' => 'jobs',
-					'value_field' => 'term_id',
-					'class' => 'chosen_select'
+					'hide_empty'        => false,
+					'meta_key'          => 'tax_position',
+					'meta_compare'      => 'NUMERIC',
+					'orderby'           => 'meta_value_num',
+					'name'              => 'jobs',
+					'value_field'       => 'term_id',
+					'class'             => 'chosen_select',
 				);
 				wp_dropdown_categories( $args );
 				?>
@@ -851,7 +883,7 @@ class WPCM_AJAX {
 				'3' => __( '3', 'wp-club-manager' ),
 				'4' => __( '4', 'wp-club-manager' ),
 				'5' => __( '5', 'wp-club-manager' ),
-				'6' => __( '6', 'wp-club-manager' )
+				'6' => __( '6', 'wp-club-manager' ),
 			);
 			?>
 			<p>
@@ -879,9 +911,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'staff_gallery' ); ?>
@@ -898,17 +931,18 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* standings_table_shortcode_ajax function.
-	*/
+	 * standings_table_shortcode_ajax function.
+	 */
 	public function league_table_shortcode() {
-		
-		$labels = wpcm_get_preset_labels( 'standings', 'label' );
+
+		$labels  = wpcm_get_preset_labels( 'standings', 'label' );
 		$columns = explode( ',', get_option( 'wpcm_standings_columns_display' ) );
-		foreach( $columns as $column ) {
-			if( array_key_exists( $column, $labels ) ) {
-				$stats[$column] = $labels[$column];
+		foreach ( $columns as $column ) {
+			if ( array_key_exists( $column, $labels ) ) {
+				$stats[ $column ] = $labels[ $column ];
 			}
-		} ?>
+		}
+		?>
 
 		<div id="wpcm-thickbox-standings_table" class="wrap wpcm-thickbox-content">
 			<p>
@@ -919,11 +953,11 @@ class WPCM_AJAX {
 				<label for="id"><?php _e( 'League Table', 'wp-club-manager' ); ?></label>
 				<?php
 				wpcm_dropdown_posts( array(
-					'name' 				=> 'id',
-					'id' 				=> 'id',
-					'post_type' 		=> 'wpcm_table',
-					'limit' 			=> -1,
-					'class'				=> 'chosen_select'
+					'name'      => 'id',
+					'id'        => 'id',
+					'post_type' => 'wpcm_table',
+					'limit'     => -1,
+					'class'     => 'chosen_select',
 				));
 				?>
 			</p>
@@ -934,10 +968,11 @@ class WPCM_AJAX {
 			<p>
 				<label for="focus"><?php _e( 'Focus', 'wp-club-manager' ); ?></label>
 				<select id="focus" name="focus" disabled>
-					<?php if( is_club_mode() ) { ?>
+					<?php if ( is_club_mode() ) { ?>
 						<option value=""><?php _e( 'Default Club', 'wp-club-manager' ); ?></option>
-					<?php
-					} ?>
+						<?php
+					}
+					?>
 					<option value="top"><?php _e( 'Top', 'wp-club-manager' ); ?></option>
 					<option value="bottom"><?php _e( 'Bottom', 'wp-club-manager' ); ?></option>
 				</select>
@@ -960,7 +995,7 @@ class WPCM_AJAX {
 			</p>
 			<p class="wpcm-column-options">
 				<span><?php _e( 'Columns', 'wp-club-manager' ); ?></span>
-				<?php foreach( $stats as $key => $value ) { ?>
+				<?php foreach ( $stats as $key => $value ) { ?>
 					<label class="button">
 						<input type="checkbox" name="columns[]" id="columns-<?php echo $key; ?>" value="<?php echo $key; ?>" checked="checked"><?php echo $value; ?>
 					</label>
@@ -975,9 +1010,10 @@ class WPCM_AJAX {
 				<?php
 				wp_dropdown_pages( array(
 					'show_option_none' => __( 'None', 'wp-club-manager' ),
-					'name' => 'linkpage',
-					'id' => 'linkpage'
-				) ); ?>
+					'name'             => 'linkpage',
+					'id'               => 'linkpage',
+				) );
+				?>
 			</p>
 
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'league_table' ); ?>
@@ -993,9 +1029,11 @@ class WPCM_AJAX {
 	}
 
 	/**
-	* map_map_shortcode_ajax function.
-	*/
-	public function map_venue_shortcode() { ?>
+	 * map_map_shortcode_ajax function.
+	 */
+	public function map_venue_shortcode() {
+
+		?>
 		
 		<div id="wpcm-thickbox-map_map" class="wrap wpcm-thickbox-content">
 			<p>
@@ -1006,10 +1044,10 @@ class WPCM_AJAX {
 				<label for="venue"><?php _e( 'Venue', 'wp-club-manager' ); ?></label>
 				<?php
 				$args = array(
-					'taxonomy' => 'wpcm_venue',
-					'name' => 'id',
+					'taxonomy'    => 'wpcm_venue',
+					'name'        => 'id',
 					'value_field' => 'term_id',
-					'hide_empty' => 0
+					'hide_empty'  => 0,
 
 				);
 				wp_dropdown_categories( $args );
@@ -1036,7 +1074,9 @@ class WPCM_AJAX {
 		die();
 	}
 
-	public function scripts() { ?>
+	public function scripts() {
+
+		?>
 
 		<script type="text/javascript">
 
@@ -1049,20 +1089,20 @@ class WPCM_AJAX {
 				});
 			//});
 
-            function insertWPClubManager( type ) {
-                var $div = jQuery('.wpcm-thickbox-content');
+			function insertWPClubManager( type ) {
+				var $div = jQuery('.wpcm-thickbox-content');
 
-                // Initialize shortcode arguments
-                var args = {};
+				// Initialize shortcode arguments
+				var args = {};
 
-                // Extract args based on type
-                if ( 'match_opponents' == type ) {
-                    args.title = $div.find('[name=title]').val();
+				// Extract args based on type
+				if ( 'match_opponents' == type ) {
+					args.title = $div.find('[name=title]').val();
 					args.format = $div.find('[name=format]').val();
 					args.id = $div.find('[name=id]').val();
 					args.limit = $div.find('[name=limit]').val();
-                    args.comp = $div.find('[name=comp]').val();
-                    args.season = $div.find('[name=season]').val();
+					args.comp = $div.find('[name=comp]').val();
+					args.season = $div.find('[name=season]').val();
 					args.team = $div.find('[name=team]').val();
 					args.date_range = $div.find('[name=date_range]').val();
 					args.venue = $div.find('[name=venue]').val();
@@ -1076,11 +1116,11 @@ class WPCM_AJAX {
 					args.linktext = $div.find('[name=linktext]').val();
 					args.linkpage = $div.find('[name=linkpage]').val();
 				} else if ( 'match_list' == type ) {
-                    args.title = $div.find('[name=title]').val();
+					args.title = $div.find('[name=title]').val();
 					args.format = $div.find('[name=format]').val();
 					args.limit = $div.find('[name=limit]').val();
-                    args.comp = $div.find('[name=comp]').val();
-                    args.season = $div.find('[name=season]').val();
+					args.comp = $div.find('[name=comp]').val();
+					args.season = $div.find('[name=season]').val();
 					args.team = $div.find('[name=team]').val();
 					args.date_range = $div.find('[name=date_range]').val();
 					args.venue = $div.find('[name=venue]').val();
@@ -1116,7 +1156,7 @@ class WPCM_AJAX {
 					args.columns = $div.find('[name=columns]').val();
 					args.name_format = $div.find('[name=name_format]').val();
 				} else if ( 'staff_list' == type ) {
-                    args.title = $div.find('[name=title]').val();
+					args.title = $div.find('[name=title]').val();
 					args.id = $div.find('[name=id]').val();
 					args.limit = $div.find('[name=limit]').val();
 					args.job = $div.find('[name=job]').val();
@@ -1137,7 +1177,7 @@ class WPCM_AJAX {
 					args.columns = $div.find('[name=columns]').val();
 					args.name_format = $div.find('[name=name_format]').val();
 				} else if ( 'league_table' == type ) {
-                    args.title = $div.find('[name=title]').val();
+					args.title = $div.find('[name=title]').val();
 					args.id = $div.find('[name=id]').val();
 					args.limit = $div.find('[name=limit]').val();
 					args.focus = $div.find('[name=focus]').val();
@@ -1148,16 +1188,16 @@ class WPCM_AJAX {
 					args.notes = $div.find('[name=notes]:checked').length;
 					args.linktext = $div.find('[name=linktext]').val();
 					args.linkpage = $div.find('[name=linkpage]').val();
-                } else if ( 'map_venue' == type ) {
-                    args.title = $div.find('[name=title]').val();
+				} else if ( 'map_venue' == type ) {
+					args.title = $div.find('[name=title]').val();
 					args.id = $div.find('[name=id]').val();
 					args.width = $div.find('[name=width]').val();
 					args.height = $div.find('[name=height]').val();
-                }
+				}
 
-                <?php do_action( 'wpclubmanager_ajax_scripts_before_shortcode' ); ?>
+				<?php do_action( 'wpclubmanager_ajax_scripts_before_shortcode' ); ?>
 
-                // Generate the shortcode
+				// Generate the shortcode
 				var shortcode = '[' + type;
 				for ( var key in args ) {
 					if ( args.hasOwnProperty( key ) ) {
@@ -1166,8 +1206,8 @@ class WPCM_AJAX {
 				}
 				shortcode += ']';
 
-                // Send the shortcode to the editor
-                window.send_to_editor( shortcode );
+				// Send the shortcode to the editor
+				window.send_to_editor( shortcode );
 			}
 		</script>
 		
@@ -1180,7 +1220,7 @@ class WPCM_AJAX {
 	public static function rated() {
 
 		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
-			die(-1);
+			die( -1 );
 		}
 		update_option( 'wpclubmanager_admin_footer_text_rated', 1 );
 

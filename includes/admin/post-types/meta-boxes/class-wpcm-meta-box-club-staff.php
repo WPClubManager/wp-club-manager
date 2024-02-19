@@ -4,13 +4,15 @@
  *
  * Display staff for clubs in League Mode only.
  *
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Admin/Meta Boxes
+ * @author      ClubPress
+ * @category    Admin
+ * @package     WPClubManager/Admin/Meta Boxes
  * @version     2.0.2
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_Meta_Box_Club_Staff {
 
@@ -18,54 +20,57 @@ class WPCM_Meta_Box_Club_Staff {
 	 * Output the metabox
 	 */
 	public static function output( $post ) {
-        
-        $args = array(
-            'post_type' => 'wpcm_staff',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-                array(
-                    'key' => '_wpcm_staff_club',
-                    'value' => $post->ID
-                )
-            )
-        );
 
-        $players = get_posts( $args );
-        ?>
+		$args = array(
+			'post_type'      => 'wpcm_staff',
+			'posts_per_page' => -1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_wpcm_staff_club',
+					'value' => $post->ID,
+				),
+			),
+		);
 
-        <div id="wpcm-club-player-stats">
-            <table>
-                <?php
-                if( $players != null ) { ?>
-                    <thead>
-                        <tr>
-                            <th><?php _e( 'Name', 'wp-club-manager' ); ?></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                <?php
-                } ?>
-                <tbody>
+		$players = get_posts( $args );
+		?>
 
-                <?php
-                foreach ( $players as $player ) { ?>
+		<div id="wpcm-club-player-stats">
+			<table>
+				<?php
+				if ( $players != null ) {
+					?>
+					<thead>
+						<tr>
+							<th><?php _e( 'Name', 'wp-club-manager' ); ?></th>
+							<th></th>
+						</tr>
+					</thead>
+					<?php
+				}
+				?>
+				<tbody>
 
-                    <tr data-club="<?php echo $player->ID; ?>">
+				<?php
+				foreach ( $players as $player ) {
+					?>
 
-                        <td class="club">
-                            <?php echo $player->post_title; ?>
-                        </td>
-                        <td class="roster-actions">
-                            <a class="" href="<?php echo get_edit_post_link( $player->ID ); ?>"><?php _e( 'Manage', 'wp-club-manager' ); ?></a>
-                        </td>
+					<tr data-club="<?php echo $player->ID; ?>">
 
-                    </tr>
-                <?php } ?>
+						<td class="club">
+							<?php echo $player->post_title; ?>
+						</td>
+						<td class="roster-actions">
+							<a class="" href="<?php echo get_edit_post_link( $player->ID ); ?>"><?php _e( 'Manage', 'wp-club-manager' ); ?></a>
+						</td>
 
-                </tbody>
-            </table>
-        </div>
+					</tr>
+				<?php } ?>
 
-    <?php
-    }
+				</tbody>
+			</table>
+		</div>
+
+		<?php
+	}
 }

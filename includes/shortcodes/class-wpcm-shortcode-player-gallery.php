@@ -2,13 +2,15 @@
 /**
  * Player Gallery Shortcode
  *
- * @author 		Clubpress
- * @category 	Shortcodes
- * @package 	WPClubManager/Shortcodes
+ * @author      Clubpress
+ * @category    Shortcodes
+ * @package     WPClubManager/Shortcodes
  * @version     2.2.4
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 class WPCM_Shortcode_Player_Gallery {
 
@@ -29,122 +31,125 @@ class WPCM_Shortcode_Player_Gallery {
 	 */
 	public static function output( $atts ) {
 
-		extract(shortcode_atts(array(
-		), $atts));
+		extract( shortcode_atts( array(), $atts ) );
 
-		$id 		= ( isset( $atts['id'] ) ? $atts['id'] : null );
-		$title 		= ( isset( $atts['title'] ) ? $atts['title'] : __( 'Players Gallery', 'wp-club-manager' ) );
-		$limit 		= ( isset( $atts['limit'] ) ? $atts['limit'] : -1 );
-		$position 	= ( isset( $atts['position'] ) ? $atts['position'] : NULL);
-		$orderby 	= ( isset( $atts['orderby'] ) ? $atts['orderby'] : 'number' );
-		$order 		= ( isset( $atts['order'] ) ? $atts['order'] : 'ASC' );
-		$columns 	= ( isset( $atts['columns'] ) ? $atts['columns'] : '3' );
-		$linktext 	= ( isset( $atts['linktext'] ) ? $atts['linktext'] : __( 'View all players', 'wp-club-manager' ) );
-		$linkpage 	= ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : null );
+		$id          = ( isset( $atts['id'] ) ? $atts['id'] : null );
+		$title       = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Players Gallery', 'wp-club-manager' ) );
+		$limit       = ( isset( $atts['limit'] ) ? $atts['limit'] : -1 );
+		$position    = ( isset( $atts['position'] ) ? $atts['position'] : null );
+		$orderby     = ( isset( $atts['orderby'] ) ? $atts['orderby'] : 'number' );
+		$order       = ( isset( $atts['order'] ) ? $atts['order'] : 'ASC' );
+		$columns     = ( isset( $atts['columns'] ) ? $atts['columns'] : '3' );
+		$linktext    = ( isset( $atts['linktext'] ) ? $atts['linktext'] : __( 'View all players', 'wp-club-manager' ) );
+		$linkpage    = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : null );
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
-		$type 		= ( isset( $atts['type'] ) ? $atts['type'] : '' );
+		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		if( $limit == '' )
+		if ( $limit == '' ) {
 			$limit = -1;
-		if( $position == '' )
+		}
+		if ( $position == '' ) {
 			$position = null;
-		if( $orderby == '' )
+		}
+		if ( $orderby == '' ) {
 			$orderby = 'number';
-		if( $order == '' )
+		}
+		if ( $order == '' ) {
 			$order = 'ASC';
-		if( $columns == '' )
+		}
+		if ( $columns == '' ) {
 			$columns = '3';
-		if( $name_format == '' )
+		}
+		if ( $name_format == '' ) {
 			$name_format = 'full';
-		if( $linkpage == '' )
+		}
+		if ( $linkpage == '' ) {
 			$linkpage = null;
+		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( $disable_cache === 'no' && $type !== 'widget' ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'player_gallery' );
-			$output = get_transient( $transient_name );
+			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if( $output === false ) {
+		if ( $output === false ) {
 
-			$selected_players = (array)unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
-			$seasons = get_the_terms( $id, 'wpcm_season' );
-			$season = $seasons[0]->term_id;
-			$teams = get_the_terms( $id, 'wpcm_team' );
-			$team = $teams[0]->term_id;
+			$selected_players = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
+			$seasons          = get_the_terms( $id, 'wpcm_season' );
+			$season           = $seasons[0]->term_id;
+			$teams            = get_the_terms( $id, 'wpcm_team' );
+			$team             = $teams[0]->term_id;
 
 			$player_stats_labels = wpcm_get_player_stats_labels();
-			
+
 			$orderby = strtolower( $orderby );
-			$order = strtoupper( $order );
-			
+			$order   = strtoupper( $order );
+
 			$query_args = array(
-				'post_type' => 'wpcm_player',
-				'tax_query' => array(),
-				'numposts' => $limit,
+				'post_type'      => 'wpcm_player',
+				'tax_query'      => array(),
+				'numposts'       => $limit,
 				'posts_per_page' => -1,
-				'orderby' => 'meta_value_num',
-				'meta_key' => 'wpcm_number',
-				'order' => $order,
-				'post__in' => $selected_players
+				'orderby'        => 'meta_value_num',
+				'meta_key'       => 'wpcm_number',
+				'order'          => $order,
+				'post__in'       => $selected_players,
 			);
 
 			if ( $position ) {
 				$query_args['tax_query'][] = array(
 					'taxonomy' => 'wpcm_position',
-					'terms' => $position,
-					'field' => 'term_id'
+					'terms'    => $position,
+					'field'    => 'term_id',
 				);
 			}
 
-			$players = get_posts( $query_args );	
-			
-			if( $players ) {
+			$players = get_posts( $query_args );
+
+			if ( $players ) {
 
 				$player_details = array();
 
-				foreach( $players as $player ) {
+				foreach ( $players as $player ) {
 
-					$player_details[$player->ID] = array();
+					$player_details[ $player->ID ] = array();
 
-					$player_details[$player->ID]['id'] = $player->ID;
+					$player_details[ $player->ID ]['id'] = $player->ID;
 
 					$player_stats = get_wpcm_player_stats( $player->ID );
 
-					$thumb = wpcm_get_player_thumbnail( $player->ID, 'player_full' );
-					$url = get_permalink( $player->ID );
+					$thumb        = wpcm_get_player_thumbnail( $player->ID, 'player_full' );
+					$url          = get_permalink( $player->ID );
 					$player_title = get_player_title( $player->ID, $name_format );
 
-					$player_details[$player->ID]['image'] = apply_filters( 'wpclubmanager_player_gallery_image', '<a href="' . $url . '">' . $thumb . '</a>', $url, $thumb );
+					$player_details[ $player->ID ]['image'] = apply_filters( 'wpclubmanager_player_gallery_image', '<a href="' . $url . '">' . $thumb . '</a>', $url, $thumb );
 
-					$player_details[$player->ID]['title'] = apply_filters( 'wpclubmanager_player_gallery_title', '<a href="' . $url . '">' . $player_title . '</a>', $url, $player_title );
+					$player_details[ $player->ID ]['title'] = apply_filters( 'wpclubmanager_player_gallery_title', '<a href="' . $url . '">' . $player_title . '</a>', $url, $player_title );
 
-					if ( array_key_exists( $orderby, $player_stats_labels ) )  {
+					if ( array_key_exists( $orderby, $player_stats_labels ) ) {
 						if ( $team ) {
 							if ( $season ) {
-								$player_details[$player->ID][$orderby] = $player_stats[$team][$season]['total'][$orderby];
+								$player_details[ $player->ID ][ $orderby ] = $player_stats[ $team ][ $season ]['total'][ $orderby ];
 							} else {
-								$player_details[$player->ID][$orderby] = $player_stats[$team][0]['total'][$orderby];
+								$player_details[ $player->ID ][ $orderby ] = $player_stats[ $team ][0]['total'][ $orderby ];
 							}
+						} elseif ( $season ) {
+								$player_details[ $player->ID ][ $orderby ] = $player_stats[0][ $season ]['total'][ $orderby ];
 						} else {
-							if ( $season ) {
-								$player_details[$player->ID][$orderby] = $player_stats[0][$season]['total'][$orderby];
-							} else {
-								$player_details[$player->ID][$orderby] = $player_stats[0][0]['total'][$orderby];
-							}
+							$player_details[ $player->ID ][ $orderby ] = $player_stats[0][0]['total'][ $orderby ];
 						}
 					}
-
 				}
 
 				if ( array_key_exists( $orderby, $player_stats_labels ) ) {
 
 					$player_details = subval_sort( $player_details, $orderby );
 
-					if( is_array( $player_details ) ) {
-						
+					if ( is_array( $player_details ) ) {
+
 						if ( $order == 'DESC' ) {
 							$player_details = array_reverse( $player_details );
 						}
@@ -152,25 +157,25 @@ class WPCM_Shortcode_Player_Gallery {
 				}
 
 				ob_start();
-				
+
 				wpclubmanager_get_template( 'shortcodes/players-gallery.php', array(
-					'type' 			 => $type,
-					'title' 		 => $title,
-					'orderby'		 => $orderby,
+					'type'           => $type,
+					'title'          => $title,
+					'orderby'        => $orderby,
 					'player_details' => $player_details,
-					'limit' 		 => $limit,
-					'name_format'	 => $name_format,
-					'linkpage' 		 => $linkpage,
-					'linktext'  	 => $linktext,
-					'columns'		 => $columns
-					) );
-				
+					'limit'          => $limit,
+					'name_format'    => $name_format,
+					'linkpage'       => $linkpage,
+					'linktext'       => $linktext,
+					'columns'        => $columns,
+				) );
+
 				$output = ob_get_clean();
 				wp_reset_postdata();
-				
-				if( $disable_cache === 'no') {
-					set_transient( $transient_name, $output, 4*WEEK_IN_SECONDS );
-					do_action('update_plugin_transient_keys', $transient_name);
+
+				if ( $disable_cache === 'no' ) {
+					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
+					do_action( 'update_plugin_transient_keys', $transient_name );
 				}
 			}
 		}

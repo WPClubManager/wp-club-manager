@@ -2,17 +2,19 @@
 /**
  * Single Match - Score
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
 
 $played = get_post_meta( $post->ID, 'wpcm_played', true );
-$score = wpcm_get_match_result( $post->ID ); ?>
+$score  = wpcm_get_match_result( $post->ID ); ?>
 
 <div class="wpcm-match-score">
 

@@ -4,11 +4,11 @@
  *
  * Takes new users through some basic steps to setup their club.
  *
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Admin
+ * @author      ClubPress
+ * @category    Admin
+ * @package     WPClubManager/Admin
  * @version     2.2.2
-*/
+ */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPCM_Admin_Setup_Wizard {
 
 	/** @var string Current Step */
-	private $step   = '';
+	private $step = '';
 
 	/** @var array Steps for the setup wizard */
-	private $steps  = array();
+	private $steps = array();
 
 	/**
 	 * Hook in tabs.
@@ -50,32 +50,32 @@ class WPCM_Admin_Setup_Wizard {
 		}
 		$this->steps = array(
 			'introduction' => array(
-				'name'    =>  __( 'Intro', 'wp-club-manager' ),
+				'name'    => __( 'Intro', 'wp-club-manager' ),
 				'view'    => array( $this, 'wpcm_setup_introduction' ),
-				'handler' => ''
+				'handler' => '',
 			),
-			'general' => array(
-				'name'    =>  __( 'General', 'wp-club-manager' ),
+			'general'      => array(
+				'name'    => __( 'General', 'wp-club-manager' ),
 				'view'    => array( $this, 'wpcm_setup_general' ),
-				'handler' => array( $this, 'wpcm_setup_general_save' )
+				'handler' => array( $this, 'wpcm_setup_general_save' ),
 			),
-			'club' => array(
-				'name'    =>  __( 'Club', 'wp-club-manager' ),
+			'club'         => array(
+				'name'    => __( 'Club', 'wp-club-manager' ),
 				'view'    => array( $this, 'wpcm_setup_club' ),
-				'handler' => array( $this, 'wpcm_setup_club_save' )
+				'handler' => array( $this, 'wpcm_setup_club_save' ),
 			),
-			'venue' => array(
-				'name'    =>  __( 'Venue', 'wp-club-manager' ),
+			'venue'        => array(
+				'name'    => __( 'Venue', 'wp-club-manager' ),
 				'view'    => array( $this, 'wpcm_setup_venue' ),
-				'handler' => array( $this, 'wpcm_setup_venue_save' )
+				'handler' => array( $this, 'wpcm_setup_venue_save' ),
 			),
-			'next_steps' => array(
-				'name'    =>  __( 'Ready!', 'wp-club-manager' ),
+			'next_steps'   => array(
+				'name'    => __( 'Ready!', 'wp-club-manager' ),
 				'view'    => array( $this, 'wpcm_setup_ready' ),
-				'handler' => ''
-			)
+				'handler' => '',
+			),
 		);
-		$this->step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : current( array_keys( $this->steps ) );
+		$this->step  = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : current( array_keys( $this->steps ) );
 
 		wp_register_script( 'google-maps', 'https://tinyurl.com/yalamujh', '' );
 
@@ -119,13 +119,13 @@ class WPCM_Admin_Setup_Wizard {
 		</head>
 		<body>
 			<div class="ui middle aligned center aligned grid">
-                <div class="column">
-                    <h2 class="ui image header">
-                        <img class="image" src="<?php echo WPCM()->plugin_url(); ?>/assets/images/wpcm-badge.png" alt="WP Club Manager" />
-                        <div class="content"><?php _e( 'WP Club Manager', 'wpclubmanager' ); ?>
-                            <div class="sub header"><?php _e( 'Setup Wizard', 'wpclubmanager' ); ?></div>
-                        </div>
-                    </h2>
+				<div class="column">
+					<h2 class="ui image header">
+						<img class="image" src="<?php echo WPCM()->plugin_url(); ?>/assets/images/wpcm-badge.png" alt="WP Club Manager" />
+						<div class="content"><?php _e( 'WP Club Manager', 'wpclubmanager' ); ?>
+							<div class="sub header"><?php _e( 'Setup Wizard', 'wpclubmanager' ); ?></div>
+						</div>
+					</h2>
 		<?php
 	}
 
@@ -152,15 +152,17 @@ class WPCM_Admin_Setup_Wizard {
 		?>
 		<div class="ui five tiny steps">
 			<?php foreach ( $ouput_steps as $step_key => $step ) : ?>
-				<div class="<?php
-					if ( $step_key === $this->step ) {
-						echo 'active';
-					} elseif ( array_search( $this->step, array_keys( $this->steps ) ) > array_search( $step_key, array_keys( $this->steps ) ) ) {
-						echo 'completed';
-					}
-					?> step">
+				<div class="
+				<?php
+				if ( $step_key === $this->step ) {
+					echo 'active';
+				} elseif ( array_search( $this->step, array_keys( $this->steps ) ) > array_search( $step_key, array_keys( $this->steps ) ) ) {
+					echo 'completed';
+				}
+				?>
+					step">
 					<div class="content">
-                        <div class="title">
+						<div class="title">
 							<?php echo esc_html( $step['name'] ); ?>
 						</div>
 					</div>
@@ -215,18 +217,18 @@ class WPCM_Admin_Setup_Wizard {
 		<form class="ui form" method="post">
 
 			<div class="inline field">
-                <label for="club_location"><?php _e( 'Choose your default country:', 'wp-club-manager' ); ?></label>
-                <select id="club_location" name="club_location" class="ui search dropdown">
+				<label for="club_location"><?php _e( 'Choose your default country:', 'wp-club-manager' ); ?></label>
+				<select id="club_location" name="club_location" class="ui search dropdown">
 					<?php WPCM()->countries->country_dropdown_options( $country ); ?>
 				</select>
 			</div>
 
 			<div class="inline field">
-                <label for="club_sport"><?php _e( 'Choose your default sport:', 'wp-club-manager' ); ?></label>
-                <select id="club_sport" name="club_sport" class="ui search dropdown">
+				<label for="club_sport"><?php _e( 'Choose your default sport:', 'wp-club-manager' ); ?></label>
+				<select id="club_sport" name="club_sport" class="ui search dropdown">
 					<?php
-					foreach( $sport_options as $key => $val ) {
-						echo '<option value="' . $key . '" ' . ($key == $sport ? 'selected' : '' ) . '>' . $val . '</option>';
+					foreach ( $sport_options as $key => $val ) {
+						echo '<option value="' . $key . '" ' . ( $key == $sport ? 'selected' : '' ) . '>' . $val . '</option>';
 					}
 					?>
 				</select>
@@ -249,27 +251,27 @@ class WPCM_Admin_Setup_Wizard {
 		check_admin_referer( 'wpcm-setup' );
 
 		// if( isset( $_POST['plugin_mode'] ) ){
-		// 	$plugin_mode = $_POST['plugin_mode'];
-		// 	update_option( 'wpcm_mode', $plugin_mode );
+		// $plugin_mode = $_POST['plugin_mode'];
+		// update_option( 'wpcm_mode', $plugin_mode );
 		// }
-		if( isset( $_POST['club_location'] ) ){
+		if ( isset( $_POST['club_location'] ) ) {
 			$club_location = sanitize_text_field( $_POST['club_location'] );
 			update_option( 'wpcm_default_country', $club_location );
 		}
-		if( isset( $_POST['club_sport'] ) && ! empty( $_POST['club_sport'] ) ) {
-			$post = $_POST['club_sport'];
+		if ( isset( $_POST['club_sport'] ) && ! empty( $_POST['club_sport'] ) ) {
+			$post  = $_POST['club_sport'];
 			$sport = WPCM()->sports->$post;
 			WPCM_Admin_Settings::configure_sport( $sport );
 			$club_sport = sanitize_text_field( $_POST['club_sport'] );
 			update_option( 'wpcm_sport', $club_sport );
 			// Set table columns
-			$cols = wpcm_get_preset_labels( 'standings' );
+			$cols    = wpcm_get_preset_labels( 'standings' );
 			$columns = array();
 			foreach ( $cols as $col => $val ) {
 				$columns[] = $col;
 			}
 			$default_cols = implode( ',', $columns );
-			update_option( 'wpcm_standings_columns_display', $default_cols);
+			update_option( 'wpcm_standings_columns_display', $default_cols );
 		}
 
 		wpcm_flush_rewrite_rules();
@@ -283,8 +285,8 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_club() {
 
-		$current = date( 'Y' );
-		$next = date( 'y') + 1;
+		$current      = date( 'Y' );
+		$next         = date( 'y' ) + 1;
 		$season_input = _x( 'eg.', 'example', 'wp-club-manager' ) . ' ' . $current . '/' . $next;
 		?>
 		<h2><?php _e( 'Club Setup', 'wp-club-manager' ); ?></h2>
@@ -333,75 +335,74 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
-		if( isset( $_POST['setup_season'] ) ){
-			$season = sanitize_text_field( $_POST['setup_season'] );
+		if ( isset( $_POST['setup_season'] ) ) {
+			$season    = sanitize_text_field( $_POST['setup_season'] );
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
 			update_term_meta( $season_id, 'tax_position', 1 );
 		}
 
-		if( isset( $_POST['setup_comp'] ) ){
-			$comp = sanitize_text_field( $_POST['setup_comp'] );
+		if ( isset( $_POST['setup_comp'] ) ) {
+			$comp    = sanitize_text_field( $_POST['setup_comp'] );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
 			update_term_meta( $comp_id, 'tax_position', 1 );
 		}
 
-		if( isset( $_POST['default_club'] ) && ! empty( $_POST['default_club'] ) && get_option( 'wpcm_default_club', null ) != $_POST['default_club'] ){
-			$title = sanitize_text_field( $_POST['default_club'] );
-			$post = array(
+		if ( isset( $_POST['default_club'] ) && ! empty( $_POST['default_club'] ) && get_option( 'wpcm_default_club', null ) != $_POST['default_club'] ) {
+			$title             = sanitize_text_field( $_POST['default_club'] );
+			$post              = array(
 				'post_title'  => $title,
 				'post_type'   => 'wpcm_club',
-				'post_status' => 'publish'
+				'post_status' => 'publish',
 			);
 			$wpcm_default_club = wp_insert_post( $post );
 			update_option( 'wpcm_default_club', $wpcm_default_club );
 
-			//wpcm_flush_rewrite_rules();
+			// wpcm_flush_rewrite_rules();
 
-			$team = __( 'First Team', 'wp-club-manager' );
+			$team    = __( 'First Team', 'wp-club-manager' );
 			$team_id = wp_insert_term( $team, 'wpcm_team' );
 			update_term_meta( $team_id, 'tax_position', 1 );
 
-			if( isset( $_POST['setup_opponent'] ) ){
-				$opponent = sanitize_text_field( $_POST['setup_opponent'] );
-				$args = array(
+			if ( isset( $_POST['setup_opponent'] ) ) {
+				$opponent    = sanitize_text_field( $_POST['setup_opponent'] );
+				$args        = array(
 					'post_title'  => $opponent,
 					'post_type'   => 'wpcm_club',
-					'post_status' => 'publish'
+					'post_status' => 'publish',
 				);
 				$opponent_id = wp_insert_post( $args );
 			}
 
-			if( isset( $_POST['setup_season'] ) && isset( $_POST['setup_comp'] ) ) {
+			if ( isset( $_POST['setup_season'] ) && isset( $_POST['setup_comp'] ) ) {
 
-				if( empty( $_POST['setup_opponent'] ) ){
+				if ( empty( $_POST['setup_opponent'] ) ) {
 					$opponent_id = null;
 				}
 
-				$title = $comp . ' -- ' . $season;
+				$title        = $comp . ' -- ' . $season;
 				$league_table = array(
 					'post_title'  => $title,
 					'post_type'   => 'wpcm_table',
 					'post_status' => 'publish',
-					'tax_input'	  => array(
+					'tax_input'   => array(
 						'wpcm_season' => $season_id,
-						'wpcm_comp'	  => $comp_id,
-						'wpcm_team'   => $team_id
-					)
+						'wpcm_comp'   => $comp_id,
+						'wpcm_team'   => $team_id,
+					),
 				);
-				$table_id = wp_insert_post( $league_table );
-				$clubs = array( $wpcm_default_club, $opponent_id );
+				$table_id     = wp_insert_post( $league_table );
+				$clubs        = array( $wpcm_default_club, $opponent_id );
 				update_post_meta( $table_id, '_wpcm_table_clubs', serialize( $clubs ) );
 
-
-				$title = $team . ' -- ' . $season;
+				$title  = $team . ' -- ' . $season;
 				$roster = array(
 					'post_title'  => $title,
 					'post_type'   => 'wpcm_roster',
 					'post_status' => 'publish',
-					'tax_input'	  => array(
+					'tax_input'   => array(
 						'wpcm_season' => $season_id,
-						'wpcm_team'   => $team_id
-					)
+						'wpcm_team'   => $team_id,
+					),
 				);
 				wp_insert_post( $roster );
 			}
@@ -458,19 +459,19 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
-		if( isset( $_POST['setup_home'] ) && ! empty( $_POST['setup_home'] ) ){
-			$home = sanitize_text_field( $_POST['setup_home'] );
+		if ( isset( $_POST['setup_home'] ) && ! empty( $_POST['setup_home'] ) ) {
+			$home    = sanitize_text_field( $_POST['setup_home'] );
 			$post_id = get_option( 'wpcm_default_club' );
-			$terms = wp_insert_term( $home, 'wpcm_venue' );
+			$terms   = wp_insert_term( $home, 'wpcm_venue' );
 			wp_set_object_terms( $post_id, $terms['term_id'], 'wpcm_venue' );
 
-			if( isset( $_POST['term_meta'] ) ){
-				$t_id = $terms['term_id'];
+			if ( isset( $_POST['term_meta'] ) ) {
+				$t_id      = $terms['term_id'];
 				$term_meta = get_option( "taxonomy_term_$t_id" );
-				$cat_keys = array_keys( $_POST['term_meta'] );
-				foreach ( $cat_keys as $key ){
-					if ( isset( $_POST['term_meta'][$key] ) ){
-						$term_meta[$key] = $_POST['term_meta'][$key];
+				$cat_keys  = array_keys( $_POST['term_meta'] );
+				foreach ( $cat_keys as $key ) {
+					if ( isset( $_POST['term_meta'][ $key ] ) ) {
+						$term_meta[ $key ] = $_POST['term_meta'][ $key ];
 					}
 				}
 				update_option( "taxonomy_term_$t_id", $term_meta );
@@ -484,7 +485,9 @@ class WPCM_Admin_Setup_Wizard {
 	/**
 	 * Final step.
 	 */
-	public function wpcm_setup_ready() { ?>
+	public function wpcm_setup_ready() {
+
+		?>
 
 		<h2><?php _e( 'Your website is almost ready to go!', 'wp-club-manager' ); ?></h2>
 
@@ -495,10 +498,10 @@ class WPCM_Admin_Setup_Wizard {
 				<div class="column">
 					<h4 class="ui header"><?php _e( 'What Next?', 'wp-club-manager' ); ?></h4>
 					<p>
-						<?php _e( "The Setup Wizard has created your first season and setup some basic settings but before you can start adding matches we suggest that you go to the plugin settings and configure them to your needs.", 'wp-club-manager' ); ?>
+						<?php _e( 'The Setup Wizard has created your first season and setup some basic settings but before you can start adding matches we suggest that you go to the plugin settings and configure them to your needs.', 'wp-club-manager' ); ?>
 					</p>
 					<p>
-						<a class="ui button" href="<?php echo esc_url( admin_url( 'admin.php?page=wpcm-settings') ); ?>"><?php _e( 'Go to plugin settings', 'wp-club-manager' ); ?></a>
+						<a class="ui button" href="<?php echo esc_url( admin_url( 'admin.php?page=wpcm-settings' ) ); ?>"><?php _e( 'Go to plugin settings', 'wp-club-manager' ); ?></a>
 					</p>
 				</div>
 				<div class="column">

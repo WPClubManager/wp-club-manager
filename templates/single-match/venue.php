@@ -2,12 +2,14 @@
 /**
  * Single Match - Venue
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 global $post;
 
@@ -21,5 +23,5 @@ if ( $venue ) { ?>
 
 	</div>
 
-<?php
+	<?php
 }
