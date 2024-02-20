@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Player_List
+ */
 class WPCM_Shortcode_Player_List {
 
 	/**
@@ -45,36 +48,34 @@ class WPCM_Shortcode_Player_List {
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
 		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		// if( $limit == '' || $limit == '0' )
-		// $limit = '';
-		if ( $position == '' ) {
+		if ( '' === $position ) {
 			$position = null;
 		}
-		if ( $orderby == '' ) {
+		if ( '' === $orderby ) {
 			$orderby = 'number';
 		}
-		if ( $order == '' ) {
+		if ( '' === $order ) {
 			$order = 'ASC';
 		}
-		if ( $stats == '' ) {
+		if ( '' === $stats ) {
 			$stats = 'flag,number,name,position,age,height,weight';
 		}
-		if ( $name_format == '' ) {
+		if ( '' === $name_format ) {
 			$name_format = 'full';
 		}
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'player_list' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			if ( is_club_mode() ) {
 				$selected_players = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
@@ -99,9 +100,7 @@ class WPCM_Shortcode_Player_List {
 					unset( $stats[ $key ] );
 				}
 			}
-			// if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) ){
-			// $limit = -1;
-			// }
+
 			$orderby = strtolower( $orderby );
 			$order   = strtoupper( $order );
 
@@ -109,20 +108,19 @@ class WPCM_Shortcode_Player_List {
 
 				$args = array(
 					'post_type'      => 'wpcm_player',
-					'tax_query'      => array(),
+					'tax_query'      => array(), // phpcs:ignore
 					'posts_per_page' => -1,
 					'order'          => $order,
-					// 'suppress_filters' => 0,
 					'post__in'       => $selected_players,
 				);
-				if ( $orderby == 'number' ) {
+				if ( 'number' === $orderby ) {
 					$args['orderby']  = 'meta_value_num';
 					$args['meta_key'] = 'wpcm_number';
 				}
-				if ( $orderby == 'name' ) {
+				if ( 'name' === $orderby ) {
 					$args['orderby'] = 'name';
 				}
-				if ( $orderby == 'menu_order' ) {
+				if ( 'menu_order' === $orderby ) {
 					$args['orderby'] = 'menu_order';
 				}
 				if ( $position ) {
@@ -136,36 +134,29 @@ class WPCM_Shortcode_Player_List {
 
 				$args = array(
 					'post_type'      => 'wpcm_player',
-					'tax_query'      => array(),
+					'tax_query'      => array(), // phpcs:ignore
 					'posts_per_page' => $limit,
 					'order'          => $order,
-					// 'suppress_filters' => 0,
-					'meta_query'     => array(),
+					'meta_query'     => array(), // phpcs:ignore
 				);
 
-				if ( $id != '' ) {
+				if ( '' !== $id ) {
 					$args['meta_query'][] = array(
 						'key'   => '_wpcm_player_club',
 						'value' => $id,
 					);
 				}
-				if ( $orderby == 'number' ) {
+				if ( 'number' === $orderby ) {
 					$args['orderby']  = 'meta_value_num';
 					$args['meta_key'] = 'wpcm_number';
 				}
-				if ( $orderby == 'name' ) {
+				if ( 'name' === $orderby ) {
 					$args['orderby'] = 'name';
 				}
-				if ( $orderby == 'menu_order' ) {
+				if ( 'menu_order' === $orderby ) {
 					$args['orderby'] = 'menu_order';
 				}
-				// if ( $season ) {
-				// $args['tax_query'][] = array(
-				// 'taxonomy' => 'wpcm_season',
-				// 'terms' => $season,
-				// 'field' => 'term_id'
-				// );
-				// }
+
 				if ( $position ) {
 					$args['tax_query'][] = array(
 						'taxonomy' => 'wpcm_position',
@@ -179,9 +170,9 @@ class WPCM_Shortcode_Player_List {
 
 			$player_details = array();
 
-			$count = sizeof( $players );
+			$count = count( $players );
 
-			if ( $limit == '' ) {
+			if ( '' === $limit ) {
 				$limit = $count;
 			}
 
@@ -193,7 +184,6 @@ class WPCM_Shortcode_Player_List {
 
 					$player_details[ $player->ID ]['id'] = $player->ID;
 
-					// $count++;
 					if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) ) {
 						$player_stats = get_wpcm_player_stats( $player->ID );
 					}
@@ -263,7 +253,7 @@ class WPCM_Shortcode_Player_List {
 				}
 				if ( array_key_exists( $orderby, $player_stats_labels ) ) {
 					$player_details = subval_sort( $player_details, $orderby );
-					if ( $order == 'DESC' ) {
+					if ( 'DESC' === $order ) {
 						$player_details = array_reverse( $player_details );
 					}
 				}
@@ -286,7 +276,7 @@ class WPCM_Shortcode_Player_List {
 				$output = ob_get_clean();
 
 				wp_reset_postdata();
-				if ( $disable_cache === 'no' && $type !== 'widget' ) {
+				if ( 'no' === $disable_cache && 'widget' !== $type ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}

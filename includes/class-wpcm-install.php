@@ -136,23 +136,23 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			}
 
 			if ( version_compare( $version, '1.1.0', '<' ) ) {
-				include 'updates/wpclubmanager-update-1.1.0.php';
+				include 'updates/wpclubmanager-update-1-1-0.php';
 			}
 
 			if ( version_compare( $version, '1.5.0', '<' ) ) {
-				include_once 'updates/wpclubmanager-update-1.5.0.php';
+				include_once 'updates/wpclubmanager-update-1-5-0.php';
 			}
 
 			if ( version_compare( $version, '1.5.4', '<' ) ) {
-				include_once 'updates/wpclubmanager-update-1.5.0.php';
+				include_once 'updates/wpclubmanager-update-1-5-0.php';
 			}
 
 			if ( version_compare( $version, '1.5.5', '<' ) ) {
-				include_once 'updates/wpclubmanager-update-1.5.5.php';
+				include_once 'updates/wpclubmanager-update-1-5-5.php';
 			}
 
 			if ( version_compare( $version, '2.0.0', '<' ) ) {
-				include_once 'updates/wpclubmanager-update-2.0.0.php';
+				include_once 'updates/wpclubmanager-update-2-0-0.php';
 			}
 		}
 

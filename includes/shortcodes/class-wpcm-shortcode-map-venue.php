@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Map_Venue
+ */
 class WPCM_Shortcode_Map_Venue {
 
 	/**
@@ -28,10 +31,10 @@ class WPCM_Shortcode_Map_Venue {
 		$width  = ( isset( $atts['width'] ) ? $atts['width'] : '' );
 		$height = ( isset( $atts['height'] ) ? $atts['height'] : '' );
 
-		if ( $width == '' ) {
+		if ( '' === $width ) {
 			$width = '100%';
 		}
-		if ( $height == '' ) {
+		if ( '' === $height ) {
 			$height = '320';
 		}
 
@@ -41,49 +44,35 @@ class WPCM_Shortcode_Map_Venue {
 		$latitude  = ( isset( $term_meta['wpcm_latitude'] ) ? $term_meta['wpcm_latitude'] : null );
 		$longitude = ( isset( $term_meta['wpcm_longitude'] ) ? $term_meta['wpcm_longitude'] : null );
 
-		if ( $latitude == null && $longitude == null ) {
-
-			$coordinates   = new WPCM_Geocoder( $address );
-				$latitude  = $coordinates->lat;
-				$longitude = $coordinates->lng;
-
+		if ( ! $latitude && ! $longitude ) {
+			$coordinates = new WPCM_Geocoder( $address );
+			$latitude    = $coordinates->lat;
+			$longitude   = $coordinates->lng;
 		}
-
-		// $address = urlencode($address);
-		// $maptype = strtolower( $maptype );
-		// if ( '' === $address ) $address = '+';
-		// if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
 
 		$service = get_option( 'wpcm_map_select', 'google' );
 		$zoom    = get_option( 'wpcm_map_zoom', 15 );
 
-		if ( $service == 'osm' ) {
-
-			// $assets_path = WPCM()->plugin_url() . '/assets/';
-			// wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js', array(), '1.6.0', false );
-
+		if ( 'osm' === $service ) {
 			$layers = get_option( 'wpcm_osm_layer', 'standard' );
 
-			if ( $layers = 'mapbox' ) {
-
+			if ( 'mapbox' === $layers ) {
 				$api_key = get_option( 'wpcm_mapbox_api' );
 				$maptype = get_option( 'wpcm_mapbox_type', 'mapbox/streets-v11' );
 
 			} else {
-
 				$api_key = false;
 				$maptype = false;
 			}
 		} else {
-
-			$address = urlencode( $address );
+			$address = rawurlencode( $address );
 			$api_key = get_option( 'wpcm_google_map_api' );
 			$maptype = get_option( 'wpcm_map_type', 'roadmap' );
 			$layers  = '';
 
 		}
 
-		if ( $latitude != null && $longitude != null ) {
+		if ( null !== $latitude && null !== $longitude ) {
 
 			wpclubmanager_get_template( 'shortcodes/map-venue.php', array(
 				'title'     => $title,

@@ -12,12 +12,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Player_Gallery
+ */
 class WPCM_Shortcode_Player_Gallery {
 
 	/**
 	 * Get the shortcode content.
 	 *
 	 * @param array $atts
+	 *
 	 * @return string
 	 */
 	public static function get( $atts ) {
@@ -45,37 +49,37 @@ class WPCM_Shortcode_Player_Gallery {
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
 		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		if ( $limit == '' ) {
+		if ( '' === $limit ) {
 			$limit = -1;
 		}
-		if ( $position == '' ) {
+		if ( '' === $position ) {
 			$position = null;
 		}
-		if ( $orderby == '' ) {
+		if ( '' === $orderby ) {
 			$orderby = 'number';
 		}
-		if ( $order == '' ) {
+		if ( '' === $order ) {
 			$order = 'ASC';
 		}
-		if ( $columns == '' ) {
+		if ( '' === $columns ) {
 			$columns = '3';
 		}
-		if ( $name_format == '' ) {
+		if ( '' === $name_format ) {
 			$name_format = 'full';
 		}
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'player_gallery' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			$selected_players = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
 			$seasons          = get_the_terms( $id, 'wpcm_season' );
@@ -90,7 +94,7 @@ class WPCM_Shortcode_Player_Gallery {
 
 			$query_args = array(
 				'post_type'      => 'wpcm_player',
-				'tax_query'      => array(),
+				'tax_query'      => array(), // phpcs:ignore
 				'numposts'       => $limit,
 				'posts_per_page' => -1,
 				'orderby'        => 'meta_value_num',
@@ -150,7 +154,7 @@ class WPCM_Shortcode_Player_Gallery {
 
 					if ( is_array( $player_details ) ) {
 
-						if ( $order == 'DESC' ) {
+						if ( 'DESC' === $order ) {
 							$player_details = array_reverse( $player_details );
 						}
 					}
@@ -173,7 +177,7 @@ class WPCM_Shortcode_Player_Gallery {
 				$output = ob_get_clean();
 				wp_reset_postdata();
 
-				if ( $disable_cache === 'no' ) {
+				if ( 'no' === $disable_cache ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}

@@ -17,7 +17,7 @@ get_header(); ?>
 
 	<?php
 		/**
-		 * wpclubmanager_before_main_content hook
+		 * Hook wpclubmanager_before_main_content
 		 *
 		 * @hooked wpclubmanager_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked wpclubmanager_breadcrumb - 20
@@ -36,7 +36,7 @@ get_header(); ?>
 
 	<?php
 		/**
-		 * wpclubmanager_after_main_content hook
+		 * Hook wpclubmanager_after_main_content
 		 *
 		 * @hooked wpclubmanager_output_content_wrapper_end - 10 (outputs closing divs for the content)
 		 */
@@ -45,12 +45,12 @@ get_header(); ?>
 
 	<?php
 		/**
-		 * wpclubmanager_sidebar hook
+		 * Hook wpclubmanager_sidebar
 		 *
 		 * @hooked wpclubmanager_get_sidebar - 10
 		 */
 		do_action( 'wpclubmanager_sidebar' );
 	?>
- 
+
 <?php
 get_footer();

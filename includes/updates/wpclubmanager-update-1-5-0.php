@@ -21,7 +21,7 @@ $my_posts = get_posts( array(
 $stats = array_merge( array( 'appearances' => __( 'Apps', 'wp-club-manager' ) ), wpcm_get_preset_labels() );
 
 foreach ( $stats as $key => $val ) {
-	if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) {
+	if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) {
 		$stats[ $key ] = '';
 	}
 }

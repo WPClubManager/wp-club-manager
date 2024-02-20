@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Include widget classes
-require_once 'abstracts/abstract-wpcm-widget.php';
+require_once 'abstracts/class-wpcm-widget.php';
 require_once 'widgets/class-wpcm-widget-fixtures.php';
 require_once 'widgets/class-wpcm-widget-results.php';
 require_once 'widgets/class-wpcm-widget-standings.php';

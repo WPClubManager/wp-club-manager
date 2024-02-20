@@ -24,7 +24,7 @@ $matches = get_posts( $args );
 foreach ( $matches as $match ) {
 	$referee     = get_post_meta( $match->ID, 'wpcm_referee', true );
 	$option_list = get_option( 'wpcm_referee_list', array() );
-	if ( ! in_array( $referee, $option_list ) ) {
+	if ( ! in_array( $referee, $option_list, true ) ) {
 		$option_list[] = $referee;
 		update_option( 'wpcm_referee_list', $option_list );
 	}

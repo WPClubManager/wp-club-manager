@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_League_Table
+ */
 class WPCM_Shortcode_League_Table {
 
 	/**
@@ -36,40 +39,37 @@ class WPCM_Shortcode_League_Table {
 		$linktext  = ( isset( $atts['linktext'] ) ? $atts['linktext'] : '' );
 		$linkpage  = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : '' );
 
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
-		if ( $columns == '' ) {
+		if ( '' === $columns ) {
 			$columns = get_option( 'wpcm_standings_columns_display' );
 		}
-		if ( $abbr == '' ) {
+		if ( '' === $abbr ) {
 			$abbr = 0;
 		}
-		if ( $thumb == '' ) {
+		if ( '' === $thumb ) {
 			$thumb = 1;
 		}
-		if ( $link_club == '' ) {
+		if ( '' === $link_club ) {
 			$link_club = 1;
 		}
-		if ( $notes == '' ) {
+		if ( '' === $notes ) {
 			$notes = 0;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'league_table' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
-
+		if ( false === $output ) {
 			$default_club = get_default_club();
 			$team_label   = null;
 			if ( is_club_mode() ) {
-				// $teams = get_the_terms( $id, 'wpcm_team' );
-				// $team_id = $teams[0]->term_id;
 				$team_label = wpcm_get_team_name( $default_club, $id );
 			}
 			$comps          = get_the_terms( $id, 'wpcm_comp' );
@@ -78,21 +78,21 @@ class WPCM_Shortcode_League_Table {
 			$season         = $seasons[0]->term_id;
 			$manual_stats   = (array) unserialize( get_post_meta( $id, '_wpcm_table_stats', true ) );
 			$selected_clubs = (array) unserialize( get_post_meta( $id, '_wpcm_table_clubs', true ) );
-			// $columns = get_option( 'wpcm_standings_columns_display' );
+
 			$columns = explode( ',', $columns );
 			$order   = get_option( 'wpcm_standings_order' );
 			$notes   = get_post_meta( $id, '_wpcm_table_notes', true );
 
 			$args  = array(
 				'post_type'      => 'wpcm_club',
-				'tax_query'      => array(),
+				'tax_query'      => array(), // phpcs:ignore
 				'numberposts'    => -1,
 				'posts_per_page' => -1,
 				'post__in'       => $selected_clubs,
 			);
 			$clubs = get_posts( $args );
 
-			$size = sizeof( $clubs );
+			$size = count( $clubs );
 
 			foreach ( $clubs as $club ) {
 
@@ -104,7 +104,7 @@ class WPCM_Shortcode_League_Table {
 					$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
 					$club->wpcm_stats        = $total_stats;
 				}
-				if ( $thumb == 1 ) {
+				if ( 1 === $thumb ) {
 					if ( has_post_thumbnail( $club->ID ) ) {
 						$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
 					} else {
@@ -115,10 +115,9 @@ class WPCM_Shortcode_League_Table {
 				}
 			}
 
-			// usort( $clubs, 'wpcm_club_standings_sort');
 			usort( $clubs, 'wpcm_sort_table_clubs' );
 
-			if ( $order == 'ASC' ) {
+			if ( 'ASC' === $order ) {
 				$clubs = array_reverse( $clubs );
 			}
 
@@ -130,19 +129,19 @@ class WPCM_Shortcode_League_Table {
 				$default_club = $clubs[0]->ID;
 			}
 
-			if ( $limit == '' ) {
+			if ( '' === $limit ) {
 				$limit = $size;
 			}
 
 			if ( $limit < $size ) {
-				if ( $focus == 'top' ) {
+				if ( 'top' === $focus ) {
 					$start = 0;
-				} elseif ( $focus == 'bottom' ) {
+				} elseif ( 'bottom' === $focus ) {
 					$start = -$limit;
 				} else {
 					$middle = 0;
 					foreach ( $clubs as $key => $value ) {
-						if ( $value->ID == $default_club ) {
+						if ( $value->ID === $default_club ) {
 							$middle = $key;
 						}
 					}
@@ -184,7 +183,7 @@ class WPCM_Shortcode_League_Table {
 			$output = ob_get_clean();
 
 			wp_reset_postdata();
-			if ( $disable_cache === 'no' && $type !== 'widget' ) {
+			if ( 'no' === $disable_cache && 'widget' !== $type ) {
 				set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 				do_action( 'update_plugin_transient_keys', $transient_name );
 			}

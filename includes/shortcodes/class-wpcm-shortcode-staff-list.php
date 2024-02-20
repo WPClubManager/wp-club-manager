@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Staff_List
+ */
 class WPCM_Shortcode_Staff_List {
 
 	/**
@@ -35,44 +38,44 @@ class WPCM_Shortcode_Staff_List {
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
 		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		if ( $limit == '' ) {
+		if ( '' === $limit ) {
 			$limit = -1;
 		}
-		if ( $job == '' ) {
+		if ( '' === $job ) {
 			$job = null;
 		}
-		if ( $orderby == '' ) {
+		if ( '' === $orderby ) {
 			$orderby = 'number';
 		}
-		if ( $order == '' ) {
+		if ( '' === $order ) {
 			$order = 'ASC';
 		}
-		if ( $columns == '' ) {
+		if ( '' === $columns ) {
 			$columns = 'flag,name,job,age';
 		}
-		if ( $name_format == '' ) {
+		if ( '' === $name_format ) {
 			$name_format = 'full';
 		}
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' ) {
+		if ( 'no' === $disable_cache ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'staff_list' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			$selected_staff = (array) unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
 
 			$stats_labels = wpcm_staff_labels();
 
-			if ( $limit == 0 ) {
-				$limit = -1;
+			if ( 0 === (int) $limit ) {
+				$limit = - 1;
 			}
 
 			$stats = explode( ',', $columns );
@@ -92,7 +95,7 @@ class WPCM_Shortcode_Staff_List {
 
 			$args = array(
 				'post_type'        => 'wpcm_staff',
-				'tax_query'        => array(),
+				'tax_query'        => array(), // phpcs:ignore
 				'posts_per_page'   => $limit,
 				'order'            => $order,
 				'orderby'          => $orderby,
@@ -113,7 +116,7 @@ class WPCM_Shortcode_Staff_List {
 
 			$count = 0;
 
-			if ( sizeof( $employees ) > 0 ) {
+			if ( count( $employees ) > 0 ) {
 				foreach ( $employees as $employee ) {
 					++$count;
 					foreach ( $stats as $stat ) {
@@ -155,12 +158,12 @@ class WPCM_Shortcode_Staff_List {
 
 				if ( array_key_exists( $orderby, $atts ) ) {
 					$staff_details = subval_sort( $staff_details, $orderby );
-					if ( $order == 'DESC' ) {
+					if ( 'DESC' === $order ) {
 						$staff_details = array_reverse( $staff_details );
 					}
 				}
 
-				if ( sizeof( $employees ) > 0 ) {
+				if ( count( $employees ) > 0 ) {
 
 					ob_start();
 					wpclubmanager_get_template( 'shortcodes/staff.php', array(
@@ -176,7 +179,7 @@ class WPCM_Shortcode_Staff_List {
 					$output = ob_get_clean();
 
 					wp_reset_postdata();
-					if ( $disable_cache === 'no' ) {
+					if ( 'no' === $disable_cache ) {
 						set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 						do_action( 'update_plugin_transient_keys', $transient_name );
 					}
