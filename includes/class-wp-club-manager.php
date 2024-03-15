@@ -201,6 +201,12 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 				$this->frontend_includes();
 			}
 
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				require_once __DIR__ . '/class-wpcm-cli.php';
+
+				\WP_CLI::add_command( 'clubmanager', WPCM_CLI::class );
+			}
+
 			require_once WPCM_PATH . 'includes/class-wpcm-post-types.php';
 			require_once WPCM_PATH . 'includes/class-wpcm-countries.php';
 			require_once WPCM_PATH . 'includes/class-wpcm-geocoder.php';
