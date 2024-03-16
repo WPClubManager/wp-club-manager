@@ -9,6 +9,7 @@
  * @package     WPClubManager/Admin
  * @version     2.2.2
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -85,7 +86,8 @@ class WPCM_Admin_Setup_Wizard {
 
 		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ) );
 
-		if ( ! empty( $_POST['save_step'] ) && isset( $this->steps[ $this->step ]['handler'] ) ) {
+		$step = filter_input( INPUT_POST, 'save_step', FILTER_UNSAFE_RAW );
+		if ( $step && isset( $this->steps[ $this->step ]['handler'] ) ) {
 			call_user_func( $this->steps[ $this->step ]['handler'] );
 		}
 
@@ -97,6 +99,9 @@ class WPCM_Admin_Setup_Wizard {
 		exit;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function get_next_step_link() {
 		$keys = array_keys( $this->steps );
 		return add_query_arg( 'step', $keys[ array_search( $this->step, array_keys( $this->steps ) ) + 1 ] );
@@ -112,7 +117,7 @@ class WPCM_Admin_Setup_Wizard {
 		<head>
 			<meta name="viewport" content="width=device-width" />
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<title><?php _e( 'WP Club Manager &rsaquo; Setup Wizard', 'wp-club-manager' ); ?></title>
+			<title><?php esc_html_e( 'WP Club Manager &rsaquo; Setup Wizard', 'wp-club-manager' ); ?></title>
 			<?php do_action( 'admin_print_styles' ); ?>
 			<?php wp_print_scripts( 'wpcm-setup-js' ); ?>
 			<?php do_action( 'admin_head' ); ?>
@@ -121,9 +126,9 @@ class WPCM_Admin_Setup_Wizard {
 			<div class="ui middle aligned center aligned grid">
 				<div class="column">
 					<h2 class="ui image header">
-						<img class="image" src="<?php echo WPCM()->plugin_url(); ?>/assets/images/wpcm-badge.png" alt="WP Club Manager" />
-						<div class="content"><?php _e( 'WP Club Manager', 'wpclubmanager' ); ?>
-							<div class="sub header"><?php _e( 'Setup Wizard', 'wpclubmanager' ); ?></div>
+						<img class="image" src="<?php echo esc_url( WPCM()->plugin_url() ); ?>/assets/images/wpcm-badge.png" alt="WP Club Manager" />
+						<div class="content"><?php esc_html_e( 'WP Club Manager', 'wpclubmanager' ); ?>
+							<div class="sub header"><?php esc_html_e( 'Setup Wizard', 'wpclubmanager' ); ?></div>
 						</div>
 					</h2>
 		<?php
@@ -135,7 +140,7 @@ class WPCM_Admin_Setup_Wizard {
 	public function setup_wizard_footer() {
 		?>
 					<?php if ( 'next_steps' === $this->step ) : ?>
-						<a class="wpcm-return-to-dashboard" href="<?php echo esc_url( admin_url() ); ?>"><?php _e( 'Return to the WordPress Dashboard', 'wp-club-manager' ); ?></a>
+						<a class="wpcm-return-to-dashboard" href="<?php echo esc_url( admin_url() ); ?>"><?php esc_html_e( 'Return to the WordPress Dashboard', 'wp-club-manager' ); ?></a>
 					<?php endif; ?>
 					</div>
 				</div>
@@ -186,15 +191,15 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_introduction() {
 		?>
-		<h2><?php _e( 'Welcome to WP Club Manager', 'wp-club-manager' ); ?></h2>
-		<h4><?php _e( 'Thank you for choosing WP Club Manager to power your club website!', 'wp-club-manager' ); ?></h4>
-		<p><?php _e( 'This quick setup wizard will help you configure the basic settings to get your club website up and running as quickly as possible. It’s completely optional and should only take a couple of minutes at most.', 'wp-club-manager' ); ?></p>
-		<p><?php _e( 'No time right now? If you don’t want to go through the wizard now, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'wp-club-manager' ); ?></p>
+		<h2><?php esc_html_e( 'Welcome to WP Club Manager', 'wp-club-manager' ); ?></h2>
+		<h4><?php esc_html_e( 'Thank you for choosing WP Club Manager to power your club website!', 'wp-club-manager' ); ?></h4>
+		<p><?php esc_html_e( 'This quick setup wizard will help you configure the basic settings to get your club website up and running as quickly as possible. It’s completely optional and should only take a couple of minutes at most.', 'wp-club-manager' ); ?></p>
+		<p><?php esc_html_e( 'No time right now? If you don’t want to go through the wizard now, you can skip and return to the WordPress dashboard. Come back anytime if you change your mind!', 'wp-club-manager' ); ?></p>
 
 		<div class="ui hidden section divider"></div>
 
-		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated primary button button-next"><?php _e( 'Let\'s Go!', 'wp-club-manager' ); ?></a>
-		<a href="<?php echo esc_url( admin_url() ); ?>" class="ui large right floated button"><?php _e( 'Not right now', 'wp-club-manager' ); ?></a>
+		<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated primary button button-next"><?php esc_html_e( 'Let\'s Go!', 'wp-club-manager' ); ?></a>
+		<a href="<?php echo esc_url( admin_url() ); ?>" class="ui large right floated button"><?php esc_html_e( 'Not right now', 'wp-club-manager' ); ?></a>
 
 		<?php
 	}
@@ -208,27 +213,27 @@ class WPCM_Admin_Setup_Wizard {
 		$sport         = get_option( 'wpcm_sport', 'soccer' );
 		$sport_options = wpcm_get_sport_options();
 		?>
-		<h2><?php _e( 'General Setup', 'wp-club-manager' ); ?></h2>
+		<h2><?php esc_html_e( 'General Setup', 'wp-club-manager' ); ?></h2>
 
-		<p><?php _e( 'Your club site needs a few essential settings.', 'wp-club-manager' ); ?></p>
+		<p><?php esc_html_e( 'Your club site needs a few essential settings.', 'wp-club-manager' ); ?></p>
 
 		<div class="ui hidden divider"></div>
 
 		<form class="ui form" method="post">
 
 			<div class="inline field">
-				<label for="club_location"><?php _e( 'Choose your default country:', 'wp-club-manager' ); ?></label>
+				<label for="club_location"><?php esc_html_e( 'Choose your default country:', 'wp-club-manager' ); ?></label>
 				<select id="club_location" name="club_location" class="ui search dropdown">
 					<?php WPCM()->countries->country_dropdown_options( $country ); ?>
 				</select>
 			</div>
 
 			<div class="inline field">
-				<label for="club_sport"><?php _e( 'Choose your default sport:', 'wp-club-manager' ); ?></label>
+				<label for="club_sport"><?php esc_html_e( 'Choose your default sport:', 'wp-club-manager' ); ?></label>
 				<select id="club_sport" name="club_sport" class="ui search dropdown">
 					<?php
 					foreach ( $sport_options as $key => $val ) {
-						echo '<option value="' . $key . '" ' . ( $key == $sport ? 'selected' : '' ) . '>' . $val . '</option>';
+						echo '<option value="' . esc_html( $key ) . '" ' . ( $sport === $key ? 'selected' : '' ) . '>' . esc_html( $val ) . '</option>';
 					}
 					?>
 				</select>
@@ -237,7 +242,7 @@ class WPCM_Admin_Setup_Wizard {
 			<div class="ui hidden section divider"></div>
 
 			<input type="submit" class="ui large right floated primary button button-next" value="<?php esc_attr_e( 'Save &amp; continue', 'wp-club-manager' ); ?>" name="save_step" />
-			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php _e( 'Skip this step', 'wp-club-manager' ); ?></a>
+			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php esc_html_e( 'Skip this step', 'wp-club-manager' ); ?></a>
 			<?php wp_nonce_field( 'wpcm-setup' ); ?>
 
 		</form>
@@ -254,15 +259,17 @@ class WPCM_Admin_Setup_Wizard {
 		// $plugin_mode = $_POST['plugin_mode'];
 		// update_option( 'wpcm_mode', $plugin_mode );
 		// }
-		if ( isset( $_POST['club_location'] ) ) {
-			$club_location = sanitize_text_field( $_POST['club_location'] );
+		$location = filter_input( INPUT_POST, 'club_location', FILTER_UNSAFE_RAW );
+		if ( $location ) {
+			$club_location = sanitize_text_field( $location );
 			update_option( 'wpcm_default_country', $club_location );
 		}
-		if ( isset( $_POST['club_sport'] ) && ! empty( $_POST['club_sport'] ) ) {
-			$post  = $_POST['club_sport'];
+
+		$club_sport = filter_input( INPUT_POST, 'club_sport', FILTER_UNSAFE_RAW );
+		if ( $club_sport ) {
+			$post  = sanitize_text_field( $club_sport );
 			$sport = WPCM()->sports->$post;
 			WPCM_Admin_Settings::configure_sport( $sport );
-			$club_sport = sanitize_text_field( $_POST['club_sport'] );
 			update_option( 'wpcm_sport', $club_sport );
 			// Set table columns
 			$cols    = wpcm_get_preset_labels( 'standings' );
@@ -285,42 +292,42 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_club() {
 
-		$current      = date( 'Y' );
-		$next         = date( 'y' ) + 1;
+		$current      = gmdate( 'Y' );
+		$next         = gmdate( 'y' ) + 1;
 		$season_input = _x( 'eg.', 'example', 'wp-club-manager' ) . ' ' . $current . '/' . $next;
 		?>
-		<h2><?php _e( 'Club Setup', 'wp-club-manager' ); ?></h2>
+		<h2><?php esc_html_e( 'Club Setup', 'wp-club-manager' ); ?></h2>
 
-		<p><?php _e( 'Add your club, competition and season so get started.', 'wp-club-manager' ); ?></p>
+		<p><?php esc_html_e( 'Add your club, competition and season so get started.', 'wp-club-manager' ); ?></p>
 
 		<div class="ui hidden divider"></div>
 
 		<form class="ui form" method="post">
 
 			<div class="inline field">
-				<label for="default_club"><?php _e( 'Enter your club name:', 'wp-club-manager' ); ?></label>
+				<label for="default_club"><?php esc_html_e( 'Enter your club name:', 'wp-club-manager' ); ?></label>
 				<input type="text" id="default_club" name="default_club" placeholder="<?php esc_attr_e( 'eg. West Ham United', 'wp-club-manager' ); ?>" />
 			</div>
 
 			<div class="inline field">
-				<label for="setup_comp"><?php _e( 'Enter a competition:', 'wp-club-manager' ); ?></label>
+				<label for="setup_comp"><?php esc_html_e( 'Enter a competition:', 'wp-club-manager' ); ?></label>
 				<input type="text" id="setup_comp" name="setup_comp" placeholder="<?php esc_attr_e( 'eg. Division One', 'wp-club-manager' ); ?>" />
 			</div>
 
 			<div class="inline field">
-				<label for="setup_season"><?php _e( 'Enter a season:', 'wp-club-manager' ); ?></label>
-				<input type="text" id="setup_season" name="setup_season" placeholder="<?php echo $season_input; ?>" />
+				<label for="setup_season"><?php esc_html_e( 'Enter a season:', 'wp-club-manager' ); ?></label>
+				<input type="text" id="setup_season" name="setup_season" placeholder="<?php echo esc_html( $season_input ); ?>" />
 			</div>
 
 			<div class="inline field">
-				<label for="setup_opponent"><?php _e( 'Add your next opponent:', 'wp-club-manager' ); ?></label>
+				<label for="setup_opponent"><?php esc_html_e( 'Add your next opponent:', 'wp-club-manager' ); ?></label>
 				<input type="text" id="setup_opponent" name="setup_opponent" placeholder="<?php esc_attr_e( 'eg. Manchester United', 'wp-club-manager' ); ?>" />
 			</div>
 
 			<div class="ui hidden section divider"></div>
 
 			<input type="submit" class="ui large right floated primary button button-next" value="<?php esc_attr_e( 'Save &amp; continue', 'wp-club-manager' ); ?>" name="save_step" />
-			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php _e( 'Skip this step', 'wp-club-manager' ); ?></a>
+			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php esc_html_e( 'Skip this step', 'wp-club-manager' ); ?></a>
 
 			<?php wp_nonce_field( 'wpcm-setup' ); ?>
 
@@ -335,20 +342,23 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
-		if ( isset( $_POST['setup_season'] ) ) {
-			$season    = sanitize_text_field( $_POST['setup_season'] );
+		$setup_season = filter_input( INPUT_POST, 'setup_season', FILTER_UNSAFE_RAW );
+		if ( $setup_season ) {
+			$season    = sanitize_text_field( $setup_season );
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
 			update_term_meta( $season_id, 'tax_position', 1 );
 		}
 
-		if ( isset( $_POST['setup_comp'] ) ) {
-			$comp    = sanitize_text_field( $_POST['setup_comp'] );
+		$setup_comp = filter_input( INPUT_POST, 'setup_comp', FILTER_UNSAFE_RAW );
+		if ( $setup_comp ) {
+			$comp    = sanitize_text_field( $setup_comp );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
 			update_term_meta( $comp_id, 'tax_position', 1 );
 		}
 
-		if ( isset( $_POST['default_club'] ) && ! empty( $_POST['default_club'] ) && get_option( 'wpcm_default_club', null ) != $_POST['default_club'] ) {
-			$title             = sanitize_text_field( $_POST['default_club'] );
+		$default_club = filter_input( INPUT_POST, 'default_club', FILTER_UNSAFE_RAW );
+		if ( $default_club && get_option( 'wpcm_default_club', null ) != sanitize_text_field( $default_club ) ) {
+			$title             = sanitize_text_field( $default_club );
 			$post              = array(
 				'post_title'  => $title,
 				'post_type'   => 'wpcm_club',
@@ -363,8 +373,9 @@ class WPCM_Admin_Setup_Wizard {
 			$team_id = wp_insert_term( $team, 'wpcm_team' );
 			update_term_meta( $team_id, 'tax_position', 1 );
 
-			if ( isset( $_POST['setup_opponent'] ) ) {
-				$opponent    = sanitize_text_field( $_POST['setup_opponent'] );
+			$setup_opponent = filter_input( INPUT_POST, 'setup_opponent', FILTER_UNSAFE_RAW );
+			if ( $setup_opponent ) {
+				$opponent    = sanitize_text_field( $setup_opponent );
 				$args        = array(
 					'post_title'  => $opponent,
 					'post_type'   => 'wpcm_club',
@@ -418,21 +429,21 @@ class WPCM_Admin_Setup_Wizard {
 	 */
 	public function wpcm_setup_venue() {
 		?>
-		<h2><?php _e( 'Venue Setup', 'wp-club-manager' ); ?></h2>
+		<h2><?php esc_html_e( 'Venue Setup', 'wp-club-manager' ); ?></h2>
 
-		<p><?php _e( 'Setup your clubs home venue.', 'wp-club-manager' ); ?></p>
+		<p><?php esc_html_e( 'Setup your clubs home venue.', 'wp-club-manager' ); ?></p>
 
 		<div class="ui hidden divider"></div>
 
 		<form class="ui form" method="post">
 
 			<div class="inline field">
-				<label><?php _e( 'Home venue name:', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Home venue name:', 'wp-club-manager' ); ?></label>
 				<input type="text" id="setup_home" name="setup_home" placeholder="<?php esc_attr_e( 'eg. London Stadium', 'wp-club-manager' ); ?>" />
 			</div>
 
 			<div class="inline field">
-				<label><?php _e( 'Home venue address:', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Home venue address:', 'wp-club-manager' ); ?></label>
 				<input type="text" name="term_meta[wpcm_address]" class="wpcm-address" placeholder="<?php esc_attr_e( 'London Stadium, London E20 2ST', 'wp-club-manager' ); ?>" />
 			</div>
 
@@ -444,7 +455,7 @@ class WPCM_Admin_Setup_Wizard {
 			<div class="ui hidden section divider"></div>
 
 			<input type="submit" class="ui large right floated primary button button-next" value="<?php esc_attr_e( 'Save &amp; continue', 'wp-club-manager' ); ?>" name="save_step" />
-			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php _e( 'Skip this step', 'wp-club-manager' ); ?></a>
+			<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>" class="ui large right floated button"><?php esc_html_e( 'Skip this step', 'wp-club-manager' ); ?></a>
 
 			<?php wp_nonce_field( 'wpcm-setup' ); ?>
 
@@ -459,19 +470,21 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
-		if ( isset( $_POST['setup_home'] ) && ! empty( $_POST['setup_home'] ) ) {
-			$home    = sanitize_text_field( $_POST['setup_home'] );
+		$setup_home = filter_input( INPUT_POST, 'setup_home', FILTER_UNSAFE_RAW );
+		if ( $setup_home ) {
+			$home    = sanitize_text_field( $setup_home );
 			$post_id = get_option( 'wpcm_default_club' );
 			$terms   = wp_insert_term( $home, 'wpcm_venue' );
 			wp_set_object_terms( $post_id, $terms['term_id'], 'wpcm_venue' );
 
-			if ( isset( $_POST['term_meta'] ) ) {
+			$term_meta_value = filter_input( INPUT_POST, 'term_meta', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+			if ( $term_meta_value ) {
 				$t_id      = $terms['term_id'];
 				$term_meta = get_option( "taxonomy_term_$t_id" );
-				$cat_keys  = array_keys( $_POST['term_meta'] );
+				$cat_keys  = array_keys( $term_meta_value );
 				foreach ( $cat_keys as $key ) {
-					if ( isset( $_POST['term_meta'][ $key ] ) ) {
-						$term_meta[ $key ] = $_POST['term_meta'][ $key ];
+					if ( isset( $term_meta_value[ $key ] ) ) {
+						$term_meta[ $key ] = sanitize_text_field( $term_meta_value[ $key ] );
 					}
 				}
 				update_option( "taxonomy_term_$t_id", $term_meta );
@@ -489,33 +502,33 @@ class WPCM_Admin_Setup_Wizard {
 
 		?>
 
-		<h2><?php _e( 'Your website is almost ready to go!', 'wp-club-manager' ); ?></h2>
+		<h2><?php esc_html_e( 'Your website is almost ready to go!', 'wp-club-manager' ); ?></h2>
 
 		<div class="ui hidden divider"></div>
 
 		<div class="ui two column stackable left aligned grid">
 			<div class="row">
 				<div class="column">
-					<h4 class="ui header"><?php _e( 'What Next?', 'wp-club-manager' ); ?></h4>
+					<h4 class="ui header"><?php esc_html_e( 'What Next?', 'wp-club-manager' ); ?></h4>
 					<p>
-						<?php _e( 'The Setup Wizard has created your first season and setup some basic settings but before you can start adding matches we suggest that you go to the plugin settings and configure them to your needs.', 'wp-club-manager' ); ?>
+						<?php esc_html_e( 'The Setup Wizard has created your first season and setup some basic settings but before you can start adding matches we suggest that you go to the plugin settings and configure them to your needs.', 'wp-club-manager' ); ?>
 					</p>
 					<p>
-						<a class="ui button" href="<?php echo esc_url( admin_url( 'admin.php?page=wpcm-settings' ) ); ?>"><?php _e( 'Go to plugin settings', 'wp-club-manager' ); ?></a>
+						<a class="ui button" href="<?php echo esc_url( admin_url( 'admin.php?page=wpcm-settings' ) ); ?>"><?php esc_html_e( 'Go to plugin settings', 'wp-club-manager' ); ?></a>
 					</p>
 				</div>
 				<div class="column">
-					<h4 class="ui header"><?php _e( 'Need help?', 'wp-club-manager' ); ?></h4>
+					<h4 class="ui header"><?php esc_html_e( 'Need help?', 'wp-club-manager' ); ?></h4>
 					<p>
-						<?php _e( 'Our documentation provides all the information you need to setup and run your club or league website.', 'wp-club-manager' ); ?>
+						<?php esc_html_e( 'Our documentation provides all the information you need to setup and run your club or league website.', 'wp-club-manager' ); ?>
 					</p>
 					<p>
-						<?php _e( 'If you need further help or need to report an issue please visit our support forum.', 'wp-club-manager' ); ?>
+						<?php esc_html_e( 'If you need further help or need to report an issue please visit our support forum.', 'wp-club-manager' ); ?>
 					</p>
 					<div class="ui bulleted list">
-						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php _e( 'WP Club Manager documentation', 'wp-club-manager' ); ?></a>
-						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php _e( 'Getting started checklist', 'wp-club-manager' ); ?></a>
-						<a class="item" href="https://wordpress.org/support/plugin/wp-club-manager" target="_blank"><?php _e( 'Community support forum', 'wp-club-manager' ); ?></a>
+						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php esc_html_e( 'WP Club Manager documentation', 'wp-club-manager' ); ?></a>
+						<a class="item" href="https://wpclubmanager.com/documentation/" target="_blank"><?php esc_html_e( 'Getting started checklist', 'wp-club-manager' ); ?></a>
+						<a class="item" href="https://wordpress.org/support/plugin/wp-club-manager" target="_blank"><?php esc_html_e( 'Community support forum', 'wp-club-manager' ); ?></a>
 					</div>
 				</div>
 			</div>

@@ -19,11 +19,11 @@ $played          = get_post_meta( $post->ID, 'wpcm_played', true );
 
 if ( $played ) {
 
-	if ( $attendance && $show_attendance == 'yes' ) { ?>
+	if ( $attendance && 'yes' === $show_attendance ) { ?>
 
 		<div class="wpcm-match-attendance">
 
-			<?php echo _e( 'Attendance', 'wp-club-manager' ); ?>: <?php echo $attendance; ?>
+			<?php echo esc_html_e( 'Attendance', 'wp-club-manager' ); ?>: <?php echo esc_html( $attendance ); ?>
 
 		</div>
 

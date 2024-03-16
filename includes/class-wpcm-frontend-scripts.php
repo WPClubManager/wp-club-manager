@@ -7,10 +7,14 @@
  * @package     WPClubManager/Admin
  * @version     2.2.0
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Frontend_Scripts
+ */
 class WPCM_Frontend_Scripts {
 
 	/**
@@ -60,9 +64,9 @@ class WPCM_Frontend_Scripts {
 		$frontend_script_path = $assets_path . 'js/frontend/';
 		$map_service          = get_option( 'wpcm_map_select', 'google' );
 
-		if ( $map_service == 'google' ) {
+		if ( 'google' === $map_service ) {
 			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
-		} elseif ( $map_service == 'osm' ) {
+		} elseif ( 'osm' === $map_service ) {
 			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
 		}
 
@@ -89,11 +93,11 @@ class WPCM_Frontend_Scripts {
 	/**
 	 * Loads the JSON-LD structured data.
 	 *
+	 * @return void
 	 * @since  2.2.0
 	 * @access public
-	 * @return void
 	 */
-	public function load_json_ld( $post ) {
+	public function load_json_ld() {
 
 		global $post;
 

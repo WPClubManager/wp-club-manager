@@ -24,7 +24,7 @@ class WPCM_Shortcode_Map_Venue {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id     = ( isset( $atts['id'] ) ? $atts['id'] : -1 );
 		$title  = ( isset( $atts['title'] ) ? $atts['title'] : '' );

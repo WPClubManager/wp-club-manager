@@ -8,10 +8,14 @@
  * @category    Class
  * @author      Clubpress
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Autoloader
+ */
 class WPCM_Autoloader {
 
 	/**

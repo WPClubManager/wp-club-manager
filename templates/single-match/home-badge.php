@@ -17,6 +17,6 @@ $badges = wpcm_get_match_badges( $post->ID, 'crest-medium', array( 'class' => 'h
 
 <div class="wpcm-match-home-club-badge">
 
-	<?php echo $badges[0]; ?>
+	<?php echo esc_html( $badges[0] ); ?>
 
 </div>

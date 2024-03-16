@@ -35,7 +35,7 @@ class WPCM_Shortcode_Player_Gallery {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id          = ( isset( $atts['id'] ) ? $atts['id'] : null );
 		$title       = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Players Gallery', 'wp-club-manager' ) );
@@ -184,6 +184,6 @@ class WPCM_Shortcode_Player_Gallery {
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

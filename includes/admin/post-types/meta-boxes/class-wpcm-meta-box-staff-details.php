@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Staff_Details
+ */
 class WPCM_Meta_Box_Staff_Details {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -50,7 +55,7 @@ class WPCM_Meta_Box_Staff_Details {
 		if ( is_league_mode() ) {
 			?>
 			<p>
-				<label><?php _e( 'Current Club', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Current Club', 'wp-club-manager' ); ?></label>
 				<?php
 				wpcm_dropdown_posts( array(
 					'id'               => '_wpcm_staff_club',
@@ -69,14 +74,14 @@ class WPCM_Meta_Box_Staff_Details {
 		// if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes') {
 		?>
 					<p>
-				<label><?php _e( 'Job Title', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Job Title', 'wp-club-manager' ); ?></label>
 				<?php
 					$args = array(
 						'taxonomy'    => 'wpcm_jobs',
 						'name'        => 'tax_input[wpcm_jobs][]',
 						'selected'    => $job_ids,
 						'values'      => 'term_id',
-						'placeholder' => sprintf( __( 'Choose %s', 'wp-club-manager' ), __( 'jobs', 'wp-club-manager' ) ),
+						'placeholder' => __( 'Choose jobs', 'wp-club-manager' ),
 						'class'       => '',
 						'attribute'   => 'multiple',
 						'chosen'      => true,
@@ -135,32 +140,53 @@ class WPCM_Meta_Box_Staff_Details {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['_wpcm_staff_club'] ) ) {
-			update_post_meta( $post_id, '_wpcm_staff_club', $_POST['_wpcm_staff_club'] );
+		$club = filter_input( INPUT_POST, '_wpcm_staff_club', FILTER_UNSAFE_RAW );
+		if ( $club ) {
+			update_post_meta( $post_id, '_wpcm_staff_club', sanitize_text_field( $club ) );
 		}
-		if ( isset( $_POST['wpcm_dob'] ) ) {
-			update_post_meta( $post_id, 'wpcm_dob', $_POST['wpcm_dob'] );
+
+		$dob = filter_input( INPUT_POST, 'wpcm_dob', FILTER_UNSAFE_RAW );
+		if ( $dob ) {
+			update_post_meta( $post_id, 'wpcm_dob', sanitize_text_field( $dob ) );
 		}
-		if ( isset( $_POST['_wpcm_firstname'] ) ) {
-			update_post_meta( $post_id, '_wpcm_firstname', $_POST['_wpcm_firstname'] );
+
+		$firstname = filter_input( INPUT_POST, '_wpcm_firstname', FILTER_UNSAFE_RAW );
+		if ( $firstname ) {
+			update_post_meta( $post_id, '_wpcm_firstname', sanitize_text_field( $firstname ) );
 		}
-		if ( isset( $_POST['_wpcm_lastname'] ) ) {
-			update_post_meta( $post_id, '_wpcm_lastname', $_POST['_wpcm_lastname'] );
+
+		$lastname = filter_input( INPUT_POST, '_wpcm_lastname', FILTER_UNSAFE_RAW );
+		if ( $lastname ) {
+			update_post_meta( $post_id, '_wpcm_lastname', sanitize_text_field( $lastname ) );
 		}
-		if ( isset( $_POST['_wpcm_staff_email'] ) ) {
-			update_post_meta( $post_id, '_wpcm_staff_email', $_POST['_wpcm_staff_email'] );
+
+		$email = filter_input( INPUT_POST, '_wpcm_staff_email', FILTER_UNSAFE_RAW );
+		if ( $email ) {
+			update_post_meta( $post_id, '_wpcm_staff_email', sanitize_text_field( $email ) );
 		}
-		if ( isset( $_POST['_wpcm_staff_phone'] ) ) {
-			update_post_meta( $post_id, '_wpcm_staff_phone', $_POST['_wpcm_staff_phone'] );
+
+		$phone = filter_input( INPUT_POST, '_wpcm_staff_phone', FILTER_UNSAFE_RAW );
+		if ( $phone ) {
+			update_post_meta( $post_id, '_wpcm_staff_phone', sanitize_text_field( $phone ) );
 		}
-		if ( isset( $_POST['_wpcm_staff_hometown'] ) ) {
-			update_post_meta( $post_id, '_wpcm_staff_hometown', $_POST['_wpcm_staff_hometown'] );
+
+		$hometown = filter_input( INPUT_POST, '_wpcm_staff_hometown', FILTER_UNSAFE_RAW );
+		if ( $hometown ) {
+			update_post_meta( $post_id, '_wpcm_staff_hometown', sanitize_text_field( $hometown ) );
 		}
-		if ( isset( $_POST['wpcm_natl'] ) ) {
-			update_post_meta( $post_id, 'wpcm_natl', $_POST['wpcm_natl'] );
+
+		$natl = filter_input( INPUT_POST, 'wpcm_natl', FILTER_UNSAFE_RAW );
+		if ( $natl ) {
+			update_post_meta( $post_id, 'wpcm_natl', sanitize_text_field( $natl ) );
 		}
 
 		do_action( 'wpclubmanager_after_admin_staff_save', $post_id );

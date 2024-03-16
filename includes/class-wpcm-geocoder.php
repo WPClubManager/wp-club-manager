@@ -14,7 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Geocoder
+ */
 class WPCM_Geocoder {
+
 	/**
 	 * Geocoder should return this on error/not found
 	 *
@@ -38,12 +42,11 @@ class WPCM_Geocoder {
 	public $lng = 0;
 
 	/**
-	 * new Geocoder from address
+	 * New Geocoder from address
 	 *
-	 * handles url encoding and caching
+	 * Handles url encoding and caching
 	 *
 	 * @param string $address the requested address to look up
-	 * @return NOTHING
 	 */
 	public function __construct( $address ) {
 
@@ -69,10 +72,10 @@ class WPCM_Geocoder {
 	/**
 	 * Used by geocoders to make requests via curl or file_get_contents
 	 *
-	 * includes a try/catch
+	 * @param string $url
 	 *
-	 * @param string $url    the urlencoded request url
-	 * @return varies object from API or null (failed)
+	 * @return bool|string
+	 * @throws Exception
 	 */
 	private function get_url( $url ) {
 		$referer = get_site_url();
@@ -106,14 +109,16 @@ class WPCM_Geocoder {
 		}
 
 		$error_msg = 'Could not get url: ' . $url;
-		throw new Exception( $error_msg );
+		throw new Exception( esc_html( $error_msg ) );
 	}
 
 	/**
 	 * Google geocoder (https://developers.google.com/maps/documentation/geocoding/start)
 	 *
-	 * @param string $address    the urlencoded address to look up
-	 * @return varies object from API or null (failed)
+	 * @param string $address
+	 *
+	 * @return object
+	 * @throws Exception
 	 */
 	private function google_geocode( $address ) {
 
@@ -126,7 +131,7 @@ class WPCM_Geocoder {
 		$json = json_decode( $json );
 
 		/* found location */
-		if ( $json->status == 'OK' ) {
+		if ( 'OK' === $json->status ) {
 
 			$location = $json->results[0]->geometry->location;
 

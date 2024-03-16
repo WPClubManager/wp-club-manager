@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Settings_Players' ) ) :
 
+	/**
+	 * WPCM_Settings_Players
+	 */
 	class WPCM_Settings_Players extends WPCM_Settings_Page {
 
 		/**
@@ -199,6 +202,7 @@ if ( ! class_exists( 'WPCM_Settings_Players' ) ) :
 			$settings[] = array(
 				'title' => __( 'Player Image Sizes', 'wp-club-manager' ),
 				'type'  => 'title',
+				/* translators: 1: regenerate thumbnails URLS. */
 				'desc'  => sprintf( __( '<p>These settings affect the actual dimensions of images in player and staff profiles - the display on the front-end will still be affected by CSS styles. After changing these settings you may need to <a href="%s">regenerate your thumbnails</a>.</p>', 'wp-club-manager' ), 'http://wordpress.org/extend/plugins/regenerate-thumbnails/' ),
 				'id'    => 'image_options',
 			);

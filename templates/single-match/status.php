@@ -26,7 +26,7 @@ if ( $overtime || $shootout ) { ?>
 		if ( $overtime ) {
 			?>
 
-			<span class="wpcm-match-overtime"><?php _e( 'AET', 'wp-club-manager' ); ?></span>
+			<span class="wpcm-match-overtime"><?php esc_html_e( 'AET', 'wp-club-manager' ); ?></span>
 
 			<?php
 		}
@@ -38,8 +38,8 @@ if ( $overtime || $shootout ) { ?>
 			$delimiter  = get_option( 'wpcm_match_goals_delimiter' );
 			?>
 
-			<span class="wpcm-match-shootout"><?php _e( 'Pens:', 'wp-club-manager' ); ?> <?php echo $home_goals; ?> <?php echo $delimiter; ?> <?php echo $away_goals; ?></span>
-		
+			<span class="wpcm-match-shootout"><?php esc_html_e( 'Pens:', 'wp-club-manager' ); ?> <?php echo esc_html( $home_goals ); ?> <?php echo esc_html( $delimiter ); ?> <?php echo esc_html( $away_goals ); ?></span>
+
 			<?php
 		}
 		?>

@@ -20,7 +20,7 @@ if ( $video_url ) :
 	<div class="wpcm-match-video">
 		<?php
 		global $wp_embed;
-		echo $wp_embed->autoembed( $video_url );
+		echo $wp_embed->autoembed( $video_url ) // phpcs:ignore
 		?>
 	</div>
 	<?php

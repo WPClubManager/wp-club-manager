@@ -15,35 +15,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wpcm-map_venue-shortcode wpcm-map-venue">
 
 	<?php
-	echo ( $title ? '<h3>' . $title . '</h3>' : '' );
+	echo ( $title ? '<h3>' . esc_html( $title ) . '</h3>' : '' );
 
-	if ( $service == 'osm' ) {
+	if ( 'osm' === $service ) {
 		?>
-		
-		<div id="wpcm-osm-map" style="height:<?php echo $height; ?>px;"></div>
+
+		<div id="wpcm-osm-map" style="height:<?php echo esc_attr( $height ); ?>px;"></div>
 
 		<script>
 
 			var mapOptions = {
-				center: [<?php echo $latitude; ?>, <?php echo $longitude; ?>],
-				zoom: <?php echo $zoom; ?>
+				center: [<?php echo esc_html( $latitude ); ?>, <?php echo esc_html( $longitude ); ?>],
+				zoom: <?php echo esc_html( $zoom ); ?>
 			}
 			var wpcm_map = new L.map('wpcm-osm-map', mapOptions);
 			var myIcon = new L.Icon.Default();
 			myIcon.options.shadowSize = [0,0];
-			var marker = L.marker([<?php echo $latitude; ?>, <?php echo $longitude; ?>], {icon: myIcon});
-			
+			var marker = L.marker([<?php echo esc_html( $latitude ); ?>, <?php echo esc_html( $longitude ); ?>], {icon: myIcon});
+
 			<?php
-			if ( $layers === 'mapbox' ) {
+			if ( 'mapbox' === $layers ) {
 				?>
 
 				var layer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 					attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 					maxZoom: 18,
-					id: '<?php echo $maptype; ?>',
+					id: '<?php echo esc_html( $maptype ); ?>',
 					tileSize: 512,
 					zoomOffset: -1,
-					accessToken: '<?php echo $api_key; ?>'
+					accessToken: '<?php echo esc_html( $api_key ); ?>'
 				});
 
 				<?php
@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 			}
 			?>
-			
+
 			wpcm_map.addLayer(layer);
 			marker.addTo(wpcm_map);
 
@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	} else {
 		?>
 
-		<iframe class="wpcm-google-map wpcm-venue-map" width="<?php echo $width; ?>" height="<?php echo $height; ?>" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=<?php echo $api_key; ?>&amp;q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen></iframe>
+		<iframe class="wpcm-google-map wpcm-venue-map" width="<?php echo esc_attr( $width ); ?>" height="<?php echo esc_attr( $height ); ?>" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=<?php echo esc_attr( $api_key ); ?>&amp;q=<?php echo esc_attr( $address ); ?>&amp;center=<?php echo esc_attr( $latitude ); ?>,<?php echo esc_attr( $longitude ); ?>&amp;zoom=<?php echo esc_attr( $zoom ); ?>&amp;maptype=<?php echo esc_attr( $maptype ); ?>" allowfullscreen></iframe>
 
 		<?php
 	}

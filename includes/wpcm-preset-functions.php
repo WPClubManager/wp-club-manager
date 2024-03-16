@@ -1893,6 +1893,9 @@ function wpcm_get_sport_presets() {
 	));
 }
 
+/**
+ * @return array
+ */
 function wpcm_get_sport_options() {
 	$sports  = wpcm_get_sport_presets();
 	$options = array();

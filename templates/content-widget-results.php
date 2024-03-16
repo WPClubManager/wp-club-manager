@@ -18,38 +18,38 @@ $timestamp = strtotime( $post->post_date ); ?>
 	<div class="fixture-meta">
 		<?php if ( $show_team ) { ?>
 			<div class="team">
-				<span><?php echo $team[0]; ?></span>
+				<span><?php echo esc_html( $team[0] ); ?></span>
 			</div>
 			<?php
 		}
 		if ( $show_comp ) {
 			?>
 			<div class="competition">
-				<span><?php echo $comp[0]; ?>&nbsp;<?php echo $comp[2]; ?></span>
+				<span><?php echo esc_html( $comp[0] ); ?>&nbsp;<?php echo esc_html( $comp[2] ); ?></span>
 			</div>
 		<?php } ?>
 	</div>
-	<a href="<?php echo get_permalink(); ?>">
+	<a href="<?php echo esc_url( get_permalink() ); ?>">
 		<div class="clubs">
 			<h4 class="home-clubs">
-				<div class="home-logo"><?php echo $badges[0]; ?></div>
-				<?php echo $sides[0]; ?>
-				<div class="score"><?php echo ( $played && $show_score ? $score[1] : '' ); ?></div>
+				<div class="home-logo"><?php echo esc_html( $badges[0] ); ?></div>
+				<?php echo esc_html( $sides[0] ); ?>
+				<div class="score"><?php echo ( $played && $show_score ? esc_html( $score[1] ) : '' ); ?></div>
 			</h4>
 			<h4 class="away-clubs">
-				<div class="away-logo"><?php echo $badges[1]; ?></div>
-				<?php echo $sides[1]; ?>
-				<div class="score"><?php echo ( $played && $show_score ? $score[2] : '' ); ?></div>
+				<div class="away-logo"><?php echo esc_html( $badges[1] ); ?></div>
+				<?php echo esc_html( $sides[1] ); ?>
+				<div class="score"><?php echo ( $played && $show_score ? esc_html( $score[2] ) : '' ); ?></div>
 			</h4>
 		</div>
 	</a>
 	<div class="wpcm-date">
 		<div class="kickoff">
 			<?php
-			echo ( $show_date ? date_i18n( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ), $timestamp ) : '' );
+			echo ( $show_date ? esc_html( date_i18n( apply_filters( 'wpclubmanager_match_date_format', get_option( 'date_format' ) ), $timestamp ) ) : '' );
 			echo ( $show_date && $show_time ? ' - ' : '' );
-			echo ( $show_time ? date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) : '' );
+			echo ( $show_time ? esc_html( date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ) : '' );
 			?>
-		</div>			
+		</div>
 	</div>
 </li>

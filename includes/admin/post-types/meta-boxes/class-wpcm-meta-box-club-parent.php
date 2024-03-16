@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Club_Parent
+ */
 class WPCM_Meta_Box_Club_Parent {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -37,7 +42,7 @@ class WPCM_Meta_Box_Club_Parent {
 		} ?>
 
 		<p>
-			<label><?php _e( 'Parent Club', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Parent Club', 'wp-club-manager' ); ?></label>
 			<?php
 			wpcm_dropdown_posts(array(
 				'name'             => 'parent_id',
@@ -53,7 +58,7 @@ class WPCM_Meta_Box_Club_Parent {
 			));
 			if ( $club ) {
 				?>
-				<span class="edit"><a href="<?php echo get_edit_post_link( $club ); ?>"><?php _e( 'Edit club', 'wp-club-manager' ); ?></span></a>
+				<span class="edit"><a href="<?php echo esc_url( get_edit_post_link( $club ) ); ?>"><?php esc_html_e( 'Edit club', 'wp-club-manager' ); ?></span></a>
 				<?php
 			}
 			?>
@@ -63,14 +68,13 @@ class WPCM_Meta_Box_Club_Parent {
 		if ( $children ) {
 			?>
 			<span class="label">
-				<?php // echo ( $count > 1 ? __( 'Child Clubs', 'wp-club-manager' ) : __( 'Child Club', 'wp-club-manager' ) ); ?>
-				<?php echo _n( 'Child Club', 'Child Clubs', $count, 'wp-club-manager' ); ?>
+				<?php echo esc_html( _n( 'Child Club', 'Child Clubs', $count, 'wp-club-manager' ) ); ?>
 			</span>
 			<ul>
 				<?php
 				foreach ( $children as $child ) {
 					?>
-					<li><a href="<?php echo get_edit_post_link( $child->ID ); ?>"><?php echo $child->post_title; ?></a></li>
+					<li><a href="<?php echo esc_url( get_edit_post_link( $child->ID ) ); ?>"><?php echo esc_html( $child->post_title ); ?></a></li>
 					<?php
 				}
 				?>
@@ -81,11 +85,18 @@ class WPCM_Meta_Box_Club_Parent {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['parent_id'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_parent', $_POST['parent_id'] );
+		$parent = filter_input( INPUT_POST, 'parent_id', FILTER_VALIDATE_INT );
+		if ( isset( $parent ) ) {
+			update_post_meta( $post_id, '_wpcm_club_parent', $parent );
 		}
 	}
 }

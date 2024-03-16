@@ -17,6 +17,6 @@ $side = wpcm_get_match_clubs( $post->ID ); ?>
 
 <div class="wpcm-match-home-club">
 
-	<?php echo $side[0]; ?>
+	<?php echo esc_html( $side[0] ); ?>
 
 </div>

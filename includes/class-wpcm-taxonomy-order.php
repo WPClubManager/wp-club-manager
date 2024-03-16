@@ -30,6 +30,8 @@ class WPCM_Taxonomy_Order {
 
 	/**
 	 * Order the terms on the admin side.
+	 *
+	 * @param WP_Screen $screen
 	 */
 	public function admin_order_terms( WP_Screen $screen ) {
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Form data is not being used.
@@ -89,7 +91,10 @@ class WPCM_Taxonomy_Order {
 	 * @param string $tax_slug The taxonomy's slug.
 	 */
 	public function default_term_order( $tax_slug ) {
-		$terms = get_terms( $tax_slug, array( 'hide_empty' => false ) );
+		$terms = get_terms( array(
+			'taxonomy'   => $tax_slug,
+			'hide_empty' => false,
+		) );
 		// $order = 1;
 		$order = $this->get_max_taxonomy_order( $tax_slug );
 		foreach ( $terms as $term ) {
@@ -102,6 +107,10 @@ class WPCM_Taxonomy_Order {
 
 	/**
 	 * Get the maximum tax_position for this taxonomy. This will be applied to terms that don't have a tax position.
+	 *
+	 * @param string $tax_slug
+	 *
+	 * @return int
 	 */
 	private function get_max_taxonomy_order( $tax_slug ) {
 		global $wpdb;
@@ -109,13 +118,13 @@ class WPCM_Taxonomy_Order {
 			$wpdb->prepare(
 				"SELECT MAX( CAST( tm.meta_value AS UNSIGNED ) )
 				FROM $wpdb->terms t
-				JOIN $wpdb->term_taxonomy tt ON t.term_id = tt.term_id AND tt.taxonomy = '%s'
+				JOIN $wpdb->term_taxonomy tt ON t.term_id = tt.term_id AND tt.taxonomy = %s
 				JOIN $wpdb->termmeta tm ON tm.term_id = t.term_id WHERE tm.meta_key = 'tax_position'",
 				$tax_slug
 			)
 		);
 		$max_term_order = is_array( $max_term_order ) ? current( $max_term_order ) : 0;
-		return (int) $max_term_order === 0 || empty( $max_term_order ) ? 1 : (int) $max_term_order + 1;
+		return 0 === (int) $max_term_order || empty( $max_term_order ) ? 1 : (int) $max_term_order + 1;
 	}
 
 	/**
@@ -161,8 +170,8 @@ class WPCM_Taxonomy_Order {
 			wp_send_json_error();
 		}
 
-		$taxonomy_ordering_data = filter_var_array( wp_unslash( $_POST['taxonomy_ordering_data'] ), FILTER_SANITIZE_NUMBER_INT );
-		$base_index             = filter_var( wp_unslash( $_POST['base_index'] ), FILTER_SANITIZE_NUMBER_INT );
+		$taxonomy_ordering_data = filter_var_array( wp_unslash( $_POST['taxonomy_ordering_data'] ), FILTER_SANITIZE_NUMBER_INT ); // phpcs:ignore
+		$base_index             = filter_input( INPUT_POST, 'base_index', FILTER_SANITIZE_NUMBER_INT );
 		foreach ( $taxonomy_ordering_data as $order_data ) {
 
 			// Due to the way WordPress shows parent categories on multiple pages, we need to check if the parent category's position should be updated.

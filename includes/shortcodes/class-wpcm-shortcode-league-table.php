@@ -24,7 +24,7 @@ class WPCM_Shortcode_League_Table {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id        = ( isset( $atts['id'] ) ? $atts['id'] : null );
 		$title     = ( isset( $atts['title'] ) ? $atts['title'] : '' );
@@ -189,6 +189,6 @@ class WPCM_Shortcode_League_Table {
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

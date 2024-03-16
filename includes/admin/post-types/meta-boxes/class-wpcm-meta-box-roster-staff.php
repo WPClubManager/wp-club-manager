@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Roster_Staff
+ */
 class WPCM_Meta_Box_Roster_Staff {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -70,12 +75,12 @@ class WPCM_Meta_Box_Roster_Staff {
 		<div id="wpcm-staff-roster-stats">
 			<table>
 				<?php
-				if ( $staff != null ) {
+				if ( null != $staff ) {
 					?>
 					<thead>
 						<tr>
 							<th></th>
-							<th><?php _e( 'Name', 'wp-club-manager' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'wp-club-manager' ); ?></th>
 							<th></th>
 						</tr>
 					</thead>
@@ -88,17 +93,17 @@ class WPCM_Meta_Box_Roster_Staff {
 				foreach ( $staff as $employee ) {
 					?>
 
-					<tr data-club="<?php echo $employee->ID; ?>">
+					<tr data-club="<?php echo esc_attr( $employee->ID ); ?>">
 
 						<td>
 							<input type="checkbox" name="record">
 						</td>
 						<td class="club">
-							<input type="hidden" name="wpcm_roster_staff[]" value="<?php echo $employee->ID; ?>" />
-							<?php echo $employee->post_title; ?>
+							<input type="hidden" name="wpcm_roster_staff[]" value="<?php echo esc_attr( $employee->ID ); ?>" />
+							<?php echo esc_html( $employee->post_title ); ?>
 						</td>
 						<td class="roster-actions">
-							<a class="" href="<?php echo get_edit_post_link( $employee->ID ); ?>"><?php _e( 'Edit', 'wp-club-manager' ); ?></a>
+							<a class="" href="<?php echo esc_url( get_edit_post_link( $employee->ID ) ); ?>"><?php esc_html_e( 'Edit', 'wp-club-manager' ); ?></a>
 						</td>
 
 					</tr>
@@ -121,9 +126,9 @@ class WPCM_Meta_Box_Roster_Staff {
 				));
 				?>
 
-				<input type="button" class="button-secondary wpcm-staff-roster-add-row" value="<?php _e( 'Add staff', 'wp-club-manager' ); ?>">
+				<input type="button" class="button-secondary wpcm-staff-roster-add-row" value="<?php esc_html_e( 'Add staff', 'wp-club-manager' ); ?>">
 			</div>
-			<a class="wpcm-staff-roster-delete-row <?php echo ( $staff != null ? '' : 'hidden-button' ); ?>"><?php _e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-staff-roster-delete-row <?php echo ( null != $staff ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 
@@ -132,11 +137,18 @@ class WPCM_Meta_Box_Roster_Staff {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_roster_staff'] ) ) {
-			$staff = $_POST['wpcm_roster_staff'];
+		$staff_data = filter_input( INPUT_POST, 'wpcm_roster_staff', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $staff_data ) {
+			$staff = $staff_data;
 		} else {
 			$staff = array();
 		}

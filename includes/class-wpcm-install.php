@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Install' ) ) :
 
+	/**
+	 * WPCM_Install
+	 */
 	class WPCM_Install {
 
 		/**
@@ -68,6 +71,9 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			}
 		}
 
+		/**
+		 * @return bool
+		 */
 		private function is_new_install() {
 			return is_null( get_option( 'wpclubmanager_version', null ) );
 		}
@@ -128,6 +134,8 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 		/**
 		 * Handle updates
+		 *
+		 * @param string|null $version
 		 */
 		public function updates( $version = null ) {
 
@@ -163,7 +171,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		 *
 		 * @access public
 		 */
-		function create_options() {
+		public function create_options() {
 			// Include settings so that we can run through defaults
 			include_once 'admin/class-wpcm-admin-settings.php';
 
@@ -201,7 +209,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			}
 
 			if ( ! isset( $wp_roles ) ) {
-				$wp_roles = new WP_Roles();
+				$wp_roles = new WP_Roles(); // phpcs:ignore
 			}
 
 			// Player role
@@ -317,7 +325,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 			if ( class_exists( 'WP_Roles' ) ) {
 				if ( ! isset( $wp_roles ) ) {
-					$wp_roles = new WP_Roles();
+					$wp_roles = new WP_Roles(); // phpcs:ignore
 				}
 			}
 
@@ -343,7 +351,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		 * @param string $new_value
 		 * @return string
 		 */
-		function pre_update_option_active_plugins( $new_value ) {
+		public function pre_update_option_active_plugins( $new_value ) {
 			$old_value = (array) get_option( 'active_plugins' );
 
 			if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value ) && in_array( W3TC_FILE, (array) $old_value ) ) {
@@ -351,6 +359,8 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 				try {
 					$this->_config->save();
 				} catch ( Exception $ex ) {
+					// not handled
+					$test = 1;
 				}
 			}
 
@@ -362,7 +372,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		 *
 		 * @return void
 		 */
-		function in_plugin_update_message() {
+		public function in_plugin_update_message() {
 			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/wp-club-manager/trunk/readme.txt' );
 
 			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
@@ -394,7 +404,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 				if ( preg_match( $regexp, $response['body'], $matches ) ) {
 					$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
 
-					_e( 'What\'s new:', 'wp-club-manager' ) . '<div style="font-weight: normal;">';
+					esc_html_e( 'What\'s new:', 'wp-club-manager' ) . '<div style="font-weight: normal;">';
 
 					$ul = false;
 
@@ -407,7 +417,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 							$line = preg_replace( '~^\s*\*\s*~', '', htmlspecialchars( $line ) );
 
-							echo '<li style="width: 50%; margin: 0; float: left; ' . ( $index % 2 == 0 ? 'clear: left;' : '' ) . '">' . esc_html( $line ) . '</li>';
+							echo '<li style="width: 50%; margin: 0; float: left; ' . ( 0 === $index % 2 ? 'clear: left;' : '' ) . '">' . esc_html( $line ) . '</li>';
 						} else {
 
 							$version = trim( current( explode( '-', str_replace( '=', '', $line ) ) ) );

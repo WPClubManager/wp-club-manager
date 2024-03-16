@@ -13,18 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wpcm-players-shortcode">
 
-	<?php echo ( $title ? '<h3 class="wpcm-sc-title">' . $title . '</h3>' : '' ); ?>
+	<?php echo ( $title ? '<h3 class="wpcm-sc-title">' . esc_html( $title ) . '</h3>' : '' ); ?>
 
 	<table>
 		<thead>
 			<tr>
-			
+
 			<?php foreach ( $stats as $stat ) { ?>
-				
-				<th class="<?php echo $stat; ?>">
-					<?php echo $stats_labels[ $stat ]; ?>
+
+				<th class="<?php echo esc_attr( $stat ); ?>">
+					<?php echo esc_html( $stats_labels[ $stat ] ); ?>
 				</th>
-			
+
 			<?php } ?>
 
 			</tr>
@@ -41,11 +41,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 
 			<tr>
-			
+
 			<?php foreach ( $stats as $stat ) { ?>
 
-				<td class="<?php echo $stat; ?>">
-					<?php echo $staff_detail[ $stat ]; ?>
+				<td class="<?php echo esc_attr( $stat ); ?>">
+					<?php echo esc_html( $staff_detail[ $stat ] ); ?>
 				</td>
 
 			<?php } ?>
@@ -57,8 +57,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</tbody>
 	</table>
 	<?php if ( isset( $linkpage ) ) { ?>
-		<a href="<?php echo get_page_link( $linkpage ); ?>" class="wpcm-view-link">
-			<?php echo $linktext; ?>
+		<a href="<?php echo esc_url( get_page_link( $linkpage ) ); ?>" class="wpcm-view-link">
+			<?php echo esc_html( $linktext ); ?>
 		</a>
 	<?php } ?>
 </div>

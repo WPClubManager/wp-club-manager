@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( class_exists( 'WP_Importer' ) ) {
+
+	/**
+	 *  WPCM_Match_Importer
+	 */
 	class WPCM_Match_Importer extends WPCM_Importer {
 
 		/**
@@ -40,18 +44,19 @@ if ( class_exists( 'WP_Importer' ) ) {
 		/**
 		 * import function.
 		 *
-		 * @param mixed $file
+		 * @param array $array
+		 * @param array $columns
 		 */
-		function import( $array = array(), $columns = array( 'post_title' ) ) {
+		public function import( $array = array(), $columns = array( 'post_title' ) ) {
+			$this->imported = 0;
+			$this->skipped  = 0;
 
-			$this->imported = $this->skipped = 0;
-
-			if ( ! is_array( $array ) || ! sizeof( $array ) ) :
+			if ( ! is_array( $array ) || ! count( $array ) ) :
 				$this->footer();
 				die();
 			endif;
 
-			$rows = array_chunk( $array, sizeof( $columns ) );
+			$rows = array_chunk( $array, count( $columns ) );
 
 			$date_format              = 'yyyy/mm/dd';
 			$wpcm_player_stats_labels = wpcm_get_preset_labels();
@@ -243,7 +248,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 						$cards = wpcm_stats_cards();
 						foreach ( $cards as $card ) {
-							if ( array_key_exists( $card, $stats_combine ) && $stats_combine[ $card ] == '0' ) {
+							if ( array_key_exists( $card, $stats_combine ) && '0' == $stats_combine[ $card ] ) {
 								unset( $stats_combine[ $card ] );
 							}
 						}
@@ -263,9 +268,10 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endforeach;
 
 			// Show import result
-			echo '<div class="updated settings-error below-h2"><p>
-				' . sprintf( __( 'Import complete - imported <strong>%1$s</strong> matches and skipped <strong>%2$s</strong>.', 'wp-club-manager' ), $this->imported, $this->skipped ) . '
-			</p></div>';
+			echo '<div class="updated settings-error below-h2"><p>';
+			/* translators: 1: imported total 2: skipped total */
+			echo wp_kses_post( sprintf( __( 'Import complete - imported <strong>%1$s</strong> matches and skipped <strong>%2$s</strong>.', 'wp-club-manager' ), $this->imported, $this->skipped ) );
+			echo '</p></div>';
 
 			$this->import_end();
 		}
@@ -274,7 +280,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		public function import_end() {
-			echo '<p>' . __( 'All done!', 'wp-club-manager' ) . ' <a href="' . admin_url( 'edit.php?post_type=wpcm_match' ) . '">' . __( 'View Matches', 'wp-club-manager' ) . '</a></p>';
+			echo '<p>' . esc_html__( 'All done!', 'wp-club-manager' ) . ' <a href="' . esc_url( admin_url( 'edit.php?post_type=wpcm_match' ) ) . '">' . esc_html__( 'View Matches', 'wp-club-manager' ) . '</a></p>';
 
 			do_action( 'import_end' );
 		}
@@ -283,7 +289,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * header function.
 		 */
 		public function header() {
-			echo '<h2>' . __( 'Import Matches', 'wp-club-manager' ) . '</h2>';
+			echo '<h2>' . esc_html__( 'Import Matches', 'wp-club-manager' ) . '</h2>';
 		}
 
 		/**
@@ -291,8 +297,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function greet() {
 			echo '<div class="narrow">';
-			echo '<p>' . __( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ) . '</p>';
-			echo '<p>' . sprintf( __( 'Matches need to be defined with columns in a specific order (12 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/match-sample.csv' ) . '</p>';
+			echo '<p>' . esc_html__( 'Choose a .csv file to upload, then click "Upload file and import".', 'wp-club-manager' ) . '</p>';
+			/* translators: 1: match-sample.csv URL */
+			echo '<p>' . wp_kses_post( sprintf( __( 'Matches need to be defined with columns in a specific order (12 columns). <a href="%s">Click here to download a sample</a>.', 'wp-club-manager' ), esc_url( plugin_dir_url( WPCM_PLUGIN_FILE ) . 'dummy-data/match-sample.csv' ) ) ) . '</p>';
 			wp_import_upload_form( 'admin.php?import=wpclubmanager_match_csv&step=1' );
 			echo '</div>';
 		}

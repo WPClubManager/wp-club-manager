@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post; ?>
 
 <div class="wpcm-profile-image">
-			
-	<?php echo wpcm_get_player_thumbnail( $post->ID, 'player_single' ); ?>
+
+	<?php echo esc_html( wpcm_get_player_thumbnail( $post->ID, 'player_single' ) ); ?>
 
 </div>

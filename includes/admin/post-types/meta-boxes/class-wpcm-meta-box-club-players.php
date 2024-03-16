@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Club_Players
+ */
 class WPCM_Meta_Box_Club_Players {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -38,11 +43,11 @@ class WPCM_Meta_Box_Club_Players {
 		<div id="wpcm-club-player-stats">
 			<table>
 				<?php
-				if ( $players != null ) {
+				if ( null != $players ) {
 					?>
 					<thead>
 						<tr>
-							<th><?php _e( 'Name', 'wp-club-manager' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'wp-club-manager' ); ?></th>
 							<th></th>
 						</tr>
 					</thead>
@@ -55,13 +60,13 @@ class WPCM_Meta_Box_Club_Players {
 				foreach ( $players as $player ) {
 					?>
 
-					<tr data-club="<?php echo $player->ID; ?>">
+					<tr data-club="<?php echo esc_html( $player->ID ); ?>">
 
 						<td class="club">
-							<?php echo $player->post_title; ?>
+							<?php echo esc_html( $player->post_title ); ?>
 						</td>
 						<td class="roster-actions">
-							<a class="" href="<?php echo get_edit_post_link( $player->ID ); ?>"><?php _e( 'Manage', 'wp-club-manager' ); ?></a>
+							<a class="" href="<?php echo esc_url( get_edit_post_link( $player->ID ) ); ?>"><?php esc_html_e( 'Manage', 'wp-club-manager' ); ?></a>
 						</td>
 
 					</tr>

@@ -18,12 +18,40 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 	 * WPCM_License Class
 	 */
 	class WPCM_License {
+
+		/**
+		 * @var string
+		 */
 		private $file;
+
+		/**
+		 * @var string
+		 */
 		private $license;
+
+		/**
+		 * @var string
+		 */
 		private $item_name;
+
+		/**
+		 * @var string
+		 */
 		private $item_shortname;
+
+		/**
+		 * @var string
+		 */
 		private $version;
+
+		/**
+		 * @var string
+		 */
 		private $author;
+
+		/**
+		 * @var string
+		 */
 		private $api_url = 'https://wpclubmanager.com';
 
 		/**
@@ -36,7 +64,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 		 * @param string $_optname
 		 * @param string $_api_url
 		 */
-		function __construct( $_file, $_item_name, $_version, $_author, $_optname = null, $_api_url = null ) {
+		public function __construct( $_file, $_item_name, $_version, $_author, $_optname = null, $_api_url = null ) {
 
 			$this->file           = $_file;
 			$this->item_name      = $_item_name;
@@ -128,6 +156,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			$wpcm_license_settings = array(
 				array(
 					'id'      => $this->item_shortname . '_license_key',
+					/* translators: 1: item name. */
 					'name'    => sprintf( __( '%1$s License Key', 'wp-club-manager' ), $this->item_name ),
 					'desc'    => '',
 					'type'    => 'license_key',
@@ -151,16 +180,17 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 				return;
 			}
 
-			foreach ( $_POST as $key => $value ) {
+			foreach ( $_POST as $key => $value ) { // phpcs:ignore
 				if ( false !== strpos( $key, 'license_key_deactivate' ) ) {
 					// Don't activate a key when deactivating a different key
 					return;
 				}
 			}
 
-			if ( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce' ], $this->item_shortname . '_license_key-nonce' ) ) {
+			$nonce = filter_input( INPUT_REQUEST, $this->item_shortname . '_license_key-nonce', FILTER_UNSAFE_RAW );
+			if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), $this->item_shortname . '_license_key-nonce' ) ) {
 
-				wp_die( __( 'Nonce verification failed', 'wp-club-manager' ), __( 'Error', 'wp-club-manager' ), array( 'response' => 403 ) );
+				wp_die( esc_html__( 'Nonce verification failed', 'wp-club-manager' ), esc_html__( 'Error', 'wp-club-manager' ), array( 'response' => 403 ) );
 
 			}
 
@@ -168,7 +198,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 				return;
 			}
 
-			$license = sanitize_text_field( $_POST[ $this->item_shortname . '_license_key' ] );
+			$license = filter_input( INPUT_POST, $this->item_shortname . '_license_key', FILTER_UNSAFE_RAW );
 
 			if ( empty( $license ) ) {
 				return;
@@ -177,7 +207,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			// Data to send to the API
 			$api_params = array(
 				'edd_action' => 'activate_license',
-				'license'    => $license,
+				'license'    => sanitize_text_field( $license ),
 				'item_name'  => urlencode( $this->item_name ),
 			);
 
@@ -224,9 +254,10 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 				return;
 			}
 
-			if ( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce' ], $this->item_shortname . '_license_key-nonce' ) ) {
+			$nonce = filter_input( INPUT_REQUEST, $this->item_shortname . '_license_key-nonce', FILTER_UNSAFE_RAW );
+			if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), $this->item_shortname . '_license_key-nonce' ) ) {
 
-				wp_die( __( 'Nonce verification failed', 'wp-club-manager' ), __( 'Error', 'wp-club-manager' ), array( 'response' => 403 ) );
+				wp_die( esc_html__( 'Nonce verification failed', 'wp-club-manager' ), esc_html__( 'Error', 'wp-club-manager' ), array( 'response' => 403 ) );
 
 			}
 
@@ -307,6 +338,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 						break;
 
 					default:
+						/* translators: 1: error code. */
 						$message = sprintf( __( 'There was a problem activating your license key, please try again or contact support. Error code: %s', 'wp-club-manager' ), $license_error->error );
 						break;
 
@@ -316,7 +348,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			if ( ! empty( $message ) ) {
 
 				echo '<div class="error">';
-				echo '<p>' . $message . '</p>';
+				echo '<p>' . esc_html( $message ) . '</p>';
 				echo '</div>';
 
 			}

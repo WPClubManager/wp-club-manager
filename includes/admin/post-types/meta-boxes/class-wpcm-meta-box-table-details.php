@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Table_Details
+ */
 class WPCM_Meta_Box_Table_Details {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -40,7 +45,7 @@ class WPCM_Meta_Box_Table_Details {
 		}
 
 		$default_club = get_default_club();
-		if ( $default_club !== null && has_teams() ) {
+		if ( null !== $default_club && has_teams() ) {
 			$teams = get_the_terms( $post->ID, 'wpcm_team' );
 			if ( is_array( $teams ) ) {
 				$team = $teams[0]->term_id;
@@ -48,9 +53,9 @@ class WPCM_Meta_Box_Table_Details {
 				$team = 0;
 			}
 		} ?>
-		
+
 		<p>
-			<label><?php _e( 'Competition', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Competition', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_comp',
@@ -65,7 +70,7 @@ class WPCM_Meta_Box_Table_Details {
 			?>
 		</p>
 		<p>
-			<label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Season', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_season',
@@ -80,10 +85,10 @@ class WPCM_Meta_Box_Table_Details {
 			?>
 		</p>
 		<?php
-		if ( $default_club !== null && has_teams() ) {
+		if ( null != $default_club && has_teams() ) {
 			?>
 			<p>
-				<label><?php _e( 'Team', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Team', 'wp-club-manager' ); ?></label>
 				<?php
 				wp_dropdown_categories(array(
 					'taxonomy'     => 'wpcm_team',
@@ -107,17 +112,28 @@ class WPCM_Meta_Box_Table_Details {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_table_comp'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_table_comp'], 'wpcm_comp' );
+		$table_id = filter_input( INPUT_POST, 'wpcm_table_comp', FILTER_VALIDATE_INT );
+		if ( $table_id ) {
+			wp_set_post_terms( $post_id, $table_id, 'wpcm_comp' );
 		}
-		if ( isset( $_POST['wpcm_table_season'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_table_season'], 'wpcm_season' );
+
+		$season_id = filter_input( INPUT_POST, 'wpcm_table_season', FILTER_VALIDATE_INT );
+		if ( $season_id ) {
+			wp_set_post_terms( $post_id, $season_id, 'wpcm_season' );
 		}
-		if ( isset( $_POST['wpcm_table_team'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_table_team'], 'wpcm_team' );
+
+		$team_id = filter_input( INPUT_POST, 'wpcm_table_team', FILTER_VALIDATE_INT );
+		if ( $team_id ) {
+			wp_set_post_terms( $post_id, $team_id, 'wpcm_team' );
 		}
 
 		do_action( 'delete_plugin_transients' );

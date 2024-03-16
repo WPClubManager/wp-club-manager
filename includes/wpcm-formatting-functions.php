@@ -88,8 +88,10 @@ function wpcm_clean( $var ) {
  * Subvalue sorting.
  *
  * @access public
- * @param array
+ *
+ * @param array  $a
  * @param string $subkey
+ *
  * @return array
  */
 function subval_sort( $a, $subkey ) {
@@ -99,7 +101,7 @@ function subval_sort( $a, $subkey ) {
 		$b[ $k ] = strtolower( $v[ $subkey ] ?? '' );
 	}
 
-	if ( $b != null ) {
+	if ( null != $b ) {
 
 		asort( $b );
 
@@ -114,6 +116,13 @@ function subval_sort( $a, $subkey ) {
 	return array();
 }
 
+/**
+ * @param array $arr
+ * @param mixed $key
+ * @param mixed $default
+ *
+ * @return mixed|null
+ */
 function wpcm_array_value( $arr = array(), $key = 0, $default = null ) {
 	return ( isset( $arr[ $key ] ) ? $arr[ $key ] : $default );
 }
@@ -138,6 +147,12 @@ function wpcm_array_value( $arr = array(), $key = 0, $default = null ) {
  * @return void
  */
 if ( ! function_exists( 'wpcm_array_values_to_int' ) ) {
+	/**
+	 * @param mixed  $value
+	 * @param string $key
+	 *
+	 * @return void
+	 */
 	function wpcm_array_values_to_int( &$value, $key ) {
 
 		$value = (int) $value;
@@ -152,6 +167,11 @@ if ( ! function_exists( 'wpcm_array_values_to_int' ) ) {
  * @return mixed
  */
 if ( ! function_exists( 'wpcm_array_filter_checked' ) ) {
+	/**
+	 * @param array $value
+	 *
+	 * @return bool
+	 */
 	function wpcm_array_filter_checked( $value ) {
 
 		return ( array_key_exists( 'checked', $value ) );
@@ -185,7 +205,8 @@ if ( ! function_exists( 'wpcm_array_filter_checked' ) ) {
  *
  * This function transforms the php.ini notation for numbers (like '2M') to an integer.
  *
- * @param $size
+ * @param mixed $size
+ *
  * @return int
  */
 function wpcm_let_to_num( $size ) {
@@ -194,14 +215,19 @@ function wpcm_let_to_num( $size ) {
 	switch ( strtoupper( $l ) ) {
 		case 'P':
 			$ret *= 1024;
+			break;
 		case 'T':
 			$ret *= 1024;
+			break;
 		case 'G':
 			$ret *= 1024;
+			break;
 		case 'M':
 			$ret *= 1024;
+			break;
 		case 'K':
 			$ret *= 1024;
+			break;
 	}
 	return $ret;
 }
@@ -210,7 +236,9 @@ function wpcm_let_to_num( $size ) {
  * Dropdown posts function.
  *
  * @access public
- * @param array
+ *
+ * @param array $args
+ *
  * @return void
  */
 function wpcm_dropdown_posts( $args = array() ) {
@@ -233,11 +261,11 @@ function wpcm_dropdown_posts( $args = array() ) {
 
 		$args['id'] = $args['name'];
 	}
-		echo '<select name="' . $args['name'] . '" id="' . $args['id'] . '" class="postform ' . $args['class'] . ' chosen_select">';
+		echo '<select name="' . esc_attr( $args['name'] ) . '" id="' . esc_attr( $args['id'] ) . '" class="postform ' . esc_attr( $args['class'] ) . ' chosen_select">';
 		unset( $args['name'] );
 	if ( $args['show_option_none'] ) {
 
-		echo '<option value=""' . ( '' == $args['selected'] ? ' selected' : '' ) . '>' . $args['show_option_none'] . '</option>';
+		echo '<option value=""' . ( '' === $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $args['show_option_none'] ) . '</option>';
 	}
 
 	$posts = get_posts( $args );
@@ -246,14 +274,14 @@ function wpcm_dropdown_posts( $args = array() ) {
 
 		$name = get_the_title( $post->ID );
 
-		if ( isset( $args['post_type'] ) && $args['post_type'] == 'wpcm_match' ) {
+		if ( isset( $args['post_type'] ) && 'wpcm_match' === $args['post_type'] ) {
 
 			$timestamp   = strtotime( $post->post_date );
 			$date_format = get_option( 'date_format' );
 			$name        = date_i18n( $date_format, $timestamp ) . ' - ' . $name;
 		}
 
-		echo '<option class="level-0" value="' . $post->ID . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . $name . '</option>';
+		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
 	}
 
 	echo '</select>';
@@ -263,8 +291,10 @@ function wpcm_dropdown_posts( $args = array() ) {
  * Dropdown taxonomies function.
  *
  * @access public
- * @param array
- * @return void
+ *
+ * @param array $args
+ *
+ * @return bool
  */
 function wpcm_dropdown_taxonomies( $args = array() ) {
 
@@ -295,7 +325,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 	$get_terms_args = $args;
 	unset( $get_terms_args['name'] );
 
-	$terms = get_terms( $args['taxonomy'], $get_terms_args );
+	$terms = get_terms( $get_terms_args );
 	$name  = ( $args['name'] ) ? $args['name'] : $args['taxonomy'];
 	$id    = ( $args['id'] ) ? $args['id'] : $name;
 
@@ -317,30 +347,30 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 	$chosen = $args['chosen'];
 	unset( $args['chosen'] );
 
-	printf( '<input type="hidden" name="tax_input[%s][]" value="0">', $args['taxonomy'] );
+	sprintf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
 
 	if ( $terms ) :
 
-		printf( '<select name="%s" class="postform %s" %s>', $name, $class . ( $chosen ? ' chosen_select' : '' ), ( $placeholder != null ? 'data-placeholder="' . $placeholder . '" ' : '' ) . $attribute );
+		printf( '<select name="%s" class="postform %s" %s>', esc_attr( $name ), esc_attr( $class . ( $chosen ? ' chosen_select' : '' ) ), ( null !== $placeholder ? 'data-placeholder="' . esc_html( $placeholder ) . '" ' : '' ) . esc_html( $attribute ) );
 
 		if ( strpos( $attribute, 'multiple' ) === false ) :
 
 			if ( $args['show_option_all'] ) :
 
-				printf( '<option value="0">%s</option>', $args['show_option_all'] );
+				printf( '<option value="0">%s</option>', esc_html( $args['show_option_all'] ) );
 
 			endif;
 
 			if ( $args['show_option_none'] ) :
 
-				printf( '<option value="-1">%s</option>', $args['show_option_none'] );
+				printf( '<option value="-1">%s</option>', esc_html( $args['show_option_none'] ) );
 
 			endif;
 
 		endif;
 
 		foreach ( $terms as $term ) :
-			if ( $args['values'] == 'term_id' ) :
+			if ( 'term_id' === $args['values'] ) :
 				$this_value = $term->term_id;
 			else :
 				$this_value = $term->slug;
@@ -350,7 +380,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 			else :
 				$selected_attribute = selected( $this_value, $selected, false );
 			endif;
-			printf( '<option value="%s" %s>%s</option>', $this_value, $selected_attribute, $term->name );
+			echo sprintf( '<option value="%s" %s>%s</option>', esc_attr( $this_value ), $selected_attribute, esc_html( $term->name ) ); // phpcs:ignore
 		endforeach;
 		print( '</select>' );
 		return true;
@@ -364,10 +394,12 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
  * Match player subs dropdown.
  *
  * @access public
+ *
  * @param string $name
- * @param array
+ * @param array  $arr
  * @param string $selected
  * @param string $atts
+ *
  * @return mixed $output
  */
 function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = null ) {
@@ -398,21 +430,26 @@ function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = nu
  * Calculate age from birth date.
  *
  * @access public
- * @param string $p_strDate
+ *
+ * @param string $p_str_date
+ *
  * @return mixed
  */
-function get_age( $p_strDate ) {
+function get_age( $p_str_date ) {
 
-	list($Y, $m, $d) = explode( '-', $p_strDate );
+	list($y, $m, $d) = explode( '-', $p_str_date );
 
-	return( date( 'md' ) < $m . $d ? date( 'Y' ) - $Y - 1 : date( 'Y' ) - $Y );
+	return( gmdate( 'md' ) < $m . $d ? gmdate( 'Y' ) - $y - 1 : gmdate( 'Y' ) - $y );
 }
 
 /**
  * Calculate age from birth date.
  *
  * @access public
- * @param string $p_strDate
+ *
+ * @param mixed $a
+ * @param mixed $b
+ *
  * @return mixed
  */
 function compare_dates( $a, $b ) {
@@ -428,11 +465,14 @@ function compare_dates( $a, $b ) {
  * Calculate division.
  *
  * @access public
- * @param string $p_strDate
+ *
+ * @param mixed $a
+ * @param mixed $b
+ *
  * @return mixed
  */
 function wpcm_divide( $a, $b ) {
-	if ( $b != 0 ) {
+	if ( 0 != $b ) {
 		$result = $a / $b;
 	} else {
 		$result = 0;

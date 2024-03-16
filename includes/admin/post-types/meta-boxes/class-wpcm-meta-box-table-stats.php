@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Table_Stats
+ */
 class WPCM_Meta_Box_Table_Stats {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -69,7 +74,7 @@ class WPCM_Meta_Box_Table_Stats {
 			$clubs = get_posts( $args );
 
 			if ( empty( $clubs ) ) {
-				if ( $default_club != false ) {
+				if ( false != $default_club ) {
 					$selected_clubs = array( $default_club );
 				} else {
 					$selected_clubs = null;
@@ -113,10 +118,9 @@ class WPCM_Meta_Box_Table_Stats {
 			}
 		}
 
-		// $clubs = wpcm_club_standings_sort_by( $orderby, $clubs );
 		usort( $clubs, 'wpcm_sort_table_clubs' );
 
-		if ( $order == 'ASC' ) {
+		if ( 'ASC' === $order ) {
 			$clubs = array_reverse( $clubs );
 		}
 		foreach ( $clubs as $key => $value ) {
@@ -125,25 +129,25 @@ class WPCM_Meta_Box_Table_Stats {
 
 		<div id="wpcm-table-stats">
 			<table>
-				<?php if ( $selected_clubs !== null ) { ?>
+				<?php if ( null !== $selected_clubs ) { ?>
 					<thead>
 						<tr>
-							<th><input type="hidden" class="stats-rows" value="<?php echo $stats_rows; ?>"></th>
+							<th><input type="hidden" class="stats-rows" value="<?php echo esc_html( $stats_rows ); ?>"></th>
 							<th></th>
 							<th></th>
 							<?php foreach ( $stats as $stat ) { ?>
-								
-								<th class="<?php echo $stat; ?>"><?php echo $stats_labels[ $stat ]; ?></th>
-							
+
+								<th class="<?php echo esc_attr( $stat ); ?>"><?php echo esc_html( $stats_labels[ $stat ] ); ?></th>
+
 							<?php } ?>
-						
+
 						</tr>
 					</thead>
 					<?php
 				}
 				?>
 				<tbody>
-				
+
 					<?php
 					$rownum = 0;
 					foreach ( $clubs as $club ) {
@@ -153,66 +157,66 @@ class WPCM_Meta_Box_Table_Stats {
 						$total_stats  = $club->wpcm_stats;
 						?>
 
-						<tr data-club="<?php echo $club->ID; ?>" class="hidden-row">
+						<tr data-club="<?php echo esc_attr( $club->ID ); ?>" class="hidden-row">
 
 							<td></td>
 							<td></td>
 							<td></td>
 
 							<?php foreach ( $stats as $stat ) { ?>
-								
-								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo $stat; ?>" value="<?php echo $auto_stats[ $stat ] ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
+
+								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( $auto_stats[ $stat ] ) ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
 						</tr>
 
-						<tr data-club="<?php echo $club->ID; ?>" class="count-row">
-						
+						<tr data-club="<?php echo esc_attr( $club->ID ); ?>" class="count-row">
+
 							<td>
 								<input type="checkbox" name="record">
 							</td>
-							
+
 							<td class="pos">
-								<?php echo $club->place; ?>
+								<?php echo esc_html( $club->place ); ?>
 							</td>
 
 							<td class="club">
 								<?php
 								if ( $default_club == $club->ID ) {
 									if ( $team_label ) {
-										echo $team_label;
+										echo esc_html( $team_label );
 									} else {
-										echo $club->post_title;
+										echo esc_html( $club->post_title );
 									}
 								} else {
-									echo $club->post_title;
+									echo esc_html( $club->post_title );
 								}
 								?>
 							</td>
 
 							<?php foreach ( $stats as $stat ) { ?>
-								
-								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo $stat; ?>"><input type="number" data-index="<?php echo $stat; ?>" value="<?php echo $total_stats[ $stat ] ?? '0'; ?>" <?php echo ( $stat == 'gd' ? 'readonly' : '' ); ?>/></td>
+
+								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo esc_attr( $stat ); ?>"><input type="number" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( $total_stats[ $stat ] ) ?? '0'; ?>" <?php echo ( 'gd' === $stat ? 'readonly' : '' ); ?>/></td>
 
 							<?php } ?>
 
 						</tr>
 
-						<tr data-club="<?php echo $club->ID; ?>" class="hidden-row">
+						<tr data-club="<?php echo esc_attr( $club->ID ); ?>" class="hidden-row">
 
 							<td></td>
 							<td></td>
-							<td><input type="hidden" name="wpcm_table_clubs[]" value="<?php echo $club->ID; ?>" /></td>
+							<td><input type="hidden" name="wpcm_table_clubs[]" value="<?php echo esc_html( $club->ID ); ?>" /></td>
 
 							<?php foreach ( $stats as $stat ) { ?>
-								
-								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo $stat; ?>" name="wpcm_table_stats[<?php echo $club->ID; ?>][<?php echo $stat; ?>]" value="<?php echo $manual_stats[ $stat ] ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
+
+								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" name="wpcm_table_stats[<?php echo esc_attr( $club->ID ); ?>][<?php echo esc_attr( $stat ); ?>]" value="<?php echo esc_html( $manual_stats[ $stat ] ) ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
 						</tr>
-						
+
 					<?php } ?>
 
 				</tbody>
@@ -233,11 +237,11 @@ class WPCM_Meta_Box_Table_Stats {
 				));
 				?>
 
-				<input type="button" class="button-secondary wpcm-table-add-row" value="<?php _e( 'Add club', 'wp-club-manager' ); ?>">
+				<input type="button" class="button-secondary wpcm-table-add-row" value="<?php esc_html_e( 'Add club', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-table-delete-row <?php echo ( $clubs != null ? '' : 'hidden-button' ); ?>"><?php _e( 'Remove selected', 'wp-club-manager' ); ?></a>
-		
+			<a class="wpcm-table-delete-row <?php echo ( null != $clubs ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+
 		</div>
 
 		<?php
@@ -245,11 +249,18 @@ class WPCM_Meta_Box_Table_Stats {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_table_clubs'] ) ) {
-			$clubs = $_POST['wpcm_table_clubs'];
+		$clubs_data = filter_input( INPUT_POST, 'wpcm_table_clubs', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $clubs_data ) {
+			$clubs = $clubs_data;
 		} else {
 			$clubs = array();
 		}
@@ -259,8 +270,9 @@ class WPCM_Meta_Box_Table_Stats {
 
 		update_post_meta( $post_id, '_wpcm_table_clubs', serialize( $clubs ) );
 
-		if ( isset( $_POST['wpcm_table_stats'] ) ) {
-			$stats = $_POST['wpcm_table_stats'];
+		$stats_data = filter_input( INPUT_POST, 'wpcm_table_stats', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $stats_data ) {
+			$stats = $stats_data;
 		} else {
 			$stats = array();
 		}

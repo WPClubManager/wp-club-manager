@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Club_Details
+ */
 class WPCM_Meta_Box_Club_Details {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -73,29 +78,45 @@ class WPCM_Meta_Box_Club_Details {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
-
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 		// if( isset( $_POST['parent_id'] )  ) {
 		// update_post_meta( $post_id, '_wpcm_club_parent', $_POST['parent_id'] );
 		// }
-		if ( isset( $_POST['_wpcm_club_abbr'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_abbr', $_POST['_wpcm_club_abbr'] );
+		$club_abr = filter_input( INPUT_POST, '_wpcm_club_abbr', FILTER_UNSAFE_RAW );
+		if ( $club_abr ) {
+			update_post_meta( $post_id, '_wpcm_club_abbr', sanitize_text_field( $club_abr ) );
 		}
-		if ( isset( $_POST['_wpcm_club_formed'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_formed', $_POST['_wpcm_club_formed'] );
+
+		$formed = filter_input( INPUT_POST, '_wpcm_club_formed', FILTER_UNSAFE_RAW );
+		if ( $formed ) {
+			update_post_meta( $post_id, '_wpcm_club_formed', sanitize_text_field( $formed ) );
 		}
-		if ( isset( $_POST['_wpcm_club_primary_color'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_primary_color', $_POST['_wpcm_club_primary_color'] );
+
+		$primary = filter_input( INPUT_POST, '_wpcm_club_primary_color', FILTER_UNSAFE_RAW );
+		if ( $primary ) {
+			update_post_meta( $post_id, '_wpcm_club_primary_color', sanitize_text_field( $primary ) );
 		}
-		if ( isset( $_POST['_wpcm_club_secondary_color'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_secondary_color', $_POST['_wpcm_club_secondary_color'] );
+
+		$secondary = filter_input( INPUT_POST, '_wpcm_club_secondary_color', FILTER_UNSAFE_RAW );
+		if ( $secondary ) {
+			update_post_meta( $post_id, '_wpcm_club_secondary_color', sanitize_text_field( $secondary ) );
 		}
-		if ( isset( $_POST['_wpcm_club_website'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_website', $_POST['_wpcm_club_website'] );
+
+		$website = filter_input( INPUT_POST, '_wpcm_club_website', FILTER_UNSAFE_RAW );
+		if ( $website ) {
+			update_post_meta( $post_id, '_wpcm_club_website', sanitize_text_field( $website ) );
 		}
-		if ( isset( $_POST['_wpcm_club_honours'] ) ) {
-			update_post_meta( $post_id, '_wpcm_club_honours', $_POST['_wpcm_club_honours'] );
+
+		$honours = filter_input( INPUT_POST, '_wpcm_club_honours', FILTER_UNSAFE_RAW );
+		if ( $honours ) {
+			update_post_meta( $post_id, '_wpcm_club_honours', sanitize_text_field( $honours ) );
 		}
 
 		do_action( 'delete_plugin_transients' );

@@ -31,7 +31,7 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 				if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' && array_key_exists( $key, $custom_stats ) ) {
 					?>
 
-					<th><?php echo $val; ?></th>
+					<th><?php echo esc_html( $val ); ?></th>
 
 					<?php
 				}
@@ -44,7 +44,7 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 			<?php
 			foreach ( $stats_labels as $key => $val ) {
 
-				if ( $key == 'appearances' ) {
+				if ( 'appearances' === $key ) {
 
 					if ( get_option( 'wpcm_show_stats_appearances' ) == 'yes' && array_key_exists( 'appearances', $custom_stats ) ) {
 
@@ -57,12 +57,12 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 							}
 						}
 						?>
-				
-						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo ( get_option( 'wpcm_show_stats_subs' ) == 'yes' ? $sub : '' ); ?></span></td>
+
+						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo esc_html( 'yes' === get_option( 'wpcm_show_stats_subs' ) ? $sub : '' ); ?></span></td>
 
 						<?php
 					}
-				} elseif ( $key == 'rating' ) {
+				} elseif ( 'rating' === $key ) {
 
 					$rating   = get_wpcm_stats_value( $stats, 'total', 'rating' );
 					$apps     = get_wpcm_stats_value( $stats, 'total', 'appearances' );
@@ -70,8 +70,8 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 
 					if ( get_option( 'wpcm_show_stats_rating' ) == 'yes' && array_key_exists( 'rating', $custom_stats ) ) {
 						?>
-				
-						<td><span data-index="rating"><?php printf( '%01.2f', round( $avrating, 2 ) ); ?></span></td>
+
+						<td><span data-index="rating"><?php echo esc_html( sprintf( '%01.2f', round( $avrating, 2 ) ) ); ?></span></td>
 
 						<?php
 					}
@@ -79,14 +79,14 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 
 					?>
 
-						<td><span data-index="<?php echo $key; ?>"><?php wpcm_stats_value( $stats, 'total', $key ); ?></span></td>
-						
+						<td><span data-index="<?php echo esc_attr( $key ); ?>"><?php wpcm_stats_value( $stats, 'total', $key ); ?></span></td>
+
 						<?php
 
 				}
 			}
 			?>
-			
+
 		</tr>
 	</tbody>
 </table>

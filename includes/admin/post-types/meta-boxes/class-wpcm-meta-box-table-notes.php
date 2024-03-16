@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Table_Notes
+ */
 class WPCM_Meta_Box_Table_Notes {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -32,11 +37,18 @@ class WPCM_Meta_Box_Table_Notes {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['_wpcm_table_notes'] ) ) {
-			update_post_meta( $post_id, '_wpcm_table_notes', $_POST['_wpcm_table_notes'] );
+		$notes = filter_input( INPUT_POST, '_wpcm_table_notes', FILTER_UNSAFE_RAW );
+		if ( isset( $notes ) ) {
+			update_post_meta( $post_id, '_wpcm_table_notes', sanitize_text_field( $notes ) );
 		}
 	}
 }

@@ -19,7 +19,7 @@ if ( $venue ) { ?>
 
 	<div class="wpcm-match-venue">
 
-		<?php echo $venue['name']; ?>
+		<?php echo esc_html( $venue['name'] ); ?>
 
 	</div>
 

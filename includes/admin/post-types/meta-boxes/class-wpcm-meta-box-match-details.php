@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Match_Details
+ */
 class WPCM_Meta_Box_Match_Details {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -62,7 +67,7 @@ class WPCM_Meta_Box_Match_Details {
 		} else {
 			$venue = -1;
 		}
-		$time = ( $post->post_status == 'publish' || $post->post_status == 'future' ? get_the_time( 'H:i' ) : get_option( 'wpcm_match_time', '15:00' ) );
+		$time = ( 'publish' === $post->post_status || 'future' === $post->post_status ? get_the_time( 'H:i' ) : get_option( 'wpcm_match_time', '15:00' ) );
 
 		$date = get_the_date( 'Y-m-d' );
 
@@ -86,7 +91,7 @@ class WPCM_Meta_Box_Match_Details {
 		) ); ?>
 
 		<p>
-			<label><?php _e( 'Competition', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Competition', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_comp',
@@ -99,10 +104,10 @@ class WPCM_Meta_Box_Match_Details {
 				'class'        => 'chosen_select',
 			));
 			?>
-			<input type="text" name="wpcm_comp_status" id="wpcm_comp_status" value="<?php echo $wpcm_comp_status; ?>" placeholder="<?php _e( 'Round (Optional)', 'wp-club-manager' ); ?>" />
+			<input type="text" name="wpcm_comp_status" id="wpcm_comp_status" value="<?php echo esc_attr( $wpcm_comp_status ); ?>" placeholder="<?php esc_html_e( 'Round (Optional)', 'wp-club-manager' ); ?>" />
 		</p>
 		<p>
-			<label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Season', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_season',
@@ -120,7 +125,7 @@ class WPCM_Meta_Box_Match_Details {
 		if ( is_club_mode() && has_teams() ) {
 			?>
 			<p>
-				<label><?php _e( 'Team', 'wp-club-manager' ); ?></label>
+				<label><?php esc_html_e( 'Team', 'wp-club-manager' ); ?></label>
 				<?php
 				wp_dropdown_categories(array(
 					'taxonomy'     => 'wpcm_team',
@@ -138,7 +143,7 @@ class WPCM_Meta_Box_Match_Details {
 		}
 		?>
 		<p>
-			<label><?php _e( 'Venue', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Venue', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories( array(
 				'show_option_none' => __( 'None' ),
@@ -152,9 +157,9 @@ class WPCM_Meta_Box_Match_Details {
 			?>
 			<label class="selectit wpcm-cb-block">
 				<input type="checkbox" name="wpcm_neutral" id="wpcm_neutral" value="1" <?php checked( true, $neutral ); ?> />
-				<?php _e( 'Neutral?', 'wp-club-manager' ); ?>
+				<?php esc_html_e( 'Neutral?', 'wp-club-manager' ); ?>
 			</label>
-		</p> 
+		</p>
 		<?php
 
 		if ( get_option( 'wpcm_results_show_attendance' ) == 'yes' ) {
@@ -171,12 +176,12 @@ class WPCM_Meta_Box_Match_Details {
 			if ( $option_list ) {
 				?>
 				<p>
-					<label><?php _e( 'Referee', 'wp-club-manager' ); ?></label>
+					<label><?php esc_html_e( 'Referee', 'wp-club-manager' ); ?></label>
 					<select name='wpcm_referee' id="wpcm_referee" class="combify-input">
 						<?php
 						foreach ( $option_list as $option ) {
 							?>
-							<option value="<?php echo $option; ?>"<?php echo ( $option == $referee ? ' selected' : null ); ?>><?php echo $option; ?></option>
+							<option value="<?php echo esc_attr( $option ); ?>"<?php echo ( $option == $referee ? ' selected' : null ); ?>><?php echo esc_html( $option ); ?></option>
 							<?php
 						}
 						?>
@@ -202,52 +207,73 @@ class WPCM_Meta_Box_Match_Details {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_match_date'] ) ) {
-			$date     = $_POST['wpcm_match_date'];
-			$kickoff  = $_POST['wpcm_match_kickoff'];
-			$datetime = $date . ' ' . $kickoff . ':00';
+		$wpcm_match_date = filter_input( INPUT_POST, 'wpcm_match_date', FILTER_UNSAFE_RAW );
+		if ( $wpcm_match_date ) {
+			$date               = sanitize_text_field( $wpcm_match_date );
+			$wpcm_match_kickoff = filter_input( INPUT_POST, 'wpcm_match_kickoff', FILTER_UNSAFE_RAW );
+			$kickoff            = sanitize_text_field( $wpcm_match_kickoff );
+			$datetime           = $date . ' ' . $kickoff . ':00';
 			update_post_meta( $post_id, '_wpcm_match_datetime', $datetime );
 		}
 
-		if ( isset( $_POST['wpcm_comp'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_comp'], 'wpcm_comp' );
-		}
-		if ( isset( $_POST['wpcm_season'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_season'], 'wpcm_season' );
-		}
-		if ( isset( $_POST['wpcm_match_team'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_match_team'], 'wpcm_team' );
-		}
-		if ( isset( $_POST['wpcm_venue'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_venue'], 'wpcm_venue' );
+		$comp = filter_input( INPUT_POST, 'wpcm_comp', FILTER_VALIDATE_INT );
+		if ( $comp ) {
+			wp_set_post_terms( $post_id, $comp, 'wpcm_comp' );
 		}
 
-		if ( isset( $_POST['wpcm_comp_status'] ) ) {
-			update_post_meta( $post_id, 'wpcm_comp_status', $_POST['wpcm_comp_status'] );
+		$season = filter_input( INPUT_POST, 'wpcm_season', FILTER_VALIDATE_INT );
+		if ( $season ) {
+			wp_set_post_terms( $post_id, $season, 'wpcm_season' );
 		}
-		if ( isset( $_POST['wpcm_neutral'] ) ) {
-			update_post_meta( $post_id, 'wpcm_neutral', $_POST['wpcm_neutral'] );
+
+		$team = filter_input( INPUT_POST, 'wpcm_match_team', FILTER_VALIDATE_INT );
+		if ( $team ) {
+			wp_set_post_terms( $post_id, $team, 'wpcm_team' );
 		}
-		if ( isset( $_POST['wpcm_referee'] ) ) {
-			update_post_meta( $post_id, 'wpcm_referee', $_POST['wpcm_referee'] );
+
+		$venue = filter_input( INPUT_POST, 'wpcm_venue', FILTER_VALIDATE_INT );
+		if ( $venue ) {
+			wp_set_post_terms( $post_id, $venue, 'wpcm_venue' );
+		}
+
+		$wpcm_comp_status = filter_input( INPUT_POST, 'wpcm_comp_status', FILTER_UNSAFE_RAW );
+		if ( $wpcm_comp_status ) {
+			update_post_meta( $post_id, 'wpcm_comp_status', sanitize_text_field( $wpcm_comp_status ) );
+		}
+
+		$wpcm_neutral = filter_input( INPUT_POST, 'wpcm_neutral', FILTER_UNSAFE_RAW );
+		if ( $wpcm_neutral ) {
+			update_post_meta( $post_id, 'wpcm_neutral', sanitize_text_field( $wpcm_neutral ) );
+		}
+
+		$wpcm_referee = filter_input( INPUT_POST, 'wpcm_referee', FILTER_UNSAFE_RAW );
+		if ( $wpcm_referee ) {
+			$wpcm_referee = sanitize_text_field( $wpcm_referee );
+			update_post_meta( $post_id, 'wpcm_referee', $wpcm_referee );
 			$options = get_option( 'wpcm_referee_list', array() );
-			if ( ! in_array( $_POST['wpcm_referee'], $options ) ) {
-				$options[] = $_POST['wpcm_referee'];
+			if ( ! in_array( $wpcm_referee, $options ) ) {
+				$options[] = $wpcm_referee;
 				update_option( 'wpcm_referee_list', $options );
 			}
 		}
-		if ( isset( $_POST['wpcm_attendance'] ) ) {
-			update_post_meta( $post_id, 'wpcm_attendance', $_POST['wpcm_attendance'] );
-		}
-		// if( isset( $_POST['wpcm_friendly'] ) ) {
-			// update_post_meta( $post_id, 'wpcm_friendly', $_POST['wpcm_friendly'] );
-		// }
 
-		if ( ! empty( $_POST['wpcm_friendly'] ) ) {
-			update_post_meta( $post_id, 'wpcm_friendly', $_POST['wpcm_friendly'] );
+		$wpcm_attendance = filter_input( INPUT_POST, 'wpcm_attendance', FILTER_UNSAFE_RAW );
+		if ( $wpcm_attendance ) {
+			update_post_meta( $post_id, 'wpcm_attendance', sanitize_text_field( $wpcm_attendance ) );
+		}
+
+		$is_friendly = filter_input( INPUT_POST, 'wpcm_friendly', FILTER_UNSAFE_RAW );
+		if ( $is_friendly ) {
+			update_post_meta( $post_id, 'wpcm_friendly', sanitize_text_field( $is_friendly ) );
 		} else {
 			update_post_meta( $post_id, 'wpcm_friendly', '' );
 		}

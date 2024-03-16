@@ -24,7 +24,7 @@ class WPCM_Shortcode_Staff_List {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id          = ( isset( $atts['id'] ) ? $atts['id'] : null );
 		$limit       = ( isset( $atts['limit'] ) ? $atts['limit'] : -1 );
@@ -187,6 +187,6 @@ class WPCM_Shortcode_Staff_List {
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

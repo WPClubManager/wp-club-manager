@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Roster_Details
+ */
 class WPCM_Meta_Box_Roster_Details {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -36,9 +41,9 @@ class WPCM_Meta_Box_Roster_Details {
 		} else {
 			$team = -1;
 		}?>
-		
+
 		<p>
-			<label><?php _e( 'Season', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Season', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_season',
@@ -53,7 +58,7 @@ class WPCM_Meta_Box_Roster_Details {
 			?>
 		</p>
 		<p>
-			<label><?php _e( 'Team', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Team', 'wp-club-manager' ); ?></label>
 			<?php
 			wp_dropdown_categories(array(
 				'taxonomy'     => 'wpcm_team',
@@ -68,7 +73,7 @@ class WPCM_Meta_Box_Roster_Details {
 			?>
 		</p>
 		<p>
-			<label><?php _e( 'Import Players', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Import Players', 'wp-club-manager' ); ?></label>
 			<?php
 			wpcm_dropdown_posts(array(
 				'name'             => 'roster_players_import',
@@ -82,7 +87,7 @@ class WPCM_Meta_Box_Roster_Details {
 			?>
 		</p>
 		<p>
-			<label><?php _e( 'Import Staff', 'wp-club-manager' ); ?></label>
+			<label><?php esc_html_e( 'Import Staff', 'wp-club-manager' ); ?></label>
 			<?php
 			wpcm_dropdown_posts(array(
 				'name'             => 'roster_staff_import',
@@ -102,19 +107,29 @@ class WPCM_Meta_Box_Roster_Details {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
-
-		if ( isset( $_POST['wpcm_roster_season'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_roster_season'], 'wpcm_season' );
-		}
-		if ( isset( $_POST['wpcm_roster_team'] ) ) {
-			wp_set_post_terms( $post_id, $_POST['wpcm_roster_team'], 'wpcm_team' );
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
 		}
 
-		if ( isset( $_POST['roster_players_import'] ) ) {
+		$season_id = filter_input( INPUT_POST, 'wpcm_roster_season', FILTER_VALIDATE_INT );
+		if ( $season_id ) {
+			wp_set_post_terms( $post_id, $season_id, 'wpcm_season' );
+		}
 
-			$players = (array) unserialize( get_post_meta( $_POST['roster_players_import'], '_wpcm_roster_players', true ) );
+		$team_id = filter_input( INPUT_POST, 'wpcm_roster_team', FILTER_VALIDATE_INT );
+		if ( $team_id ) {
+			wp_set_post_terms( $post_id, $team_id, 'wpcm_team' );
+		}
+
+		$player_team_import_id = filter_input( INPUT_POST, 'roster_players_import', FILTER_VALIDATE_INT );
+		if ( $player_team_import_id ) {
+
+			$players = (array) unserialize( get_post_meta( $player_team_import_id, '_wpcm_roster_players', true ) );
 
 			update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
 
@@ -131,9 +146,10 @@ class WPCM_Meta_Box_Roster_Details {
 			}
 		}
 
+		$staff_team_import_id = filter_input( INPUT_POST, 'roster_staff_import', FILTER_VALIDATE_INT );
 		if ( isset( $_POST['roster_staff_import'] ) ) {
 
-			$employees = (array) unserialize( get_post_meta( $_POST['roster_staff_import'], '_wpcm_roster_staff', true ) );
+			$employees = (array) unserialize( get_post_meta( $staff_team_import_id, '_wpcm_roster_staff', true ) );
 
 			update_post_meta( $post_id, '_wpcm_roster_staff', serialize( $employees ) );
 

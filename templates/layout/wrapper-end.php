@@ -36,6 +36,7 @@ switch ( $template ) {
 		echo '</div>';
 		get_sidebar();
 		echo '</div>';
+		break;
 	case 'twentynineteen':
 		echo '</section>';
 		echo '</main';

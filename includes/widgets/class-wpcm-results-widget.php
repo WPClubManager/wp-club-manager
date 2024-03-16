@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
+/**
+ * WPCM_Results_Widget
+ */
 class WPCM_Results_Widget extends WPCM_Widget {
 
 
@@ -129,8 +132,9 @@ class WPCM_Results_Widget extends WPCM_Widget {
 	/**
 	 * Query the results and return them.
 	 *
-	 * @param  array $args
-	 * @param  array $instance
+	 * @param array $args
+	 * @param array $instance
+	 *
 	 * @return WP_Query
 	 */
 	public function get_results( $args, $instance ) {
@@ -140,7 +144,7 @@ class WPCM_Results_Widget extends WPCM_Widget {
 		$team   = isset( $instance['team'] ) ? $instance['team'] : null;
 		$club   = get_option( 'wpcm_default_club' );
 		$venue  = isset( $instance['venue'] ) ? $instance['venue'] : 'all';
-		if ( $limit == 0 ) {
+		if ( 0 == $limit ) {
 			$limit = -1;
 		}
 		if ( $comp <= 0 ) {
@@ -167,14 +171,14 @@ class WPCM_Results_Widget extends WPCM_Widget {
 			'posts_per_page' => $limit,
 		);
 
-		if ( isset( $venue ) && $venue == 'home' ) {
+		if ( isset( $venue ) && 'home' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_home_club',
 					'value' => $club,
 				),
 			);
-		} elseif ( isset( $venue ) && $venue == 'away' ) {
+		} elseif ( isset( $venue ) && 'away' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_away_club',
@@ -247,8 +251,9 @@ class WPCM_Results_Widget extends WPCM_Widget {
 
 		$this->widget_start( $args, $instance );
 
-		if ( ( $results = $this->get_results( $args, $instance ) ) && $results->have_posts() ) {
-			echo apply_filters( 'wpclubmanager_before_widget_results', '<ul class="wpcm-matches-widget">' );
+		$results = $this->get_results( $args, $instance );
+		if ( $results && $results->have_posts() ) {
+			echo wp_kses_post( apply_filters( 'wpclubmanager_before_widget_results', '<ul class="wpcm-matches-widget">' ) );
 
 			while ( $results->have_posts() ) :
 				$results->the_post();
@@ -265,7 +270,7 @@ class WPCM_Results_Widget extends WPCM_Widget {
 				$show_score = ! empty( $instance['show_score'] );
 				$show_comp  = ! empty( $instance['show_comp'] );
 				$show_team  = ! empty( $instance['show_team'] );
-				if ( $show_abbr == 1 ) {
+				if ( 1 == $show_abbr ) {
 					$sides = wpcm_get_match_clubs( $post, true );
 				} else {
 					$sides = wpcm_get_match_clubs( $post );
@@ -288,9 +293,9 @@ class WPCM_Results_Widget extends WPCM_Widget {
 
 			endwhile;
 
-			echo apply_filters( 'wpclubmanager_after_widget_results', '</ul>' );
+			echo wp_kses_post( apply_filters( 'wpclubmanager_after_widget_results', '</ul>' ) );
 		} else {
-			echo '<p class="inner">' . __( 'No more matches scheduled.', 'wp-club-manager' ) . '</p>';
+			echo '<p class="inner">' . esc_html__( 'No more matches scheduled.', 'wp-club-manager' ) . '</p>';
 		}
 
 		wp_reset_postdata();
@@ -302,11 +307,11 @@ class WPCM_Results_Widget extends WPCM_Widget {
 		}
 
 		if ( isset( $linkpage ) ) {
-			echo '<a href="' . get_page_link( $linkpage ) . '" class="wpcm-view-link">' . $linktext . '</a>';
+			echo '<a href="' . esc_url( get_page_link( $linkpage ) ) . '" class="wpcm-view-link">' . esc_html( $linktext ) . '</a>';
 		}
 
 		$this->widget_end( $args );
 
-		echo $this->cache_widget( $args, ob_get_clean() );
+		echo wp_kses_post( $this->cache_widget( $args, ob_get_clean() ) );
 	}
 }

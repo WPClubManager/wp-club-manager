@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Sports
+ */
 class WPCM_Sports {
 
 	/** @var array Array of sports */
@@ -28,10 +31,21 @@ class WPCM_Sports {
 		$this->data = wpcm_get_sport_presets();
 	}
 
+	/**
+	 * @param string $key
+	 *
+	 * @return mixed|null
+	 */
 	public function __get( $key ) {
 		return ( array_key_exists( $key, $this->data ) ? $this->data[ $key ] : null );
 	}
 
+	/**
+	 * @param string $key
+	 * @param mixed  $value
+	 *
+	 * @return void
+	 */
 	public function __set( $key, $value ) {
 		$this->data[ $key ] = $value;
 	}

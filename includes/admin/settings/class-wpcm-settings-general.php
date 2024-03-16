@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 
+	/**
+	 * WPCM_Settings_General
+	 */
 	class WPCM_Settings_General extends WPCM_Settings_Page {
 
 		/**
@@ -145,6 +148,7 @@ if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 				'css'     => 'width: 100%;max-width:350px;',
 				'default' => '',
 				'type'    => 'text',
+				/* translators: 1: API url */
 				'desc'    => sprintf( __( '<a href="%s" target="_blank">Get API Key</a>', 'wp-club-manager' ), 'https://account.mapbox.com/auth/signup/' ),
 			);
 
@@ -166,6 +170,7 @@ if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 				'css'     => 'width: 100%;max-width:350px;',
 				'default' => '',
 				'type'    => 'text',
+				/* translators: 1: API url */
 				'desc'    => sprintf( __( '<a href="%s" target="_blank">Get API Key</a>', 'wp-club-manager' ), 'https://developers.google.com/maps/documentation/javascript/get-api-key' ),
 			);
 
@@ -206,9 +211,10 @@ if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 		 * Save settings
 		 */
 		public function save() {
-			if ( isset( $_POST['wpcm_sport'] ) && ! empty( $_POST['wpcm_sport'] ) && get_option( 'wpcm_sport' ) != $_POST['wpcm_sport'] ) {
-				$post  = $_POST['wpcm_sport'];
-				$sport = WPCM()->sports->$post;
+			$post = filter_input( INPUT_POST, 'wpcm_sport', FILTER_UNSAFE_RAW );
+			$post = sanitize_text_field( $post );
+			if ( isset( $post ) && ! empty( $post ) && get_option( 'wpcm_sport' ) !== $post ) {
+				$sport = WPCM()->sports->{$post};
 				WPCM_Admin_Settings::configure_sport( $sport );
 			}
 

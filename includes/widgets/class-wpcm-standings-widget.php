@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Standings_Widget
+ */
 class WPCM_Standings_Widget extends WPCM_Widget {
 
 	/**
@@ -114,11 +117,11 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 	 * @param array $instance
 	 * @return void
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 
 		$options_string = '';
 		foreach ( $instance as $key => $value ) {
-			if ( $value != -1 ) {
+			if ( -1 != $value ) {
 				$options_string .= ' ' . $key . '="' . $value . '"';
 			}
 		}

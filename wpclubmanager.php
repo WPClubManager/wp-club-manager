@@ -25,7 +25,7 @@ if ( ! function_exists( 'WPCM' ) ) :
 	 * @return WP_Club_Manager
 	 */
 	function WPCM() {
-		require_once dirname( __FILE__ ) . '/includes/class-wp-club-manager.php';
+		require_once __DIR__ . '/includes/class-wp-club-manager.php';
 
 		return WP_Club_Manager::instance( __FILE__, '2.2.11' );
 	}

@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-// global $post;
-
 $details          = get_club_details( $post );
 $primary_color_bg = ( $details['primary_color'] ) ? ' style="background-color:' . $details['primary_color'] . ';color:#fff;text-shadow: 0 0 3px #000;"' : '';
 
@@ -41,21 +39,21 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 			<tbody>
 				<?php if ( $details['formed'] ) { ?>
 					<tr>
-						<th><?php _e( 'Formed', 'wp-club-manager' ); ?></th>
-						<td><?php echo $details['formed']; ?></td>
+						<th><?php esc_html_e( 'Formed', 'wp-club-manager' ); ?></th>
+						<td><?php echo esc_html( $details['formed'] ); ?></td>
 					</tr>
 				<?php } ?>
 				<tr>
-					<th><?php _e( 'Ground', 'wp-club-manager' ); ?></th>
-					<td><?php echo $details['venue']['name']; ?></td>
+					<th><?php esc_html_e( 'Ground', 'wp-club-manager' ); ?></th>
+					<td><?php echo esc_html( $details['venue']['name'] ); ?></td>
 				</tr>
 
 				<?php
 				if ( $details['venue']['capacity'] ) {
 					?>
 					<tr class="capacity">
-						<th><?php _e( 'Capacity', 'wp-club-manager' ); ?></th>
-						<td><?php echo $details['venue']['capacity']; ?></td>
+						<th><?php esc_html_e( 'Capacity', 'wp-club-manager' ); ?></th>
+						<td><?php echo esc_html( $details['venue']['capacity'] ); ?></td>
 					</tr>
 					<?php
 				}
@@ -63,8 +61,8 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 				if ( $details['venue']['address'] ) {
 					?>
 					<tr class="address">
-						<th><?php _e( 'Address', 'wp-club-manager' ); ?></th>
-						<td><?php echo stripslashes( nl2br( $details['venue']['address'] ) ); ?></td>
+						<th><?php esc_html_e( 'Address', 'wp-club-manager' ); ?></th>
+						<td><?php echo esc_html( nl2br( $details['venue']['address'] ) ); ?></td>
 					</tr>
 					<?php
 				}
@@ -72,22 +70,22 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 				if ( $details['venue']['description'] ) {
 					?>
 					<tr class="description">
-						<th><?php _e( 'Ground Info', 'wp-club-manager' ); ?></th>
-						<td><?php echo $details['venue']['description']; ?></td>
+						<th><?php esc_html_e( 'Ground Info', 'wp-club-manager' ); ?></th>
+						<td><?php echo esc_html( $details['venue']['description'] ); ?></td>
 					</tr>
 					<?php
 				}
 				?>
 				<?php if ( $details['honours'] ) { ?>
 					<tr>
-						<th><?php _e( 'Honours', 'wp-club-manager' ); ?></th>
-						<td><?php echo stripslashes( nl2br( $details['honours'] ) ); ?></td>
+						<th><?php esc_html_e( 'Honours', 'wp-club-manager' ); ?></th>
+						<td><?php echo esc_html( nl2br( $details['honours'] ) ); ?></td>
 					</tr>
 				<?php } ?>
 				<?php if ( $details['website'] ) { ?>
 					<tr>
 						<th></th>
-						<td><a href="<?php echo $details['website']; ?>" target="_blank"><?php _e( 'Visit website', 'wp-club-manager' ); ?></a></td>
+						<td><a href="<?php echo esc_url( $details['website'] ); ?>" target="_blank"><?php esc_html_e( 'Visit website', 'wp-club-manager' ); ?></a></td>
 					</tr>
 				<?php } ?>
 			</tbody>
@@ -107,7 +105,7 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 
 	<?php endif; ?>
 
-	<?php if ( $details['venue']['address'] && get_option( 'wpcm_club_settings_venue' ) == 'yes' ) { ?>
+	<?php if ( $details['venue']['address'] && 'yes' === get_option( 'wpcm_club_settings_venue' ) ) { ?>
 
 		<div class="wpcm-club-map">
 
@@ -120,41 +118,40 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 
 	if ( is_club_mode() ) {
 
-		if ( get_option( 'wpcm_club_settings_h2h' ) == 'yes' || get_option( 'wpcm_club_settings_matches' ) == 'yes' ) {
+		if ( 'yes' === get_option( 'wpcm_club_settings_h2h' ) || 'yes' === get_option( 'wpcm_club_settings_matches' ) ) {
 
 			$matches = wpcm_head_to_heads( $post->ID );
 			?>
 
-			<h3><?php printf( __( 'Matches against %s', 'wp-club-manager' ), $post->post_title ); ?></h3>
+			<h3><?php /* translators: 1: plugin name(s). */ echo esc_html( sprintf( __( 'Matches against %s', 'wp-club-manager' ), $post->post_title ) ); ?></h3>
 
 			<?php
 		}
 
-		if ( get_option( 'wpcm_club_settings_h2h' ) == 'yes' ) {
+		if ( 'yes' === get_option( 'wpcm_club_settings_h2h' ) ) {
 
-			// $matches = wpcm_head_to_heads( $post->ID );
 			$outcome = wpcm_head_to_head_count( $matches );
 			?>
 
 			<ul class="wpcm-h2h-list">
-				<li class="wpcm-h2h-list-p"<?php echo $primary_color_bg; ?>>
-					<span class="wpcm-h2h-list-count"><?php echo $outcome['total']; ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'games', 'wp-club-manager' ); ?></span>
+				<li class="wpcm-h2h-list-p"<?php echo esc_attr( $primary_color_bg ); ?>>
+					<span class="wpcm-h2h-list-count"><?php echo esc_html( $outcome['total'] ); ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'games', 'wp-club-manager' ); ?></span>
 				</li>
-				<li class="wpcm-h2h-list-w"<?php echo $primary_color_bg; ?>>
-					<span class="wpcm-h2h-list-count"><?php echo $outcome['wins']; ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'wins', 'wp-club-manager' ); ?></span>
+				<li class="wpcm-h2h-list-w"<?php echo esc_attr( $primary_color_bg ); ?>>
+					<span class="wpcm-h2h-list-count"><?php echo esc_html( $outcome['wins'] ); ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'wins', 'wp-club-manager' ); ?></span>
 				</li>
-				<li class="wpcm-h2h-list-d"<?php echo $primary_color_bg; ?>>
-					<span class="wpcm-h2h-list-count"><?php echo $outcome['draws']; ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'draws', 'wp-club-manager' ); ?></span>
+				<li class="wpcm-h2h-list-d"<?php echo esc_attr( $primary_color_bg ); ?>>
+					<span class="wpcm-h2h-list-count"><?php echo esc_html( $outcome['draws'] ); ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'draws', 'wp-club-manager' ); ?></span>
 				</li>
-				<li class="wpcm-h2h-list-l"<?php echo $primary_color_bg; ?>>
-					<span class="wpcm-h2h-list-count"><?php echo $outcome['losses']; ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'losses', 'wp-club-manager' ); ?></span>
+				<li class="wpcm-h2h-list-l"<?php echo esc_attr( $primary_color_bg ); ?>>
+					<span class="wpcm-h2h-list-count"><?php echo esc_html( $outcome['losses'] ); ?></span> <span class="wpcm-h2h-list-desc"><?php __( 'losses', 'wp-club-manager' ); ?></span>
 				</li>
 			</ul>
 
 			<?php
 		}
 
-		if ( get_option( 'wpcm_club_settings_matches' ) == 'yes' ) {
+		if ( 'yes' === get_option( 'wpcm_club_settings_matches' ) ) {
 			?>
 
 			<ul class="wpcm-matches-list">
@@ -171,24 +168,24 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 					$result      = wpcm_get_match_result( $match->ID );
 					?>
 
-					<li class="wpcm-matches-list-item <?php echo $class; ?>">
-						<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">
+					<li class="wpcm-matches-list-item <?php echo esc_attr( $class ); ?>">
+						<a href="<?php echo esc_url( get_post_permalink( $match->ID, false, true ) ); ?>" class="wpcm-matches-list-link">
 							<span class="wpcm-matches-list-col wpcm-matches-list-date">
-								<?php echo date_i18n( apply_filters( 'wpclubmanager_match_date_format', 'D d M' ), $timestamp ); ?>	
+								<?php echo esc_html( date_i18n( apply_filters( 'wpclubmanager_match_date_format', 'D d M' ), $timestamp ) ); ?>
 							</span>
 							<span class="wpcm-matches-list-col wpcm-matches-list-club1">
-								<?php echo $sides[0]; ?>
+								<?php echo esc_html( $sides[0] ); ?>
 							</span>
 							<span class="wpcm-matches-list-col wpcm-matches-list-status">
-								<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo $class; ?>">
-									<?php echo ( $played ? $result[0] : date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ); ?>
+								<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo esc_attr( $class ); ?>">
+									<?php echo esc_html( ( $played ? $result[0] : date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ) ); ?>
 								</span>
 							</span>
 							<span class="wpcm-matches-list-col wpcm-matches-list-club2">
-								<?php echo $sides[1]; ?>
+								<?php echo esc_html( $sides[1] ); ?>
 							</span>
 							<span class="wpcm-matches-list-col wpcm-matches-list-info">
-								<?php echo $comp[1]; ?>
+								<?php echo esc_html( $comp[1] ); ?>
 							</span>
 						</a>
 					</li>
@@ -198,7 +195,7 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 				?>
 
 			</ul>
-			
+
 			<?php
 		}
 	}
@@ -206,7 +203,7 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 	if ( is_league_mode() ) {
 		?>
 
-		<h3><?php _e( 'Matches', 'wp-club-manager' ); ?></h3>
+		<h3><?php esc_html_e( 'Matches', 'wp-club-manager' ); ?></h3>
 
 		<ul class="wpcm-matches-list">
 
@@ -224,24 +221,24 @@ do_action( 'wpclubmanager_before_single_club' ); ?>
 				$result      = wpcm_get_match_result( $match->ID );
 				?>
 
-				<li class="wpcm-matches-list-item <?php echo $class; ?>">
-					<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">
+				<li class="wpcm-matches-list-item <?php echo esc_attr( $class ); ?>">
+					<a href="<?php echo esc_url( get_post_permalink( $match->ID, false, true ) ); ?>" class="wpcm-matches-list-link">
 						<span class="wpcm-matches-list-col wpcm-matches-list-date">
-							<?php echo date_i18n( 'D d M', $timestamp ); ?>	
+							<?php echo esc_html( date_i18n( 'D d M', $timestamp ) ); ?>
 						</span>
 						<span class="wpcm-matches-list-col wpcm-matches-list-club1">
-							<?php echo $sides[0]; ?>
+							<?php echo esc_html( $sides[0] ); ?>
 						</span>
 						<span class="wpcm-matches-list-col wpcm-matches-list-status">
-							<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo $class; ?>">
-								<?php echo ( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ); ?>
+							<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo esc_attr( $class ); ?>">
+								<?php echo esc_html( ( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ) ); ?>
 							</span>
 						</span>
 						<span class="wpcm-matches-list-col wpcm-matches-list-club2">
-							<?php echo $sides[1]; ?>
+							<?php echo esc_html( $sides[1] ); ?>
 						</span>
 						<span class="wpcm-matches-list-col wpcm-matches-list-info">
-							<?php echo $comp[1]; ?>
+							<?php echo esc_html( $comp[1] ); ?>
 						</span>
 					</a>
 				</li>

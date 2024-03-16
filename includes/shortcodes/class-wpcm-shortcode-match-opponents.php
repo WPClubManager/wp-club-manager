@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Match_Opponents
+ */
 class WPCM_Shortcode_Match_Opponents {
 
 	/**
@@ -21,7 +24,7 @@ class WPCM_Shortcode_Match_Opponents {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$title      = ( isset( $atts['title'] ) ? $atts['title'] : '' );
 		$format     = ( isset( $atts['format'] ) ? $atts['format'] : '' );
@@ -40,74 +43,73 @@ class WPCM_Shortcode_Match_Opponents {
 		$show_venue = ( isset( $atts['show_venue'] ) ? $atts['show_venue'] : 1 );
 		$linktext   = ( isset( $atts['linktext'] ) ? $atts['linktext'] : '' );
 		$linkpage   = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : '' );
-		// $link_club  = ( get_option( 'wpcm_match_list_link_club', 'yes' ) == 'yes' ? true : false );
 
-		if ( $limit == '' ) {
+		if ( '' === $limit ) {
 			$limit = -1;
 		}
-		if ( $comp == '' ) {
+		if ( '' === $comp ) {
 			$comp = null;
 		}
-		if ( $season == '' ) {
+		if ( '' === $season ) {
 			$season = null;
 		}
-		if ( $team == '' ) {
+		if ( '' === $team ) {
 			$team = null;
 		}
-		if ( $venue == '' ) {
+		if ( '' === $venue ) {
 			$venue = null;
 		}
-		if ( $date_range == '' ) {
+		if ( '' === $date_range ) {
 			$date_range = null;
 		}
-		if ( $order == '' ) {
+		if ( '' === $order ) {
 			$order = 'ASC';
 		}
-		if ( $show_abbr == '' ) {
+		if ( '' === $show_abbr ) {
 			$show_abbr = 0;
 		}
-		if ( $show_thumb == '' ) {
+		if ( '' === $show_thumb ) {
 			$show_thumb = 0;
 		}
-		if ( $show_team == '' ) {
+		if ( '' === $show_team ) {
 			$show_team = 0;
 		}
-		if ( $show_comp == '' ) {
+		if ( '' === $show_comp ) {
 			$show_comp = 1;
 		}
-		if ( $show_venue == '' ) {
+		if ( '' === $show_venue ) {
 			$show_venue = 0;
 		}
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' || $date_range === 'last_week' || $date_range === 'next_week' ) {
+		if ( 'no' === $disable_cache || 'last_week' === $date_range || 'next_week' === $date_range ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'match_opponents' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			if ( is_club_mode() ) {
 				$club = get_default_club();
 			} else {
 				$club = $id;
 			}
-			if ( $format == '' ) {
+			if ( '' === $format ) {
 				$format = array( 'publish', 'future' );
-			} elseif ( $format == 'fixtures' ) {
+			} elseif ( 'fixtures' === $format ) {
 				$format = 'future';
-			} elseif ( $format == 'results' ) {
+			} elseif ( 'results' === $format ) {
 				$format = 'publish';
 			}
 
 			// get matches
 			$query_args = array(
-				'tax_query'      => array(),
+				'tax_query'      => array(), // phpcs:ignore
 				'numberposts'    => $limit,
 				'order'          => $order,
 				'orderby'        => 'post_date',
@@ -116,8 +118,8 @@ class WPCM_Shortcode_Match_Opponents {
 				'posts_per_page' => $limit,
 			);
 
-			if ( $format == 'results' ) {
-				$query_args['meta_query'] = array(
+			if ( 'results' === $format ) {
+				$query_args['meta_query'] = array( // phpcs:ignore
 					array(
 						'key'   => 'wpcm_played',
 						'value' => false,
@@ -125,22 +127,22 @@ class WPCM_Shortcode_Match_Opponents {
 				);
 			}
 
-			if ( isset( $venue ) && $venue == 'home' ) {
-				$query_args['meta_query'] = array(
+			if ( isset( $venue ) && 'home' === $venue ) {
+				$query_args['meta_query'] = array( // phpcs:ignore
 					array(
 						'key'   => 'wpcm_home_club',
 						'value' => $club,
 					),
 				);
-			} elseif ( isset( $venue ) && $venue == 'away' ) {
-				$query_args['meta_query'] = array(
+			} elseif ( isset( $venue ) && 'away' === $venue ) {
+				$query_args['meta_query'] = array( // phpcs:ignore
 					array(
 						'key'   => 'wpcm_away_club',
 						'value' => $club,
 					),
 				);
 			} else {
-				$query_args['meta_query'] = array(
+				$query_args['meta_query'] = array( // phpcs:ignore
 					'relation' => 'OR',
 					array(
 						'key'   => 'wpcm_home_club',
@@ -175,7 +177,7 @@ class WPCM_Shortcode_Match_Opponents {
 				);
 			}
 			if ( isset( $date_range ) ) {
-				if ( $date_range == 'last_week' ) {
+				if ( 'last_week' === $date_range ) {
 					$today                    = getdate();
 					$query_args['date_query'] = array(
 						'column' => 'post_date',
@@ -186,7 +188,7 @@ class WPCM_Shortcode_Match_Opponents {
 						),
 						'after'  => '- 7 days',
 					);
-				} elseif ( $date_range == 'next_week' ) {
+				} elseif ( 'next_week' === $date_range ) {
 					$today                    = getdate();
 					$query_args['date_query'] = array(
 						'column' => 'post_date',
@@ -211,7 +213,6 @@ class WPCM_Shortcode_Match_Opponents {
 				wpclubmanager_get_template( 'shortcodes/match-opponents.php', array(
 					'title'      => $title,
 					'club'       => $club,
-					// 'link_club'   => $link_club,
 					'show_abbr'  => $show_abbr,
 					'show_thumb' => $show_thumb,
 					'show_team'  => $show_team,
@@ -224,13 +225,13 @@ class WPCM_Shortcode_Match_Opponents {
 				$output = ob_get_clean();
 
 				wp_reset_postdata();
-				if ( $disable_cache === 'no' || $date_range === 'last_week' || $date_range === 'next_week' ) {
+				if ( 'no' === $disable_cache || 'last_week' === $date_range || 'next_week' === $date_range ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

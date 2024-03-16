@@ -70,6 +70,8 @@ class WPCM_Admin_Notices {
 
 	/**
 	 * Add notices + styles if needed.
+	 *
+	 * @param string $name
 	 */
 	public static function add_notice( $name ) {
 
@@ -103,17 +105,19 @@ class WPCM_Admin_Notices {
 	 * Hide a notice if the GET variable is set.
 	 */
 	public function hide_notices() {
+		$hide_notice = filter_input( INPUT_GET, 'wpcm-hide-notice', FILTER_UNSAFE_RAW );
+		$nonce       = filter_input( INPUT_GET, '_wpcm_notice_nonce', FILTER_UNSAFE_RAW );
 
-		if ( isset( $_GET['wpcm-hide-notice'] ) && isset( $_GET['_wpcm_notice_nonce'] ) ) {
-			if ( ! wp_verify_nonce( $_GET['_wpcm_notice_nonce'], 'wpclubmanager_hide_notices_nonce' ) ) {
-				wp_die( __( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
+		if ( isset( $hide_notice ) && isset( $nonce ) ) {
+			if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager_hide_notices_nonce' ) ) {
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
 			}
 
 			if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
-				wp_die( __( 'Cheatin&#8217; huh?', 'wp-club-manager' ) );
+				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'wp-club-manager' ) );
 			}
 
-			$hide_notice = sanitize_text_field( $_GET['wpcm-hide-notice'] );
+			$hide_notice = sanitize_text_field( $hide_notice );
 			self::remove_notice( $hide_notice );
 			do_action( 'wpclubmanager_hide_' . $hide_notice . '_notice' );
 		}
@@ -258,14 +262,9 @@ class WPCM_Admin_Notices {
 		}
 	}
 
-	// public function club_check_notice() {
-
-	// if( get_option( 'wpcm_default_club' ) == "" ) {
-
-	// include( 'views/html-notice-club-check.php' );
-	// }
-	// }
-
+	/**
+	 * @return void
+	 */
 	public function cricket_addon_notice() {
 
 		if ( get_option( 'wpcm_sport' ) == 'cricket' && ! in_array( 'wpcm-cricket/wpcm-cricket.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -276,6 +275,9 @@ class WPCM_Admin_Notices {
 		}
 	}
 
+	/**
+	 * @return void
+	 */
 	public function version_update_notice() {
 
 		if ( get_option( 'wpcm_version_upgraded_from' ) && version_compare( get_option( 'wpcm_version_upgraded_from' ), '2.0.0', '<' ) ) {

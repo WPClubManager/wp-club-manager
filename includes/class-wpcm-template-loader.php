@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Template_Loader
+ */
 class WPCM_Template_Loader {
 
 	/**

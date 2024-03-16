@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Sponsors_Widget
+ */
 class WPCM_Sponsors_Widget extends WPCM_Widget {
 
 	/**
@@ -51,13 +54,14 @@ class WPCM_Sponsors_Widget extends WPCM_Widget {
 	/**
 	 * widget function.
 	 *
-	 * @see WP_Widget
-	 * @access public
 	 * @param array $args
 	 * @param array $instance
+	 *
 	 * @return void
+	 * @see    WP_Widget
+	 * @access public
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 
 		$this->widget_start( $args, $instance );
 
@@ -65,7 +69,7 @@ class WPCM_Sponsors_Widget extends WPCM_Widget {
 		$link_new_window = get_post_meta( $instance['id'], 'wpcm_link_nw', true );
 		$nw              = ( $link_new_window ) ? ' target="_blank"' : ''; ?>
 
-		<a href="<?php echo $link_url; ?>"<?php echo $nw; ?>>					
+		<a href="<?php echo esc_url( $link_url ); ?>"<?php echo esc_html( $nw ); ?>>
 			<?php echo get_the_post_thumbnail( $instance['id'] ); ?>
 		</a>
 

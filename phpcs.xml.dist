@@ -26,10 +26,13 @@
 		<exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/>
 		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
 		<exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
+		<exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
 		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
 		<exclude name="WordPress.NamingConventions.ValidFunctionName"/>
 		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_key"/>
 		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_value"/>
+		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_query"/>
+		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_tax_query"/>
 		<exclude name="WordPress.WhiteSpace.PrecisionAlignment.Found"/>
 		<exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
 		<exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine"/>

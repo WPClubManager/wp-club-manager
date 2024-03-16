@@ -17,6 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Get player titles.
  *
+ * @param int    $post
+ * @param string $format
+ *
  * @return string
  * @since 2.0.0
  */
@@ -35,13 +38,13 @@ function get_player_title( $post, $format = 'full' ) {
 	$start = strrpos( $name, ' ' ) + 1;
 	$last  = substr( $name, $start );
 
-	if ( $format == 'full' ) {
+	if ( 'full' === $format ) {
 		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' ) . ' ' . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
-	} elseif ( $format == 'first' ) {
+	} elseif ( 'first' === $format ) {
 		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' );
-	} elseif ( $format == 'last' ) {
+	} elseif ( 'last' === $format ) {
 		$name = ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
-	} elseif ( $format == 'initial' ) {
+	} elseif ( 'initial' === $format ) {
 		$name = ( $firstname ? '<span class="first-name">' . substr( $firstname, 0, 1 ) . '.</span> ' : '<span class="first-name">' . substr( $first, 0, 1 ) . '.</span>' ) . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
 	} else {
 		$name = ( $firstname ? '<span class="first-name">' . $firstname . '</span>' : '<span class="first-name">' . $first . '</span>' ) . ' ' . ( $lastname ? '<span class="last-name">' . $lastname . '</span>' : '<span class="last-name">' . $last . '</span>' );
@@ -127,7 +130,7 @@ function wpcm_get_appearance_and_subs_labels() {
 
 	$apps        = wpcm_get_appearance_labels();
 	$subs        = array(
-		'subs' => __( 'SUBS', 'Substitute Appearances', 'wp-club-manager' ),
+		'subs' => _x( 'SUBS', 'Substitute Appearances', 'wp-club-manager' ),
 	);
 	$appearances = array_merge( $apps, $subs );
 
@@ -383,9 +386,13 @@ function wpcm_get_player_seasons( $post ) {
  * Get player thumbnail.
  *
  * @access public
- * @param int $post
+ *
+ * @param int         $post
+ * @param string|null $size
+ * @param array|null  $args
+ *
  * @return mixed $thumb
- * @since 1.4.0
+ * @since  1.4.0
  */
 function wpcm_get_player_thumbnail( $post, $size = null, $args = null ) {
 
@@ -447,16 +454,18 @@ function wpcm_get_player_appearances( $player_detail ) {
  * Get player stat - used in templates/shortcodes/players.php.
  *
  * @access public
+ *
  * @param array  $player_detail
  * @param string $stat
+ *
  * @return string $stat
- * @since 1.4.0
+ * @since  1.4.0
  */
 function wpcm_get_player_stat( $player_detail, $stat ) {
 
-	if ( $stat == 'rating' ) {
+	if ( 'rating' === $stat ) {
 		$stat = wpcm_get_player_average_rating( $player_detail['rating'], $player_detail['appearances'] );
-	} elseif ( $stat == 'appearances' ) {
+	} elseif ( 'appearances' === $stat ) {
 		$stat = wpcm_get_player_appearances( $player_detail );
 	} else {
 		$stat = $player_detail[ $stat ] ?? null;
@@ -469,14 +478,16 @@ function wpcm_get_player_stat( $player_detail, $stat ) {
  * Get player stat value from presets - used in templates/shortcodes/players.php
  *
  * @access public
- * @param array  $player_details
+ *
  * @param int    $post
- * @param array  $player_stats
  * @param string $stat
+ * @param array  $player_details
+ * @param array  $player_stats
  * @param int    $team
  * @param int    $season
+ *
  * @return array $player_details
- * @since 1.4.0
+ * @since  1.4.0
  */
 function wpcm_get_player_preset_stat( $post, $stat, $player_details = array(), $player_stats = array(), $team = 0, $season = 0 ) {
 

@@ -10,10 +10,14 @@
  * @category    Class
  * @author      ClubPress
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Countries
+ */
 class WPCM_Countries {
 
 	/** @var array Array of countries */
@@ -289,8 +293,10 @@ class WPCM_Countries {
 	 * Outputs the list of countries and states for use in dropdown boxes.
 	 *
 	 * @access public
-	 * @param string $selected_country (default: '')
-	 * @param bool   $escape (default: false)
+	 *
+	 * @param string $country (default: '')
+	 * @param bool   $escape  (default: false)
+	 *
 	 * @return void
 	 */
 	public function country_dropdown_options( $country = '', $escape = false ) {
@@ -305,7 +311,7 @@ class WPCM_Countries {
 				if ( $country == $key ) {
 					echo ' selected="selected"';
 				}
-				echo ' value="' . esc_attr( $key ) . '">' . ( $escape ? esc_js( $value ) : $value ) . '</option>';
+				echo ' value="' . esc_attr( $key ) . '">' . ( $escape ? esc_js( $value ) : $value ) . '</option>'; // phpcs:ignore
 			endforeach;
 		}
 	}

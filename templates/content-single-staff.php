@@ -19,8 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="wpcm-player-info wpcm-row">
 
 		<div class="wpcm-profile-image">
-			
-			<?php echo wpcm_get_player_thumbnail( $post->ID, 'staff_single' ); ?>
+
+			<?php echo esc_html( wpcm_get_player_thumbnail( $post->ID, 'staff_single' ) ); ?>
 
 		</div>
 
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 
 			<table>
-							
+
 				<tbody>
 
 					<?php
@@ -39,10 +39,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<tr>
 							<th>
-								<?php _e( 'Birthday', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Birthday', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo date_i18n( get_option( 'date_format' ), strtotime( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ); ?>
+								<?php echo esc_html( date_i18n( get_option( 'date_format' ), strtotime( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ) ); ?>
 							</td>
 						</tr>
 						<?php
@@ -53,10 +53,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<tr>
 							<th>
-								<?php _e( 'Age', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Age', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo get_age( get_post_meta( $post->ID, 'wpcm_dob', true ) ); ?>
+								<?php echo esc_html( get_age( get_post_meta( $post->ID, 'wpcm_dob', true ) ) ); ?>
 							</td>
 						</tr>
 						<?php
@@ -78,10 +78,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 							<tr>
 								<th>
-									<?php _e( 'Season', 'wp-club-manager' ); ?>
+									<?php esc_html_e( 'Season', 'wp-club-manager' ); ?>
 								</th>
 								<td>
-									<?php echo implode( ', ', $player_seasons ); ?>
+									<?php echo esc_html( implode( ', ', $player_seasons ) ); ?>
 								</td>
 							</tr>
 							<?php
@@ -104,10 +104,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 							<tr>
 								<th>
-									<?php _e( 'Team', 'wp-club-manager' ); ?>
+									<?php esc_html_e( 'Team', 'wp-club-manager' ); ?>
 								</th>
 								<td>
-									<?php echo implode( ', ', $player_teams ); ?>
+									<?php echo esc_html( implode( ', ', $player_teams ) ); ?>
 								</td>
 							</tr>
 							<?php
@@ -130,10 +130,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 							<tr>
 								<th>
-									<?php _e( 'Job', 'wp-club-manager' ); ?>
+									<?php esc_html_e( 'Job', 'wp-club-manager' ); ?>
 								</th>
 								<td>
-									<?php echo implode( ', ', $player_jobs ); ?>
+									<?php echo esc_html( implode( ', ', $player_jobs ) ); ?>
 								</td>
 							</tr>
 							<?php
@@ -147,10 +147,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<tr>
 							<th>
-								<?php _e( 'Email', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Email', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+								<a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( $email ); ?></a>
 							</td>
 						</tr>
 						<?php
@@ -163,10 +163,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<tr>
 							<th>
-								<?php _e( 'Phone', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Phone', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo $phone; ?>
+								<?php echo esc_html( $phone ); ?>
 							</td>
 						</tr>
 						<?php
@@ -176,10 +176,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 						<tr>
 							<th>
-								<?php _e( 'Birthplace', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Birthplace', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes' ? get_post_meta( $post->ID, 'wpcm_hometown', true ) : '' ); ?> <?php echo ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes' ? '<img class="flag" src="' . WPCM_URL . 'assets/images/flags/' . get_post_meta( $post->ID, 'wpcm_natl', true ) . '.png" />' : '' ); ?>
+								<?php echo esc_html( ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes' ? get_post_meta( $post->ID, 'wpcm_hometown', true ) : '' ) ); ?> <?php echo ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes' ? '<img class="flag" src="' . esc_url( WPCM_URL . 'assets/images/flags/' . esc_attr( get_post_meta( $post->ID, 'wpcm_natl', true ) ) . '.png' ) . '" />' : '' ); ?>
 							</td>
 						</tr>
 						<?php
@@ -190,10 +190,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<tr>
 							<th>
-								<?php _e( 'Joined', 'wp-club-manager' ); ?>
+								<?php esc_html_e( 'Joined', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo date_i18n( get_option( 'date_format' ), strtotime( $post->post_date ) ); ?>
+								<?php echo esc_html( date_i18n( get_option( 'date_format' ), strtotime( $post->post_date ) ) ); ?>
 							</td>
 						</tr>
 						<?php
@@ -201,7 +201,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 
 				</tbody>
-						
+
 			</table>
 
 		</div>

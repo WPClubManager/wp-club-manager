@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Admin
+ */
 class WPCM_Admin {
 
 	/**
@@ -109,8 +112,9 @@ class WPCM_Admin {
 	public function admin_redirects() {
 
 		// Nonced plugin install redirects (whitelisted)
-		if ( ! empty( $_GET['wpcm-install-plugin-redirect'] ) ) {
-			$plugin_slug = wpcm_clean( $_GET['wpcm-install-plugin-redirect'] );
+		$redirect = filter_input( INPUT_GET, 'wpcm-install-plugin-redirect', FILTER_UNSAFE_RAW );
+		if ( ! empty( $redirect ) ) {
+			$plugin_slug = wpcm_clean( $redirect );
 			$url         = admin_url( 'plugin-install.php?tab=search&type=term&s=' . $plugin_slug );
 			wp_safe_redirect( $url );
 			exit;
@@ -138,7 +142,7 @@ class WPCM_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( 'yes' == get_option( 'wpclubmanager_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) {
+		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) ) { // phpcs:ignore
 			$prevent_access = true;
 		}
 
@@ -182,7 +186,7 @@ class WPCM_Admin {
 			$wpclubmanager_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $wpclubmanager_queued_js );
 			$wpclubmanager_queued_js = str_replace( "\r", '', $wpclubmanager_queued_js );
 
-			echo $wpclubmanager_queued_js . "});\n</script>\n";
+			echo $wpclubmanager_queued_js . "});\n</script>\n"; // phpcs:ignore
 
 			unset( $wpclubmanager_queued_js );
 		}
@@ -208,6 +212,7 @@ class WPCM_Admin {
 
 			if ( ! get_option( 'wpclubmanager_admin_footer_text_rated' ) ) {
 
+				/* translators: 1: review URL */
 				$footer_text = sprintf( __( 'If you like <strong>WP Club Manager</strong> please leave us a %1$s&#9733;&#9733;&#9733;&#9733;&#9733;%2$s rating. A huge thank you in advance!', 'wp-club-manager' ), '<a href="https://wordpress.org/support/view/plugin-reviews/wp-club-manager?filter=5#postform" target="_blank" class="wpcm-rating-link" data-rated="' . esc_attr__( 'Many thanks :)', 'wp-club-manager' ) . '">', '</a>' );
 				$this->wpclubmanager_enqueue_js( "
 					jQuery( 'a.wpcm-rating-link' ).click( function() {
@@ -224,6 +229,11 @@ class WPCM_Admin {
 		return $footer_text;
 	}
 
+	/**
+	 * @param string $classes
+	 *
+	 * @return string
+	 */
 	public function wpclubmanager_admin_body_class( $classes ) {
 
 		$sport = get_option( 'wpcm_sport' );

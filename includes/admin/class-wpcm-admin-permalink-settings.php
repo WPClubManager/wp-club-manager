@@ -60,7 +60,7 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 			$slug = array_shift( $this->slugs );
 			$key  = $slug[0];
 			$text = get_option( 'wpclubmanager_' . $key . '_slug', null );
-			?><fieldset><input id="wpclubmanager_<?php echo $key; ?>_slug" name="wpclubmanager_<?php echo $key; ?>_slug" type="text" class="regular-text code" value="<?php echo $text; ?>" placeholder="<?php echo $key; ?>"></fieldset>
+			?><fieldset><input id="wpclubmanager_<?php echo esc_attr( $key ); ?>_slug" name="wpclubmanager_<?php echo esc_attr( $key ); ?>_slug" type="text" class="regular-text code" value="<?php echo esc_html( $text ); ?>" placeholder="<?php echo esc_html( $key ); ?>"></fieldset>
 			<?php
 		}
 
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 		 * Show the settings
 		 */
 		public function settings() {
-			echo wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "Plain" permalinks above</strong>.', 'wp-club-manager' ) );
+			echo esc_html( wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "Plain" permalinks above</strong>.', 'wp-club-manager' ) ) );
 		}
 
 		/**
@@ -95,14 +95,11 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 
 			foreach ( $this->slugs as $slug ) {
 				$key   = 'wpclubmanager_' . $slug[0] . '_slug';
-				$value = null;
-				if ( isset( $_POST[ $key ] ) ) {
-					$value = sanitize_text_field( $_POST[ $key ] );
-				}
+				$value = filter_input( INPUT_POST, $key, FILTER_UNSAFE_RAW );
 				if ( empty( $value ) ) {
 					delete_option( $key );
 				} else {
-					update_option( $key, $value );
+					update_option( $key, sanitize_text_field( $value ) );
 				}
 			}
 

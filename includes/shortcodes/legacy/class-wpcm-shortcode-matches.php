@@ -12,17 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Matches
+ */
 class WPCM_Shortcode_Matches {
-
-	/**
-	 * Get the shortcode content.
-	 *
-	 * @param array $atts
-	 * @return string
-	 */
-	// public static function get( $atts ) {
-	// return WPCM_Shortcodes::shortcode_wrapper( array( __CLASS__, 'output' ), $atts );
-	// }
 
 	/**
 	 * Output the standings shortcode.
@@ -31,7 +24,7 @@ class WPCM_Shortcode_Matches {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$type      = ( isset( $atts['type'] ) ? $atts['type'] : '1' );
 		$format    = ( isset( $atts['format'] ) ? $atts['format'] : '1' );
@@ -49,40 +42,40 @@ class WPCM_Shortcode_Matches {
 		$linktext  = ( isset( $atts['linktext'] ) ? $atts['linktext'] : __( 'View all results', 'wp-club-manager' ) );
 		$linkpage  = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : null );
 
-		if ( $limit == '' ) {
+		if ( '' === $limit ) {
 			$limit = -1;
 		}
-		if ( $comp == -1 ) {
+		if ( -1 === $comp ) {
 			$comp = null;
 		}
-		if ( $season == -1 ) {
+		if ( -1 === $season ) {
 			$season = null;
 		}
-		if ( $team == -1 ) {
+		if ( -1 === $team ) {
 			$team = null;
 		}
-		if ( $month == -1 ) {
+		if ( -1 === $month ) {
 			$month = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' ) {
+		if ( 'no' === $disable_cache ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'matches' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			$club = get_default_club();
-			if ( $format == '1' ) {
+			if ( '1' === $format ) {
 				$format = array( 'publish', 'future' );
 				$order  = 'ASC';
-			} elseif ( $format == '2' ) {
+			} elseif ( '2' === $format ) {
 				$format = 'future';
 				$order  = 'ASC';
-			} elseif ( $format == '3' ) {
+			} elseif ( '3' === $format ) {
 				$format = 'publish';
 				$order  = 'DESC';
 			}
@@ -98,7 +91,7 @@ class WPCM_Shortcode_Matches {
 				'posts_per_page' => $limit,
 			);
 
-			if ( $format == '2' ) {
+			if ( '2' === $format ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_played',
@@ -107,14 +100,14 @@ class WPCM_Shortcode_Matches {
 				);
 			}
 
-			if ( isset( $venue ) && $venue == 'home' ) {
+			if ( isset( $venue ) && 'home' === $venue ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_home_club',
 						'value' => $club,
 					),
 				);
-			} elseif ( isset( $venue ) && $venue == 'away' ) {
+			} elseif ( isset( $venue ) && 'away' === $venue ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_away_club',
@@ -156,13 +149,7 @@ class WPCM_Shortcode_Matches {
 					'field'    => 'term_id',
 				);
 			}
-			// if ( isset( $venue ) ) {
-			// $query_args['tax_query'][] = array(
-			// 'taxonomy' => 'wpcm_venue',
-			// 'terms' => $venue,
-			// 'field' => 'term_id'
-			// );
-			// }
+
 			if ( isset( $month ) ) {
 				$query_args['date_query'] = array(
 					'month' => $month,
@@ -172,7 +159,7 @@ class WPCM_Shortcode_Matches {
 			$matches = get_posts( $query_args );
 
 			if ( $matches ) {
-				if ( $type == '2' ) {
+				if ( '2' === $type ) {
 					ob_start();
 					wpclubmanager_get_template( 'shortcodes/matches-2.php', array(
 						'title'    => $title,
@@ -199,17 +186,17 @@ class WPCM_Shortcode_Matches {
 				}
 
 				wp_reset_postdata();
-				if ( $disable_cache === 'no' ) {
+				if ( 'no' === $disable_cache ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}
 			} else { ?>
-				
-				<p><?php _e( 'No matches yet.', 'wp-club-manager' ); ?></p>
+
+				<p><?php esc_html_e( 'No matches yet.', 'wp-club-manager' ); ?></p>
 				<?php
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

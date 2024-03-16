@@ -83,7 +83,9 @@ function wpclubmanager_update_options( $options ) {
 /**
  * Get a setting from the settings API.
  *
- * @param mixed $option
+ * @param string $option_name
+ * @param string $default
+ *
  * @return string
  */
 function wpclubmanager_settings_get_option( $option_name, $default = '' ) {

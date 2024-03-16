@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Settings_Standings' ) ) :
 
+	/**
+	 * WPCM_Settings_Standings
+	 */
 	class WPCM_Settings_Standings extends WPCM_Settings_Page {
 
 		/**
@@ -70,7 +73,7 @@ if ( ! class_exists( 'WPCM_Settings_Standings' ) ) :
 			);
 
 			$sport = get_option( 'wpcm_sport' );
-			if ( $sport == 'hockey' || $sport == 'basketball' ) {
+			if ( in_array( $sport, array( 'hockey', 'basketball' ) ) ) {
 
 				$settings[] = array(
 					'title'   => __( 'Points for overtime win', 'wp-club-manager' ),

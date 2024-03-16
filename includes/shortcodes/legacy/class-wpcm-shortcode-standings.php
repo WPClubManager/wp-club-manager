@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Standings
+ */
 class WPCM_Shortcode_Standings {
 
 	/**
@@ -21,7 +24,7 @@ class WPCM_Shortcode_Standings {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$limit     = ( isset( $atts['limit'] ) ? $atts['limit'] : 7 );
 		$title     = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Standings', 'wp-club-manager' ) );
@@ -38,16 +41,16 @@ class WPCM_Shortcode_Standings {
 		$excludes  = ( isset( $atts['excludes'] ) ? $atts['excludes'] : null );
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'standings' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
-			if ( $limit == 0 ) {
+			if ( 0 == $limit ) {
 				$limit = -1;
 			}
 			if ( $comp <= 0 ) {
@@ -86,18 +89,18 @@ class WPCM_Shortcode_Standings {
 				);
 			}
 			$clubs = get_posts( $args );
-			$size  = sizeof( $clubs );
-			if ( $size == 0 ) {
+			$size  = count( $clubs );
+			if ( 0 == $size ) {
 				return false;
 			}
-			if ( $limit == -1 ) {
+			if ( - 1 == $limit ) {
 				$limit = $size;
 			}
 			// attach stats to each club
 			foreach ( $clubs as $club ) {
 				$club_stats       = get_wpcm_club_total_stats( $club->ID, $comp, $season );
 				$club->wpcm_stats = $club_stats;
-				if ( $thumb == 1 ) {
+				if ( 1 == $thumb ) {
 					if ( has_post_thumbnail( $club->ID ) ) {
 						$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
 					} else {
@@ -108,14 +111,14 @@ class WPCM_Shortcode_Standings {
 				}
 			}
 			// sort clubs
-			if ( $orderby == 'pts' ) {
+			if ( 'pts' === $orderby ) {
 				usort( $clubs, 'wpcm_club_standings_sort' );
-			} elseif ( $orderby == 'pct' ) {
+			} elseif ( 'pct' === $orderby ) {
 				usort( $clubs, 'wpcm_club_standings_pct_sort' );
 			} else {
 				$clubs = wpcm_club_standings_sort_by( $orderby, $clubs );
 			}
-			if ( $order == 'ASC' ) {
+			if ( 'ASC' === $order ) {
 				$clubs = array_reverse( $clubs );
 			}
 			// add places to clubs
@@ -163,7 +166,6 @@ class WPCM_Shortcode_Standings {
 				'stats'        => $stats,
 				'stats_labels' => $stats_labels,
 				'center'       => $center,
-				'type'         => $type,
 				'link_club'    => $link_club,
 				'linkpage'     => $linkpage,
 				'linktext'     => $linktext,
@@ -171,12 +173,12 @@ class WPCM_Shortcode_Standings {
 			$output = ob_get_clean();
 
 			wp_reset_postdata();
-			if ( $disable_cache === 'no' && $type !== 'widget' ) {
+			if ( 'no' === $disable_cache && 'widget' !== $type ) {
 				set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 				do_action( 'update_plugin_transient_keys', $transient_name );
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

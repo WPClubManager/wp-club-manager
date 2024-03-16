@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Player_Stats
+ */
 class WPCM_Meta_Box_Player_Stats {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -35,7 +40,7 @@ class WPCM_Meta_Box_Player_Stats {
 		?>
 		<div>
 
-			<span class="type_box"> &mdash; 
+			<span class="type_box"> &mdash;
 
 				<label for="player-stats-season-dropdown">
 					<select id="player-stats-season-dropdown" class="wpcm-player-season-select" data-target=".wpcm-player-stat-season">
@@ -45,7 +50,7 @@ class WPCM_Meta_Box_Player_Stats {
 							foreach ( $seasons as $season ) :
 								?>
 
-							<option value="wpcm_team-0_season-<?php echo $season->term_id; ?>" data-show=".wpcm_team-0_season-<?php echo $season->term_id; ?>"><?php echo $season->name; ?></option>
+							<option value="wpcm_team-0_season-<?php echo esc_attr( $season->term_id ); ?>" data-show=".wpcm_team-0_season-<?php echo esc_attr( $season->term_id ); ?>"><?php echo esc_html( $season->name ); ?></option>
 
 													<?php
 						endforeach;
@@ -58,12 +63,12 @@ endif;
 			</span>
 
 
-		
+
 				<?php
 				if ( is_array( $teams ) && count( $teams ) > 1 ) {
 					?>
 
-					<p><?php _e( 'Choose a team and season to edit the manual stats.', 'wp-club-manager' ); ?></p>
+					<p><?php esc_html_e( 'Choose a team and season to edit the manual stats.', 'wp-club-manager' ); ?></p>
 
 					<?php
 					foreach ( $teams as $team ) {
@@ -79,44 +84,44 @@ endif;
 
 						<div class="wpcm-profile-stats-block">
 
-							<h4><?php echo $name; ?></h4>
+							<h4><?php echo esc_html( $name ); ?></h4>
 
-							<ul class="stats-tabs-<?php echo $rand; ?> stats-tabs-multi">
-										
-								<li class="tabs-multi"><a href="#wpcm_team-0_season-0-<?php echo $rand; ?>"><?php printf( __( 'All %s', 'wp-club-manager' ), __( 'Seasons', 'wp-club-manager' ) ); ?></a></li>
+							<ul class="stats-tabs-<?php echo esc_attr( $rand ); ?> stats-tabs-multi">
+
+								<li class="tabs-multi"><a href="#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?>"><?php esc_html_e( 'All Season', 'wp-club-manager' ); ?></a></li>
 
 								<?php
 								if ( is_array( $seasons ) ) :
 									foreach ( $seasons as $season ) :
 										?>
 
-									<li><a href="#wpcm_team-<?php echo $team->term_id; ?>_season-<?php echo $season->term_id; ?>"><?php echo $season->name; ?></a></li>
+									<li><a href="#wpcm_team-<?php echo esc_attr( $team->term_id ); ?>_season-<?php echo esc_attr( $season->term_id ); ?>"><?php echo esc_html( $season->name ); ?></a></li>
 
 																	<?php
 								endforeach;
 endif;
 								?>
-								
+
 							</ul>
 
-							<div id="wpcm_team-0_season-0-<?php echo $rand; ?>" class="tabs-panel-<?php echo $rand; ?> tabs-panel-multi">
-											
+							<div id="wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?>" class="tabs-panel-<?php echo esc_attr( $rand ); ?> tabs-panel-multi">
+
 								<?php self::wpcm_player_stats_table( $stats, $team->term_id, 0 ); ?>
 
-								
-										
+
+
 							</div>
-									
+
 							<?php
 							if ( is_array( $seasons ) ) :
 								foreach ( $seasons as $season ) :
 									?>
-											
-								<div id="wpcm_team-<?php echo $team->term_id; ?>_season-<?php echo $season->term_id; ?>" class="tabs-panel-<?php echo $rand; ?> tabs-panel-multi stats-table-season-<?php echo $rand; ?>" style="display: none;">
-												
+
+								<div id="wpcm_team-<?php echo esc_attr( $team->term_id ); ?>_season-<?php echo esc_attr( $season->term_id ); ?>" class="tabs-panel-<?php echo esc_attr( $rand ); ?> tabs-panel-multi stats-table-season-<?php echo esc_attr( $rand ); ?>" style="display: none;">
+
 									<?php self::wpcm_player_stats_table( $stats, $team->term_id, $season->term_id ); ?>
 
-									
+
 
 									<script type="text/javascript">
 
@@ -127,40 +132,40 @@ endif;
 												index = $(this).attr('data-index');
 												value = 0;
 
-												$(this).closest('table').find('tbody tr').each(function() {					
+												$(this).closest('table').find('tbody tr').each(function() {
 													value += parseInt($(this).find('input[data-index="' + index + '"]').val());
-												});				
+												});
 												$(this).closest('table').find('tfoot tr input[data-index="' + index + '"]').val(value);
 
 												<?php foreach ( $stats_labels as $key => $val ) { ?>
 
 													var sum = 0;
-													$('.stats-table-season-<?php echo $rand; ?> .player-stats-manual-<?php echo $key; ?>').each(function(){
+													$('.stats-table-season-<?php echo esc_attr( $rand ); ?> .player-stats-manual-<?php echo esc_attr( $key ); ?>').each(function(){
 														sum += Number($(this).val());
 													});
-													$('#wpcm_team-0_season-0-<?php echo $rand; ?> .player-stats-manual-<?php echo $key; ?>').val(sum);
+													$('#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?> .player-stats-manual-<?php echo esc_attr( $key ); ?>').val(sum);
 
 													var sum = 0;
-													$('.stats-table-season-<?php echo $rand; ?> .player-stats-auto-<?php echo $key; ?>').each(function(){
+													$('.stats-table-season-<?php echo esc_attr( $rand ); ?> .player-stats-auto-<?php echo esc_attr( $key ); ?>').each(function(){
 														sum += Number($(this).val());
 													});
-													$('#wpcm_team-0_season-0-<?php echo $rand; ?> .player-stats-auto-<?php echo $key; ?>').val(sum);
+													$('#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?> .player-stats-auto-<?php echo esc_attr( $key ); ?>').val(sum);
 
-													var a = +$('#wpcm_team-0_season-0-<?php echo $rand; ?> .player-stats-auto-<?php echo $key; ?>').val();
-													var b = +$('#wpcm_team-0_season-0-<?php echo $rand; ?> .player-stats-manual-<?php echo $key; ?>').val();
+													var a = +$('#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?> .player-stats-auto-<?php echo esc_attr( $key ); ?>').val();
+													var b = +$('#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?> .player-stats-manual-<?php echo esc_attr( $key ); ?>').val();
 													var total = a+b;
-													$('#wpcm_team-0_season-0-<?php echo $rand; ?> .player-stats-total-<?php echo $key; ?>').val(total);
+													$('#wpcm_team-0_season-0-<?php echo esc_attr( $rand ); ?> .player-stats-total-<?php echo esc_attr( $key ); ?>').val(total);
 
 												<?php } ?>
-												
+
 											});
 
 										})(jQuery);
-										
+
 									</script>
-											
+
 								</div>
-								
+
 															<?php
 							endforeach;
 endif;
@@ -170,11 +175,11 @@ endif;
 
 						<script type="text/javascript">
 							(function($) {
-								$('.stats-tabs-<?php echo $rand; ?> a').click(function(){
+								$('.stats-tabs-<?php echo esc_attr( $rand ); ?> a').click(function(){
 									var t = $(this).attr('href');
-									
-									$(this).parent().addClass('tabs-multi <?php echo $rand; ?>').siblings('li').removeClass('tabs-multi <?php echo $rand; ?>');
-									$(this).parent().parent().parent().find('.tabs-panel-<?php echo $rand; ?>').hide();
+
+									$(this).parent().addClass('tabs-multi <?php echo esc_attr( $rand ); ?>').siblings('li').removeClass('tabs-multi <?php echo esc_attr( $rand ); ?>');
+									$(this).parent().parent().parent().find('.tabs-panel-<?php echo esc_attr( $rand ); ?>').hide();
 									$(t).show();
 
 									return false;
@@ -191,7 +196,7 @@ endif;
 						if ( is_array( $seasons ) ) :
 							foreach ( $seasons as $season ) :
 								?>
-							<div class="wpcm_team-0_season-<?php echo $season->term_id; ?> stats-table-season">
+							<div class="wpcm_team-0_season-<?php echo esc_attr( $season->term_id ); ?> stats-table-season">
 															<?php self::wpcm_player_stats_table( $stats, 0, $season->term_id ); ?>
 							</div>
 													<?php
@@ -199,7 +204,7 @@ endif;
 endif;
 						?>
 					</div>
-					
+
 					<div class="wpcm-player-stat-total" style="display:none;">
 						<div id="wpcm_team-0_season-0">
 							<?php self::wpcm_player_stats_table( $stats, 0, 0 ); ?>
@@ -211,28 +216,28 @@ endif;
 							$('#wpclubmanager-player-stats input').change(function() {
 								index = $(this).attr('data-index');
 								value = 0;
-								$(this).closest('table').find('tbody tr').each(function() {					
+								$(this).closest('table').find('tbody tr').each(function() {
 									value += parseInt($(this).find('input[data-index="' + index + '"]').val());
-								});				
+								});
 								$(this).closest('table').find('tfoot tr input[data-index="' + index + '"]').val(value);
 								<?php
 								foreach ( $stats_labels as $key => $val ) {
 									?>
 									var sum = 0;
-									$('.stats-table-season .player-stats-manual-<?php echo $key; ?>').each(function(){
+									$('.stats-table-season .player-stats-manual-<?php echo esc_attr( $key ); ?>').each(function(){
 										sum += Number($(this).val());
 									});
-									$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val(sum);
+									$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo esc_attr( $key ); ?>').val(sum);
 									var sum = 0;
-									$('.stats-table-season .player-stats-auto-<?php echo $key; ?>').each(function(){
+									$('.stats-table-season .player-stats-auto-<?php echo esc_attr( $key ); ?>').each(function(){
 										sum += Number($(this).val());
 									});
-									$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val(sum);
+									$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo esc_attr( $key ); ?>').val(sum);
 
-									var a = +$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo $key; ?>').val();
-									var b = +$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo $key; ?>').val();
+									var a = +$('#wpcm_team-0_season-0 .player-stats-auto-<?php echo esc_attr( $key ); ?>').val();
+									var b = +$('#wpcm_team-0_season-0 .player-stats-manual-<?php echo esc_attr( $key ); ?>').val();
 									var total = a+b;
-									$('#wpcm_team-0_season-0 .player-stats-total-<?php echo $key; ?>').val(total);
+									$('#wpcm_team-0_season-0 .player-stats-total-<?php echo esc_attr( $key ); ?>').val(total);
 									<?php
 								}
 								?>
@@ -247,7 +252,7 @@ endif;
 
 			<div class="clear"></div>
 		</div>
-		
+
 		<?php
 	}
 
@@ -255,9 +260,11 @@ endif;
 	 * Player stats table.
 	 *
 	 * @access public
-	 * @param array
+	 *
+	 * @param array  $stats
 	 * @param string $team
 	 * @param string $season
+	 *
 	 * @return void
 	 */
 	public static function wpcm_player_stats_table( $stats = array(), $team = 0, $season = 0 ) {
@@ -281,7 +288,7 @@ endif;
 					foreach ( $stats_labels as $key => $val ) :
 						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 							?>
-							<th><?php echo $val; ?></th>
+							<th><?php echo esc_html( $val ); ?></th>
 							<?php
 						endif;
 					endforeach;
@@ -295,7 +302,7 @@ endif;
 					foreach ( $stats_labels as $key => $val ) :
 						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 							?>
-							<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo $key; ?>" readonly /></td>
+							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo esc_attr( $key ); ?>" readonly /></td>
 							<?php
 						endif;
 					endforeach;
@@ -304,24 +311,24 @@ endif;
 			</tfoot>
 			<tbody>
 				<tr>
-					<td align="right"><?php _e( 'Auto' ); ?></td>
+					<td align="right"><?php esc_html_e( 'Auto' ); ?></td>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
 						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 							?>
-							<td><input type="text" data-index="<?php echo $key; ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo $key; ?>" readonly /></td>
+							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo esc_attr( $key ); ?>" readonly /></td>
 							<?php
 						endif;
 					endforeach;
 					?>
 				</tr>
 				<tr>
-					<td align="right"><?php _e( 'Manual', 'wp-club-manager' ); ?></td>
+					<td align="right"><?php esc_html_e( 'Manual', 'wp-club-manager' ); ?></td>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
 						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 							?>
-							<td><input type="text" data-index="<?php echo $key; ?>" name="wpcm_stats[<?php echo $team; ?>][<?php echo $season; ?>][<?php echo $key; ?>]" value="<?php wpcm_stats_value( $stats, 'manual', $key ); ?>" size="3" class="player-stats-manual-<?php echo $key; ?>"<?php echo ( $season == 0 ? ' readonly' : '' ); ?> /></td>
+							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" name="wpcm_stats[<?php echo esc_attr( $team ); ?>][<?php echo esc_attr( $season ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php esc_attr( wpcm_stats_value( $stats, 'manual', $key ) ); ?>" size="3" class="player-stats-manual-<?php echo esc_attr( $key ); ?>"<?php echo ( 0 == $season ? ' readonly' : '' ); ?> /></td>
 							<?php
 						endif;
 					endforeach;
@@ -335,11 +342,18 @@ endif;
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_stats'] ) ) {
-			$stats = $_POST['wpcm_stats'];
+		$wpcm_stats = filter_input( INPUT_POST, 'wpcm_stats', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $wpcm_stats ) {
+			$stats = $wpcm_stats;
 		} else {
 			$stats = array();
 		}

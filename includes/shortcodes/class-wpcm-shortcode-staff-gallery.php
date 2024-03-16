@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Staff_Gallery
+ */
 class WPCM_Shortcode_Staff_Gallery {
 
 	/**
@@ -31,7 +34,7 @@ class WPCM_Shortcode_Staff_Gallery {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id          = ( isset( $atts['id'] ) ? $atts['id'] : null );
 		$title       = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Staff Gallery', 'wp-club-manager' ) );
@@ -45,37 +48,37 @@ class WPCM_Shortcode_Staff_Gallery {
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
 		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		if ( $limit == '' ) {
+		if ( '' === $limit ) {
 			$limit = -1;
 		}
-		if ( $position == '' ) {
+		if ( '' === $position ) {
 			$position = null;
 		}
-		if ( $orderby == '' ) {
+		if ( '' === $orderby ) {
 			$orderby = 'number';
 		}
-		if ( $order == '' ) {
+		if ( '' === $order ) {
 			$order = 'ASC';
 		}
-		if ( $columns == '' ) {
+		if ( '' === $columns ) {
 			$columns = '3';
 		}
-		if ( $name_format == '' ) {
+		if ( '' === $name_format ) {
 			$name_format = 'full';
 		}
-		if ( $linkpage == '' ) {
+		if ( '' === $linkpage ) {
 			$linkpage = null;
 		}
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' && $type !== 'widget' ) {
+		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'staff_gallery' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			$selected_staff = (array) unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
 			$seasons        = get_the_terms( $id, 'wpcm_season' );
@@ -88,7 +91,7 @@ class WPCM_Shortcode_Staff_Gallery {
 
 			$query_args = array(
 				'post_type'      => 'wpcm_staff',
-				'tax_query'      => array(),
+				'tax_query'      => array(), // phpcs:ignore
 				'numposts'       => $limit,
 				'posts_per_page' => -1,
 				'orderby'        => $orderby,
@@ -117,7 +120,7 @@ class WPCM_Shortcode_Staff_Gallery {
 					if ( has_post_thumbnail( $employee->ID ) ) {
 						$thumb = get_the_post_thumbnail( $employee->ID, 'player-medium' );
 					} else {
-						$thumb = wpcm_placeholder_img( $size = 'full' );
+						$thumb = wpcm_placeholder_img( 'full' );
 					}
 
 					$employee_details[ $employee->ID ]['image'] = '<a href="' . get_permalink( $employee->ID ) . '">' . $thumb . '</a>';
@@ -141,13 +144,13 @@ class WPCM_Shortcode_Staff_Gallery {
 				$output = ob_get_clean();
 				wp_reset_postdata();
 
-				if ( $disable_cache === 'no' ) {
+				if ( 'no' === $disable_cache ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } // Exit if accessed directly
 
+/**
+ * WPCM_Fixtures_Widget
+ */
 class WPCM_Fixtures_Widget extends WPCM_Widget {
 
 
@@ -129,8 +132,9 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 	/**
 	 * Query the fixtures and return them.
 	 *
-	 * @param  array $args
-	 * @param  array $instance
+	 * @param array $args
+	 * @param array $instance
+	 *
 	 * @return WP_Query
 	 */
 	public function get_fixtures( $args, $instance ) {
@@ -140,7 +144,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 		$team   = isset( $instance['team'] ) ? $instance['team'] : null;
 		$club   = get_option( 'wpcm_default_club' );
 		$venue  = isset( $instance['venue'] ) ? $instance['venue'] : 'all';
-		if ( $limit == 0 ) {
+		if ( 0 == $limit ) {
 			$limit = -1;
 		}
 		if ( $comp <= 0 ) {
@@ -168,14 +172,14 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 			'posts_per_page' => $limit,
 		);
 
-		if ( isset( $venue ) && $venue == 'home' ) {
+		if ( isset( $venue ) && 'home' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_home_club',
 					'value' => $club,
 				),
 			);
-		} elseif ( isset( $venue ) && $venue == 'away' ) {
+		} elseif ( isset( $venue ) && 'away' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_away_club',
@@ -226,11 +230,12 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 	/**
 	 * widget function.
 	 *
-	 * @see WP_Widget
-	 * @access public
 	 * @param array $args
 	 * @param array $instance
+	 *
 	 * @return void
+	 * @see    WP_Widget
+	 * @access public
 	 */
 	public function widget( $args, $instance ) {
 		if ( $this->get_cached_widget( $args ) ) {
@@ -240,9 +245,9 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 		ob_start();
 
 		$this->widget_start( $args, $instance );
-
-		if ( ( $fixtures = $this->get_fixtures( $args, $instance ) ) && $fixtures->have_posts() ) {
-			echo apply_filters( 'wpclubmanager_before_widget_fixtures', '<ul class="wpcm-matches-widget">' );
+		$fixtures = $this->get_fixtures( $args, $instance );
+		if ( $fixtures && $fixtures->have_posts() ) {
+			echo wp_kses_post( apply_filters( 'wpclubmanager_before_widget_fixtures', '<ul class="wpcm-matches-widget">' ) );
 
 			while ( $fixtures->have_posts() ) :
 				$fixtures->the_post();
@@ -256,7 +261,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				$show_time = ! empty( $instance['show_time'] );
 				$show_comp = ! empty( $instance['show_comp'] );
 				$show_team = ! empty( $instance['show_team'] );
-				if ( $show_abbr == 1 ) {
+				if ( 1 == $show_abbr ) {
 					$sides = wpcm_get_match_clubs( $post, true );
 				} else {
 					$sides = wpcm_get_match_clubs( $post );
@@ -281,9 +286,9 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 
 			endwhile;
 
-			echo apply_filters( 'wpclubmanager_after_widget_fixtures', '</ul>' );
+			echo wp_kses_post( apply_filters( 'wpclubmanager_after_widget_fixtures', '</ul>' ) );
 		} else {
-			echo '<p class="inner">' . __( 'No more matches scheduled.', 'wp-club-manager' ) . '</p>';
+			echo '<p class="inner">' . esc_html__( 'No more matches scheduled.', 'wp-club-manager' ) . '</p>';
 		}
 
 		wp_reset_postdata();
@@ -295,11 +300,11 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 		}
 
 		if ( isset( $linkpage ) ) {
-			echo '<a href="' . get_page_link( $linkpage ) . '" class="wpcm-view-link">' . $linktext . '</a>';
+			echo '<a href="' . esc_url( get_page_link( $linkpage ) ) . '" class="wpcm-view-link">' . esc_html( $linktext ) . '</a>';
 		}
 
 		$this->widget_end( $args );
 
-		echo $this->cache_widget( $args, ob_get_clean() );
+		echo wp_kses_post( $this->cache_widget( $args, ob_get_clean() ) );
 	}
 }

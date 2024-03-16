@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php
 			/**
-			 * wpclubmanager_single_player_image hook
+			 * Hook wpclubmanager_single_player_image
 			 *
 			 * @hooked wpclubmanager_template_single_player_images - 5
 			 */
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php
 				/**
-				 * wpclubmanager_single_player_info hook
+				 * Hook wpclubmanager_single_player_info
 				 *
 				 * @hooked wpclubmanager_template_single_player_title - 5
 				 * @hooked wpclubmanager_template_single_player_meta - 10

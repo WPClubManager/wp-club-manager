@@ -16,12 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Include widget classes
 require_once 'abstracts/class-wpcm-widget.php';
-require_once 'widgets/class-wpcm-widget-fixtures.php';
-require_once 'widgets/class-wpcm-widget-results.php';
-require_once 'widgets/class-wpcm-widget-standings.php';
-require_once 'widgets/class-wpcm-widget-sponsors.php';
-require_once 'widgets/class-wpcm-widget-players.php';
-require_once 'widgets/class-wpcm-widget-birthdays.php';
+require_once 'widgets/class-wpcm-fixtures-widget.php';
+require_once 'widgets/class-wpcm-results-widget.php';
+require_once 'widgets/class-wpcm-standings-widget.php';
+require_once 'widgets/class-wpcm-sponsors-widget.php';
+require_once 'widgets/class-wpcm-players-widget.php';
+require_once 'widgets/class-wpcm-birthdays-widget.php';
 
 /**
  * Register Widgets

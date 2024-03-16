@@ -107,7 +107,7 @@ function wpcm_create_new_user( $email, $username = '', $password = '' ) {
  * @return array
  */
 function wpcm_modify_editable_roles( $roles ) {
-	if ( ! current_user_can( 'administrator' ) ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
 		unset( $roles['administrator'] );
 	}
 	return $roles;
@@ -133,7 +133,7 @@ function wpcm_modify_map_meta_cap( $caps, $cap, $user_id, $args ) {
 		case 'delete_user':
 			if ( ! isset( $args[0] ) || $args[0] === $user_id ) {
 				break;
-			} elseif ( user_can( $args[0], 'administrator' ) && ! current_user_can( 'administrator' ) ) {
+			} elseif ( user_can( $args[0], 'manage_options' ) && ! current_user_can( 'manage_options' ) ) {
 					$caps[] = 'do_not_allow';
 			}
 			break;

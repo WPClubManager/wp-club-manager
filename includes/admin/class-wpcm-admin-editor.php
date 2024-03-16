@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Admin_Editor
+ */
 class WPCM_Admin_Editor {
 
 	/**
@@ -26,6 +29,9 @@ class WPCM_Admin_Editor {
 		add_filter( 'mce_external_languages', array( $this, 'add_tinymce_lang' ), 10, 1 );
 	}
 
+	/**
+	 * @return void
+	 */
 	public function add_shortcode_button() {
 		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
 			return;
@@ -37,6 +43,11 @@ class WPCM_Admin_Editor {
 		}
 	}
 
+	/**
+	 * @param array $arr
+	 *
+	 * @return mixed
+	 */
 	public function add_tinymce_lang( $arr ) {
 		$arr['wpcm_shortcodes_button'] = WPCM()->plugin_path() . '/assets/js/admin/editor-lang.php';
 		return $arr;

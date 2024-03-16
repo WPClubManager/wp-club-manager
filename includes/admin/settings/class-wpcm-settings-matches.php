@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Settings_Matches' ) ) :
 
+	/**
+	 * WPCM_Settings_Matches
+	 */
 	class WPCM_Settings_Matches extends WPCM_Settings_Page {
 
 		/**

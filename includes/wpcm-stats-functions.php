@@ -26,9 +26,9 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 	$sport = get_option( 'wpcm_sport' );
 	$data  = wpcm_get_sport_presets();
 
-	if ( $type == 'standings' ) {
+	if ( 'standings' == $type ) {
 		$stats = $data[ $sport ]['standings_columns'];
-	} elseif ( $type == 'players' ) {
+	} elseif ( 'players' == $type ) {
 		$stats = $data[ $sport ]['stats_labels'];
 	}
 
@@ -43,8 +43,8 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 /**
  * Get preset stats and standings.
  *
- * @param string $type
- * @param string $format
+ * @param string $section
+ *
  * @return array
  */
 function wpcm_get_section_stats( $section = 'batting' ) {
@@ -63,13 +63,13 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 	return $output;
 }
 
-/**
- * Get empty player stats row.
- *
- * @access public
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_player_stats_empty_row' ) ) {
+	/**
+	 * Get empty player stats row.
+	 *
+	 * @access public
+	 * @return mixed $output
+	 */
 	function get_wpcm_player_stats_empty_row() {
 
 		$player_stats_labels = wpcm_get_preset_labels();
@@ -84,13 +84,13 @@ if ( ! function_exists( 'get_wpcm_player_stats_empty_row' ) ) {
 	}
 }
 
-/**
- * Get empty club stats row.
- *
- * @access public
- * @return array
- */
 if ( ! function_exists( 'get_wpcm_club_stats_empty_row' ) ) {
+	/**
+	 * Get empty club stats row.
+	 *
+	 * @access public
+	 * @return array
+	 */
 	function get_wpcm_club_stats_empty_row() {
 
 		$standings_stats_labels = wpcm_get_preset_labels( 'standings', 'label' );
@@ -105,16 +105,18 @@ if ( ! function_exists( 'get_wpcm_club_stats_empty_row' ) ) {
 	}
 }
 
-/**
- * Get total player stats.
- *
- * @access public
- * @param string $post_id
- * @param string $team
- * @param string $season
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_player_total_stats' ) ) {
+	/**
+	 * Get total player stats.
+	 *
+	 * @access public
+	 *
+	 * @param string $post_id
+	 * @param string $team
+	 * @param string $season
+	 *
+	 * @return mixed $output
+	 */
 	function get_wpcm_player_total_stats( $post_id = null, $team = null, $season = null ) {
 
 		$output      = get_wpcm_player_stats_empty_row();
@@ -129,16 +131,18 @@ if ( ! function_exists( 'get_wpcm_player_total_stats' ) ) {
 	}
 }
 
-/**
- * Get total club stats.
- *
- * @access public
- * @param string $post_id
- * @param string $comp
- * @param string $season
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_club_total_stats' ) ) {
+	/**
+	 * Get total club stats.
+	 *
+	 * @access public
+	 *
+	 * @param string $post_id
+	 * @param string $comp
+	 * @param string $season
+	 *
+	 * @return mixed $output
+	 */
 	function get_wpcm_club_total_stats( $post_id = null, $comp = null, $season = null ) {
 
 		$output      = get_wpcm_club_stats_empty_row();
@@ -147,7 +151,7 @@ if ( ! function_exists( 'get_wpcm_club_total_stats' ) ) {
 
 		foreach ( $output as $key => $val ) {
 
-			if ( $key == 'pct' ) {
+			if ( 'pct' == $key ) {
 
 				$combined_win    = $autostats['w'] + $manualstats['w'];
 				$combined_played = $autostats['p'] + $manualstats['p'];
@@ -172,16 +176,18 @@ if ( ! function_exists( 'get_wpcm_club_total_stats' ) ) {
 	}
 }
 
-/**
- * Get manual player stats.
- *
- * @access public
- * @param string $post_id
- * @param string $team
- * @param string $season
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_player_manual_stats' ) ) {
+	/**
+	 * Get manual player stats.
+	 *
+	 * @access public
+	 *
+	 * @param string $post_id
+	 * @param string $team
+	 * @param string $season
+	 *
+	 * @return mixed $output
+	 */
 	function get_wpcm_player_manual_stats( $post_id = null, $team = null, $season = null ) {
 
 		$output = get_wpcm_player_stats_empty_row();
@@ -207,16 +213,18 @@ if ( ! function_exists( 'get_wpcm_player_manual_stats' ) ) {
 	}
 }
 
-/**
- * Get manual club stats.
- *
- * @access public
- * @param string $post_id
- * @param string $comp
- * @param string $season
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_club_manual_stats' ) ) {
+	/**
+	 * Get manual club stats.
+	 *
+	 * @access public
+	 *
+	 * @param string $post_id
+	 * @param string $comp
+	 * @param string $season
+	 *
+	 * @return mixed $output
+	 */
 	function get_wpcm_club_manual_stats( $post_id = null, $comp = null, $season = null ) {
 
 		$output = get_wpcm_club_stats_empty_row();
@@ -242,16 +250,18 @@ if ( ! function_exists( 'get_wpcm_club_manual_stats' ) ) {
 	}
 }
 
-/**
- * Get auto player stats.
- *
- * @access public
- * @param string $post_id
- * @param string $team_id
- * @param string $season_id
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_player_auto_stats' ) ) {
+	/**
+	 * Get auto player stats.
+	 *
+	 * @access public
+	 *
+	 * @param string $post_id
+	 * @param string $team
+	 * @param string $season_id
+	 *
+	 * @return mixed $output
+	 */
 	function get_wpcm_player_auto_stats( $post_id = null, $team = null, $season_id = null ) {
 
 		// if ( !$post_id ) global $post_id;
@@ -342,6 +352,14 @@ if ( ! function_exists( 'get_wpcm_player_auto_stats' ) ) {
  * @return mixed $output
  */
 if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
+	/**
+	 * @param int $post_id
+	 * @param int $comp
+	 * @param int $season
+	 * @param int $team
+	 *
+	 * @return array
+	 */
 	function get_wpcm_club_auto_stats( $post_id = null, $comp = null, $season = null, $team = null ) {
 
 		if ( ! $post_id ) {
@@ -405,11 +423,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 					$a = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				}
 				$hb   = get_post_meta( $match->ID, 'wpcm_home_bonus', true );
-				$won  = $overtime == 0 && (int) ( $f > $a );
+				$won  = 0 == $overtime && (int) ( $f > $a );
 				$draw = (int) ( $f == $a );
-				$lost = $overtime == 0 && (int) ( $f < $a );
-				$otw  = $overtime == 1 && (int) ( $f > $a );
-				$otl  = $overtime == 1 && (int) ( $f < $a );
+				$lost = 0 == $overtime && (int) ( $f < $a );
+				$otw  = 1 == $overtime && (int) ( $f > $a );
+				$otl  = 1 == $overtime && (int) ( $f < $a );
 				++$output['p'];
 				$output['w'] += $won;
 				if ( array_key_exists( 'd', $output ) ) {
@@ -436,11 +454,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 				}
 				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $lost * get_option( 'wpcm_standings_loss_points' );
 			}
-			if ( $postponed && $walkover == 'home_win' ) {
+			if ( $postponed && 'home_win' == $walkover ) {
 				++$output['p'];
 				$output['w']   += 1;
 				$output['pts'] += get_option( 'wpcm_standings_win_points' );
-			} elseif ( $postponed && $walkover == 'away_win' ) {
+			} elseif ( $postponed && 'away_win' == $walkover ) {
 				++$output['p'];
 				$output['l']   += 1;
 				$output['pts'] += get_option( 'wpcm_standings_loss_points' );
@@ -471,11 +489,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 					$a = get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				}
 				$ab   = get_post_meta( $match->ID, 'wpcm_away_bonus', true );
-				$won  = $overtime == 0 && (int) ( $f > $a );
+				$won  = 0 == $overtime && (int) ( $f > $a );
 				$draw = (int) ( $f == $a );
-				$lost = $overtime == 0 && (int) ( $f < $a );
-				$otw  = $overtime == 1 && (int) ( $f > $a );
-				$otl  = $overtime == 1 && (int) ( $f < $a );
+				$lost = 0 == $overtime && (int) ( $f < $a );
+				$otw  = 1 == $overtime && (int) ( $f > $a );
+				$otl  = 1 == $overtime && (int) ( $f < $a );
 				++$output['p'];
 				$output['w'] += $won;
 				if ( array_key_exists( 'd', $output ) ) {
@@ -502,11 +520,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 				}
 				$output['pts'] += $won * get_option( 'wpcm_standings_win_points' ) + $lost * get_option( 'wpcm_standings_loss_points' );
 			}
-			if ( $postponed && $walkover == 'away_win' ) {
+			if ( $postponed && 'away_win' == $walkover ) {
 				++$output['p'];
 				$output['w']   += 1;
 				$output['pts'] += get_option( 'wpcm_standings_win_points' );
-			} elseif ( $postponed && $walkover == 'home_win' ) {
+			} elseif ( $postponed && 'home_win' === $walkover ) {
 				++$output['p'];
 				$output['l']   += 1;
 				$output['pts'] += get_option( 'wpcm_standings_loss_points' );
@@ -517,14 +535,15 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 	}
 }
 
-/**
- * Get total player stats.
- *
- * @access public
- * @param string $post_id
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
+
+	/**
+	 * Get total player stats.
+	 *
+	 * @param WP_Post $post
+	 *
+	 * @return array
+	 */
 	function get_wpcm_player_stats( $post = null ) {
 
 		if ( ! $post ) {
@@ -617,14 +636,14 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 
 }
 
-/**
- * Get club stats.
- *
- * @access public
- * @param string $post
- * @return mixed $output
- */
 if ( ! function_exists( 'get_wpcm_club_stats' ) ) {
+	/**
+	 * Get club stats.
+	 *
+	 * @param WP_Post $post
+	 *
+	 * @return array
+	 */
 	function get_wpcm_club_stats( $post = null ) {
 
 		if ( ! $post ) {
@@ -718,9 +737,11 @@ if ( ! function_exists( 'get_wpcm_club_stats' ) ) {
  * Get player subtitute appearances.
  *
  * @access public
- * @param int $post
+ *
+ * @param int $id
  * @param int $season
  * @param int $team
+ *
  * @return int $total_subs
  */
 function get_player_subs_total( $id = null, $season = null, $team = null ) {
@@ -773,7 +794,7 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 
 	$matches = get_posts( $query_args );
 
-	$size = sizeof( $matches );
+	$size = count( $matches );
 
 	$total_subs = '0';
 
@@ -796,16 +817,16 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 	return $total_subs;
 }
 
-/**
- * Match player subs dropdown.
- *
- * @access public
- * @param array
- * @param string $type ('manual')
- * @param string $index ('goals')
- * @return int
- */
 if ( ! function_exists( 'get_wpcm_stats_value' ) ) {
+	/**
+	 * Match player subs dropdown.
+	 *
+	 * @param array  $stats
+	 * @param string $type
+	 * @param string $index
+	 *
+	 * @return float|int
+	 */
 	function get_wpcm_stats_value( $stats = array(), $type = 'manual', $index = 'goals' ) {
 
 		if ( is_array( $stats ) ) {
@@ -823,18 +844,18 @@ if ( ! function_exists( 'get_wpcm_stats_value' ) ) {
 	}
 }
 
-/**
- * Get the value of the stats.
- *
- * @access public
- * @param string $stats
- * @param string $type
- * @param string $index
- * @return void
- */
 if ( ! function_exists( 'wpcm_stats_value' ) ) {
+	/**
+	 * Get the value of the stats.
+	 *
+	 * @param array  $stats
+	 * @param string $type
+	 * @param string $index
+	 *
+	 * @return void
+	 */
 	function wpcm_stats_value( $stats, $type, $index ) {
 
-		echo get_wpcm_stats_value( $stats, $type, $index );
+		echo esc_html( get_wpcm_stats_value( $stats, $type, $index ) );
 	}
 }

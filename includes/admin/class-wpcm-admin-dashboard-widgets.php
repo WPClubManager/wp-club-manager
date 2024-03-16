@@ -41,9 +41,11 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 		/**
 		 * Add WPCM Post type counts to At a glance widget
 		 *
+		 * @param array $items
+		 *
+		 * @return array
 		 * @author Daniel J Griffiths
-		 * @since 1.3
-		 * @return void
+		 * @since  1.3
 		 */
 		public function glance_items( $items ) {
 
@@ -57,7 +59,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 					$post_type = get_post_type_object( $type );
 
-					$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $num_posts->publish, 'wp-club-manager' );
+					$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $num_posts->publish, 'wp-club-manager' ); // phpcs:ignore
 
 					$text = sprintf( $text, number_format_i18n( $num_posts->publish ) );
 
@@ -82,8 +84,8 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 			$club   = get_default_club();
 			$format = get_match_title_format();
-			$year   = date( 'Y' );
-			$week   = date( 'W' );
+			$year   = gmdate( 'Y' );
+			$week   = gmdate( 'W' );
 
 			// get matches
 			$query_args = array(
@@ -116,7 +118,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 			$matches = get_posts( $query_args ); ?>
 
 		<ul class="wpcm-matches-list">
-		
+
 			<?php
 			if ( $matches ) {
 
@@ -131,7 +133,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 					$comp_status = get_post_meta( $match->ID, 'wpcm_comp_status', true );
 					$separator   = get_option( 'wpcm_match_clubs_separator' );
 
-					if ( $format == '%home% vs %away%' ) {
+					if ( '%home% vs %away%' === $format ) {
 						$side1 = $home_club;
 						$side2 = $away_club;
 					} else {
@@ -156,12 +158,12 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 				<li class="wpcm-matches-list-item">
 
 					<div class="wpcm-matches-list-link">
-				
+
 						<span class="wpcm-matches-list-col wpcm-matches-list-club1">
 							<?php
 							if ( $club == $side1 ) {
 								echo '<strong>'; }
-							echo wpcm_get_team_name( $side1, $match->ID );
+							echo wp_kses_post( wpcm_get_team_name( $side1, $match->ID ) );
 							if ( $club == $side1 ) {
 								echo '</strong>'; }
 							?>
@@ -169,7 +171,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 						<span class="wpcm-matches-list-col wpcm-matches-list-status">
 							<span class="wpcm-matches-list-sep">
-									<?php echo $separator; ?>
+									<?php echo esc_html( $separator ); ?>
 							</span>
 						</span>
 
@@ -177,7 +179,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 								<?php
 								if ( $club == $side2 ) {
 									echo '<strong>'; }
-								echo wpcm_get_team_name( $side2, $match->ID );
+								echo wp_kses_post( wpcm_get_team_name( $side2, $match->ID ) );
 								if ( $club == $side2 ) {
 									echo '</strong>'; }
 								?>
@@ -185,24 +187,24 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 					</div>
 
-					<a href="<?php echo get_edit_post_link( $match->ID ); ?>" class="wpcm-matches-list-additional">
+					<a href="<?php echo esc_url( get_edit_post_link( $match->ID ) ); ?>" class="wpcm-matches-list-additional">
 
 						<span class="wpcm-matches-list-additional-col wpcm-matches-list-date">
-								<?php echo date_i18n( 'l jS F', $timestamp ); ?>
+								<?php echo esc_html( date_i18n( 'l jS F', $timestamp ) ); ?>
 						</span>
 
 						<span class="wpcm-matches-list-additional-col wpcm-matches-list-status">
 							<span class="wpcm-matches-list-time">
-									<?php echo date_i18n( $time_format, $timestamp ); ?>
+									<?php echo esc_html( date_i18n( $time_format, $timestamp ) ); ?>
 							</span>
 						</span>
 
 						<span class="wpcm-matches-list-additional-col wpcm-matches-list-info">
-								<?php echo $competition; ?>
+								<?php echo esc_html( $competition ); ?>
 						</span>
 
 					</a>
-				
+
 				</li>
 
 					<?php
@@ -210,7 +212,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 			} else {
 				?>
 
-			<li><?php _e( 'No upcoming matches.', 'wp-club-manager' ); ?></li>
+			<li><?php esc_html_e( 'No upcoming matches.', 'wp-club-manager' ); ?></li>
 
 				<?php
 			}
@@ -220,7 +222,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 		</ul>
 
 		<div class="add-new-match-link">
-			<a class="button btn" href="post-new.php?post_type=wpcm_match"><?php _e( 'Add New Match', 'wp-club-manager' ); ?></a>
+			<a class="button btn" href="post-new.php?post_type=wpcm_match"><?php esc_html_e( 'Add New Match', 'wp-club-manager' ); ?></a>
 		</div>
 
 			<?php

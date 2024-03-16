@@ -14,13 +14,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Settings_Page' ) ) :
 
+	/**
+	 * WPCM_Settings_Page
+	 */
 	class WPCM_Settings_Page {
 
-		protected $id    = '';
+		/**
+		 * @var string
+		 */
+		protected $id = '';
+
+		/**
+		 * @var string
+		 */
 		protected $label = '';
 
 		/**
 		 * Add this page to settings
+		 *
+		 * @param array $pages
+		 *
+		 * @return mixed
 		 */
 		public function add_settings_page( $pages ) {
 			$pages[ $this->id ] = $this->label;

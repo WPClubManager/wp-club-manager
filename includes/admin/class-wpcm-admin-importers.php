@@ -50,6 +50,9 @@ if ( ! class_exists( 'WPCM_Admin_Importers' ) ) :
 			$importer->dispatch();
 		}
 
+		/**
+		 * @return void
+		 */
 		public function staff_importer() {
 			$this->includes();
 
@@ -61,6 +64,9 @@ if ( ! class_exists( 'WPCM_Admin_Importers' ) ) :
 			$importer->dispatch();
 		}
 
+		/**
+		 * @return void
+		 */
 		public function club_importer() {
 			$this->includes();
 
@@ -72,6 +78,9 @@ if ( ! class_exists( 'WPCM_Admin_Importers' ) ) :
 			$importer->dispatch();
 		}
 
+		/**
+		 * @return void
+		 */
 		public function match_importer() {
 			$this->includes();
 
@@ -83,6 +92,9 @@ if ( ! class_exists( 'WPCM_Admin_Importers' ) ) :
 			$importer->dispatch();
 		}
 
+		/**
+		 * @return void
+		 */
 		public static function includes() {
 			// Load Importer API
 			require_once ABSPATH . 'wp-admin/includes/import.php';
@@ -95,7 +107,7 @@ if ( ! class_exists( 'WPCM_Admin_Importers' ) ) :
 			}
 
 			// includes
-			require 'importers/class-wpcm-importers.php';
+			require 'importers/class-wpcm-importer.php';
 		}
 	}
 

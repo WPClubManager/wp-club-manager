@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Cache_Helper
+ */
 class WPCM_Cache_Helper {
 
 	/**
@@ -24,6 +27,12 @@ class WPCM_Cache_Helper {
 		add_action( 'wp_ajax_wpcm_clear_transients', array( __CLASS__, 'wpcm_clear_transients' ) );
 	}
 
+	/**
+	 * @param array  $atts
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	public static function create_plugin_transient_name( $atts, $type = 'players' ) {
 
 		$names          = implode( '-', $atts );
@@ -32,6 +41,9 @@ class WPCM_Cache_Helper {
 		return $transient_name;
 	}
 
+	/**
+	 * @param string $key
+	 */
 	public static function update_plugin_transient_keys( $key ) {
 
 		$transient_keys   = get_option( 'wpcm_transient_keys' );
@@ -40,6 +52,9 @@ class WPCM_Cache_Helper {
 		update_option( 'wpcm_transient_keys', $transient_keys );
 	}
 
+	/**
+	 * @return void
+	 */
 	public static function delete_plugin_transients() {
 
 		$transient_keys = get_option( 'wpcm_transient_keys' );
@@ -56,8 +71,8 @@ class WPCM_Cache_Helper {
 	 * Clear transients ajax
 	 */
 	public function wpcm_clear_transients() {
-
-		if ( ! isset( $_POST['wpcm_nonce'] ) || ! wp_verify_nonce( $_POST['wpcm_nonce'], 'wpcm-nonce' ) ) {
+		$nonce = filter_input( INPUT_POST, 'wpcm_nonce', FILTER_UNSAFE_RAW );
+		if ( ! isset( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpcm-nonce' ) ) {
 			die( 'Permissions check failed' );
 		}
 

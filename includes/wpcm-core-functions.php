@@ -75,13 +75,13 @@ function wpclubmanager_get_template_part( $slug, $name = '' ) {
 function wpclubmanager_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 
 	if ( $args && is_array( $args ) ) {
-		extract( $args );
+		extract( $args ); // phpcs:ignore
 	}
 
 	$located = wpclubmanager_locate_template( $template_name, $template_path, $default_path );
 
 	if ( ! file_exists( $located ) ) {
-		_doing_it_wrong( __FUNCTION__, sprintf( '<code>%s</code> does not exist.', $located ), '1.3' );
+		_doing_it_wrong( __FUNCTION__, esc_html( sprintf( '<code>%s</code> does not exist.', $located ) ), '1.3' );
 		return;
 	}
 
@@ -98,8 +98,14 @@ function wpclubmanager_get_template( $template_name, $args = array(), $template_
 /**
  * Like wpcm_get_template, but returns the HTML instead of outputting.
  *
- * @see wpcm_get_template
+ * @param string $template_name
+ * @param array  $args
+ * @param string $template_path
+ * @param string $default_path
+ *
+ * @return false|string
  * @since 1.4.0
+ * @see   wpcm_get_template
  */
 function wpcm_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 
@@ -212,6 +218,10 @@ function wpcm_nonce() {
 
 /**
  * Get information about available image sizes
+ *
+ * @param string $size
+ *
+ * @return array|false|mixed
  */
 function wpcm_get_image_sizes( $size = '' ) {
 
@@ -261,6 +271,9 @@ function wpcm_placeholder_img_src() {
  * Get the placeholder image
  *
  * @access public
+ *
+ * @param string $size
+ *
  * @return string
  */
 function wpcm_placeholder_img( $size = 'player_thumbnail' ) {
@@ -285,6 +298,9 @@ function wpcm_crest_placeholder_img_src() {
  * Get the crest placeholder image
  *
  * @access public
+ *
+ * @param string $size
+ *
  * @return string
  */
 function wpcm_crest_placeholder_img( $size = 'crest-small' ) {
@@ -383,6 +399,12 @@ function wpcm_get_core_supported_themes() {
  * @return mixed
  */
 if ( ! function_exists( 'wpcm_get_team_name' ) ) {
+	/**
+	 * @param WP_Post $post
+	 * @param int     $id
+	 *
+	 * @return mixed|string
+	 */
 	function wpcm_get_team_name( $post, $id ) {
 
 		$club = get_default_club();
@@ -461,8 +483,10 @@ function has_teams() {
 /**
  * Get array of teams.
  *
- * @since  2.0.0
+ * @param int|WP_Post $post
+ *
  * @return array
+ * @since  2.0.0
  */
 function get_the_teams( $post ) {
 
@@ -481,8 +505,10 @@ function get_the_teams( $post ) {
 /**
  * Get array of seasons.
  *
- * @since  2.0.0
+ * @param int|WP_Post $post
+ *
  * @return array
+ * @since  2.0.0
  */
 function get_the_seasons( $post ) {
 
@@ -524,8 +550,11 @@ function get_current_season() {
 /**
  * Sort biggest score.
  *
- * @since  2.0.0
+ * @param array $a
+ * @param array $b
+ *
  * @return int
+ * @since  2.0.0
  */
 function sort_biggest_score( $a, $b ) {
 
@@ -543,7 +572,6 @@ function sort_biggest_score( $a, $b ) {
  * Rewrite hierachical club URLs.
  *
  * @since  2.0.0
- * @return string
  */
 function wpcm_club_rewrites() {
 	$permalink      = get_option( 'wpclubmanager_club_slug' );
@@ -555,8 +583,12 @@ add_action( 'init', 'wpcm_club_rewrites' );
 /**
  * Fix club permalinks.
  *
- * @since  2.0.0
+ * @param string  $post_link
+ * @param WP_Post $post
+ * @param bool    $leavename
+ *
  * @return string
+ * @since  2.0.0
  */
 function wpcm_club_permalinks( $post_link, $post, $leavename ) {
 	if ( isset( $post->post_type ) && 'wpcm_club' == $post->post_type ) {
@@ -574,8 +606,15 @@ add_filter( 'post_type_link', 'wpcm_club_permalinks', 10, 3 );
 /**
  * Prevent slug duplicates in Clubs.
  *
- * @since  2.0.0
+ * @param string $slug
+ * @param int    $post_ID
+ * @param string $post_status
+ * @param string $post_type
+ * @param string $post_parent
+ * @param string $original_slug
+ *
  * @return string
+ * @since  2.0.0
  */
 function wpcm_prevent_slug_duplicates( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
 	$check_post_types = array(

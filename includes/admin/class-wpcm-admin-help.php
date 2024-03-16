@@ -42,17 +42,19 @@ if ( ! class_exists( 'WPCM_Admin_Help' ) ) :
 				'content' =>
 					'<h2>' . __( 'Help &amp; Support', 'wp-club-manager' ) . '</h2>' .
 					'<p>' . sprintf(
+					/* translators: 1: docs link 2: end anchor */
 						__( 'Should you need help understanding, using, or extending WP Club Manager, %1$splease read our documentation%2$s. You will find all kinds of resources including snippets, tutorials and much more.', 'wp-club-manager' ),
 						'<a href="https://wpclubmanager.com/documentation/?utm_source=helptab&utm_medium=settings&utm_content=docs&utm_campaign=wpclubmanagerplugin" target="_blank">',
 						'</a>'
 					) . '</p>' .
 					'<p>' . sprintf(
+						/* translators: 1: community forum link 2: end anchor */
 						__( 'For further assistance with WP Club Manager core you can use the %1$scommunity forum%2$s.', 'wp-club-manager' ),
 						'<a href="https://wordpress.org/support/plugin/wp-club-manager" target="_blank">',
 						'</a>'
 					) . '</p>' .
 					'<p>' . __( 'Before asking for help we recommend checking the system status page to identify any problems with your configuration.', 'wp-club-manager' ) . '</p>' .
-					'<p><a href="' . admin_url( 'admin.php?page=wpcm-status' ) . '" class="button button-primary">' . __( 'System Status', 'wp-club-manager' ) . '</a> <a href="' . 'https://wordpress.org/support/plugin/wp-club-manager' . '" class="button">' . __( 'Community Forum', 'wp-club-manager' ) . '</a></p>',
+					'<p><a href="' . admin_url( 'admin.php?page=wpcm-status' ) . '" class="button button-primary">' . __( 'System Status', 'wp-club-manager' ) . '</a> <a href="https://wordpress.org/support/plugin/wp-club-manager" class="button">' . __( 'Community Forum', 'wp-club-manager' ) . '</a></p>',
 			) );
 
 			$screen->add_help_tab( array(
@@ -67,9 +69,9 @@ if ( ! class_exists( 'WPCM_Admin_Help' ) ) :
 
 			$screen->set_help_sidebar(
 				'<p><strong>' . __( 'For more information:', 'wp-club-manager' ) . '</strong></p>' .
-				'<p><a href="' . 'https://wpclubmanager.com/?utm_source=helptab&utm_medium=settings&utm_content=about&utm_campaign=wpclubmanagerplugin' . '" target="_blank">' . __( 'WP Club Manager Homepage', 'wp-club-manager' ) . '</a></p>' .
-				'<p><a href="' . 'https://wordpress.org/extend/plugins/wp-club-manager/' . '" target="_blank">' . __( 'WordPress.org Project', 'wp-club-manager' ) . '</a></p>' .
-				'<p><a href="' . 'https://wpclubmanager.com/themes/?utm_source=helptab&utm_medium=settings&utm_content=wpcmthemes&utm_campaign=wpclubmanagerplugin' . '" target="_blank">' . __( 'Official Themes', 'wp-club-manager' ) . '</a></p>'
+				'<p><a href="https://wpclubmanager.com/?utm_source=helptab&utm_medium=settings&utm_content=about&utm_campaign=wpclubmanagerplugin" target="_blank">' . __( 'WP Club Manager Homepage', 'wp-club-manager' ) . '</a></p>' .
+				'<p><a href="https://wordpress.org/plugins/wp-club-manager/" target="_blank">' . __( 'WordPress.org Project', 'wp-club-manager' ) . '</a></p>' .
+				'<p><a href="https://wpclubmanager.com/themes/?utm_source=helptab&utm_medium=settings&utm_content=wpcmthemes&utm_campaign=wpclubmanagerplugin" target="_blank">' . __( 'Official Themes', 'wp-club-manager' ) . '</a></p>'
 			);
 		}
 	}

@@ -14,10 +14,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
+	/**
+	 * WPCM_Admin_Settings
+	 */
 	class WPCM_Admin_Settings {
 
+		/**
+		 * @var array
+		 */
 		private static $settings = array();
+		/**
+		 * @var array
+		 */
 		private static $errors   = array();
+		/**
+		 * @var array
+		 */
 		private static $messages = array();
 
 		/**
@@ -51,8 +63,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		public static function save() {
 			global $current_section, $current_tab;
 
-			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'wpclubmanager-settings' ) ) {
-				die( __( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
+			$nonce = filter_input( INPUT_POST, '_wpnonce', FILTER_UNSAFE_RAW );
+			if ( empty( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager-settings' ) ) {
+				die( esc_html__( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
 			}
 
 			// Trigger actions
@@ -87,11 +100,11 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		 * Output messages + errors
 		 */
 		public static function show_messages() {
-			if ( sizeof( self::$errors ) > 0 ) {
+			if ( count( self::$errors ) > 0 ) {
 				foreach ( self::$errors as $error ) {
 					echo '<div id="message" class="error fade"><p><strong>' . esc_html( $error ) . '</strong></p></div>';
 				}
-			} elseif ( sizeof( self::$messages ) > 0 ) {
+			} elseif ( count( self::$messages ) > 0 ) {
 				foreach ( self::$messages as $message ) {
 					echo '<div id="message" class="updated fade"><p><strong>' . esc_html( $message ) . '</strong></p></div>';
 				}
@@ -123,20 +136,23 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 			self::get_settings_pages();
 
 			// Get current tab
-			$current_tab = empty( $_GET['tab'] ) ? 'general' : sanitize_title( $_GET['tab'] );
+			$tab = filter_input( INPUT_GET, 'tab', FILTER_UNSAFE_RAW );
+			$current_tab = empty( $tab ) ? 'general' : sanitize_title( $tab );
 
 			// Save settings if data has been posted
-			if ( ! empty( $_POST ) ) {
+			if ( ! empty( $_POST ) ) { // phpcs:ignore
 				self::save();
 			}
 
 			// Add any posted messages
-			if ( ! empty( $_GET['wpcm_error'] ) ) {
-				self::add_error( stripslashes( $_GET['wpcm_error'] ) );
+			$error = filter_input( INPUT_GET, 'wpcm_message', FILTER_UNSAFE_RAW );
+			if ( $error ) {
+				self::add_error( wp_kses_post( stripslashes( $error ) ) );
 			}
 
-			if ( ! empty( $_GET['wpcm_message'] ) ) {
-				self::add_message( stripslashes( $_GET['wpcm_message'] ) );
+			$message = filter_input( INPUT_GET, 'wpcm_message', FILTER_UNSAFE_RAW );
+			if ( $message ) {
+				self::add_message( wp_kses_post( stripslashes( $message ) ) );
 			}
 
 			self::show_messages();
@@ -150,7 +166,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		/**
 		 * Get a setting from the settings API.
 		 *
-		 * @param mixed $option
+		 * @param string $option_name
+		 * @param string $default
+		 *
 		 * @return string
 		 */
 		public static function get_option( $option_name, $default = '' ) {
@@ -184,11 +202,11 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 				$option_value = stripslashes( $option_value );
 			}
 
-			return $option_value === null ? $default : $option_value;
+			return null === $option_value ? $default : $option_value;
 		}
 
 		/**
-		 * Output admin fields.
+		 * Output admin fields
 		 *
 		 * Loops though the wpclubmanager options array and outputs each field.
 		 *
@@ -258,7 +276,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 							echo '<div class="stuffbox"><h3>' . esc_html( $value['title'] ) . '</h3><div class="inside">';
 						}
 						if ( ! empty( $value['desc'] ) ) {
-							echo wpautop( wptexturize( wp_kses_post( $value['desc'] ) ) );
+							echo wp_kses_post( wpautop( wptexturize( $value['desc'] ) ) );
 						}
 						echo '<table class="form-table">' . "\n\n";
 						if ( ! empty( $value['id'] ) ) {
@@ -290,9 +308,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -300,8 +318,8 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								value="<?php echo esc_attr( $option_value ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
+									<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
 						<?php
@@ -315,17 +333,17 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
-							<?php echo $description; ?>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+							<?php echo wp_kses_post( $description ); ?>
 
 							<textarea
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								><?php echo esc_textarea( $option_value ); ?></textarea>
 						</td>
 					</tr>
@@ -341,29 +359,23 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
-							<select
-								name="<?php echo esc_attr( $value['id'] ); ?>
-												<?php
-												if ( $value['type'] == 'multiselect' ) {
-													echo '[]';}
-												?>
-								"
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+							<select name="<?php echo esc_attr( $value['id'] ); ?><?php echo ( 'multiselect' == $value['type'] ) ? '[]' : ''; ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes ); ?>
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								<?php
-								if ( $value['type'] == 'multiselect' ) {
+								if ( 'multiselect' == $value['type'] ) {
 									echo 'multiple="multiple"';}
 								?>
 								>
 								<?php
 								foreach ( $value['options'] as $key => $val ) {
 									?>
-										<option value="<?php echo esc_attr( $key ); ?>" 
+										<option value="<?php echo esc_attr( $key ); ?>"
 																	<?php
 
 																	if ( is_array( $option_value ) ) {
@@ -373,54 +385,54 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 																	}
 
 																	?>
-										><?php echo $val; ?></option>
+										><?php echo esc_html( $val ); ?></option>
 										<?php
 								}
 								?>
-							</select> <?php echo $description; ?>
+							</select> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
 						<?php
 						break;
 
-					// Radio inputs
+						// Radio inputs
 					case 'radio':
 						$option_value = self::get_option( $value['id'], $value['default'] );
 
 						?>
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-								<?php echo $description; ?>
+							<?php echo wp_kses_post( $description ); ?>
 								<ul>
-								<?php
-								foreach ( $value['options'] as $key => $val ) {
-									?>
+							<?php
+							foreach ( $value['options'] as $key => $val ) {
+								?>
 										<li>
 											<label><input
 												name="<?php echo esc_attr( $value['id'] ); ?>"
-												value="<?php echo $key; ?>"
+												value="<?php echo esc_html( $key ); ?>"
 												type="radio"
 												style="<?php echo esc_attr( $value['css'] ); ?>"
 												class="<?php echo esc_attr( $value['class'] ); ?>"
-											<?php echo implode( ' ', $custom_attributes ); ?>
-											<?php checked( $key, $option_value ); ?>
-												/> <?php echo $val; ?></label>
+										<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+										<?php checked( $key, $option_value ); ?>
+												/> <?php echo esc_html( $val ); ?></label>
 										</li>
-										<?php
-								}
-								?>
+									<?php
+							}
+							?>
 								</ul>
 							</fieldset>
 						</td>
 					</tr>
-						<?php
+							<?php
 						break;
 
-					// Checkbox input
+						// Checkbox input
 					case 'checkbox':
 						$option_value    = self::get_option( $value['id'], $value['default'] );
 						$visbility_class = array();
@@ -431,13 +443,13 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						if ( ! isset( $value['show_if_checked'] ) ) {
 							$value['show_if_checked'] = false;
 						}
-						if ( $value['hide_if_checked'] == 'yes' || $value['show_if_checked'] == 'yes' ) {
+						if ( 'yes' == $value['hide_if_checked'] || 'yes' == $value['show_if_checked'] ) {
 							$visbility_class[] = 'hidden_option';
 						}
-						if ( $value['hide_if_checked'] == 'option' ) {
+						if ( 'option' == $value['hide_if_checked'] ) {
 							$visbility_class[] = 'hide_options_if_checked';
 						}
-						if ( $value['show_if_checked'] == 'option' ) {
+						if ( 'option' == $value['show_if_checked'] ) {
 							$visbility_class[] = 'show_options_if_checked';
 						}
 
@@ -447,46 +459,46 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 								<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
 								<td class="forminp forminp-checkbox">
 									<fieldset>
-							<?php
+								<?php
 						} else {
 							?>
 							<fieldset class="<?php echo esc_attr( implode( ' ', $visbility_class ) ); ?>">
-							<?php
+								<?php
 						}
 
 						if ( ! empty( $value['title'] ) ) {
 							?>
 							<legend class="screen-reader-text"><span><?php echo esc_html( $value['title'] ); ?></span></legend>
-							<?php
+								<?php
 						}
 
 						?>
-						<label for="<?php echo $value['id']; ?>">
+						<label for="<?php echo esc_attr( $value['id'] ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								type="checkbox"
 								value="1"
-								<?php checked( $option_value, 'yes' ); ?>
-								<?php echo implode( ' ', $custom_attributes ); ?>
-							/> <?php echo $description; ?>
+							<?php checked( $option_value, 'yes' ); ?>
+							<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+							/> <?php echo wp_kses_post( $description ); ?>
 						</label>
-						<?php
+							<?php
 
-						if ( ! isset( $value['checkboxgroup'] ) || 'end' == $value['checkboxgroup'] ) {
-							?>
+							if ( ! isset( $value['checkboxgroup'] ) || 'end' == $value['checkboxgroup'] ) {
+								?>
 									</fieldset>
 								</td>
 							</tr>
-							<?php
-						} else {
-							?>
+								<?php
+							} else {
+								?>
 							</fieldset>
-							<?php
-						}
+								<?php
+							}
 						break;
 
-					// Image width settings
+						// Image width settings
 					case 'image_width':
 						$width  = self::get_option( $value['id'] . '[width]', $value['default']['width'] );
 						$height = self::get_option( $value['id'] . '[height]', $value['default']['height'] );
@@ -497,15 +509,15 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
 						<td class="forminp image_width_settings">
 
-							<input name="<?php echo esc_attr( $value['id'] ); ?>[width]" id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo $width; ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo $height; ?>" />px
+							<input name="<?php echo esc_attr( $value['id'] ); ?>[width]" id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo esc_html( $width ); ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo esc_html( $height ); ?>" />px
 
-							<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" <?php echo $crop; ?> /> <?php _e( 'Hard Crop?', 'wp-club-manager' ); ?></label>
+							<label><input name="<?php echo esc_attr( $value['id'] ); ?>[crop]" id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" <?php echo $crop; // phpcs:ignore ?> /> <?php esc_html_e( 'Hard Crop?', 'wp-club-manager' ); ?></label>
 							</td>
 					</tr>
-						<?php
+							<?php
 						break;
 
-					// Single page selects
+						// Single page selects
 					case 'default_club':
 						$args = array(
 							'name'             => $value['id'],
@@ -526,13 +538,13 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr class="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc"><label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label></th>
 						<td class="forminp">
-							<?php wpcm_dropdown_posts( $args ); ?> <?php echo $description; ?>
+							<?php wpcm_dropdown_posts( $args ); ?> <?php echo wp_kses_post( $description ); ?>
 						</td>
 						</tr>
-						<?php
+							<?php
 						break;
 
-					// Single page selects
+						// Single page selects
 					case 'single_select_page':
 						$args = array(
 							'name'             => $value['id'],
@@ -553,13 +565,13 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr class="single_select_page">
 						<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
 						<td class="forminp">
-							<?php echo str_replace( ' id=', " data-placeholder='" . __( 'Select a page&hellip;', 'wp-club-manager' ) . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
+							<?php echo str_replace( ' id=', " data-placeholder='" . esc_html__( 'Select a page&hellip;', 'wp-club-manager' ) . "' style='" . esc_attr( $value['css'] ) . "' class='" . esc_attr( $value['class'] ) . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo wp_kses_post( $description ); // phpcs:ignore ?>
 						</td>
 						</tr>
-						<?php
+							<?php
 						break;
 
-					// Single country selects
+						// Single country selects
 					case 'single_select_country':
 						$country_setting = (string) self::get_option( $value['id'] );
 						$countries       = WPCM()->countries->countries;
@@ -575,12 +587,12 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						</th>
-						<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php _e( 'Choose a country&hellip;', 'wp-club-manager' ); ?>" title="Country" class="chosen_select">
+						<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_html_e( 'Choose a country&hellip;', 'wp-club-manager' ); ?>" title="Country" class="chosen_select">
 							<?php WPCM()->countries->country_dropdown_options( $country ); ?>
-						</select> <?php echo $description; ?>
+						</select> <?php echo wp_kses_post( $description ); ?>
 							</td>
 						</tr>
-						<?php
+							<?php
 						break;
 
 					case 'license_key':
@@ -594,12 +606,12 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 							<?php
 							if ( 'valid' == get_option( $value['options']['is_valid_license_option'] ) ) {
 								?>
-							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $value['id'] ); ?>_deactivate" value="<?php _e( 'Deactivate License', 'wp-club-manager' ); ?>"/>
+							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $value['id'] ); ?>_deactivate" value="<?php esc_html_e( 'Deactivate License', 'wp-club-manager' ); ?>"/>
 							<?php } ?>
 					</div>
-						<?php
+							<?php
 
-						wp_nonce_field( $value['id'] . '-nonce', $value['id'] . '-nonce' );
+							wp_nonce_field( $value['id'] . '-nonce', $value['id'] . '-nonce' );
 
 						break;
 
@@ -619,33 +631,33 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						$stats       = wpcm_get_preset_labels( 'standings' );
 						$stats_names = wpcm_get_preset_labels( 'standings', 'name' );
 						?>
-					
+
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-							
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<div class="wpcm-multiple-select-wrap">
 								<select name="wpcm_table_stats_display[]" id="<?php echo esc_attr( $value['id'] ); ?>" class="wpcm-chosen-multiple" multiple>
-										<?php
-										foreach ( $stats as $key => $val ) {
-											?>
-											<option value="<?php echo esc_attr( $key ); ?>" 
-																		<?php
-																		if ( in_array( $key, $columns ) ) {
-																			echo 'selected';}
-																		?>
-											><?php echo $val; ?></option>
-											<?php
-										}
+									<?php
+									foreach ( $stats as $key => $val ) {
 										?>
+											<option value="<?php echo esc_attr( $key ); ?>"
+																	<?php
+																	if ( in_array( $key, $columns ) ) {
+																		echo 'selected';}
+																	?>
+											><?php echo esc_html( $val ); ?></option>
+											<?php
+									}
+									?>
 								</select>
 							</div>
-							<input id="input-order" type="hidden" value="<?php echo $option_value; ?>" name="<?php echo esc_attr( $value['id'] ); ?>" />
+							<input id="input-order" type="hidden" value="<?php echo esc_html( $option_value ); ?>" name="<?php echo esc_attr( $value['id'] ); ?>" />
 						</td>
 					</tr>
-						<?php
+							<?php
 
 						break;
 
@@ -654,50 +666,50 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
 					<tr id="<?php echo esc_attr( $value['id'] ); ?>-row">
 						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>							
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
-							<button name="wpcm-submit" id="wpcm_submit" class="button secondary"/><?php _e( 'Clear plugin cache', 'wp-club-manager' ); ?></button>
-							<img src="<?php echo admin_url( '/images/wpspin_light.gif' ); ?>" class="waiting" id="wpcm_loading" style="display:none;"/>
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+							<button name="wpcm-submit" id="wpcm_submit" class="button secondary"/><?php esc_html_e( 'Clear plugin cache', 'wp-club-manager' ); ?></button>
+							<img src="<?php echo esc_url( admin_url( '/images/wpspin_light.gif' ) ); ?>" class="waiting" id="wpcm_loading" style="display:none;"/>
 						</td>
 					</tr>
-						<?php
+							<?php
 						break;
 
 					case 'osm_radio':
 						$option_value = self::get_option( $value['id'], $value['default'] );
 						?>
-					
+
 					<tr class="osm hidden">
 						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-									<?php echo $description; ?>
+								<?php echo wp_kses_post( $description ); ?>
 								<ul>
-									<?php
-									foreach ( $value['options'] as $key => $val ) {
-										?>
+								<?php
+								foreach ( $value['options'] as $key => $val ) {
+									?>
 										<li>
 											<label><input
 												name="<?php echo esc_attr( $value['id'] ); ?>"
-												value="<?php echo $key; ?>"
+												value="<?php echo esc_html( $key ); ?>"
 												type="radio"
 												style="<?php echo esc_attr( $value['css'] ); ?>"
 												class="<?php echo esc_attr( $value['class'] ); ?>"
-												<?php echo implode( ' ', $custom_attributes ); ?>
-												<?php checked( $key, $option_value ); ?>
-												/> <?php echo $val; ?></label>
+											<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+											<?php checked( $key, $option_value ); ?>
+												/> <?php echo esc_html( $val ); ?></label>
 										</li>
 										<?php
-									}
-									?>
+								}
+								?>
 								</ul>
 							</fieldset>
 						</td>
 					</tr>
-						<?php
+							<?php
 						break;
 
 					case 'osm_text':
@@ -707,9 +719,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr class="osm hidden">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -717,48 +729,48 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								value="<?php echo esc_attr( $option_value ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
-				
-						<?php
+
+							<?php
 						break;
 
 					case 'gmap_radio':
 						$option_value = self::get_option( $value['id'], $value['default'] );
 						?>
-					
+
 					<tr class="gmap hidden">
 						<th scope="row" class="titledesc">
-							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>						
+							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<fieldset>
-									<?php echo $description; ?>
+								<?php echo wp_kses_post( $description ); ?>
 								<ul>
-									<?php
-									foreach ( $value['options'] as $key => $val ) {
-										?>
+								<?php
+								foreach ( $value['options'] as $key => $val ) {
+									?>
 										<li>
 											<label><input
 												name="<?php echo esc_attr( $value['id'] ); ?>"
-												value="<?php echo $key; ?>"
+												value="<?php echo esc_html( $key ); ?>"
 												type="radio"
 												style="<?php echo esc_attr( $value['css'] ); ?>"
 												class="<?php echo esc_attr( $value['class'] ); ?>"
-												<?php echo implode( ' ', $custom_attributes ); ?>
-												<?php checked( $key, $option_value ); ?>
-												/> <?php echo $val; ?></label>
+											<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+											<?php checked( $key, $option_value ); ?>
+												/> <?php echo esc_html( $val ); ?></label>
 										</li>
 										<?php
-									}
-									?>
+								}
+								?>
 								</ul>
 							</fieldset>
 						</td>
 					</tr>
-						<?php
+							<?php
 						break;
 
 					case 'gmap_text':
@@ -768,9 +780,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr class="gmap hidden">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -778,12 +790,12 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								value="<?php echo esc_attr( $option_value ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
-				
-						<?php
+
+							<?php
 						break;
 
 					case 'map_zoom':
@@ -793,9 +805,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					<tr class="zoom hidden">
 						<th scope="row" class="titledesc">
 							<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-						
+
 						</th>
-						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ); ?>">
+						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 							<input
 								name="<?php echo esc_attr( $value['id'] ); ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -803,15 +815,15 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								value="<?php echo esc_attr( $option_value ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
+								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
+								/> <?php echo wp_kses_post( $description ); ?>
 						</td>
 					</tr>
-				
-						<?php
+
+							<?php
 						break;
 
-					// Default: run an action
+						// Default: run an action
 					default:
 						do_action( 'wpclubmanager_admin_field_' . $value['type'], $value );
 						break;
@@ -829,7 +841,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		 * @return bool
 		 */
 		public static function save_fields( $options ) {
-			if ( empty( $_POST ) ) {
+			$nonce = filter_input( INPUT_POST, '_wpnonce', FILTER_UNSAFE_RAW );
+
+			if ( empty( $nonce ) ) {
 				return false;
 			}
 
@@ -852,7 +866,8 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
 					// Standard types
 					case 'checkbox':
-						if ( isset( $_POST[ $value['id'] ] ) ) {
+						$checkbox = filter_input( INPUT_POST, $value['id'], FILTER_UNSAFE_RAW );
+						if ( $checkbox ) {
 							$option_value = 'yes';
 						} else {
 							$option_value = 'no';
@@ -861,8 +876,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						break;
 
 					case 'textarea':
-						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = wp_kses_post( trim( stripslashes( $_POST[ $value['id'] ] ) ) );
+						$textarea = filter_input( INPUT_POST, $value['id'], FILTER_UNSAFE_RAW );
+						if ( $textarea ) {
+							$option_value = wp_kses_post( trim( stripslashes( $textarea ) ) );
 						} else {
 							$option_value = '';
 						}
@@ -880,13 +896,14 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					case 'single_select_country':
 					case 'radio':
 					case 'license_key':
-					case 'osm_radio';
+					case 'osm_radio':
 					case 'osm_text':
 					case 'gmap_radio':
 					case 'gmap_text':
 					case 'map_zoom':
-						if ( isset( $_POST[ $value['id'] ] ) ) {
-							$option_value = wpcm_clean( stripslashes( $_POST[ $value['id'] ] ) );
+						$zoom = filter_input( INPUT_POST, $value['id'], FILTER_UNSAFE_RAW );
+						if ( $zoom ) {
+							$option_value = wpcm_clean( stripslashes( sanitize_text_field( $zoom ) ) );
 						} else {
 							$option_value = '';
 						}
@@ -896,17 +913,20 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					// Special types
 					case 'multiselect':
 					case 'standings_columns':
-						$option_value = wpcm_clean( stripslashes( $_POST[ $value['id'] ] ) );
+						$standings_columns = filter_input( INPUT_POST, $value['id'], FILTER_UNSAFE_RAW );
+						$option_value = wpcm_clean( stripslashes( sanitize_text_field( $standings_columns ) ) );
 
 						break;
 
 					case 'image_width':
-						if ( isset( $_POST[ $value['id'] ]['width'] ) ) {
+						$size = filter_input( INPUT_POST, $value['id'], FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 
-							$update_options[ $value['id'] ]['width']  = wpcm_clean( stripslashes( $_POST[ $value['id'] ]['width'] ) );
-							$update_options[ $value['id'] ]['height'] = wpcm_clean( stripslashes( $_POST[ $value['id'] ]['height'] ) );
+						if ( $size['width'] ) {
 
-							if ( isset( $_POST[ $value['id'] ]['crop'] ) ) {
+							$update_options[ $value['id'] ]['width']  = wpcm_clean( stripslashes( $size['width'] ) );
+							$update_options[ $value['id'] ]['height'] = wpcm_clean( stripslashes( $size['height'] ) );
+
+							if ( isset( $size['crop'] ) ) {
 								$update_options[ $value['id'] ]['crop'] = 1;
 							} else {
 								$update_options[ $value['id'] ]['crop'] = 0;
@@ -972,6 +992,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		 * Configure sport
 		 *
 		 * @access public
+		 *
+		 * @param array $sport
+		 *
 		 * @return void
 		 */
 		public static function configure_sport( $sport ) {
@@ -980,26 +1003,31 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
 			foreach ( $term_groups as $taxonomy => $terms ) :
 				// Find empty terms and destroy
-				$allterms = get_terms( $taxonomy, 'hide_empty=0' );
+				$allterms = get_terms(
+					array(
+						'taxonomy' => $taxonomy,
+						'hide_empty' => false,
+					)
+				);
 
 				foreach ( $allterms as $term ) :
-					if ( $term->count == 0 ) {
+					if ( 0 == $term->count ) {
 						wp_delete_term( $term->term_id, $taxonomy );
 					}
-				endforeach;
+					endforeach;
 
 				// Insert terms
 				foreach ( $terms as $term ) :
 					wp_insert_term( $term['name'], $taxonomy, array( 'slug' => $term['slug'] ) );
+					endforeach;
 				endforeach;
-			endforeach;
 
 			// Get array of taxonomies to insert
 			$stats_labels = wpcm_array_value( $sport, 'stats_labels' );
 
 			foreach ( $stats_labels as $key => $value ) :
 				update_option( 'wpcm_show_stats_' . $key, 'yes' );
-			endforeach;
+				endforeach;
 
 			update_option( 'wpcm_primary_result', 0 );
 		}

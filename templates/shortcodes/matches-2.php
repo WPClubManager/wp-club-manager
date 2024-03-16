@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wpcm-fixtures-shortcode">
 
-	<?php echo ( $title ? '<h3>' . $title . '</h3>' : '' ); ?>
+	<?php echo ( $title ? '<h3>' . esc_html( $title ) . '</h3>' : '' ); ?>
 
 	<ul class="wpcm-matches-list">
 
@@ -31,24 +31,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$result      = wpcm_get_match_result( $match->ID );
 		?>
 
-		<li class="wpcm-matches-list-item <?php echo $class; ?>">
-			<a href="<?php echo get_post_permalink( $match->ID, false, true ); ?>" class="wpcm-matches-list-link">
+		<li class="wpcm-matches-list-item <?php echo esc_attr( $class ); ?>">
+			<a href="<?php echo esc_url( get_post_permalink( $match->ID, false, true ) ); ?>" class="wpcm-matches-list-link">
 				<span class="wpcm-matches-list-col wpcm-matches-list-date">
-					<?php echo date_i18n( 'D d M', $timestamp ); ?>	
+					<?php echo esc_html( date_i18n( 'D d M', $timestamp ) ); ?>
 				</span>
 				<span class="wpcm-matches-list-col wpcm-matches-list-club1">
-					<?php echo $side1; ?>
+					<?php echo esc_html( $side1 ); ?>
 				</span>
 				<span class="wpcm-matches-list-col wpcm-matches-list-status">
-					<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo $class; ?>">
-						<?php echo ( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ); ?>
+					<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?> <?php echo esc_attr( $class ); ?>">
+						<?php echo esc_html( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ); ?>
 					</span>
 				</span>
 				<span class="wpcm-matches-list-col wpcm-matches-list-club2">
-					<?php echo $side2; ?>
+					<?php echo esc_html( $side2 ); ?>
 				</span>
 				<span class="wpcm-matches-list-col wpcm-matches-list-info">
-					<?php echo $comp[1]; ?>
+					<?php echo esc_html( $comp[1] ); ?>
 				</span>
 			</a>
 		</li>
@@ -58,9 +58,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</ul>
 
 	<?php if ( isset( $linkpage ) ) { ?>
-		<a href="<?php echo get_page_link( $linkpage ); ?>" class="wpcm-view-link">
-			<?php echo $linktext; ?>
+		<a href="<?php echo esc_url( get_page_link( $linkpage ) ); ?>" class="wpcm-view-link">
+			<?php echo esc_html( $linktext ); ?>
 		</a>
 	<?php } ?>
-	
+
 </div>

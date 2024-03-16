@@ -14,8 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Admin_Meta_Boxes
+ */
 class WPCM_Admin_Meta_Boxes {
 
+	/**
+	 * @var array
+	 */
 	private static $meta_box_errors = array();
 
 	/**
@@ -108,6 +114,9 @@ class WPCM_Admin_Meta_Boxes {
 
 	/**
 	 * Venue taxonomy meta box callback
+	 *
+	 * @param WP_Post $post
+	 * @param array   $box
 	 */
 	public function venue_meta_box_cb( $post, $box ) {
 
@@ -132,7 +141,7 @@ class WPCM_Admin_Meta_Boxes {
 				'tinymce'       => array( 'resize' => false ),
 			) );
 		}, 'wpcm_club', 'normal', 'high' );
-		if ( is_league_mode() && $post->post_status == 'publish' ) {
+		if ( is_league_mode() && 'publish' === $post->post_status ) {
 			add_meta_box( 'wpclubmanager-club-players', __( 'Players', 'wp-club-manager' ), 'WPCM_Meta_Box_Club_Players::output', 'wpcm_club', 'normal', 'high' );
 			add_meta_box( 'wpclubmanager-club-staff', __( 'Staff', 'wp-club-manager' ), 'WPCM_Meta_Box_Club_Staff::output', 'wpcm_club', 'normal', 'high' );
 		}
@@ -177,7 +186,7 @@ class WPCM_Admin_Meta_Boxes {
 				'tinymce'       => array( 'resize' => false ),
 			) );
 		}, 'wpcm_player', 'normal', 'high' );
-		if ( $post->post_status == 'publish' ) {
+		if ( 'publish' === $post->post_status ) {
 			add_meta_box( 'wpclubmanager-player-stats', __( 'Player Statistics', 'wp-club-manager' ), 'WPCM_Meta_Box_Player_Stats::output', 'wpcm_player', 'normal', 'high' );
 			add_meta_box( 'wpclubmanager-player-users', __( 'Link Player to User', 'wp-club-manager' ), 'WPCM_Meta_Box_Player_Users::output', 'wpcm_player', 'normal', 'high' );
 		}
@@ -200,7 +209,7 @@ class WPCM_Admin_Meta_Boxes {
 			add_meta_box( 'wpclubmanager-staff-roster', __( 'Add to Staff Roster', 'wp-club-manager' ), 'WPCM_Meta_Box_Staff_Roster::output', 'wpcm_staff', 'side' );
 		}
 
-		if ( $post->post_status == 'publish' ) {
+		if ( 'publish' === $post->post_status ) {
 			add_meta_box( 'wpclubmanager-table-stats', __( 'Manage League Table', 'wp-club-manager' ), 'WPCM_Meta_Box_Table_Stats::output', 'wpcm_table', 'normal', 'high' );
 			add_meta_box( 'wpclubmanager-table-notes', __( 'Notes', 'wp-club-manager' ), 'WPCM_Meta_Box_Table_Notes::output', 'wpcm_table', 'normal', 'low' );
 			add_meta_box( 'wpclubmanager-table-details', __( 'League Table Setup', 'wp-club-manager' ), 'WPCM_Meta_Box_Table_Details::output', 'wpcm_table', 'side' );
@@ -208,7 +217,7 @@ class WPCM_Admin_Meta_Boxes {
 			add_meta_box( 'wpclubmanager-table-details', __( 'League Table Setup', 'wp-club-manager' ), 'WPCM_Meta_Box_Table_Details::output', 'wpcm_table', 'normal', 'low' );
 		}
 
-		if ( $post->post_status == 'publish' ) {
+		if ( 'publish' === $post->post_status ) {
 			add_meta_box( 'wpclubmanager-roster-players', __( 'Manage Players Roster', 'wp-club-manager' ), 'WPCM_Meta_Box_Roster_Players::output', 'wpcm_roster', 'normal', 'high' );
 			add_meta_box( 'wpclubmanager-roster-staff', __( 'Manage Staff Roster', 'wp-club-manager' ), 'WPCM_Meta_Box_Roster_Staff::output', 'wpcm_roster', 'normal', 'high' );
 			add_meta_box( 'wpclubmanager-roster-details', __( 'Roster Setup', 'wp-club-manager' ), 'WPCM_Meta_Box_Roster_Details::output', 'wpcm_roster', 'side' );
@@ -261,7 +270,8 @@ class WPCM_Admin_Meta_Boxes {
 		if ( defined( 'DOING_AUTOSAVE' ) || is_int( wp_is_post_revision( $post ) ) || is_int( wp_is_post_autosave( $post ) ) ) {
 			return;
 		}
-		if ( empty( $_POST['wpclubmanager_meta_nonce'] ) || ! wp_verify_nonce( $_POST['wpclubmanager_meta_nonce'], 'wpclubmanager_save_data' ) ) {
+		$nonce = filter_input( INPUT_POST, 'wpclubmanager_meta_nonce', FILTER_UNSAFE_RAW );
+		if ( empty( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager_save_data' ) ) {
 			return;
 		}
 		if ( empty( $_POST['post_ID'] ) || $_POST['post_ID'] != $post_id ) {
@@ -270,7 +280,16 @@ class WPCM_Admin_Meta_Boxes {
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
-		if ( $post->post_type != 'wpcm_club' && $post->post_type != 'wpcm_player' && $post->post_type != 'wpcm_match' && $post->post_type != 'wpcm_staff' && $post->post_type != 'wpcm_sponsor' && $post->post_type != 'wpcm_table' && $post->post_type != 'wpcm_roster' ) {
+
+		if ( ! in_array( $post->post_type, array(
+			'wpcm_club',
+			'wpcm_player',
+			'wpcm_match',
+			'wpcm_staff',
+			'wpcm_sponsor',
+			'wpcm_table',
+			'wpcm_roster',
+		) ) ) {
 			return;
 		}
 

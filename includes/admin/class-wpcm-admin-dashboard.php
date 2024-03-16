@@ -25,13 +25,13 @@ class WPCM_Admin_Dashboard {
 
 		<div class="ui grid wpcm-dashboard">
 			<div class="sixteen wide column">
-				
+
 
 				<?php
 				if ( is_club_mode() ) {
 					$default_club = get_default_club();
-					if ( isset( $_POST['team_select'] ) ) {
-						$team      = $_POST['team_select'];
+					$team      = filter_input( INPUT_POST, 'team_select', FILTER_UNSAFE_RAW );
+					if ( $team ) {
 						$term      = get_term( $team, 'wpcm_team' );
 						$team_name = $term->name;
 						$team_slug = $term->slug;
@@ -309,7 +309,7 @@ class WPCM_Admin_Dashboard {
 						);
 						$clubs = get_posts( $args );
 
-						$size = sizeof( $clubs );
+						$size = count( $clubs );
 
 						foreach ( $clubs as $club ) {
 
@@ -325,7 +325,7 @@ class WPCM_Admin_Dashboard {
 
 						usort( $clubs, 'wpcm_sort_table_clubs' );
 
-						if ( $order == 'ASC' ) {
+						if ( 'ASC' === $order ) {
 							$clubs = array_reverse( $clubs );
 						}
 						foreach ( $clubs as $key => $value ) {

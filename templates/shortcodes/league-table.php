@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wpcm-standings-shortcode wpcm-standings">
 
-	<?php echo ( $title && ! $type == 'widget' ? '<h3>' . $title . '</h3>' : '' ); ?>
-	
+	<?php echo ( $title && 'widget' !== $type ? '<h3>' . esc_html( $title ) . '</h3>' : '' ); ?>
+
 	<table>
 		<thead>
 			<tr>
@@ -23,55 +23,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				foreach ( $columns as $column ) {
 					?>
-					
-					<th class="<?php echo $column; ?>"><?php echo $stats_labels[ $column ]; ?></th>
-				
+
+					<th class="<?php echo esc_attr( $column ); ?>"><?php echo esc_html( $stats_labels[ $column ] ); ?></th>
+
 				<?php } ?>
-			
+
 			</tr>
 		</thead>
 		<tbody>
-		
+
 		<?php
 		foreach ( $clubs as $club ) {
 
 			$club_stats = $club->wpcm_stats;
 			?>
-			
+
 			<tr class="<?php echo ( $default_club == $club->ID ? 'highlighted ' : '' ); ?>">
 
 				<td class="pos">
-					<?php echo $club->place; ?>
+					<?php echo esc_html( $club->place ); ?>
 				</td>
 
 				<td class="club">
 					<?php
-					echo $club->thumb;
+					echo esc_html( $club->thumb );
 					if ( $default_club == $club->ID ) {
-						if ( $abbr == 1 ) {
+						if ( 1 === $abbr ) {
 							$club_abbr = get_club_abbreviation( $club->ID );
-							echo $club_abbr;
+							echo esc_html( $club_abbr );
 						} elseif ( $team_label ) {
-								echo $team_label;
+								echo esc_html( $team_label );
 						} else {
-							echo $club->post_title;
+							echo esc_html( $club->post_title );
 						}
-					} elseif ( $abbr == 1 ) {
-							echo ( $link_club == 1 ? '<a href="' . get_the_permalink( $club->ID ) . '">' : '' );
+					} elseif ( 1 === $abbr ) {
+							echo ( 1 === $link_club ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
 							$club_abbr = get_club_abbreviation( $club->ID );
-							echo $club_abbr;
-							echo ( $link_club == 1 ? '</a>' : '' );
+							echo esc_html( $club_abbr );
+							echo ( 1 === $link_club ? '</a>' : '' );
 					} else {
-						echo ( $link_club == 1 ? '<a href="' . get_the_permalink( $club->ID ) . '">' : '' );
-						echo $club->post_title;
-						echo ( $link_club == 1 ? '</a>' : '' );
+						echo ( 1 === $link_club ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
+						echo esc_html( $club->post_title );
+						echo ( 1 === $link_club ? '</a>' : '' );
 					}
 					?>
 				</td>
 
 				<?php foreach ( $columns as $column ) { ?>
-					
-					<td class="<?php echo $column; ?>"><?php echo $club_stats[ $column ]; ?></td>
+
+					<td class="<?php echo esc_attr( $column ); ?>"><?php echo esc_html( $club_stats[ $column ] ); ?></td>
 
 				<?php } ?>
 
@@ -82,8 +82,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</tbody>
 	</table>
 	<?php if ( isset( $linkpage ) ) { ?>
-		<a href="<?php echo get_page_link( $linkpage ); ?>" class="wpcm-view-link">
-			<?php echo $linktext; ?>
+		<a href="<?php echo esc_url( get_page_link( $linkpage ) ); ?>" class="wpcm-view-link">
+			<?php echo esc_html( $linktext ); ?>
 		</a>
 	<?php } ?>
 </div>

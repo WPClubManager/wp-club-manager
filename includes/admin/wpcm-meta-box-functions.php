@@ -32,7 +32,9 @@ function wpclubmanager_wp_text_input( $field ) {
 	$field['maxlength']     = isset( $field['maxlength'] ) ? $field['maxlength'] : '';
 
 	( ! empty( $field['maxlength'] ) ? $maxlength = 'maxlength="' . esc_attr( $field['maxlength'] ) . '"' : $maxlength = '' );
-	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label><input type="' . esc_attr( $field['type'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_attr( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" ' . $maxlength . ' /> ';
+	echo '<p class="' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '">';
+	echo '<label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label>';
+	echo '<input type="' . esc_attr( $field['type'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" id="' . esc_attr( $field['id'] ) . '" value="' . esc_html( $field['value'] ) . '" placeholder="' . esc_attr( $field['placeholder'] ) . '" ' . esc_attr( $maxlength ) . ' /> ';
 
 	if ( ! empty( $field['description'] ) ) {
 
@@ -244,7 +246,7 @@ function wpclubmanager_wp_country_select( $field ) {
 
 	echo '<p class="form-field ' . esc_attr( $field['id'] ) . '_field ' . esc_attr( $field['wrapper_class'] ) . '"><label for="' . esc_attr( $field['id'] ) . '">' . wp_kses_post( $field['label'] ) . '</label>';
 
-	echo '<select name="' . esc_attr( $field['id'] ) . '" data-placeholder="' . __( 'Choose a country&hellip;', 'wp-club-manager' ) . '" title="Country" class="' . esc_attr( $field['class'] ) . '">';
+	echo '<select name="' . esc_attr( $field['id'] ) . '" data-placeholder="' . esc_html__( 'Choose a country&hellip;', 'wp-club-manager' ) . '" title="Country" class="' . esc_attr( $field['class'] ) . '">';
 
 	WPCM()->countries->country_dropdown_options( $country );
 

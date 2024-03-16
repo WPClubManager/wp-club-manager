@@ -13,8 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcodes
+ */
 class WPCM_Shortcodes {
 
+	/**
+	 * Construct
+	 */
 	public function __construct() {
 
 		add_action( 'wp_head', array( $this, 'wpcm_map_css' ) );
@@ -57,6 +63,8 @@ class WPCM_Shortcodes {
 	 *
 	 * @param mixed $function
 	 * @param array $atts (default: array())
+	 * @param array $wrapper
+	 *
 	 * @return string
 	 */
 	public static function shortcode_wrapper(
@@ -76,9 +84,9 @@ class WPCM_Shortcodes {
 		$before = empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
 		$after  = empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
 
-		echo $before;
+		echo esc_html( $before );
 		call_user_func( $function, $atts );
-		echo $after;
+		echo esc_html( $after );
 
 		return ob_get_clean();
 	}
@@ -291,14 +299,14 @@ class WPCM_Shortcodes {
 		}
 
 		ob_start();
-		if ( $latitude != null && $longitude != null ) :
+		if ( null != $latitude && null != $longitude ) :
 			?>
 			<iframe
-			class="wpcm-google-map <?php echo $class; ?>"
+			class="wpcm-google-map <?php echo esc_attr( $class ); ?>"
 			width="600"
 			height="320"
 			frameborder="0" style="border:0"
-			src="https://www.google.com/maps/embed/v1/search?key=<?php echo $api_key; ?>&amp;q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
+			src="https://www.google.com/maps/embed/v1/search?key=<?php echo esc_attr( $api_key ); ?>&amp;q=<?php echo esc_attr( $address ); ?>&amp;center=<?php echo esc_attr( $latitude ); ?>,<?php echo esc_attr( $longitude ); ?>&amp;zoom=<?php echo esc_attr( $zoom ); ?>&amp;maptype=<?php echo esc_attr( $maptype ); ?>" allowfullscreen>
 			</iframe>
 			<?php
 		endif;

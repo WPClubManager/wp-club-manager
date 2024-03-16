@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Birthdays_Widget
+ */
 class WPCM_Birthdays_Widget extends WPCM_Widget {
 
 	/**
@@ -108,8 +111,8 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 		foreach ( $players as $player ) :
 
 			$dob                  = get_post_meta( $player->ID, 'wpcm_dob', true );
-			list( $Y, $m, $d )    = explode( '-', $dob );
-			$month_day            = date( 'Y-' . $m . '-' . $d );
+			list( $y, $m, $d )    = explode( '-', $dob );
+			$month_day            = gmdate( 'Y-' . $m . '-' . $d );
 			$posts[ $player->ID ] = $month_day;
 
 		endforeach;
@@ -120,10 +123,10 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 
 		foreach ( $posts as $post => $value ) {
 
-			list( $Y, $m, $d ) = explode( '-', $value );
-			$month_day         = date( $m . '-' . $d );
-			$timespan          = date( 'm-d', strtotime( $date ) );
-			if ( $month_day <= $timespan && $month_day >= date( 'm-d' ) ) {
+			list( $y, $m, $d ) = explode( '-', $value );
+			$month_day         = gmdate( $m . '-' . $d );
+			$timespan          = gmdate( 'm-d', strtotime( $date ) );
+			if ( $month_day <= $timespan && $month_day >= gmdate( 'm-d' ) ) {
 
 				$new_posts[ $post ] = $month_day;
 			}
@@ -170,6 +173,6 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 
 		$this->widget_end( $args );
 
-		echo $this->cache_widget( $args, ob_get_clean() );
+		echo wp_kses_post( $this->cache_widget( $args, ob_get_clean() ) );
 	}
 }

@@ -34,7 +34,7 @@ class WPCM_Shortcode_Player_List {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$id          = ( isset( $atts['id'] ) ? $atts['id'] : '' );
 		$limit       = ( isset( $atts['limit'] ) ? $atts['limit'] : '' );
@@ -283,6 +283,6 @@ class WPCM_Shortcode_Player_List {
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }

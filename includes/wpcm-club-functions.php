@@ -144,9 +144,12 @@ function get_club_venue( $post ) {
  * Get club details.
  *
  * @access public
- * @param array $post
+ *
+ * @param array  $post
+ * @param string $size
+ *
  * @return array $details
- * @since 2.1.0
+ * @since  2.1.0
  */
 function get_club_details( $post, $size = 'crest-small' ) {
 
@@ -160,28 +163,28 @@ function get_club_details( $post, $size = 'crest-small' ) {
 	$details['badge']           = get_the_post_thumbnail( $post->ID, $size );
 
 	if ( $post->post_parent > 0 ) {
-		if ( $details['abbr'] == '' ) {
+		if ( '' === $details['abbr'] ) {
 			$details['abbr'] = get_post_meta( $post->post_parent, '_wpcm_club_abbr', true );
 		}
-		if ( $details['formed'] == '' ) {
+		if ( '' === $details['formed'] ) {
 			$details['formed'] = get_post_meta( $post->post_parent, '_wpcm_club_formed', true );
 		}
-		if ( $details['primary_color'] == '' ) {
+		if ( '' === $details['primary_color'] ) {
 			$details['primary_color'] = get_post_meta( $post->post_parent, '_wpcm_club_primary_color', true );
 		}
-		if ( $details['secondary_color'] == '' ) {
+		if ( '' === $details['secondary_color'] ) {
 			$details['secondary_color'] = get_post_meta( $post->post_parent, '_wpcm_club_secondary_color', true );
 		}
-		if ( $details['website'] == '' ) {
+		if ( '' === $details['website'] ) {
 			$details['website'] = get_post_meta( $post->post_parent, '_wpcm_club_website', true );
 		}
-		if ( $details['honours'] == '' ) {
+		if ( '' === $details['honours'] ) {
 			$details['honours'] = get_post_meta( $post->post_parent, '_wpcm_club_honours', true );
 		}
-		if ( $details['venue'] == false ) {
+		if ( ! $details['venue'] ) {
 			$details['venue'] = get_club_venue( $post->post_parent );
 		}
-		if ( $details['badge'] == '' ) {
+		if ( '' === $details['badge'] ) {
 			$details['badge'] = get_the_post_thumbnail( $post->post_parent, $size );
 		}
 	}
@@ -201,7 +204,7 @@ function get_club_abbreviation( $post_id ) {
 
 	$abbr = get_post_meta( $post_id, '_wpcm_club_abbr', true );
 
-	if ( $abbr == '' ) {
+	if ( '' === $abbr ) {
 		$title = get_the_title( $post_id, true );
 		$title = str_replace( ' ', '', $title );
 		$abbr  = substr( $title, 0, 3 );

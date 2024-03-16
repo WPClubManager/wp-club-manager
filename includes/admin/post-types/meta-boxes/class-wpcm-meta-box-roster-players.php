@@ -14,10 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Meta_Box_Roster_Players
+ */
 class WPCM_Meta_Box_Roster_Players {
 
 	/**
 	 * Output the metabox
+	 *
+	 * @param WP_Post $post
 	 */
 	public static function output( $post ) {
 
@@ -68,12 +73,12 @@ class WPCM_Meta_Box_Roster_Players {
 		<div id="wpcm-player-roster-stats">
 			<table>
 				<?php
-				if ( $players != null ) {
+				if ( null != $players ) {
 					?>
 					<thead>
 						<tr>
 							<th></th>
-							<th><?php _e( 'Name', 'wp-club-manager' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'wp-club-manager' ); ?></th>
 							<th></th>
 						</tr>
 					</thead>
@@ -86,17 +91,17 @@ class WPCM_Meta_Box_Roster_Players {
 				foreach ( $players as $player ) {
 					?>
 
-					<tr data-club="<?php echo $player->ID; ?>">
+					<tr data-club="<?php echo esc_attr( $player->ID ); ?>">
 
 						<td>
 							<input type="checkbox" name="record">
 						</td>
 						<td class="club">
-							<input type="hidden" name="wpcm_roster_players[]" value="<?php echo $player->ID; ?>" />
-							<?php echo $player->post_title; ?>
+							<input type="hidden" name="wpcm_roster_players[]" value="<?php echo esc_html( $player->ID ); ?>" />
+							<?php echo esc_html( $player->post_title ); ?>
 						</td>
 						<td class="roster-actions">
-							<a class="" href="<?php echo get_edit_post_link( $player->ID ); ?>"><?php _e( 'Edit', 'wp-club-manager' ); ?></a>
+							<a class="" href="<?php echo esc_url( get_edit_post_link( $player->ID ) ); ?>"><?php esc_html_e( 'Edit', 'wp-club-manager' ); ?></a>
 						</td>
 
 					</tr>
@@ -119,10 +124,10 @@ class WPCM_Meta_Box_Roster_Players {
 				));
 				?>
 
-				<input type="button" class="button-secondary wpcm-player-roster-add-row" value="<?php _e( 'Add player', 'wp-club-manager' ); ?>">
+				<input type="button" class="button-secondary wpcm-player-roster-add-row" value="<?php esc_html_e( 'Add player', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-player-roster-delete-row <?php echo ( $players != null ? '' : 'hidden-button' ); ?>"><?php _e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-player-roster-delete-row <?php echo ( null != $players ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 
@@ -131,11 +136,17 @@ class WPCM_Meta_Box_Roster_Players {
 
 	/**
 	 * Save meta box data
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
 	 */
 	public static function save( $post_id, $post ) {
+		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
+			return;
+		}
 
-		if ( isset( $_POST['wpcm_roster_players'] ) ) {
-			$players = $_POST['wpcm_roster_players'];
+		$players = filter_input( INPUT_POST, 'wpcm_roster_players', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( $players ) {
 			if ( is_array( $players ) ) {
 				$teams   = wp_get_post_terms( $post_id, 'wpcm_team' );
 				$team    = $teams[0]->term_id;

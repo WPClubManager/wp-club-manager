@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Post_Types
+ */
 class WPCM_Post_Types {
 
 	/**
@@ -27,8 +30,6 @@ class WPCM_Post_Types {
 		add_action( 'init', array( __CLASS__, 'support_jetpack_omnisearch' ) );
 		add_filter( 'the_posts', array( __CLASS__, 'show_future_matches' ) );
 		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
-		// add_filter( 'post_type_link', array( __CLASS__, 'remove_custom_service_slug' ), 10, 2 );
-		// add_action( 'pre_get_posts', array( __CLASS__, 'add_cpt_post_names_to_main_query' ) );
 	}
 
 	/**
@@ -526,8 +527,8 @@ class WPCM_Post_Types {
 	 */
 	public static function show_future_matches( $posts ) {
 		global $wp_query, $wpdb;
-		if ( is_single() && $wp_query->post_count == 0 && isset( $wp_query->query_vars['wpcm_match'] ) ) {
-			$posts = $wpdb->get_results( $wp_query->request );
+		if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
+			$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
 		}
 		return $posts;
 	}
@@ -556,43 +557,6 @@ class WPCM_Post_Types {
 		$post_types[] = 'wpcm_player';
 
 		return $post_types;
-	}
-
-	public static function remove_custom_service_slug( $post_link, $post ) {
-		if ( 'wpcm_club' === $post->post_type && 'publish' === $post->post_status ) {
-			if ( $post->post_parent ) {
-				$parent    = get_post( $post->post_parent );
-				$post_link = str_replace( '/' . $post->post_type . '/' . $parent->post_name . '/', '/', $post_link );
-			} else {
-				$post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
-			}
-		}
-		return $post_link;
-	}
-
-	/**
-	 * Have WordPress match postname to any of our public post types (post, page, race).
-	 * All of our public post types can have /post-name/ as the slug, so they need to be unique across all posts.
-	 * By default, WordPress only accounts for posts and pages where the slug is /post-name/.
-	 *
-	 * @param $query The current query.
-	 */
-	public static function add_cpt_post_names_to_main_query( $query ) {
-
-		// Bail if this is not the main query.
-		if ( ! $query->is_main_query() ) {
-			return;
-		}
-		// Bail if this query doesn't match our very specific rewrite rule.
-		if ( ! isset( $query->query['page'] ) || 2 !== count( $query->query ) ) {
-			return;
-		}
-		// Bail if we're not querying based on the post name.
-		if ( empty( $query->query['name'] ) ) {
-			return;
-		}
-		// Add CPT to the list of post types WP will include when it queries based on the post name.
-		$query->set( 'post_type', array( 'post', 'page', 'wpcm_club' ) );
 	}
 }
 

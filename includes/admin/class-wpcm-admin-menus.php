@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WPCM_Admin_Menus' ) ) :
 
+	/**
+	 * WPCM_Admin_Menus
+	 */
 	class WPCM_Admin_Menus {
 
 		/**
@@ -37,7 +40,7 @@ if ( ! class_exists( 'WPCM_Admin_Menus' ) ) :
 			global $menu;
 
 			if ( current_user_can( 'manage_wpclubmanager' ) ) {
-				$menu[] = array( '', 'read', 'separator-wpclubmanager', '', 'wp-menu-separator wpclubmanager' );
+				$menu[] = array( '', 'read', 'separator-wpclubmanager', '', 'wp-menu-separator wpclubmanager' ); // phpcs:ignore
 			}
 
 			$main_page = add_menu_page( __( 'Club Manager', 'wp-club-manager' ), __( 'Club Manager', 'wp-club-manager' ), 'manage_wpclubmanager', 'wpcm-dashboard', array( $this, 'dashboard_page' ), WPCM()->plugin_url() . '/assets/images/logo.png', '31' );
@@ -130,20 +133,19 @@ if ( ! class_exists( 'WPCM_Admin_Menus' ) ) :
 
 			switch ( $post_type ) {
 				case 'wpcm_roster':
-					// $parent_file = 'edit.php?post_type=wpcm_player';
-					$parent_file = 'wpcm-dashboard';
+					$parent_file = 'wpcm-dashboard'; // phpcs:ignore
 					break;
 			}
 
 			switch ( $submenu_file ) {
 				case 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_club':
-					$parent_file = 'wpcm-dashboard';
+					$parent_file = 'wpcm-dashboard'; // phpcs:ignore
 					break;
 				case 'edit-tags.php?taxonomy=wpcm_comp&amp;post_type=wpcm_club':
-					$parent_file = 'wpcm-dashboard';
+					$parent_file = 'wpcm-dashboard'; // phpcs:ignore
 					break;
 				case 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_player':
-					$parent_file = 'wpcm-dashboard';
+					$parent_file = 'wpcm-dashboard'; // phpcs:ignore
 					break;
 			}
 		}

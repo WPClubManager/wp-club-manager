@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * WPCM_Shortcode_Staff
+ */
 class WPCM_Shortcode_Staff {
 
 	/**
@@ -21,7 +24,7 @@ class WPCM_Shortcode_Staff {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$limit    = ( isset( $atts['limit'] ) ? $atts['limit'] : -1 );
 		$title    = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Staff', 'wp-club-manager' ) );
@@ -35,18 +38,18 @@ class WPCM_Shortcode_Staff {
 		$linkpage = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : null );
 
 		$disable_cache = get_option( 'wpcm_disable_cache' );
-		if ( $disable_cache === 'no' ) {
+		if ( 'no' === $disable_cache ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'staff' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;
 		}
 
-		if ( $output === false ) {
+		if ( false === $output ) {
 
 			$stats_labels = wpcm_staff_labels();
 
-			if ( $limit == 0 ) {
+			if ( 0 === $limit ) {
 				$limit = -1;
 			}
 			if ( $team <= 0 ) {
@@ -143,13 +146,13 @@ class WPCM_Shortcode_Staff {
 
 			if ( array_key_exists( $orderby, $atts ) ) {
 				$staff_details = subval_sort( $staff_details, $orderby );
-				if ( $order == 'DESC' ) {
+				if ( 'DESC' === $order ) {
 					$staff_details = array_reverse( $staff_details );
 				}
 			}
 
 			$count = 0;
-			if ( sizeof( $employees ) > 0 ) {
+			if ( count( $employees ) > 0 ) {
 
 				ob_start();
 				wpclubmanager_get_template( 'shortcodes/staff.php', array(
@@ -165,20 +168,20 @@ class WPCM_Shortcode_Staff {
 				$output = ob_get_clean();
 
 				if ( isset( $linkpage ) ) { ?>
-					<a href="<?php echo get_page_link( $linkpage ); ?>" class="wpcm-view-link">
-						<?php echo $linktext; ?>
+					<a href="<?php echo esc_url( get_page_link( $linkpage ) ); ?>" class="wpcm-view-link">
+						<?php echo esc_html( $linktext ); ?>
 						</a>
 					<?php
 				}
 
 				wp_reset_postdata();
-				if ( $disable_cache === 'no' ) {
+				if ( 'no' === $disable_cache ) {
 					set_transient( $transient_name, $output, 4 * WEEK_IN_SECONDS );
 					do_action( 'update_plugin_transient_keys', $transient_name );
 				}
 			}
 		}
 
-		echo $output;
+		echo wp_kses_post( $output );
 	}
 }

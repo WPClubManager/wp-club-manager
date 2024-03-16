@@ -210,7 +210,7 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 			require_once WPCM_PATH . 'includes/class-wpcm-post-types.php';
 			require_once WPCM_PATH . 'includes/class-wpcm-countries.php';
 			require_once WPCM_PATH . 'includes/class-wpcm-geocoder.php';
-			require_once WPCM_PATH . 'includes/class-wpcm-license-handler.php';
+			require_once WPCM_PATH . 'includes/class-wpcm-license.php';
 			require_once WPCM_PATH . 'includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php';
 		}
 

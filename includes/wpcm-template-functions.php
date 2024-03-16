@@ -324,12 +324,12 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 
 			$custom = get_post_custom( $player_post->ID );
 
-			$players[ get_permalink( $player_post->ID ) ] = ( $custom['wpcm_number'][0] == null ? '' : $custom['wpcm_number'][0] . '. ' ) . get_the_title( $player_post->ID );
+			$players[ get_permalink( $player_post->ID ) ] = ( null == $custom['wpcm_number'][0] ? '' : $custom['wpcm_number'][0] . '. ' ) . get_the_title( $player_post->ID );
 		endforeach;
 
 		$custom = get_post_custom();
 
-		if ( $custom['wpcm_number'][0] == null ) {
+		if ( null == $custom['wpcm_number'][0] ) {
 			$number = '-';
 			$name   = get_the_title( $post->ID );
 		} else {
@@ -337,7 +337,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 			$name   = $number . '. ' . get_the_title( $post->ID );
 		}
 
-		echo wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) );
+		echo wp_kses_post( wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ) );
 	}
 }
 
@@ -393,7 +393,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 			$players[ get_permalink( $player_post->ID ) ] = get_the_title( $player_post->ID );
 		endforeach;
 
-		echo wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) );
+		echo wp_kses_post( wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ) );
 	}
 }
 
@@ -524,7 +524,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_match_status' ) ) {
 
 		$sport = get_option( 'wpcm_sport' );
 
-		if ( $sport == 'soccer' ) {
+		if ( 'soccer' === $sport ) {
 			wpclubmanager_get_template( 'single-match/status.php' );
 		}
 	}

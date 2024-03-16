@@ -13,17 +13,56 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( class_exists( 'WP_Importer' ) ) {
+
+	/**
+	 * WPCM_Importer
+	 */
 	class WPCM_Importer extends WP_Importer {
 
-		var $id;
-		var $file_url;
-		var $import_page;
-		var $delimiter;
-		var $posts = array();
-		var $imported;
-		var $skipped;
-		var $import_label;
-		var $columns = array();
+		/**
+		 * @var int
+		 */
+		public $id;
+
+		/**
+		 * @var string
+		 */
+		public $file_url;
+
+		/**
+		 * @var string
+		 */
+		public $import_page;
+
+		/**
+		 * @var string
+		 */
+		public $delimiter;
+
+		/**
+		 * @var array
+		 */
+		public $posts = array();
+
+		/**
+		 * @var int
+		 */
+		public $imported;
+
+		/**
+		 * @var int
+		 */
+		public $skipped;
+
+		/**
+		 * @var string
+		 */
+		public $import_label;
+
+		/**
+		 * @var array
+		 */
+		public $columns = array();
 
 		/**
 		 * Registered callback function for the WordPress Importer
@@ -33,8 +72,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 		public function dispatch() {
 			$this->header();
 
-			if ( ! empty( $_POST['delimiter'] ) ) {
-				$this->delimiter = stripslashes( trim( $_POST['delimiter'] ) );
+			$delimiter = filter_input( INPUT_POST, 'delimiter', FILTER_UNSAFE_RAW );
+			if ( $delimiter ) {
+				$this->delimiter = stripslashes( trim( $delimiter ) );
 			}
 
 			if ( ! $this->delimiter ) {
@@ -75,9 +115,13 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				case 2:
 					check_admin_referer( 'import-upload' );
-					if ( isset( $_POST['wpcm_import'] ) ) :
-						$columns = array_filter( wpcm_array_value( $_POST, 'wpcm_columns', array( 'post_title' ) ) );
-						$this->import( $_POST['wpcm_import'], array_values( $columns ) );
+					$import = filter_input( INPUT_POST, 'wpcm_import', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+					if ( $import ) :
+						$columns = filter_input( INPUT_POST, 'wpcm_columns', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+						if ( empty( $columns ) ) {
+							$columns = array( 'post_title' );
+						}
+						$this->import( $import, array_values( $columns ) );
 					endif;
 					break;
 
@@ -91,15 +135,17 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Adapted from https://wordpress.org/plugins/sportspress/
 		 *
 		 * @access public
-		 * @param mixed $file
+		 *
+		 * @param string $selected
+		 *
 		 * @return void
 		 */
-		function dropdown( $selected ) {
+		public function dropdown( $selected ) {
 			?>
-			<select name="wpcm_columns[]" data-index="<?php echo array_search( $selected, array_keys( $this->columns ) ); ?>">
-				<option value="0">&mdash; <?php _e( 'Disable', 'wp-club-manager' ); ?> &mdash;</option>
+			<select name="wpcm_columns[]" data-index="<?php echo esc_attr( array_search( $selected, array_keys( $this->columns ) ) ); ?>">
+				<option value="0">&mdash; <?php esc_html_e( 'Disable', 'wp-club-manager' ); ?> &mdash;</option>
 				<?php foreach ( $this->columns as $key => $label ) : ?>
-					<option value="<?php echo $key; ?>" <?php selected( $selected, $key ); ?>><?php echo $label; ?></option>
+					<option value="<?php echo esc_html( $key ); ?>" <?php selected( $selected, $key ); ?>><?php echo esc_html( $label ); ?></option>
 				<?php endforeach; ?>
 			</select>
 			<?php
@@ -113,15 +159,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * @param mixed $file
 		 * @return void
 		 */
-		function import_table( $file ) {
+		public function import_table( $file ) {
 			global $wpdb;
 
-			$this->imported = $this->skipped = 0;
+			$this->imported = 0;
+			$this->skipped  = 0;
 
 			if ( ! is_file( $file ) ) :
 
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
-				echo __( 'The file does not exist, please try again.', 'wp-club-manager' ) . '</p>';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
+				esc_html_e( 'The file does not exist, please try again.', 'wp-club-manager' ) . '</p>';
 
 				$this->footer();
 
@@ -130,12 +177,12 @@ if ( class_exists( 'WP_Importer' ) ) {
 			endif;
 
 			ini_set( 'auto_detect_line_endings', '1' );
-
-			if ( ( $handle = fopen( $file, 'r' ) ) !== false ) :
+			$handle = fopen( $file, 'r' );
+			if ( false !== $handle ) :
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
-				if ( sizeof( $header ) >= 1 ) :
+				if ( count( $header ) >= 1 ) :
 
 					$action = 'admin.php?import=' . $this->import_page . '&step=2';
 					?>
@@ -159,7 +206,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 											$value = wpcm_array_value( $row, $index );
 											?>
 											<td>
-												<input type="text" class="widefat" value="<?php echo $value; ?>" name="wpcm_import[]">
+												<input type="text" class="widefat" value="<?php echo esc_html( $value ); ?>" name="wpcm_import[]">
 											</td>
 																				<?php
 																				++$index;
@@ -180,7 +227,10 @@ endwhile;
 							</tbody>
 						</table>
 						<p class="alignright">
-							<?php printf( __( 'Displaying %1$s&#8211;%2$s of %3$s', 'wp-club-manager' ), 1, $this->imported + 1, $this->imported + 1 ); ?>
+							<?php
+							/* translators: 1: imported total 2: imported total  */
+							printf( esc_html__( 'Displaying %1$s&#8211;%2$s of %3$s', 'wp-club-manager' ), 1, esc_html( $this->imported + 1 ), esc_html( $this->imported + 1 ) );
+							?>
 						</p>
 						<p class="submit">
 							<input type="submit" class="button button-primary" value="<?php echo esc_attr( $this->import_label ); ?>" />
@@ -189,8 +239,8 @@ endwhile;
 					<?php
 				else :
 
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
-					echo __( 'The CSV is invalid.', 'wp-club-manager' ) . '</p>';
+					echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
+					esc_html_e( 'The CSV is invalid.', 'wp-club-manager' ) . '</p>';
 					$this->footer();
 					die();
 
@@ -209,8 +259,8 @@ endwhile;
 		 * @param string $enc
 		 * @return string
 		 */
-		function format_data_from_csv( $data, $enc ) {
-			return ( $enc == 'UTF-8' ) ? $data : utf8_encode( $data );
+		public function format_data_from_csv( $data, $enc ) {
+			return ( 'UTF-8' == $enc ) ? $data : utf8_encode( $data );
 		}
 
 		/**
@@ -219,27 +269,28 @@ endwhile;
 		 *
 		 * @return bool False if error uploading or invalid file, true otherwise
 		 */
-		function handle_upload() {
+		public function handle_upload() {
 
-			if ( empty( $_POST['file_url'] ) ) {
+			$file_url = filter_input( INPUT_POST, 'file_url', FILTER_VALIDATE_URL );
+			if ( empty( $file_url ) ) {
 
 				$file = wp_import_handle_upload();
 
 				if ( isset( $file['error'] ) ) {
-					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
+					echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong><br />';
 					echo esc_html( $file['error'] ) . '</p>';
 					return false;
 				}
 
 				$this->id = (int) $file['id'];
 
-			} elseif ( file_exists( ABSPATH . $_POST['file_url'] ) ) {
+			} elseif ( file_exists( ABSPATH . $file_url ) ) {
 
-					$this->file_url = esc_attr( $_POST['file_url'] );
+					$this->file_url = esc_attr( $file_url );
 
 			} else {
 
-				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong></p>';
+				echo '<p><strong>' . esc_html__( 'Sorry, there has been an error.', 'wp-club-manager' ) . '</strong></p>';
 				return false;
 			}
 
@@ -252,8 +303,8 @@ endwhile;
 		 * @access public
 		 * @return void
 		 */
-		function header() {
-			echo '<div class="wrap"><h2>' . $this->import_label . '</h2>';
+		public function header() {
+			echo '<div class="wrap"><h2>' . esc_html( $this->import_label ) . '</h2>';
 		}
 
 		/**
@@ -262,8 +313,8 @@ endwhile;
 		 * @access public
 		 * @return void
 		 */
-		function footer() {
-			echo '</div>';
+		public function footer() {
+			echo '</div>'; // phpcs:ignore
 		}
 
 		/**
@@ -272,7 +323,7 @@ endwhile;
 		 * @param  int $val
 		 * @return int 60
 		 */
-		function bump_request_timeout( $val ) {
+		public function bump_request_timeout( $val ) {
 			return 60;
 		}
 	}

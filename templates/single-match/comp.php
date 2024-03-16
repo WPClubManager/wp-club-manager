@@ -17,6 +17,6 @@ $comp = wpcm_get_match_comp( $post->ID ); ?>
 
 <div class="wpcm-match-comp">
 	<span>
-		<?php echo $comp[0] . '&nbsp;' . $comp[2]; ?>
+		<?php echo esc_html( $comp[0] ) . '&nbsp;' . esc_html( $comp[2] ); ?>
 	</span>
 </div>

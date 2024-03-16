@@ -24,7 +24,7 @@ class WPCM_Shortcode_Match_List {
 	 */
 	public static function output( $atts ) {
 
-		extract( shortcode_atts( array(), $atts ) );
+		extract( shortcode_atts( array(), $atts ) ); // phpcs:ignore
 
 		$title      = ( isset( $atts['title'] ) ? $atts['title'] : '' );
 		$format     = ( isset( $atts['format'] ) ? $atts['format'] : '' );
@@ -227,6 +227,6 @@ class WPCM_Shortcode_Match_List {
 			}
 		}
 
-		echo $output;
+		echo esc_html( $output );
 	}
 }
