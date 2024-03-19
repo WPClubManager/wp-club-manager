@@ -591,7 +591,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					// $venue = wpcm_get_match_venue( $post->ID );
 					$venue = get_the_terms( $post->ID, 'wpcm_venue' );
 					$venue_slug = '';
-					if ( $venue && isset($venue[0]->slug ) ) {
+					if ( $venue && isset( $venue[0]->slug ) ) {
 						$venue_slug = $venue[0]->slug;
 					}
 					// $home_goals = get_post_meta( $post->ID, 'wpcm_home_goals', true );

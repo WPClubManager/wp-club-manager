@@ -1477,3 +1477,59 @@ li.ui-timepicker-selected .ui-timepicker-duration,
 #wpcm_mapbox_type-row {
 	display: none;
 }
+
+@media screen and (max-width: 600px) {
+	table.wpcm-match-players-table {
+		border: 0;
+	}
+
+	table.wpcm-match-players-table caption {
+		font-size: 1.3em;
+	}
+
+	table.wpcm-match-players-table thead {
+		display: none; /* Hide the table header in mobile view */
+	}
+
+	table.wpcm-match-players-table tr {
+		border-bottom: 3px solid #ddd;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: .625em;
+	}
+
+	table.wpcm-match-players-table tbody tr td.names {
+		text-align: left;
+	}
+
+	table.wpcm-match-players-table tbody tr td input {
+		max-width: 100px !important;
+	}
+
+	table.wpcm-match-players-table td {
+		border-bottom: 1px solid #ddd;
+		flex: 1 1 calc(50% - 5px); /* Set width for each column with a 5px gap */
+		text-align: right;
+		margin-right: 5px; /* Adjust the gap value as needed */
+	}
+
+	table.wpcm-match-players-table td::before {
+		content: attr(data-label);
+		float: left; /* Reset float for mobile view */
+		text-transform: uppercase;
+		padding-top: 10px;
+		padding-left: 35px;
+	}
+
+	table.wpcm-match-players-table td:last-child {
+		border-bottom: 0;
+		margin-right: 0; /* Remove the gap for the last column */
+	}
+
+	table.wpcm-match-players-table tbody tr td.mvp, table.wpcm-match-players-table tbody tr td.captain, table.wpcm-match-players-table tbody tr td.yellowcards, table.wpcm-match-players-table tbody tr td.redcards {
+		padding-left: 0;
+		padding-right: 0;
+		text-align: right;
+	}
+}

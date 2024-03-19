@@ -441,7 +441,7 @@ class WPCM_Meta_Box_Match_Players {
 						<tr id="<?php echo esc_attr( $player->ID ); ?>" data-player="<?php echo esc_attr( $player->ID ); ?>" class="player-stats-list <?php echo esc_attr( $player_teams ); ?> <?php echo esc_attr( $seasonclass ); ?> sortable sorted">
 							<?php echo esc_html( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
 
-								<td class="names">
+								<td scope="row" class="names">
 									<i class="dashicons dashicons-move"></i>
 									<label class="selectit">
 										<input type="checkbox" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
@@ -471,7 +471,7 @@ class WPCM_Meta_Box_Match_Players {
 										if ( 'greencards' == $key ) {
 											?>
 
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="GC" class="<?php echo esc_attr( $key ); ?>">
 												<input type="checkbox" data-card="green" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
@@ -482,7 +482,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } elseif ( 'yellowcards' == $key ) { ?>
 
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="YC" class="<?php echo esc_attr( $key ); ?>">
 												<input type="checkbox" data-card="yellow" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																													<?php
 																													if ( ! $played ) {
@@ -493,7 +493,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } elseif ( 'blackcards' == $key ) { ?>
 
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="BC" class="<?php echo esc_attr( $key ); ?>">
 												<input type="checkbox" data-card="black" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
@@ -504,7 +504,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } elseif ( 'redcards' == $key ) { ?>
 
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="RC" class="<?php echo esc_attr( $key ); ?>">
 												<input type="checkbox" data-card="red" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
@@ -515,7 +515,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } elseif ( 'rating' == $key ) { ?>
 
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="RAT" class="<?php echo esc_attr( $key ); ?>">
 												<input type="number" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], $player->ID, $key ) ); // phpcs:ignore ?>" min="0" max="10"
 																							<?php
 																							if ( ! $played ) {
@@ -526,7 +526,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } elseif ( 'mvp' == $key ) { ?>
 
-											<td class="mvp">
+											<td data-label="POM" class="mvp">
 												<input type="radio" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																							<?php
 																							if ( ! $played ) {
@@ -536,8 +536,7 @@ class WPCM_Meta_Box_Match_Players {
 											</td>
 
 										<?php } else { ?>
-
-											<td class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="<?php echo esc_attr( $wpcm_player_stats_labels[ $key ] ); ?>" class="<?php echo esc_attr( $key ); ?>">
 												<input type="number" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], $player->ID, $key ) ); // phpcs:ignore ?>"
 																							<?php
 																							if ( ! $played ) {
@@ -556,7 +555,7 @@ class WPCM_Meta_Box_Match_Players {
 								if ( 'lineup' == $type ) {
 									?>
 
-									<td class="captain">
+									<td data-label="CAP" class="captain">
 
 										<input type="radio" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_match_captain" value="<?php echo esc_html( $player->ID ); ?>"<?php checked( $captain, $player->ID ); ?>
 																					<?php
