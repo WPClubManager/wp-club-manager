@@ -62,6 +62,8 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 		public static function instance( $plugin_file, $plugin_version ) {
 			if ( is_null( self::$instance ) ) {
 				self::$instance = new self( $plugin_file, $plugin_version );
+				// Alias the old class name for backwards compatibility with addons
+				class_alias( 'WP_Club_Manager', 'WPClubManager' );
 			}
 			return self::$instance;
 		}
