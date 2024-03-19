@@ -166,7 +166,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( isset( $auto_stats[ $stat ] ) ) ? $auto_stats[ $stat ] : '0'; ?>" size="2" tabindex="-1" readonly /></td>
+								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo isset( $auto_stats[ $stat ] ) ? esc_html( $auto_stats[ $stat ] ) : '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
@@ -198,7 +198,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo esc_attr( $stat ); ?>"><input type="number" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( isset( $total_stats[ $stat ] )  ) ? $total_stats[ $stat ] : '0'; ?>" <?php echo ( 'gd' === $stat ? 'readonly' : '' ); ?>/></td>
+								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo esc_attr( $stat ); ?>"><input type="number" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo isset( $total_stats[ $stat ] ) ? esc_html( $total_stats[ $stat ] ) : '0'; ?>" <?php echo ( 'gd' === $stat ? 'readonly' : '' ); ?>/></td>
 
 							<?php } ?>
 
@@ -212,7 +212,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" name="wpcm_table_stats[<?php echo esc_attr( $club->ID ); ?>][<?php echo esc_attr( $stat ); ?>]" value="<?php echo esc_html( isset( $manual_stats[ $stat ] ) ) ? $manual_stats[ $stat ] : '0'; ?>" size="2" tabindex="-1" readonly /></td>
+								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" name="wpcm_table_stats[<?php echo esc_attr( $club->ID ); ?>][<?php echo esc_attr( $stat ); ?>]" value="<?php echo isset( $manual_stats[ $stat ] ) ? esc_html( $manual_stats[ $stat ] ) : '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
