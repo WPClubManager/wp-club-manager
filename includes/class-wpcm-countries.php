@@ -4,14 +4,20 @@
  *
  * The WPClubManager countries class stores country/state data.
  *
- * @class 		WPCM_Countries
- * @version		2.2.1
- * @package		WPClubManager/Classes
- * @category	Class
- * @author 		ClubPress
+ * @class       WPCM_Countries
+ * @version     2.2.1
+ * @package     WPClubManager/Classes
+ * @category    Class
+ * @author      ClubPress
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+/**
+ * WPCM_Countries
+ */
 class WPCM_Countries {
 
 	/** @var array Array of countries */
@@ -279,7 +285,7 @@ class WPCM_Countries {
 			'ye' => __( 'Yemen', 'wp-club-manager' ),
 			'an' => __( 'Yugoslavia', 'wp-club-manager' ),
 			'zm' => __( 'Zambia', 'wp-club-manager' ),
-			'zw' => __( 'Zimbabwe', 'wp-club-manager' )
+			'zw' => __( 'Zimbabwe', 'wp-club-manager' ),
 		));
 	}
 
@@ -287,20 +293,25 @@ class WPCM_Countries {
 	 * Outputs the list of countries and states for use in dropdown boxes.
 	 *
 	 * @access public
-	 * @param string $selected_country (default: '')
-	 * @param bool $escape (default: false)
+	 *
+	 * @param string $country (default: '')
+	 * @param bool   $escape  (default: false)
+	 *
 	 * @return void
 	 */
 	public function country_dropdown_options( $country = '', $escape = false ) {
 
-		if ( apply_filters('wpclubmanager_sort_countries', true ) )
+		if ( apply_filters( 'wpclubmanager_sort_countries', true ) ) {
 			asort( $this->countries );
+		}
 
 		if ( $this->countries ) {
-			foreach ( $this->countries as $key=>$value) :
-    			echo '<option';
-    			if ($country==$key) echo ' selected="selected"';
-    			echo ' value="' . esc_attr( $key ) . '">'. ($escape ? esc_js( $value ) : $value) .'</option>';
+			foreach ( $this->countries as $key => $value ) :
+				echo '<option';
+				if ( $country == $key ) {
+					echo ' selected="selected"';
+				}
+				echo ' value="' . esc_attr( $key ) . '">' . ( $escape ? esc_js( $value ) : $value ) . '</option>'; // phpcs:ignore
 			endforeach;
 		}
 	}

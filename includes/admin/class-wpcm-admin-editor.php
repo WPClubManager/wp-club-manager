@@ -4,14 +4,19 @@
  *
  * Methods which tweak the WP Editor.
  *
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Admin
+ * @author      ClubPress
+ * @category    Admin
+ * @package     WPClubManager/Admin
  * @version     2.0.0
-*/
+ */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
+/**
+ * WPCM_Admin_Editor
+ */
 class WPCM_Admin_Editor {
 
 	/**
@@ -24,6 +29,9 @@ class WPCM_Admin_Editor {
 		add_filter( 'mce_external_languages', array( $this, 'add_tinymce_lang' ), 10, 1 );
 	}
 
+	/**
+	 * @return void
+	 */
 	public function add_shortcode_button() {
 		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
 			return;
@@ -35,9 +43,14 @@ class WPCM_Admin_Editor {
 		}
 	}
 
+	/**
+	 * @param array $arr
+	 *
+	 * @return mixed
+	 */
 	public function add_tinymce_lang( $arr ) {
-	    $arr['wpcm_shortcodes_button'] = WPCM()->plugin_path() . '/assets/js/admin/editor-lang.php';
-	    return $arr;
+		$arr['wpcm_shortcodes_button'] = WPCM()->plugin_path() . '/assets/js/admin/editor-lang.php';
+		return $arr;
 	}
 
 	/**
@@ -46,7 +59,6 @@ class WPCM_Admin_Editor {
 	 * @param array $buttons
 	 * @return array
 	 */
-	
 	public function register_shortcode_button( $buttons ) {
 		array_push( $buttons, 'wpcm_shortcodes_button' );
 		return $buttons;
@@ -58,7 +70,6 @@ class WPCM_Admin_Editor {
 	 * @param array $plugin_array
 	 * @return array
 	 */
-	// 
 	public function add_shortcode_tinymce_plugin( $plugin_array ) {
 		$plugin_array['wpcm_shortcodes_button'] = WPCM()->plugin_url() . '/assets/js/admin/editor.js';
 		return $plugin_array;
@@ -71,7 +82,7 @@ class WPCM_Admin_Editor {
 	 * @return int
 	 */
 	public function refresh_mce( $ver ) {
-		
+
 		$ver += 3;
 		return $ver;
 	}

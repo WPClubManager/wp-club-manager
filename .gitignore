@@ -11,6 +11,7 @@ yarn-error.log
 .sass-cache
 release
 .idea
+codereport.csv
 
 /tests/reports
 /tests/codeception.yml

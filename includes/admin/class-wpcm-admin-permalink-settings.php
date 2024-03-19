@@ -8,89 +8,104 @@
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 
-/**
- * WPCM_Admin_Permalink_Settings Class
- */
-class WPCM_Admin_Permalink_Settings {
-
 	/**
-	 * Hook in tabs.
+	 * WPCM_Admin_Permalink_Settings Class
 	 */
-	public function __construct() {
-		$this->slugs = apply_filters( 'wpclubmanager_permalink_slugs', array(
-			array( 'club', __( 'Clubs', 'wp-club-manager' ) ),
-			array( 'player', __( 'Players', 'wp-club-manager' ) ),
-			array( 'staff', __( 'Staff', 'wp-club-manager' ) ),
-			array( 'match', __( 'Matches', 'wp-club-manager' ) ),
-		) );
+	class WPCM_Admin_Permalink_Settings {
 
-		add_action( 'admin_init', array( $this, 'settings_init' ) );
-		add_action( 'admin_init', array( $this, 'settings_save' ) );
-	}
+		/**
+		 * Hook in tabs.
+		 */
+		public function __construct() {
+			$this->slugs = apply_filters( 'wpclubmanager_permalink_slugs', array(
+				array( 'club', __( 'Clubs', 'wp-club-manager' ) ),
+				array( 'player', __( 'Players', 'wp-club-manager' ) ),
+				array( 'staff', __( 'Staff', 'wp-club-manager' ) ),
+				array( 'match', __( 'Matches', 'wp-club-manager' ) ),
+			) );
 
-	/**
-	 * Init our settings.
-	 */
-	public function settings_init() {
-		// Add a section to the permalinks page
-		add_settings_section( 'wpclubmanager-permalink', __( 'WP Club Manager Permalinks', 'wp-club-manager' ), array( $this, 'settings' ), 'permalink' );
+			add_action( 'admin_init', array( $this, 'settings_init' ) );
+			add_action( 'admin_init', array( $this, 'settings_save' ) );
+		}
 
-		// Add our settings
-		foreach ( $this->slugs as $slug ):
-			add_settings_field(	
-				$slug[0],								// id
-				$slug[1],								// setting title
-				array( $this, 'slug_input' ),			// display callback
-				'permalink',							// settings page
-				'wpclubmanager-permalink'				// settings section
-			);
-		endforeach;
-	}
+		/**
+		 * Init our settings.
+		 */
+		public function settings_init() {
+			// Add a section to the permalinks page
+			add_settings_section( 'wpclubmanager-permalink', __( 'WP Club Manager Permalinks', 'wp-club-manager' ), array( $this, 'settings' ), 'permalink' );
 
-	/**
-	 * Show a slug input box.
-	 */
-	public function slug_input() {
-		$slug = array_shift( $this->slugs );
-		$key = $slug[0];
-		$text = get_option( 'wpclubmanager_' . $key . '_slug', null );
-		?><fieldset><input id="wpclubmanager_<?php echo $key; ?>_slug" name="wpclubmanager_<?php echo $key; ?>_slug" type="text" class="regular-text code" value="<?php echo $text; ?>" placeholder="<?php echo $key; ?>"></fieldset><?php
-	}
-
-	/**
-	 * Show the settings
-	 */
-	public function settings() {
-		echo wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "Plain" permalinks above</strong>.', 'wp-club-manager' ) );
-	}
-
-	/**
-	 * Save the settings
-	 */
-	public function settings_save() {
-		if ( ! is_admin() )
-			return;
-
-		if ( isset( $_POST['permalink_structure'] ) || isset( $_POST['wpclubmanager_club_slug'] ) ):
-			foreach ( $this->slugs as $slug ):
-				$key = 'wpclubmanager_' . $slug[0] . '_slug';
-				$value = null;
-				if ( isset( $_POST[ $key ] ) )
-					$value = sanitize_text_field( $_POST[ $key ] );
-				if ( empty( $value ) )
-					delete_option( $key );
-				else
-					update_option( $key, $value );
+			// Add our settings
+			foreach ( $this->slugs as $slug ) :
+				add_settings_field(
+					$slug[0],                               // id
+					$slug[1],                               // setting title
+					array( $this, 'slug_input' ),           // display callback
+					'permalink',                            // settings page
+					'wpclubmanager-permalink'               // settings section
+				);
 			endforeach;
-			wpcm_flush_rewrite_rules();
-		endif;
-	}
+		}
 
-}
+		/**
+		 * Show a slug input box.
+		 */
+		public function slug_input() {
+			$slug = array_shift( $this->slugs );
+			$key  = $slug[0];
+			$text = get_option( 'wpclubmanager_' . $key . '_slug', null );
+			?><fieldset><input id="wpclubmanager_<?php echo esc_attr( $key ); ?>_slug" name="wpclubmanager_<?php echo esc_attr( $key ); ?>_slug" type="text" class="regular-text code" value="<?php echo esc_html( $text ); ?>" placeholder="<?php echo esc_html( $key ); ?>"></fieldset>
+			<?php
+		}
+
+		/**
+		 * Show the settings
+		 */
+		public function settings() {
+			echo esc_html( wpautop( __( 'These settings control the permalinks used for WP Club Manager. These settings only apply when <strong>not using "Plain" permalinks above</strong>.', 'wp-club-manager' ) ) );
+		}
+
+		/**
+		 * Save the settings
+		 */
+		public function settings_save() {
+			if ( ! is_admin() ) {
+				return;
+			}
+
+			if ( ! isset( $_POST['wpclubmanager_club_slug'] ) ) {
+				return;
+			}
+
+			if ( ! check_admin_referer( 'update-permalink' ) ) {
+				return;
+			}
+
+			// Bail if no cap
+			if ( ! current_user_can( 'manage_options' ) ) {
+				_doing_it_wrong( __FUNCTION__, esc_html( _x( 'You have no rights to access this page', '_doing_it_wrong error message', 'wp-club-manager' ) ), '2.2.11' );
+				return;
+			}
+
+			foreach ( $this->slugs as $slug ) {
+				$key   = 'wpclubmanager_' . $slug[0] . '_slug';
+				$value = filter_input( INPUT_POST, $key, FILTER_UNSAFE_RAW );
+				if ( empty( $value ) ) {
+					delete_option( $key );
+				} else {
+					update_option( $key, sanitize_text_field( $value ) );
+				}
+			}
+
+			wpcm_flush_rewrite_rules();
+		}
+	}
 
 endif;
 

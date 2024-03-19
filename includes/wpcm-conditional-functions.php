@@ -4,13 +4,15 @@
  *
  * Functions for determining the current query/page.
  *
- * @author 		ClubPress
- * @category 	Core
- * @package 	WPClubManager/Functions
+ * @author      ClubPress
+ * @category    Core
+ * @package     WPClubManager/Functions
  * @version     1.5.6
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * is_wpclubmanager - Returns true if on a page which uses WPClubManager templates (rosters and tables are standard pages with shortcodes and thus are not included)
@@ -19,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * @return bool
  */
 function is_wpclubmanager() {
-	return apply_filters( 'is_wpclubmanager', ( is_match() || is_club() || is_player() || is_staff() ||is_sponsor() ) ? true : false );
+	return apply_filters( 'is_wpclubmanager', ( is_match() || is_club() || is_player() || is_staff() || is_sponsor() ) ? true : false );
 }
 
 if ( ! function_exists( 'is_club' ) ) {
@@ -96,10 +98,11 @@ if ( ! function_exists( 'is_ajax' ) ) {
 	 * @return bool
 	 */
 	function is_ajax() {
-		if ( defined('DOING_AJAX') )
+		if ( defined( 'DOING_AJAX' ) ) {
 			return true;
+		}
 
-		return ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) ? true : false;
+		return ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) ? true : false; // phpcs:ignore
 	}
 }
 
@@ -111,9 +114,9 @@ if ( ! function_exists( 'is_plugins_page' ) ) {
 	 * @return bool
 	 */
 	function is_plugins_page() {
-	    global $pagenow;
+		global $pagenow;
 
-	    return ( 'plugins.php' === $pagenow );
+		return ( 'plugins.php' === $pagenow );
 	}
 }
 
@@ -127,8 +130,8 @@ if ( ! function_exists( 'is_league_mode' ) ) {
 	function is_league_mode() {
 
 		$mode = false;
-		if( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'league' ) {
-			
+		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'league' ) {
+
 			$mode = true;
 
 		}
@@ -145,10 +148,10 @@ if ( ! function_exists( 'is_club_mode' ) ) {
 	 * @return bool
 	 */
 	function is_club_mode() {
-		
+
 		$mode = false;
-		if( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'club' ) {
-			
+		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'club' ) {
+
 			$mode = true;
 
 		}
