@@ -2,50 +2,51 @@
 /**
  * Content wrappers
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     2.0.0
  */
 
 $template = get_option( 'template' );
 
-switch( $template ) {
-	case 'twentyeleven' :
+switch ( $template ) {
+	case 'twentyeleven':
 		echo '</div>';
 		get_sidebar();
 		echo '</div>';
 		break;
-	case 'twentytwelve' :
+	case 'twentytwelve':
 		echo '</div></div>';
 		break;
-	case 'twentythirteen' :
+	case 'twentythirteen':
 		echo '</div></div>';
 		break;
-	case 'twentyfourteen' :
+	case 'twentyfourteen':
 		echo '</div></div></div>';
 		get_sidebar( 'content' );
 		break;
-	case 'twentyfifteen' :
+	case 'twentyfifteen':
 		echo '</div></div>';
 		break;
-	case 'twentysixteen' :
+	case 'twentysixteen':
 		echo '</main></div>';
 		break;
-	case 'twentyseventeen' :
+	case 'twentyseventeen':
 		echo '</main>';
 		echo '</div>';
 		get_sidebar();
 		echo '</div>';
-	case 'twentynineteen' :
+		break;
+	case 'twentynineteen':
 		echo '</section>';
 		echo '</main';
 		break;
-	case 'twentytwenty' :
+	case 'twentytwenty':
 		echo '</section>';
 		echo '</main>';
 		break;
-	default :
-		//echo '</div></div>';
+	default:
+		// echo '</div></div>';
 		echo '</main></div>';
 		break;
 }

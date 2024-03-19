@@ -4,21 +4,23 @@
  *
  * Action/filter hooks used for WPClubManager functions/templates
  *
- * @author 		ClubPress
- * @category 	Core
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @category    Core
+ * @package     WPClubManager/Templates
  * @version     1.5.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 add_filter( 'body_class', 'wpcm_body_class' );
 add_filter( 'post_class', 'wpcm_post_class', 20, 3 );
 add_action( 'wp_head', 'wpcm_generator_tag' );
 
-/** Template Hooks ********************************************************/
+/** Template Hooks */
 
-if ( ! is_admin() || defined('DOING_AJAX') ) {
+if ( ! is_admin() || defined( 'DOING_AJAX' ) ) {
 
 	/**
 	 * Content Wrappers

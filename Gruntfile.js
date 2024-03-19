@@ -52,7 +52,9 @@ module.exports = function( grunt ) {
 					'!phpcs.xml.dist',
 					'!README.md',
 					'!yarn.lock',
-					'!phpstan.neon.dist'
+					'!phpstan.neon.dist',
+					'!composer.lock',
+					'!composer.json'
 				],
 				dest: 'release/<%= pkg.version %>/'
 			}

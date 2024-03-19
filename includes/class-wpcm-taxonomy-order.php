@@ -5,11 +5,11 @@
  * Code adapted from YIKES Simple Taxonomy Ordering plugin by Yikes Inc. and Evan Herman
  * https://wordpress.org/plugins/simple-taxonomy-ordering/
  *
- * @class 		WPCM_Taxonomy_Order
- * @version		2.2.0
- * @package		WPClubManager/Classes/
- * @category	Class
- * @author 		ClubPress
+ * @class       WPCM_Taxonomy_Order
+ * @version     2.2.0
+ * @package     WPClubManager/Classes/
+ * @category    Class
+ * @author      ClubPress
  */
 
 /**
@@ -30,14 +30,16 @@ class WPCM_Taxonomy_Order {
 
 	/**
 	 * Order the terms on the admin side.
+	 *
+	 * @param WP_Screen $screen
 	 */
-	public function admin_order_terms( WP_Screen $screen) {
+	public function admin_order_terms( WP_Screen $screen ) {
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Form data is not being used.
 		if ( empty( $_GET['orderby'] ) && 'edit-tags' === $screen->base && $this->is_taxonomy_ordering_enabled( $screen->taxonomy ) ) {
 			$this->enqueue();
 			$this->default_term_order( $screen->taxonomy );
 			$this->wpcm_custom_help_tab();
-		
+
 			add_filter( 'terms_clauses', array( $this, 'set_tax_order' ), 10, 3 );
 		}
 	}
@@ -70,7 +72,7 @@ class WPCM_Taxonomy_Order {
 	 */
 	public function enqueue() {
 		$tax = function_exists( 'get_current_screen' ) ? get_current_screen()->taxonomy : '';
-		wp_enqueue_script( 'wpcm-tax-drag-drop', WPCM()->plugin_url() . "/assets/js/admin/wpclubmanager-tax-drag-drop.js", array( 'jquery-ui-core', 'jquery-ui-sortable' ), WPCM_VERSION, true );
+		wp_enqueue_script( 'wpcm-tax-drag-drop', WPCM()->plugin_url() . '/assets/js/admin/wpclubmanager-tax-drag-drop.js', array( 'jquery-ui-core', 'jquery-ui-sortable' ), WPCM_VERSION, true );
 		wp_localize_script(
 			'wpcm-tax-drag-drop',
 			'wpcm_taxonomy_ordering_data',
@@ -89,19 +91,26 @@ class WPCM_Taxonomy_Order {
 	 * @param string $tax_slug The taxonomy's slug.
 	 */
 	public function default_term_order( $tax_slug ) {
-		$terms = get_terms( $tax_slug, array( 'hide_empty' => false ) );
-		//$order = 1;
+		$terms = get_terms( array(
+			'taxonomy'   => $tax_slug,
+			'hide_empty' => false,
+		) );
+		// $order = 1;
 		$order = $this->get_max_taxonomy_order( $tax_slug );
 		foreach ( $terms as $term ) {
 			if ( ! get_term_meta( $term->term_id, 'tax_position', true ) ) {
 				update_term_meta( $term->term_id, 'tax_position', $order );
-				$order++;
+				++$order;
 			}
 		}
 	}
 
 	/**
 	 * Get the maximum tax_position for this taxonomy. This will be applied to terms that don't have a tax position.
+	 *
+	 * @param string $tax_slug
+	 *
+	 * @return int
 	 */
 	private function get_max_taxonomy_order( $tax_slug ) {
 		global $wpdb;
@@ -109,13 +118,13 @@ class WPCM_Taxonomy_Order {
 			$wpdb->prepare(
 				"SELECT MAX( CAST( tm.meta_value AS UNSIGNED ) )
 				FROM $wpdb->terms t
-				JOIN $wpdb->term_taxonomy tt ON t.term_id = tt.term_id AND tt.taxonomy = '%s'
+				JOIN $wpdb->term_taxonomy tt ON t.term_id = tt.term_id AND tt.taxonomy = %s
 				JOIN $wpdb->termmeta tm ON tm.term_id = t.term_id WHERE tm.meta_key = 'tax_position'",
 				$tax_slug
 			)
 		);
 		$max_term_order = is_array( $max_term_order ) ? current( $max_term_order ) : 0;
-		return (int) $max_term_order === 0 || empty( $max_term_order ) ? 1 : (int) $max_term_order + 1;
+		return 0 === (int) $max_term_order || empty( $max_term_order ) ? 1 : (int) $max_term_order + 1;
 	}
 
 	/**
@@ -161,8 +170,8 @@ class WPCM_Taxonomy_Order {
 			wp_send_json_error();
 		}
 
-		$taxonomy_ordering_data = filter_var_array( wp_unslash( $_POST['taxonomy_ordering_data'] ), FILTER_SANITIZE_NUMBER_INT );
-		$base_index             = filter_var( wp_unslash( $_POST['base_index'] ), FILTER_SANITIZE_NUMBER_INT ) ;
+		$taxonomy_ordering_data = filter_var_array( wp_unslash( $_POST['taxonomy_ordering_data'] ), FILTER_SANITIZE_NUMBER_INT ); // phpcs:ignore
+		$base_index             = filter_input( INPUT_POST, 'base_index', FILTER_SANITIZE_NUMBER_INT );
 		foreach ( $taxonomy_ordering_data as $order_data ) {
 
 			// Due to the way WordPress shows parent categories on multiple pages, we need to check if the parent category's position should be updated.
@@ -176,9 +185,9 @@ class WPCM_Taxonomy_Order {
 
 			update_term_meta( $order_data['term_id'], 'tax_position', ( (int) $order_data['order'] + (int) $base_index ) );
 		}
-		
+
 		do_action( 'wpcm_taxonomy_order_updated', $taxonomy_ordering_data, $base_index );
-		
+
 		wp_send_json_success();
 	}
 
@@ -191,9 +200,9 @@ class WPCM_Taxonomy_Order {
 	 */
 	public function is_taxonomy_ordering_enabled( $tax_slug ) {
 		$enabled_taxonomies = array( 'wpcm_season', 'wpcm_team', 'wpcm_comp', 'wpcm_position', 'wpcm_jobs' );
-		
+
 		return in_array( $tax_slug, $enabled_taxonomies );
 	}
 }
 
-new WPCM_Taxonomy_Order;
+new WPCM_Taxonomy_Order();

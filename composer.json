@@ -1,0 +1,22 @@
+{
+  "name": "wp-club-manager/wp-user-manager",
+  "description": "WP Club Manager is easy to set-up and has everything you need to build and manage an amazing sports club website with WordPress.",
+  "keywords": [
+    "wordpress"
+  ],
+  "homepage": "https://wpclubmanager.com",
+  "authors": [
+    {
+      "name": "WP Club Manager",
+      "email": "hello@wpclubmanager.com"
+    }
+  ],
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

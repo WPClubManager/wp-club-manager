@@ -36,10 +36,10 @@ jQuery( function($){
 		var selected = jQuery('select.wpcm-chosen-multiple').get(0);
 		ChosenOrder.setSelectionOrder(selected, jQuery('#input-order').val().split(','), true);
 	}
-		   
+
 	// stats tabs
 	jQuery('.wpcm_stats-tabs a').click(function(){
-		var t = jQuery(this).attr('href');	
+		var t = jQuery(this).attr('href');
 		jQuery(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
 		jQuery(this).parent().parent().parent().find('.tabs-panel').hide();
 		jQuery(t).show();
@@ -48,25 +48,25 @@ jQuery( function($){
 
 	// player stats season dropdown.
 	jQuery( '.type_box' ).appendTo( '#wpclubmanager-player-stats .hndle' );
-	
+
 		jQuery( function() {
 			// Prevent inputs in meta box headings opening/closing contents.
 			jQuery( '#wpclubmanager-player-stats' ).find( '.hndle' ).unbind( 'click.postboxes' );
-	
+
 			jQuery( '#wpclubmanager-player-stats' ).on( 'click', '.hndle', function( event ) {
-	
+
 				// If the user clicks on some form input inside the h3 the box should not be toggled.
 				if ( jQuery( event.target ).filter( 'input, option, label, select, .chosen-drop' ).length ) {
 					return;
 				}
-	
+
 				jQuery( '#wpclubmanager-player-stats' ).toggleClass( 'closed' );
 			});
 		});
 
 	// player season select
 	jQuery( document ).on('change', '.wpcm-player-season-select', function() {
-		
+
 		var target = jQuery(this).data('target');
 		var show = jQuery("option:selected", this).data('show');
 		jQuery(target).children().addClass('hidden');
@@ -114,7 +114,7 @@ jQuery( function($){
 	jQuery('#wpclubmanager-match-result #_wpcm_postponed').change();
 
 	// match player lineup
-	jQuery('#wpcm_players table .names input[type="checkbox"]').on('change', function() {					
+	jQuery('#wpcm_players table .names input[type="checkbox"]').on('change', function() {
 		player_id = jQuery(this).attr('data-player');
 		jQuery(this).closest('tr').find('input[type="number"]').prop('disabled', !jQuery(this).prop('checked'));
 		jQuery(this).closest('tr').find('input[data-card="yellow"], input[data-card="red"]').prop('disabled', !jQuery(this).prop('checked'));
@@ -124,11 +124,11 @@ jQuery( function($){
 
 	jQuery('#wpcm_players table td.mvp input[type="radio"]').click(function() {
 	    jQuery('td.mvp input[type="radio"]').prop('checked', false);
-	    jQuery(this).prop('checked', true);        
+	    jQuery(this).prop('checked', true);
 	});
 	jQuery('#wpcm_players table td.captain input[type="radio"]').click(function() {
 	    jQuery('td.captain input[type="radio"]').prop('checked', false);
-	    jQuery(this).prop('checked', true);        
+	    jQuery(this).prop('checked', true);
 	});
 
 	updateCounter = function() {
@@ -153,7 +153,7 @@ jQuery( function($){
 	jQuery("#wpcm_lineup input:checkbox, #wpcm_subs input:checkbox").on("change", function() {
 		updateCounter();
 	});
-	
+
 	jQuery('.wpcm-table-add-row').click(function(){
 		var count = jQuery('#wpcm-table-stats table th input.stats-rows' ).val();
 		var id = jQuery('#id option:selected').text();
@@ -164,7 +164,7 @@ jQuery( function($){
 			jQuery("td", this).eq(1).html(i + 1);
 		});
 	});
-	
+
 	jQuery('.wpcm-table-delete-row').click(function(){
 		jQuery('#wpcm-table-stats table tbody').find('input[name="record"]').each(function(){
 			if(jQuery(this).is(':checked')){
@@ -178,19 +178,19 @@ jQuery( function($){
 	jQuery('#wpcm-table-stats input').change(function() {
 		index = jQuery(this).attr('data-index');
 		club = jQuery(this).closest('tr').attr('data-club');
-		value = 0;					
-		jQuery(this).closest('table').find('tbody').each(function() {						
+		value = 0;
+		jQuery(this).closest('table').find('tbody').each(function() {
 			total = parseInt(jQuery(this).find('tr[data-club="' + club + '"] td.wpcm-table-stats-total input[data-index="' + index + '"]').val());
 			auto = parseInt(jQuery(this).find('tr[data-club="' + club + '"] td.wpcm-table-stats-auto input[data-index="' + index + '"]').val());
 			value = total - auto;
-		});					
+		});
 		jQuery(this).closest('table').find('tr[data-club="' + club + '"] td.wpcm-table-stats-manual input[data-index="' + index + '"]').val(value);
 	});
 
 	jQuery('#wpcm-table-stats input[data-index="f"],#wpcm-table-stats input[data-index="a"]').change(function() {
 		club = jQuery(this).closest('tr').attr('data-club');
-		value = 0;					
-		jQuery(this).closest('table').find('tbody').each(function() {					
+		value = 0;
+		jQuery(this).closest('table').find('tbody').each(function() {
 			f = parseInt(jQuery(this).find('tr[data-club="' + club + '"] td.wpcm-table-stats-total input[data-index="f"]').val());
 			a = parseInt(jQuery(this).find('tr[data-club="' + club + '"] td.wpcm-table-stats-total input[data-index="a"]').val());
 			if (jQuery('body').hasClass('footy')) {
@@ -198,7 +198,7 @@ jQuery( function($){
 			} else {
 				value = f - a;
 			}
-		});					
+		});
 		jQuery(this).closest('table').find('tr[data-club="' + club + '"] td.wpcm-table-stats-total input[data-index="gd"]').val(value);
 
 		jQuery(this).closest('table').find('tbody').each(function() {
@@ -209,7 +209,7 @@ jQuery( function($){
 		jQuery(this).closest('table').find('tr[data-club="' + club + '"] td.wpcm-table-stats-manual input[data-index="gd"]').val(manual);
 
 	});
-	
+
 	// player sorting
 	var itemList = jQuery('.wpcm-sortable');
 
@@ -225,22 +225,23 @@ jQuery( function($){
                 cache: false,
                 data:{
                     action: 'item_sort', // Tell WordPress how to handle this ajax request
-                    order: itemList.sortable('toArray').toString() // Passes ID's of list items in  1,3,2 format
+	                wpcm_nonce: $('#wpclubmanager_meta_nonce').val(),
+	                order: itemList.sortable('toArray').toString() // Passes ID's of list items in  1,3,2 format
 				},
 				dataType: 'JSON',
                 success: function(response) {
                     jQuery('#loading-animation').hide(); // Hide the loading animation
-                    return; 
+                    return;
                 },
                 error: function(xhr,textStatus,e) {  // This can be expanded to provide more information
                     jQuery('#loading-animation').hide(); // Hide the loading animation
-                    return; 
+                    return;
                 }
             };
             jQuery.ajax(opts);
         }
 	});
-	
+
 	// players roster selection
 	jQuery('.wpcm-player-roster-add-row').click(function(){
 		var id = jQuery('.player-id option:selected').text();
