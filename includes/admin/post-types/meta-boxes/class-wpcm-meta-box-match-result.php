@@ -638,7 +638,7 @@ class WPCM_Meta_Box_Match_Result {
 			update_post_meta( $post_id, '_wpcm_away_shootout_goals', $shootout_score['away'] );
 		}
 
-		if ( ! $shootout && in_array( $sport,  array( 'soccer', 'hockey', 'handball' ) ) ) {
+		if ( ! $shootout && in_array( $sport, array( 'soccer', 'hockey', 'handball' ) ) ) {
 			delete_post_meta( $post_id, 'wpcm_shootout' );
 		}
 
