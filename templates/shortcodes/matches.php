@@ -36,8 +36,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			// Display Badge
 			if ( '1' === $thumb ) {
 				$badges     = wpcm_get_match_badges( $match->ID, 'crest-small' );
-				$home_badge = '<td class="club-thumb">' . esc_html( $badges[0] ) . '</td>';
-				$away_badge = '<td class="club-thumb">' . esc_html( $badges[1] ) . '</td>';
+				$home_badge = '<td class="club-thumb">' . wp_kses_post( $badges[0] ) . '</td>';
+				$away_badge = '<td class="club-thumb">' . wp_kses_post( $badges[1] ) . '</td>';
 			}
 			?>
 

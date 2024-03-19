@@ -129,9 +129,9 @@ class WPCM_Shortcode_Player_Gallery {
 					$url          = get_permalink( $player->ID );
 					$player_title = get_player_title( $player->ID, $name_format );
 
-					$player_details[ $player->ID ]['image'] = apply_filters( 'wpclubmanager_player_gallery_image', '<a href="' . $url . '">' . $thumb . '</a>', $url, $thumb );
+					$player_details[ $player->ID ]['image'] = apply_filters( 'wpclubmanager_player_gallery_image', '<a href="' . esc_url( $url ) . '">' . $thumb . '</a>', $url, $thumb );
 
-					$player_details[ $player->ID ]['title'] = apply_filters( 'wpclubmanager_player_gallery_title', '<a href="' . $url . '">' . $player_title . '</a>', $url, $player_title );
+					$player_details[ $player->ID ]['title'] = apply_filters( 'wpclubmanager_player_gallery_title', '<a href="' . esc_url( $url ) . '">' . wp_kses_post( $player_title ) . '</a>', $url, $player_title );
 
 					if ( array_key_exists( $orderby, $player_stats_labels ) ) {
 						if ( $team ) {
@@ -184,6 +184,6 @@ class WPCM_Shortcode_Player_Gallery {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

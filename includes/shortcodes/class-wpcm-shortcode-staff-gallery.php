@@ -151,6 +151,6 @@ class WPCM_Shortcode_Staff_Gallery {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

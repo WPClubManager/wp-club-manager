@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				foreach ( $columns as $column ) {
 					?>
 
-					<th class="<?php echo esc_attr( $column ); ?>"><?php echo esc_html( $stats_labels[ $column ] ); ?></th>
+					<th class="<?php echo esc_attr( $column ); ?>"><?php echo wp_kses_post( $stats_labels[ $column ] ); ?></th>
 
 				<?php } ?>
 
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<td class="club">
 					<?php
-					echo esc_html( $club->thumb );
+					echo wp_kses_post( $club->thumb );
 					if ( $default_club == $club->ID ) {
 						if ( 1 === $abbr ) {
 							$club_abbr = get_club_abbreviation( $club->ID );

@@ -337,7 +337,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 			$name   = $number . '. ' . get_the_title( $post->ID );
 		}
 
-		echo wp_kses_post( wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ) );
+		echo wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ); // phpcs:ignore
 	}
 }
 
@@ -393,7 +393,7 @@ if ( ! function_exists( 'wpclubmanager_template_single_staff_dropdown' ) ) {
 			$players[ get_permalink( $player_post->ID ) ] = get_the_title( $player_post->ID );
 		endforeach;
 
-		echo wp_kses_post( wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ) );
+		echo wpcm_form_dropdown( 'switch-player-profile', $players, get_permalink(), array( 'onchange' => 'window.location = this.value;' ) ); // phpcs:ignore
 	}
 }
 

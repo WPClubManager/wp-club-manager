@@ -30,9 +30,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div>
 
-					<?php echo esc_html( $player_detail['image'] ); ?>
+					<?php echo wp_kses_post( $player_detail['image'] ); ?>
 
-					<h4><?php echo esc_html( $player_detail['title'] ); ?></h4>
+					<h4><?php echo wp_kses_post( $player_detail['title'] ); ?></h4>
 
 					<?php
 					if ( 'name' !== $orderby && 'number' !== $orderby && 'menu_order' !== $orderby ) {
@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<span class="victory-player-module-stat">
 
-							<?php echo esc_html( wpcm_get_player_stat( $player_detail, $orderby ) ); ?>
+							<?php echo wp_kses_post( wpcm_get_player_stat( $player_detail, $orderby ) ); ?>
 
 						</span>
 

@@ -89,7 +89,7 @@ function wpcm_player_header_labels() {
 
 	$labels = array(
 		'number'   => '&nbsp;',
-		'thumb'    => '&nbsp',
+		'thumb'    => '&nbsp;',
 		'name'     => __( 'Name', 'wp-club-manager' ),
 		'flag'     => '&nbsp;',
 		'position' => __( 'Position', 'wp-club-manager' ),
@@ -516,7 +516,7 @@ function wpcm_staff_labels() {
 	$labels = array(
 		'flag'   => '&nbsp;',
 		'name'   => __( 'Name', 'wp-club-manager' ),
-		'thumb'  => '&nbsp',
+		'thumb'  => '&nbsp;',
 		'job'    => __( 'Job', 'wp-club-manager' ),
 		'email'  => __( 'Email', 'wp-club-manager' ),
 		'phone'  => __( 'Phone', 'wp-club-manager' ),

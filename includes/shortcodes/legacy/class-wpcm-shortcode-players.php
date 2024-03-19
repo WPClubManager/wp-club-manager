@@ -231,6 +231,6 @@ class WPCM_Shortcode_Players {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

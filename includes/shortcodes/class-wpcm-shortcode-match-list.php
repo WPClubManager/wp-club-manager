@@ -227,6 +227,6 @@ class WPCM_Shortcode_Match_List {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

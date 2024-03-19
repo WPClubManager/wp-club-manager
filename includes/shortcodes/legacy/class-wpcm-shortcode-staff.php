@@ -182,6 +182,6 @@ class WPCM_Shortcode_Staff {
 			}
 		}
 
-		echo wp_kses_post( $output );
+		echo $output; // phpcs:ignore
 	}
 }

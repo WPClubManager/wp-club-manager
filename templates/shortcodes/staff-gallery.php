@@ -30,9 +30,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div>
 
-					<?php echo esc_html( $employee_detail['image'] ); ?>
+					<?php echo wp_kses_post( $employee_detail['image'] ); ?>
 
-					<h4><?php echo esc_html( $employee_detail['title'] ); ?></h4>
+					<h4><?php echo wp_kses_post( $employee_detail['title'] ); ?></h4>
 
 				</div>
 

@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<td class="club">
 					<?php
-					echo esc_html( $club->thumb );
+					echo wp_kses_post( $club->thumb );
 					echo ( 1 === $link_club ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
 					echo esc_html( $club->post_title );
 					echo ( 1 === $link_club ? '</a>' : '' );

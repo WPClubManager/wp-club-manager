@@ -232,6 +232,6 @@ class WPCM_Shortcode_Match_Opponents {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php foreach ( $stats as $stat ) { ?>
 
 				<th class="<?php echo esc_attr( $stat ); ?>">
-					<?php echo esc_html( $stats_labels[ $stat ] ); ?>
+					<?php echo wp_kses_post( $stats_labels[ $stat ] ); ?>
 				</th>
 
 			<?php } ?>
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php foreach ( $stats as $stat ) { ?>
 
 				<td class="<?php echo esc_attr( $stat ); ?>">
-					<?php echo esc_html( $staff_detail[ $stat ] ); ?>
+					<?php echo wp_kses_post( $staff_detail[ $stat ] ); ?>
 				</td>
 
 			<?php } ?>

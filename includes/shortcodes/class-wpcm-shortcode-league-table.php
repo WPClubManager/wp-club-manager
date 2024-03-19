@@ -189,6 +189,6 @@ class WPCM_Shortcode_League_Table {
 			}
 		}
 
-		echo esc_html( $output );
+		echo $output; // phpcs:ignore
 	}
 }

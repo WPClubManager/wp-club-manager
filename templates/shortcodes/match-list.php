@@ -50,13 +50,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<span class="wpcm-matches-list-col wpcm-matches-list-club1">
 					<?php echo esc_html( $side1 ); ?>
 				</span>
-				<?php echo esc_html( $home_badge ); ?>
+				<?php echo wp_kses_post( $home_badge ); ?>
 				<span class="wpcm-matches-list-col wpcm-matches-list-status">
 					<span class="wpcm-matches-list-<?php echo ( $played ? 'result' : 'time' ); ?>">
 						<?php echo esc_html( $played ? $result[0] : date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ); ?>
 					</span>
 				</span>
-				<?php echo esc_html( $away_badge ); ?>
+				<?php echo wp_kses_post( $away_badge ); ?>
 				<span class="wpcm-matches-list-col wpcm-matches-list-club2">
 					<?php echo esc_html( $side2 ); ?>
 				</span>

@@ -32,12 +32,12 @@ $timestamp = strtotime( $post->post_date ); ?>
 	<a href="<?php echo esc_url( get_permalink() ); ?>">
 		<div class="clubs">
 			<h4 class="home-clubs">
-				<div class="home-logo"><?php echo esc_html( $badges[0] ); ?></div>
+				<div class="home-logo"><?php echo wp_kses_post( $badges[0] ); ?></div>
 				<?php echo esc_html( $sides[0] ); ?>
 				<div class="score"><?php echo ( $played && $show_score ? esc_html( $score[1] ) : '' ); ?></div>
 			</h4>
 			<h4 class="away-clubs">
-				<div class="away-logo"><?php echo esc_html( $badges[1] ); ?></div>
+				<div class="away-logo"><?php echo wp_kses_post( $badges[1] ); ?></div>
 				<?php echo esc_html( $sides[1] ); ?>
 				<div class="score"><?php echo ( $played && $show_score ? esc_html( $score[2] ) : '' ); ?></div>
 			</h4>

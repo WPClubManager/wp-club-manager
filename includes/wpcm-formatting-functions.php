@@ -404,13 +404,13 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
  */
 function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = null ) {
 
-	$output = '<select name="' . $name . '" class="' . $name . '" id="' . $name . '"';
+	$output = '<select name="' . esc_attr( $name ) . '" class="' . esc_attr( $name ) . '" id="' . esc_attr( $name ) . '"';
 
 	if ( $atts ) :
 
 		foreach ( $atts as $key => $value ) :
 
-			$output .= ' ' . $key . '="' . $value . '"';
+			$output .= ' ' . $key . '="' . esc_attr( $value ) . '"';
 		endforeach;
 	endif;
 
@@ -418,7 +418,7 @@ function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = nu
 
 	foreach ( $arr as $key => $value ) {
 
-		$output .= '<option' . ( $selected == $key ? ' selected' : '' ) . ' value="' . $key . '">' . $value . '</option>';
+		$output .= '<option' . ( $selected == $key ? ' selected' : '' ) . ' value="' . esc_html( $key ) . '">' . esc_html( $value ) . '</option>';
 	}
 
 	$output .= '</select>';

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wpcm-players-shortcode">
 
-	<?php echo ( $title && 'widget' !== $type ? '<h3>' . esc_html( $title ) . '</h3>' : '' ); ?>
+	<?php echo ( $title && 'widget' !== $type ? '<h3>' . wp_kses_post( $title ) . '</h3>' : '' ); ?>
 
 	<table>
 		<thead>
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ( 'subs' !== $stat ) {
 						?>
 
-						<th class="<?php echo esc_attr( $stat ); ?>"><?php echo esc_html( $stats_labels[ $stat ] ); ?></th>
+						<th class="<?php echo esc_attr( $stat ); ?>"><?php echo wp_kses_post( $stats_labels[ $stat ] ); ?></th>
 
 						<?php
 					}
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<td class="<?php echo esc_attr( $stat ); ?>">
 
-						<?php echo esc_html( wpcm_get_player_stat( $player_detail, $stat ) ); ?>
+						<?php echo wp_kses_post( wpcm_get_player_stat( $player_detail, $stat ) ); ?>
 
 					</td>
 
