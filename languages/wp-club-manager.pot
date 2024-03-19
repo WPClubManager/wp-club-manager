@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Club Manager 2.2.12\n"
+"Project-Id-Version: WP Club Manager 2.2.13\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-club-manager\n"
-"POT-Creation-Date: 2024-03-19 10:43:07+00:00\n"
+"POT-Creation-Date: 2024-03-19 14:30:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -305,7 +305,7 @@ msgid "Upgrade to Pro"
 msgstr ""
 
 #: includes/admin/class-wpcm-admin-menus.php:96
-#: includes/class-wp-club-manager.php:122
+#: includes/class-wp-club-manager.php:124
 msgid "Settings"
 msgstr ""
 
@@ -474,7 +474,7 @@ msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
 #: includes/admin/class-wpcm-admin-notices.php:117
-#: includes/class-wp-club-manager.php:75 includes/class-wp-club-manager.php:84
+#: includes/class-wp-club-manager.php:77 includes/class-wp-club-manager.php:86
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -1026,20 +1026,20 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:656
+#: includes/admin/class-wpcm-admin-post-types.php:660
 msgid "Scheduled"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:661
+#: includes/admin/class-wpcm-admin-post-types.php:665
 msgid "Awaiting result"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:663
+#: includes/admin/class-wpcm-admin-post-types.php:667
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php:122
 msgid "Postponed"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:665
+#: includes/admin/class-wpcm-admin-post-types.php:669
 #: includes/wpcm-player-functions.php:148
 #: includes/wpcm-preset-functions.php:114
 #: includes/wpcm-preset-functions.php:249
@@ -1060,115 +1060,115 @@ msgstr ""
 msgid "Played"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:708
+#: includes/admin/class-wpcm-admin-post-types.php:712
 msgid "Default"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1309
-#: includes/admin/class-wpcm-admin-post-types.php:1347
-#: includes/admin/class-wpcm-admin-post-types.php:1434
+#: includes/admin/class-wpcm-admin-post-types.php:1313
+#: includes/admin/class-wpcm-admin-post-types.php:1351
+#: includes/admin/class-wpcm-admin-post-types.php:1438
 msgid "Show all competitions"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1320
-#: includes/admin/class-wpcm-admin-post-types.php:1358
-#: includes/admin/class-wpcm-admin-post-types.php:1396
-#: includes/admin/class-wpcm-admin-post-types.php:1409
-#: includes/admin/class-wpcm-admin-post-types.php:1445
+#: includes/admin/class-wpcm-admin-post-types.php:1324
+#: includes/admin/class-wpcm-admin-post-types.php:1362
+#: includes/admin/class-wpcm-admin-post-types.php:1400
+#: includes/admin/class-wpcm-admin-post-types.php:1413
+#: includes/admin/class-wpcm-admin-post-types.php:1449
 msgid "Show all seasons"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1332
-#: includes/admin/class-wpcm-admin-post-types.php:1383
-#: includes/admin/class-wpcm-admin-post-types.php:1420
-#: includes/admin/class-wpcm-admin-post-types.php:1457
+#: includes/admin/class-wpcm-admin-post-types.php:1336
+#: includes/admin/class-wpcm-admin-post-types.php:1387
+#: includes/admin/class-wpcm-admin-post-types.php:1424
+#: includes/admin/class-wpcm-admin-post-types.php:1461
 msgid "Show all teams"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1371
+#: includes/admin/class-wpcm-admin-post-types.php:1375
 msgid "Show all positions"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1517
+#: includes/admin/class-wpcm-admin-post-types.php:1521
 msgid "Enter club name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1520
+#: includes/admin/class-wpcm-admin-post-types.php:1524
 msgid "Enter roster name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1523
+#: includes/admin/class-wpcm-admin-post-types.php:1527
 msgid "Enter table name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1526
+#: includes/admin/class-wpcm-admin-post-types.php:1530
 msgid "Enter sponsor name"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1545
-#: includes/admin/class-wpcm-admin-post-types.php:1548
-#: includes/admin/class-wpcm-admin-post-types.php:1551
-#: includes/admin/class-wpcm-admin-post-types.php:1554
+#: includes/admin/class-wpcm-admin-post-types.php:1549
+#: includes/admin/class-wpcm-admin-post-types.php:1552
+#: includes/admin/class-wpcm-admin-post-types.php:1555
+#: includes/admin/class-wpcm-admin-post-types.php:1558
 msgid "Set featured image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1545
-#: includes/admin/class-wpcm-admin-post-types.php:1572
-#: includes/admin/class-wpcm-admin-post-types.php:1573
+#: includes/admin/class-wpcm-admin-post-types.php:1549
+#: includes/admin/class-wpcm-admin-post-types.php:1576
+#: includes/admin/class-wpcm-admin-post-types.php:1577
 msgid "Set club badge"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1546
-#: includes/admin/class-wpcm-admin-post-types.php:1549
-#: includes/admin/class-wpcm-admin-post-types.php:1552
-#: includes/admin/class-wpcm-admin-post-types.php:1555
+#: includes/admin/class-wpcm-admin-post-types.php:1550
+#: includes/admin/class-wpcm-admin-post-types.php:1553
+#: includes/admin/class-wpcm-admin-post-types.php:1556
+#: includes/admin/class-wpcm-admin-post-types.php:1559
 msgid "Remove featured image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1546
+#: includes/admin/class-wpcm-admin-post-types.php:1550
 msgid "Remove club badge"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1548
-#: includes/admin/class-wpcm-admin-post-types.php:1575
-#: includes/admin/class-wpcm-admin-post-types.php:1576
+#: includes/admin/class-wpcm-admin-post-types.php:1552
+#: includes/admin/class-wpcm-admin-post-types.php:1579
+#: includes/admin/class-wpcm-admin-post-types.php:1580
 msgid "Set player image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1549
+#: includes/admin/class-wpcm-admin-post-types.php:1553
 msgid "Remove player image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1551
-#: includes/admin/class-wpcm-admin-post-types.php:1578
-#: includes/admin/class-wpcm-admin-post-types.php:1579
+#: includes/admin/class-wpcm-admin-post-types.php:1555
+#: includes/admin/class-wpcm-admin-post-types.php:1582
+#: includes/admin/class-wpcm-admin-post-types.php:1583
 msgid "Set staff image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1552
+#: includes/admin/class-wpcm-admin-post-types.php:1556
 msgid "Remove staff image"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1554
-#: includes/admin/class-wpcm-admin-post-types.php:1581
-#: includes/admin/class-wpcm-admin-post-types.php:1582
+#: includes/admin/class-wpcm-admin-post-types.php:1558
+#: includes/admin/class-wpcm-admin-post-types.php:1585
+#: includes/admin/class-wpcm-admin-post-types.php:1586
 msgid "Set sponsor logo"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1555
+#: includes/admin/class-wpcm-admin-post-types.php:1559
 msgid "Remove sponsor logo"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1605
-#: includes/admin/class-wpcm-admin-post-types.php:1616
+#: includes/admin/class-wpcm-admin-post-types.php:1609
+#: includes/admin/class-wpcm-admin-post-types.php:1620
 #. translators: 1: joined date
 msgid "Joins on: <b>%1$s</b>"
 msgstr ""
 
-#: includes/admin/class-wpcm-admin-post-types.php:1608
-#: includes/admin/class-wpcm-admin-post-types.php:1611
-#: includes/admin/class-wpcm-admin-post-types.php:1619
-#: includes/admin/class-wpcm-admin-post-types.php:1622
+#: includes/admin/class-wpcm-admin-post-types.php:1612
+#: includes/admin/class-wpcm-admin-post-types.php:1615
+#: includes/admin/class-wpcm-admin-post-types.php:1623
+#: includes/admin/class-wpcm-admin-post-types.php:1626
 #. translators: 1: joined date
 msgid "Joined on: <b>%1$s</b>"
 msgstr ""
@@ -2121,7 +2121,7 @@ msgstr ""
 
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php:130
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-staff.php:131
-#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:243
+#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:244
 msgid "Remove selected"
 msgstr ""
 
@@ -2162,11 +2162,11 @@ msgstr ""
 msgid "Add notes"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:236
+#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:237
 msgid "Choose a club"
 msgstr ""
 
-#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:240
+#: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php:241
 msgid "Add club"
 msgstr ""
 
@@ -3048,37 +3048,37 @@ msgstr ""
 msgid "club-manager"
 msgstr ""
 
-#: includes/class-wp-club-manager.php:122
+#: includes/class-wp-club-manager.php:124
 msgid "View WP Club Manager Settings"
 msgstr ""
 
-#: includes/class-wp-club-manager.php:123
+#: includes/class-wp-club-manager.php:125
 msgid "View WP Club Manager Documentation"
 msgstr ""
 
-#: includes/class-wp-club-manager.php:123
+#: includes/class-wp-club-manager.php:125
 msgid "Docs"
 msgstr ""
 
-#: includes/class-wp-club-manager.php:124
+#: includes/class-wp-club-manager.php:126
 msgid "Support"
 msgstr ""
 
-#: includes/class-wp-club-manager.php:393
+#: includes/class-wp-club-manager.php:395
 #. translators: 1: plugin name(s).
 msgid "WP Club Manager requires the following plugin: %1$s."
 msgid_plural "WP Club Manager requires the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-wp-club-manager.php:399
+#: includes/class-wp-club-manager.php:401
 #. translators: 1: plugin name(s).
 msgid "WP Club Manager recommends the following plugin: %1$s."
 msgid_plural "WP Club Manager recommends the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-wp-club-manager.php:405
+#: includes/class-wp-club-manager.php:407
 #. translators: 1: plugin name(s).
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -3089,7 +3089,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-wp-club-manager.php:411
+#: includes/class-wp-club-manager.php:413
 #. translators: 1: plugin name(s).
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this plugin. "

@@ -87,7 +87,7 @@ class WPCM_Meta_Box_Match_Result {
 			$shootout_score = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_shootout_score', true ) ) );
+			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_shootout_score', true ) ) );
 		}
 
 		if ( 'rugby' == $sport ) {
@@ -621,6 +621,10 @@ class WPCM_Meta_Box_Match_Result {
 			update_post_meta( $post_id, 'wpcm_overtime', sanitize_text_field( $overtime ) );
 		}
 
+		if ( ! $overtime && ! in_array( $sport, array( 'volleyball', 'baseball' ) ) ) {
+			delete_post_meta( $post_id, 'wpcm_overtime' );
+		}
+
 		$shootout = filter_input( INPUT_POST, 'wpcm_shootout', FILTER_UNSAFE_RAW );
 		if ( $shootout && in_array( $sport, array( 'hockey', 'handball' ) ) ) {
 			update_post_meta( $post_id, 'wpcm_shootout', sanitize_text_field( $shootout ) );
@@ -632,6 +636,16 @@ class WPCM_Meta_Box_Match_Result {
 			update_post_meta( $post_id, '_wpcm_shootout_score', serialize( $shootout_score ) );
 			update_post_meta( $post_id, '_wpcm_home_shootout_goals', $shootout_score['home'] );
 			update_post_meta( $post_id, '_wpcm_away_shootout_goals', $shootout_score['away'] );
+		}
+
+		if ( ! $shootout && in_array( $sport, array( 'soccer', 'hockey', 'handball' ) ) ) {
+			delete_post_meta( $post_id, 'wpcm_shootout' );
+		}
+
+		if ( 'soccer' === $sport && ! $shootout ) {
+			delete_post_meta( $post_id, '_wpcm_shootout_score' );
+			delete_post_meta( $post_id, '_wpcm_home_shootout_goals' );
+			delete_post_meta( $post_id, '_wpcm_away_shootout_goals' );
 		}
 
 		if ( 'gaelic' === $sport ) {
