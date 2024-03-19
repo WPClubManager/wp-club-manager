@@ -71,7 +71,7 @@ class WPCM_Meta_Box_Match_Players {
 
 		$teams   = get_the_terms( $post->ID, 'wpcm_team' );
 		$seasons = get_the_terms( $post->ID, 'wpcm_season' );
-
+		$team    = false;
 		if ( is_array( $teams ) ) {
 
 			$match_teams = array();
@@ -403,7 +403,7 @@ class WPCM_Meta_Box_Match_Players {
 						$teams   = get_the_terms( $player->ID, 'wpcm_team' );
 						$seasons = get_the_terms( $player->ID, 'wpcm_season' );
 
-						if ( $teams ) {
+						if ( $teams && ! is_wp_error( $teams ) ) {
 							$teamclass = array();
 							foreach ( $teams as $team ) {
 								$teamclass[] = 'team_' . $team->term_id . ' ';

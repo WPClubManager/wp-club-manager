@@ -341,6 +341,151 @@ class WPCM_Admin_Dashboard {
 					include_once 'views/html-admin-page-dashboard.php';
 
 				} else {
+					// Setup
+					$seasons     = get_terms( array(
+						'taxonomy'   => 'wpcm_season',
+						'meta_key'   => 'tax_position',
+						'orderby'    => 'tax_position',
+						'hide_empty' => false,
+					) );
+					$season      = $seasons[0];
+					$season_slug = $seasons[0]->slug;
+
+					// Statistics
+					$args = array(
+						'tax_query'      => array(),
+						'post_type'      => 'wpcm_match',
+						'posts_per_page' => -1,
+
+					);
+
+					$args['meta_query'] = array(
+						array(
+							'key'   => 'wpcm_played',
+							'value' => 1,
+						),
+					);
+					if ( isset( $season ) ) {
+						$args['tax_query'][] = array(
+							'taxonomy' => 'wpcm_season',
+							'terms'    => $season->term_id,
+							'field'    => 'term_id',
+						);
+					}
+
+					// Matches
+					$args               = array(
+						'tax_query'      => array(),
+						'order'          => 'DESC',
+						'orderby'        => 'post_date',
+						'post_type'      => 'wpcm_match',
+						'posts_per_page' => 4,
+					);
+
+					if ( isset( $season ) ) {
+						$args['tax_query'][] = array(
+							'taxonomy' => 'wpcm_season',
+							'terms'    => $season->term_id,
+							'field'    => 'term_id',
+						);
+					}
+
+					$publish        = array(
+						'post_status' => 'publish',
+						'meta_query'  => array(
+							'key'   => 'wpcm_played',
+							'value' => false,
+						),
+					);
+					$future         = array(
+						'post_status' => 'future',
+					);
+					$played_matches = get_posts( array_merge( $args, $publish ) );
+					$future_matches = get_posts( array_merge( $args, $future ) );
+
+					$admin_url = admin_url( 'edit.php?s' );
+					$new_query = esc_url( add_query_arg(
+						array(
+							'post_status'               => 'all',
+							'post_type'                 => 'wpcm_match',
+							'action'                    => -1,
+							'm'                         => 0,
+							'tax_input[wpcm_comp][0]'   => 0,
+							'tax_input[wpcm_season][0]' => 0,
+							'tax_input[wpcm_team][0]'   => 0,
+							'wpcm_comp'                 => 0,
+							'wpcm_season'               => urlencode( $season_slug ),
+							'filter_action'             => 'Filter',
+							'paged'                     => 1,
+							'action2'                   => -1,
+						),
+						$admin_url
+					) );
+
+					// League Tables
+					$args = array(
+						'post_type' => 'wpcm_table',
+					);
+
+					$args['tax_query'] = array(
+						'relation' => 'AND',
+						array(
+							'taxonomy' => 'wpcm_season',
+							'field'    => 'term_id',
+							'terms'    => $season->term_id,
+						),
+					);
+
+					$table = get_posts( $args );
+					if ( $table ) {
+						$table_id = $table[0]->ID;
+
+						$stats          = get_option( 'wpcm_standings_columns_display' );
+						$comps          = get_the_terms( $table_id, 'wpcm_comp' );
+						$comp           = $comps[0]->term_id;
+						$manual_stats   = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
+						$selected_clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
+						// $columns = get_option( 'wpcm_standings_columns_display' );
+						$stats = explode( ',', $stats );
+						$order = get_option( 'wpcm_standings_order' );
+						$notes = get_post_meta( $table_id, '_wpcm_table_notes', true );
+
+						$args  = array(
+							'post_type'      => 'wpcm_club',
+							'tax_query'      => array(),
+							'numberposts'    => -1,
+							'posts_per_page' => -1,
+							'post__in'       => $selected_clubs,
+						);
+						$clubs = get_posts( $args );
+
+						$size = count( $clubs );
+
+						foreach ( $clubs as $club ) {
+
+							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season );
+							$club->wpcm_stats = $auto_stats;
+							if ( array_key_exists( $club->ID, $manual_stats ) ) {
+								$club->wpcm_manual_stats = $manual_stats[ $club->ID ];
+								$club->wpcm_auto_stats   = $auto_stats;
+								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
+								$club->wpcm_stats        = $total_stats;
+							}
+						}
+
+						usort( $clubs, 'wpcm_sort_table_clubs' );
+
+						if ( 'ASC' === $order ) {
+							$clubs = array_reverse( $clubs );
+						}
+						foreach ( $clubs as $key => $value ) {
+							$value->place = $key + 1;
+						}
+
+						$stats_labels = wpcm_get_preset_labels( 'standings', 'label' );
+					} else {
+						$clubs = false;
+					}
 
 					include_once 'views/html-admin-page-league-dashboard.php';
 				}
