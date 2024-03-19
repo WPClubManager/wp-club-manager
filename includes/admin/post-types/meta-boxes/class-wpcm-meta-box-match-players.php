@@ -439,7 +439,7 @@ class WPCM_Meta_Box_Match_Players {
 						?>
 
 						<tr id="<?php echo esc_attr( $player->ID ); ?>" data-player="<?php echo esc_attr( $player->ID ); ?>" class="player-stats-list <?php echo esc_attr( $player_teams ); ?> <?php echo esc_attr( $seasonclass ); ?> sortable sorted">
-							<?php echo esc_html( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
+							<?php echo wp_kses_post( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
 
 								<td scope="row" class="names">
 									<i class="dashicons dashicons-move"></i>
