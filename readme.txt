@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.11
+Stable Tag: 2.2.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.12 - 19th March 2024 =
+
+- Security Fix: XSS vulnerability on player/staff metadata. Thanks to CatFather via Patchstack for the responsible disclosure
+- Security Fix: Broken access control vulnerability on player sorting when editing a match. Thanks to Mika via Patchstack for the responsible disclosure
+- Security: Entire codebase improved and hardened with PHPCS with security and code fixes
 
 = 2.2.11 - 3rd February 2024 =
 
