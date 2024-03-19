@@ -133,7 +133,7 @@ abstract class WPCM_Widget extends WP_Widget {
 	 *
 	 * @return array
 	 */
-	public function update( $new_instance, $old_instance ): array {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
 		if ( ! $this->settings ) {
