@@ -29,6 +29,7 @@ class WPCM_Meta_Box_Table_Stats {
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 
 		$default_club = get_default_club();
+		$team_label   = '';
 		if ( is_club_mode() ) {
 			// $teams = get_the_terms( $post->ID, 'wpcm_team' );
 			// $team_id = $teams[0]->term_id;
@@ -165,7 +166,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( $auto_stats[ $stat ] ) ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
+								<td class="wpcm-table-stats-auto"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo isset( $auto_stats[ $stat ] ) ? esc_html( $auto_stats[ $stat ] ) : '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
@@ -197,7 +198,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo esc_attr( $stat ); ?>"><input type="number" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo esc_html( $total_stats[ $stat ] ) ?? '0'; ?>" <?php echo ( 'gd' === $stat ? 'readonly' : '' ); ?>/></td>
+								<td class="wpcm-admin-league-table-data wpcm-table-stats-total <?php echo esc_attr( $stat ); ?>"><input type="number" data-index="<?php echo esc_attr( $stat ); ?>" value="<?php echo isset( $total_stats[ $stat ] ) ? esc_html( $total_stats[ $stat ] ) : '0'; ?>" <?php echo ( 'gd' === $stat ? 'readonly' : '' ); ?>/></td>
 
 							<?php } ?>
 
@@ -211,7 +212,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<?php foreach ( $stats as $stat ) { ?>
 
-								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" name="wpcm_table_stats[<?php echo esc_attr( $club->ID ); ?>][<?php echo esc_attr( $stat ); ?>]" value="<?php echo esc_html( $manual_stats[ $stat ] ) ?? '0'; ?>" size="2" tabindex="-1" readonly /></td>
+								<td class="wpcm-table-stats-manual"><input type="hidden" data-index="<?php echo esc_attr( $stat ); ?>" name="wpcm_table_stats[<?php echo esc_attr( $club->ID ); ?>][<?php echo esc_attr( $stat ); ?>]" value="<?php echo isset( $manual_stats[ $stat ] ) ? esc_html( $manual_stats[ $stat ] ) : '0'; ?>" size="2" tabindex="-1" readonly /></td>
 
 							<?php } ?>
 
