@@ -71,6 +71,14 @@ add_filter( 'wp_title', 'match_wp_title', 10, 2 );
  * @since 1.1.9
  */
 function wpcm_match_players_item_order() {
+	$nonce = filter_input( INPUT_POST, 'wpcm_nonce', FILTER_UNSAFE_RAW );
+	if ( ! isset( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager_save_data' ) ) {
+		die( 'Permissions check failed' );
+	}
+
+	if ( ! current_user_can( 'edit_wpcm_matchs' ) ) {
+		die( 'Permissions check failed' );
+	}
 
 	global $wpdb;
 
@@ -86,7 +94,6 @@ function wpcm_match_players_item_order() {
 	die( 1 );
 }
 add_action( 'wp_ajax_item_sort', 'wpcm_match_players_item_order' );
-add_action( 'wp_ajax_nopriv_item_sort', 'wpcm_match_players_item_order' );
 
 /**
  * Get match outcome - win, loss or draw.
