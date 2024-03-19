@@ -29,6 +29,7 @@ class WPCM_Meta_Box_Table_Stats {
 		wp_nonce_field( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' );
 
 		$default_club = get_default_club();
+		$team_label   = '';
 		if ( is_club_mode() ) {
 			// $teams = get_the_terms( $post->ID, 'wpcm_team' );
 			// $team_id = $teams[0]->term_id;
