@@ -87,7 +87,7 @@ class WPCM_Meta_Box_Match_Result {
 			$shootout_score = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_shootout_score', true ) ) );
+			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_shootout_score', true ) ) );
 		}
 
 		if ( 'rugby' == $sport ) {
