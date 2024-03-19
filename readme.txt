@@ -1,6 +1,6 @@
 === WP Club Manager - WordPress Sports Club Plugin===
 Contributors: wpclubmanager, leonterry, daveyjake
-Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
+Tags: club, teams, sport, sports club, club management
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
 Tested up to: 6.4
