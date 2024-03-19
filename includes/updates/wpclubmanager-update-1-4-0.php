@@ -2,27 +2,29 @@
 /**
  * Update WPClubManager to 1.4.0
  *
- * @author 		Clubpress
- * @category 	Admin
- * @package 	WPClubManager/Admin/Updates
+ * @author      Clubpress
+ * @category    Admin
+ * @package     WPClubManager/Admin/Updates
  * @version     1.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-//Update Roles and capabilities
+// Update Roles and capabilities
 remove_role( 'team_manager' );
-$player = get_role( 'player' );
-$capabilities = array();
-$capabilities['core'] = array( 
+$player               = get_role( 'player' );
+$capabilities         = array();
+$capabilities['core'] = array(
 	'manage_wpclubmanager',
 	'level_1',
 	'level_0',
 	'delete_posts',
-    'edit_posts',
-    'upload_files' 
+	'edit_posts',
+	'upload_files',
 );
-$capability_types = array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_sponsor', 'wpcm_staff' );
+$capability_types     = array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_sponsor', 'wpcm_staff' );
 foreach ( $capability_types as $capability_type ) {
 	$capabilities[ $capability_type ] = array(
 		'edit_' . $capability_type,
@@ -43,18 +45,18 @@ foreach ( $capability_types as $capability_type ) {
 		'manage_' . $capability_type . '_terms',
 		'edit_' . $capability_type . '_terms',
 		'delete_' . $capability_type . '_terms',
-		'assign_' . $capability_type . '_terms'
+		'assign_' . $capability_type . '_terms',
 	);
 }
 // Remove player caps
 foreach ( $capabilities as $cap_group ) {
-	foreach( $cap_group as $cap ) {
-    	$player->remove_cap( $cap );
+	foreach ( $cap_group as $cap ) {
+		$player->remove_cap( $cap );
 	}
 }
 $staff = get_role( 'staff' );
-$caps = array(
-    'level_9',
+$caps  = array(
+	'level_9',
 	'level_8',
 	'level_7',
 	'level_6',
@@ -93,9 +95,9 @@ $caps = array(
 	'upload_files',
 	'export',
 	'import',
-	'list_users'
+	'list_users',
 );
 // Add staff caps
-foreach( $caps as $c) {
-    $staff->add_cap( $c );
+foreach ( $caps as $c ) {
+	$staff->add_cap( $c );
 }

@@ -4,23 +4,25 @@
  *
  * Override this template by copying it to yourtheme/wpclubmanager/content-single-player.php
  *
- * @author 		ClubPress
- * @package 	WPClubManager/Templates
+ * @author      ClubPress
+ * @package     WPClubManager/Templates
  * @version     1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 ?>
 
 <?php do_action( 'wpclubmanager_before_single_player' ); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <div class="wpcm-player-info wpcm-row">
+	<div class="wpcm-player-info wpcm-row">
 
-	    <?php
+		<?php
 			/**
-			 * wpclubmanager_single_player_image hook
+			 * Hook wpclubmanager_single_player_image
 			 *
 			 * @hooked wpclubmanager_template_single_player_images - 5
 			 */
@@ -31,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php
 				/**
-				 * wpclubmanager_single_player_info hook
+				 * Hook wpclubmanager_single_player_info
 				 *
 				 * @hooked wpclubmanager_template_single_player_title - 5
 				 * @hooked wpclubmanager_template_single_player_meta - 10

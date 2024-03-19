@@ -2,13 +2,15 @@
 /**
  * Status Page
  *
- * @author 		Clubpress
- * @category 	Admin
- * @package 	WPClubManager/Admin
+ * @author      Clubpress
+ * @category    Admin
+ * @package     WPClubManager/Admin
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * WPCM_Admin_Status Class
@@ -20,11 +22,12 @@ class WPCM_Admin_Status {
 	 */
 	public static function output() {
 
-		include_once( 'views/html-admin-page-status.php' );
+		include_once 'views/html-admin-page-status.php';
 	}
 
 	/**
 	 * Retrieve metadata from a file. Based on WP Core's get_file_data function
+	 *
 	 * @since  2.1.1
 	 * @param  string $file Path to the file
 	 * @return string
@@ -49,27 +52,29 @@ class WPCM_Admin_Status {
 		$file_data = str_replace( "\r", "\n", $file_data );
 		$version   = '';
 
-		if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( '@version', '/' ) . '(.*)$/mi', $file_data, $match ) && $match[1] )
+		if ( preg_match( '/^[ \t\/*#@]*' . preg_quote( '@version', '/' ) . '(.*)$/mi', $file_data, $match ) && $match[1] ) {
 			$version = _cleanup_header_comment( $match[1] );
+		}
 
-		return $version ;
+		return $version;
 	}
 
 	/**
 	 * Scan the template files
+	 *
 	 * @param  string $template_path
 	 * @return array
 	 */
 	public static function scan_template_files( $template_path ) {
 
-		$files         = scandir( $template_path );
-		$result        = array();
+		$files  = scandir( $template_path );
+		$result = array();
 
 		if ( $files ) {
 
 			foreach ( $files as $key => $value ) {
 
-				if ( ! in_array( $value, array( ".",".." ) ) ) {
+				if ( ! in_array( $value, array( '.', '..' ) ) ) {
 
 					if ( is_dir( $template_path . DIRECTORY_SEPARATOR . $value ) ) {
 						$sub_files = self::scan_template_files( $template_path . DIRECTORY_SEPARATOR . $value );

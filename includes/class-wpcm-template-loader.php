@@ -2,15 +2,20 @@
 /**
  * Template Loader
  *
- * @class 		WPCM_Template_Loader
- * @version		1.1.2
- * @package		WPClubManager/Classes
- * @category	Class
- * @author 		ClubPress
+ * @class       WPCM_Template_Loader
+ * @version     1.1.2
+ * @package     WPClubManager/Classes
+ * @category    Class
+ * @author      ClubPress
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
+/**
+ * WPCM_Template_Loader
+ */
 class WPCM_Template_Loader {
 
 	/**
@@ -43,7 +48,7 @@ class WPCM_Template_Loader {
 
 		if ( is_single() && get_post_type() == 'wpcm_club' ) {
 
-			$file 	= 'single-club.php';
+			$file   = 'single-club.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
@@ -51,7 +56,7 @@ class WPCM_Template_Loader {
 
 		if ( is_single() && get_post_type() == 'wpcm_player' ) {
 
-			$file 	= 'single-player.php';
+			$file   = 'single-player.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
@@ -59,7 +64,7 @@ class WPCM_Template_Loader {
 
 		if ( is_single() && get_post_type() == 'wpcm_staff' ) {
 
-			$file 	= 'single-staff.php';
+			$file   = 'single-staff.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
@@ -67,7 +72,7 @@ class WPCM_Template_Loader {
 
 		if ( is_single() && get_post_type() == 'wpcm_match' ) {
 
-			$file 	= 'single-match.php';
+			$file   = 'single-match.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
@@ -75,7 +80,7 @@ class WPCM_Template_Loader {
 
 		if ( is_single() && get_post_type() == 'wpcm_sponsor' ) {
 
-			$file 	= 'single-sponsor.php';
+			$file   = 'single-sponsor.php';
 			$find[] = $file;
 			$find[] = WPCM_TEMPLATE_PATH . $file;
 
@@ -83,7 +88,9 @@ class WPCM_Template_Loader {
 
 		if ( $file ) {
 			$template = locate_template( $find );
-			if ( ! $template ) $template = WPCM()->plugin_path() . '/templates/' . $file;
+			if ( ! $template ) {
+				$template = WPCM()->plugin_path() . '/templates/' . $file;
+			}
 		}
 
 		return $template;

@@ -4,15 +4,20 @@
  *
  * Main admin file which loads all settings panels and sets up admin menus.
  *
- * @class 		WPCM_Admin
- * @author 		ClubPress
- * @category 	Admin
- * @package 	WPClubManager/Admin
+ * @class       WPCM_Admin
+ * @author      ClubPress
+ * @category    Admin
+ * @package     WPClubManager/Admin
  * @version     2.0.6
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
+/**
+ * WPCM_Admin
+ */
 class WPCM_Admin {
 
 	/**
@@ -22,7 +27,7 @@ class WPCM_Admin {
 
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
-		//add_action( 'admin_init', array( $this, 'buffer' ), 1 );
+		// add_action( 'admin_init', array( $this, 'buffer' ), 1 );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_footer', array( $this, 'wpclubmanager_print_js' ), 25 );
@@ -42,38 +47,38 @@ class WPCM_Admin {
 	 */
 	public function includes() {
 
-		include_once( 'wpcm-admin-functions.php' );
-		include_once( 'wpcm-meta-box-functions.php' );
+		include_once 'wpcm-admin-functions.php';
+		include_once 'wpcm-meta-box-functions.php';
 
-		include_once( 'class-wpcm-admin-post-types.php' );
-		include_once( 'class-wpcm-admin-taxonomies.php' );
+		include_once 'class-wpcm-admin-post-types.php';
+		include_once 'class-wpcm-admin-taxonomies.php';
 
 		// Classes we only need if the ajax is not-ajax
-		//if ( ! is_ajax() ) {
-			include( 'class-wpcm-admin-menus.php' );
-			include( 'class-wpcm-admin-notices.php' );
-			include( 'class-wpcm-admin-assets.php' );
-			include( 'class-wpcm-admin-permalink-settings.php' );
-			include( 'class-wpcm-admin-editor.php' );
-		//}
+		// if ( ! is_ajax() ) {
+			include 'class-wpcm-admin-menus.php';
+			include 'class-wpcm-admin-notices.php';
+			include 'class-wpcm-admin-assets.php';
+			include 'class-wpcm-admin-permalink-settings.php';
+			include 'class-wpcm-admin-editor.php';
+		// }
 
 		// Help Tabs
 		if ( apply_filters( 'wpclubmanager_enable_admin_help_tab', true ) ) {
-			include_once( 'class-wpcm-admin-help.php' );
+			include_once 'class-wpcm-admin-help.php';
 		}
 
 		// Setup/welcome
 		if ( ! empty( $_GET['page'] ) ) {
 			switch ( $_GET['page'] ) {
-				case 'wpcm-setup' :
-					include_once( 'class-wpcm-admin-setup-wizard.php' );
-				break;
+				case 'wpcm-setup':
+					include_once 'class-wpcm-admin-setup-wizard.php';
+					break;
 			}
 		}
 
 		// Importers
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
-			include( 'class-wpcm-admin-importers.php' );
+			include 'class-wpcm-admin-importers.php';
 		}
 	}
 
@@ -84,18 +89,18 @@ class WPCM_Admin {
 		$screen = get_current_screen();
 
 		switch ( $screen->id ) {
-			case 'dashboard' :
-				include( 'class-wpcm-admin-dashboard-widgets.php' );
-			break;
-			case 'options-permalink' :
-				include( 'class-wpcm-admin-permalink-settings.php' );
-			break;
-			case 'users' :
-			case 'user' :
-			case 'profile' :
-			case 'user-edit' :
-				include( 'class-wpcm-admin-profile.php' );
-			break;
+			case 'dashboard':
+				include 'class-wpcm-admin-dashboard-widgets.php';
+				break;
+			case 'options-permalink':
+				include 'class-wpcm-admin-permalink-settings.php';
+				break;
+			case 'users':
+			case 'user':
+			case 'profile':
+			case 'user-edit':
+				include 'class-wpcm-admin-profile.php';
+				break;
 		}
 	}
 
@@ -107,9 +112,10 @@ class WPCM_Admin {
 	public function admin_redirects() {
 
 		// Nonced plugin install redirects (whitelisted)
-		if ( ! empty( $_GET['wpcm-install-plugin-redirect'] ) ) {
-			$plugin_slug = wpcm_clean( $_GET['wpcm-install-plugin-redirect'] );
-			$url = admin_url( 'plugin-install.php?tab=search&type=term&s=' . $plugin_slug );
+		$redirect = filter_input( INPUT_GET, 'wpcm-install-plugin-redirect', FILTER_UNSAFE_RAW );
+		if ( ! empty( $redirect ) ) {
+			$plugin_slug = wpcm_clean( $redirect );
+			$url         = admin_url( 'plugin-install.php?tab=search&type=term&s=' . $plugin_slug );
 			wp_safe_redirect( $url );
 			exit;
 		}
@@ -136,7 +142,7 @@ class WPCM_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( 'yes' == get_option( 'wpclubmanager_lock_down_admin' ) && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && basename( $_SERVER["SCRIPT_FILENAME"] ) !== 'admin-post.php' ) {
+		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) ) { // phpcs:ignore
 			$prevent_access = true;
 		}
 
@@ -180,7 +186,7 @@ class WPCM_Admin {
 			$wpclubmanager_queued_js = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", $wpclubmanager_queued_js );
 			$wpclubmanager_queued_js = str_replace( "\r", '', $wpclubmanager_queued_js );
 
-			echo $wpclubmanager_queued_js . "});\n</script>\n";
+			echo $wpclubmanager_queued_js . "});\n</script>\n"; // phpcs:ignore
 
 			unset( $wpclubmanager_queued_js );
 		}
@@ -189,7 +195,7 @@ class WPCM_Admin {
 	/**
 	 * Add rating links to the admin dashboard
 	 *
-	 * @since	    2.0.0
+	 * @since       2.0.0
 	 * @param       string $footer_text
 	 * @return      string
 	 */
@@ -206,7 +212,8 @@ class WPCM_Admin {
 
 			if ( ! get_option( 'wpclubmanager_admin_footer_text_rated' ) ) {
 
-				$footer_text = sprintf( __( 'If you like <strong>WP Club Manager</strong> please leave us a %s&#9733;&#9733;&#9733;&#9733;&#9733;%s rating. A huge thank you in advance!', 'wp-club-manager' ), '<a href="https://wordpress.org/support/view/plugin-reviews/wp-club-manager?filter=5#postform" target="_blank" class="wpcm-rating-link" data-rated="' . esc_attr__( 'Many thanks :)', 'wp-club-manager' ) . '">', '</a>' );
+				/* translators: 1: review URL */
+				$footer_text = sprintf( __( 'If you like <strong>WP Club Manager</strong> please leave us a %1$s&#9733;&#9733;&#9733;&#9733;&#9733;%2$s rating. A huge thank you in advance!', 'wp-club-manager' ), '<a href="https://wordpress.org/support/view/plugin-reviews/wp-club-manager?filter=5#postform" target="_blank" class="wpcm-rating-link" data-rated="' . esc_attr__( 'Many thanks :)', 'wp-club-manager' ) . '">', '</a>' );
 				$this->wpclubmanager_enqueue_js( "
 					jQuery( 'a.wpcm-rating-link' ).click( function() {
 						jQuery.post( '" . WPCM()->ajax_url() . "', { action: 'wpclubmanager_rated' } );
@@ -222,6 +229,11 @@ class WPCM_Admin {
 		return $footer_text;
 	}
 
+	/**
+	 * @param string $classes
+	 *
+	 * @return string
+	 */
 	public function wpclubmanager_admin_body_class( $classes ) {
 
 		$sport = get_option( 'wpcm_sport' );

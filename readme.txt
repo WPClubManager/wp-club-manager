@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.11
+Stable Tag: 2.2.12
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -151,6 +151,10 @@ Yes; WP Club Manager will work with any theme, but may require some styling to m
 
 You can help improve this plugin by reporting any bugs or contributing to the source code at our [Github repository](https://github.com/ClubPress/wpclubmanager).
 
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/wp-club-manager)
+
 == Screenshots ==
 
 1. General plugin settings
@@ -167,6 +171,12 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 
 == Changelog ==
 
+= 2.2.12 - 19th March 2024 =
+
+- Security Fix: XSS vulnerability on player/staff metadata. Thanks to CatFather via Patchstack for the responsible disclosure
+- Security Fix: Broken access control vulnerability on player sorting when editing a match. Thanks to Mika via Patchstack for the responsible disclosure
+- Security: Entire codebase improved and hardened with PHPCS with security and code fixes
+
 = 2.2.11 - 3rd February 2024 =
 
 - Security Fix: Permalink settings save now protected with a capability and nonce check. Thanks to Francesco Carlucci via Wordfence for the responsible disclosure
@@ -174,6 +184,7 @@ You can help improve this plugin by reporting any bugs or contributing to the so
 - Fix: Fatal error during onboarding wizard when selecting the sport
 - Fix: Undefined variable on match report if venue not set
 - Fix: Undefined $competition_meta in wpcm_get_match_team(). Thanks to touxico
+- Fix: Age calculation error if no date of birth
 
 = 2.2.10 - 3rd February 2023 =
 
