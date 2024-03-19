@@ -289,7 +289,7 @@
 								<?php foreach ( $employees as $employee ) { ?>
 
 								<tr>
-									<td><a href="<?php echo esc_url( get_permalink( $employee->ID ) ); ?>"><?php echo esc_html( get_player_title( $employee->ID, 'full' ) ); ?></a></td>
+									<td><a href="<?php echo esc_url( get_permalink( $employee->ID ) ); ?>"><?php echo wp_kses_post( get_player_title( $employee->ID, 'full' ) ); ?></a></td>
 									<td class="right aligned"><a class="mini ui basic button" href="<?php echo esc_url( get_edit_post_link( $employee->ID ) ); ?>"><?php esc_html_e( 'Edit', 'wp-club-manager' ); ?></a></td>
 								</tr>
 
@@ -453,7 +453,7 @@
 
 								<tr>
 									<td><?php echo esc_html( get_post_meta( $player->ID, 'wpcm_number', true ) ); ?></td>
-									<td><a href="<?php echo esc_url( get_permalink( $player->ID ) ); ?>"><?php echo esc_html( get_player_title( $player->ID, 'full' ) ); ?></a></td>
+									<td><a href="<?php echo esc_url( get_permalink( $player->ID ) ); ?>"><?php echo wp_kses_post( get_player_title( $player->ID, 'full' ) ); ?></a></td>
 									<td><?php echo esc_html( wpcm_get_player_positions( $player->ID ) ); ?></td>
 									<td class="right aligned"><a class="mini ui basic button" href="<?php echo esc_url( get_edit_post_link( $player->ID ) ); ?>"><?php esc_html_e( 'Edit', 'wp-club-manager' ); ?></a></td>
 								</tr>

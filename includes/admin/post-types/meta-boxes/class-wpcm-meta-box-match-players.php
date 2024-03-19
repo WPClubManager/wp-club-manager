@@ -446,7 +446,7 @@ class WPCM_Meta_Box_Match_Players {
 									<label class="selectit">
 										<input type="checkbox" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
 										<span class="name">
-											<?php echo esc_html( apply_filters( 'wpcm_player_squad_number_output', $squad_number, $player->ID ) ); ?> <?php echo esc_html( get_player_title( $player->ID ) ); ?>
+											<?php echo wp_kses_post( apply_filters( 'wpcm_player_squad_number_output', $squad_number, $player->ID ) ); ?> <?php echo wp_kses_post( get_player_title( $player->ID ) ); ?>
 										</span>
 									</label>
 								</td>
