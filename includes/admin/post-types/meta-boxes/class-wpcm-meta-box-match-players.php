@@ -536,7 +536,7 @@ class WPCM_Meta_Box_Match_Players {
 											</td>
 
 										<?php } else { ?>
-											<td data-label="<?php echo $wpcm_player_stats_labels[ $key ]; ?>" class="<?php echo esc_attr( $key ); ?>">
+											<td data-label="<?php echo esc_attr( $wpcm_player_stats_labels[ $key ] ); ?>" class="<?php echo esc_attr( $key ); ?>">
 												<input type="number" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], $player->ID, $key ) ); // phpcs:ignore ?>"
 																							<?php
 																							if ( ! $played ) {
