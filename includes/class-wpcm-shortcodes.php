@@ -2,17 +2,25 @@
 /**
  * WPCM_Shortcodes class.
  *
- * @class 		WPCM_Shortcodes
- * @version		2.2.0
- * @package		WPClubManager/Classes
- * @category	Class
- * @author 		ClubPress
+ * @class       WPCM_Shortcodes
+ * @version     2.2.0
+ * @package     WPClubManager/Classes
+ * @category    Class
+ * @author      ClubPress
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
+/**
+ * WPCM_Shortcodes
+ */
 class WPCM_Shortcodes {
 
+	/**
+	 * Construct
+	 */
 	public function __construct() {
 
 		add_action( 'wp_head', array( $this, 'wpcm_map_css' ) );
@@ -25,23 +33,23 @@ class WPCM_Shortcodes {
 
 		// Define shortcodes
 		$shortcodes = array(
-			'match_list'               		=> __CLASS__ . '::match_list',
-			'player_list'					=> __CLASS__ . '::player_list',
-			'player_gallery'				=> __CLASS__ . '::player_gallery',
-			'staff_list'					=> __CLASS__ . '::staff_list',
-			'staff_gallery'					=> __CLASS__ . '::staff_gallery',
-			'league_table'					=> __CLASS__ . '::league_table',
-			'map_venue'						=> __CLASS__ . '::map_venue',
+			'match_list'     => __CLASS__ . '::match_list',
+			'player_list'    => __CLASS__ . '::player_list',
+			'player_gallery' => __CLASS__ . '::player_gallery',
+			'staff_list'     => __CLASS__ . '::staff_list',
+			'staff_gallery'  => __CLASS__ . '::staff_gallery',
+			'league_table'   => __CLASS__ . '::league_table',
+			'map_venue'      => __CLASS__ . '::map_venue',
 
-			//OLD SHORTCODES
-			'wpcm_map'               		=> __CLASS__ . '::map',
-			'wpcm_matches'         			=> __CLASS__ . '::matches',
-			'wpcm_players'            		=> __CLASS__ . '::players',
-			'wpcm_staff'            		=> __CLASS__ . '::staff',
-			'wpcm_standings'              	=> __CLASS__ . '::standings',
+			// OLD SHORTCODES
+			'wpcm_map'       => __CLASS__ . '::map',
+			'wpcm_matches'   => __CLASS__ . '::matches',
+			'wpcm_players'   => __CLASS__ . '::players',
+			'wpcm_staff'     => __CLASS__ . '::staff',
+			'wpcm_standings' => __CLASS__ . '::standings',
 		);
 
-		if( is_club_mode() ){
+		if ( is_club_mode() ) {
 			$shortcodes['match_opponents'] = __CLASS__ . '::match_opponents';
 		}
 
@@ -55,27 +63,30 @@ class WPCM_Shortcodes {
 	 *
 	 * @param mixed $function
 	 * @param array $atts (default: array())
+	 * @param array $wrapper
+	 *
 	 * @return string
 	 */
 	public static function shortcode_wrapper(
 		$function,
-		$atts    = array(),
+		$atts = array(),
 		$wrapper = array(
 			'class'  => 'wpcm-shortcode-wrapper',
 			'before' => null,
-			'after'  => null
-		) ) {
-			
+			'after'  => null,
+		)
+	) {
+
 		$wrapper = apply_filters( 'wpclubmanager_shortcode_wrapper', $wrapper, $function, $atts );
 
 		ob_start();
 
-		$before 	= empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
-		$after 		= empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
+		$before = empty( $wrapper['before'] ) ? '<div class="' . esc_attr( $wrapper['class'] ) . '">' : $wrapper['before'];
+		$after  = empty( $wrapper['after'] ) ? '</div>' : $wrapper['after'];
 
-		echo $before;
+		echo wp_kses_post( $before );
 		call_user_func( $function, $atts );
-		echo $after;
+		echo wp_kses_post( $after );
 
 		return ob_get_clean();
 	}
@@ -112,7 +123,7 @@ class WPCM_Shortcodes {
 	 * @return string
 	 */
 	public static function player_list( $atts ) {
-		
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Player_List', 'output' ), $atts );
 	}
 
@@ -124,7 +135,7 @@ class WPCM_Shortcodes {
 	 * @return string
 	 */
 	public static function player_gallery( $atts ) {
-		
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Player_Gallery', 'output' ), $atts );
 	}
 
@@ -136,7 +147,7 @@ class WPCM_Shortcodes {
 	 * @return string
 	 */
 	public static function staff_list( $atts ) {
-		
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff_List', 'output' ), $atts );
 	}
 
@@ -148,11 +159,11 @@ class WPCM_Shortcodes {
 	 * @return string
 	 */
 	public static function staff_gallery( $atts ) {
-		
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Staff_Gallery', 'output' ), $atts );
 	}
 
-	
+
 	/**
 	 * Standings Table shortcode.
 	 *
@@ -161,7 +172,7 @@ class WPCM_Shortcodes {
 	 * @return string
 	 */
 	public static function league_table( $atts ) {
-		
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_League_Table', 'output' ), $atts );
 	}
 
@@ -172,8 +183,8 @@ class WPCM_Shortcodes {
 	 * @param mixed $atts
 	 * @return string
 	 */
-	 public static function map_venue( $atts ) {
-		
+	public static function map_venue( $atts ) {
+
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Map_Venue', 'output' ), $atts );
 	}
 
@@ -183,7 +194,7 @@ class WPCM_Shortcodes {
 
 
 
-	//OLD SHORTCODES
+	// OLD SHORTCODES
 	/**
 	 * Matches shortcode.
 	 *
@@ -238,63 +249,68 @@ class WPCM_Shortcodes {
 	public static function map( $atts ) {
 
 		$atts = shortcode_atts( array(
-			'width' 		=> '584',
-			'height' 		=> '320',
-			'address' 		=> false,
-			'lat' 			=> false,
-			'lng' 			=> false,
-			'zoom' 			=> '13',
-			'marker'    	=> 1,
-			'infowindow'	=> false,
+			'width'      => '584',
+			'height'     => '320',
+			'address'    => false,
+			'lat'        => false,
+			'lng'        => false,
+			'zoom'       => '13',
+			'marker'     => 1,
+			'infowindow' => false,
 		), $atts );
 		// if ( is_array( $venues ) ) {
-		// 	$venue = reset($venues);
-		// 	$name = $venue->name;
-		// 	$t_id = $venue->term_id;
-		// 	$venue_meta = get_option( "taxonomy_term_$t_id" );
-		// 	$address = $venue_meta['wpcm_address'];
+		// $venue = reset($venues);
+		// $name = $venue->name;
+		// $t_id = $venue->term_id;
+		// $venue_meta = get_option( "taxonomy_term_$t_id" );
+		// $address = $venue_meta['wpcm_address'];
 		// } else {
-		// 	$name = null;
-		// 	$address = null;
+		// $name = null;
+		// $address = null;
 		// }
-		
-		//$api_key = urlencode( get_option( 'wpcm_google_map_api') );
-		
+
+		// $api_key = urlencode( get_option( 'wpcm_google_map_api') );
+
 		if ( $atts['address'] ) {
 			$coordinates = wpcm_decode_address( $atts['address'] );
-			if ( is_array ( $coordinates ) ) {
-				$latitude = $coordinates['lat'];
+			if ( is_array( $coordinates ) ) {
+				$latitude  = $coordinates['lat'];
 				$longitude = $coordinates['lng'];
 			}
 		}
-		$address = urlencode($atts['address']);
-		
-		//$map_id = uniqid( 'wpcm_map_' );
-		
+		$address = urlencode( $atts['address'] );
+
+		// $map_id = uniqid( 'wpcm_map_' );
+
 		// show marker or not
-		//$atts['marker'] = (int) $atts['marker'] ? true : false;
+		// $atts['marker'] = (int) $atts['marker'] ? true : false;
 		$api_key = get_option( 'wpcm_google_map_api' );
-		$zoom = get_option( 'wpcm_map_zoom', 15 );
+		$zoom    = get_option( 'wpcm_map_zoom', 15 );
 		$maptype = get_option( 'wpcm_map_type', 'roadmap' );
 		$maptype = strtolower( $maptype );
-		if ( '' === $address ) $address = '+';
-		if ( 'satellite' !== $maptype ) $maptype = 'roadmap';
-		if( is_tax( 'wpcm_venue' ) ) $class = 'wpcm-venue-map';
+		if ( '' === $address ) {
+			$address = '+';
+		}
+		if ( 'satellite' !== $maptype ) {
+			$maptype = 'roadmap';
+		}
+		if ( is_tax( 'wpcm_venue' ) ) {
+			$class = 'wpcm-venue-map';
+		}
 
 		ob_start();
-		if ( $latitude != null && $longitude != null ):
+		if ( null != $latitude && null != $longitude ) :
 			?>
 			<iframe
-			class="wpcm-google-map <?php echo $class; ?>"
+			class="wpcm-google-map <?php echo esc_attr( $class ); ?>"
 			width="600"
 			height="320"
 			frameborder="0" style="border:0"
-			src="https://www.google.com/maps/embed/v1/search?key=<?php echo $api_key; ?>&amp;q=<?php echo $address; ?>&amp;center=<?php echo $latitude; ?>,<?php echo $longitude; ?>&amp;zoom=<?php echo $zoom; ?>&amp;maptype=<?php echo $maptype; ?>" allowfullscreen>
+			src="https://www.google.com/maps/embed/v1/search?key=<?php echo esc_attr( $api_key ); ?>&amp;q=<?php echo esc_attr( $address ); ?>&amp;center=<?php echo esc_attr( $latitude ); ?>,<?php echo esc_attr( $longitude ); ?>&amp;zoom=<?php echo esc_attr( $zoom ); ?>&amp;maptype=<?php echo esc_attr( $maptype ); ?>" allowfullscreen>
 			</iframe>
 			<?php
 		endif;
-		
+
 		return ob_get_clean();
 	}
-
 }
