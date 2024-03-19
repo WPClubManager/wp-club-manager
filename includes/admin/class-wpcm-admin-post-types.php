@@ -590,6 +590,10 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 					// $venue = wpcm_get_match_venue( $post->ID );
 					$venue = get_the_terms( $post->ID, 'wpcm_venue' );
+					$venue_slug = '';
+					if ( $venue && isset($venue[0]->slug ) ) {
+						$venue_slug = $venue[0]->slug;
+					}
 					// $home_goals = get_post_meta( $post->ID, 'wpcm_home_goals', true );
 					// $away_goals = get_post_meta( $post->ID, 'wpcm_away_goals', true );
 					$referee    = get_post_meta( $post->ID, 'wpcm_referee', true );
@@ -607,7 +611,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 						' . ( $team ? '<div class="team">' . esc_html( $team[0]->slug ) . '</div>' : '' ) . '
 						<div class="comp">' . esc_html( $comp ) . '</div>
 						<div class="season">' . esc_html( $season ) . '</div>
-						<div class="venue">' . esc_html( $venue[0]->slug ) . '</div>
+						<div class="venue">' . esc_html( $venue_slug ) . '</div>
 						<div class="played">' . esc_html( $played ) . '</div>
 						<div class="score">' . esc_html( $score[0] ) . '</div>
 						<div class="home-goals">' . esc_html( $goals['total']['home'] ) . '</div>
