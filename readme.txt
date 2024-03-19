@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.12
+Stable Tag: 2.2.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,17 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.13 - 19th March 2024 =
+
+- Fix: League table not updating correctly on some installs
+- Fix: Cannot set score of players for a match when using a mobile device
+- Fix: Penalty shootout score not saving correctly for matches
+- Fix: Unable to turn off extra time or penalties for matches
+- Fix: PHP Notice: Uninitialized string offset: 0 on league table
+- Fix: Undefined $team_label on league table
+- Fix: Warning: Trying to access array offset on false when no match venue selected
+- Fix: Compatibility with Sponsors Pro addon
 
 = 2.2.12 - 19th March 2024 =
 
