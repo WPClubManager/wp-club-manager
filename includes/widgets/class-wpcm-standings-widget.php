@@ -121,6 +121,9 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 
 		$options_string = '';
 		foreach ( $instance as $key => $value ) {
+			if ( 'linkclub' === $key ) {
+				$key = 'link_club';
+			}
 			if ( -1 != $value ) {
 				$options_string .= ' ' . $key . '="' . $value . '"';
 			}
