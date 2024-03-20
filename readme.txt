@@ -1,11 +1,11 @@
 === WP Club Manager - WordPress Sports Club Plugin===
 Contributors: wpclubmanager, leonterry, daveyjake
-Tags: club, teams, sport, sports club, club management, club website, league tables, team rosters, fixtures, results
+Tags: club, teams, sport, sports club, club management
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZGGZXX2EQTZ9E
 Requires at least: 4.9
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.13
+Stable Tag: 2.2.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.14 - 20th March 2024 =
+
+- New: League mode dashboard content showing table, played and upcoming fixtures
+- Fix: League table widget incorrect logic for settings
+- Fix: Shirt numbers not rendering correctly on edit match screen
 
 = 2.2.13 - 19th March 2024 =
 

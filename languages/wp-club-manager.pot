@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Club Manager 2.2.13\n"
+"Project-Id-Version: WP Club Manager 2.2.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-club-manager\n"
-"POT-Creation-Date: 2024-03-19 14:30:53+00:00\n"
+"POT-Creation-Date: 2024-03-20 10:21:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +67,7 @@ msgid ""
 "href=\"%4$s\">update now</a>."
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:254 includes/class-wpcm-ajax.php:65
+#: includes/abstracts/class-wpcm-widget.php:259 includes/class-wpcm-ajax.php:65
 #: includes/class-wpcm-ajax.php:97 includes/class-wpcm-ajax.php:115
 #: includes/class-wpcm-ajax.php:133 includes/class-wpcm-ajax.php:176
 #: includes/class-wpcm-ajax.php:256 includes/class-wpcm-ajax.php:270
@@ -80,7 +80,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:276
+#: includes/abstracts/class-wpcm-widget.php:281
 #: includes/admin/class-wpcm-admin-settings.php:527
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-parent.php:52
 #: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-table.php:38
@@ -101,27 +101,27 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:325
-#: includes/abstracts/class-wpcm-widget.php:381
+#: includes/abstracts/class-wpcm-widget.php:330
+#: includes/abstracts/class-wpcm-widget.php:386
 #: includes/widgets/class-wpcm-players-widget.php:67
 msgid "Order by"
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:428
+#: includes/abstracts/class-wpcm-widget.php:433
 #: includes/admin/settings/class-wpcm-settings-general.php:84
 #: includes/admin/views/html-admin-page-status.php:360
 #: includes/class-wpcm-ajax.php:997
 msgid "Default Club"
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:429
 #: includes/abstracts/class-wpcm-widget.php:434
+#: includes/abstracts/class-wpcm-widget.php:439
 #: includes/class-wpcm-ajax.php:1001
 msgid "Top"
 msgstr ""
 
-#: includes/abstracts/class-wpcm-widget.php:430
 #: includes/abstracts/class-wpcm-widget.php:435
+#: includes/abstracts/class-wpcm-widget.php:440
 #: includes/class-wpcm-ajax.php:1002
 msgid "Bottom"
 msgstr ""
@@ -2604,28 +2604,36 @@ msgid "Biggest Win"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:117
+#: includes/admin/views/html-admin-page-league-dashboard.php:117
 msgid "Latest Results"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:181
+#: includes/admin/views/html-admin-page-league-dashboard.php:185
 msgid "There are no results yet."
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:191
 #: includes/admin/views/html-admin-page-dashboard.php:263
+#: includes/admin/views/html-admin-page-league-dashboard.php:196
+#: includes/admin/views/html-admin-page-league-dashboard.php:273
 msgid "Manage matches"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:192
 #: includes/admin/views/html-admin-page-dashboard.php:264
+#: includes/admin/views/html-admin-page-league-dashboard.php:198
+#: includes/admin/views/html-admin-page-league-dashboard.php:275
 msgid "Add new match"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:201
+#: includes/admin/views/html-admin-page-league-dashboard.php:207
 msgid "Next Fixtures"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:253
+#: includes/admin/views/html-admin-page-league-dashboard.php:262
 msgid "You have no matches scheduled."
 msgstr ""
 
@@ -2654,24 +2662,32 @@ msgid "Create new roster"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:340
+#: includes/admin/views/html-admin-page-league-dashboard.php:25
 #: includes/class-wpcm-ajax.php:978 includes/class-wpcm-post-types.php:411
 msgid "League Table"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:407
+#: includes/admin/views/html-admin-page-league-dashboard.php:85
 msgid "Manage table"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:416
+#: includes/admin/views/html-admin-page-league-dashboard.php:94
 msgid "You have not created a league table yet."
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:421
+#: includes/admin/views/html-admin-page-league-dashboard.php:100
 msgid "Create new league table"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:433
 msgid "Players Roster"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-league-dashboard.php:12
+msgid "League Overview"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-status.php:18
@@ -6343,6 +6359,7 @@ msgid "A"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-dashboard.php:155
+#: includes/admin/views/html-admin-page-league-dashboard.php:157
 msgctxt "To be confirmed"
 msgid "TBC"
 msgstr ""

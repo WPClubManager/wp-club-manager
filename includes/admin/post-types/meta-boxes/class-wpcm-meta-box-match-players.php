@@ -71,7 +71,7 @@ class WPCM_Meta_Box_Match_Players {
 
 		$teams   = get_the_terms( $post->ID, 'wpcm_team' );
 		$seasons = get_the_terms( $post->ID, 'wpcm_season' );
-
+		$team    = false;
 		if ( is_array( $teams ) ) {
 
 			$match_teams = array();
@@ -403,7 +403,7 @@ class WPCM_Meta_Box_Match_Players {
 						$teams   = get_the_terms( $player->ID, 'wpcm_team' );
 						$seasons = get_the_terms( $player->ID, 'wpcm_season' );
 
-						if ( $teams ) {
+						if ( $teams && ! is_wp_error( $teams ) ) {
 							$teamclass = array();
 							foreach ( $teams as $team ) {
 								$teamclass[] = 'team_' . $team->term_id . ' ';
@@ -439,7 +439,7 @@ class WPCM_Meta_Box_Match_Players {
 						?>
 
 						<tr id="<?php echo esc_attr( $player->ID ); ?>" data-player="<?php echo esc_attr( $player->ID ); ?>" class="player-stats-list <?php echo esc_attr( $player_teams ); ?> <?php echo esc_attr( $seasonclass ); ?> sortable sorted">
-							<?php echo esc_html( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
+							<?php echo wp_kses_post( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
 
 								<td scope="row" class="names">
 									<i class="dashicons dashicons-move"></i>

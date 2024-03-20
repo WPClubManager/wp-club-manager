@@ -146,6 +146,11 @@ abstract class WPCM_Widget extends WP_Widget {
 				continue;
 			}
 
+			if ( ! isset( $new_instance[ $key ] ) ) {
+				$instance[ $key ] = '';
+				continue;
+			}
+
 			// Format the value based on settings type.
 			switch ( $setting['type'] ) {
 				case 'number':
