@@ -396,9 +396,8 @@ table.wpcm-match-players-table tbody tr td.names {
 	padding-right: 24px;
 }
 
-table.wpcm-match-players-table tbody tr td input,
 table.wpcm-match-players-table tbody tr td input {
-	max-width:50px;
+	max-width:60px;
 }
 
 table.wpcm-match-players-table tbody tr td.mvp,
