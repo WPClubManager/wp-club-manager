@@ -268,7 +268,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				}
 				$show_countdown = ! empty( $instance['show_countdown'] );
 				if ( $show_countdown ) {
-					wp_enqueue_script( 'jquery-countdown', WPCM()->plugin_url() . '/assets/js/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
+					wp_enqueue_script( 'jquery-countdown', WPCM()->plugin_url() . '/assets/js/vendor/jquery.countdown.min.js', array( 'jquery' ), '2.2.0', true );
 				}
 
 				wpclubmanager_get_template( 'content-widget-fixtures.php', array(

@@ -214,6 +214,7 @@ jQuery( function($){
 	var itemList = jQuery('.wpcm-sortable');
 
     itemList.sortable({
+		handle: ".names .name, .names .dashicons-move",
     	cursor: 'move',
         update: function(event, ui) {
             jQuery('#loading-animation').show(); // Show the animate loading gif while waiting

@@ -141,7 +141,7 @@ class WPCM_Shortcode_League_Table {
 				} else {
 					$middle = 0;
 					foreach ( $clubs as $key => $value ) {
-						if ( $value->ID === $default_club ) {
+						if ( $value->ID === (int) $default_club ) {
 							$middle = $key;
 						}
 					}
