@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.4
 Requires PHP: 7.2
-Stable Tag: 2.2.14
+Stable Tag: 2.2.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.2.15 - 26th March 2024 =
+
+- Fix: Cannot set score of players for a match when using a mobile device
+- Fix: league table widget not focussing on the default club
 
 = 2.2.14 - 20th March 2024 =
 
