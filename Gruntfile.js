@@ -6,6 +6,19 @@ module.exports = function( grunt ) {
 	// Project configuration
 	grunt.initConfig( {
 		pkg:    grunt.file.readJSON( 'package.json' ),
+		uglify: {
+			all: {
+				files: {
+					'assets/js/frontend/wpclubmanager.min.js': ['assets/js/frontend/wpclubmanager.js'],
+					'assets/js/admin/combify.min.js': ['assets/js/admin/combify.js'],
+					'assets/js/admin/meta-boxes.min.js': ['assets/js/admin/meta-boxes.js'],
+					'assets/js/admin/settings.min.js': ['assets/js/admin/settings.js'],
+					'assets/js/admin/wpclubmanager_admin.min.js': ['assets/js/admin/wpclubmanager_admin.js'],
+					'assets/js/admin/wpclubmanager_tax_order.min.js': ['assets/js/admin/wpclubmanager_tax_order.js'],
+					'assets/js/admin/wpcm-setup.min.js': ['assets/js/admin/wpcm-setup.js'],
+				}
+			}
+		},
 		makepot: {
             target: {
                 options: {
@@ -77,7 +90,7 @@ module.exports = function( grunt ) {
 
 	// Default task.
 	grunt.registerTask( 'css', [ 'sass', 'cssmin'] );
-	grunt.registerTask( 'js', ['concat', 'uglify'] );
+	grunt.registerTask( 'js', ['uglify'] );
 	grunt.registerTask( 'default', ['js', 'css'] );
 	grunt.registerTask( 'do_pot', ['makepot'] );
 
