@@ -1,5 +1,5 @@
 /**
- * WPClubManager Admin JS
+ * WPClubManager Frontend JS
  */
 jQuery(document).ready(function() {
 	// Next Match countdown
@@ -19,7 +19,7 @@ jQuery(function(){
 
 	jQuery('.stats-tabs a').click(function(){
 		var t = jQuery(this).attr('href');
-		
+
 		jQuery(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
 		jQuery(this).parent().parent().parent().find('.tabs-panel').hide();
 		jQuery(t).show();

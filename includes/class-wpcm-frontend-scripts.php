@@ -40,7 +40,7 @@ class WPCM_Frontend_Scripts {
 				'media'   => 'all',
 			),
 			'leaflet-styles'        => array(
-				'src'     => str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/js/leaflet/leaflet.css',
+				'src'     => str_replace( array( 'http:', 'https:' ), '', WPCM()->plugin_url() ) . '/assets/js/vendor/leaflet/leaflet.css',
 				'deps'    => '',
 				'version' => '1.6.0',
 				'media'   => 'all',
@@ -67,7 +67,7 @@ class WPCM_Frontend_Scripts {
 		if ( 'google' === $map_service ) {
 			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
 		} elseif ( 'osm' === $map_service ) {
-			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/leaflet/leaflet.js' );
+			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/vendor/leaflet/leaflet.js' );
 		}
 
 		// Global frontend scripts
