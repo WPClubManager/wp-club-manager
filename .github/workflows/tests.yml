@@ -21,10 +21,26 @@ jobs:
   wpunit:
     name: WPUnit Tests (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: wp_tests
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     strategy:
       fail-fast: false
       matrix:
         php: ["7.4", "8.0", "8.1", "8.2", "8.3"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,12 +49,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: mysqli, pdo_mysql
           coverage: none
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -51,35 +63,47 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install dependencies
+      - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --ignore-platform-reqs
+
+      - name: Install WordPress
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          mkdir -p /tmp/wordpress
+          php wp-cli.phar core download --path=/tmp/wordpress --quiet
+          php wp-cli.phar config create \
+            --path=/tmp/wordpress \
+            --dbname=wp_tests \
+            --dbuser=root \
+            --dbpass=password \
+            --dbhost=127.0.0.1 \
+            --quiet
+          php wp-cli.phar core install \
+            --path=/tmp/wordpress \
+            --url=http://localhost \
+            --title="WP Club Manager Tests" \
+            --admin_user=admin \
+            --admin_password=password \
+            --admin_email=admin@example.com \
+            --skip-email \
+            --quiet
 
       - name: Configure test environment
         run: |
           printf 'params:\n    - .env.local\n' > tests/codeception.yml
           touch tests/.env
-          printf 'WP_ROOT_FOLDER=/var/www/html\n' > tests/.env.local
-          printf 'TEST_DB_NAME=tests-wordpress\n' >> tests/.env.local
-          printf 'TEST_DB_HOST=tests-mysql\n' >> tests/.env.local
-          printf 'TEST_DB_USER=root\n' >> tests/.env.local
-          printf 'TEST_DB_PASSWORD=password\n' >> tests/.env.local
-          printf 'TEST_TABLE_PREFIX=wp_\n' >> tests/.env.local
-          printf 'TEST_SITE_WP_DOMAIN=localhost:8889\n' >> tests/.env.local
-          printf 'TEST_SITE_ADMIN_EMAIL=admin@example.com\n' >> tests/.env.local
-          printf 'TEST_SITE_WP_URL=http://localhost:8889\n' >> tests/.env.local
-
-      - name: Set wp-env PHP version
-        run: echo '{"phpVersion":"${{ matrix.php }}"}' > .wp-env.override.json
-
-      - name: Start wp-env
-        run: npx @wordpress/env start
+          cat > tests/.env.local <<EOF
+          WP_ROOT_FOLDER=/tmp/wordpress
+          TEST_DB_NAME=wp_tests
+          TEST_DB_HOST=127.0.0.1
+          TEST_DB_USER=root
+          TEST_DB_PASSWORD=password
+          TEST_TABLE_PREFIX=wp_
+          TEST_SITE_WP_DOMAIN=localhost
+          TEST_SITE_ADMIN_EMAIL=admin@example.com
+          TEST_SITE_WP_URL=http://localhost
+          EOF
 
       - name: Run WPUnit tests
-        run: |
-          npx @wordpress/env run tests-cli \
-            --env-cwd=/var/www/html/wp-content/plugins/wp-club-manager/tests \
-            bash -c "php ../vendor/bin/codecept run wpunit --no-colors 2>&1"
-
-      - name: Stop wp-env
-        if: always()
-        run: npx @wordpress/env stop
+        run: vendor/bin/codecept run wpunit --no-colors
