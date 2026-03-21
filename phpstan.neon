@@ -4,6 +4,8 @@ includes:
 
 parameters:
     level: 5
+    bootstrapFiles:
+        - phpstan-stubs/wp-cli.php
     paths:
         - .
     excludePaths:
@@ -15,5 +17,3 @@ parameters:
         - dist
         - build
         - assets
-    ignoreErrors:
-        - '#extends unknown class WP_CLI_Command#'

@@ -75,6 +75,12 @@ jobs:
           php wp-cli.phar config create --path=/tmp/wordpress --dbname=wp_tests --dbuser=root --dbpass=password --dbhost=127.0.0.1 --quiet
           php wp-cli.phar core install --path=/tmp/wordpress --url=http://localhost --title="WPCM Tests" --admin_user=admin --admin_password=password --admin_email=admin@example.com --skip-email --quiet
 
+      - name: Link plugin into WordPress
+        run: |
+          mkdir -p /tmp/wordpress/wp-content/plugins
+          ln -s ${{ github.workspace }} /tmp/wordpress/wp-content/plugins/wp-club-manager
+          php wp-cli.phar plugin activate wp-club-manager --path=/tmp/wordpress --quiet
+
       - name: Configure test environment
         run: |
           printf 'params:\n    - .env.local\n' > tests/codeception.yml
