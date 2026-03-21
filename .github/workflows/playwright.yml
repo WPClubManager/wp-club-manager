@@ -1,0 +1,78 @@
+name: E2E Tests (Playwright)
+
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - "tests/e2e/**"
+      - "playwright.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/playwright.yml"
+  push:
+    branches:
+      - main
+      - develop
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          coverage: none
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Start wp-env
+        run: npx @wordpress/env start
+
+      - name: Wait for WordPress to be ready
+        run: |
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:8889/wp-json/ | grep -q '"description"'; then
+              echo "WordPress is ready"
+              break
+            fi
+            echo "Waiting... ($i)"
+            sleep 2
+          done
+
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=github
+        env:
+          WP_BASE_URL: http://localhost:8889
+          WP_ADMIN_USER: admin
+          WP_ADMIN_PASS: password
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+      - name: Stop wp-env
+        if: always()
+        run: npx @wordpress/env stop

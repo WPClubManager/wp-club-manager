@@ -2,6 +2,12 @@ name: Unit Tests
 
 on:
   pull_request:
+    paths:
+      - "**.php"
+      - "tests/wpunit/**"
+      - "composer.json"
+      - "composer.lock"
+      - ".github/workflows/tests.yml"
   push:
     branches:
       - main
@@ -26,7 +32,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: ${{ matrix.php }}
           coverage: none
 
       - name: Setup Node.js
@@ -72,3 +78,7 @@ jobs:
           npx @wordpress/env run tests-cli \
             --env-cwd=/var/www/html/wp-content/plugins/wp-club-manager/tests \
             bash -c "php ../vendor/bin/codecept run wpunit --no-colors 2>&1"
+
+      - name: Stop wp-env
+        if: always()
+        run: npx @wordpress/env stop
