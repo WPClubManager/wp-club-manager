@@ -57,6 +57,7 @@ jobs:
       - name: Configure test environment
         run: |
           printf 'params:\n    - .env.local\n' > tests/codeception.yml
+          touch tests/.env
           printf 'WP_ROOT_FOLDER=/var/www/html\n' > tests/.env.local
           printf 'TEST_DB_NAME=tests-wordpress\n' >> tests/.env.local
           printf 'TEST_DB_HOST=tests-mysql\n' >> tests/.env.local

@@ -47,4 +47,4 @@ jobs:
         run: composer install --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse --no-progress --memory-limit=2G --memory-limit=1G
+        run: vendor/bin/phpstan analyse --no-progress --memory-limit=2G
