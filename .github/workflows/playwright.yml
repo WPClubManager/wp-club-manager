@@ -30,7 +30,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -38,8 +37,8 @@ jobs:
           php-version: "8.2"
           coverage: none
 
-      - name: Install Node dependencies
-        run: npm ci
+      - name: Install Playwright
+        run: npm install --no-save @playwright/test @types/node
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
