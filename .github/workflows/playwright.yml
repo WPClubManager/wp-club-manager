@@ -38,7 +38,7 @@ jobs:
           coverage: none
 
       - name: Install Playwright
-        run: npm install --no-save --legacy-peer-deps @playwright/test @types/node
+        run: npm install --no-save --legacy-peer-deps --ignore-scripts @playwright/test @types/node
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium

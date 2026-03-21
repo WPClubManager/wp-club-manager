@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["7.4", "8.0", "8.1", "8.2", "8.3"]
+        php: ["8.0", "8.1", "8.2", "8.3"]
 
     steps:
       - name: Checkout
@@ -68,42 +68,26 @@ jobs:
 
       - name: Install WordPress
         run: |
-          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          curl -sO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
           chmod +x wp-cli.phar
           mkdir -p /tmp/wordpress
           php wp-cli.phar core download --path=/tmp/wordpress --quiet
-          php wp-cli.phar config create \
-            --path=/tmp/wordpress \
-            --dbname=wp_tests \
-            --dbuser=root \
-            --dbpass=password \
-            --dbhost=127.0.0.1 \
-            --quiet
-          php wp-cli.phar core install \
-            --path=/tmp/wordpress \
-            --url=http://localhost \
-            --title="WP Club Manager Tests" \
-            --admin_user=admin \
-            --admin_password=password \
-            --admin_email=admin@example.com \
-            --skip-email \
-            --quiet
+          php wp-cli.phar config create --path=/tmp/wordpress --dbname=wp_tests --dbuser=root --dbpass=password --dbhost=127.0.0.1 --quiet
+          php wp-cli.phar core install --path=/tmp/wordpress --url=http://localhost --title="WPCM Tests" --admin_user=admin --admin_password=password --admin_email=admin@example.com --skip-email --quiet
 
       - name: Configure test environment
         run: |
           printf 'params:\n    - .env.local\n' > tests/codeception.yml
           touch tests/.env
-          cat > tests/.env.local <<EOF
-          WP_ROOT_FOLDER=/tmp/wordpress
-          TEST_DB_NAME=wp_tests
-          TEST_DB_HOST=127.0.0.1
-          TEST_DB_USER=root
-          TEST_DB_PASSWORD=password
-          TEST_TABLE_PREFIX=wp_
-          TEST_SITE_WP_DOMAIN=localhost
-          TEST_SITE_ADMIN_EMAIL=admin@example.com
-          TEST_SITE_WP_URL=http://localhost
-          EOF
+          printf 'WP_ROOT_FOLDER=/tmp/wordpress\n' > tests/.env.local
+          printf 'TEST_DB_NAME=wp_tests\n' >> tests/.env.local
+          printf 'TEST_DB_HOST=127.0.0.1\n' >> tests/.env.local
+          printf 'TEST_DB_USER=root\n' >> tests/.env.local
+          printf 'TEST_DB_PASSWORD=password\n' >> tests/.env.local
+          printf 'TEST_TABLE_PREFIX=wp_\n' >> tests/.env.local
+          printf 'TEST_SITE_WP_DOMAIN=localhost\n' >> tests/.env.local
+          printf 'TEST_SITE_ADMIN_EMAIL=admin@example.com\n' >> tests/.env.local
+          printf 'TEST_SITE_WP_URL=http://localhost\n' >> tests/.env.local
 
       - name: Run WPUnit tests
         run: vendor/bin/codecept run wpunit --no-colors

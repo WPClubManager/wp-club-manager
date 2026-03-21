@@ -15,4 +15,5 @@ parameters:
         - dist
         - build
         - assets
-        - includes/class-wpcm-cli.php
+    ignoreErrors:
+        - '#extends unknown class WP_CLI_Command#'
