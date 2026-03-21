@@ -79,6 +79,9 @@ jobs:
         run: |
           mkdir -p /tmp/wordpress/wp-content/plugins
           ln -s ${{ github.workspace }} /tmp/wordpress/wp-content/plugins/wp-club-manager
+          php wp-cli.phar option add wpcm_sport soccer --path=/tmp/wordpress --quiet
+          php wp-cli.phar option add wpcm_mode club --path=/tmp/wordpress --quiet
+          php wp-cli.phar option add wpclubmanager_installed 1 --path=/tmp/wordpress --quiet
           php wp-cli.phar plugin activate wp-club-manager --path=/tmp/wordpress --quiet
 
       - name: Configure test environment
