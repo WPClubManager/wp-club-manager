@@ -27,14 +27,18 @@ export default async function globalSetup() {
 	await page.click( '#wp-submit' );
 	await page.waitForURL( `**\/wp-admin**` );
 
+	// Get the WP REST nonce from the admin page.
+	await page.goto( `${ BASE_URL }/wp-admin/` );
+	const nonce = await page.evaluate( () => {
+		return ( window as any ).wpApiSettings?.nonce || '';
+	} );
+
+	if ( ! nonce ) {
+		throw new Error( 'Could not retrieve wpApiSettings.nonce from wp-admin' );
+	}
+
 	// Use page.request (shares session cookies) for REST API calls.
 	async function restPost( endpoint: string, body: object ) {
-		// Get a nonce for the REST API.
-		const nonce = await page.evaluate( async ( url ) => {
-			const resp = await fetch( url, { credentials: 'include' } );
-			return resp.headers.get( 'X-WP-Nonce' ) || '';
-		}, `${ BASE_URL }/wp-json/wp/v2/types` );
-
 		const resp = await page.request.post( `${ BASE_URL }/wp-json/wp/v2/${ endpoint }`, {
 			data: body,
 			headers: {
