@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<ruleset name="WP_User_Manager">
+<ruleset name="WP_Club_Manager">
 	<file>.</file>
 	<exclude-pattern>includes/WPCM_Plugin_Updater</exclude-pattern>
 	<exclude-pattern>includes/libraries/tgm-plugin-activation/</exclude-pattern>

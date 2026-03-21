@@ -1,44 +1,12 @@
-name: Deploy to WordPress.org
+name: Release
 
 on:
   push:
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
-
-concurrency:
-  group: deploy
-  cancel-in-progress: false
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
 
 jobs:
   deploy:
-    name: Deploy to WordPress.org SVN
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Cache Node modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-          restore-keys: ${{ runner.os }}-node-
-
-      - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build assets
-        run: npx grunt build
-
-      - name: Deploy to WordPress.org
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        env:
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: wp-club-manager
-          BUILD_DIR: release/${{ github.ref_name }}
+    uses: WPClubManager/.github/.github/workflows/deploy.yml@main
+    with:
+      plugin-slug: wp-club-manager
+    secrets: inherit
