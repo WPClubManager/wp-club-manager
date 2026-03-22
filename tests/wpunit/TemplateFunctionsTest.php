@@ -37,7 +37,6 @@ class TemplateFunctionsTest extends WPCMTestCase {
 			'single-player.php',
 			'single-staff.php',
 			'single-match.php',
-			'single-sponsor.php',
 		);
 
 		foreach ( $templates as $template ) {
