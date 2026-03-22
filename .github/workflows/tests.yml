@@ -83,6 +83,7 @@ jobs:
           php wp-cli.phar option add wpcm_mode club --path=/tmp/wordpress --quiet
           php wp-cli.phar option add wpclubmanager_installed 1 --path=/tmp/wordpress --quiet
           php wp-cli.phar option add wpclubmanager_version 2.2.17 --path=/tmp/wordpress --quiet
+          php wp-cli.phar theme install twentytwentythree --activate --path=/tmp/wordpress --quiet
           php wp-cli.phar plugin activate wp-club-manager --path=/tmp/wordpress --quiet
 
       - name: Configure test environment

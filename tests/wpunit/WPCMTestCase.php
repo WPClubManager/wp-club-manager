@@ -25,10 +25,9 @@ class WPCMTestCase extends \Codeception\TestCase\WPTestCase {
 	 * whether block registration is triggered during the test.
 	 */
 	public function assertPostConditions(): void {
-		$key = 'WP_Block_Bindings_Registry::register';
-		if ( property_exists( $this, 'caught_doing_it_wrong' ) ) {
-			unset( $this->caught_doing_it_wrong[ $key ] );
-		}
+		// WordPress 6.7+ twentytwentyfive theme registers block bindings that
+		// trigger a "doing_it_wrong" notice. Remove it before the parent checks.
+		unset( $this->caught_doing_it_wrong['WP_Block_Bindings_Registry::register'] );
 		parent::assertPostConditions();
 	}
 }
