@@ -99,5 +99,8 @@ jobs:
           printf 'TEST_SITE_ADMIN_EMAIL=admin@example.com\n' >> tests/.env.local
           printf 'TEST_SITE_WP_URL=http://localhost\n' >> tests/.env.local
 
+      - name: Build Codeception support classes
+        run: cd tests && php ../vendor/bin/codecept build --quiet
+
       - name: Run WPUnit tests
         run: cd tests && php ../vendor/bin/codecept run wpunit --no-colors
