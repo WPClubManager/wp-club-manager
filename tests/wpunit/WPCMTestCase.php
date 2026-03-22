@@ -10,11 +10,6 @@ class WPCMTestCase extends \Codeception\TestCase\WPTestCase {
 	 */
 	public function _setUp() {
 		parent::_setUp();
-
-		// WordPress 6.7+ with twentytwentyfive theme triggers a "Block bindings
-		// source already registered" notice. Suppress it so it doesn't cause
-		// assert_post_conditions to fail every test that creates posts.
-		$this->setExpectedIncorrectUsage( 'WP_Block_Bindings_Registry::register' );
 	}
 
 	/**
@@ -22,5 +17,24 @@ class WPCMTestCase extends \Codeception\TestCase\WPTestCase {
 	 */
 	public function _tearDown() {
 		parent::_tearDown();
+	}
+
+	/**
+	 * Filter out known WordPress 6.7+ block bindings "incorrect usage" notice
+	 * from twentytwentyfive theme. This fires unpredictably depending on
+	 * whether block registration is triggered during the test.
+	 */
+	public function assertPostConditions(): void {
+		// Remove the block bindings notice before parent checks.
+		$dominated = 'WP_Block_Bindings_Registry::register';
+		if ( property_exists( $this, 'caught_doing_it_wrong' ) ) {
+			$this->caught_doing_it_wrong = array_filter(
+				$this->caught_doing_it_wrong,
+				function ( $v ) use ( $dominated ) {
+					return $v !== $dominated;
+				}
+			);
+		}
+		parent::assertPostConditions();
 	}
 }
