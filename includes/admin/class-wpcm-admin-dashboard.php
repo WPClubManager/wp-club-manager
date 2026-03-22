@@ -30,7 +30,7 @@ class WPCM_Admin_Dashboard {
 				<?php
 				if ( is_club_mode() ) {
 					$default_club = get_default_club();
-					$team      = filter_input( INPUT_POST, 'team_select', FILTER_UNSAFE_RAW );
+					$team         = filter_input( INPUT_POST, 'team_select', FILTER_UNSAFE_RAW );
 					if ( $team ) {
 						$term      = get_term( $team, 'wpcm_team' );
 						$team_name = $term->name;
@@ -374,7 +374,7 @@ class WPCM_Admin_Dashboard {
 					}
 
 					// Matches
-					$args               = array(
+					$args = array(
 						'tax_query'      => array(),
 						'order'          => 'DESC',
 						'orderby'        => 'post_date',
