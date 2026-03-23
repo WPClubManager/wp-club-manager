@@ -48,7 +48,7 @@ if ( $played && $players ) {
 								<?php
 							}
 						}
-						if ( 'yes' === get_option( 'wpcm_show_stats_greencards' ) && 'yes' === get_option( 'wpcm_match_show_stats_greencards' ) || 'yes' === get_option( 'wpcm_show_stats_yellowcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_yellowcards' ) || 'yes' === get_option( 'wpcm_show_stats_blackcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_blackcards' ) || 'yes' === get_option( 'wpcm_show_stats_redcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_redcards' ) ) {
+						if ( ( 'yes' === get_option( 'wpcm_show_stats_greencards' ) && 'yes' === get_option( 'wpcm_match_show_stats_greencards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_yellowcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_yellowcards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_blackcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_blackcards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_redcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_redcards' ) ) ) {
 							?>
 
 								<th class="notes"><?php esc_html_e( 'Cards', 'wp-club-manager' ); ?></th>
@@ -78,7 +78,7 @@ if ( $played && $players ) {
 
 		<?php
 	}
-	if ( array_key_exists( 'subs', $players ) && is_array( $players['subs'] ) || is_array( $subs_not_used ) ) {
+	if ( ( array_key_exists( 'subs', $players ) && is_array( $players['subs'] ) ) || is_array( $subs_not_used ) ) {
 		?>
 
 		<div class="wpcm-match-stats-subs">
@@ -107,7 +107,7 @@ if ( $played && $players ) {
 								<?php
 							}
 						}
-						if ( 'yes' === get_option( 'wpcm_show_stats_greencards' ) && 'yes' === get_option( 'wpcm_match_show_stats_greencards' ) || 'yes' === get_option( 'wpcm_show_stats_yellowcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_yellowcards' ) || 'yes' === get_option( 'wpcm_show_stats_blackcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_blackcards' ) || 'yes' === get_option( 'wpcm_show_stats_redcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_redcards' ) ) {
+						if ( ( 'yes' === get_option( 'wpcm_show_stats_greencards' ) && 'yes' === get_option( 'wpcm_match_show_stats_greencards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_yellowcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_yellowcards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_blackcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_blackcards' ) ) || ( 'yes' === get_option( 'wpcm_show_stats_redcards' ) && 'yes' === get_option( 'wpcm_match_show_stats_redcards' ) ) ) {
 							?>
 
 								<th class="notes"><?php esc_html_e( 'Cards', 'wp-club-manager' ); ?></th>

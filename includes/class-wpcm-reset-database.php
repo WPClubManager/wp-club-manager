@@ -47,7 +47,7 @@ class WPCM_Reset_Database {
 	 * @return void
 	 */
 	protected function delete_terms( $taxonomy ) {
-		$terms         = get_terms( array(
+		$terms = get_terms( array(
 			'taxonomy'   => $taxonomy,
 			'hide_empty' => false,
 		) );

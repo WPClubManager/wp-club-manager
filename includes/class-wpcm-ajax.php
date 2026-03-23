@@ -202,7 +202,7 @@ class WPCM_AJAX {
 					?>
 					<label for="<?php echo esc_attr( $key ); ?>" class="button">
 						<input type="checkbox" name="<?php echo esc_attr( $key ); ?>"
-							   value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
+								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
 					</label>
 					<?php
 				}
@@ -226,10 +226,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'match_opponents' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Match Opponents', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('match_opponents');"/>
+						value="<?php esc_html_e( 'Insert Match Opponents', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('match_opponents');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 		</div>
 
@@ -386,7 +386,7 @@ class WPCM_AJAX {
 					?>
 					<label for="<?php echo esc_attr( $key ); ?>" class="button">
 						<input type="checkbox" name="<?php echo esc_attr( $key ); ?>"
-							   value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
+								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
 					</label>
 					<?php
 				}
@@ -410,10 +410,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'match_list' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Match List', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('match_list');"/>
+						value="<?php esc_html_e( 'Insert Match List', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('match_list');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 		</div>
 
@@ -533,7 +533,7 @@ class WPCM_AJAX {
 						?>
 						<label for="<?php echo esc_attr( $key ); ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo esc_attr( $key ); ?>" name="columns[]"
-								   value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
+									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
 						</label>
 					<?php } ?>
 				</div>
@@ -556,10 +556,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'player_list' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Player List', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('player_list');"/>
+						value="<?php esc_html_e( 'Insert Player List', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('player_list');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 
 		</div>
@@ -678,10 +678,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'player_gallery' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Player Gallery', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('player_gallery');"/>
+						value="<?php esc_html_e( 'Insert Player Gallery', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('player_gallery');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 
 		</div>
@@ -799,7 +799,7 @@ class WPCM_AJAX {
 						?>
 						<label for="<?php echo esc_attr( $key ); ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo esc_attr( $key ); ?>" name="columns[]"
-								   value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
+									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
 						</label>
 					<?php } ?>
 				</div>
@@ -822,10 +822,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'staff_list' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Staff List', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('staff_list');"/>
+						value="<?php esc_html_e( 'Insert Staff List', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('staff_list');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 
 		</div>
@@ -942,10 +942,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'staff_gallery' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Staff Gallery', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('staff_gallery');"/>
+						value="<?php esc_html_e( 'Insert Staff Gallery', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('staff_gallery');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 
 		</div>
@@ -1023,7 +1023,7 @@ class WPCM_AJAX {
 				<?php foreach ( $stats as $key => $value ) { ?>
 					<label class="button">
 						<input type="checkbox" name="columns[]" id="columns-<?php echo esc_attr( $key ); ?>"
-							   value="<?php echo esc_html( $key ); ?>" checked="checked"><?php echo esc_html( $value ); ?>
+								value="<?php echo esc_html( $key ); ?>" checked="checked"><?php echo esc_html( $value ); ?>
 					</label>
 				<?php } ?>
 			</p>
@@ -1045,10 +1045,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'league_table' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert League Table', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('league_table');"/>
+						value="<?php esc_html_e( 'Insert League Table', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('league_table');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 		</div>
 
@@ -1094,10 +1094,10 @@ class WPCM_AJAX {
 			<?php do_action( 'wpclubmanager_ajax_shortcode_form', 'map_venue' ); ?>
 			<p class="submit">
 				<input type="button" id="option-submit" class="button-primary"
-					   value="<?php esc_html_e( 'Insert Venue Map', 'wp-club-manager' ); ?>"
-					   onclick="insertWPClubManager('map_venue');"/>
+						value="<?php esc_html_e( 'Insert Venue Map', 'wp-club-manager' ); ?>"
+						onclick="insertWPClubManager('map_venue');"/>
 				<a class="button-secondary" onclick="tb_remove();"
-				   title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
+					title="<?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Cancel', 'wp-club-manager' ); ?></a>
 			</p>
 		</div>
 
