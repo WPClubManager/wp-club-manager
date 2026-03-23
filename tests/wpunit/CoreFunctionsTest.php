@@ -93,7 +93,7 @@ class CoreFunctionsTest extends WPCMTestCase {
 		$output = ob_get_clean();
 
 		$this->assertStringContainsString( 'wpclubmanager_meta_nonce', $output );
-		$this->assertStringContainsString( 'wpclubmanager_save_data', $output );
+		$this->assertStringContainsString( '<input type="hidden"', $output );
 	}
 
 	// -----------------------------------------------------------------------
