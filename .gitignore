@@ -19,4 +19,7 @@ codereport.csv
 /tests/_output/
 /tests/_data/
 /tests/_support/_generated/
+/tests/e2e/.test-state.json
 .wp-env.override.json
+/playwright-report/
+/test-results/
