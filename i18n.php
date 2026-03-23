@@ -7,5 +7,8 @@
  * This stub prevents the fatal error. We don't use Gherkin/BDD tests.
  *
  * @see https://github.com/Codeception/Codeception/issues/6607
+ *
+ * @package WPClubManager
  */
+
 return require __DIR__ . '/vendor/behat/gherkin/i18n.php';

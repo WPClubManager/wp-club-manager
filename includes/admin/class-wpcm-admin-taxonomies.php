@@ -442,7 +442,7 @@ class WPCM_Admin_Taxonomies {
 	public function venue_add_new_extra_fields( $tag ) {
 
 		$args = array(
-			'taxonomy' => 'wpcm_venue',
+			'taxonomy'   => 'wpcm_venue',
 			'orderby'    => 'id',
 			'order'      => 'DESC',
 			'hide_empty' => false,

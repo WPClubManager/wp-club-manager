@@ -189,7 +189,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			if ( ! get_option( 'wpclubmanager_installed' ) ) {
 				add_option( 'wpcm_mode', 'club' );
 				// Configure default sport
-				$post  = 'soccer';
+				$post = 'soccer';
 				if ( null !== WPCM()->sports ) {
 					$sport = WPCM()->sports->$post;
 					WPCM_Admin_Settings::configure_sport( $sport );

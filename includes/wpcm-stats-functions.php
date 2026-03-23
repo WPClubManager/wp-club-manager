@@ -452,7 +452,7 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 					$output['b']   += $hb;
 					$output['pts'] += $hb;
 				}
-				$output['pts'] += $won * (int) get_option( 'wpcm_standings_win_points', 3 ) + $lost * (int)get_option( 'wpcm_standings_loss_points', 0 );
+				$output['pts'] += $won * (int) get_option( 'wpcm_standings_win_points', 3 ) + $lost * (int) get_option( 'wpcm_standings_loss_points', 0 );
 			}
 			if ( $postponed && 'home_win' == $walkover ) {
 				++$output['p'];

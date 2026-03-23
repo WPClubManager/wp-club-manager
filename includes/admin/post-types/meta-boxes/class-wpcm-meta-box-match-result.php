@@ -65,7 +65,7 @@ class WPCM_Meta_Box_Match_Result {
 			$wpcm_cricket_outcome = get_post_meta( $post->ID, '_wpcm_cricket_outcome', true );
 			if ( ! is_array( $wpcm_cricket_outcome ) ) {
 				$wpcm_cricket_outcome = array( 0 => '', 1 => '', 2 => '' );
-			};
+			}
 		} else {
 			$goals = array_merge( array(
 				'total' => array(
@@ -111,14 +111,14 @@ class WPCM_Meta_Box_Match_Result {
 		<p>
 			<label class="selectit">
 				<input type="checkbox" name="wpcm_played" id="wpcm_played"
-					   value="1" <?php checked( true, $played ); ?> />
+						value="1" <?php checked( true, $played ); ?> />
 				<?php esc_html_e( 'Result', 'wp-club-manager' ); ?>
 			</label>
 		</p>
 		<p>
 			<label class="selectit">
 				<input type="checkbox" name="_wpcm_postponed" id="_wpcm_postponed"
-					   value="1" <?php checked( true, $postponed ); ?> />
+						value="1" <?php checked( true, $postponed ); ?> />
 				<?php esc_html_e( 'Postponed', 'wp-club-manager' ); ?>
 			</label>
 		</p>
@@ -174,37 +174,37 @@ class WPCM_Meta_Box_Match_Result {
 						<tr>
 							<th align="right"><?php esc_html_e( '1st Set', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home"
-									   value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away"
-									   value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '2nd Set', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home"
-									   value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away"
-									   value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '3rd Set', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home"
-									   value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away"
-									   value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '4th Set', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q4][home]" id="wpcm_goals_q4_home"
-									   value="<?php echo (int) $box_goals['q4']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q4']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q4][away]" id="wpcm_goals_q4_away"
-									   value="<?php echo (int) $box_goals['q4']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q4']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr class="wpcm-ss-admin-tr-last">
 							<th align="right"><?php esc_html_e( '5th Set', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q5][home]" id="wpcm_goals_q5_home"
-									   value="<?php echo (int) $box_goals['q5']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q5']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q5][away]" id="wpcm_goals_q5_away"
-									   value="<?php echo (int) $box_goals['q5']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q5']['away']; ?>" size="3"/></td>
 						</tr>
 
 					<?php
@@ -230,30 +230,30 @@ class WPCM_Meta_Box_Match_Result {
 						<tr>
 							<th align="right"><?php esc_html_e( '1st Quarter', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home"
-									   value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away"
-									   value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '2nd Quarter', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home"
-									   value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away"
-									   value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '3rd Quarter', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home"
-									   value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away"
-									   value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr class="wpcm-ss-admin-tr-last">
 							<th align="right"><?php esc_html_e( '4th Quarter', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q4][home]" id="wpcm_goals_q4_home"
-									   value="<?php echo (int) $box_goals['q4']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q4']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q4][away]" id="wpcm_goals_q4_away"
-									   value="<?php echo (int) $box_goals['q4']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q4']['away']; ?>" size="3"/></td>
 						</tr>
 
 					<?php
@@ -280,23 +280,23 @@ class WPCM_Meta_Box_Match_Result {
 						<tr>
 							<th align="right"><?php esc_html_e( '1st Period', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home"
-									   value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away"
-									   value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr>
 							<th align="right"><?php esc_html_e( '2nd Period', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q2][home]" id="wpcm_goals_q2_home"
-									   value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q2][away]" id="wpcm_goals_q2_away"
-									   value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q2']['away']; ?>" size="3"/></td>
 						</tr>
 						<tr class="wpcm-ss-admin-tr-last">
 							<th align="right"><?php esc_html_e( '3rd Period', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q3][home]" id="wpcm_goals_q3_home"
-									   value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q3][away]" id="wpcm_goals_q3_away"
-									   value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q3']['away']; ?>" size="3"/></td>
 						</tr>
 					<?php
 					else :
@@ -311,9 +311,9 @@ class WPCM_Meta_Box_Match_Result {
 						<tr class="wpcm-ss-admin-tr-last">
 							<th align="right"><?php esc_html_e( 'Half Time', 'wp-club-manager' ); ?></th>
 							<td><input type="text" name="wpcm_goals[q1][home]" id="wpcm_goals_q1_home"
-									   value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['home']; ?>" size="3"/></td>
 							<td><input type="text" name="wpcm_goals[q1][away]" id="wpcm_goals_q1_away"
-									   value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
+										value="<?php echo (int) $box_goals['q1']['away']; ?>" size="3"/></td>
 						</tr>
 
 					<?php endif; ?>
@@ -344,30 +344,30 @@ class WPCM_Meta_Box_Match_Result {
 					<tr>
 						<th align="right"><?php esc_html_e( 'Runs', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_match_runs[home]" id="wpcm_match_runs_home"
-								   value="<?php echo (int) $wpcm_match_runs['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_runs['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_match_runs[away]" id="wpcm_match_runs_away"
-								   value="<?php echo (int) $wpcm_match_runs['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_runs['away']; ?>" size="3"/></td>
 					</tr>
 					<tr>
 						<th align="right"><?php esc_html_e( 'Extras', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_match_extras[home]" id="wpcm_match_extras_home"
-								   value="<?php echo (int) $wpcm_match_extras['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_extras['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_match_extras[away]" id="wpcm_match_extras_away"
-								   value="<?php echo (int) $wpcm_match_extras['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_extras['away']; ?>" size="3"/></td>
 					</tr>
 					<tr>
 						<th align="right"><?php esc_html_e( 'Wickets', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_match_wickets[home]" id="wpcm_match_wickets_home"
-								   value="<?php echo (int) $wpcm_match_wickets['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_wickets['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_match_wickets[away]" id="wpcm_match_wickets_away"
-								   value="<?php echo (int) $wpcm_match_wickets['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $wpcm_match_wickets['away']; ?>" size="3"/></td>
 					</tr>
 					<tr>
 						<th align="right"><?php esc_html_e( 'Overs', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_match_overs[home]" id="wpcm_match_overs_home"
-								   value="<?php echo (float) $wpcm_match_overs['home']; ?>" size="3"/></td>
+									value="<?php echo (float) $wpcm_match_overs['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_match_overs[away]" id="wpcm_match_overs_away"
-								   value="<?php echo (float) $wpcm_match_overs['away']; ?>" size="3"/></td>
+									value="<?php echo (float) $wpcm_match_overs['away']; ?>" size="3"/></td>
 					</tr>
 					</tbody>
 
@@ -381,9 +381,9 @@ class WPCM_Meta_Box_Match_Result {
 					<tr>
 						<th align="right"><?php esc_html_e( 'Final Score', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_goals[total][home]" id="wpcm_goals_total_home"
-								   value="<?php echo (int) $goals['total']['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $goals['total']['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_goals[total][away]" id="wpcm_goals_total_away"
-								   value="<?php echo (int) $goals['total']['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $goals['total']['away']; ?>" size="3"/></td>
 					</tr>
 					</tbody>
 
@@ -416,7 +416,7 @@ class WPCM_Meta_Box_Match_Result {
 					?>
 
 					<input type="number" class="wpcm_cricket_outcome" name="cricket_outcome_1" min="0" max="999"
-						   value="<?php echo esc_html( $wpcm_cricket_outcome[1] ); ?>"/>
+							value="<?php echo esc_html( $wpcm_cricket_outcome[1] ); ?>"/>
 
 					<?php
 					wpclubmanager_wp_select( array(
@@ -445,9 +445,9 @@ class WPCM_Meta_Box_Match_Result {
 					<tr>
 						<th align="right"><?php esc_html_e( 'Bonus Points', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_bonus[home]" id="wpcm_bonus_home"
-								   value="<?php echo (int) $bonus['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $bonus['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_bonus[away]" id="wpcm_bonus_away"
-								   value="<?php echo (int) $bonus['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $bonus['away']; ?>" size="3"/></td>
 					</tr>
 					</tbody>
 				</table>
@@ -461,16 +461,16 @@ class WPCM_Meta_Box_Match_Result {
 					<tr>
 						<th align="right"><?php esc_html_e( 'Goals', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_gaa_goals[home]" id="wpcm_gaa_goals_home"
-								   value="<?php echo (int) $gaa_goals['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $gaa_goals['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_gaa_goals[away]" id="wpcm_gaa_goals_away"
-								   value="<?php echo (int) $gaa_goals['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $gaa_goals['away']; ?>" size="3"/></td>
 					</tr>
 					<tr>
 						<th align="right"><?php esc_html_e( 'Points', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_gaa_points[home]" id="wpcm_gaa_points_home"
-								   value="<?php echo (int) $gaa_points['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $gaa_points['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_gaa_points[away]" id="wpcm_gaa_points_away"
-								   value="<?php echo (int) $gaa_points['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $gaa_points['away']; ?>" size="3"/></td>
 					</tr>
 					</tbody>
 				</table>
@@ -482,7 +482,7 @@ class WPCM_Meta_Box_Match_Result {
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_overtime" id="wpcm_overtime"
-							   value="1" <?php checked( true, $overtime ); ?> />
+								value="1" <?php checked( true, $overtime ); ?> />
 						<?php esc_html_e( 'Overtime', 'wp-club-manager' ); ?>
 					</label>
 				</p>
@@ -494,7 +494,7 @@ class WPCM_Meta_Box_Match_Result {
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_shootout" id="wpcm_shootout"
-							   value="1" <?php checked( true, $shootout ); ?> />
+								value="1" <?php checked( true, $shootout ); ?> />
 						<?php esc_html_e( 'Shootout', 'wp-club-manager' ); ?>
 					</label>
 				</p>
@@ -506,7 +506,7 @@ class WPCM_Meta_Box_Match_Result {
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_overtime" id="wpcm_overtime"
-							   value="1" <?php checked( true, $overtime ); ?> />
+								value="1" <?php checked( true, $overtime ); ?> />
 						<?php esc_html_e( 'Extra Time', 'wp-club-manager' ); ?>
 					</label>
 				</p>
@@ -514,7 +514,7 @@ class WPCM_Meta_Box_Match_Result {
 				<p>
 					<label class="selectit">
 						<input type="checkbox" name="wpcm_shootout" id="wpcm_shootout"
-							   value="1" <?php checked( true, $shootout ); ?> />
+								value="1" <?php checked( true, $shootout ); ?> />
 						<?php esc_html_e( 'Penalties', 'wp-club-manager' ); ?>
 					</label>
 				</p>
@@ -524,9 +524,9 @@ class WPCM_Meta_Box_Match_Result {
 					<tr>
 						<th align="right"><?php esc_html_e( 'Score', 'wp-club-manager' ); ?></th>
 						<td><input type="text" name="wpcm_shootout_score[home]" id="wpcm_shootout_home"
-								   value="<?php echo (int) $shootout_score['home']; ?>" size="3"/></td>
+									value="<?php echo (int) $shootout_score['home']; ?>" size="3"/></td>
 						<td><input type="text" name="wpcm_shootout_score[away]" id="wpcm_shootout_away"
-								   value="<?php echo (int) $shootout_score['away']; ?>" size="3"/></td>
+									value="<?php echo (int) $shootout_score['away']; ?>" size="3"/></td>
 					</tr>
 					</tbody>
 				</table>
@@ -592,12 +592,12 @@ class WPCM_Meta_Box_Match_Result {
 
 			$cricket_outcome = filter_input( INPUT_POST, 'cricket_outcome_0', FILTER_UNSAFE_RAW );
 			if ( $cricket_outcome && '' != $cricket_outcome ) {
-				$outcome_0       = sanitize_text_field( $cricket_outcome );
+				$outcome_0         = sanitize_text_field( $cricket_outcome );
 				$cricket_outcome_1 = filter_input( INPUT_POST, 'cricket_outcome_1', FILTER_UNSAFE_RAW );
 				$cricket_outcome_2 = filter_input( INPUT_POST, 'cricket_outcome_2', FILTER_UNSAFE_RAW );
-				$outcome_1       = sanitize_text_field( $cricket_outcome_1 );
-				$outcome_2       = sanitize_text_field( $cricket_outcome_2 );
-				$cricket_outcome = array( $outcome_0, $outcome_1, $outcome_2 );
+				$outcome_1         = sanitize_text_field( $cricket_outcome_1 );
+				$outcome_2         = sanitize_text_field( $cricket_outcome_2 );
+				$cricket_outcome   = array( $outcome_0, $outcome_1, $outcome_2 );
 				update_post_meta( $post_id, '_wpcm_cricket_outcome', $cricket_outcome );
 			}
 		} else {

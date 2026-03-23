@@ -82,7 +82,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				// Get home club ID
 				$home_club   = wpcm_array_value( $meta, 'wpcm_home_club' );
-				$home_object = get_page_by_title( $home_club, OBJECT, 'wpcm_club' );
+				$home_query  = new WP_Query(
+					array(
+						'post_type'      => 'wpcm_club',
+						'title'          => $home_club,
+						'posts_per_page' => 1,
+						'fields'         => 'ids',
+						'no_found_rows'  => true,
+					)
+				);
+				$home_object = $home_query->have_posts() ? get_post( $home_query->posts[0] ) : null;
 				if ( $home_object ) :
 					$home_id = $home_object->ID;
 				else :
@@ -98,7 +107,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				// Get away club ID
 				$away_club   = wpcm_array_value( $meta, 'wpcm_away_club' );
-				$away_object = get_page_by_title( $away_club, OBJECT, 'wpcm_club' );
+				$away_query  = new WP_Query(
+					array(
+						'post_type'      => 'wpcm_club',
+						'title'          => $away_club,
+						'posts_per_page' => 1,
+						'fields'         => 'ids',
+						'no_found_rows'  => true,
+					)
+				);
+				$away_object = $away_query->have_posts() ? get_post( $away_query->posts[0] ) : null;
 				if ( $away_object ) :
 					$away_id = $away_object->ID;
 				else :
@@ -216,7 +234,16 @@ if ( class_exists( 'WP_Importer' ) ) {
 						$player_name  = trim( $player_array[0] );
 						$player_stats = trim( $player_array[1] );
 
-						$player_title = get_page_by_title( $player_name, OBJECT, 'wpcm_player' );
+						$player_query = new WP_Query(
+							array(
+								'post_type'      => 'wpcm_player',
+								'title'          => $player_name,
+								'posts_per_page' => 1,
+								'fields'         => 'ids',
+								'no_found_rows'  => true,
+							)
+						);
+						$player_title = $player_query->have_posts() ? get_post( $player_query->posts[0] ) : null;
 						if ( $player_title ) :
 							$player_id = $player_title->ID;
 						else :

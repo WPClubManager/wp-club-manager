@@ -26,7 +26,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		/**
 		 * @var array
 		 */
-		private static $errors   = array();
+		private static $errors = array();
 		/**
 		 * @var array
 		 */
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 			self::get_settings_pages();
 
 			// Get current tab
-			$tab = filter_input( INPUT_GET, 'tab', FILTER_UNSAFE_RAW );
+			$tab         = filter_input( INPUT_GET, 'tab', FILTER_UNSAFE_RAW );
 			$current_tab = empty( $tab ) ? 'general' : sanitize_title( $tab );
 
 			// Save settings if data has been posted
@@ -914,7 +914,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					case 'multiselect':
 					case 'standings_columns':
 						$standings_columns = filter_input( INPUT_POST, $value['id'], FILTER_UNSAFE_RAW );
-						$option_value = wpcm_clean( stripslashes( sanitize_text_field( $standings_columns ) ) );
+						$option_value      = wpcm_clean( stripslashes( sanitize_text_field( $standings_columns ) ) );
 
 						break;
 
@@ -1005,7 +1005,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 				// Find empty terms and destroy
 				$allterms = get_terms(
 					array(
-						'taxonomy' => $taxonomy,
+						'taxonomy'   => $taxonomy,
 						'hide_empty' => false,
 					)
 				);

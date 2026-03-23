@@ -39,7 +39,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function import( $array = array(), $columns = array( 'post_title' ) ) {
 			$this->imported = 0;
-			$this->skipped = 0;
+			$this->skipped  = 0;
 
 			if ( ! is_array( $array ) || ! count( $array ) ) :
 				$this->footer();
