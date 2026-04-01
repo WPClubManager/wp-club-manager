@@ -73,9 +73,9 @@ class WPCM_Shortcode_League_Table {
 				$team_label = wpcm_get_team_name( $default_club, $id );
 			}
 			$comps          = get_the_terms( $id, 'wpcm_comp' );
-			$comp           = $comps[0]->term_id;
+			$comp           = is_array( $comps ) ? $comps[0]->term_id : 0;
 			$seasons        = get_the_terms( $id, 'wpcm_season' );
-			$season         = $seasons[0]->term_id;
+			$season         = is_array( $seasons ) ? $seasons[0]->term_id : 0;
 			$manual_stats   = (array) unserialize( get_post_meta( $id, '_wpcm_table_stats', true ) );
 			$selected_clubs = (array) unserialize( get_post_meta( $id, '_wpcm_table_clubs', true ) );
 

@@ -110,7 +110,7 @@ function wpclubmanager_get_template( $template_name, $args = array(), $template_
 function wpcm_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 
 	ob_start();
-	wpcm_get_template( $template_name, $args, $template_path, $default_path );
+	wpclubmanager_get_template( $template_name, $args, $template_path, $default_path );
 	return ob_get_clean();
 }
 

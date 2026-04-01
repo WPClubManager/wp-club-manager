@@ -292,7 +292,7 @@ class WPCM_Admin_Dashboard {
 						$stats          = get_option( 'wpcm_standings_columns_display' );
 						$team_label     = wpcm_get_team_name( $default_club, $team );
 						$comps          = get_the_terms( $table_id, 'wpcm_comp' );
-						$comp           = $comps[0]->term_id;
+						$comp           = is_array( $comps ) ? $comps[0]->term_id : 0;
 						$manual_stats   = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
 						// $columns = get_option( 'wpcm_standings_columns_display' );
@@ -442,7 +442,7 @@ class WPCM_Admin_Dashboard {
 
 						$stats          = get_option( 'wpcm_standings_columns_display' );
 						$comps          = get_the_terms( $table_id, 'wpcm_comp' );
-						$comp           = $comps[0]->term_id;
+						$comp           = is_array( $comps ) ? $comps[0]->term_id : 0;
 						$manual_stats   = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
 						// $columns = get_option( 'wpcm_standings_columns_display' );

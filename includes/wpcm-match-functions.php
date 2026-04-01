@@ -306,6 +306,8 @@ function wpcm_get_match_comp( $post ) {
 
 	$competitions = get_the_terms( $post, 'wpcm_comp' );
 	$status       = get_post_meta( $post, 'wpcm_comp_status', true );
+	$comp         = '';
+	$label        = '';
 
 	if ( is_array( $competitions ) ) {
 		foreach ( $competitions as $competition ) :
@@ -541,7 +543,7 @@ if ( ! function_exists( 'get_wpcm_match_player_stats' ) ) {
 
 			foreach ( $players as $id => $stats ) :
 
-				if ( $stats['checked'] ) {
+				if ( ! empty( $stats['checked'] ) ) {
 
 					$output[ $key ] = $stats;
 				}
