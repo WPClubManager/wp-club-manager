@@ -96,7 +96,7 @@ function wpclubmanager_get_template( $template_name, $args = array(), $template_
 }
 
 /**
- * Like wpcm_get_template, but returns the HTML instead of outputting.
+ * Like wpclubmanager_get_template, but returns the HTML instead of outputting.
  *
  * @param string $template_name
  * @param array  $args
@@ -105,7 +105,7 @@ function wpclubmanager_get_template( $template_name, $args = array(), $template_
  *
  * @return false|string
  * @since 1.4.0
- * @see   wpcm_get_template
+ * @see   wpclubmanager_get_template
  */
 function wpcm_get_template_html( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 

@@ -1826,11 +1826,6 @@ parameters:
 			path: includes/wpcm-match-functions.php
 
 		-
-			message: "#^Undefined variable\\: \\$key$#"
-			count: 1
-			path: includes/wpcm-match-functions.php
-
-		-
 			message: "#^Variable \\$label might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-match-functions.php

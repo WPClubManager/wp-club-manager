@@ -536,7 +536,7 @@ if ( ! function_exists( 'get_wpcm_match_player_stats' ) ) {
 			global $post_id;
 		}
 
-		$players = unserialize( get_post_meta( $post_id, 'wpcm_players', true ) );
+		$players = maybe_unserialize( get_post_meta( $post_id, 'wpcm_players', true ) );
 		$output  = array();
 
 		if ( is_array( $players ) ) :
