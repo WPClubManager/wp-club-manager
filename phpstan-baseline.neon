@@ -1746,11 +1746,6 @@ parameters:
 			path: includes/wpcm-core-functions.php
 
 		-
-			message: "#^Function wpcm_get_template not found\\.$#"
-			count: 1
-			path: includes/wpcm-core-functions.php
-
-		-
 			message: "#^Offset 0 on \\*NEVER\\* in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 1
 			path: includes/wpcm-core-functions.php
@@ -1836,13 +1831,8 @@ parameters:
 			path: includes/wpcm-match-functions.php
 
 		-
-			message: "#^Variable \\$comp might not be defined\\.$#"
-			count: 1
-			path: includes/wpcm-match-functions.php
-
-		-
 			message: "#^Variable \\$label might not be defined\\.$#"
-			count: 2
+			count: 1
 			path: includes/wpcm-match-functions.php
 
 		-
@@ -1867,11 +1857,6 @@ parameters:
 
 		-
 			message: "#^Function wpcm_get_player_average_rating\\(\\) should return int but returns string\\.$#"
-			count: 1
-			path: includes/wpcm-player-functions.php
-
-		-
-			message: "#^Variable \\$output might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-player-functions.php
 
