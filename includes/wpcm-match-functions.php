@@ -545,7 +545,7 @@ if ( ! function_exists( 'get_wpcm_match_player_stats' ) ) {
 
 				if ( ! empty( $stats['checked'] ) ) {
 
-					$output[ $key ] = $stats;
+					$output[ $id ] = $stats;
 				}
 			endforeach;
 		endif;
