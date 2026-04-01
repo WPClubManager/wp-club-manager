@@ -111,7 +111,7 @@ class WPCM_Admin_Dashboard {
 						$sep            = get_option( 'wpcm_match_goals_delimiter' );
 						foreach ( $matches as $match ) {
 							$home_club  = get_post_meta( $match->ID, 'wpcm_home_club', true );
-							$wpcm_goals = unserialize( get_post_meta( $match->ID, 'wpcm_goals', true ) );
+							$wpcm_goals = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_goals', true ) );
 							if ( $default_club == $home_club ) {
 								$goals_scored   += $wpcm_goals['total']['home'];
 								$goals_conceded += $wpcm_goals['total']['away'];
@@ -130,7 +130,7 @@ class WPCM_Admin_Dashboard {
 						usort( $goal_diff, 'sort_biggest_score' );
 						$goal_diff      = array_reverse( $goal_diff );
 						$biggest_win_id = $goal_diff[0]['id'];
-						$wpcm_goals     = unserialize( get_post_meta( $biggest_win_id, 'wpcm_goals', true ) );
+						$wpcm_goals     = maybe_unserialize( get_post_meta( $biggest_win_id, 'wpcm_goals', true ) );
 						$biggest_score  = $wpcm_goals['total']['home'] . ' ' . $sep . '  ' . $wpcm_goals['total']['away'];
 					} else {
 						$win_percent    = '';
@@ -234,7 +234,7 @@ class WPCM_Admin_Dashboard {
 
 						$roster_id = $roster[0]->ID;
 
-						$selected_players = (array) unserialize( get_post_meta( $roster_id, '_wpcm_roster_players', true ) );
+						$selected_players = (array) maybe_unserialize( get_post_meta( $roster_id, '_wpcm_roster_players', true ) );
 
 						$args = array(
 							'post_type'        => 'wpcm_player',
@@ -248,7 +248,7 @@ class WPCM_Admin_Dashboard {
 
 						$players = get_posts( $args );
 
-						$selected_staff = (array) unserialize( get_post_meta( $roster_id, '_wpcm_roster_staff', true ) );
+						$selected_staff = (array) maybe_unserialize( get_post_meta( $roster_id, '_wpcm_roster_staff', true ) );
 
 						$args = array(
 							'post_type'        => 'wpcm_staff',
@@ -292,9 +292,9 @@ class WPCM_Admin_Dashboard {
 						$stats          = get_option( 'wpcm_standings_columns_display' );
 						$team_label     = wpcm_get_team_name( $default_club, $team );
 						$comps          = get_the_terms( $table_id, 'wpcm_comp' );
-						$comp           = $comps[0]->term_id;
-						$manual_stats   = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
-						$selected_clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
+						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
+						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
+						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
 						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
@@ -442,9 +442,9 @@ class WPCM_Admin_Dashboard {
 
 						$stats          = get_option( 'wpcm_standings_columns_display' );
 						$comps          = get_the_terms( $table_id, 'wpcm_comp' );
-						$comp           = $comps[0]->term_id;
-						$manual_stats   = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
-						$selected_clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
+						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
+						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
+						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
 						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
