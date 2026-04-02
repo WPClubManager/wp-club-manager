@@ -16,6 +16,15 @@ class StaffTitleTest extends WPCMTestCase {
 	public function _setUp() {
 		parent::_setUp();
 
+		// Disable all profile fields except title to avoid template errors
+		// (age calculation, taxonomy lookups, etc) in test context.
+		$fields = array( 'dob', 'age', 'season', 'team', 'jobs', 'joined', 'nationality', 'hometown' );
+		foreach ( $fields as $field ) {
+			update_option( 'wpcm_staff_profile_show_' . $field, 'no' );
+		}
+		update_option( 'wpcm_show_staff_email', 'no' );
+		update_option( 'wpcm_show_staff_phone', 'no' );
+
 		$this->staff_id = wp_insert_post( array(
 			'post_type'   => 'wpcm_staff',
 			'post_title'  => 'Test Coach',
