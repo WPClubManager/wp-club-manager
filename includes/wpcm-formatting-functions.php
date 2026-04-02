@@ -253,6 +253,7 @@ function wpcm_dropdown_posts( $args = array() ) {
 		'id'               => null,
 		'selected'         => null,
 		'class'            => null,
+		'multiple'         => false,
 	);
 
 	$args = array_merge( $defaults, $args );
@@ -261,7 +262,8 @@ function wpcm_dropdown_posts( $args = array() ) {
 
 		$args['id'] = $args['name'];
 	}
-		echo '<select name="' . esc_attr( $args['name'] ) . '" id="' . esc_attr( $args['id'] ) . '" class="postform ' . esc_attr( $args['class'] ) . ' chosen_select">';
+	$multiple_attr = $args['multiple'] ? ' multiple' : '';
+		echo '<select name="' . esc_attr( $args['name'] ) . '" id="' . esc_attr( $args['id'] ) . '" class="postform ' . esc_attr( $args['class'] ) . ' chosen_select"' . $multiple_attr . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		unset( $args['name'] );
 	if ( $args['show_option_none'] ) {
 
