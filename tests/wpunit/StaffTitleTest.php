@@ -35,13 +35,14 @@ class StaffTitleTest extends WPCMTestCase {
 	public function test_staff_title_hidden_when_option_is_no() {
 		update_option( 'wpcm_staff_profile_show_title', 'no' );
 
-		// Render the staff template.
+		// Render the staff template — set $post globally and pass as arg.
 		global $post;
 		$post = get_post( $this->staff_id );
 		setup_postdata( $post );
 
 		ob_start();
-		wpclubmanager_get_template( 'content-single-staff.php' );
+		// Template reads $post via global and extract($args).
+		wpclubmanager_get_template( 'content-single-staff.php', array( 'post' => $post ) );
 		$html = ob_get_clean();
 
 		wp_reset_postdata();
