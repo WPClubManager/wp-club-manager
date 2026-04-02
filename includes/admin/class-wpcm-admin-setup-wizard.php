@@ -83,7 +83,7 @@ class WPCM_Admin_Setup_Wizard {
 		if ( $api_key ) {
 			$google_maps_url = add_query_arg( 'key', $api_key, $google_maps_url );
 		}
-		wp_register_script( 'google-maps', $google_maps_url, array(), null, true ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		wp_register_script( 'google-maps', $google_maps_url, array(), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 		wp_register_script( 'jquery-locationpicker', WPCM()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.16', true );
 

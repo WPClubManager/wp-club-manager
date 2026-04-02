@@ -132,7 +132,7 @@ class WPCM_Frontend_Scripts {
 			 */
 			$data = apply_filters( 'wpclubmanager_schema_front_page', $data );
 
-			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data ) );
+			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data, JSON_HEX_TAG ) );
 
 		endif;
 
@@ -177,7 +177,7 @@ class WPCM_Frontend_Scripts {
 			 */
 			$data = apply_filters( 'wpclubmanager_schema_sports_event', $data );
 
-			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data ) );
+			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data, JSON_HEX_TAG ) );
 
 		endif;
 	}

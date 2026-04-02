@@ -66,29 +66,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 	} else {
 		// Build the embed URL — no API key needed for basic Google Maps embed.
+		// Note: add_query_arg() handles URL-encoding internally.
 		if ( empty( $api_key ) ) {
 			$src_url = add_query_arg(
-				array_map(
-					'urlencode',
-					array(
-						'q'      => $address,
-						'z'      => $zoom,
-						'output' => 'embed',
-					)
+				array(
+					'q'      => $address,
+					'z'      => $zoom,
+					'output' => 'embed',
 				),
 				'//maps.google.com/maps'
 			);
 		} else {
 			$src_url = add_query_arg(
-				array_map(
-					'urlencode',
-					array(
-						'key'     => $api_key,
-						'q'       => $address,
-						'center'  => sprintf( '%s,%s', $latitude, $longitude ),
-						'zoom'    => $zoom,
-						'maptype' => $maptype,
-					)
+				array(
+					'key'     => $api_key,
+					'q'       => $address,
+					'center'  => sprintf( '%s,%s', $latitude, $longitude ),
+					'zoom'    => $zoom,
+					'maptype' => $maptype,
 				),
 				'https://www.google.com/maps/embed/v1/search'
 			);
