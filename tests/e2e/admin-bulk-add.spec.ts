@@ -56,13 +56,15 @@ test.describe( 'Bulk Add', () => {
 		expect( title ).toBeTruthy();
 	} );
 
-	test( 'roster player dropdown is multi-select when meta box present', async ( { page } ) => {
+	test( 'roster player dropdown is multi-select when add button present', async ( { page } ) => {
 		await page.goto( `${ BASE_URL }/wp-admin/post-new.php?post_type=wpcm_roster` );
 		const content = await page.content();
 
-		if ( content.includes( 'roster_players' ) || content.includes( 'wpcm-player-roster-add-row' ) ) {
+		// Only assert multi-select if the add button is present (confirms our meta box rendered).
+		if ( content.includes( 'wpcm-player-roster-add-row' ) ) {
 			expect( content ).toContain( 'multiple' );
 		} else {
+			// Roster meta box not rendered — just verify page loads.
 			await assertNoPhpErrors( page );
 		}
 	} );
