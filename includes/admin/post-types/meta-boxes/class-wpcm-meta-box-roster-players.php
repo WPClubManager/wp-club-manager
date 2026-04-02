@@ -120,7 +120,8 @@ class WPCM_Meta_Box_Roster_Players {
 					'name'             => 'roster_players',
 					'post_type'        => 'wpcm_player',
 					'limit'            => -1,
-					'show_option_none' => __( 'Choose a player', 'wp-club-manager' ),
+					'show_option_none' => __( 'Choose players', 'wp-club-manager' ),
+					'multiple'         => true,
 				));
 				?>
 

@@ -234,7 +234,8 @@ class WPCM_Meta_Box_Table_Stats {
 					'name'             => 'table_clubs',
 					'post_type'        => 'wpcm_club',
 					'limit'            => -1,
-					'show_option_none' => __( 'Choose a club', 'wp-club-manager' ),
+					'show_option_none' => __( 'Choose clubs', 'wp-club-manager' ),
+					'multiple'         => true,
 				));
 				?>
 
