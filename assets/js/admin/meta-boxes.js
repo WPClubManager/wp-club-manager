@@ -156,10 +156,13 @@ jQuery( function($){
 
 	jQuery('.wpcm-table-add-row').click(function(){
 		var count = jQuery('#wpcm-table-stats table th input.stats-rows' ).val();
-		var id = jQuery('#id option:selected').text();
-		var val = jQuery('#id option:selected').val();
-		var markup = '<tr class="count-row"><td><input type="checkbox" name="record"></td><td class="pos"></td><td><input type="hidden" name="wpcm_table_clubs[]" value="' + val + '">' + id + '</td><td colspan="' + count + '"></td></tr>';
-		jQuery('#wpcm-table-stats table tbody').append(markup);
+		jQuery('#id option:selected').each(function() {
+			var id = jQuery(this).text();
+			var val = jQuery(this).val();
+			if ( '' === val ) return; // skip placeholder
+			var markup = '<tr class="count-row"><td><input type="checkbox" name="record"></td><td class="pos"></td><td><input type="hidden" name="wpcm_table_clubs[]" value="' + val + '">' + id + '</td><td colspan="' + count + '"></td></tr>';
+			jQuery('#wpcm-table-stats table tbody').append(markup);
+		});
 		jQuery('#wpcm-table-stats table tr.count-row').each(function (i) {
 			jQuery("td", this).eq(1).html(i + 1);
 		});
@@ -245,10 +248,13 @@ jQuery( function($){
 
 	// players roster selection
 	jQuery('.wpcm-player-roster-add-row').click(function(){
-		var id = jQuery('.player-id option:selected').text();
-		var val = jQuery('.player-id option:selected').val();
-		var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_players[]" value="' + val + '">' + id + '</td></tr>';
-		jQuery('#wpcm-player-roster-stats table tbody').append(markup);
+		jQuery('.player-id option:selected').each(function() {
+			var id = jQuery(this).text();
+			var val = jQuery(this).val();
+			if ( '' === val ) return; // skip placeholder
+			var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_players[]" value="' + val + '">' + id + '</td></tr>';
+			jQuery('#wpcm-player-roster-stats table tbody').append(markup);
+		});
 		jQuery('.wpcm-player-roster-delete-row').removeClass('hidden-button');
 	});
 	jQuery('.wpcm-player-roster-delete-row').click(function(){
@@ -261,10 +267,13 @@ jQuery( function($){
 
 	// staff roster selection
 	jQuery('.wpcm-staff-roster-add-row').click(function(){
-		var id = jQuery('.staff-id option:selected').text();
-		var val = jQuery('.staff-id option:selected').val();
-		var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_staff[]" value="' + val + '">' + id + '</td></tr>';
-		jQuery('#wpcm-staff-roster-stats table tbody').append(markup);
+		jQuery('.staff-id option:selected').each(function() {
+			var id = jQuery(this).text();
+			var val = jQuery(this).val();
+			if ( '' === val ) return; // skip placeholder
+			var markup = '<tr><td><input type="checkbox" name="record"></td><td><input type="hidden" name="wpcm_roster_staff[]" value="' + val + '">' + id + '</td></tr>';
+			jQuery('#wpcm-staff-roster-stats table tbody').append(markup);
+		});
 		jQuery('.wpcm-staff-roster-delete-row').removeClass('hidden-button');
 	});
 	jQuery('.wpcm-staff-roster-delete-row').click(function(){

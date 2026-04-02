@@ -278,12 +278,8 @@ class WPCM_Shortcodes {
 				$longitude = $coordinates['lng'];
 			}
 		}
-		$address = urlencode( $atts['address'] );
+		$address = $atts['address'];
 
-		// $map_id = uniqid( 'wpcm_map_' );
-
-		// show marker or not
-		// $atts['marker'] = (int) $atts['marker'] ? true : false;
 		$api_key = get_option( 'wpcm_google_map_api' );
 		$zoom    = get_option( 'wpcm_map_zoom', 15 );
 		$maptype = get_option( 'wpcm_map_type', 'roadmap' );
@@ -294,8 +290,33 @@ class WPCM_Shortcodes {
 		if ( 'satellite' !== $maptype ) {
 			$maptype = 'roadmap';
 		}
+		$class = '';
 		if ( is_tax( 'wpcm_venue' ) ) {
 			$class = 'wpcm-venue-map';
+		}
+
+		// Build the embed URL — no API key needed for basic Google Maps embed.
+		// Note: add_query_arg() handles URL-encoding internally.
+		if ( empty( $api_key ) ) {
+			$src_url = add_query_arg(
+				array(
+					'q'      => $address,
+					'z'      => $zoom,
+					'output' => 'embed',
+				),
+				'//maps.google.com/maps'
+			);
+		} else {
+			$src_url = add_query_arg(
+				array(
+					'key'     => $api_key,
+					'q'       => $address,
+					'center'  => sprintf( '%s,%s', $latitude, $longitude ),
+					'zoom'    => $zoom,
+					'maptype' => $maptype,
+				),
+				'https://www.google.com/maps/embed/v1/search'
+			);
 		}
 
 		ob_start();
@@ -306,7 +327,7 @@ class WPCM_Shortcodes {
 			width="600"
 			height="320"
 			frameborder="0" style="border:0"
-			src="https://www.google.com/maps/embed/v1/search?key=<?php echo esc_attr( $api_key ); ?>&amp;q=<?php echo esc_attr( $address ); ?>&amp;center=<?php echo esc_attr( $latitude ); ?>,<?php echo esc_attr( $longitude ); ?>&amp;zoom=<?php echo esc_attr( $zoom ); ?>&amp;maptype=<?php echo esc_attr( $maptype ); ?>" allowfullscreen>
+			src="<?php echo esc_url( $src_url ); ?>" allowfullscreen>
 			</iframe>
 			<?php
 		endif;

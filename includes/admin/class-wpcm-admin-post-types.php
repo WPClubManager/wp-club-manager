@@ -256,12 +256,12 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					// $default_club = get_default_club();
 					$title_format = get_match_title_format();
 					// $separator = get_option('wpcm_match_clubs_separator');
-					$home_id = '';
+					$home_id   = '';
 					$home_club = filter_input( INPUT_POST, 'wpcm_home_club', FILTER_VALIDATE_INT );
 					if ( $home_club ) {
 						$home_id = $home_club;
 					}
-					$away_id = '';
+					$away_id   = '';
 					$away_club = filter_input( INPUT_POST, 'wpcm_away_club', FILTER_VALIDATE_INT );
 					if ( $away_club ) {
 						$away_id = $away_club;
@@ -292,7 +292,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				}
 
 				$kickoff = filter_input( INPUT_POST, 'wpcm_match_kickoff', FILTER_UNSAFE_RAW );
-				$date = filter_input( INPUT_POST, 'wpcm_match_date', FILTER_UNSAFE_RAW );
+				$date    = filter_input( INPUT_POST, 'wpcm_match_date', FILTER_UNSAFE_RAW );
 				if ( $kickoff && $date ) {
 					$date         = sanitize_text_field( $date );
 					$kickoff      = sanitize_text_field( $kickoff );
@@ -335,12 +335,12 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			if ( 'wpcm_staff' == $data['post_type'] ) :
 
-				$firstname = '';
+				$firstname  = '';
 				$first_name = filter_input( INPUT_POST, '_wpcm_firstname', FILTER_UNSAFE_RAW );
 				if ( $first_name ) {
 					$firstname = sanitize_text_field( $first_name );
 				}
-				$lastname = '';
+				$lastname  = '';
 				$last_name = filter_input( INPUT_POST, '_wpcm_lastname', FILTER_UNSAFE_RAW );
 				if ( $last_name ) {
 					$lastname = sanitize_text_field( $last_name );
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 						$season = '';
 					}
 					// $venue = wpcm_get_match_venue( $post->ID );
-					$venue = get_the_terms( $post->ID, 'wpcm_venue' );
+					$venue      = get_the_terms( $post->ID, 'wpcm_venue' );
 					$venue_slug = '';
 					if ( $venue && isset( $venue[0]->slug ) ) {
 						$venue_slug = $venue[0]->slug;
@@ -1018,8 +1018,8 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo esc_html( $team );
 					break;
 				case 'clubs':
-					$clubs = unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
-					echo count( $clubs );
+					$clubs = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
+					echo esc_html( is_array( $clubs ) ? count( $clubs ) : 0 );
 					break;
 			}
 		}
@@ -1142,7 +1142,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 			} elseif ( 'wpcm_staff' == $post_type ) {
 
 				$jobs  = get_terms( array(
-					'taxonomy' => 'wpcm_jobs',
+					'taxonomy'   => 'wpcm_jobs',
 					'hide_empty' => false,
 				) );
 				$clubs = get_pages( array( 'post_type' => 'wpcm_club' ) );
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				// season dropdown
 				$selected = filter_input( INPUT_GET, 'wpcm_season', FILTER_UNSAFE_RAW );
 				$selected = $selected ? sanitize_text_field( $selected ) : null;
-				$args = array(
+				$args     = array(
 					'show_option_all' => __( 'Show all seasons', 'wp-club-manager' ),
 					'taxonomy'        => 'wpcm_season',
 					'name'            => 'wpcm_season',
@@ -1432,7 +1432,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			if ( 'wpcm_table' === $typenow ) {
 				// comp dropdown
-				$comp = filter_input( INPUT_GET, 'wpcm_comp', FILTER_UNSAFE_RAW );
+				$comp     = filter_input( INPUT_GET, 'wpcm_comp', FILTER_UNSAFE_RAW );
 				$selected = $comp ? sanitize_text_field( $comp ) : null;
 				$args     = array(
 					'show_option_all' => __( 'Show all competitions', 'wp-club-manager' ),
@@ -1443,7 +1443,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				wpcm_dropdown_taxonomies( $args );
 				echo PHP_EOL;
 				// season dropdown
-				$season = filter_input( INPUT_GET, 'wpcm_season', FILTER_UNSAFE_RAW );
+				$season   = filter_input( INPUT_GET, 'wpcm_season', FILTER_UNSAFE_RAW );
 				$selected = $season ? sanitize_text_field( $season ) : null;
 				$args     = array(
 					'show_option_all' => __( 'Show all seasons', 'wp-club-manager' ),

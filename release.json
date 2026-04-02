@@ -1,0 +1,7 @@
+{
+  "type": "plugin",
+  "channels": {
+    "wordpress_org": true,
+    "edd": false
+  }
+}

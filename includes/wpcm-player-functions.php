@@ -261,9 +261,10 @@ function wpcm_get_player_all_names() {
 
 	$appearance_labels = wpcm_get_appearance_and_subs_names();
 
+	$output = array();
 	$labels = wpcm_get_preset_labels( 'players', 'name' );
 	foreach ( $labels as $label => $value ) {
-		if ( get_option( 'wpcm_show_stats_' . $label ) == 'yes' ) {
+		if ( 'yes' === get_option( 'wpcm_show_stats_' . $label ) ) {
 			$output[ $label ] = $value;
 		}
 	}

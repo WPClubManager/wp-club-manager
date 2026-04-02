@@ -112,7 +112,7 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 
 			$dob = get_post_meta( $player->ID, 'wpcm_dob', true );
 			if ( $dob ) {
-				list( $y, $m, $d ) = explode( '-', $dob );
+				list( $y, $m, $d )    = explode( '-', $dob );
 				$month_day            = gmdate( 'Y-' . $m . '-' . $d );
 				$posts[ $player->ID ] = $month_day;
 			}

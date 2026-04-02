@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+
+jobs:
+  deploy:
+    uses: WPClubManager/.github/.github/workflows/deploy.yml@main
+    with:
+      plugin-slug: wp-club-manager
+    secrets: inherit

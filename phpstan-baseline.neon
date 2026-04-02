@@ -1,0 +1,2611 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$name\\.$#"
+			count: 1
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$new_version\\.$#"
+			count: 1
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^Call to function is_object\\(\\) with array will always evaluate to false\\.$#"
+			count: 1
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^Method WPCM_Plugin_Updater\\:\\:check_update\\(\\) should return array but returns stdClass\\.$#"
+			count: 2
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^Method WPCM_Plugin_Updater\\:\\:http_request_args\\(\\) should return object but returns array\\.$#"
+			count: 1
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^PHPDoc tag @return has invalid value \\(false\\|\\|object\\)\\: Unexpected token \"\\|\", expected type at offset 291$#"
+			count: 1
+			path: includes/WPCM_Plugin_Updater.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 12
+			path: includes/admin/class-wpcm-admin-assets.php
+
+		-
+			message: "#^Undefined variable\\: \\$wp_scripts$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-assets.php
+
+		-
+			message: "#^Variable \\$wp_scripts in isset\\(\\) is never defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-assets.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard-widgets.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{numberposts\\: '\\-1', order\\: 'ASC', orderby\\: 'post_date', post_type\\: 'wpcm_match', post_status\\: array\\{'future'\\}, posts_per_page\\: '\\-1', date_query\\: array\\{array\\{year\\: string, week\\: string\\}\\}, meta_query\\: array\\{relation\\: 'OR', 0\\: array\\{key\\: 'wpcm_home_club', value\\: mixed\\}, 1\\: array\\{key\\: 'wpcm_away_club', value\\: mixed\\}\\}\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard-widgets.php
+
+		-
+			message: "#^Variable \\$competition might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard-widgets.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$place\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_auto_stats\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_manual_stats\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_stats\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_player', orderby\\: 'title', order\\: 'ASC', posts_per_page\\: \\-1, suppress_filters\\: 0, post__in\\: array\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_staff', order\\: 'ASC', posts_per_page\\: \\-1, suppress_filters\\: 0, post__in\\: array\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Parameter \\#1 \\$term of function get_term expects int\\|object, string given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-dashboard.php
+
+		-
+			message: "#^Parameter \\#6 \\$callback of function add_submenu_page expects ''\\|\\(callable\\(\\)\\: mixed\\), false given\\.$#"
+			count: 5
+			path: includes/admin/class-wpcm-admin-menus.php
+
+		-
+			message: "#^Parameter \\#7 \\$position of function add_menu_page expects float\\|int\\|null, string given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-menus.php
+
+		-
+			message: "#^Variable \\$post in empty\\(\\) always exists and is not falsy\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-meta-boxes.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 5
+			path: includes/admin/class-wpcm-admin-notices.php
+
+		-
+			message: "#^Property WPCM_Admin_Notices\\:\\:\\$notices is never read, only written\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-notices.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Admin_Permalink_Settings\\:\\:\\$slugs\\.$#"
+			count: 4
+			path: includes/admin/class-wpcm-admin-permalink-settings.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$request\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Action callback returns int but should not return anything\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Callback expects 2 parameters, \\$accepted_args is set to 100\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Offset 'away' does not exist on string\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Offset 'home' does not exist on string\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 4
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Variable \\$jobs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Variable \\$positions might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Variable \\$teams might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with string will always evaluate to false\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-settings.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function implode expects array\\|null, string given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-settings.php
+
+		-
+			message: "#^Variable \\$columns might not be defined\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-settings.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 3
+			path: includes/admin/class-wpcm-admin-settings.php
+
+		-
+			message: "#^Binary operation \"\\+\" between string and 1 results in an error\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Parameter \\#1 \\$term_id of function update_term_meta expects int, array\\<string, int\\|string\\>\\|WP_Error given\\.$#"
+			count: 3
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Parameter \\#3 \\$deps of function wp_enqueue_style expects array\\<string\\>, string given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Variable \\$comp might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Variable \\$comp_id might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Variable \\$opponent_id might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Variable \\$season_id might not be defined\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-setup-wizard.php
+
+		-
+			message: "#^Callback expects 1 parameter, \\$accepted_args is set to 2\\.$#"
+			count: 15
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_terms expects array\\{taxonomy\\?\\: array\\<string\\>\\|string, object_ids\\?\\: array\\<int\\>\\|int, orderby\\?\\: string, order\\?\\: string, hide_empty\\?\\: bool\\|int, include\\?\\: array\\<int\\>\\|string, exclude\\?\\: array\\<int\\>\\|string, exclude_tree\\?\\: array\\<int\\>\\|string, \\.\\.\\.\\}, array\\{taxonomy\\: 'wpcm_jobs', hide_empty\\: false, exclude\\: int\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_terms expects array\\{taxonomy\\?\\: array\\<string\\>\\|string, object_ids\\?\\: array\\<int\\>\\|int, orderby\\?\\: string, order\\?\\: string, hide_empty\\?\\: bool\\|int, include\\?\\: array\\<int\\>\\|string, exclude\\?\\: array\\<int\\>\\|string, exclude_tree\\?\\: array\\<int\\>\\|string, \\.\\.\\.\\}, array\\{taxonomy\\: 'wpcm_position', hide_empty\\: false, exclude\\: int\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_terms expects array\\{taxonomy\\?\\: array\\<string\\>\\|string, object_ids\\?\\: array\\<int\\>\\|int, orderby\\?\\: string, order\\?\\: string, hide_empty\\?\\: bool\\|int, include\\?\\: array\\<int\\>\\|string, exclude\\?\\: array\\<int\\>\\|string, exclude_tree\\?\\: array\\<int\\>\\|string, \\.\\.\\.\\}, array\\{taxonomy\\: 'wpcm_season', hide_empty\\: false, exclude\\: int\\} given\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_terms expects array\\{taxonomy\\?\\: array\\<string\\>\\|string, object_ids\\?\\: array\\<int\\>\\|int, orderby\\?\\: string, order\\?\\: string, hide_empty\\?\\: bool\\|int, include\\?\\: array\\<int\\>\\|string, exclude\\?\\: array\\<int\\>\\|string, exclude_tree\\?\\: array\\<int\\>\\|string, \\.\\.\\.\\}, array\\{taxonomy\\: 'wpcm_team', hide_empty\\: false, exclude\\: int\\} given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, float given\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Undefined variable\\: \\$term_meta$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Variable \\$latitude might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Variable \\$longitude might not be defined\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Variable \\$term_meta in empty\\(\\) is never defined\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Variable \\$term_meta in isset\\(\\) is never defined\\.$#"
+			count: 2
+			path: includes/admin/class-wpcm-admin-taxonomies.php
+
+		-
+			message: "#^Method WPCM_Admin\\:\\:wpclubmanager_admin_rate_us\\(\\) should return string but empty return statement found\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-club-importer.php
+
+		-
+			message: "#^Call to an undefined method WPCM_Importer\\:\\:greet\\(\\)\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-importer.php
+
+		-
+			message: "#^Call to an undefined method WPCM_Importer\\:\\:import\\(\\)\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-importer.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int\\|false given\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-importer.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 2
+			path: includes/admin/importers/class-wpcm-importer.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-match-importer.php
+
+		-
+			message: "#^Variable \\$labels might not be defined\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-match-importer.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-player-importer.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-player-importer.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/admin/importers/class-wpcm-staff-importer.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_club_details expects array, WP_Post given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-staff.php
+
+		-
+			message: "#^Parameter \\#2 \\$terms of function wp_set_post_terms expects array\\|string, int\\<min, \\-1\\>\\|int\\<1, max\\> given\\.$#"
+			count: 4
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-details.php
+
+		-
+			message: "#^Parameter \\#2 \\$terms of function wp_set_post_terms expects array\\|string, int\\|false\\|null given\\.$#"
+			count: 4
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-fixture.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with string will always evaluate to false\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between array\\<WP_Term\\>\\|WP_Error\\|false and 0 results in an error\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 20
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, float\\|int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Parameter \\#2 \\$id of static method WPCM_Meta_Box_Match_Players\\:\\:wpcm_player_subs_dropdown\\(\\) expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Parameter \\#2 \\$type of function wpcm_stats_value expects string, int given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Result of function wpcm_stats_value \\(void\\) is used\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Variable \\$seasonclass might not be defined\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-players.php
+
+		-
+			message: "#^Offset 'away' does not exist on string\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Offset 'home' does not exist on string\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$bonus might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$goals might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$overtime might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$shootout might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$shootout_score might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$wpcm_cricket_outcome might not be defined\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$wpcm_match_extras might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$wpcm_match_overs might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$wpcm_match_runs might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Variable \\$wpcm_match_wickets might not be defined\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
+
+		-
+			message: "#^Result of function checked \\(void\\) is used\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-display.php
+
+		-
+			message: "#^Default value of the parameter \\#2 \\$team \\(int\\) of method WPCM_Meta_Box_Player_Stats\\:\\:wpcm_player_stats_table\\(\\) is incompatible with type string\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Default value of the parameter \\#3 \\$season \\(int\\) of method WPCM_Meta_Box_Player_Stats\\:\\:wpcm_player_stats_table\\(\\) is incompatible with type string\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_post_meta expects int, string given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int\\<1, 99999\\> given\\.$#"
+			count: 17
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, null given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#2 \\$key of function get_post_meta expects string, true given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#2 \\$team of static method WPCM_Meta_Box_Player_Stats\\:\\:wpcm_player_stats_table\\(\\) expects string, int given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Parameter \\#3 \\$season of static method WPCM_Meta_Box_Player_Stats\\:\\:wpcm_player_stats_table\\(\\) expects string, int given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Result of function wpcm_stats_value \\(void\\) is used\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
+
+		-
+			message: "#^Variable \\$player might not be defined\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-users.php
+
+		-
+			message: "#^Parameter \\#2 \\$terms of function wp_set_post_terms expects array\\|string, int\\<min, \\-1\\>\\|int\\<1, max\\> given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-details.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function wp_set_post_terms expects int, string given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-roster-staff.php
+
+		-
+			message: "#^Parameter \\#2 \\$terms of function wp_set_post_terms expects array\\|string, int\\<min, \\-1\\>\\|int\\<1, max\\> given\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-details.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$place\\.$#"
+			count: 2
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_auto_stats\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_manual_stats\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_stats\\.$#"
+			count: 3
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_wpcm_club_manual_stats expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_wpcm_club_total_stats expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 4
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
+			count: 1
+			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
+
+		-
+			message: "#^Variable \\$post in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: includes/admin/settings/class-wpcm-settings-general.php
+
+		-
+			message: "#^Offset 'name' does not exist on string\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$a_label might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$biggest_score might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$comps might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$default_club might not be defined\\.$#"
+			count: 3
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$employees might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$f_label might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$future_matches might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$goals_conceded might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$goals_scored might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$new_query might not be defined\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$played_matches might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$players might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$roster_id might not be defined\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$table_id might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$team_label might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$team_name might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Variable \\$win_percent might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-dashboard.php
+
+		-
+			message: "#^Offset 'name' does not exist on string\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$comps might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$future_matches might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$new_query might not be defined\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$played_match might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$played_matches might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Variable \\$table_id might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-league-dashboard.php
+
+		-
+			message: "#^Access to an undefined property WP_Theme\\:\\:\\$Author URI\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-status.php
+
+		-
+			message: "#^Access to an undefined property WP_Theme\\:\\:\\$Name\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-status.php
+
+		-
+			message: "#^Access to an undefined property WP_Theme\\:\\:\\$Template\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-status.php
+
+		-
+			message: "#^Access to an undefined property WP_Theme\\:\\:\\$Version\\.$#"
+			count: 2
+			path: includes/admin/views/html-admin-page-status.php
+
+		-
+			message: "#^Constant WP_MEMORY_LIMIT not found\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-page-status.php
+
+		-
+			message: "#^Variable \\$current_tab might not be defined\\.$#"
+			count: 4
+			path: includes/admin/views/html-admin-settings.php
+
+		-
+			message: "#^Variable \\$tabs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-admin-settings.php
+
+		-
+			message: "#^Function _esc_html_ee not found\\.$#"
+			count: 1
+			path: includes/admin/views/html-bulk-edit-match.php
+
+		-
+			message: "#^Variable \\$teams might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-bulk-edit-match.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 1
+			path: includes/admin/views/html-notice-install.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 1
+			path: includes/admin/views/html-notice-version-update.php
+
+		-
+			message: "#^Variable \\$comps might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-match.php
+
+		-
+			message: "#^Variable \\$seasons might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-match.php
+
+		-
+			message: "#^Variable \\$teams might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-match.php
+
+		-
+			message: "#^Variable \\$venues might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-match.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-player.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: includes/admin/views/html-quick-edit-staff.php
+
+		-
+			message: "#^Call to function is_null\\(\\) with WP_Club_Manager will always evaluate to false\\.$#"
+			count: 1
+			path: includes/class-wp-club-manager.php
+
+		-
+			message: "#^Call to static method add_command\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 1
+			path: includes/class-wp-club-manager.php
+
+		-
+			message: "#^Constant WPCM_PATH not found\\.$#"
+			count: 22
+			path: includes/class-wp-club-manager.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/class-wp-club-manager.php
+
+		-
+			message: "#^Method WP_Club_Manager\\:\\:is_request\\(\\) should return bool but return statement is missing\\.$#"
+			count: 1
+			path: includes/class-wp-club-manager.php
+
+		-
+			message: "#^If condition is always false\\.$#"
+			count: 1
+			path: includes/class-wpcm-ajax.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int given\\.$#"
+			count: 4
+			path: includes/class-wpcm-ajax.php
+
+		-
+			message: "#^Undefined variable\\: \\$player_stats_names$#"
+			count: 1
+			path: includes/class-wpcm-ajax.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: includes/class-wpcm-ajax.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/class-wpcm-autoloader.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function spl_autoload_register expects \\(callable\\(string\\)\\: void\\)\\|null, '__autoload' given\\.$#"
+			count: 1
+			path: includes/class-wpcm-autoloader.php
+
+		-
+			message: "#^Action callback returns string but should not return anything\\.$#"
+			count: 1
+			path: includes/class-wpcm-cache-helper.php
+
+		-
+			message: "#^Call to static method confirm\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 1
+			path: includes/class-wpcm-cli.php
+
+		-
+			message: "#^Call to static method success\\(\\) on an unknown class WP_CLI\\.$#"
+			count: 1
+			path: includes/class-wpcm-cli.php
+
+		-
+			message: "#^PHPDoc tag @throws with type WP_CLI\\\\ExitException is not subtype of Throwable$#"
+			count: 1
+			path: includes/class-wpcm-cli.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 2
+			path: includes/class-wpcm-frontend-scripts.php
+
+		-
+			message: "#^Method WPCM_Geocoder\\:\\:osm_geocode\\(\\) has invalid return type varies\\.$#"
+			count: 1
+			path: includes/class-wpcm-geocoder.php
+
+		-
+			message: "#^Method WPCM_Geocoder\\:\\:osm_geocode\\(\\) should return varies but returns object\\{lat\\: mixed, lng\\: mixed\\}&stdClass\\.$#"
+			count: 1
+			path: includes/class-wpcm-geocoder.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Install\\:\\:\\$_config\\.$#"
+			count: 2
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Sports\\:\\:\\$soccer\\.$#"
+			count: 1
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Constant W3TC_FILE not found\\.$#"
+			count: 2
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 1
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 4
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Parameter \\#4 \\$autoload of function add_option expects bool\\|null, string given\\.$#"
+			count: 1
+			path: includes/class-wpcm-install.php
+
+		-
+			message: "#^Constant INPUT_REQUEST not found\\.$#"
+			count: 2
+			path: includes/class-wpcm-license.php
+
+		-
+			message: "#^Variable \\$_optname in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: includes/class-wpcm-license.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$request\\.$#"
+			count: 1
+			path: includes/class-wpcm-post-types.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: includes/class-wpcm-reset-database.php
+
+		-
+			message: "#^Function wpcm_decode_address not found\\.$#"
+			count: 1
+			path: includes/class-wpcm-shortcodes.php
+
+		-
+			message: "#^Variable \\$latitude might not be defined\\.$#"
+			count: 2
+			path: includes/class-wpcm-shortcodes.php
+
+		-
+			message: "#^Variable \\$longitude might not be defined\\.$#"
+			count: 2
+			path: includes/class-wpcm-shortcodes.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 1
+			path: includes/class-wpcm-taxonomy-order.php
+
+		-
+			message: "#^Offset 'order' does not exist on string\\|false\\.$#"
+			count: 1
+			path: includes/class-wpcm-taxonomy-order.php
+
+		-
+			message: "#^Offset 'term_id' does not exist on string\\|false\\.$#"
+			count: 2
+			path: includes/class-wpcm-taxonomy-order.php
+
+		-
+			message: "#^Constant WPCM_TEMPLATE_PATH not found\\.$#"
+			count: 5
+			path: includes/class-wpcm-template-loader.php
+
+		-
+			message: "#^@param tag must not be named \\$this\\. Choose a descriptive alias, for example \\$instance\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to an undefined property WP_Upgrader\\:\\:\\$bulk\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to an undefined property WP_Upgrader_Skin\\:\\:\\$i\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$bulk on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$clear_destination on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$i on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 6
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$options on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$plugin_info on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$plugin_names on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 4
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$result on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$skin on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 9
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$strings on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 11
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$tgmpa on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 6
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$tgmpa on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 8
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$update_count on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$update_current on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 4
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to property \\$upgrader on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 11
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Action callback returns null but should not return anything\\.$#"
+			count: 4
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Action callback returns string but should not return anything\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:is_plugin_installed\\(\\)\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:is_plugin_updatetable\\(\\)\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method activate_strings\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method bulk_install\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method bulk_upgrade\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method feedback\\(\\) on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method flush_output\\(\\) on an unknown class TGMPA_Bulk_Installer_Skin\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method fs_connect\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method init\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method install_strings\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method maintenance_mode\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method plugin_info\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method run\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Call to method upgrade_strings\\(\\) on an unknown class TGMPA_Bulk_Installer\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Instantiated class TGMPA_Bulk_Installer not found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Instantiated class TGMPA_Bulk_Installer_Skin not found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGMPA_List_Table\\:\\:wp_plugin_update_row\\(\\) should return null but empty return statement found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGMPA_List_Table\\:\\:wp_plugin_update_row\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:admin_init\\(\\) should return null but empty return statement found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:admin_init\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:admin_menu\\(\\) should return null but empty return statement found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:admin_menu\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:install_plugins_page\\(\\) should return null but empty return statement found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:install_plugins_page\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:maybe_adjust_source_dir\\(\\) should return string but returns WP_Error\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:notices\\(\\) should return null but empty return statement found\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:notices\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:register\\(\\) should return null but empty return statement found\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Method TGM_Plugin_Activation\\:\\:register\\(\\) should return null but return statement is missing\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Offset 'slug' on array in empty\\(\\) always exists and is not falsy\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^PHPDoc type string of property TGMPA_Bulk_Installer\\:\\:\\$result is not covariant with PHPDoc type array\\|WP_Error of overridden property Plugin_Upgrader\\:\\:\\$result\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Parameter \\#1 \\$format of function sprintf expects string, int given\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Parameter \\#1 \\$version1 of function version_compare expects string, int given\\.$#"
+			count: 3
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Parameter \\#2 \\$object_id of function delete_metadata expects int, null given\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Parameter \\#4 \\$context of function request_filesystem_credentials expects string, false given\\.$#"
+			count: 4
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Parameter \\#4 \\$line_template of method TGM_Plugin_Activation\\:\\:create_user_action_links_for_notice\\(\\) expects int, string given\\.$#"
+			count: 2
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$capability \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$default_path \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$dismiss_msg \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$dismissable \\(bool\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$has_notices \\(bool\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$id \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$is_automatic \\(bool\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$menu \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$message \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$parent_slug \\(string\\) does not accept array\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Property TGM_Plugin_Activation\\:\\:\\$strings \\(array\\) does not accept mixed\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Static property TGMPA_Utils\\:\\:\\$has_filters \\(bool\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Static property TGM_Plugin_Activation\\:\\:\\$instance \\(TGM_Plugin_Activation\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between false and array\\|null will always evaluate to false\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and string will always evaluate to false\\.$#"
+			count: 1
+			path: includes/libraries/tgm-plugin-activation/class-tgm-plugin-activation.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$place\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$thumb\\.$#"
+			count: 3
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_auto_stats\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_manual_stats\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_stats\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
+
+		-
+			message: "#^Variable \\$post_status might not be defined\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-match-list.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-match-list.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between 'results' and mixed~\\(''\\|'fixtures'\\|'results'\\|null\\) will always evaluate to false\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-match-opponents.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-match-opponents.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-player-gallery.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-player-gallery.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
+
+		-
+			message: "#^Undefined variable\\: \\$natl$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
+
+		-
+			message: "#^Undefined variable\\: \\$position$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-staff-gallery.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/class-wpcm-shortcode-staff-gallery.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_staff', tax_query\\: array\\{\\}\\|array\\{array\\{taxonomy\\: 'wpcm_jobs', terms\\: mixed, field\\: 'term_id'\\}\\}, posts_per_page\\: mixed, order\\: string, orderby\\: string, suppress_filters\\: 0, post__in\\: array\\} given\\.$#"
+			count: 1
+			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between '2' and mixed~\\('1'\\|'2'\\|'3'\\|null\\) will always evaluate to false\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-matches.php
+
+		-
+			message: "#^Variable \\$order might not be defined\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-matches.php
+
+		-
+			message: "#^Variable \\$venue in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 2
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-matches.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 2
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_player', tax_query\\: array\\{\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_season', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position'\\|'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 2\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}, numposts\\: mixed, posts_per_page\\: mixed, orderby\\: 'menu_order'\\|'meta_value_num'\\|'name', meta_key\\: 'wpcm_number', order\\: string, suppress_filters\\: 0\\} given\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Undefined variable\\: \\$natl$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Variable \\$player_stats might not be defined\\.$#"
+			count: 4
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-staff.php
+
+		-
+			message: "#^Variable \\$staff_details might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-staff.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$thumb\\.$#"
+			count: 3
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-standings.php
+
+		-
+			message: "#^Access to an undefined property WP_Post\\:\\:\\$wpcm_stats\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-standings.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_club', tax_query\\: array\\{\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_comp', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_season', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{array\\{taxonomy\\: 'wpcm_season', terms\\: mixed, field\\: 'term_id'\\}\\}, numberposts\\: \\-1, posts_per_page\\: \\-1, post__not_in\\?\\: non\\-empty\\-array\\<int, string\\>\\} given\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-standings.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_wpcm_club_total_stats expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-standings.php
+
+		-
+			message: "#^Variable \\$transient_name might not be defined\\.$#"
+			count: 2
+			path: includes/shortcodes/legacy/class-wpcm-shortcode-standings.php
+
+		-
+			message: "#^Method WPCM_Birthdays_Widget\\:\\:get_birthdays\\(\\) should return WP_Query but return statement is missing\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-birthdays-widget.php
+
+		-
+			message: "#^Method WPCM_Birthdays_Widget\\:\\:get_birthdays\\(\\) should return WP_Query but returns array\\<int, string\\>\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-birthdays-widget.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{numberposts\\: \\-1, posts_per_page\\: \\-1, order\\: 'ASC', post_type\\: 'wpcm_player'\\|array\\{'wpcm_player', 'wpcm_staff'\\}, suppress_filters\\: 0, post__in\\: array\\} given\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-birthdays-widget.php
+
+		-
+			message: "#^Variable \\$posts in empty\\(\\) always exists and is not falsy\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-birthdays-widget.php
+
+		-
+			message: "#^Variable \\$posts might not be defined\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-birthdays-widget.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-fixtures-widget.php
+
+		-
+			message: "#^Variable \\$venue in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 2
+			path: includes/widgets/class-wpcm-fixtures-widget.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Players_Widget\\:\\:\\$widget_idbase\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-players-widget.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-results-widget.php
+
+		-
+			message: "#^Variable \\$venue in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 2
+			path: includes/widgets/class-wpcm-results-widget.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Sponsors_Widget\\:\\:\\$widget_idbase\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-sponsors-widget.php
+
+		-
+			message: "#^Access to an undefined property WPCM_Standings_Widget\\:\\:\\$widget_idbase\\.$#"
+			count: 1
+			path: includes/widgets/class-wpcm-standings-widget.php
+
+		-
+			message: "#^Cannot access property \\$ID on array\\.$#"
+			count: 8
+			path: includes/wpcm-club-functions.php
+
+		-
+			message: "#^Cannot access property \\$post_parent on array\\.$#"
+			count: 9
+			path: includes/wpcm-club-functions.php
+
+		-
+			message: "#^Function get_the_title invoked with 2 parameters, 0\\-1 required\\.$#"
+			count: 1
+			path: includes/wpcm-club-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$post of function get_the_terms expects int\\|WP_Post, array given\\.$#"
+			count: 1
+			path: includes/wpcm-club-functions.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with string will always evaluate to false\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Constant WPCM_TEMPLATE_DEBUG_MODE not found\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Constant WPCM_TEMPLATE_PATH not found\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Offset 0 on \\*NEVER\\* in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Offset 1 on \\*NEVER\\* in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Offset 2 on \\*NEVER\\* in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function sha1 expects string, int given\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Property WP_Post\\:\\:\\$post_type \\(string\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Result of function wpclubmanager_get_template \\(void\\) is used\\.$#"
+			count: 2
+			path: includes/wpcm-deprecated-functions.php
+
+		-
+			message: "#^Argument of an invalid type string supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Binary operation \"\\*\\=\" between string and 1024 results in an error\\.$#"
+			count: 5
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Binary operation \"\\-\" between string and string results in an error\\.$#"
+			count: 2
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Call to function sprintf\\(\\) on a separate line has no effect\\.$#"
+			count: 1
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int given\\.$#"
+			count: 1
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Variable \\$b might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-formatting-functions.php
+
+		-
+			message: "#^Callback expects 1 parameter, \\$accepted_args is set to 2\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Function get_the_title invoked with 2 parameters, 0\\-1 required\\.$#"
+			count: 2
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Function wpcm_get_match_result\\(\\) should return string but returns array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Function wpcm_get_match_venue\\(\\) should return string but returns array\\<string, mixed\\>\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Variable \\$label might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Variable \\$name might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Variable \\$outcome might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Variable \\$outcome1 might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Variable \\$outcome2 might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-match-functions.php
+
+		-
+			message: "#^Function wpcm_get_player_average_rating\\(\\) should return int but returns string\\.$#"
+			count: 1
+			path: includes/wpcm-player-functions.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-player-functions.php
+
+		-
+			message: "#^Cannot access property \\$post_name on array\\.$#"
+			count: 2
+			path: includes/wpcm-standings-functions.php
+
+		-
+			message: "#^Cannot access property \\$wpcm_stats on array\\.$#"
+			count: 4
+			path: includes/wpcm-standings-functions.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and 0 results in an error\\.$#"
+			count: 4
+			path: includes/wpcm-standings-functions.php
+
+		-
+			message: "#^Variable \\$b might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-standings-functions.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and 0 results in an error\\.$#"
+			count: 2
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{tax_query\\: array\\{\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_season', terms\\: int\\<1, max\\>, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_team', terms\\: int\\<1, max\\>, field\\: 'term_id'\\}\\}\\|array\\{array\\{taxonomy\\: 'wpcm_team', terms\\: int\\<1, max\\>, field\\: 'term_id'\\}\\}, numberposts\\: '\\-1', order\\: 'ASC', orderby\\: 'post_date', post_type\\: 'wpcm_match', post_status\\: 'publish', posts_per_page\\: '\\-1', meta_query\\: array\\{relation\\: 'OR', 0\\: array\\{key\\: 'wpcm_home_club', value\\: mixed\\}, 1\\: array\\{key\\: 'wpcm_away_club', value\\: mixed\\}\\}\\} given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_post_meta expects int, string\\|null given\\.$#"
+			count: 2
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$post_id of function get_wpcm_club_auto_stats expects int\\|null, string\\|null given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, float\\|int given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#2 \\$comp of function get_wpcm_club_auto_stats expects int\\|null, string\\|null given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#2 \\$team of function get_wpcm_player_auto_stats expects string\\|null, int given\\.$#"
+			count: 2
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#2 \\$team of function get_wpcm_player_manual_stats expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#3 \\$season of function get_wpcm_club_auto_stats expects int\\|null, string\\|null given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#3 \\$season of function get_wpcm_player_manual_stats expects string\\|null, int given\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Parameter \\#3 \\$season_id of function get_wpcm_player_auto_stats expects string\\|null, int given\\.$#"
+			count: 2
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Variable \\$output might not be defined\\.$#"
+			count: 2
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 1
+			path: includes/wpcm-stats-functions.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 1
+			path: includes/wpcm-template-functions.php
+
+		-
+			message: "#^Parameter \\#4 \\$atts of function wpcm_form_dropdown expects string\\|null, array\\<string, string\\> given\\.$#"
+			count: 2
+			path: includes/wpcm-template-functions.php
+
+		-
+			message: "#^Callback expects 1 parameter, \\$accepted_args is set to 3\\.$#"
+			count: 1
+			path: includes/wpcm-template-hooks.php
+
+		-
+			message: "#^Function wpcm_create_new_user\\(\\) should return int\\|WP_Error but empty return statement found\\.$#"
+			count: 4
+			path: includes/wpcm-user-functions.php
+
+		-
+			message: "#^Variable \\$matches might not be defined\\.$#"
+			count: 2
+			path: templates/content-single-club.php
+
+		-
+			message: "#^Variable \\$post might not be defined\\.$#"
+			count: 5
+			path: templates/content-single-club.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 1
+			path: templates/content-single-staff.php
+
+		-
+			message: "#^Variable \\$post might not be defined\\.$#"
+			count: 11
+			path: templates/content-single-staff.php
+
+		-
+			message: "#^Variable \\$post might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-birthdays.php
+
+		-
+			message: "#^Variable \\$posts might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-birthdays.php
+
+		-
+			message: "#^Variable \\$show_age might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-birthdays.php
+
+		-
+			message: "#^Variable \\$badges might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$comp might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$show_comp might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$show_countdown might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$show_date might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$show_team might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$show_time might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$sides might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-fixtures.php
+
+		-
+			message: "#^Variable \\$badges might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$comp might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$played might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$score might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$show_comp might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$show_date might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$show_score might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$show_team might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$show_time might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$sides might not be defined\\.$#"
+			count: 2
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 1
+			path: templates/content-widget-results.php
+
+		-
+			message: "#^Variable \\$abbr might not be defined\\.$#"
+			count: 2
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$columns might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$default_club might not be defined\\.$#"
+			count: 2
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$link_club might not be defined\\.$#"
+			count: 4
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$team_label might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/league-table.php
+
+		-
+			message: "#^Variable \\$address might not be defined\\.$#"
+			count: 2
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$api_key might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$height might not be defined\\.$#"
+			count: 2
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$latitude might not be defined\\.$#"
+			count: 3
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$layers might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$longitude might not be defined\\.$#"
+			count: 3
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$maptype might not be defined\\.$#"
+			count: 2
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$service might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$width might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$zoom might not be defined\\.$#"
+			count: 3
+			path: templates/shortcodes/map-venue.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Variable \\$matches might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Variable \\$show_abbr might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Variable \\$show_comp might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Variable \\$show_thumb might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-list.php
+
+		-
+			message: "#^Offset 'status' does not exist on string\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$away_badge might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$club might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$home_badge might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$matches might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$show_abbr might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$show_comp might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$show_team might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$show_thumb might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/match-opponents.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches-2.php
+
+		-
+			message: "#^Variable \\$matches might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches-2.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches-2.php
+
+		-
+			message: "#^Offset 'status' does not exist on string\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$away_badge might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$club might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$home_badge might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$matches might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$show_comp might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$show_team might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$thumb might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/matches.php
+
+		-
+			message: "#^Variable \\$columns might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$limit might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$orderby might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$player_details might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players-gallery.php
+
+		-
+			message: "#^Variable \\$limit might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$player_details might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/players.php
+
+		-
+			message: "#^Variable \\$columns might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$employee_details might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$limit might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff-gallery.php
+
+		-
+			message: "#^Variable \\$limit might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$staff_details might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/staff.php
+
+		-
+			message: "#^Variable \\$center might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$clubs might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$limit might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$link_club might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$linktext might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$stats_labels might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$type might not be defined\\.$#"
+			count: 1
+			path: templates/shortcodes/standings.php
+
+		-
+			message: "#^Variable \\$count might not be defined\\.$#"
+			count: 1
+			path: templates/single-match/lineup-row.php
+
+		-
+			message: "#^Variable \\$key might not be defined\\.$#"
+			count: 6
+			path: templates/single-match/lineup-row.php
+
+		-
+			message: "#^Variable \\$value might not be defined\\.$#"
+			count: 2
+			path: templates/single-match/lineup-row.php
+
+		-
+			message: "#^Variable \\$count might not be defined\\.$#"
+			count: 2
+			path: templates/single-match/lineup.php
+
+		-
+			message: "#^Offset 'address' does not exist on string\\.$#"
+			count: 2
+			path: templates/single-match/venue-info.php
+
+		-
+			message: "#^Offset 'description' does not exist on string\\.$#"
+			count: 1
+			path: templates/single-match/venue-info.php
+
+		-
+			message: "#^Offset 'id' does not exist on string\\.$#"
+			count: 1
+			path: templates/single-match/venue-info.php
+
+		-
+			message: "#^Offset 'name' does not exist on string\\.$#"
+			count: 1
+			path: templates/single-match/venue-info.php
+
+		-
+			message: "#^Offset 'name' does not exist on non\\-falsy\\-string\\.$#"
+			count: 1
+			path: templates/single-match/venue.php
+
+		-
+			message: "#^Constant WPCM_URL not found\\.$#"
+			count: 1
+			path: templates/single-player/meta.php
+
+		-
+			message: "#^Variable \\$season might not be defined\\.$#"
+			count: 2
+			path: templates/single-player/stats-table.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 7
+			path: templates/single-player/stats-table.php
+
+		-
+			message: "#^Variable \\$sub might not be defined\\.$#"
+			count: 1
+			path: templates/single-player/stats-table.php
+
+		-
+			message: "#^Variable \\$team might not be defined\\.$#"
+			count: 2
+			path: templates/single-player/stats-table.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int\\<1, 99999\\> given\\.$#"
+			count: 11
+			path: templates/single-player/stats.php

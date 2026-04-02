@@ -123,6 +123,7 @@ class WPCM_Meta_Box_Roster_Staff {
 					'post_type'        => 'wpcm_staff',
 					'limit'            => -1,
 					'show_option_none' => __( 'Choose staff', 'wp-club-manager' ),
+					'multiple'         => true,
 				));
 				?>
 

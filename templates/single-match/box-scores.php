@@ -185,12 +185,14 @@ if ( in_array( $sport, $sports ) ) {
 			if ( 'yes' === get_option( 'wpcm_hide_scores' ) && ! is_user_logged_in() ) {
 				echo esc_html_x( 'HT:', 'Half time', 'wp-club-manager' );
 				?>
-				<?php esc_html_e( 'x', 'wp-club-manager' ); ?> <?php echo esc_html( $sep ); ?> <?php
+				<?php esc_html_e( 'x', 'wp-club-manager' ); ?> <?php echo esc_html( $sep ); ?>
+				<?php
 					esc_html_e( 'x', 'wp-club-manager' );
 			} else {
 				echo esc_html_x( 'HT:', 'Half time', 'wp-club-manager' );
 				?>
-				<?php echo esc_html( $intgoals['q1']['home'] ); ?> <?php echo esc_html( $sep ); ?> <?php
+				<?php echo esc_html( $intgoals['q1']['home'] ); ?> <?php echo esc_html( $sep ); ?>
+				<?php
 					echo esc_html( $intgoals['q1']['away'] );
 			}
 			?>

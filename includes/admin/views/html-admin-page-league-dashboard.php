@@ -82,7 +82,7 @@
 				<div class="extra content">
 					<div class="ui two buttons">
 						<a class="ui basic button"
-						   href="<?php echo esc_url( get_edit_post_link( $table_id ) ); ?>"><?php esc_html_e( 'Manage table', 'wp-club-manager' ); ?></a>
+							href="<?php echo esc_url( get_edit_post_link( $table_id ) ); ?>"><?php esc_html_e( 'Manage table', 'wp-club-manager' ); ?></a>
 					</div>
 				</div>
 
@@ -97,7 +97,7 @@
 			<div class="extra content">
 				<div class="ui two buttons">
 					<a class="ui basic button"
-					   href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_table' ) ); ?>"><?php esc_html_e( 'Create new league table', 'wp-club-manager' ); ?></a>
+						href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_table' ) ); ?>"><?php esc_html_e( 'Create new league table', 'wp-club-manager' ); ?></a>
 				</div>
 			</div>
 
@@ -164,7 +164,7 @@
 											<span class="venue"><?php echo esc_html( $venue['name'] ); ?></span>
 										</div>
 										<a class="header"
-										   href="<?php echo esc_url( get_edit_post_link( $played_match->ID ) ); ?>"><?php echo esc_html( $played_match->post_title ); ?> </a>
+											href="<?php echo esc_url( get_edit_post_link( $played_match->ID ) ); ?>"><?php echo esc_html( $played_match->post_title ); ?> </a>
 										<div class="meta">
 											<span class="competition"><?php echo esc_html( $comp[0] ); ?></span>
 										</div>
@@ -193,9 +193,9 @@
 				<div class="extra content">
 					<div class="ui two buttons">
 						<a class="ui basic button"
-						   href="<?php echo esc_url( $new_query ); ?>"><?php esc_html_e( 'Manage matches', 'wp-club-manager' ); ?></a>
+							href="<?php echo esc_url( $new_query ); ?>"><?php esc_html_e( 'Manage matches', 'wp-club-manager' ); ?></a>
 						<a class="ui basic button"
-						   href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_match' ) ); ?>"><?php esc_html_e( 'Add new match', 'wp-club-manager' ); ?></a>
+							href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_match' ) ); ?>"><?php esc_html_e( 'Add new match', 'wp-club-manager' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -241,7 +241,7 @@
 											<span class="venue"><?php echo esc_html( $venue['name'] ); ?></span>
 										</div>
 										<a class="header"
-										   href="<?php echo esc_url( get_edit_post_link( $future_match->ID ) ); ?>"><?php echo esc_html( $played_match->post_title ); ?></a>
+											href="<?php echo esc_url( get_edit_post_link( $future_match->ID ) ); ?>"><?php echo esc_html( $played_match->post_title ); ?></a>
 										<div class="meta">
 											<span class="competition"><?php echo esc_html( $comp[0] ); ?></span>
 										</div>
@@ -270,9 +270,9 @@
 				<div class="extra content">
 					<div class="ui two buttons">
 						<a class="ui basic button"
-						   href="<?php echo esc_url( $new_query ); ?>"><?php esc_html_e( 'Manage matches', 'wp-club-manager' ); ?></a>
+							href="<?php echo esc_url( $new_query ); ?>"><?php esc_html_e( 'Manage matches', 'wp-club-manager' ); ?></a>
 						<a class="ui basic button"
-						   href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_match' ) ); ?>"><?php esc_html_e( 'Add new match', 'wp-club-manager' ); ?></a>
+							href="<?php echo esc_url( admin_url( 'post-new.php?post_type=wpcm_match' ) ); ?>"><?php esc_html_e( 'Add new match', 'wp-club-manager' ); ?></a>
 					</div>
 				</div>
 			</div>

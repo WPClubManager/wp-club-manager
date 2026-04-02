@@ -5,8 +5,8 @@
  * Description: A plugin to help you run a sports club website easily and quickly.
  * Author: WP Club Manager
  * Author URI: https://wpclubmanager.com
- * Requires PHP: 7.2
- * Version: 2.2.17
+ * Requires PHP: 7.4
+ * Version: 2.3.0
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -27,7 +27,7 @@ if ( ! function_exists( 'WPCM' ) ) :
 	function WPCM() {
 		require_once __DIR__ . '/includes/class-wp-club-manager.php';
 
-		return WP_Club_Manager::instance( __FILE__, '2.2.17' );
+		return WP_Club_Manager::instance( __FILE__, '2.3.0' );
 	}
 endif;
 

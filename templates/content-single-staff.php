@@ -26,7 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="wpcm-profile-meta">
 
-			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<?php if ( get_option( 'wpcm_staff_profile_show_title' ) !== 'no' ) { ?>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+			<?php } ?>
 
 			<table>
 

@@ -101,8 +101,7 @@ class WPCM_Frontend_Scripts {
 
 		global $post;
 
-		$club     = get_option( 'wpcm_default_club' );
-		$post_url = get_permalink();
+		$club = get_option( 'wpcm_default_club' );
 		if ( is_league_mode() ) {
 			// $post_thumb = the_custom_logo();
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -118,8 +117,8 @@ class WPCM_Frontend_Scripts {
 
 		if ( is_front_page() ) :
 
-			$data['@context'] = 'http://schema.org/';
-			$data['@type']    = 'Organization';
+			$data['@context'] = 'https://schema.org/';
+			$data['@type']    = 'SportsOrganization';
 			$data['name']     = get_bloginfo( 'name' );
 			$data['logo']     = $post_thumb;
 			$data['url']      = site_url();
@@ -133,9 +132,7 @@ class WPCM_Frontend_Scripts {
 			 */
 			$data = apply_filters( 'wpclubmanager_schema_front_page', $data );
 
-			echo '<script type="application/ld+json">';
-			echo json_encode( $data );
-			echo '</script>';
+			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data, JSON_HEX_TAG ) );
 
 		endif;
 
@@ -156,11 +153,11 @@ class WPCM_Frontend_Scripts {
 				$address = '';
 			}
 
-			$data['@context']  = 'http://schema.org/';
+			$data['@context']  = 'https://schema.org/';
 			$data['@type']     = 'SportsEvent';
 			$data['name']      = $post->post_title;
 			$data['image']     = $post_thumb;
-			$data['url']       = $post_url;
+			$data['url']       = get_permalink();
 			$data['location']  = array(
 				'@type'   => 'Place',
 				'name'    => $venue_name,
@@ -180,9 +177,7 @@ class WPCM_Frontend_Scripts {
 			 */
 			$data = apply_filters( 'wpclubmanager_schema_sports_event', $data );
 
-			echo '<script type="application/ld+json">';
-			echo json_encode( $data );
-			echo '</script>';
+			printf( '<script type="application/ld+json">%s</script>', wp_json_encode( $data, JSON_HEX_TAG ) );
 
 		endif;
 	}
