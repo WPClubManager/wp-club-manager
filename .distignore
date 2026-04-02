@@ -1,0 +1,29 @@
+# Directories
+.github
+.sass-cache
+node_modules
+tests
+vendor
+build
+release
+phpstan-stubs
+
+# Files
+.distignore
+.gitignore
+.wp-env.json
+.wp-env.override.json
+composer.json
+composer.lock
+Gruntfile.js
+package.json
+package-lock.json
+phpcs.xml.dist
+phpstan.neon
+phpstan-baseline.neon
+playwright.config.ts
+i18n.php
+codereport.csv
+*.sql
+*.tar.gz
+*.zip
