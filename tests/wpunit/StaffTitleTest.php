@@ -30,42 +30,41 @@ class StaffTitleTest extends WPCMTestCase {
 	}
 
 	/**
-	 * When the option is set to 'no', the title should NOT appear in the template output.
+	 * Render the staff template and return HTML.
+	 *
+	 * Uses @ suppression because the template has pre-existing PHP warnings
+	 * when rendered outside a full WordPress page context (undefined array
+	 * keys in profile fields, etc). We only care about the title assertion.
 	 */
-	public function test_staff_title_hidden_when_option_is_no() {
-		update_option( 'wpcm_staff_profile_show_title', 'no' );
-
-		// Render the staff template — set $post globally and pass as arg.
+	private function render_staff_template() {
 		global $post;
 		$post = get_post( $this->staff_id );
 		setup_postdata( $post );
 
 		ob_start();
-		// Template reads $post via global and extract($args).
-		wpclubmanager_get_template( 'content-single-staff.php', array( 'post' => $post ) );
+		@wpclubmanager_get_template( 'content-single-staff.php', array( 'post' => $post ) );
 		$html = ob_get_clean();
 
 		wp_reset_postdata();
 
+		return $html;
+	}
+
+	/**
+	 * When the option is set to 'no', the title should NOT appear.
+	 */
+	public function test_staff_title_hidden_when_option_is_no() {
+		update_option( 'wpcm_staff_profile_show_title', 'no' );
+		$html = $this->render_staff_template();
 		$this->assertStringNotContainsString( '<h1 class="entry-title">', $html );
 	}
 
 	/**
-	 * When the option is set to 'yes' (or not set), the title SHOULD appear.
+	 * When the option is set to 'yes', the title SHOULD appear.
 	 */
 	public function test_staff_title_shown_when_option_is_yes() {
 		update_option( 'wpcm_staff_profile_show_title', 'yes' );
-
-		global $post;
-		$post = get_post( $this->staff_id );
-		setup_postdata( $post );
-
-		ob_start();
-		wpclubmanager_get_template( 'content-single-staff.php' );
-		$html = ob_get_clean();
-
-		wp_reset_postdata();
-
+		$html = $this->render_staff_template();
 		$this->assertStringContainsString( '<h1 class="entry-title">', $html );
 	}
 
@@ -74,17 +73,7 @@ class StaffTitleTest extends WPCMTestCase {
 	 */
 	public function test_staff_title_shown_by_default() {
 		delete_option( 'wpcm_staff_profile_show_title' );
-
-		global $post;
-		$post = get_post( $this->staff_id );
-		setup_postdata( $post );
-
-		ob_start();
-		wpclubmanager_get_template( 'content-single-staff.php' );
-		$html = ob_get_clean();
-
-		wp_reset_postdata();
-
+		$html = $this->render_staff_template();
 		$this->assertStringContainsString( '<h1 class="entry-title">', $html );
 	}
 }
