@@ -1051,11 +1051,6 @@ parameters:
 			path: includes/class-wpcm-shortcodes.php
 
 		-
-			message: "#^Variable \\$class might not be defined\\.$#"
-			count: 1
-			path: includes/class-wpcm-shortcodes.php
-
-		-
 			message: "#^Variable \\$latitude might not be defined\\.$#"
 			count: 2
 			path: includes/class-wpcm-shortcodes.php
