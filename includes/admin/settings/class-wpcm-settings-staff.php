@@ -48,11 +48,19 @@ if ( ! class_exists( 'WPCM_Settings_Staff' ) ) :
 
 				array(
 					'title'         => __( 'Display', 'wp-club-manager' ),
+					'desc'          => __( 'Name/Title', 'wp-club-manager' ),
+					'id'            => 'wpcm_staff_profile_show_title',
+					'default'       => 'yes',
+					'type'          => 'checkbox',
+					'checkboxgroup' => 'start',
+				),
+
+				array(
 					'desc'          => __( 'Date of Birth', 'wp-club-manager' ),
 					'id'            => 'wpcm_staff_profile_show_dob',
 					'default'       => 'no',
 					'type'          => 'checkbox',
-					'checkboxgroup' => 'start',
+					'checkboxgroup' => '',
 				),
 
 				array(
