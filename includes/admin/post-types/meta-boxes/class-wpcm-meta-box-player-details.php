@@ -191,8 +191,6 @@ class WPCM_Meta_Box_Player_Details {
 	 */
 	protected static function update_meta( $post_id, $key ) {
 		$value = filter_input( INPUT_POST, $key, FILTER_UNSAFE_RAW );
-		if ( $value ) {
-			update_post_meta( $post_id, $key, sanitize_text_field( $value ) );
-		}
+		update_post_meta( $post_id, $key, sanitize_text_field( (string) $value ) );
 	}
 }

@@ -142,8 +142,15 @@ class WPCM_Shortcode_Player_List {
 
 				if ( '' !== $id ) {
 					$args['meta_query'][] = array(
-						'key'   => '_wpcm_player_club',
-						'value' => $id,
+						'relation' => 'OR',
+						array(
+							'key'   => '_wpcm_player_club',
+							'value' => $id,
+						),
+						array(
+							'key'     => '_wpcm_player_club',
+							'compare' => 'NOT EXISTS',
+						),
 					);
 				}
 				if ( 'number' === $orderby ) {
