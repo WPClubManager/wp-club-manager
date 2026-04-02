@@ -221,11 +221,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin-setup-wizard.php
 
 		-
-			message: "#^Parameter \\#3 \\$deps of function wp_register_script expects array\\<string\\>, string given\\.$#"
-			count: 1
-			path: includes/admin/class-wpcm-admin-setup-wizard.php
-
-		-
 			message: "#^Variable \\$comp might not be defined\\.$#"
 			count: 1
 			path: includes/admin/class-wpcm-admin-setup-wizard.php
@@ -1056,18 +1051,13 @@ parameters:
 			path: includes/class-wpcm-shortcodes.php
 
 		-
-			message: "#^Variable \\$class might not be defined\\.$#"
-			count: 1
-			path: includes/class-wpcm-shortcodes.php
-
-		-
 			message: "#^Variable \\$latitude might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: includes/class-wpcm-shortcodes.php
 
 		-
 			message: "#^Variable \\$longitude might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: includes/class-wpcm-shortcodes.php
 
 		-
@@ -2162,12 +2152,12 @@ parameters:
 
 		-
 			message: "#^Variable \\$address might not be defined\\.$#"
-			count: 1
+			count: 2
 			path: templates/shortcodes/map-venue.php
 
 		-
 			message: "#^Variable \\$api_key might not be defined\\.$#"
-			count: 2
+			count: 1
 			path: templates/shortcodes/map-venue.php
 
 		-
@@ -2212,7 +2202,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$zoom might not be defined\\.$#"
-			count: 2
+			count: 3
 			path: templates/shortcodes/map-venue.php
 
 		-
