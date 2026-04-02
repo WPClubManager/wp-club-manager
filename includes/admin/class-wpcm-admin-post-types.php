@@ -1018,8 +1018,8 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo esc_html( $team );
 					break;
 				case 'clubs':
-					$clubs = unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
-					echo count( $clubs );
+					$clubs = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
+					echo esc_html( is_array( $clubs ) ? count( $clubs ) : 0 );
 					break;
 			}
 		}

@@ -166,6 +166,11 @@ parameters:
 			path: includes/admin/class-wpcm-admin-post-types.php
 
 		-
+			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: includes/admin/class-wpcm-admin-post-types.php
+
+		-
 			message: "#^Result of && is always false\\.$#"
 			count: 4
 			path: includes/admin/class-wpcm-admin-post-types.php
