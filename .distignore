@@ -1,4 +1,5 @@
 # Directories
+.git
 .github
 .sass-cache
 node_modules
