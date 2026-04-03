@@ -25,6 +25,9 @@ phpstan-baseline.neon
 playwright.config.ts
 i18n.php
 codereport.csv
+README.md
+release.json
+yarn.lock
 *.sql
 *.tar.gz
 *.zip
