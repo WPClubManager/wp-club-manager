@@ -11,6 +11,8 @@ phpstan-stubs
 
 # Files
 .distignore
+.editorconfig
+.gitattributes
 .gitignore
 .wp-env.json
 .wp-env.override.json
