@@ -166,7 +166,7 @@ class WPCM_AJAX {
 					<option value="last_week"><?php esc_html_e( 'Last 7 Days', 'wp-club-manager' ); ?></option>
 					<option value="next_week"><?php esc_html_e( 'Next 7 Days', 'wp-club-manager' ); ?></option>
 					<?php foreach ( $months as $key => $val ) { ?>
-						<option value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $val ); ?></option>
+						<option value="<?php echo esc_html( (string) $key ); ?>"><?php echo esc_html( $val ); ?></option>
 					<?php } ?>
 				</select>
 			</p>
@@ -345,7 +345,7 @@ class WPCM_AJAX {
 					<option value="last_week"><?php esc_html_e( 'Last 7 Days', 'wp-club-manager' ); ?></option>
 					<option value="next_week"><?php esc_html_e( 'Next 7 Days', 'wp-club-manager' ); ?></option>
 					<?php foreach ( $months as $key => $val ) { ?>
-						<option value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $val ); ?></option>
+						<option value="<?php echo esc_html( (string) $key ); ?>"><?php echo esc_html( $val ); ?></option>
 					<?php } ?>
 				</select>
 			</p>
@@ -648,7 +648,7 @@ class WPCM_AJAX {
 				<label for="columns"><?php esc_html_e( 'Number of Columns', 'wp-club-manager' ); ?></label>
 				<select id="columns" name="columns">
 					<?php foreach ( $columns as $key => $val ) { ?>
-						<option value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $val ); ?></option>
+						<option value="<?php echo esc_html( (string) $key ); ?>"><?php echo esc_html( $val ); ?></option>
 					<?php } ?>
 				</select>
 			</p>
@@ -912,7 +912,7 @@ class WPCM_AJAX {
 				<label for="columns"><?php esc_html_e( 'Number of Columns', 'wp-club-manager' ); ?></label>
 				<select id="columns" name="columns">
 					<?php foreach ( $columns as $key => $val ) { ?>
-						<option value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $val ); ?></option>
+						<option value="<?php echo esc_html( (string) $key ); ?>"><?php echo esc_html( $val ); ?></option>
 					<?php } ?>
 				</select>
 			</p>
@@ -962,6 +962,7 @@ class WPCM_AJAX {
 
 		$labels  = wpcm_get_preset_labels( 'standings', 'label' );
 		$columns = explode( ',', get_option( 'wpcm_standings_columns_display' ) );
+		$stats   = array();
 		foreach ( $columns as $column ) {
 			if ( array_key_exists( $column, $labels ) ) {
 				$stats[ $column ] = $labels[ $column ];

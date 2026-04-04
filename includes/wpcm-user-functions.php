@@ -42,11 +42,11 @@ function wpcm_create_new_user( $email, $username = '', $password = '' ) {
 
 	// Check the e-mail address
 	if ( empty( $email ) || ! is_email( $email ) ) {
-		return;
+		return new WP_Error( 'invalid_email', __( 'Please provide a valid email address.', 'wp-club-manager' ) );
 	}
 
 	if ( email_exists( $email ) ) {
-		return;
+		return new WP_Error( 'email_exists', __( 'An account is already registered with your email address.', 'wp-club-manager' ) );
 	}
 
 	// Handle username creation
@@ -55,11 +55,11 @@ function wpcm_create_new_user( $email, $username = '', $password = '' ) {
 		$username = sanitize_user( $username );
 
 		if ( empty( $username ) || ! validate_username( $username ) ) {
-			return;
+			return new WP_Error( 'invalid_username', __( 'Please enter a valid account username.', 'wp-club-manager' ) );
 		}
 
 		if ( username_exists( $username ) ) {
-			return;
+			return new WP_Error( 'username_exists', __( 'An account is already registered with that username.', 'wp-club-manager' ) );
 		}
 	} else {
 

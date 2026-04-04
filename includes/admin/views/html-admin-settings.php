@@ -3,6 +3,9 @@
  *  Admin settings template
  */
 
+$current_tab = isset( $current_tab ) ? $current_tab : '';
+$tabs        = isset( $tabs ) ? $tabs : array();
+
 ?>
 <div class="wrap wpclubmanager">
 	<h1><?php esc_html_e( 'WP Club Manager Settings', 'wp-club-manager' ); ?></h1>

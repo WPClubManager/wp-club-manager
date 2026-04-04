@@ -18,21 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPCM_Admin_Notices {
 
 	/**
-	 * Array of notices - name => callback
-	 *
-	 * @var array
-	 */
-	private $notices = array(
-		'install'        => 'install_notice',
-		'update'         => 'update_notice',
-		'template_files' => 'template_file_check_notice',
-		'theme_support'  => 'theme_check_notice',
-		// 'club_check'        => 'club_check_notice',
-		'cricket_addon'  => 'cricket_addon_notice',
-		'version_update' => 'version_update_notice',
-	);
-
-	/**
 	 * Hook in tabs.
 	 */
 	public function __construct() {

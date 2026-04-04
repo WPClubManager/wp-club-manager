@@ -84,7 +84,8 @@ class WPCM_Shortcode_Match_Opponents {
 			$linkpage = null;
 		}
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache || 'last_week' === $date_range || 'next_week' === $date_range ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'match_opponents' );
 			$output         = get_transient( $transient_name );
@@ -99,11 +100,12 @@ class WPCM_Shortcode_Match_Opponents {
 			} else {
 				$club = $id;
 			}
+			$is_results = ( 'results' === $format );
 			if ( '' === $format ) {
 				$format = array( 'publish', 'future' );
 			} elseif ( 'fixtures' === $format ) {
 				$format = 'future';
-			} elseif ( 'results' === $format ) {
+			} elseif ( $is_results ) {
 				$format = 'publish';
 			}
 
@@ -118,7 +120,7 @@ class WPCM_Shortcode_Match_Opponents {
 				'posts_per_page' => $limit,
 			);
 
-			if ( 'results' === $format ) {
+			if ( $is_results ) {
 				$query_args['meta_query'] = array( // phpcs:ignore
 					array(
 						'key'   => 'wpcm_played',

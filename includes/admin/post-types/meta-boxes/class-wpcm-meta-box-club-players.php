@@ -60,7 +60,7 @@ class WPCM_Meta_Box_Club_Players {
 				foreach ( $players as $player ) {
 					?>
 
-					<tr data-club="<?php echo esc_html( $player->ID ); ?>">
+					<tr data-club="<?php echo esc_html( (string) $player->ID ); ?>">
 
 						<td class="club">
 							<?php echo esc_html( $player->post_title ); ?>

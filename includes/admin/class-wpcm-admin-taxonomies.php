@@ -23,27 +23,27 @@ class WPCM_Admin_Taxonomies {
 	 */
 	public function __construct() {
 
-		add_action( 'create_wpcm_season', array( $this, 'save_season_tax_positions' ), 10, 2 );
-		add_action( 'create_wpcm_position', array( $this, 'save_position_tax_positions' ), 10, 2 );
-		add_action( 'create_wpcm_jobs', array( $this, 'save_jobs_tax_positions' ), 10, 2 );
+		add_action( 'create_wpcm_season', array( $this, 'save_season_tax_positions' ) );
+		add_action( 'create_wpcm_position', array( $this, 'save_position_tax_positions' ) );
+		add_action( 'create_wpcm_jobs', array( $this, 'save_jobs_tax_positions' ) );
 
-		add_action( 'wpcm_team_add_form_fields', array( $this, 'team_add_new_extra_fields' ), 10, 2 );
-		add_action( 'wpcm_team_edit_form_fields', array( $this, 'team_edit_extra_fields' ), 10, 2 );
+		add_action( 'wpcm_team_add_form_fields', array( $this, 'team_add_new_extra_fields' ) );
+		add_action( 'wpcm_team_edit_form_fields', array( $this, 'team_edit_extra_fields' ) );
 
-		add_action( 'edited_wpcm_team', array( $this, 'save_team_extra_fields' ), 10, 2 );
-		add_action( 'create_wpcm_team', array( $this, 'save_team_extra_fields' ), 10, 2 );
+		add_action( 'edited_wpcm_team', array( $this, 'save_team_extra_fields' ) );
+		add_action( 'create_wpcm_team', array( $this, 'save_team_extra_fields' ) );
 
-		add_action( 'wpcm_comp_add_form_fields', array( $this, 'comp_add_new_extra_fields' ), 10, 2 );
-		add_action( 'wpcm_comp_edit_form_fields', array( $this, 'comp_edit_extra_fields' ), 10, 2 );
+		add_action( 'wpcm_comp_add_form_fields', array( $this, 'comp_add_new_extra_fields' ) );
+		add_action( 'wpcm_comp_edit_form_fields', array( $this, 'comp_edit_extra_fields' ) );
 
-		add_action( 'edited_wpcm_comp', array( $this, 'save_comp_extra_fields' ), 10, 2 );
-		add_action( 'create_wpcm_comp', array( $this, 'save_comp_extra_fields' ), 10, 2 );
+		add_action( 'edited_wpcm_comp', array( $this, 'save_comp_extra_fields' ) );
+		add_action( 'create_wpcm_comp', array( $this, 'save_comp_extra_fields' ) );
 
-		add_action( 'wpcm_venue_add_form_fields', array( $this, 'venue_add_new_extra_fields' ), 10, 2 );
-		add_action( 'wpcm_venue_edit_form_fields', array( $this, 'venue_edit_extra_fields' ), 10, 2 );
+		add_action( 'wpcm_venue_add_form_fields', array( $this, 'venue_add_new_extra_fields' ) );
+		add_action( 'wpcm_venue_edit_form_fields', array( $this, 'venue_edit_extra_fields' ) );
 
-		add_action( 'edited_wpcm_venue', array( $this, 'save_venue_extra_fields' ), 10, 2 );
-		add_action( 'create_wpcm_venue', array( $this, 'save_venue_extra_fields' ), 10, 2 );
+		add_action( 'edited_wpcm_venue', array( $this, 'save_venue_extra_fields' ) );
+		add_action( 'create_wpcm_venue', array( $this, 'save_venue_extra_fields' ) );
 
 		add_action( 'manage_wpcm_comp_custom_column', array( $this, 'comp_custom_columns' ), 5, 3 );
 		add_action( 'manage_wpcm_season_custom_column', array( $this, 'season_custom_columns' ), 5, 3 );
@@ -146,7 +146,7 @@ class WPCM_Admin_Taxonomies {
 
 		<div class="form-field">
 			<label for="term_meta[wpcm_team_label]"><?php esc_html_e( 'Display Name', 'wp-club-manager' ); ?></label>
-			<input name="term_meta[wpcm_team_label]" id="term_meta[wpcm_team_label]" type="text" value="<?php echo ( isset( $term_meta['wpcm_team_label'] ) && ! empty( $term_meta['wpcm_team_label'] ) ) ? esc_html( $term_meta['wpcm_team_label'] ) : ''; ?>"/>
+			<input name="term_meta[wpcm_team_label]" id="term_meta[wpcm_team_label]" type="text" value=""/>
 			<p><?php esc_html_e( 'The team label is used to display a shortened version of the team name.', 'wp-club-manager' ); ?></p>
 		</div>
 		<?php
@@ -276,7 +276,7 @@ class WPCM_Admin_Taxonomies {
 
 		<div class="form-field">
 			<label for="term_meta[wpcm_comp_label]"><?php esc_html_e( 'Competition Label', 'wp-club-manager' ); ?></label>
-			<input name="term_meta[wpcm_comp_label]" id="term_meta[wpcm_comp_label]" type="text" value="<?php echo ( isset( $term_meta['wpcm_comp_label'] ) && ! empty( $term_meta['wpcm_comp_label'] ) ) ? esc_html( $term_meta['wpcm_comp_label'] ) : ''; ?>"/>
+			<input name="term_meta[wpcm_comp_label]" id="term_meta[wpcm_comp_label]" type="text" value=""/>
 			<p><?php esc_html_e( 'The competition label is used to display a shortened version of the competition name.', 'wp-club-manager' ); ?></p>
 		</div>
 		<?php
@@ -448,14 +448,15 @@ class WPCM_Admin_Taxonomies {
 			'hide_empty' => false,
 		);
 		// Get latitude and longitude from the last added venue
-		$terms = get_terms( $args );
+		$term_meta = array();
+		$terms     = get_terms( $args );
 		if ( $terms ) {
 			$term      = reset( $terms );
 			$t_id      = $term->term_id;
 			$term_meta = get_option( "taxonomy_term_$t_id" );
-			$address   = $term_meta['wpcm_address'];
-			$latitude  = $term_meta['wpcm_latitude'];
-			$longitude = $term_meta['wpcm_longitude'];
+			$address   = isset( $term_meta['wpcm_address'] ) ? $term_meta['wpcm_address'] : '';
+			$latitude  = isset( $term_meta['wpcm_latitude'] ) ? $term_meta['wpcm_latitude'] : '';
+			$longitude = isset( $term_meta['wpcm_longitude'] ) ? $term_meta['wpcm_longitude'] : '';
 		} else {
 			$address   = 'London Stadium, London, E20 2ST UK';
 			$latitude  = '51.5391098892326';
@@ -503,7 +504,9 @@ class WPCM_Admin_Taxonomies {
 
 		$t_id      = $tag->term_id;
 		$term_meta = get_option( "taxonomy_term_$t_id" );
-		$address   = $term_meta['wpcm_address'];
+		$address   = isset( $term_meta['wpcm_address'] ) ? $term_meta['wpcm_address'] : '';
+		$latitude  = '';
+		$longitude = '';
 		if ( $address ) {
 			$coordinates = new WPCM_Geocoder( $address );
 			$latitude    = $coordinates->lat;
@@ -540,9 +543,9 @@ class WPCM_Admin_Taxonomies {
 			</td>
 		</tr>
 
-		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-latitude"' : ''; ?> name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo ( isset( $term_meta['wpcm_latitude'] ) && ! empty( $term_meta['wpcm_latitude'] ) ) ? esc_html( $term_meta['wpcm_latitude'] ) : esc_html( $latitude ); ?>">
+		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-latitude"' : ''; ?> name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo ( isset( $term_meta['wpcm_latitude'] ) && ! empty( $term_meta['wpcm_latitude'] ) ) ? esc_html( $term_meta['wpcm_latitude'] ) : esc_html( (string) $latitude ); ?>">
 
-		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-longitude"' : ''; ?> name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo ( isset( $term_meta['wpcm_longitude'] ) && ! empty( $term_meta['wpcm_longitude'] ) ) ? esc_html( $term_meta['wpcm_longitude'] ) : esc_html( $longitude ); ?>">
+		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-longitude"' : ''; ?> name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo ( isset( $term_meta['wpcm_longitude'] ) && ! empty( $term_meta['wpcm_longitude'] ) ) ? esc_html( $term_meta['wpcm_longitude'] ) : esc_html( (string) $longitude ); ?>">
 
 		<tr class="form-field">
 			<th scope="row" valign="top">

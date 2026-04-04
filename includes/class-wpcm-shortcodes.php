@@ -271,11 +271,13 @@ class WPCM_Shortcodes {
 
 		// $api_key = urlencode( get_option( 'wpcm_google_map_api') );
 
+		$latitude  = null;
+		$longitude = null;
 		if ( $atts['address'] ) {
-			$coordinates = wpcm_decode_address( $atts['address'] );
-			if ( is_array( $coordinates ) ) {
-				$latitude  = $coordinates['lat'];
-				$longitude = $coordinates['lng'];
+			$coordinates = new WPCM_Geocoder( $atts['address'] );
+			if ( $coordinates->lat && $coordinates->lng ) {
+				$latitude  = $coordinates->lat;
+				$longitude = $coordinates->lng;
 			}
 		}
 		$address = $atts['address'];

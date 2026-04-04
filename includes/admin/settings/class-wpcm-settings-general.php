@@ -213,7 +213,7 @@ if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 		public function save() {
 			$post = filter_input( INPUT_POST, 'wpcm_sport', FILTER_UNSAFE_RAW );
 			$post = sanitize_text_field( $post );
-			if ( isset( $post ) && ! empty( $post ) && get_option( 'wpcm_sport' ) !== $post ) {
+			if ( ! empty( $post ) && get_option( 'wpcm_sport' ) !== $post ) {
 				$sport = WPCM()->sports->{$post};
 				WPCM_Admin_Settings::configure_sport( $sport );
 			}

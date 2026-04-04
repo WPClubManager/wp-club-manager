@@ -87,7 +87,7 @@ class WPCM_Admin_Setup_Wizard {
 
 		wp_register_script( 'jquery-locationpicker', WPCM()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.16', true );
 
-		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', '' );
+		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', array() );
 
 		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ) );
 
@@ -347,18 +347,28 @@ class WPCM_Admin_Setup_Wizard {
 
 		check_admin_referer( 'wpcm-setup' );
 
+		$season     = '';
+		$season_id  = 0;
+		$comp       = '';
+		$comp_id    = 0;
+		$opponent_id = null;
+
 		$setup_season = filter_input( INPUT_POST, 'setup_season', FILTER_UNSAFE_RAW );
 		if ( $setup_season ) {
 			$season    = sanitize_text_field( $setup_season );
 			$season_id = wp_insert_term( $season, 'wpcm_season' );
-			update_term_meta( $season_id, 'tax_position', 1 );
+			if ( ! is_wp_error( $season_id ) ) {
+				update_term_meta( $season_id['term_id'], 'tax_position', 1 );
+			}
 		}
 
 		$setup_comp = filter_input( INPUT_POST, 'setup_comp', FILTER_UNSAFE_RAW );
 		if ( $setup_comp ) {
 			$comp    = sanitize_text_field( $setup_comp );
 			$comp_id = wp_insert_term( $comp, 'wpcm_comp' );
-			update_term_meta( $comp_id, 'tax_position', 1 );
+			if ( ! is_wp_error( $comp_id ) ) {
+				update_term_meta( $comp_id['term_id'], 'tax_position', 1 );
+			}
 		}
 
 		$default_club = filter_input( INPUT_POST, 'default_club', FILTER_UNSAFE_RAW );
@@ -376,7 +386,9 @@ class WPCM_Admin_Setup_Wizard {
 
 			$team    = __( 'First Team', 'wp-club-manager' );
 			$team_id = wp_insert_term( $team, 'wpcm_team' );
-			update_term_meta( $team_id, 'tax_position', 1 );
+			if ( ! is_wp_error( $team_id ) ) {
+				update_term_meta( $team_id['term_id'], 'tax_position', 1 );
+			}
 
 			$setup_opponent = filter_input( INPUT_POST, 'setup_opponent', FILTER_UNSAFE_RAW );
 			if ( $setup_opponent ) {

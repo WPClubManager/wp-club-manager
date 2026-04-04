@@ -145,7 +145,7 @@ class WPCM_Geocoder {
 	 * OpenStreetMap geocoder Nominatim (https://nominatim.openstreetmap.org/)
 	 *
 	 * @param string $address    the urlencoded address to look up
-	 * @return varies object from API or null (failed)
+	 * @return object object from API or null (failed)
 	 */
 	private function osm_geocode( $address ) {
 		$geocode_url  = 'https://nominatim.openstreetmap.org/?format=json&limit=1&q=';

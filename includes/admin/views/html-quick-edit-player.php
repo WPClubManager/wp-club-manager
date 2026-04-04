@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+$clubs = isset( $clubs ) ? $clubs : array();
+
 ?>
 
 <fieldset class="inline-edit-col-left">

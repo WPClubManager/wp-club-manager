@@ -83,7 +83,8 @@ class WPCM_Shortcode_Match_List {
 			$linkpage = null;
 		}
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache || 'last_week' === $date_range || 'next_week' === $date_range ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'match_list' );
 			$output         = get_transient( $transient_name );
@@ -93,6 +94,7 @@ class WPCM_Shortcode_Match_List {
 
 		if ( false === $output ) {
 
+			$post_status = array( 'publish', 'future' );
 			if ( '' === $format ) {
 				$post_status = array( 'publish', 'future' );
 			} elseif ( 'fixtures' === $format ) {

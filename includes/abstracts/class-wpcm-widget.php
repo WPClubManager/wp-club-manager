@@ -37,6 +37,12 @@ abstract class WPCM_Widget extends WP_Widget {
 	 * @var string
 	 */
 	public $widget_name;
+
+	/**
+	 * @var string
+	 */
+	public $widget_idbase;
+
 	/**
 	 * @var array
 	 */

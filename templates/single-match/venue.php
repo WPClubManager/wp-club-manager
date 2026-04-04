@@ -15,7 +15,7 @@ global $post;
 
 $venue = wpcm_get_match_venue( $post->ID );
 
-if ( $venue ) { ?>
+if ( is_array( $venue ) ) { ?>
 
 	<div class="wpcm-match-venue">
 

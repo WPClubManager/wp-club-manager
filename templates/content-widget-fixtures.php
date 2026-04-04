@@ -11,6 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Initialize variables that may be set via extract() in the calling context.
+$badges         = isset( $badges ) ? $badges : array();
+$comp           = isset( $comp ) ? $comp : array();
+$show_comp      = isset( $show_comp ) ? $show_comp : false;
+$show_countdown = isset( $show_countdown ) ? $show_countdown : false;
+$show_date      = isset( $show_date ) ? $show_date : false;
+$show_team      = isset( $show_team ) ? $show_team : false;
+$show_time      = isset( $show_time ) ? $show_time : false;
+$sides          = isset( $sides ) ? $sides : array();
+$team           = isset( $team ) ? $team : array();
+
 global $post;
 $timestamp = strtotime( $post->post_date ); ?>
 

@@ -7,6 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+$teams   = isset( $teams ) ? $teams : array();
+$comps   = isset( $comps ) ? $comps : array();
+$seasons = isset( $seasons ) ? $seasons : array();
+$venues  = isset( $venues ) ? $venues : array();
+
 ?>
 
 <fieldset class="inline-edit-col-left">

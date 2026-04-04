@@ -55,7 +55,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 				$num_posts = wp_count_posts( $type );
 
-				if ( $num_posts && $num_posts->publish ) {
+				if ( $num_posts->publish ) {
 
 					$post_type = get_post_type_object( $type );
 
@@ -141,6 +141,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 						$side2 = $home_club;
 					}
 
+					$competition = '';
 					if ( is_array( $comps ) ) {
 						foreach ( $comps as $comp ) :
 

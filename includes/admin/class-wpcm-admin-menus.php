@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPCM_Admin_Menus' ) ) :
 				$menu[] = array( '', 'read', 'separator-wpclubmanager', '', 'wp-menu-separator wpclubmanager' ); // phpcs:ignore
 			}
 
-			$main_page = add_menu_page( __( 'Club Manager', 'wp-club-manager' ), __( 'Club Manager', 'wp-club-manager' ), 'manage_wpclubmanager', 'wpcm-dashboard', array( $this, 'dashboard_page' ), WPCM()->plugin_url() . '/assets/images/logo.png', '31' );
+			$main_page = add_menu_page( __( 'Club Manager', 'wp-club-manager' ), __( 'Club Manager', 'wp-club-manager' ), 'manage_wpclubmanager', 'wpcm-dashboard', array( $this, 'dashboard_page' ), WPCM()->plugin_url() . '/assets/images/logo.png', 31 );
 
 			remove_submenu_page( 'edit.php?post_type=wpcm_player', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_player' );
 			remove_submenu_page( 'edit.php?post_type=wpcm_player', 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_player' );
@@ -59,13 +59,13 @@ if ( ! class_exists( 'WPCM_Admin_Menus' ) ) :
 		 */
 		public function taxonomy_menu() {
 
-			add_submenu_page( 'wpcm-dashboard', __( 'Seasons', 'wp-club-manager' ), __( 'Seasons', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_club', false );
-			add_submenu_page( 'wpcm-dashboard', __( 'Competitions', 'wp-club-manager' ), __( 'Competitions', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_comp&amp;post_type=wpcm_club', false );
+			add_submenu_page( 'wpcm-dashboard', __( 'Seasons', 'wp-club-manager' ), __( 'Seasons', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_season&amp;post_type=wpcm_club', '' );
+			add_submenu_page( 'wpcm-dashboard', __( 'Competitions', 'wp-club-manager' ), __( 'Competitions', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_comp&amp;post_type=wpcm_club', '' );
 			if ( is_club_mode() ) {
-				add_submenu_page( 'wpcm-dashboard', __( 'Teams', 'wp-club-manager' ), __( 'Teams', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_player', false );
-				add_submenu_page( 'wpcm-dashboard', __( 'Rosters', 'wp-club-manager' ), __( 'Rosters', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit.php?post_type=wpcm_roster', false );
+				add_submenu_page( 'wpcm-dashboard', __( 'Teams', 'wp-club-manager' ), __( 'Teams', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit-tags.php?taxonomy=wpcm_team&amp;post_type=wpcm_player', '' );
+				add_submenu_page( 'wpcm-dashboard', __( 'Rosters', 'wp-club-manager' ), __( 'Rosters', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit.php?post_type=wpcm_roster', '' );
 			}
-			add_submenu_page( 'wpcm-dashboard', __( 'League Tables', 'wp-club-manager' ), __( 'League Tables', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit.php?post_type=wpcm_table', false );
+			add_submenu_page( 'wpcm-dashboard', __( 'League Tables', 'wp-club-manager' ), __( 'League Tables', 'wp-club-manager' ), 'manage_wpclubmanager', 'edit.php?post_type=wpcm_table', '' );
 		}
 
 		/**

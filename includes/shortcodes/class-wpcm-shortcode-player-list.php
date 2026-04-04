@@ -67,7 +67,8 @@ class WPCM_Shortcode_Player_List {
 			$linkpage = null;
 		}
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'player_list' );
 			$output         = get_transient( $transient_name );
@@ -192,7 +193,7 @@ class WPCM_Shortcode_Player_List {
 					$player_details[ $player->ID ]['id'] = $player->ID;
 
 					if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) ) {
-						$player_stats = get_wpcm_player_stats( $player->ID );
+						$player_stats = get_wpcm_player_stats( get_post( $player->ID ) );
 					}
 					foreach ( $stats as $stat ) {
 

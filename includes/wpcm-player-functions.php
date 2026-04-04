@@ -371,6 +371,7 @@ function wpcm_get_player_teams( $post ) {
 function wpcm_get_player_seasons( $post ) {
 
 	$seasons = wp_get_object_terms( $post, 'wpcm_season' );
+	$season  = '';
 
 	if ( is_array( $seasons ) ) {
 		$player_seasons = array();
@@ -412,7 +413,7 @@ function wpcm_get_player_thumbnail( $post, $size = null, $args = null ) {
  * @access public
  * @param int $rating
  * @param int $appearances
- * @return int $average
+ * @return string $average
  * @since 1.4.0
  */
 function wpcm_get_player_average_rating( $rating, $appearances ) {

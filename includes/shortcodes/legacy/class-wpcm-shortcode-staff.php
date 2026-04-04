@@ -104,7 +104,8 @@ class WPCM_Shortcode_Staff {
 
 			$employees = get_posts( $query_args );
 
-			$count = 0;
+			$staff_details = array();
+			$count         = 0;
 			foreach ( $employees as $employee ) {
 				++$count;
 				foreach ( $stats as $stat ) {

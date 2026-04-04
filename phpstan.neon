@@ -6,6 +6,7 @@ parameters:
     level: 5
     bootstrapFiles:
         - phpstan-stubs/wp-cli.php
+        - phpstan-stubs/wp-club-manager.php
     paths:
         - .
     excludePaths:
@@ -17,3 +18,4 @@ parameters:
         - dist
         - build
         - assets
+        - includes/libraries

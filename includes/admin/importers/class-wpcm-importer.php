@@ -142,7 +142,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 */
 		public function dropdown( $selected ) {
 			?>
-			<select name="wpcm_columns[]" data-index="<?php echo esc_attr( array_search( $selected, array_keys( $this->columns ) ) ); ?>">
+			<select name="wpcm_columns[]" data-index="<?php echo esc_attr( (string) array_search( $selected, array_keys( $this->columns ) ) ); ?>">
 				<option value="0">&mdash; <?php esc_html_e( 'Disable', 'wp-club-manager' ); ?> &mdash;</option>
 				<?php foreach ( $this->columns as $key => $label ) : ?>
 					<option value="<?php echo esc_html( $key ); ?>" <?php selected( $selected, $key ); ?>><?php echo esc_html( $label ); ?></option>
@@ -229,7 +229,7 @@ endwhile;
 						<p class="alignright">
 							<?php
 							/* translators: 1: imported total 2: imported total  */
-							printf( esc_html__( 'Displaying %1$s&#8211;%2$s of %3$s', 'wp-club-manager' ), 1, esc_html( $this->imported + 1 ), esc_html( $this->imported + 1 ) );
+							printf( esc_html__( 'Displaying %1$s&#8211;%2$s of %3$s', 'wp-club-manager' ), 1, esc_html( (string) ( $this->imported + 1 ) ), esc_html( (string) ( $this->imported + 1 ) ) );
 							?>
 						</p>
 						<p class="submit">

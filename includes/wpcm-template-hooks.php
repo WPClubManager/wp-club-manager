@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 add_filter( 'body_class', 'wpcm_body_class' );
-add_filter( 'post_class', 'wpcm_post_class', 20, 3 );
+add_filter( 'post_class', 'wpcm_post_class', 20 );
 add_action( 'wp_head', 'wpcm_generator_tag' );
 
 /** Template Hooks */

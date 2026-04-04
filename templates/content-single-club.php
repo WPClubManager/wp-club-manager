@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Initialize variables that may be set via extract() in the calling context.
+$matches = isset( $matches ) ? $matches : array();
+$post    = isset( $post ) ? $post : null;
+
 $details          = get_club_details( $post );
 $primary_color_bg = ( $details['primary_color'] ) ? ' style="background-color:' . $details['primary_color'] . ';color:#fff;text-shadow: 0 0 3px #000;"' : '';
 

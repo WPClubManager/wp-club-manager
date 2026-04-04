@@ -9,7 +9,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$post     = isset( $post ) ? $post : null;
+$posts    = isset( $posts ) ? $posts : array();
+$show_age = isset( $show_age ) ? $show_age : false;
+?>
 
 <ul class="wpcm-birthdays-widget">
 

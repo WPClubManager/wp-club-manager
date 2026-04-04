@@ -91,13 +91,13 @@ class WPCM_Meta_Box_Roster_Players {
 				foreach ( $players as $player ) {
 					?>
 
-					<tr data-club="<?php echo esc_attr( $player->ID ); ?>">
+					<tr data-club="<?php echo esc_attr( (string) $player->ID ); ?>">
 
 						<td>
 							<input type="checkbox" name="record">
 						</td>
 						<td class="club">
-							<input type="hidden" name="wpcm_roster_players[]" value="<?php echo esc_html( $player->ID ); ?>" />
+							<input type="hidden" name="wpcm_roster_players[]" value="<?php echo esc_html( (string) $player->ID ); ?>" />
 							<?php echo esc_html( $player->post_title ); ?>
 						</td>
 						<td class="roster-actions">
@@ -154,8 +154,8 @@ class WPCM_Meta_Box_Roster_Players {
 				$seasons = wp_get_post_terms( $post_id, 'wpcm_season' );
 				$season  = $seasons[0]->term_id;
 				foreach ( $players as $player ) {
-					wp_set_post_terms( $player, $team, 'wpcm_team', true );
-					wp_set_post_terms( $player, $season, 'wpcm_season', true );
+					wp_set_post_terms( (int) $player, array( $team ), 'wpcm_team', true );
+					wp_set_post_terms( (int) $player, array( $season ), 'wpcm_season', true );
 				}
 			}
 

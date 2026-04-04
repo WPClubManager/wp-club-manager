@@ -57,7 +57,7 @@ class WPCM_Reset_Database {
 		}
 
 		foreach ( $terms as $term ) {
-			if ( $term && $term->term_id ) {
+			if ( $term->term_id ) {
 				wp_delete_term( $term->term_id, $taxonomy );
 			}
 		}

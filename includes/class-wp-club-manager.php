@@ -32,7 +32,7 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 		public $version = '2.2.11';
 
 		/**
-		 * @var WP_Club_Manager The single instance of the class
+		 * @var WP_Club_Manager|null The single instance of the class
 		 */
 		protected static $instance = null;
 
@@ -176,6 +176,8 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 					return defined( 'DOING_AJAX' );
 				case 'frontend':
 					return ( ! is_admin() || defined( 'DOING_AJAX' ) );
+				default:
+					return false;
 			}
 		}
 

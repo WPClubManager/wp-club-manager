@@ -26,12 +26,14 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 	$sport = get_option( 'wpcm_sport' );
 	$data  = wpcm_get_sport_presets();
 
+	$stats = array();
 	if ( 'standings' == $type ) {
 		$stats = $data[ $sport ]['standings_columns'];
 	} elseif ( 'players' == $type ) {
 		$stats = $data[ $sport ]['stats_labels'];
 	}
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
 
 		$output[ $key ] = $value[ $format ];
@@ -53,6 +55,7 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 	$data  = wpcm_get_sport_presets();
 	$stats = $data[ $sport ]['stats_labels'];
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
 		if ( $section == $value['section'] ) {
 
@@ -555,6 +558,8 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 		$output  = array();
 		$teams   = wp_get_object_terms( $post, 'wpcm_team', array( 'orderby' => 'tax_position' ) );
 		$seasons = wp_get_object_terms( $post, 'wpcm_season', array( 'orderby' => 'tax_position' ) );
+		$team    = null;
+		$season  = null;
 
 		// isolated team stats
 		if ( is_array( $teams ) ) {
@@ -585,7 +590,9 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 
 		// combined season stats for combined team
 		$stats        = get_wpcm_player_auto_stats( $post );
-		$manual_stats = get_wpcm_player_manual_stats( $post, $team->term_id, $season->term_id );
+		$team_id      = $team ? $team->term_id : null;
+		$season_id    = $season ? $season->term_id : null;
+		$manual_stats = get_wpcm_player_manual_stats( $post, $team_id, $season_id );
 		$output[0][0] = array(
 			'auto'   => $stats,
 			'total'  => $stats,
@@ -606,7 +613,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 		}
 
 		// manual stats
-		$manual_stats = (array) unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
+		$manual_stats = (array) unserialize( get_post_meta( (int) $post, 'wpcm_stats', true ) );
 
 		if ( is_array( $manual_stats ) ) {
 
@@ -858,6 +865,6 @@ if ( ! function_exists( 'wpcm_stats_value' ) ) {
 	 */
 	function wpcm_stats_value( $stats, $type, $index ) {
 
-		echo esc_html( get_wpcm_stats_value( $stats, $type, $index ) );
+		echo esc_html( (string) get_wpcm_stats_value( $stats, $type, $index ) );
 	}
 }

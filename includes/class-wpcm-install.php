@@ -181,7 +181,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 				foreach ( $section->get_settings() as $value ) {
 					if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
 						$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
-						add_option( $value['id'], $value['default'], '', ( $autoload ? 'yes' : 'no' ) );
+						add_option( $value['id'], $value['default'], '', $autoload );
 					}
 				}
 			}

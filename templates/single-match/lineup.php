@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Initialize variables that may be set via extract() in the calling context.
+$count = isset( $count ) ? $count : 0;
+
 global $post;
 
 $played                   = get_post_meta( $post->ID, 'wpcm_played', true );

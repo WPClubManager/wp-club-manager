@@ -24,8 +24,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 if ( ! function_exists( 'wpcm_club_standings_sort' ) ) {
 	/**
-	 * @param mixed $a
-	 * @param mixed $b
+	 * @param object $a
+	 * @param object $b
 	 *
 	 * @return int
 	 */
@@ -80,8 +80,8 @@ if ( ! function_exists( 'wpcm_club_standings_sort' ) ) {
  */
 if ( ! function_exists( 'wpcm_club_standings_pct_sort' ) ) {
 	/**
-	 * @param mixed $a
-	 * @param mixed $b
+	 * @param object $a
+	 * @param object $b
 	 *
 	 * @return int
 	 */
@@ -132,21 +132,23 @@ if ( ! function_exists( 'wpcm_club_standings_pct_sort' ) ) {
  */
 if ( ! function_exists( 'wpcm_club_standings_sort_by' ) ) {
 	/**
-	 * @param string $subkey
-	 * @param array  $a
+	 * @param string   $subkey
+	 * @param object[] $a
 	 *
 	 * @return array
 	 */
 	function wpcm_club_standings_sort_by( $subkey, $a ) {
 
+		$b = array();
 		foreach ( $a as $k => $v ) {
 
 			$b[ $k ] = (float) $v->wpcm_stats[ $subkey ];
 		}
 
-		if ( null != $b ) {
+		if ( ! empty( $b ) ) {
 
 			arsort( $b );
+			$c = array();
 			foreach ( $b as $key => $val ) {
 
 				$c[] = $a[ $key ];
@@ -249,8 +251,8 @@ if ( ! function_exists( 'wpcm_table_priorities' ) ) {
 
 if ( ! function_exists( 'wpcm_sort_table_clubs' ) ) {
 	/**
-	 * @param array $a
-	 * @param array $b
+	 * @param object $a
+	 * @param object $b
 	 *
 	 * @return int
 	 */

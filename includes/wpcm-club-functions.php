@@ -118,8 +118,8 @@ function wpcm_head_to_head_count( $matches ) {
  * Get club venues.
  *
  * @access public
- * @param array $post
- * @return array $venue_info
+ * @param int|WP_Post $post
+ * @return array|false $venue_info
  * @since 2.1.5
  */
 function get_club_venue( $post ) {
@@ -145,8 +145,8 @@ function get_club_venue( $post ) {
  *
  * @access public
  *
- * @param array  $post
- * @param string $size
+ * @param WP_Post $post
+ * @param string  $size
  *
  * @return array $details
  * @since  2.1.0
@@ -205,7 +205,7 @@ function get_club_abbreviation( $post_id ) {
 	$abbr = get_post_meta( $post_id, '_wpcm_club_abbr', true );
 
 	if ( '' === $abbr ) {
-		$title = get_the_title( $post_id, true );
+		$title = get_the_title( $post_id );
 		$title = str_replace( ' ', '', $title );
 		$abbr  = substr( $title, 0, 3 );
 	}

@@ -70,7 +70,8 @@ class WPCM_Shortcode_Staff_Gallery {
 			$linkpage = null;
 		}
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'staff_gallery' );
 			$output         = get_transient( $transient_name );

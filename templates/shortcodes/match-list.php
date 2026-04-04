@@ -9,7 +9,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$linktext   = isset( $linktext ) ? $linktext : '';
+$matches    = isset( $matches ) ? $matches : array();
+$show_abbr  = isset( $show_abbr ) ? $show_abbr : false;
+$show_comp  = isset( $show_comp ) ? $show_comp : false;
+$show_thumb = isset( $show_thumb ) ? $show_thumb : false;
+$title      = isset( $title ) ? $title : '';
+?>
 
 <div class="wpcm-fixtures-shortcode">
 

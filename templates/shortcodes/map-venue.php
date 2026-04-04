@@ -10,6 +10,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+// Initialize variables that may be set via extract() in the calling context.
+$address   = isset( $address ) ? $address : '';
+$api_key   = isset( $api_key ) ? $api_key : '';
+$height    = isset( $height ) ? $height : 0;
+$latitude  = isset( $latitude ) ? $latitude : '';
+$layers    = isset( $layers ) ? $layers : '';
+$longitude = isset( $longitude ) ? $longitude : '';
+$maptype   = isset( $maptype ) ? $maptype : '';
+$service   = isset( $service ) ? $service : '';
+$title     = isset( $title ) ? $title : '';
+$width     = isset( $width ) ? $width : '';
+$zoom      = isset( $zoom ) ? $zoom : 0;
 ?>
 
 <div class="wpcm-map_venue-shortcode wpcm-map-venue">

@@ -48,7 +48,8 @@ class WPCM_Shortcode_Players {
 		$title    = ( isset( $atts['title'] ) ? $atts['title'] : __( 'Players', 'wp-club-manager' ) );
 		$type     = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'players' );
 			$output         = get_transient( $transient_name );
@@ -136,8 +137,9 @@ class WPCM_Shortcode_Players {
 
 					$player_details[ $player->ID ] = array();
 					++$count;
+					$player_stats = array();
 					if ( array_intersect_key( array_flip( $stats ), $player_stats_labels ) ) {
-						$player_stats = get_wpcm_player_stats( $player->ID );
+						$player_stats = get_wpcm_player_stats( get_post( $player->ID ) );
 					}
 					foreach ( $stats as $stat ) {
 

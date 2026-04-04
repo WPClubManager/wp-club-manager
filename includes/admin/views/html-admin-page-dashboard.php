@@ -3,6 +3,29 @@
  * Admin dashboard page
  **/
 
+$default_club   = isset( $default_club ) ? $default_club : 0;
+$team_name      = isset( $team_name ) ? $team_name : '';
+$season         = isset( $season ) ? $season : null;
+$team           = isset( $team ) ? $team : null;
+$team_label     = isset( $team_label ) ? $team_label : '';
+$win_percent    = isset( $win_percent ) ? $win_percent : '';
+$biggest_score  = isset( $biggest_score ) ? $biggest_score : '';
+$f_label        = isset( $f_label ) ? $f_label : '';
+$a_label        = isset( $a_label ) ? $a_label : '';
+$goals_scored   = isset( $goals_scored ) ? $goals_scored : '';
+$goals_conceded = isset( $goals_conceded ) ? $goals_conceded : '';
+$played_matches = isset( $played_matches ) ? $played_matches : array();
+$future_matches = isset( $future_matches ) ? $future_matches : array();
+$new_query      = isset( $new_query ) ? $new_query : '';
+$employees      = isset( $employees ) ? $employees : array();
+$roster_id      = isset( $roster_id ) ? $roster_id : 0;
+$clubs          = isset( $clubs ) ? $clubs : array();
+$comps          = isset( $comps ) ? $comps : array();
+$stats          = isset( $stats ) ? $stats : array();
+$stats_labels   = isset( $stats_labels ) ? $stats_labels : array();
+$table_id       = isset( $table_id ) ? $table_id : 0;
+$players        = isset( $players ) ? $players : array();
+
 ?>
 <div class="ui basic vertical segment">
 	<div class="ui grid">

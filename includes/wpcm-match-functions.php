@@ -62,7 +62,7 @@ function match_wp_title( $title ) {
 	}
 	return $title;
 }
-add_filter( 'wp_title', 'match_wp_title', 10, 2 );
+add_filter( 'wp_title', 'match_wp_title' );
 
 /**
  * Save ajax menu_order sortable
@@ -112,6 +112,7 @@ function wpcm_get_match_outcome( $post ) {
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$walkover  = get_post_meta( $post, '_wpcm_walkover', true );
 	$postponed = get_post_meta( $post, '_wpcm_postponed', true );
+	$outcome   = '';
 	if ( get_option( 'wpcm_sport' ) !== 'cricket' ) {
 		if ( get_post_meta( $post, 'wpcm_shootout', true ) ) {
 			$home_goals = get_post_meta( $post, '_wpcm_home_shootout_goals', true );
@@ -174,7 +175,7 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 	 *
 	 * @param int $post
 	 *
-	 * @return string $result
+	 * @return array $result
 	 * @since  1.4.6
 	 */
 	function wpcm_get_match_result( $post ) {
@@ -200,6 +201,8 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 			$wickets         = unserialize( get_post_meta( $post, '_wpcm_match_wickets', true ) );
 			$cricket_outcome = get_post_meta( $post, '_wpcm_cricket_outcome', true );
 			if ( is_array( $cricket_outcome ) ) {
+				$outcome1 = '';
+				$outcome2 = '';
 				if ( 'won_by' === $cricket_outcome[0] ) {
 					$outcome1 = __( 'Won by', 'wp-club-manager' );
 				} elseif ( 'lost_by' === $cricket_outcome[0] ) {
@@ -339,6 +342,8 @@ function wpcm_get_match_comp( $post ) {
 function wpcm_get_match_team( $post ) {
 
 	$teams = get_the_terms( $post, 'wpcm_team' );
+	$name  = '';
+	$label = '';
 
 	if ( is_array( $teams ) ) {
 		foreach ( $teams as $team ) {
@@ -415,9 +420,9 @@ function wpcm_get_match_opponents( $post, $abbr = false ) {
 	$opponent  = '';
 	if ( false == $abbr ) {
 		if ( $club == $home_club ) {
-			$opponent = get_the_title( $away_club, true );
+			$opponent = get_the_title( $away_club );
 		} elseif ( $club == $away_club ) {
-			$opponent = get_the_title( $home_club, true );
+			$opponent = get_the_title( $home_club );
 		}
 	} elseif ( $club == $home_club ) {
 			$opponent = get_club_abbreviation( $away_club );
@@ -478,7 +483,7 @@ function wpcm_get_match_badges( $post, $size = null, $args = null ) {
  *
  * @access public
  * @param int $post
- * @return string $venue
+ * @return array $venue
  * @since 1.4.6
  */
 function wpcm_get_match_venue( $post ) {

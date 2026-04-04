@@ -71,7 +71,8 @@ class WPCM_Shortcode_Player_Gallery {
 			$linkpage = null;
 		}
 
-		$disable_cache = get_option( 'wpcm_disable_cache' );
+		$transient_name = '';
+		$disable_cache  = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache && 'widget' !== $type ) {
 			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'player_gallery' );
 			$output         = get_transient( $transient_name );
@@ -123,7 +124,7 @@ class WPCM_Shortcode_Player_Gallery {
 
 					$player_details[ $player->ID ]['id'] = $player->ID;
 
-					$player_stats = get_wpcm_player_stats( $player->ID );
+					$player_stats = get_wpcm_player_stats( get_post( $player->ID ) );
 
 					$thumb        = wpcm_get_player_thumbnail( $player->ID, 'player_full' );
 					$url          = get_permalink( $player->ID );

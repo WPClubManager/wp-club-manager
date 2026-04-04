@@ -3,6 +3,16 @@
  * Admin dashboard page for league mode
  **/
 
+$clubs          = isset( $clubs ) ? $clubs : array();
+$comps          = isset( $comps ) ? $comps : array();
+$stats          = isset( $stats ) ? $stats : array();
+$stats_labels   = isset( $stats_labels ) ? $stats_labels : array();
+$table_id       = isset( $table_id ) ? $table_id : 0;
+$played_matches = isset( $played_matches ) ? $played_matches : array();
+$played_match   = isset( $played_match ) ? $played_match : null;
+$future_matches = isset( $future_matches ) ? $future_matches : array();
+$new_query      = isset( $new_query ) ? $new_query : '';
+
 ?>
 <div class="ui basic vertical segment">
 	<div class="ui grid">

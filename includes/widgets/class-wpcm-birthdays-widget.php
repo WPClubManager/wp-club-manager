@@ -79,7 +79,7 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 	 *
 	 * @param  array $args
 	 * @param  array $instance
-	 * @return WP_Query
+	 * @return array|null
 	 */
 	public function get_birthdays( $args, $instance ) {
 
@@ -107,6 +107,7 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 		);
 
 		$players = get_posts( $query_args );
+		$posts   = array();
 
 		foreach ( $players as $player ) :
 

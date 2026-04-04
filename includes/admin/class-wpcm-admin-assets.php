@@ -38,6 +38,7 @@ class WPCM_Admin_Assets {
 		$screen = get_current_screen();
 
 		if ( in_array( $screen->id, wpcm_get_screen_ids() ) ) {
+			global $wp_scripts;
 
 			$jquery_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.9.2';
 

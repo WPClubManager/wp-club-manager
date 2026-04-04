@@ -21,7 +21,6 @@ class WPCM_Cache_Helper {
 	 * Hook in methods.
 	 */
 	public static function init() {
-		add_action( 'create_plugin_transient_name', array( __CLASS__, 'create_plugin_transient_name' ) );
 		add_action( 'update_plugin_transient_keys', array( __CLASS__, 'update_plugin_transient_keys' ) );
 		add_action( 'delete_plugin_transients', array( __CLASS__, 'delete_plugin_transients' ) );
 		add_action( 'wp_ajax_wpcm_clear_transients', array( __CLASS__, 'wpcm_clear_transients' ) );

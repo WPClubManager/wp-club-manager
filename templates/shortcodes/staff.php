@@ -9,7 +9,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$limit         = isset( $limit ) ? $limit : 0;
+$linktext      = isset( $linktext ) ? $linktext : '';
+$staff_details = isset( $staff_details ) ? $staff_details : array();
+$stats         = isset( $stats ) ? $stats : array();
+$stats_labels  = isset( $stats_labels ) ? $stats_labels : array();
+$title         = isset( $title ) ? $title : '';
+?>
 
 <div class="wpcm-players-shortcode">
 

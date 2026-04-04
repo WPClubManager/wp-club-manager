@@ -20,6 +20,11 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 	class WPCM_Admin_Permalink_Settings {
 
 		/**
+		 * @var array
+		 */
+		public $slugs = array();
+
+		/**
 		 * Hook in tabs.
 		 */
 		public function __construct() {

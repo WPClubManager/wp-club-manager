@@ -69,8 +69,8 @@ class WPCM_Plugin_Updater {
 	 *
 	 * @uses api_request()
 	 *
-	 * @param array $_transient_data Update array build by WordPress.
-	 * @return array Modified update array with custom plugin data.
+	 * @param mixed $_transient_data Update array build by WordPress.
+	 * @return stdClass Modified update array with custom plugin data.
 	 */
 	function check_update( $_transient_data ) {
 

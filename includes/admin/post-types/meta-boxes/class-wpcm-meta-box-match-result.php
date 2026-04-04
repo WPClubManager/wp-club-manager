@@ -45,6 +45,17 @@ class WPCM_Meta_Box_Match_Result {
 		$postponed = get_post_meta( $post->ID, '_wpcm_postponed', true );
 		$walkover  = get_post_meta( $post->ID, '_wpcm_walkover', true );
 
+		$goals                = array( 'total' => array( 'home' => '0', 'away' => '0' ) );
+		$wpcm_match_runs      = array( 'home' => '0', 'away' => '0' );
+		$wpcm_match_extras    = array( 'home' => '0', 'away' => '0' );
+		$wpcm_match_wickets   = array( 'home' => '0', 'away' => '0' );
+		$wpcm_match_overs     = array( 'home' => '0', 'away' => '0' );
+		$wpcm_cricket_outcome = array( 0 => '', 1 => '', 2 => '' );
+		$overtime             = false;
+		$shootout             = false;
+		$shootout_score       = array( 'home' => '0', 'away' => '0' );
+		$bonus                = array( 'home' => '0', 'away' => '0' );
+
 		if ( 'cricket' == $sport ) {
 			$wpcm_match_runs      = array_merge( array(
 				'home' => '0',

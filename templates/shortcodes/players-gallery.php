@@ -9,7 +9,17 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$columns        = isset( $columns ) ? $columns : 3;
+$limit          = isset( $limit ) ? $limit : 0;
+$linktext       = isset( $linktext ) ? $linktext : '';
+$orderby        = isset( $orderby ) ? $orderby : 'name';
+$player_details = isset( $player_details ) ? $player_details : array();
+$title          = isset( $title ) ? $title : '';
+$type           = isset( $type ) ? $type : '';
+?>
 
 <div id="wpcm-players-gallery">
 

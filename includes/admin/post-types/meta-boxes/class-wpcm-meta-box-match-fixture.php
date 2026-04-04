@@ -92,13 +92,13 @@ class WPCM_Meta_Box_Match_Fixture {
 
 		if ( isset( $home_club_id ) ) {
 			update_post_meta( $post_id, 'wpcm_home_club', $home_club_id );
-			wp_set_post_terms( $home_club_id, $comp_id, 'wpcm_comp', true );
-			wp_set_post_terms( $home_club_id, $season_id, 'wpcm_season', true );
+			wp_set_post_terms( $home_club_id, array( (int) $comp_id ), 'wpcm_comp', true );
+			wp_set_post_terms( $home_club_id, array( (int) $season_id ), 'wpcm_season', true );
 		}
 		if ( isset( $away_club_id ) ) {
 			update_post_meta( $post_id, 'wpcm_away_club', $away_club_id );
-			wp_set_post_terms( $away_club_id, $comp_id, 'wpcm_comp', true );
-			wp_set_post_terms( $away_club_id, $season_id, 'wpcm_season', true );
+			wp_set_post_terms( $away_club_id, array( (int) $comp_id ), 'wpcm_comp', true );
+			wp_set_post_terms( $away_club_id, array( (int) $season_id ), 'wpcm_season', true );
 		}
 	}
 }

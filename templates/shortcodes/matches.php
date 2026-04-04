@@ -9,7 +9,19 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$away_badge = isset( $away_badge ) ? $away_badge : '';
+$club       = isset( $club ) ? $club : '';
+$home_badge = isset( $home_badge ) ? $home_badge : '';
+$linktext   = isset( $linktext ) ? $linktext : '';
+$matches    = isset( $matches ) ? $matches : array();
+$show_comp  = isset( $show_comp ) ? $show_comp : false;
+$show_team  = isset( $show_team ) ? $show_team : false;
+$thumb      = isset( $thumb ) ? $thumb : '';
+$title      = isset( $title ) ? $title : '';
+?>
 
 <div class="wpcm-fixtures-shortcode">
 
@@ -48,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo esc_html( date_i18n( 'd M', $timestamp ) ); ?>, <?php echo esc_html( date_i18n( $time_format, $timestamp ) ); ?>
 					</a>
 				</td>
-				<td class="venue"><?php echo esc_html( $venue['status'] ); ?></td>
+				<td class="venue"><?php echo esc_html( is_array( $venue ) ? $venue['status'] : '' ); ?></td>
 				<?php
 				if ( '1' === $thumb ) {
 					echo esc_html( $club == $home_club ? $away_badge : $home_badge );

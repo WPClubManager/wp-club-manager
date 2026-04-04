@@ -48,7 +48,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			add_filter( 'bulk_actions-edit-wpcm_match', array( $this, 'wpcm_match_bulk_actions' ) );
 			add_filter( 'list_table_primary_column', array( $this, 'list_table_primary_column' ), 10, 2 );
-			add_filter( 'post_row_actions', array( $this, 'row_actions' ), 2, 100 );
+			add_filter( 'post_row_actions', array( $this, 'row_actions' ), 2, 2 );
 
 			// Quick edit
 			add_action( 'quick_edit_custom_box', array( $this, 'quick_edit' ), 10, 2 );
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function match_columns( $existing_columns ) {
 
-			if ( empty( $existing_columns ) && ! is_array( $existing_columns ) ) {
+			if ( empty( $existing_columns ) ) {
 				$existing_columns = array();
 			}
 
@@ -395,7 +395,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function club_columns( $existing_columns ) {
 
-			if ( empty( $existing_columns ) && ! is_array( $existing_columns ) ) {
+			if ( empty( $existing_columns ) ) {
 				$existing_columns = array();
 			}
 
@@ -420,7 +420,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function player_columns( $existing_columns ) {
 
-			if ( empty( $existing_columns ) && ! is_array( $existing_columns ) ) {
+			if ( empty( $existing_columns ) ) {
 				$existing_columns = array();
 			}
 
@@ -456,7 +456,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function staff_columns( $existing_columns ) {
 
-			if ( empty( $existing_columns ) && ! is_array( $existing_columns ) ) {
+			if ( empty( $existing_columns ) ) {
 				$existing_columns = array();
 			}
 
@@ -625,6 +625,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					break;
 				case 'team':
 					if ( taxonomy_exists( 'wpcm_team' ) ) {
+						$teams = array();
 						$terms = get_the_terms( $post->ID, 'wpcm_team' );
 						if ( $terms ) {
 							foreach ( $terms as $term ) {
@@ -818,7 +819,8 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 					break;
 				case 'position':
-					$terms = get_the_terms( $post->ID, 'wpcm_position' );
+					$positions = array();
+					$terms     = get_the_terms( $post->ID, 'wpcm_position' );
 					if ( $terms ) {
 						foreach ( $terms as $term ) {
 							$positions[] = $term->name;
@@ -909,6 +911,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 					break;
 				case 'jobs':
+					$jobs  = array();
 					$terms = get_the_terms( $post->ID, 'wpcm_jobs' );
 					if ( $terms ) {
 						foreach ( $terms as $term ) {
@@ -1019,7 +1022,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					break;
 				case 'clubs':
 					$clubs = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
-					echo esc_html( is_array( $clubs ) ? count( $clubs ) : 0 );
+					echo esc_html( (string) ( is_array( $clubs ) ? count( $clubs ) : 0 ) );
 					break;
 			}
 		}
@@ -1089,7 +1092,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function row_actions( $actions, $post ) {
 
-			if ( null !== $post->post_type && in_array( $post->post_type, array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_roster', 'wpcm_table', 'wpcm_sponsor' ) ) ) {
+			if ( in_array( $post->post_type, array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_roster', 'wpcm_table', 'wpcm_sponsor' ) ) ) {
 				return array_merge( array( 'id' => 'ID: ' . $post->ID ), $actions );
 			}
 

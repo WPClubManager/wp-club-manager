@@ -74,7 +74,7 @@ function wpclubmanager_get_template_part( $slug, $name = '' ) {
  */
 function wpclubmanager_get_template( $template_name, $args = array(), $template_path = '', $default_path = '' ) {
 
-	if ( $args && is_array( $args ) ) {
+	if ( $args ) {
 		extract( $args ); // phpcs:ignore
 	}
 
@@ -160,15 +160,15 @@ function wpclubmanager_locate_template( $template_name, $template_path = '', $de
  *
  * Variable is filtered by wpclubmanager_get_image_size_{image_size}
  *
- * @param string $image_size
+ * @param string|array $image_size
  * @return array
  */
 function wpcm_get_image_size( $image_size ) {
 
 	if ( is_array( $image_size ) ) {
-		$width  = isset( $image_size[0] ) ? $image_size[0] : '300';
-		$height = isset( $image_size[1] ) ? $image_size[1] : '300';
-		$crop   = isset( $image_size[2] ) ? $image_size[2] : 1;
+		$width  = $image_size[0] ?? '300';
+		$height = $image_size[1] ?? '300';
+		$crop   = $image_size[2] ?? 1;
 
 		$size = array(
 			'width'  => $width,
@@ -454,7 +454,7 @@ function wpcm_rand_hash() {
 	if ( function_exists( 'openssl_random_pseudo_bytes' ) ) {
 		return bin2hex( openssl_random_pseudo_bytes( 20 ) );
 	} else {
-		return sha1( wp_rand() );
+		return sha1( (string) wp_rand() );
 	}
 }
 
@@ -591,7 +591,7 @@ add_action( 'init', 'wpcm_club_rewrites' );
  * @since  2.0.0
  */
 function wpcm_club_permalinks( $post_link, $post, $leavename ) {
-	if ( isset( $post->post_type ) && 'wpcm_club' == $post->post_type ) {
+	if ( 'wpcm_club' === $post->post_type ) {
 
 		$permalink      = get_option( 'wpclubmanager_club_slug' );
 		$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;

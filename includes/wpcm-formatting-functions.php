@@ -96,15 +96,17 @@ function wpcm_clean( $var ) {
  */
 function subval_sort( $a, $subkey ) {
 
+	$b = array();
 	foreach ( $a as $k => $v ) {
 
 		$b[ $k ] = strtolower( $v[ $subkey ] ?? '' );
 	}
 
-	if ( null != $b ) {
+	if ( ! empty( $b ) ) {
 
 		asort( $b );
 
+		$c = array();
 		foreach ( $b as $key => $val ) {
 
 			$c[] = $a[ $key ];
@@ -283,7 +285,7 @@ function wpcm_dropdown_posts( $args = array() ) {
 			$name        = date_i18n( $date_format, $timestamp ) . ' - ' . $name;
 		}
 
-		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
+		echo '<option class="level-0" value="' . esc_attr( (string) $post->ID ) . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
 	}
 
 	echo '</select>';
@@ -349,7 +351,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 	$chosen = $args['chosen'];
 	unset( $args['chosen'] );
 
-	sprintf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
+	echo sprintf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
 
 	if ( $terms ) :
 
@@ -408,7 +410,7 @@ function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = nu
 
 	$output = '<select name="' . esc_attr( $name ) . '" class="' . esc_attr( $name ) . '" id="' . esc_attr( $name ) . '"';
 
-	if ( $atts ) :
+	if ( $atts && is_array( $atts ) ) :
 
 		foreach ( $atts as $key => $value ) :
 

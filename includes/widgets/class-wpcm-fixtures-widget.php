@@ -172,14 +172,14 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 			'posts_per_page' => $limit,
 		);
 
-		if ( isset( $venue ) && 'home' === $venue ) {
+		if ( 'home' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_home_club',
 					'value' => $club,
 				),
 			);
-		} elseif ( isset( $venue ) && 'away' === $venue ) {
+		} elseif ( 'away' === $venue ) {
 			$query_args['meta_query'] = array(
 				array(
 					'key'   => 'wpcm_away_club',

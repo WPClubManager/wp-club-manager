@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Initialize variables that may be set via extract() in the calling context.
+$season = isset( $season ) ? $season : '';
+$stats  = isset( $stats ) ? $stats : array();
+$sub    = isset( $sub ) ? $sub : '';
+$team   = isset( $team ) ? $team : '';
+
 global $post;
 if ( array_key_exists( $team, $stats ) ) :
 	if ( array_key_exists( $season, $stats[ $team ] ) ) :

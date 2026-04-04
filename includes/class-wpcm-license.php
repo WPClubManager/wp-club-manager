@@ -80,7 +80,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			 * handler will automatically pick these up and use those in lieu of the
 			 * user having to reactive their license.
 			 */
-			if ( ! empty( $_optname ) && isset( $_optname ) && empty( $this->license ) ) {
+			if ( ! empty( $_optname ) && empty( $this->license ) ) {
 				$this->license = trim( $_optname );
 			}
 

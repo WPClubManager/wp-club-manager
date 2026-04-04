@@ -45,6 +45,7 @@ class WPCM_Meta_Box_Table_Details {
 		}
 
 		$default_club = get_default_club();
+		$team         = 0;
 		if ( null !== $default_club && has_teams() ) {
 			$teams = get_the_terms( $post->ID, 'wpcm_team' );
 			if ( is_array( $teams ) ) {
@@ -123,17 +124,17 @@ class WPCM_Meta_Box_Table_Details {
 
 		$table_id = filter_input( INPUT_POST, 'wpcm_table_comp', FILTER_VALIDATE_INT );
 		if ( $table_id ) {
-			wp_set_post_terms( $post_id, $table_id, 'wpcm_comp' );
+			wp_set_post_terms( $post_id, array( $table_id ), 'wpcm_comp' );
 		}
 
 		$season_id = filter_input( INPUT_POST, 'wpcm_table_season', FILTER_VALIDATE_INT );
 		if ( $season_id ) {
-			wp_set_post_terms( $post_id, $season_id, 'wpcm_season' );
+			wp_set_post_terms( $post_id, array( $season_id ), 'wpcm_season' );
 		}
 
 		$team_id = filter_input( INPUT_POST, 'wpcm_table_team', FILTER_VALIDATE_INT );
 		if ( $team_id ) {
-			wp_set_post_terms( $post_id, $team_id, 'wpcm_team' );
+			wp_set_post_terms( $post_id, array( $team_id ), 'wpcm_team' );
 		}
 
 		do_action( 'delete_plugin_transients' );

@@ -227,22 +227,22 @@ class WPCM_Meta_Box_Match_Details {
 
 		$comp = filter_input( INPUT_POST, 'wpcm_comp', FILTER_VALIDATE_INT );
 		if ( $comp ) {
-			wp_set_post_terms( $post_id, $comp, 'wpcm_comp' );
+			wp_set_post_terms( $post_id, array( $comp ), 'wpcm_comp' );
 		}
 
 		$season = filter_input( INPUT_POST, 'wpcm_season', FILTER_VALIDATE_INT );
 		if ( $season ) {
-			wp_set_post_terms( $post_id, $season, 'wpcm_season' );
+			wp_set_post_terms( $post_id, array( $season ), 'wpcm_season' );
 		}
 
 		$team = filter_input( INPUT_POST, 'wpcm_match_team', FILTER_VALIDATE_INT );
 		if ( $team ) {
-			wp_set_post_terms( $post_id, $team, 'wpcm_team' );
+			wp_set_post_terms( $post_id, array( $team ), 'wpcm_team' );
 		}
 
 		$venue = filter_input( INPUT_POST, 'wpcm_venue', FILTER_VALIDATE_INT );
 		if ( $venue ) {
-			wp_set_post_terms( $post_id, $venue, 'wpcm_venue' );
+			wp_set_post_terms( $post_id, array( $venue ), 'wpcm_venue' );
 		}
 
 		$wpcm_comp_status = filter_input( INPUT_POST, 'wpcm_comp_status', FILTER_UNSAFE_RAW );

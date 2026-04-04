@@ -16,7 +16,7 @@ global $post;
 $played     = get_post_meta( $post->ID, 'wpcm_played', true );
 $venue_info = wpcm_get_match_venue( $post->ID );
 
-if ( ! $played ) { ?>
+if ( ! $played && is_array( $venue_info ) ) { ?>
 
 	<div class="wpcm-match-venue-info">
 

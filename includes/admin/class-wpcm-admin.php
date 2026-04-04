@@ -202,7 +202,7 @@ class WPCM_Admin {
 	public function wpclubmanager_admin_rate_us( $footer_text ) {
 
 		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
-			return;
+			return $footer_text;
 		}
 
 		$current_screen = get_current_screen();

@@ -68,11 +68,13 @@ class WPCM_Shortcode_Matches {
 
 		if ( false === $output ) {
 
-			$club = get_default_club();
+			$club        = get_default_club();
+			$order       = 'ASC';
+			$is_fixtures = ( '2' === $format );
 			if ( '1' === $format ) {
 				$format = array( 'publish', 'future' );
 				$order  = 'ASC';
-			} elseif ( '2' === $format ) {
+			} elseif ( $is_fixtures ) {
 				$format = 'future';
 				$order  = 'ASC';
 			} elseif ( '3' === $format ) {
@@ -91,7 +93,7 @@ class WPCM_Shortcode_Matches {
 				'posts_per_page' => $limit,
 			);
 
-			if ( '2' === $format ) {
+			if ( $is_fixtures ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_played',
@@ -100,14 +102,14 @@ class WPCM_Shortcode_Matches {
 				);
 			}
 
-			if ( isset( $venue ) && 'home' === $venue ) {
+			if ( 'home' === $venue ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_home_club',
 						'value' => $club,
 					),
 				);
-			} elseif ( isset( $venue ) && 'away' === $venue ) {
+			} elseif ( 'away' === $venue ) {
 				$query_args['meta_query'] = array(
 					array(
 						'key'   => 'wpcm_away_club',

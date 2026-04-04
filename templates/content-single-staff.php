@@ -12,6 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+// Initialize variables that may be set via extract() in the calling context.
+$post = isset( $post ) ? $post : null;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

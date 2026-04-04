@@ -72,6 +72,7 @@ class WPCM_Meta_Box_Match_Players {
 		$teams   = get_the_terms( $post->ID, 'wpcm_team' );
 		$seasons = get_the_terms( $post->ID, 'wpcm_season' );
 		$team    = false;
+		$season  = false;
 		if ( is_array( $teams ) ) {
 
 			$match_teams = array();
@@ -170,11 +171,11 @@ class WPCM_Meta_Box_Match_Players {
 		?>
 
 		<td>
-			<select name="wpcm_players[subs][<?php echo esc_attr( $id ); ?>][sub]" data-player="<?php echo esc_attr( $id ); ?>" class="postform" <?php disabled( true, $disabled ); ?>>
+			<select name="wpcm_players[subs][<?php echo esc_attr( (string) $id ); ?>][sub]" data-player="<?php echo esc_attr( (string) $id ); ?>" class="postform" <?php disabled( true, $disabled ); ?>>
 				<option value="-1"><?php esc_html_e( 'None', 'wp-club-manager' ); ?></option>
 
 				<?php foreach ( $subs as $sub ) { ?>
-				<option value="<?php echo esc_attr( $sub->ID ); ?>"<?php echo ( get_wpcm_stats_value( $players['subs'], $id, 'sub' ) == $sub->ID ? ' selected' : '' ); ?>>
+				<option value="<?php echo esc_attr( (string) $sub->ID ); ?>"<?php echo ( get_wpcm_stats_value( $players['subs'], $id, 'sub' ) == $sub->ID ? ' selected' : '' ); ?>>
 					<?php echo esc_html( get_post_meta( $sub->ID, 'wpcm_number', true ) ); ?>. <?php echo esc_html( $sub->post_title ); ?>
 				</option>
 				<?php } ?>
@@ -204,7 +205,7 @@ class WPCM_Meta_Box_Match_Players {
 		?>
 
 		<td>
-			<input type="text" data-player="<?php echo esc_attr( $id ); ?>" name="wpcm_players[subs][<?php echo esc_attr( $id ); ?>][subtime]" value="<?php echo esc_html( get_wpcm_stats_value( $players['subs'], $id, 'subtime' ) ); ?>" size="2" <?php disabled( true, $disabled ); ?>/>
+			<input type="text" data-player="<?php echo esc_attr( (string) $id ); ?>" name="wpcm_players[subs][<?php echo esc_attr( (string) $id ); ?>][subtime]" value="<?php echo esc_html( (string) get_wpcm_stats_value( $players['subs'], $id, 'subtime' ) ); ?>" size="2" <?php disabled( true, $disabled ); ?>/>
 		</td>
 		<?php
 	}
@@ -438,13 +439,13 @@ class WPCM_Meta_Box_Match_Players {
 						}
 						?>
 
-						<tr id="<?php echo esc_attr( $player->ID ); ?>" data-player="<?php echo esc_attr( $player->ID ); ?>" class="player-stats-list <?php echo esc_attr( $player_teams ); ?> <?php echo esc_attr( $seasonclass ); ?> sortable sorted">
+						<tr id="<?php echo esc_attr( (string) $player->ID ); ?>" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" class="player-stats-list <?php echo esc_attr( $player_teams ); ?> <?php echo esc_attr( $seasonclass ); ?> sortable sorted">
 							<?php echo wp_kses_post( apply_filters( 'wpcm_players_shirt_number_output', $shirt, $player->ID, $selected_players, $type, $count, $played ) ); ?>
 
 								<td scope="row" class="names">
 									<i class="dashicons dashicons-move"></i>
 									<label class="selectit">
-										<input type="checkbox" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
+										<input type="checkbox" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][checked]" class="player-select" value="1" <?php checked( true, $played ); ?> />
 										<span class="name">
 											<?php echo wp_kses_post( apply_filters( 'wpcm_player_squad_number_output', $squad_number, $player->ID ) ); ?> <?php echo wp_kses_post( get_player_title( $player->ID ) ); ?>
 										</span>
@@ -472,7 +473,7 @@ class WPCM_Meta_Box_Match_Players {
 											?>
 
 											<td data-label="GC" class="<?php echo esc_attr( $key ); ?>">
-												<input type="checkbox" data-card="green" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
+												<input type="checkbox" data-card="green" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
 																													echo ' disabled';}
@@ -483,7 +484,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php } elseif ( 'yellowcards' == $key ) { ?>
 
 											<td data-label="YC" class="<?php echo esc_attr( $key ); ?>">
-												<input type="checkbox" data-card="yellow" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
+												<input type="checkbox" data-card="yellow" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																													<?php
 																													if ( ! $played ) {
 																														echo ' disabled';}
@@ -494,7 +495,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php } elseif ( 'blackcards' == $key ) { ?>
 
 											<td data-label="BC" class="<?php echo esc_attr( $key ); ?>">
-												<input type="checkbox" data-card="black" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
+												<input type="checkbox" data-card="black" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
 																													echo ' disabled';}
@@ -505,7 +506,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php } elseif ( 'redcards' == $key ) { ?>
 
 											<td data-label="RC" class="<?php echo esc_attr( $key ); ?>">
-												<input type="checkbox" data-card="red" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
+												<input type="checkbox" data-card="red" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																												<?php
 																												if ( ! $played ) {
 																													echo ' disabled';}
@@ -516,7 +517,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php } elseif ( 'rating' == $key ) { ?>
 
 											<td data-label="RAT" class="<?php echo esc_attr( $key ); ?>">
-												<input type="number" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], $player->ID, $key ) ); // phpcs:ignore ?>" min="0" max="10"
+												<input type="number" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], (string) $player->ID, $key ) ); // phpcs:ignore ?>" min="0" max="10"
 																							<?php
 																							if ( ! $played ) {
 																								echo ' disabled';}
@@ -527,7 +528,7 @@ class WPCM_Meta_Box_Match_Players {
 										<?php } elseif ( 'mvp' == $key ) { ?>
 
 											<td data-label="POM" class="mvp">
-												<input type="radio" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
+												<input type="radio" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="1" <?php checked( true, $keyarray ); ?>
 																							<?php
 																							if ( ! $played ) {
 																								echo ' disabled';}
@@ -537,7 +538,7 @@ class WPCM_Meta_Box_Match_Players {
 
 										<?php } else { ?>
 											<td data-label="<?php echo esc_attr( $wpcm_player_stats_labels[ $key ] ); ?>" class="<?php echo esc_attr( $key ); ?>">
-												<input type="number" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], $player->ID, $key ) ); // phpcs:ignore ?>"
+												<input type="number" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_players[<?php echo esc_attr( $type ); ?>][<?php echo esc_attr( (string) $player->ID ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php echo ( 'subs_not_used' == $type ? '0' : wpcm_stats_value( $selected_players[ $type ], (string) $player->ID, $key ) ); // phpcs:ignore ?>"
 																							<?php
 																							if ( ! $played ) {
 																								echo ' disabled';}
@@ -557,7 +558,7 @@ class WPCM_Meta_Box_Match_Players {
 
 									<td data-label="CAP" class="captain">
 
-										<input type="radio" data-player="<?php echo esc_attr( $player->ID ); ?>" name="wpcm_match_captain" value="<?php echo esc_html( $player->ID ); ?>"<?php checked( $captain, $player->ID ); ?>
+										<input type="radio" data-player="<?php echo esc_attr( (string) $player->ID ); ?>" name="wpcm_match_captain" value="<?php echo esc_html( (string) $player->ID ); ?>"<?php checked( $captain, $player->ID ); ?>
 																					<?php
 																					if ( ! $played ) {
 																						echo ' disabled';}
@@ -600,17 +601,16 @@ class WPCM_Meta_Box_Match_Players {
 
 		$players_data = filter_input( INPUT_POST, 'wpcm_players', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 		if ( $players_data ) {
+			/** @var array<string, array<int, array<string, mixed>>> $players */
 			$players = (array) $players_data;
-			if ( is_array( $players ) ) {
-				if ( array_key_exists( 'lineup', $players ) && is_array( $players['lineup'] ) ) {
-					$players['lineup'] = array_filter( $players['lineup'], 'wpcm_array_filter_checked' );
-				}
-				if ( array_key_exists( 'subs', $players ) && is_array( $players['subs'] ) ) {
-					$players['subs'] = array_filter( $players['subs'], 'wpcm_array_filter_checked' );
-				}
-				if ( array_key_exists( 'subs_not_used', $players ) && is_array( $players['subs_not_used'] ) ) {
-					$players['subs_not_used'] = array_filter( $players['subs_not_used'], 'wpcm_array_filter_checked' );
-				}
+			if ( array_key_exists( 'lineup', $players ) ) {
+				$players['lineup'] = array_filter( $players['lineup'], 'wpcm_array_filter_checked' );
+			}
+			if ( array_key_exists( 'subs', $players ) ) {
+				$players['subs'] = array_filter( $players['subs'], 'wpcm_array_filter_checked' );
+			}
+			if ( array_key_exists( 'subs_not_used', $players ) ) {
+				$players['subs_not_used'] = array_filter( $players['subs_not_used'], 'wpcm_array_filter_checked' );
 			}
 			update_post_meta( $post_id, 'wpcm_players', serialize( $players ) );
 			update_post_meta( $post_id, '_wpcm_match_subs_not_used', $players['subs_not_used'] );

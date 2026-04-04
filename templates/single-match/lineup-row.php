@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+// Initialize variables that may be set via extract() in the calling context.
+$count = isset( $count ) ? $count : 0;
+$key   = isset( $key ) ? $key : 0;
+$value = isset( $value ) ? $value : array();
+
 global $post; ?>
 
 <tr>

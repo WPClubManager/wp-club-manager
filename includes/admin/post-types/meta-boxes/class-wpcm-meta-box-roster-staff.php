@@ -93,13 +93,13 @@ class WPCM_Meta_Box_Roster_Staff {
 				foreach ( $staff as $employee ) {
 					?>
 
-					<tr data-club="<?php echo esc_attr( $employee->ID ); ?>">
+					<tr data-club="<?php echo esc_attr( (string) $employee->ID ); ?>">
 
 						<td>
 							<input type="checkbox" name="record">
 						</td>
 						<td class="club">
-							<input type="hidden" name="wpcm_roster_staff[]" value="<?php echo esc_attr( $employee->ID ); ?>" />
+							<input type="hidden" name="wpcm_roster_staff[]" value="<?php echo esc_attr( (string) $employee->ID ); ?>" />
 							<?php echo esc_html( $employee->post_title ); ?>
 						</td>
 						<td class="roster-actions">

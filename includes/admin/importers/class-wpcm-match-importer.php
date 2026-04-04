@@ -60,6 +60,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			$date_format              = 'yyyy/mm/dd';
 			$wpcm_player_stats_labels = wpcm_get_preset_labels();
+			$labels                   = array();
 			foreach ( $wpcm_player_stats_labels as $key => $val ) :
 				if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
 					$labels[] = $key;

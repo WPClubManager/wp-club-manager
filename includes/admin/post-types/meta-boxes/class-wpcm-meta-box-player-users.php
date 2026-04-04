@@ -127,6 +127,7 @@ class WPCM_Meta_Box_Player_Users {
 
 		$email = filter_input( INPUT_POST, 'wpcm_create_user', FILTER_VALIDATE_EMAIL );
 		if ( ! empty( $email ) ) {
+			$player          = '';
 			$create_username = filter_input( INPUT_POST, 'wpcm_create_username', FILTER_UNSAFE_RAW );
 			if ( isset( $create_username ) ) {
 				$player = sanitize_text_field( $create_username );

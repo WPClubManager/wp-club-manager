@@ -9,7 +9,19 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} // Exit if accessed directly ?>
+} // Exit if accessed directly
+
+// Initialize variables that may be set via extract() in the calling context.
+$center       = isset( $center ) ? $center : 0;
+$clubs        = isset( $clubs ) ? $clubs : array();
+$limit        = isset( $limit ) ? $limit : 0;
+$link_club    = isset( $link_club ) ? $link_club : 0;
+$linktext     = isset( $linktext ) ? $linktext : '';
+$stats        = isset( $stats ) ? $stats : array();
+$stats_labels = isset( $stats_labels ) ? $stats_labels : array();
+$title        = isset( $title ) ? $title : '';
+$type         = isset( $type ) ? $type : '';
+?>
 
 <div class="wpcm-standings-shortcode wpcm-standings">
 

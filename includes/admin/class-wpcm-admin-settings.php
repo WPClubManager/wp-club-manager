@@ -169,7 +169,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 		 * @param string $option_name
 		 * @param string $default
 		 *
-		 * @return string
+		 * @return string|array<string>
 		 */
 		public static function get_option( $option_name, $default = '' ) {
 			// Array value
@@ -617,6 +617,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
 					case 'standings_columns':
 						$option_value = self::get_option( $value['id'], $value['default'] );
+						$columns      = array();
 						if ( ! $option_value ) {
 							$sport = get_option( 'wpcm_sport' );
 							$data  = wpcm_get_sport_presets();
@@ -624,9 +625,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 							foreach ( $cols as $col => $val ) {
 								$columns[] = $col;
 							}
-							$option_value = implode( $columns, ',' );
+							$option_value = implode( ',', $columns );
 						} else {
-							$columns = explode( $option_value, ',' );
+							$columns = explode( ',', $option_value );
 						}
 						$stats       = wpcm_get_preset_labels( 'standings' );
 						$stats_names = wpcm_get_preset_labels( 'standings', 'name' );
@@ -713,6 +714,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						break;
 
 					case 'osm_text':
+						$type         = 'text';
 						$option_value = self::get_option( $value['id'], $value['default'] );
 						?>
 
@@ -774,6 +776,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						break;
 
 					case 'gmap_text':
+						$type         = 'text';
 						$option_value = self::get_option( $value['id'], $value['default'] );
 						?>
 
@@ -799,6 +802,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						break;
 
 					case 'map_zoom':
+						$type         = 'text';
 						$option_value = self::get_option( $value['id'], $value['default'] );
 						?>
 
