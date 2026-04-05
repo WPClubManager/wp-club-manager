@@ -58,7 +58,7 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 						}
 						?>
 
-						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo esc_html( 'yes' === get_option( 'wpcm_show_stats_subs' ) ? $sub : '' ); ?></span></td>
+						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo wp_kses_post( 'yes' === get_option( 'wpcm_show_stats_subs' ) ? $sub : '' ); ?></span></td>
 
 						<?php
 					}
