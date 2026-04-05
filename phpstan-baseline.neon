@@ -32,7 +32,7 @@ parameters:
 
 		-
 			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 12
+			count: 13
 			path: includes/admin/class-wpcm-admin-assets.php
 
 		-
@@ -117,6 +117,11 @@ parameters:
 
 		-
 			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
+			count: 5
+			path: includes/admin/class-wpcm-admin-notices.php
+
+		-
+			message: "#^Constant WPCM_VERSION not found\\.$#"
 			count: 5
 			path: includes/admin/class-wpcm-admin-notices.php
 
@@ -221,8 +226,8 @@ parameters:
 			path: includes/admin/class-wpcm-admin-setup-wizard.php
 
 		-
-			message: "#^Parameter \\#3 \\$deps of function wp_enqueue_style expects array\\<string\\>, string given\\.$#"
-			count: 1
+			message: "#^Constant WPCM_VERSION not found\\.$#"
+			count: 2
 			path: includes/admin/class-wpcm-admin-setup-wizard.php
 
 		-
