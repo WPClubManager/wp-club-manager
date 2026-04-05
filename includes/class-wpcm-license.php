@@ -207,7 +207,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			$api_params = array(
 				'edd_action' => 'activate_license',
 				'license'    => sanitize_text_field( $license ),
-				'item_name'  => urlencode( $this->item_name ),
+				'item_name'  => rawurlencode( $this->item_name ),
 			);
 
 			// Call the API
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 				$api_params = array(
 					'edd_action' => 'deactivate_license',
 					'license'    => $this->license,
-					'item_name'  => urlencode( $this->item_name ),
+					'item_name'  => rawurlencode( $this->item_name ),
 				);
 
 				// Call the API

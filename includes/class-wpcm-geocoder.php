@@ -50,7 +50,7 @@ class WPCM_Geocoder {
 	 */
 	public function __construct( $address ) {
 
-		$address = urlencode( $address );
+		$address = rawurlencode( $address );
 
 		$geocoder = get_option( 'wpcm_map_select', 'google' );
 

@@ -106,9 +106,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 							gc_enable();
 						}
 
-						@set_time_limit( 0 );
-						@ob_flush();
-						@flush();
+						@set_time_limit( 0 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+						@ob_flush(); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+						@flush(); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 
 						$this->import_table( $file );
 					endif;

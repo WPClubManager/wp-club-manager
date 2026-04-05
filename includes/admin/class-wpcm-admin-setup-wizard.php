@@ -89,9 +89,9 @@ class WPCM_Admin_Setup_Wizard {
 
 		wp_register_script( 'jquery-locationpicker', WPCM()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.16', true );
 
-		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', '' );
+		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', array(), WPCM_VERSION );
 
-		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ) );
+		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ), WPCM_VERSION, false );
 
 		$step = filter_input( INPUT_POST, 'save_step', FILTER_UNSAFE_RAW );
 		if ( $step && isset( $this->steps[ $this->step ]['handler'] ) ) {
@@ -286,7 +286,7 @@ class WPCM_Admin_Setup_Wizard {
 
 		wpcm_flush_rewrite_rules();
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 		exit;
 	}
 
@@ -421,7 +421,7 @@ class WPCM_Admin_Setup_Wizard {
 			}
 		}
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 
 		exit;
 	}
@@ -493,7 +493,7 @@ class WPCM_Admin_Setup_Wizard {
 			}
 		}
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 		exit;
 	}
 

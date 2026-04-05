@@ -218,7 +218,7 @@ if ( ! class_exists( 'WPCM_Settings_Matches' ) ) :
 				if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 
 					$settings[] = array(
-						'desc'          => strip_tags( $value ),
+						'desc'          => wp_strip_all_tags( $value ),
 						'id'            => 'wpcm_match_show_stats_' . $key,
 						'default'       => 'yes',
 						'type'          => 'checkbox',

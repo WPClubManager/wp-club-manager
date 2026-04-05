@@ -33,7 +33,7 @@ class WPCM_Admin_Assets {
 	public function admin_styles() {
 
 		// Sitewide menu CSS
-		wp_enqueue_style( 'wpclubmanager_admin_menu_styles', WPCM()->plugin_url() . '/assets/css/menu.css', array(), false );
+		wp_enqueue_style( 'wpclubmanager_admin_menu_styles', WPCM()->plugin_url() . '/assets/css/menu.css', array(), WPCM_VERSION );
 
 		$screen = get_current_screen();
 
@@ -86,7 +86,7 @@ class WPCM_Admin_Assets {
 
 		wp_register_script( 'chosen', WPCM()->plugin_url() . '/assets/js/vendor/jquery-chosen/chosen.jquery' . $suffix . '.js', array('jquery'), '1.8.2' );
 
-		wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=' . $api_key . '&libraries=places' );
+		wp_register_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=' . $api_key . '&libraries=places', array(), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 		wp_register_script( 'jquery-locationpicker', WPCM()->plugin_url() . '/assets/js/vendor/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.16', true );
 

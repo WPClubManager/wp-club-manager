@@ -157,7 +157,7 @@ class WPCM_Admin_Notices {
 		}
 
 		if ( in_array( 'install', $notices, true ) ) {
-			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ), array(), WPCM_VERSION );
 			add_action( 'admin_notices', array( $this, 'install_notice' ) );
 		}
 
@@ -165,23 +165,23 @@ class WPCM_Admin_Notices {
 			$template    = get_option( 'template' );
 			$core_themes = wpcm_get_core_supported_themes();
 			if ( ! in_array( $template, $core_themes, true ) ) {
-				wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+				wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ), array(), WPCM_VERSION );
 				add_action( 'admin_notices', array( $this, 'theme_check_notice' ) );
 			}
 		}
 
 		if ( in_array( 'template_files', $notices, true ) ) {
-			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ), array(), WPCM_VERSION );
 			add_action( 'admin_notices', array( $this, 'template_file_check_notice' ) );
 		}
 
 		if ( in_array( 'cricket_addon', $notices, true ) ) {
-			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ), array(), WPCM_VERSION );
 			add_action( 'admin_notices', array( $this, 'cricket_addon_notice' ) );
 		}
 
 		if ( in_array( 'version_update', $notices, true ) ) {
-			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
+			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ), array(), WPCM_VERSION );
 			add_action( 'admin_notices', array( $this, 'version_update_notice' ) );
 		}
 	}

@@ -366,7 +366,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 				// Output Upgrade Notice
 				$matches = null;
-				$regexp  = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*=|$)~Uis';
+				$regexp  = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WPCM_VERSION, '~' ) . '\s*=|$)~Uis';
 
 				if ( preg_match( $regexp, $response['body'], $matches ) ) {
 					$version = trim( $matches[1] );
@@ -386,7 +386,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 				// Output Changelog
 				$matches = null;
-				$regexp  = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*-(.*)=|$)~Uis';
+				$regexp  = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WPCM_VERSION, '~' ) . '\s*-(.*)=|$)~Uis';
 
 				if ( preg_match( $regexp, $response['body'], $matches ) ) {
 					$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );

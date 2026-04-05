@@ -65,9 +65,9 @@ class WPCM_Frontend_Scripts {
 		$map_service          = get_option( 'wpcm_map_select', 'google' );
 
 		if ( 'google' === $map_service ) {
-			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false' );
+			wp_register_script( 'google-maps-api', '//maps.google.com/maps/api/js?sensor=false', array(), null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		} elseif ( 'osm' === $map_service ) {
-			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/vendor/leaflet/leaflet.js' );
+			wp_enqueue_script( 'leaflet-maps', $assets_path . 'js/vendor/leaflet/leaflet.js', array(), WPCM_VERSION, false );
 		}
 
 		// Global frontend scripts
