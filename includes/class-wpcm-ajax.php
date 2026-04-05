@@ -1117,7 +1117,6 @@ class WPCM_AJAX {
 
 		<script type="text/javascript">
 
-			//jQuery(document).ready(function(){
 			jQuery( '#wpcm-thickbox-standings_table p input#limit' ).on( 'input', function() {
 				if ( jQuery( this ).val().length ) {
 					jQuery( '#focus' ).prop( 'disabled', false );
@@ -1125,8 +1124,6 @@ class WPCM_AJAX {
 					jQuery( '#focus' ).prop( 'disabled', true );
 				}
 			} );
-
-			//});
 
 			function insertWPClubManager( type ) {
 				var $div = jQuery( '.wpcm-thickbox-content' );
@@ -1148,7 +1145,6 @@ class WPCM_AJAX {
 					args.order = $div.find( '[name=order]' ).val();
 					args.show_abbr = $div.find( '[name=show_abbr]:checked' ).length;
 					args.show_thumb = $div.find( '[name=show_thumb]:checked' ).length;
-					//args.link_club = $div.find('[name=link_club]:checked').length;
 					args.show_comp = $div.find( '[name=show_comp]:checked' ).length;
 					args.show_team = $div.find( '[name=show_team]:checked' ).length;
 					args.show_venue = $div.find( '[name=show_venue]:checked' ).length;
@@ -1166,7 +1162,6 @@ class WPCM_AJAX {
 					args.order = $div.find( '[name=order]' ).val();
 					args.show_abbr = $div.find( '[name=show_abbr]:checked' ).length;
 					args.show_thumb = $div.find( '[name=show_thumb]:checked' ).length;
-					//args.link_club = $div.find('[name=link_club]:checked').length;
 					args.show_comp = $div.find( '[name=show_comp]:checked' ).length;
 					args.show_team = $div.find( '[name=show_team]:checked' ).length;
 					args.show_venue = $div.find( '[name=show_venue]:checked' ).length;

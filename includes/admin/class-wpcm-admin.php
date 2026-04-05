@@ -27,7 +27,6 @@ class WPCM_Admin {
 
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
-		// add_action( 'admin_init', array( $this, 'buffer' ), 1 );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_footer', array( $this, 'wpclubmanager_print_js' ), 25 );
@@ -53,14 +52,11 @@ class WPCM_Admin {
 		include_once 'class-wpcm-admin-post-types.php';
 		include_once 'class-wpcm-admin-taxonomies.php';
 
-		// Classes we only need if the ajax is not-ajax
-		// if ( ! is_ajax() ) {
-			include 'class-wpcm-admin-menus.php';
-			include 'class-wpcm-admin-notices.php';
-			include 'class-wpcm-admin-assets.php';
-			include 'class-wpcm-admin-permalink-settings.php';
-			include 'class-wpcm-admin-editor.php';
-		// }
+		include 'class-wpcm-admin-menus.php';
+		include 'class-wpcm-admin-notices.php';
+		include 'class-wpcm-admin-assets.php';
+		include 'class-wpcm-admin-permalink-settings.php';
+		include 'class-wpcm-admin-editor.php';
 
 		// Help Tabs
 		if ( apply_filters( 'wpclubmanager_enable_admin_help_tab', true ) ) {

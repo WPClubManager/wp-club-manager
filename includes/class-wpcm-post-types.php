@@ -238,9 +238,6 @@ class WPCM_Post_Types {
 
 		do_action( 'wpclubmanager_register_post_type' );
 
-		// $permalink      = get_option( 'wpclubmanager_club_slug' );
-		// $club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
-
 		register_post_type( 'wpcm_club',
 			apply_filters( 'wpclubmanager_register_post_type_club',
 				array(

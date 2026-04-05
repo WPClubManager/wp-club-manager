@@ -510,16 +510,6 @@ class WPCM_Admin_Taxonomies {
 			$longitude   = $coordinates->lng;
 		}
 
-		// $t_id = $tag->term_id;
-		// $term_meta = get_option( "taxonomy_term_$t_id" );
-		// $address = $term_meta['wpcm_address'];
-		// if( $address ) {
-		// $coordinates = wpcm_decode_address( $address );
-		// if ( is_array ( $coordinates ) ) {
-		// $latitude = $coordinates['lat'];
-		// $longitude = $coordinates['lng'];
-		// }
-		// }
 		$map_service = get_option( 'wpcm_map_select', 'google' );
 		?>
 

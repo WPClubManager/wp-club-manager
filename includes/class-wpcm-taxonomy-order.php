@@ -95,7 +95,6 @@ class WPCM_Taxonomy_Order {
 			'taxonomy'   => $tax_slug,
 			'hide_empty' => false,
 		) );
-		// $order = 1;
 		$order = $this->get_max_taxonomy_order( $tax_slug );
 		foreach ( $terms as $term ) {
 			if ( ! get_term_meta( $term->term_id, 'tax_position', true ) ) {

@@ -69,15 +69,12 @@ class WPCM_Meta_Box_Player_Details {
 			<?php
 		}
 
-		// if ( get_option( 'wpcm_player_profile_show_number' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => 'wpcm_number',
 				'label' => __( 'Squad Number', 'wp-club-manager' ),
 				'class' => 'measure-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_position' ) == 'yes') {
 		?>
 			<p>
 				<label><?php esc_html_e( 'Position', 'wp-club-manager' ); ?></label>
@@ -96,12 +93,8 @@ class WPCM_Meta_Box_Player_Details {
 				?>
 			</p>
 		<?php
-		// }
-		?>
 
-		<?php
-		// if ( get_option( 'wpcm_player_profile_show_dob' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'                => 'wpcm_dob',
 				'label'             => __( 'Date of Birth', 'wp-club-manager' ),
 				'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
@@ -110,46 +103,35 @@ class WPCM_Meta_Box_Player_Details {
 				'class'             => 'wpcm-birth-date-picker',
 				'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_height' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => 'wpcm_height',
 				'label' => __( 'Height', 'wp-club-manager' ),
 				'class' => 'measure-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_weight' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => 'wpcm_weight',
 				'label' => __( 'Weight', 'wp-club-manager' ),
 				'class' => 'measure-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => 'wpcm_hometown',
 				'label' => __( 'Birthplace', 'wp-club-manager' ),
 				'class' => 'regular-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_nationality' ) == 'yes') {
-			wpclubmanager_wp_country_select( array(
+		wpclubmanager_wp_country_select( array(
 				'id'    => 'wpcm_natl',
 				'label' => __( 'Nationality', 'wp-club-manager' ),
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_player_profile_show_prevclubs' ) == 'yes') {
-			wpclubmanager_wp_textarea_input( array(
+		wpclubmanager_wp_textarea_input( array(
 				'id'    => 'wpcm_prevclubs',
 				'label' => __( 'Previous Clubs', 'wp-club-manager' ),
 				'class' => 'regular-text',
 			) );
-		// }
 
 		do_action( 'wpclubmanager_admin_player_details', $post->ID );
 	}

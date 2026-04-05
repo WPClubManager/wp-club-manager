@@ -264,8 +264,6 @@ if ( ! function_exists( 'get_wpcm_player_auto_stats' ) ) {
 	 */
 	function get_wpcm_player_auto_stats( $post_id = null, $team = null, $season_id = null ) {
 
-		// if ( !$post_id ) global $post_id;
-
 		$stats_labels = wpcm_get_preset_labels();
 
 		$club_id = get_default_club();

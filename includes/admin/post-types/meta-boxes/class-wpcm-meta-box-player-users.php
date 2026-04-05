@@ -38,9 +38,6 @@ class WPCM_Meta_Box_Player_Users {
 		} else {
 			$result = false;
 		}
-		// cache checking result for the future use
-		// $this->user_to_check[$user_id] = $result;
-
 		return $result;
 	}
 

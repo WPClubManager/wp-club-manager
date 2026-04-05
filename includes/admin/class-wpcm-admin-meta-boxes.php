@@ -36,7 +36,6 @@ class WPCM_Admin_Meta_Boxes {
 		// Save Club Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Details::save', 10, 2 );
 		add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Table::save', 10, 2 );
-		// add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Parent::save', 10, 2 );
 
 		// Save Match Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Details::save', 10, 2 );

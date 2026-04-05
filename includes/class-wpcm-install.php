@@ -56,16 +56,10 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 				$this->updates();
 
-				// Update complete
-				// WPCM_Admin_Notices::remove_notice( 'update' );
-
 			}
 
 			if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) {
 
-				// What's new redirect
-				// delete_transient( '_wpcm_activation_redirect' );
-				// wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
 				wp_safe_redirect( admin_url( 'admin.php?page=wpcm-settings' ) );
 				exit;
 			}
@@ -114,19 +108,10 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			$this->updates( $current_version );
 
 			// Update version
-			// delete_option( 'wpclubmanager_version' );
 			update_option( 'wpclubmanager_version', WPCM()->version );
-
-			// add_option( 'wpcm_install_date', date( 'Y-m-d h:i:s' ) );
-			// add_option( 'wpcm_rating', 'no' );
 
 			// Flush rules after install
 			flush_rewrite_rules();
-
-			// Redirect to welcome screen
-			// if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
-			// set_transient( '_wpcm_activation_redirect', 1, 30 );
-			// }
 
 			// Trigger action
 			do_action( 'wpclubmanager_installed' );

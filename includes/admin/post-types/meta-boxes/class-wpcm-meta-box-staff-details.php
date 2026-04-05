@@ -71,7 +71,6 @@ class WPCM_Meta_Box_Staff_Details {
 			<?php
 		}
 
-		// if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes') {
 		?>
 					<p>
 				<label><?php esc_html_e( 'Job Title', 'wp-club-manager' ); ?></label>
@@ -90,26 +89,20 @@ class WPCM_Meta_Box_Staff_Details {
 					?>
 			</p>
 		<?php
-		// }
 
-		// if ( get_option( 'wpcm_show_staff_email' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => '_wpcm_staff_email',
 				'label' => __( 'Email Address', 'wp-club-manager' ),
 				'class' => 'regular-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_show_staff_phone' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => '_wpcm_staff_phone',
 				'label' => __( 'Contact Number', 'wp-club-manager' ),
 				'class' => 'regular-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_staff_profile_show_dob' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'                => 'wpcm_dob',
 				'label'             => __( 'Date of Birth', 'wp-club-manager' ),
 				'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
@@ -118,22 +111,17 @@ class WPCM_Meta_Box_Staff_Details {
 				'class'             => 'birth-date-picker',
 				'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes') {
-			wpclubmanager_wp_text_input( array(
+		wpclubmanager_wp_text_input( array(
 				'id'    => '_wpcm_staff_hometown',
 				'label' => __( 'Birthplace', 'wp-club-manager' ),
 				'class' => 'regular-text',
 			) );
-		// }
 
-		// if ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes') {
-			wpclubmanager_wp_country_select( array(
+		wpclubmanager_wp_country_select( array(
 				'id'    => 'wpcm_natl',
 				'label' => __( 'Nationality', 'wp-club-manager' ),
 			) );
-		// }
 
 		do_action( 'wpclubmanager_admin_staff_details', $post->ID );
 	}

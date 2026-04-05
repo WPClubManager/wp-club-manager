@@ -103,7 +103,6 @@ class WPCM_Frontend_Scripts {
 
 		$club = get_option( 'wpcm_default_club' );
 		if ( is_league_mode() ) {
-			// $post_thumb = the_custom_logo();
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 			if ( has_custom_logo() ) {

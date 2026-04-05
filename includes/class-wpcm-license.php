@@ -87,7 +87,6 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			// Setup hooks
 			$this->includes();
 			$this->hooks();
-			// $this->auto_updater();
 		}
 
 		/**

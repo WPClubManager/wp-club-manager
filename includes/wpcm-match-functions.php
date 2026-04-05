@@ -251,7 +251,6 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 				$home_wickets = ( '10' === $wickets['home'] ? '' : '/' . $wickets['home'] );
 				$away_wickets = ( '10' === $wickets['away'] ? '' : '/' . $wickets['away'] );
 
-				// $result = ( $played ? $home_score . $home_wickets . ' ' . $delimiter . ' ' . $away_score . $away_wickets : '' );
 				$result = $outcome;
 				$side1  = ( $played ? $home_score . $home_wickets : '-' );
 				$side2  = ( $played ? $away_score . $away_wickets : '-' );
@@ -276,7 +275,6 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 			$home_wickets = ( '10' === $wickets['home'] ? '' : '/' . $wickets['home'] );
 			$away_wickets = ( '10' === $wickets['away'] ? '' : '/' . $wickets['away'] );
 
-			// $result = ( $played ? $away_score . $away_wickets . ' ' . $delimiter . ' ' . $home_score . $home_wickets : '' );
 			$result = $outcome;
 			$side1  = ( $played ? $away_score . $away_wickets : '-' );
 			$side2  = ( $played ? $home_score . $home_wickets : '-' );
@@ -287,8 +285,6 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 			$side1  = ( $played ? $away_goals : '' );
 			$side2  = ( $played ? $home_goals : '' );
 		}
-
-		// return $result;
 
 		return array( $result, $side1, $side2, $delimiter );
 	}

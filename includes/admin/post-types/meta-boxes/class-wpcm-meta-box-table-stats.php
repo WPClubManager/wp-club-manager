@@ -31,8 +31,6 @@ class WPCM_Meta_Box_Table_Stats {
 		$default_club = get_default_club();
 		$team_label   = '';
 		if ( is_club_mode() ) {
-			// $teams = get_the_terms( $post->ID, 'wpcm_team' );
-			// $team_id = $teams[0]->term_id;
 			$team_label = wpcm_get_team_name( $default_club, $post->ID );
 		}
 		$comps          = get_the_terms( $post->ID, 'wpcm_comp' );

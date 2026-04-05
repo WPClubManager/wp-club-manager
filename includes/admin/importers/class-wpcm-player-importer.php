@@ -89,10 +89,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$id = wp_insert_post( $args );
 
-				// $post_name = sanitize_title_with_dashes( $name );
-
-				// wp_update_post( array( 'ID' => $id, 'post_name' => $post_name, 'post_title' => $name ) );
-
 				// Flag as import
 				update_post_meta( $id, '_wpcm_import', 1 );
 

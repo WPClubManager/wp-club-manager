@@ -295,7 +295,6 @@ class WPCM_Admin_Dashboard {
 						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
 						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
-						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
 						$notes = get_post_meta( $table_id, '_wpcm_table_notes', true );
@@ -445,7 +444,6 @@ class WPCM_Admin_Dashboard {
 						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
 						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
-						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
 						$notes = get_post_meta( $table_id, '_wpcm_table_notes', true );

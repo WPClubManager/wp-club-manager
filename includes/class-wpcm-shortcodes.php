@@ -258,18 +258,6 @@ class WPCM_Shortcodes {
 			'marker'     => 1,
 			'infowindow' => false,
 		), $atts );
-		// if ( is_array( $venues ) ) {
-		// $venue = reset($venues);
-		// $name = $venue->name;
-		// $t_id = $venue->term_id;
-		// $venue_meta = get_option( "taxonomy_term_$t_id" );
-		// $address = $venue_meta['wpcm_address'];
-		// } else {
-		// $name = null;
-		// $address = null;
-		// }
-
-		// $api_key = urlencode( get_option( 'wpcm_google_map_api') );
 
 		if ( $atts['address'] ) {
 			$coordinates = wpcm_decode_address( $atts['address'] );

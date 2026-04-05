@@ -253,9 +253,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 				if ( '' === $data['post_title'] || ' ' . $separator . ' ' === $data['post_title'] || 'importing' === $data['post_name'] ) {
 
-					// $default_club = get_default_club();
 					$title_format = get_match_title_format();
-					// $separator = get_option('wpcm_match_clubs_separator');
 					$home_id   = '';
 					$home_club = filter_input( INPUT_POST, 'wpcm_home_club', FILTER_VALIDATE_INT );
 					if ( $home_club ) {
@@ -541,10 +539,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			global $post;
 
-			// if ( empty( $the_product ) || $the_product->id != $post->ID ) {
-			// $the_product = wpcm_get_product( $post );
-			// }
-
 			switch ( $column ) {
 				case 'name':
 					$edit_link = get_edit_post_link( $post->ID );
@@ -564,8 +558,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
-
-					// $this->_render_match_row_actions( $post, $title );
 
 					get_inline_data( $post );
 
@@ -588,14 +580,11 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					} else {
 						$season = '';
 					}
-					// $venue = wpcm_get_match_venue( $post->ID );
 					$venue      = get_the_terms( $post->ID, 'wpcm_venue' );
 					$venue_slug = '';
 					if ( $venue && isset( $venue[0]->slug ) ) {
 						$venue_slug = $venue[0]->slug;
 					}
-					// $home_goals = get_post_meta( $post->ID, 'wpcm_home_goals', true );
-					// $away_goals = get_post_meta( $post->ID, 'wpcm_away_goals', true );
 					$referee    = get_post_meta( $post->ID, 'wpcm_referee', true );
 					$attendance = get_post_meta( $post->ID, 'wpcm_attendance', true );
 					$friendly   = get_post_meta( $post->ID, 'wpcm_friendly', true );
@@ -786,8 +775,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
-					// $this->_render_match_row_actions( $post, $title );
-
 					get_inline_data( $post );
 
 					$fname = get_post_meta( $post->ID, '_wpcm_firstname', true );
@@ -795,17 +782,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					if ( is_league_mode() ) {
 						$player_club = get_post_meta( $post->ID, '_wpcm_player_club', true );
 					}
-
-					// $positions = get_the_terms($post->ID, 'wpcm_position');
-					// if( $positions ) {
-					// foreach( $positions as $term ) {
-					// $positions = $term->slug;
-					// }
-					// var_dump($positions);
-					// $position = $positions;
-					// } else {
-					// $position = '';
-					// }
 
 					/* Custom inline data for wpclubmanager. */
 					echo '
@@ -878,8 +854,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
-					// $this->_render_match_row_actions( $post, $title );
-
 					get_inline_data( $post );
 
 					$fname = get_post_meta( $post->ID, '_wpcm_firstname', true );
@@ -887,16 +861,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					if ( is_league_mode() ) {
 						$staff_club = get_post_meta( $post->ID, '_wpcm_staff_club', true );
 					}
-
-					// $jobs = get_the_terms($post->ID, 'wpcm_jobs');
-					// if( $jobs ) {
-					// foreach( $jobs as $term ) {
-					// $jobs[] = $term->slug;
-					// }
-					// $job = join( ",", $jobs );
-					// } else {
-					// $job = '';
-					// }
 
 					/* Custom inline data for wpclubmanager. */
 					echo '

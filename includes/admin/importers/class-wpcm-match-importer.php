@@ -156,7 +156,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$post_name = sanitize_title_with_dashes( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
 
-				// $match_name = $id . '-' . $home_title . '-' . $separator . '-' . $away_title;
 				wp_update_post( array(
 					'ID'         => $id,
 					'post_name'  => $post_name,
@@ -226,7 +225,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				if ( $players ) :
 					$lineup = explode( '|', $players );
-					// unset($stats);
 					$players_array = array();
 					$players       = array();
 					foreach ( $lineup as $player ) {

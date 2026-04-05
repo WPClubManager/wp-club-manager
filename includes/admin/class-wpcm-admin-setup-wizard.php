@@ -260,10 +260,6 @@ class WPCM_Admin_Setup_Wizard {
 	public function wpcm_setup_general_save() {
 		check_admin_referer( 'wpcm-setup' );
 
-		// if( isset( $_POST['plugin_mode'] ) ){
-		// $plugin_mode = $_POST['plugin_mode'];
-		// update_option( 'wpcm_mode', $plugin_mode );
-		// }
 		$location = filter_input( INPUT_POST, 'club_location', FILTER_UNSAFE_RAW );
 		if ( $location ) {
 			$club_location = sanitize_text_field( $location );
@@ -371,8 +367,6 @@ class WPCM_Admin_Setup_Wizard {
 			);
 			$wpcm_default_club = wp_insert_post( $post );
 			update_option( 'wpcm_default_club', $wpcm_default_club );
-
-			// wpcm_flush_rewrite_rules();
 
 			$team    = __( 'First Team', 'wp-club-manager' );
 			$team_id = wp_insert_term( $team, 'wpcm_team' );

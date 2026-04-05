@@ -26,8 +26,6 @@
 					<?php
 						do_action( 'wpclubmanager_sections_' . $current_tab );
 
-						// self::show_messages();
-
 						do_action( 'wpclubmanager_settings_' . $current_tab );
 					?>
 

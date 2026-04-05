@@ -146,11 +146,6 @@ class WPCM_Admin_Notices {
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		// if ( ! empty( $_GET['hide_club_check_notice'] ) ) {
-		// $notices = array_diff( $notices, array( 'club_check' ) );
-		// update_option( 'wpclubmanager_admin_notices', $notices );
-		// }
-
 		if ( ! empty( $_GET['hide_cricket_addon_notice'] ) ) {
 			$notices = array_diff( $notices, array( 'cricket_addon' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
@@ -179,11 +174,6 @@ class WPCM_Admin_Notices {
 			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
 			add_action( 'admin_notices', array( $this, 'template_file_check_notice' ) );
 		}
-
-		// if ( in_array( 'club_check', $notices ) ) {
-		// wp_enqueue_style( 'wpclubmanager-activation', plugins_url(  '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
-		// add_action( 'admin_notices', array( $this, 'club_check_notice' ) );
-		// }
 
 		if ( in_array( 'cricket_addon', $notices, true ) ) {
 			wp_enqueue_style( 'wpclubmanager-activation', plugins_url( '/assets/css/activation.css', WPCM_PLUGIN_FILE ) );
