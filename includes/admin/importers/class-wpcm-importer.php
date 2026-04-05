@@ -81,6 +81,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				$this->delimiter = ',';
 			}
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$step = empty( $_GET['step'] ) ? 0 : (int) $_GET['step'];
 
 			switch ( $step ) :

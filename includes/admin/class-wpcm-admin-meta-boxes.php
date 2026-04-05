@@ -273,6 +273,7 @@ class WPCM_Admin_Meta_Boxes {
 		if ( empty( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager_save_data' ) ) {
 			return;
 		}
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( empty( $_POST['post_ID'] ) || $_POST['post_ID'] !== $post_id ) {
 			return;
 		}

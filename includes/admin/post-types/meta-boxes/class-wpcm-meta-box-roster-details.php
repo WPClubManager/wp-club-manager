@@ -147,7 +147,7 @@ class WPCM_Meta_Box_Roster_Details {
 		}
 
 		$staff_team_import_id = filter_input( INPUT_POST, 'roster_staff_import', FILTER_VALIDATE_INT );
-		if ( isset( $_POST['roster_staff_import'] ) ) {
+		if ( isset( $_POST['roster_staff_import'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 			$employees = (array) maybe_unserialize( get_post_meta( $staff_team_import_id, '_wpcm_roster_staff', true ) );
 

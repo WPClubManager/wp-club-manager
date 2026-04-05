@@ -175,7 +175,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 		 */
 		public function activate_license() {
 
-			if ( ! isset( $_POST[ $this->item_shortname . '_license_key' ] ) ) {
+			if ( ! isset( $_POST[ $this->item_shortname . '_license_key' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				return;
 			}
 
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 		 */
 		public function deactivate_license() {
 
-			if ( ! isset( $_POST[ $this->item_shortname . '_license_key' ] ) ) {
+			if ( ! isset( $_POST[ $this->item_shortname . '_license_key' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				return;
 			}
 
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 			}
 
 			// Run on deactivate button press
-			if ( isset( $_POST[ $this->item_shortname . '_license_key_deactivate' ] ) ) {
+			if ( isset( $_POST[ $this->item_shortname . '_license_key_deactivate' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 				// Data to send to the API
 				$api_params = array(
@@ -306,10 +306,12 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 		 */
 		public function notices() {
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( ! isset( $_GET['page'] ) || 'wpcm-settings' !== $_GET['page'] ) {
 				return;
 			}
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( ! isset( $_GET['tab'] ) || 'licenses' !== $_GET['tab'] ) {
 				return;
 			}

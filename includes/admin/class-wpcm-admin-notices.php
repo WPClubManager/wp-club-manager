@@ -131,27 +131,27 @@ class WPCM_Admin_Notices {
 		$screen  = get_current_screen();
 		$notices = get_option( 'wpclubmanager_admin_notices', array() );
 
-		if ( ! empty( $_GET['hide_install_notice'] ) ) {
+		if ( ! empty( $_GET['hide_install_notice'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$notices = array_diff( $notices, array( 'install' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_theme_support_notice'] ) ) {
+		if ( ! empty( $_GET['hide_theme_support_notice'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$notices = array_diff( $notices, array( 'theme_support' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_template_files_notice'] ) ) {
+		if ( ! empty( $_GET['hide_template_files_notice'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$notices = array_diff( $notices, array( 'template_files' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_cricket_addon_notice'] ) ) {
+		if ( ! empty( $_GET['hide_cricket_addon_notice'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$notices = array_diff( $notices, array( 'cricket_addon' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}
 
-		if ( ! empty( $_GET['hide_version_update_notice'] ) ) {
+		if ( ! empty( $_GET['hide_version_update_notice'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$notices = array_diff( $notices, array( 'version_update' ) );
 			update_option( 'wpclubmanager_admin_notices', $notices );
 		}

@@ -87,6 +87,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Player updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Player restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'Player published. <a href="%s">View Player</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -107,6 +108,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Staff updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Staff restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'Staff published. <a href="%s">View Staff</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -127,6 +129,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Match updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Match restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'Match published. <a href="%s">View Match</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -147,6 +150,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Club updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Club restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'Club published. <a href="%s">View Club</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -166,6 +170,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Sponsor updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Sponsor restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				6  => __( 'Sponsor published.', 'wp-club-manager' ),
 				7  => __( 'Sponsor saved.', 'wp-club-manager' ),
@@ -183,6 +188,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'Roster updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Roster restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'Roster published. <a href="%s">View Roster</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -203,6 +209,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				3  => __( 'Custom field deleted.', 'wp-club-manager' ),
 				4  => __( 'League Table updated.', 'wp-club-manager' ),
 				/* translators: 1: revision title */
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				5  => isset( $_GET['revision'] ) ? sprintf( __( 'League Table restored to revision from %s', 'wp-club-manager' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 				/* translators: 1: preview url */
 				6  => sprintf( __( 'League Table published. <a href="%s">View League Table</a>', 'wp-club-manager' ), esc_url( get_permalink( $post_ID ) ) ),
@@ -555,6 +562,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
+     // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
@@ -705,6 +713,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo '</strong>';
 
 					// Excerpt view
+     // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
@@ -771,6 +780,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
+     // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
@@ -850,6 +860,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
+     // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}

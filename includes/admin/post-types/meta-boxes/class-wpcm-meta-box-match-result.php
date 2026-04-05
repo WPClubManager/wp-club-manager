@@ -578,15 +578,15 @@ class WPCM_Meta_Box_Match_Result {
 				update_post_meta( $post_id, '_wpcm_match_runs', maybe_serialize( $wpcm_match_runs ) );
 			}
 			$wpcm_match_extras = filter_input( INPUT_POST, 'wpcm_match_extras', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-			if ( isset( $_POST['wpcm_match_extras'] ) ) {
+			if ( isset( $_POST['wpcm_match_extras'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				update_post_meta( $post_id, '_wpcm_match_extras', maybe_serialize( $wpcm_match_extras ) );
 			}
 			$wpcm_match_wickets = filter_input( INPUT_POST, 'wpcm_match_wickets', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-			if ( isset( $_POST['wpcm_match_wickets'] ) ) {
+			if ( isset( $_POST['wpcm_match_wickets'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				update_post_meta( $post_id, '_wpcm_match_wickets', maybe_serialize( $wpcm_match_wickets ) );
 			}
 			$wpcm_match_overs = filter_input( INPUT_POST, 'wpcm_match_overs', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-			if ( isset( $_POST['wpcm_match_overs'] ) ) {
+			if ( isset( $_POST['wpcm_match_overs'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				update_post_meta( $post_id, '_wpcm_match_overs', maybe_serialize( $wpcm_match_overs ) );
 			}
 

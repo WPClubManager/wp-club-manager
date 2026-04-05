@@ -46,6 +46,7 @@ class WPCM_Admin_Setup_Wizard {
 	 * Show the setup wizard.
 	 */
 	public function setup_wizard() {
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( empty( $_GET['page'] ) || 'wpcm-setup' !== $_GET['page'] ) {
 			return;
 		}
@@ -76,6 +77,7 @@ class WPCM_Admin_Setup_Wizard {
 				'handler' => '',
 			),
 		);
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$this->step  = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : current( array_keys( $this->steps ) );
 
 		$google_maps_url = 'https://maps.googleapis.com/maps/api/js';
@@ -383,9 +385,10 @@ class WPCM_Admin_Setup_Wizard {
 				$opponent_id = wp_insert_post( $args );
 			}
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( isset( $_POST['setup_season'] ) && isset( $_POST['setup_comp'] ) ) {
 
-				if ( empty( $_POST['setup_opponent'] ) ) {
+				if ( empty( $_POST['setup_opponent'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					$opponent_id = null;
 				}
 

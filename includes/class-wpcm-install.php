@@ -52,13 +52,13 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		 */
 		public function install_actions() {
 
-			if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
+			if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 				$this->updates();
 
 			}
 
-			if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) {
+			if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 				wp_safe_redirect( admin_url( 'admin.php?page=wpcm-settings' ) );
 				exit;

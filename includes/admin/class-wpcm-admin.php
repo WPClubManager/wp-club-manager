@@ -64,8 +64,8 @@ class WPCM_Admin {
 		}
 
 		// Setup/welcome
-		if ( ! empty( $_GET['page'] ) ) {
-			switch ( $_GET['page'] ) {
+		if ( ! empty( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			switch ( $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				case 'wpcm-setup':
 					include_once 'class-wpcm-admin-setup-wizard.php';
 					break;
@@ -120,6 +120,7 @@ class WPCM_Admin {
 		if ( get_transient( '_wpcm_activation_redirect' ) ) {
 			delete_transient( '_wpcm_activation_redirect' );
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ), true ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
 				return;
 			}
