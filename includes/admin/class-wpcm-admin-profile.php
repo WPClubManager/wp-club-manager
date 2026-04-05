@@ -60,7 +60,7 @@ if ( ! class_exists( 'WPCM_Admin_Profile' ) ) :
 		 * @param WP_User $user
 		 */
 		public function add_user_meta_fields( $user ) {
-			if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
+			if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				return;
 			}
 

@@ -121,7 +121,7 @@ class WPCM_Admin {
 			delete_transient( '_wpcm_activation_redirect' );
 
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing
-			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ), true ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
+			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ), true ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				return;
 			}
 
@@ -139,7 +139,7 @@ class WPCM_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) ) { // phpcs:ignore
+		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			$prevent_access = true;
 		}
 
@@ -198,7 +198,7 @@ class WPCM_Admin {
 	 */
 	public function wpclubmanager_admin_rate_us( $footer_text ) {
 
-		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
+		if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			return;
 		}
 

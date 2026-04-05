@@ -1259,7 +1259,7 @@ class WPCM_AJAX {
 	 */
 	public static function rated() {
 
-		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
+		if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			die( - 1 );
 		}
 		update_option( 'wpclubmanager_admin_footer_text_rated', 1 );

@@ -24,7 +24,7 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 		 */
 		public function __construct() {
 			// Only hook in admin parts if the user has admin access
-			if ( current_user_can( 'manage_wpclubmanager' ) ) {
+			if ( current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				add_action( 'wp_dashboard_setup', array( $this, 'init' ) );
 			}
 		}

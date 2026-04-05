@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return bool
  */
 function wpcm_disable_admin_bar( $show_admin_bar ) {
-	if ( ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) ) {
+	if ( ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 		$show_admin_bar = false;
 	}
 

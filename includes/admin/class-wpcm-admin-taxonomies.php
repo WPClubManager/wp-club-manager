@@ -141,7 +141,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function team_add_new_extra_fields( $tag ) {
+	public function team_add_new_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 		?>
 
 		<div class="form-field">
@@ -161,7 +161,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function team_edit_extra_fields( $tag ) {
+	public function team_edit_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		$t_id      = $tag->term_id;
 		$term_meta = get_option( "taxonomy_term_$t_id" );
@@ -246,7 +246,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function team_custom_columns( $value, $column, $t_id ) {
+	public function team_custom_columns( $value, $column, $t_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		global $post;
 
@@ -271,7 +271,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function comp_add_new_extra_fields( $tag ) {
+	public function comp_add_new_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 		?>
 
 		<div class="form-field">
@@ -291,7 +291,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function comp_edit_extra_fields( $tag ) {
+	public function comp_edit_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		$t_id      = $tag->term_id;
 		$term_meta = get_option( "taxonomy_term_$t_id" );
@@ -374,7 +374,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function comp_custom_columns( $value, $column, $t_id ) {
+	public function comp_custom_columns( $value, $column, $t_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		global $post;
 
@@ -419,7 +419,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function season_custom_columns( $value, $column, $t_id ) {
+	public function season_custom_columns( $value, $column, $t_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		global $post;
 
@@ -439,7 +439,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function venue_add_new_extra_fields( $tag ) {
+	public function venue_add_new_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		$args = array(
 			'taxonomy'   => 'wpcm_venue',
@@ -499,7 +499,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function venue_edit_extra_fields( $tag ) {
+	public function venue_edit_extra_fields( $tag ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		$t_id      = $tag->term_id;
 		$term_meta = get_option( "taxonomy_term_$t_id" );
@@ -619,7 +619,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function venue_custom_columns( $value, $column, $t_id ) {
+	public function venue_custom_columns( $value, $column, $t_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		global $post;
 
@@ -665,7 +665,7 @@ class WPCM_Admin_Taxonomies {
 	 *
 	 * @return void
 	 */
-	public function position_custom_columns( $value, $column, $t_id ) {
+	public function position_custom_columns( $value, $column, $t_id ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		global $post;
 

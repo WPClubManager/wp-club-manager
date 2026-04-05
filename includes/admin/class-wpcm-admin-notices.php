@@ -113,7 +113,7 @@ class WPCM_Admin_Notices {
 				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
 			}
 
-			if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
+			if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'wp-club-manager' ) );
 			}
 

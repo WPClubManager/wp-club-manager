@@ -76,7 +76,7 @@ function wpcm_match_players_item_order() {
 		die( 'Permissions check failed' );
 	}
 
-	if ( ! current_user_can( 'edit_wpcm_matchs' ) ) {
+	if ( ! current_user_can( 'edit_wpcm_matchs' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 		die( 'Permissions check failed' );
 	}
 

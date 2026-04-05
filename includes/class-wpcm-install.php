@@ -267,7 +267,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 			$capabilities = array();
 
-			$capabilities['core'] = array( 'manage_wpclubmanager' );
+			$capabilities['core'] = array( 'manage_wpclubmanager' ); // phpcs:ignore WordPress.WP.Capabilities.Unknown
 
 			$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_table', 'wpcm_sponsor', 'wpcm_roster' );
 

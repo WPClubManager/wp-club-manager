@@ -29,7 +29,7 @@ class WPCM_Admin_Setup_Wizard {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-		if ( apply_filters( 'wpclubmanager_enable_setup_wizard', true ) && current_user_can( 'manage_wpclubmanager' ) ) {
+		if ( apply_filters( 'wpclubmanager_enable_setup_wizard', true ) && current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			add_action( 'admin_menu', array( $this, 'admin_menus' ) );
 			add_action( 'admin_init', array( $this, 'setup_wizard' ) );
 		}

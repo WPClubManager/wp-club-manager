@@ -82,17 +82,17 @@ class WPCM_Geocoder {
 
 		if ( in_array( 'curl', get_loaded_extensions(), true ) ) {
 			/* try curl */
-			$ch = curl_init();
+			$ch = curl_init(); // phpcs:ignore WordPress.WP.AlternativeFunctions
 
-			curl_setopt( $ch, CURLOPT_AUTOREFERER, true );
-			curl_setopt( $ch, CURLOPT_HEADER, 0 );
-			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-			curl_setopt( $ch, CURLOPT_REFERER, $referer );
-			curl_setopt( $ch, CURLOPT_URL, $url );
-			curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+			curl_setopt( $ch, CURLOPT_AUTOREFERER, true ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_setopt( $ch, CURLOPT_HEADER, 0 ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_setopt( $ch, CURLOPT_REFERER, $referer ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_setopt( $ch, CURLOPT_URL, $url ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 
-			$data = curl_exec( $ch );
-			curl_close( $ch );
+			$data = curl_exec( $ch ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			curl_close( $ch ); // phpcs:ignore WordPress.WP.AlternativeFunctions
 
 			return $data;
 		} elseif ( ini_get( 'allow_url_fopen' ) ) {
