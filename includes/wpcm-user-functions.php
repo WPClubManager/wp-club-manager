@@ -153,6 +153,7 @@ function wpcm_disable_author_archives_for_players() {
 
 		if ( isset( $user->roles[0] ) && 'player' === $user->roles[0] ) {
 			wp_safe_redirect( home_url() );
+			exit;
 		}
 	}
 }

@@ -174,7 +174,7 @@ class WPCM_Meta_Box_Match_Players {
 				<option value="-1"><?php esc_html_e( 'None', 'wp-club-manager' ); ?></option>
 
 				<?php foreach ( $subs as $sub ) { ?>
-				<option value="<?php echo esc_attr( $sub->ID ); ?>"<?php echo ( get_wpcm_stats_value( $players['subs'], $id, 'sub' ) === $sub->ID ? ' selected' : '' ); ?>>
+				<option value="<?php echo esc_attr( $sub->ID ); ?>"<?php echo ( (int) get_wpcm_stats_value( $players['subs'], $id, 'sub' ) === (int) $sub->ID ? ' selected' : '' ); ?>>
 					<?php echo esc_html( get_post_meta( $sub->ID, 'wpcm_number', true ) ); ?>. <?php echo esc_html( $sub->post_title ); ?>
 				</option>
 				<?php } ?>

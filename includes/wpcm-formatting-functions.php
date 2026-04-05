@@ -194,7 +194,7 @@ function wpcm_dropdown_posts( $args = array() ) {
 			$name        = date_i18n( $date_format, $timestamp ) . ' - ' . $name;
 		}
 
-		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( $post->ID === $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
+		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( (int) $post->ID === (int) $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
 	}
 
 	echo '</select>';
@@ -331,7 +331,7 @@ function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = nu
 
 	foreach ( $arr as $key => $value ) {
 
-		$output .= '<option' . ( $selected === $key ? ' selected' : '' ) . ' value="' . esc_html( $key ) . '">' . esc_html( $value ) . '</option>';
+		$output .= '<option' . ( (string) $selected === (string) $key ? ' selected' : '' ) . ' value="' . esc_html( $key ) . '">' . esc_html( $value ) . '</option>';
 	}
 
 	$output .= '</select>';
