@@ -129,7 +129,7 @@ class WPCM_Meta_Box_Roster_Staff {
 
 				<input type="button" class="button-secondary wpcm-staff-roster-add-row" value="<?php esc_html_e( 'Add staff', 'wp-club-manager' ); ?>">
 			</div>
-			<a class="wpcm-staff-roster-delete-row <?php echo ( null !== $staff ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-staff-roster-delete-row <?php echo ( ! empty( $staff ) ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 

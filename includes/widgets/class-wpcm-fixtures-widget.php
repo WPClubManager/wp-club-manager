@@ -261,7 +261,7 @@ class WPCM_Fixtures_Widget extends WPCM_Widget {
 				$show_time = ! empty( $instance['show_time'] );
 				$show_comp = ! empty( $instance['show_comp'] );
 				$show_team = ! empty( $instance['show_team'] );
-				if ( 1 === $show_abbr ) {
+				if ( $show_abbr ) {
 					$sides = wpcm_get_match_clubs( $post, true );
 				} else {
 					$sides = wpcm_get_match_clubs( $post );

@@ -139,12 +139,14 @@ if ( ! function_exists( 'wpcm_club_standings_sort_by' ) ) {
 	 */
 	function wpcm_club_standings_sort_by( $subkey, $a ) {
 
+		$b = array();
+
 		foreach ( $a as $k => $v ) {
 
 			$b[ $k ] = (float) $v->wpcm_stats[ $subkey ];
 		}
 
-		if ( null !== $b ) {
+		if ( ! empty( $b ) ) {
 
 			arsort( $b );
 			foreach ( $b as $key => $val ) {

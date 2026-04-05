@@ -38,12 +38,14 @@ function wpcm_clean( $var ) {
  */
 function subval_sort( $a, $subkey ) {
 
+	$b = array();
+
 	foreach ( $a as $k => $v ) {
 
 		$b[ $k ] = strtolower( $v[ $subkey ] ?? '' );
 	}
 
-	if ( null !== $b ) {
+	if ( ! empty( $b ) ) {
 
 		asort( $b );
 

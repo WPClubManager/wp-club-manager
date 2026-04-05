@@ -21,7 +21,7 @@ global $post; ?>
 	<th class="name">
 		<div>
 			<?php
-			if ( get_option( 'wpcm_player_profile_show_number' ) === 'yes' && get_post_meta( $key, 'wpcm_number', true ) === true ) {
+			if ( get_option( 'wpcm_player_profile_show_number' ) === 'yes' && get_post_meta( $key, 'wpcm_number', true ) ) {
 				echo esc_html( get_post_meta( $key, 'wpcm_number', true ) );
 			}
 			if ( get_option( 'wpcm_results_show_image' ) === 'yes' ) {

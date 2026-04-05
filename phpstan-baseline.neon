@@ -987,7 +987,7 @@ parameters:
 
 		-
 			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 2
+			count: 3
 			path: includes/class-wpcm-frontend-scripts.php
 
 		-
@@ -1012,7 +1012,7 @@ parameters:
 
 		-
 			message: "#^Constant W3TC_FILE not found\\.$#"
-			count: 2
+			count: 1
 			path: includes/class-wpcm-install.php
 
 		-
@@ -1796,11 +1796,6 @@ parameters:
 			path: includes/wpcm-formatting-functions.php
 
 		-
-			message: "#^Variable \\$b might not be defined\\.$#"
-			count: 1
-			path: includes/wpcm-formatting-functions.php
-
-		-
 			message: "#^Callback expects 1 parameter, \\$accepted_args is set to 2\\.$#"
 			count: 1
 			path: includes/wpcm-match-functions.php
@@ -1868,11 +1863,6 @@ parameters:
 		-
 			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and 0 results in an error\\.$#"
 			count: 4
-			path: includes/wpcm-standings-functions.php
-
-		-
-			message: "#^Variable \\$b might not be defined\\.$#"
-			count: 1
 			path: includes/wpcm-standings-functions.php
 
 		-
@@ -2123,11 +2113,6 @@ parameters:
 		-
 			message: "#^Variable \\$default_club might not be defined\\.$#"
 			count: 2
-			path: templates/shortcodes/league-table.php
-
-		-
-			message: "#^Variable \\$link_club might not be defined\\.$#"
-			count: 4
 			path: templates/shortcodes/league-table.php
 
 		-
@@ -2502,11 +2487,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$limit might not be defined\\.$#"
-			count: 1
-			path: templates/shortcodes/standings.php
-
-		-
-			message: "#^Variable \\$link_club might not be defined\\.$#"
 			count: 1
 			path: templates/shortcodes/standings.php
 

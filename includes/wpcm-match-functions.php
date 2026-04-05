@@ -108,8 +108,8 @@ add_action( 'wp_ajax_item_sort', 'wpcm_match_players_item_order' );
  */
 function wpcm_get_match_outcome( $post ) {
 
-	$club      = get_default_club();
-	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
+	$club      = (int) get_default_club();
+	$home_club = (int) get_post_meta( $post, 'wpcm_home_club', true );
 	$walkover  = get_post_meta( $post, '_wpcm_walkover', true );
 	$postponed = get_post_meta( $post, '_wpcm_postponed', true );
 	if ( get_option( 'wpcm_sport' ) !== 'cricket' ) {

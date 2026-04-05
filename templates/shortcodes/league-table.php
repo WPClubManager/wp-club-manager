@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 					echo wp_kses_post( $club->thumb );
 					if ( $default_club === $club->ID ) {
-						if ( 1 === $abbr ) {
+						if ( ! empty( $abbr ) ) {
 							$club_abbr = get_club_abbreviation( $club->ID );
 							echo esc_html( $club_abbr );
 						} elseif ( $team_label ) {
@@ -56,15 +56,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 						} else {
 							echo esc_html( $club->post_title );
 						}
-					} elseif ( 1 === $abbr ) {
-							echo ( 1 === $link_club ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
+					} elseif ( ! empty( $abbr ) ) {
+							echo ( ! empty( $link_club ) ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
 							$club_abbr = get_club_abbreviation( $club->ID );
 							echo esc_html( $club_abbr );
-							echo ( 1 === $link_club ? '</a>' : '' );
+							echo ( ! empty( $link_club ) ? '</a>' : '' );
 					} else {
-						echo ( 1 === $link_club ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
+						echo ( ! empty( $link_club ) ? '<a href="' . esc_url( get_the_permalink( $club->ID ) ) . '">' : '' );
 						echo esc_html( $club->post_title );
-						echo ( 1 === $link_club ? '</a>' : '' );
+						echo ( ! empty( $link_club ) ? '</a>' : '' );
 					}
 					?>
 				</td>

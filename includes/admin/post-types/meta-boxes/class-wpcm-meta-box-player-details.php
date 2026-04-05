@@ -70,10 +70,10 @@ class WPCM_Meta_Box_Player_Details {
 		}
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => 'wpcm_number',
-				'label' => __( 'Squad Number', 'wp-club-manager' ),
-				'class' => 'measure-text',
-			) );
+			'id'    => 'wpcm_number',
+			'label' => __( 'Squad Number', 'wp-club-manager' ),
+			'class' => 'measure-text',
+		) );
 
 		?>
 			<p>
@@ -95,43 +95,43 @@ class WPCM_Meta_Box_Player_Details {
 		<?php
 
 		wpclubmanager_wp_text_input( array(
-				'id'                => 'wpcm_dob',
-				'label'             => __( 'Date of Birth', 'wp-club-manager' ),
-				'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
-				'description'       => '',
-				'value'             => $dob,
-				'class'             => 'wpcm-birth-date-picker',
-				'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
-			) );
+			'id'                => 'wpcm_dob',
+			'label'             => __( 'Date of Birth', 'wp-club-manager' ),
+			'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
+			'description'       => '',
+			'value'             => $dob,
+			'class'             => 'wpcm-birth-date-picker',
+			'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => 'wpcm_height',
-				'label' => __( 'Height', 'wp-club-manager' ),
-				'class' => 'measure-text',
-			) );
+			'id'    => 'wpcm_height',
+			'label' => __( 'Height', 'wp-club-manager' ),
+			'class' => 'measure-text',
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => 'wpcm_weight',
-				'label' => __( 'Weight', 'wp-club-manager' ),
-				'class' => 'measure-text',
-			) );
+			'id'    => 'wpcm_weight',
+			'label' => __( 'Weight', 'wp-club-manager' ),
+			'class' => 'measure-text',
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => 'wpcm_hometown',
-				'label' => __( 'Birthplace', 'wp-club-manager' ),
-				'class' => 'regular-text',
-			) );
+			'id'    => 'wpcm_hometown',
+			'label' => __( 'Birthplace', 'wp-club-manager' ),
+			'class' => 'regular-text',
+		) );
 
 		wpclubmanager_wp_country_select( array(
-				'id'    => 'wpcm_natl',
-				'label' => __( 'Nationality', 'wp-club-manager' ),
-			) );
+			'id'    => 'wpcm_natl',
+			'label' => __( 'Nationality', 'wp-club-manager' ),
+		) );
 
 		wpclubmanager_wp_textarea_input( array(
-				'id'    => 'wpcm_prevclubs',
-				'label' => __( 'Previous Clubs', 'wp-club-manager' ),
-				'class' => 'regular-text',
-			) );
+			'id'    => 'wpcm_prevclubs',
+			'label' => __( 'Previous Clubs', 'wp-club-manager' ),
+			'class' => 'regular-text',
+		) );
 
 		do_action( 'wpclubmanager_admin_player_details', $post->ID );
 	}

@@ -128,7 +128,7 @@ class WPCM_Meta_Box_Roster_Players {
 				<input type="button" class="button-secondary wpcm-player-roster-add-row" value="<?php esc_html_e( 'Add player', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-player-roster-delete-row <?php echo ( null !== $players ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-player-roster-delete-row <?php echo ( ! empty( $players ) ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 

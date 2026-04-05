@@ -240,7 +240,7 @@ class WPCM_Meta_Box_Table_Stats {
 				<input type="button" class="button-secondary wpcm-table-add-row" value="<?php esc_html_e( 'Add club', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-table-delete-row <?php echo ( null !== $clubs ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-table-delete-row <?php echo ( ! empty( $clubs ) ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 

@@ -91,37 +91,37 @@ class WPCM_Meta_Box_Staff_Details {
 		<?php
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => '_wpcm_staff_email',
-				'label' => __( 'Email Address', 'wp-club-manager' ),
-				'class' => 'regular-text',
-			) );
+			'id'    => '_wpcm_staff_email',
+			'label' => __( 'Email Address', 'wp-club-manager' ),
+			'class' => 'regular-text',
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => '_wpcm_staff_phone',
-				'label' => __( 'Contact Number', 'wp-club-manager' ),
-				'class' => 'regular-text',
-			) );
+			'id'    => '_wpcm_staff_phone',
+			'label' => __( 'Contact Number', 'wp-club-manager' ),
+			'class' => 'regular-text',
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'                => 'wpcm_dob',
-				'label'             => __( 'Date of Birth', 'wp-club-manager' ),
-				'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
-				'description'       => '',
-				'value'             => $dob,
-				'class'             => 'birth-date-picker',
-				'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
-			) );
+			'id'                => 'wpcm_dob',
+			'label'             => __( 'Date of Birth', 'wp-club-manager' ),
+			'placeholder'       => _x( 'YYYY-MM-DD', 'placeholder', 'wp-club-manager' ),
+			'description'       => '',
+			'value'             => $dob,
+			'class'             => 'birth-date-picker',
+			'custom_attributes' => array( 'pattern' => '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ),
+		) );
 
 		wpclubmanager_wp_text_input( array(
-				'id'    => '_wpcm_staff_hometown',
-				'label' => __( 'Birthplace', 'wp-club-manager' ),
-				'class' => 'regular-text',
-			) );
+			'id'    => '_wpcm_staff_hometown',
+			'label' => __( 'Birthplace', 'wp-club-manager' ),
+			'class' => 'regular-text',
+		) );
 
 		wpclubmanager_wp_country_select( array(
-				'id'    => 'wpcm_natl',
-				'label' => __( 'Nationality', 'wp-club-manager' ),
-			) );
+			'id'    => 'wpcm_natl',
+			'label' => __( 'Nationality', 'wp-club-manager' ),
+		) );
 
 		do_action( 'wpclubmanager_admin_staff_details', $post->ID );
 	}
