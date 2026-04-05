@@ -112,7 +112,7 @@ class WPCM_Admin_Dashboard {
 						foreach ( $matches as $match ) {
 							$home_club  = get_post_meta( $match->ID, 'wpcm_home_club', true );
 							$wpcm_goals = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_goals', true ) );
-							if ( $default_club == $home_club ) {
+							if ( $default_club === $home_club ) {
 								$goals_scored   += $wpcm_goals['total']['home'];
 								$goals_conceded += $wpcm_goals['total']['away'];
 								$goals_for       = $wpcm_goals['total']['home'];

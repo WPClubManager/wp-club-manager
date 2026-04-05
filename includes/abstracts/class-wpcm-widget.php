@@ -367,7 +367,7 @@ abstract class WPCM_Widget extends WP_Widget {
 											<input type="checkbox"
 													id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>"
 													name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]"
-													value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $stats ) ); ?> />
+													value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $stats, true ) ); ?> />
 											<?php echo esc_html( strip_tags( $option_value ) ); ?>
 										</label>
 									</td>
@@ -416,7 +416,7 @@ abstract class WPCM_Widget extends WP_Widget {
 									<td>
 										<label class="selectit"
 												for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>">
-											<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]" value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $columns ) ); ?> />
+											<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]" value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $columns, true ) ); ?> />
 											<?php echo esc_html( strip_tags( $option_value ) ); ?>
 										</label>
 									</td>

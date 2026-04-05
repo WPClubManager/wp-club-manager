@@ -101,7 +101,7 @@ function subval_sort( $a, $subkey ) {
 		$b[ $k ] = strtolower( $v[ $subkey ] ?? '' );
 	}
 
-	if ( null != $b ) {
+	if ( null !== $b ) {
 
 		asort( $b );
 
@@ -283,7 +283,7 @@ function wpcm_dropdown_posts( $args = array() ) {
 			$name        = date_i18n( $date_format, $timestamp ) . ' - ' . $name;
 		}
 
-		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( $post->ID == $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
+		echo '<option class="level-0" value="' . esc_attr( $post->ID ) . '"' . ( $post->ID === $args['selected'] ? ' selected' : '' ) . '>' . esc_html( $name ) . '</option>';
 	}
 
 	echo '</select>';
@@ -378,7 +378,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 				$this_value = $term->slug;
 			endif;
 			if ( strpos( $attribute, 'multiple' ) !== false ) :
-				$selected_attribute = in_array( $this_value, $selected ) ? 'selected' : '';
+				$selected_attribute = in_array( $this_value, $selected, true ) ? 'selected' : '';
 			else :
 				$selected_attribute = selected( $this_value, $selected, false );
 			endif;
@@ -420,7 +420,7 @@ function wpcm_form_dropdown( $name, $arr = array(), $selected = null, $atts = nu
 
 	foreach ( $arr as $key => $value ) {
 
-		$output .= '<option' . ( $selected == $key ? ' selected' : '' ) . ' value="' . esc_html( $key ) . '">' . esc_html( $value ) . '</option>';
+		$output .= '<option' . ( $selected === $key ? ' selected' : '' ) . ' value="' . esc_html( $key ) . '">' . esc_html( $value ) . '</option>';
 	}
 
 	$output .= '</select>';
@@ -456,7 +456,7 @@ function get_age( $p_str_date ) {
  */
 function compare_dates( $a, $b ) {
 
-	if ( $a == $b ) {
+	if ( $a === $b ) {
 		return 0;
 	}
 
@@ -474,7 +474,7 @@ function compare_dates( $a, $b ) {
  * @return mixed
  */
 function wpcm_divide( $a, $b ) {
-	if ( 0 != $b ) {
+	if ( 0 !== $b ) {
 		$result = $a / $b;
 	} else {
 		$result = 0;

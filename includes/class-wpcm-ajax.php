@@ -202,7 +202,7 @@ class WPCM_AJAX {
 					?>
 					<label for="<?php echo esc_attr( $key ); ?>" class="button">
 						<input type="checkbox" name="<?php echo esc_attr( $key ); ?>"
-								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
+								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' === $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
 					</label>
 					<?php
 				}
@@ -386,7 +386,7 @@ class WPCM_AJAX {
 					?>
 					<label for="<?php echo esc_attr( $key ); ?>" class="button">
 						<input type="checkbox" name="<?php echo esc_attr( $key ); ?>"
-								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' == $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
+								value="<?php echo esc_html( $key ); ?>" <?php echo( 'show_abbr' === $key ? '' : 'checked="checked"' ); ?>><?php echo esc_html( $value ); ?>
 					</label>
 					<?php
 				}
@@ -497,7 +497,7 @@ class WPCM_AJAX {
 				<label><?php esc_html_e( 'Sort by', 'wp-club-manager' ); ?></label>
 				<select id="orderby" name="orderby">
 					<?php
-					if ( get_option( 'wpcm_player_profile_show_number', 'yes' ) == 'yes' ) {
+					if ( get_option( 'wpcm_player_profile_show_number', 'yes' ) === 'yes' ) {
 						?>
 						<option value="number"><?php esc_html_e( 'Number', 'wp-club-manager' ); ?></option>
 						<?php
@@ -533,7 +533,7 @@ class WPCM_AJAX {
 						?>
 						<label for="<?php echo esc_attr( $key ); ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo esc_attr( $key ); ?>" name="columns[]"
-									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
+									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults, true ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
 						</label>
 					<?php } ?>
 				</div>
@@ -799,7 +799,7 @@ class WPCM_AJAX {
 						?>
 						<label for="<?php echo esc_attr( $key ); ?>" class="button">
 							<input type="checkbox" id="stats-<?php echo esc_attr( $key ); ?>" name="columns[]"
-									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
+									value="<?php echo esc_html( $key ); ?>"<?php echo( in_array( $key, $defaults, true ) ? ' checked' : '' ); ?>><?php echo esc_html( $value ); ?>
 						</label>
 					<?php } ?>
 				</div>
@@ -1135,7 +1135,7 @@ class WPCM_AJAX {
 				var args = {};
 
 				// Extract args based on type
-				if ( 'match_opponents' == type ) {
+				if ( 'match_opponents' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.format = $div.find( '[name=format]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
@@ -1154,7 +1154,7 @@ class WPCM_AJAX {
 					args.show_venue = $div.find( '[name=show_venue]:checked' ).length;
 					args.linktext = $div.find( '[name=linktext]' ).val();
 					args.linkpage = $div.find( '[name=linkpage]' ).val();
-				} else if ( 'match_list' == type ) {
+				} else if ( 'match_list' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.format = $div.find( '[name=format]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1172,7 +1172,7 @@ class WPCM_AJAX {
 					args.show_venue = $div.find( '[name=show_venue]:checked' ).length;
 					args.linktext = $div.find( '[name=linktext]' ).val();
 					args.linkpage = $div.find( '[name=linkpage]' ).val();
-				} else if ( 'player_list' == type ) {
+				} else if ( 'player_list' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1185,7 +1185,7 @@ class WPCM_AJAX {
 					args.columns = $div.find( '[name="columns[]"]:checked' ).map( function() {
 						return this.value;
 					} ).get().join( ',' );
-				} else if ( 'player_gallery' == type ) {
+				} else if ( 'player_gallery' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1196,7 +1196,7 @@ class WPCM_AJAX {
 					args.linkpage = $div.find( '[name=linkpage]' ).val();
 					args.columns = $div.find( '[name=columns]' ).val();
 					args.name_format = $div.find( '[name=name_format]' ).val();
-				} else if ( 'staff_list' == type ) {
+				} else if ( 'staff_list' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1208,7 +1208,7 @@ class WPCM_AJAX {
 					args.columns = $div.find( '[name="columns[]"]:checked' ).map( function() {
 						return this.value;
 					} ).get().join( ',' );
-				} else if ( 'staff_gallery' == type ) {
+				} else if ( 'staff_gallery' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1219,7 +1219,7 @@ class WPCM_AJAX {
 					args.linkpage = $div.find( '[name=linkpage]' ).val();
 					args.columns = $div.find( '[name=columns]' ).val();
 					args.name_format = $div.find( '[name=name_format]' ).val();
-				} else if ( 'league_table' == type ) {
+				} else if ( 'league_table' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.limit = $div.find( '[name=limit]' ).val();
@@ -1233,7 +1233,7 @@ class WPCM_AJAX {
 					args.notes = $div.find( '[name=notes]:checked' ).length;
 					args.linktext = $div.find( '[name=linktext]' ).val();
 					args.linkpage = $div.find( '[name=linkpage]' ).val();
-				} else if ( 'map_venue' == type ) {
+				} else if ( 'map_venue' === type ) {
 					args.title = $div.find( '[name=title]' ).val();
 					args.id = $div.find( '[name=id]' ).val();
 					args.width = $div.find( '[name=width]' ).val();

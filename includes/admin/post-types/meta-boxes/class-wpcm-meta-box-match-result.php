@@ -45,23 +45,23 @@ class WPCM_Meta_Box_Match_Result {
 		$postponed = get_post_meta( $post->ID, '_wpcm_postponed', true );
 		$walkover  = get_post_meta( $post->ID, '_wpcm_walkover', true );
 
-		if ( 'cricket' == $sport ) {
+		if ( 'cricket' === $sport ) {
 			$wpcm_match_runs      = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_match_runs', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_match_runs', true ) ) );
 			$wpcm_match_extras    = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_match_extras', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_match_extras', true ) ) );
 			$wpcm_match_wickets   = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_match_wickets', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_match_wickets', true ) ) );
 			$wpcm_match_overs     = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_match_overs', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_match_overs', true ) ) );
 			$wpcm_cricket_outcome = get_post_meta( $post->ID, '_wpcm_cricket_outcome', true );
 			if ( ! is_array( $wpcm_cricket_outcome ) ) {
 				$wpcm_cricket_outcome = array( 0 => '', 1 => '', 2 => '' );
@@ -72,40 +72,40 @@ class WPCM_Meta_Box_Match_Result {
 					'home' => '0',
 					'away' => '0'
 				)
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
 		}
 
-		if ( ! in_array( $sport, array( 'volleyball', 'baseball' ) ) ) {
+		if ( ! in_array( $sport, array( 'volleyball', 'baseball' ), true ) ) {
 			$overtime = get_post_meta( $post->ID, 'wpcm_overtime', true );
 		}
-		if ( in_array( $sport, array( 'hockey', 'handball' ) ) ) {
+		if ( in_array( $sport, array( 'hockey', 'handball' ), true ) ) {
 			$shootout = get_post_meta( $post->ID, 'wpcm_shootout', true );
 		}
 
-		if ( 'soccer' == $sport ) {
+		if ( 'soccer' === $sport ) {
 			$shootout       = get_post_meta( $post->ID, 'wpcm_shootout', true );
 			$shootout_score = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, '_wpcm_shootout_score', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_shootout_score', true ) ) );
 		}
 
-		if ( 'rugby' == $sport ) {
+		if ( 'rugby' === $sport ) {
 			$bonus = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_bonus', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_bonus', true ) ) );
 		}
 
 		if ( 'gaelic' === $sport) {
 			$gaa_goals  = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_gaa_goals', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_gaa_goals', true ) ) );
 			$gaa_points = array_merge( array(
 				'home' => '0',
 				'away' => '0'
-			), (array) unserialize( get_post_meta( $post->ID, 'wpcm_gaa_points', true ) ) );
+			), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_gaa_points', true ) ) );
 		} ?>
 
 		<p>
@@ -139,7 +139,7 @@ class WPCM_Meta_Box_Match_Result {
 		<div id="results-table">
 
 			<?php
-			if ( get_option( 'wpcm_match_box_scores' ) == 'yes' ) { ?>
+			if ( get_option( 'wpcm_match_box_scores' ) === 'yes' ) { ?>
 
 				<table class="box-scores-table">
 					<thead>
@@ -169,7 +169,7 @@ class WPCM_Meta_Box_Match_Result {
 								'home' => '0',
 								'away' => '0'
 							)
-						), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+						), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
 
 						<tr>
 							<th align="right"><?php esc_html_e( '1st Set', 'wp-club-manager' ); ?></th>
@@ -208,7 +208,7 @@ class WPCM_Meta_Box_Match_Result {
 						</tr>
 
 					<?php
-					elseif ( in_array( $sport, array( 'basketball', 'football', 'footy' ) ) ) :
+					elseif ( in_array( $sport, array( 'basketball', 'football', 'footy' ), true ) ) :
 
 						$box_goals = array_merge( array(
 							'q1' => array(
@@ -225,7 +225,7 @@ class WPCM_Meta_Box_Match_Result {
 								'home' => '0',
 								'away' => '0'
 							)
-						), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
+						), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) ); ?>
 
 						<tr>
 							<th align="right"><?php esc_html_e( '1st Quarter', 'wp-club-manager' ); ?></th>
@@ -257,7 +257,7 @@ class WPCM_Meta_Box_Match_Result {
 						</tr>
 
 					<?php
-					elseif ( in_array( $sport, array( 'hockey', 'floorball' ) ) ) :
+					elseif ( in_array( $sport, array( 'hockey', 'floorball' ), true ) ) :
 
 						$box_goals = array_merge( array(
 							'q1' => array(
@@ -274,7 +274,7 @@ class WPCM_Meta_Box_Match_Result {
 								'home' => '0',
 								'away' => '0',
 							),
-						), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
+						), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
 						?>
 
 						<tr>
@@ -305,7 +305,7 @@ class WPCM_Meta_Box_Match_Result {
 								'home' => '0',
 								'away' => '0',
 							),
-						), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
+						), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
 						?>
 
 						<tr class="wpcm-ss-admin-tr-last">
@@ -326,7 +326,7 @@ class WPCM_Meta_Box_Match_Result {
 			?>
 			<table class="final-score-table">
 				<?php
-				if ( get_option( 'wpcm_match_box_scores' ) != 'yes' ) {
+				if ( get_option( 'wpcm_match_box_scores' ) !== 'yes' ) {
 					?>
 					<thead>
 					<tr>
@@ -391,7 +391,7 @@ class WPCM_Meta_Box_Match_Result {
 
 			</table>
 
-			<?php if ( 'cricket' == $sport ) { ?>
+			<?php if ( 'cricket' === $sport ) { ?>
 
 				<p class="wpcm-results-outcome-title">
 					<?php esc_html_e( 'Match Outcome', 'wp-club-manager' ); ?>
@@ -477,7 +477,7 @@ class WPCM_Meta_Box_Match_Result {
 
 			<?php } ?>
 
-			<?php if ( ! in_array( $sport, array( 'cricket', 'soccer', 'volleyball', 'baseball' ) ) ) { ?>
+			<?php if ( ! in_array( $sport, array( 'cricket', 'soccer', 'volleyball', 'baseball' ), true ) ) { ?>
 
 				<p>
 					<label class="selectit">
@@ -489,7 +489,7 @@ class WPCM_Meta_Box_Match_Result {
 
 			<?php } ?>
 
-			<?php if ( in_array( $sport, array( 'hockey', 'handball' ) ) ) { ?>
+			<?php if ( in_array( $sport, array( 'hockey', 'handball' ), true ) ) { ?>
 
 				<p>
 					<label class="selectit">
@@ -571,27 +571,27 @@ class WPCM_Meta_Box_Match_Result {
 			update_post_meta( $post_id, '_wpcm_walkover', $walkover );
 		}
 
-		if ( 'cricket' == $sport ) {
+		if ( 'cricket' === $sport ) {
 
 			$wpcm_match_runs = filter_input( INPUT_POST, 'wpcm_match_runs', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( $wpcm_match_runs ) {
-				update_post_meta( $post_id, '_wpcm_match_runs', serialize( $wpcm_match_runs ) );
+				update_post_meta( $post_id, '_wpcm_match_runs', maybe_serialize( $wpcm_match_runs ) );
 			}
 			$wpcm_match_extras = filter_input( INPUT_POST, 'wpcm_match_extras', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( isset( $_POST['wpcm_match_extras'] ) ) {
-				update_post_meta( $post_id, '_wpcm_match_extras', serialize( $wpcm_match_extras ) );
+				update_post_meta( $post_id, '_wpcm_match_extras', maybe_serialize( $wpcm_match_extras ) );
 			}
 			$wpcm_match_wickets = filter_input( INPUT_POST, 'wpcm_match_wickets', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( isset( $_POST['wpcm_match_wickets'] ) ) {
-				update_post_meta( $post_id, '_wpcm_match_wickets', serialize( $wpcm_match_wickets ) );
+				update_post_meta( $post_id, '_wpcm_match_wickets', maybe_serialize( $wpcm_match_wickets ) );
 			}
 			$wpcm_match_overs = filter_input( INPUT_POST, 'wpcm_match_overs', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( isset( $_POST['wpcm_match_overs'] ) ) {
-				update_post_meta( $post_id, '_wpcm_match_overs', serialize( $wpcm_match_overs ) );
+				update_post_meta( $post_id, '_wpcm_match_overs', maybe_serialize( $wpcm_match_overs ) );
 			}
 
 			$cricket_outcome = filter_input( INPUT_POST, 'cricket_outcome_0', FILTER_UNSAFE_RAW );
-			if ( $cricket_outcome && '' != $cricket_outcome ) {
+			if ( $cricket_outcome && '' !== $cricket_outcome ) {
 				$outcome_0         = sanitize_text_field( $cricket_outcome );
 				$cricket_outcome_1 = filter_input( INPUT_POST, 'cricket_outcome_1', FILTER_UNSAFE_RAW );
 				$cricket_outcome_2 = filter_input( INPUT_POST, 'cricket_outcome_2', FILTER_UNSAFE_RAW );
@@ -603,42 +603,42 @@ class WPCM_Meta_Box_Match_Result {
 		} else {
 			$goals = filter_input( INPUT_POST, 'wpcm_goals', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( $goals ) {
-				update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
+				update_post_meta( $post_id, 'wpcm_goals', maybe_serialize( $goals ) );
 				update_post_meta( $post_id, 'wpcm_home_goals', $goals['total']['home'] );
 				update_post_meta( $post_id, 'wpcm_away_goals', $goals['total']['away'] );
 			}
 		}
 
 		$bonus = filter_input( INPUT_POST, 'wpcm_bonus', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-		if ( 'rugby' == $sport && $bonus ) {
-			update_post_meta( $post_id, 'wpcm_bonus', serialize( $bonus ) );
+		if ( 'rugby' === $sport && $bonus ) {
+			update_post_meta( $post_id, 'wpcm_bonus', maybe_serialize( $bonus ) );
 			update_post_meta( $post_id, 'wpcm_home_bonus', $bonus['home'] );
 			update_post_meta( $post_id, 'wpcm_away_bonus', $bonus['away'] );
 		}
 
 		$overtime = filter_input( INPUT_POST, 'wpcm_overtime', FILTER_UNSAFE_RAW );
-		if ( $overtime && ! in_array( $sport, array( 'volleyball', 'baseball' ) ) ) {
+		if ( $overtime && ! in_array( $sport, array( 'volleyball', 'baseball' ), true ) ) {
 			update_post_meta( $post_id, 'wpcm_overtime', sanitize_text_field( $overtime ) );
 		}
 
-		if ( ! $overtime && ! in_array( $sport, array( 'volleyball', 'baseball' ) ) ) {
+		if ( ! $overtime && ! in_array( $sport, array( 'volleyball', 'baseball' ), true ) ) {
 			delete_post_meta( $post_id, 'wpcm_overtime' );
 		}
 
 		$shootout = filter_input( INPUT_POST, 'wpcm_shootout', FILTER_UNSAFE_RAW );
-		if ( $shootout && in_array( $sport, array( 'hockey', 'handball' ) ) ) {
+		if ( $shootout && in_array( $sport, array( 'hockey', 'handball' ), true ) ) {
 			update_post_meta( $post_id, 'wpcm_shootout', sanitize_text_field( $shootout ) );
 		}
 
 		if ( 'soccer' === $sport && $shootout ) {
 			update_post_meta( $post_id, 'wpcm_shootout', sanitize_text_field( $shootout ) );
 			$shootout_score = filter_input( INPUT_POST, 'wpcm_shootout_score', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
-			update_post_meta( $post_id, '_wpcm_shootout_score', serialize( $shootout_score ) );
+			update_post_meta( $post_id, '_wpcm_shootout_score', maybe_serialize( $shootout_score ) );
 			update_post_meta( $post_id, '_wpcm_home_shootout_goals', $shootout_score['home'] );
 			update_post_meta( $post_id, '_wpcm_away_shootout_goals', $shootout_score['away'] );
 		}
 
-		if ( ! $shootout && in_array( $sport, array( 'soccer', 'hockey', 'handball' ) ) ) {
+		if ( ! $shootout && in_array( $sport, array( 'soccer', 'hockey', 'handball' ), true ) ) {
 			delete_post_meta( $post_id, 'wpcm_shootout' );
 		}
 
@@ -651,13 +651,13 @@ class WPCM_Meta_Box_Match_Result {
 		if ( 'gaelic' === $sport ) {
 			$gaa_goals = filter_input( INPUT_POST, 'wpcm_gaa_goals', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( $gaa_goals ) {
-				update_post_meta( $post_id, 'wpcm_gaa_goals', serialize( $gaa_goals ) );
+				update_post_meta( $post_id, 'wpcm_gaa_goals', maybe_serialize( $gaa_goals ) );
 				update_post_meta( $post_id, 'wpcm_home_gaa_goals', $gaa_goals['home'] );
 				update_post_meta( $post_id, 'wpcm_away_gaa_goals', $gaa_goals['away'] );
 			}
 			$gaa_points = filter_input( INPUT_POST, 'wpcm_gaa_points', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( $gaa_points ) {
-				update_post_meta( $post_id, 'wpcm_gaa_points', serialize( $gaa_points ) );
+				update_post_meta( $post_id, 'wpcm_gaa_points', maybe_serialize( $gaa_points ) );
 				update_post_meta( $post_id, 'wpcm_home_gaa_points', $gaa_points['home'] );
 				update_post_meta( $post_id, 'wpcm_away_gaa_points', $gaa_points['away'] );
 			}

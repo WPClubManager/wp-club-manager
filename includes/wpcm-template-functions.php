@@ -324,12 +324,12 @@ if ( ! function_exists( 'wpclubmanager_template_single_player_dropdown' ) ) {
 
 			$custom = get_post_custom( $player_post->ID );
 
-			$players[ get_permalink( $player_post->ID ) ] = ( null == $custom['wpcm_number'][0] ? '' : $custom['wpcm_number'][0] . '. ' ) . get_the_title( $player_post->ID );
+			$players[ get_permalink( $player_post->ID ) ] = ( null === $custom['wpcm_number'][0] ? '' : $custom['wpcm_number'][0] . '. ' ) . get_the_title( $player_post->ID );
 		endforeach;
 
 		$custom = get_post_custom();
 
-		if ( null == $custom['wpcm_number'][0] ) {
+		if ( null === $custom['wpcm_number'][0] ) {
 			$number = '-';
 			$name   = get_the_title( $post->ID );
 		} else {

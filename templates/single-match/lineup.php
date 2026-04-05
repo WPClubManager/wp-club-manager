@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post;
 
 $played                   = get_post_meta( $post->ID, 'wpcm_played', true );
-$players                  = unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) );
+$players                  = maybe_unserialize( get_post_meta( $post->ID, 'wpcm_players', true ) );
 $wpcm_player_stats_labels = wpcm_get_preset_labels();
 $subs_not_used            = get_post_meta( $post->ID, '_wpcm_match_subs_not_used', true );
 
@@ -40,7 +40,7 @@ if ( $played && $players ) {
 
 						<?php
 						foreach ( $wpcm_player_stats_labels as $key => $val ) {
-							if ( ! in_array( $key, wpcm_exclude_keys() ) && 'yes' === get_option( 'wpcm_show_stats_' . $key ) && 'yes' === get_option( 'wpcm_match_show_stats_' . $key ) ) {
+							if ( ! in_array( $key, wpcm_exclude_keys(), true ) && 'yes' === get_option( 'wpcm_show_stats_' . $key ) && 'yes' === get_option( 'wpcm_match_show_stats_' . $key ) ) {
 								?>
 
 								<th class="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $val ); ?></th>
@@ -99,7 +99,7 @@ if ( $played && $players ) {
 
 						<?php
 						foreach ( $wpcm_player_stats_labels as $key => $val ) {
-							if ( ! in_array( $key, wpcm_exclude_keys() ) && 'yes' === get_option( 'wpcm_show_stats_' . $key ) && 'yes' === get_option( 'wpcm_match_show_stats_' . $key ) ) {
+							if ( ! in_array( $key, wpcm_exclude_keys(), true ) && 'yes' === get_option( 'wpcm_show_stats_' . $key ) && 'yes' === get_option( 'wpcm_match_show_stats_' . $key ) ) {
 								?>
 
 								<th class="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $val ); ?></th>

@@ -320,7 +320,7 @@ class WPCM_Shortcodes {
 		}
 
 		ob_start();
-		if ( null != $latitude && null != $longitude ) :
+		if ( null !== $latitude && null !== $longitude ) :
 			?>
 			<iframe
 			class="wpcm-google-map <?php echo esc_attr( $class ); ?>"

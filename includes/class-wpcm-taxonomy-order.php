@@ -201,7 +201,7 @@ class WPCM_Taxonomy_Order {
 	public function is_taxonomy_ordering_enabled( $tax_slug ) {
 		$enabled_taxonomies = array( 'wpcm_season', 'wpcm_team', 'wpcm_comp', 'wpcm_position', 'wpcm_jobs' );
 
-		return in_array( $tax_slug, $enabled_taxonomies );
+		return in_array( $tax_slug, $enabled_taxonomies, true );
 	}
 }
 

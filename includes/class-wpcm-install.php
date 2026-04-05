@@ -356,7 +356,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		public function pre_update_option_active_plugins( $new_value ) {
 			$old_value = (array) get_option( 'active_plugins' );
 
-			if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value ) && in_array( W3TC_FILE, (array) $old_value ) ) {
+			if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value, true ) && in_array( W3TC_FILE, (array) $old_value, true ) ) {
 				$this->_config->set( 'notes.plugins_updated', true );
 				try {
 					$this->_config->save();

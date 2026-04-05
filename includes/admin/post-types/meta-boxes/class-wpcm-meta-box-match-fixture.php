@@ -31,10 +31,10 @@ class WPCM_Meta_Box_Match_Fixture {
 		$default_club = get_default_club();
 		$home_club    = get_post_meta( $post->ID, 'wpcm_home_club', true );
 		$away_club    = get_post_meta( $post->ID, 'wpcm_away_club', true );
-		if ( '' == $home_club && is_club_mode() ) {
+		if ( '' === $home_club && is_club_mode() ) {
 			$home_club = $default_club;
 		}
-		if ( '' == $away_club && is_club_mode() ) {
+		if ( '' === $away_club && is_club_mode() ) {
 			$away_club = $default_club;
 		}
 		?>

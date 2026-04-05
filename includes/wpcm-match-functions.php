@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return mixed|string
  */
 function match_title( $title, $id = null ) {
-	if ( get_post_type( $id ) == 'wpcm_match' ) {
+	if ( get_post_type( $id ) === 'wpcm_match' ) {
 
 		$default_club = get_default_club();
 		$title_format = get_match_title_format();
@@ -55,7 +55,7 @@ add_filter( 'the_title', 'match_title', 10, 2 );
  * @return mixed|string
  */
 function match_wp_title( $title ) {
-	if ( get_post_type() == 'wpcm_match' ) {
+	if ( get_post_type() === 'wpcm_match' ) {
 
 		$id    = get_the_ID();
 		$title = match_title( $title, $id ) . ' | ' . get_the_date() . ' | ';
@@ -121,14 +121,14 @@ function wpcm_get_match_outcome( $post ) {
 			$away_goals = get_post_meta( $post, 'wpcm_away_goals', true );
 		}
 	} else {
-		$runs       = unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
-		$extras     = unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
+		$runs       = maybe_unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
+		$extras     = maybe_unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
 		$home_goals = $runs['home'] + $extras['home'];
 		$away_goals = $runs['away'] + $extras['away'];
 	}
 	if ( $postponed ) {
-		if ( '' != $walkover ) {
-			if ( $club == $home_club ) {
+		if ( '' !== $walkover ) {
+			if ( $club === $home_club ) {
 				if ( 'home_win' === $walkover ) {
 					$outcome = 'win';
 				} elseif ( 'away_win' === $walkover ) {
@@ -143,10 +143,10 @@ function wpcm_get_match_outcome( $post ) {
 			$outcome = 'postponed';
 		}
 	} else {
-		if ( $home_goals == $away_goals ) {
+		if ( $home_goals === $away_goals ) {
 			$outcome = 'draw';
 		}
-		if ( $club == $home_club ) {
+		if ( $club === $home_club ) {
 			if ( $home_goals > $away_goals ) {
 				$outcome = 'win';
 			}
@@ -195,9 +195,9 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 			$away_gaa_points = get_post_meta( $post, 'wpcm_away_gaa_points', true );
 		}
 		if ( 'cricket' === $sport ) {
-			$runs            = unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
-			$extras          = unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
-			$wickets         = unserialize( get_post_meta( $post, '_wpcm_match_wickets', true ) );
+			$runs            = maybe_unserialize( get_post_meta( $post, '_wpcm_match_runs', true ) );
+			$extras          = maybe_unserialize( get_post_meta( $post, '_wpcm_match_extras', true ) );
+			$wickets         = maybe_unserialize( get_post_meta( $post, '_wpcm_match_wickets', true ) );
 			$cricket_outcome = get_post_meta( $post, '_wpcm_cricket_outcome', true );
 			if ( is_array( $cricket_outcome ) ) {
 				if ( 'won_by' === $cricket_outcome[0] ) {
@@ -248,8 +248,8 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 
 				$home_score   = $runs['home'] + $extras['home'];
 				$away_score   = $runs['away'] + $extras['away'];
-				$home_wickets = ( '10' == $wickets['home'] ? '' : '/' . $wickets['home'] );
-				$away_wickets = ( '10' == $wickets['away'] ? '' : '/' . $wickets['away'] );
+				$home_wickets = ( '10' === $wickets['home'] ? '' : '/' . $wickets['home'] );
+				$away_wickets = ( '10' === $wickets['away'] ? '' : '/' . $wickets['away'] );
 
 				// $result = ( $played ? $home_score . $home_wickets . ' ' . $delimiter . ' ' . $away_score . $away_wickets : '' );
 				$result = $outcome;
@@ -273,8 +273,8 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 
 			$home_score   = $runs['home'] + $extras['home'];
 			$away_score   = $runs['away'] + $extras['away'];
-			$home_wickets = ( '10' == $wickets['home'] ? '' : '/' . $wickets['home'] );
-			$away_wickets = ( '10' == $wickets['away'] ? '' : '/' . $wickets['away'] );
+			$home_wickets = ( '10' === $wickets['home'] ? '' : '/' . $wickets['home'] );
+			$away_wickets = ( '10' === $wickets['away'] ? '' : '/' . $wickets['away'] );
 
 			// $result = ( $played ? $away_score . $away_wickets . ' ' . $delimiter . ' ' . $home_score . $home_wickets : '' );
 			$result = $outcome;
@@ -377,7 +377,7 @@ function wpcm_get_match_clubs( $post, $abbr = false ) {
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
 
-	if ( false == $abbr ) {
+	if ( false === $abbr ) {
 		if ( '%home% vs %away%' === $format ) {
 			$side1 = wpcm_get_team_name( $home_club, $post );
 			$side2 = wpcm_get_team_name( $away_club, $post );
@@ -413,15 +413,15 @@ function wpcm_get_match_opponents( $post, $abbr = false ) {
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
 	$opponent  = '';
-	if ( false == $abbr ) {
-		if ( $club == $home_club ) {
+	if ( false === $abbr ) {
+		if ( $club === $home_club ) {
 			$opponent = get_the_title( $away_club, true );
-		} elseif ( $club == $away_club ) {
+		} elseif ( $club === $away_club ) {
 			$opponent = get_the_title( $home_club, true );
 		}
-	} elseif ( $club == $home_club ) {
+	} elseif ( $club === $home_club ) {
 			$opponent = get_club_abbreviation( $away_club );
-	} elseif ( $club == $away_club ) {
+	} elseif ( $club === $away_club ) {
 		$opponent = get_club_abbreviation( $home_club );
 	}
 
@@ -508,7 +508,7 @@ function wpcm_get_match_venue( $post ) {
 
 	if ( $neutral ) {
 		$venue_info['status'] = _x( 'N', 'Neutral ground', 'wp-club-manager' );
-	} elseif ( $club == $home_club ) {
+	} elseif ( $club === $home_club ) {
 			$venue_info['status'] = _x( 'H', 'Home ground', 'wp-club-manager' );
 	} else {
 		$venue_info['status'] = _x( 'A', 'Away ground', 'wp-club-manager' );

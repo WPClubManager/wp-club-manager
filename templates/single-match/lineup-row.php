@@ -14,23 +14,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post; ?>
 
 <tr>
-	<?php if ( get_option( 'wpcm_lineup_show_shirt_numbers' ) == 'yes' ) { ?>
+	<?php if ( get_option( 'wpcm_lineup_show_shirt_numbers' ) === 'yes' ) { ?>
 		<th class="shirt-number"><?php echo esc_html( $count ); ?></th>
 	<?php } ?>
 
 	<th class="name">
 		<div>
 			<?php
-			if ( get_option( 'wpcm_player_profile_show_number' ) == 'yes' && get_post_meta( $key, 'wpcm_number', true ) == true ) {
+			if ( get_option( 'wpcm_player_profile_show_number' ) === 'yes' && get_post_meta( $key, 'wpcm_number', true ) === true ) {
 				echo esc_html( get_post_meta( $key, 'wpcm_number', true ) );
 			}
-			if ( get_option( 'wpcm_results_show_image' ) == 'yes' ) {
+			if ( get_option( 'wpcm_results_show_image' ) === 'yes' ) {
 				echo wp_kses_post( wpcm_get_player_thumbnail( $key, 'player_thumbnail', array( 'class' => 'lineup-thumb' ) ) );
 			}
 			?>
 			<a href="<?php echo esc_url( get_permalink( $key ) ); ?>"><?php echo wp_kses_post( get_player_title( $key, get_option( 'wpcm_name_format' ) ) ); ?></a>
 			<?php
-			echo ( get_post_meta( $post->ID, '_wpcm_match_captain', true ) == $key ? ' (c) ' : '' );
+			echo ( get_post_meta( $post->ID, '_wpcm_match_captain', true ) === $key ? ' (c) ' : '' );
 			if ( isset( $value['mvp'] ) ) {
 				?>
 				<span class="mvp" title="<?php esc_html_e( 'Player of Match', 'wp-club-manager' ); ?>">&#9733;</span>
@@ -47,11 +47,11 @@ global $post; ?>
 	<?php
 	foreach ( $value as $key => $stat ) {
 
-		if ( '0' == $stat || null == $stat ) {
+		if ( '0' === $stat || null === $stat ) {
 			$stat = '&mdash;';
 		}
 
-		if ( ! in_array( $key, wpcm_exclude_keys() ) && get_option( 'wpcm_show_stats_' . $key ) == 'yes' && get_option( 'wpcm_match_show_stats_' . $key ) == 'yes' ) {
+		if ( ! in_array( $key, wpcm_exclude_keys(), true ) && get_option( 'wpcm_show_stats_' . $key ) === 'yes' && get_option( 'wpcm_match_show_stats_' . $key ) === 'yes' ) {
 			?>
 
 			<td class="stats <?php echo esc_attr( $key ); ?>"><?php echo esc_html( $stat ); ?></td>
@@ -60,19 +60,19 @@ global $post; ?>
 		}
 	}
 
-	if ( get_option( 'wpcm_show_stats_greencards' ) == 'yes' || get_option( 'wpcm_show_stats_yellowcards' ) == 'yes' || get_option( 'wpcm_show_stats_blackcards' ) == 'yes' || get_option( 'wpcm_show_stats_redcards' ) == 'yes' ) {
+	if ( get_option( 'wpcm_show_stats_greencards' ) === 'yes' || get_option( 'wpcm_show_stats_yellowcards' ) === 'yes' || get_option( 'wpcm_show_stats_blackcards' ) === 'yes' || get_option( 'wpcm_show_stats_redcards' ) === 'yes' ) {
 		?>
 
 		<td class="notes">
 
-			<?php if ( get_option( 'wpcm_show_stats_greencards' ) == 'yes' && isset( $value['greencards'] ) && get_option( 'wpcm_show_stats_greencards' ) == 'yes' ) { ?>
+			<?php if ( get_option( 'wpcm_show_stats_greencards' ) === 'yes' && isset( $value['greencards'] ) && get_option( 'wpcm_show_stats_greencards' ) === 'yes' ) { ?>
 
 				<span class="greencard" title="<?php esc_html_e( 'Green Card', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Green Card', 'wp-club-manager' ); ?></span>
 
 				<?php
 			}
 
-			if ( get_option( 'wpcm_show_stats_yellowcards' ) == 'yes' && isset( $value['yellowcards'] ) && get_option( 'wpcm_show_stats_yellowcards' ) == 'yes' ) {
+			if ( get_option( 'wpcm_show_stats_yellowcards' ) === 'yes' && isset( $value['yellowcards'] ) && get_option( 'wpcm_show_stats_yellowcards' ) === 'yes' ) {
 				?>
 
 				<span class="yellowcard" title="<?php esc_html_e( 'Yellow Card', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Yellow Card', 'wp-club-manager' ); ?></span>
@@ -80,7 +80,7 @@ global $post; ?>
 				<?php
 			}
 
-			if ( get_option( 'wpcm_show_stats_blackcards' ) == 'yes' && isset( $value['blackcards'] ) && get_option( 'wpcm_show_stats_blackcards' ) == 'yes' ) {
+			if ( get_option( 'wpcm_show_stats_blackcards' ) === 'yes' && isset( $value['blackcards'] ) && get_option( 'wpcm_show_stats_blackcards' ) === 'yes' ) {
 				?>
 
 				<span class="blackcard" title="<?php esc_html_e( 'Black Card', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Black Card', 'wp-club-manager' ); ?></span>
@@ -88,7 +88,7 @@ global $post; ?>
 				<?php
 			}
 
-			if ( get_option( 'wpcm_show_stats_redcards' ) == 'yes' && isset( $value['redcards'] ) && get_option( 'wpcm_show_stats_redcards' ) == 'yes' ) {
+			if ( get_option( 'wpcm_show_stats_redcards' ) === 'yes' && isset( $value['redcards'] ) && get_option( 'wpcm_show_stats_redcards' ) === 'yes' ) {
 				?>
 
 				<span class="redcard" title="<?php esc_html_e( 'Red Card', 'wp-club-manager' ); ?>"><?php esc_html_e( 'Red Card', 'wp-club-manager' ); ?></span>

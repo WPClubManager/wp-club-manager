@@ -362,7 +362,7 @@ class WPCM_Admin_Setup_Wizard {
 		}
 
 		$default_club = filter_input( INPUT_POST, 'default_club', FILTER_UNSAFE_RAW );
-		if ( $default_club && get_option( 'wpcm_default_club', null ) != sanitize_text_field( $default_club ) ) {
+		if ( $default_club && get_option( 'wpcm_default_club', null ) !== sanitize_text_field( $default_club ) ) {
 			$title             = sanitize_text_field( $default_club );
 			$post              = array(
 				'post_title'  => $title,
@@ -408,7 +408,7 @@ class WPCM_Admin_Setup_Wizard {
 				);
 				$table_id     = wp_insert_post( $league_table );
 				$clubs        = array( $wpcm_default_club, $opponent_id );
-				update_post_meta( $table_id, '_wpcm_table_clubs', serialize( $clubs ) );
+				update_post_meta( $table_id, '_wpcm_table_clubs', maybe_serialize( $clubs ) );
 
 				$title  = $team . ' -- ' . $season;
 				$roster = array(

@@ -61,11 +61,11 @@ class WPCM_Meta_Box_Staff_Roster {
 		$staff_id = filter_input( INPUT_POST, 'add_to_roster', FILTER_VALIDATE_INT );
 		if ( $staff_id ) {
 
-			$players = (array) unserialize( get_post_meta( $staff_id, '_wpcm_roster_staff', true ) );
+			$players = (array) maybe_unserialize( get_post_meta( $staff_id, '_wpcm_roster_staff', true ) );
 
-			if ( ! in_array( $post_id, $players ) ) {
+			if ( ! in_array( $post_id, $players, true ) ) {
 				array_push( $players, intval( $post_id ) );
-				update_post_meta( $staff_id, '_wpcm_roster_staff', serialize( $players ) );
+				update_post_meta( $staff_id, '_wpcm_roster_staff', maybe_serialize( $players ) );
 
 				$seasons = wp_get_post_terms( $staff_id, 'wpcm_season' );
 				$season  = $seasons[0]->term_id;

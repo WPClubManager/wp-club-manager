@@ -286,7 +286,7 @@ endif;
 					<td>&nbsp;</td>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
-						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+						if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 							?>
 							<th><?php echo esc_html( $val ); ?></th>
 							<?php
@@ -300,7 +300,7 @@ endif;
 					<th align="right">Total</th>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
-						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+						if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 							?>
 							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" value="<?php wpcm_stats_value( $stats, 'total', $key ); ?>" size="3" tabindex="-1" class="player-stats-total-<?php echo esc_attr( $key ); ?>" readonly /></td>
 							<?php
@@ -314,7 +314,7 @@ endif;
 					<td align="right"><?php esc_html_e( 'Auto' ); ?></td>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
-						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+						if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 							?>
 							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" value="<?php wpcm_stats_value( $stats, 'auto', $key ); ?>" size="3" tabindex="-1" class="player-stats-auto-<?php echo esc_attr( $key ); ?>" readonly /></td>
 							<?php
@@ -326,9 +326,9 @@ endif;
 					<td align="right"><?php esc_html_e( 'Manual', 'wp-club-manager' ); ?></td>
 					<?php
 					foreach ( $stats_labels as $key => $val ) :
-						if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+						if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 							?>
-							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" name="wpcm_stats[<?php echo esc_attr( $team ); ?>][<?php echo esc_attr( $season ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php esc_attr( wpcm_stats_value( $stats, 'manual', $key ) ); ?>" size="3" class="player-stats-manual-<?php echo esc_attr( $key ); ?>"<?php echo ( 0 == $season ? ' readonly' : '' ); ?> /></td>
+							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" name="wpcm_stats[<?php echo esc_attr( $team ); ?>][<?php echo esc_attr( $season ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php esc_attr( wpcm_stats_value( $stats, 'manual', $key ) ); ?>" size="3" class="player-stats-manual-<?php echo esc_attr( $key ); ?>"<?php echo ( 0 === $season ? ' readonly' : '' ); ?> /></td>
 							<?php
 						endif;
 					endforeach;
@@ -361,7 +361,7 @@ endif;
 			array_walk_recursive( $stats, 'wpcm_array_values_to_int' );
 		}
 
-		update_post_meta( $post_id, 'wpcm_stats', serialize( $stats ) );
+		update_post_meta( $post_id, 'wpcm_stats', maybe_serialize( $stats ) );
 
 		do_action( 'delete_plugin_transients' );
 	}

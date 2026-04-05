@@ -144,7 +144,7 @@ if ( ! function_exists( 'wpcm_club_standings_sort_by' ) ) {
 			$b[ $k ] = (float) $v->wpcm_stats[ $subkey ];
 		}
 
-		if ( null != $b ) {
+		if ( null !== $b ) {
 
 			arsort( $b );
 			foreach ( $b as $key => $val ) {
@@ -261,7 +261,7 @@ if ( ! function_exists( 'wpcm_sort_table_clubs' ) ) {
 		// Loop through priorities
 		foreach ( $priorities as $priority ) {
 
-			if ( wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) != wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 ) ) {
+			if ( wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) !== wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 ) ) {
 
 				// Compare column values
 				$output = wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) - wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 );

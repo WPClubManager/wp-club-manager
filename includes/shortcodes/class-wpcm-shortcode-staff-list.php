@@ -70,7 +70,7 @@ class WPCM_Shortcode_Staff_List {
 
 		if ( false === $output ) {
 
-			$selected_staff = (array) unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
+			$selected_staff = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
 
 			$stats_labels = wpcm_staff_labels();
 

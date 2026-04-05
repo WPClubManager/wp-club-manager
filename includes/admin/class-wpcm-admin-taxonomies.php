@@ -468,7 +468,7 @@ class WPCM_Admin_Taxonomies {
 			<label for="term_meta[wpcm_address]"><?php esc_html_e( 'Venue Address', 'wp-club-manager' ); ?></label>
 			<input type="text" class="wpcm-address" name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" value="<?php echo esc_attr( $address ); ?>">
 			<?php
-			if ( 'google' == $map_service ) {
+			if ( 'google' === $map_service ) {
 				?>
 				<p><div class="wpcm-location-picker"></div></p>
 				<p class="description">
@@ -528,7 +528,7 @@ class WPCM_Admin_Taxonomies {
 			<td>
 				<input type="text" class="wpcm-address" name="term_meta[wpcm_address]" id="term_meta[wpcm_address]" value="<?php echo ( isset( $term_meta['wpcm_address'] ) && ! empty( $term_meta['wpcm_address'] ) ) ? esc_html( $term_meta['wpcm_address'] ) : ''; ?>">
 				<?php
-				if ( 'google' == $map_service ) {
+				if ( 'google' === $map_service ) {
 					?>
 					<p><div class="wpcm-location-picker"></div></p>
 					<p class="description">
@@ -540,9 +540,9 @@ class WPCM_Admin_Taxonomies {
 			</td>
 		</tr>
 
-		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-latitude"' : ''; ?> name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo ( isset( $term_meta['wpcm_latitude'] ) && ! empty( $term_meta['wpcm_latitude'] ) ) ? esc_html( $term_meta['wpcm_latitude'] ) : esc_html( $latitude ); ?>">
+		<input type="hidden" <?php echo 'google' === $map_service ? 'class="wpcm-latitude"' : ''; ?> name="term_meta[wpcm_latitude]" id="term_meta[wpcm_latitude]" value="<?php echo ( isset( $term_meta['wpcm_latitude'] ) && ! empty( $term_meta['wpcm_latitude'] ) ) ? esc_html( $term_meta['wpcm_latitude'] ) : esc_html( $latitude ); ?>">
 
-		<input type="hidden" <?php echo 'google' == $map_service ? 'class="wpcm-longitude"' : ''; ?> name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo ( isset( $term_meta['wpcm_longitude'] ) && ! empty( $term_meta['wpcm_longitude'] ) ) ? esc_html( $term_meta['wpcm_longitude'] ) : esc_html( $longitude ); ?>">
+		<input type="hidden" <?php echo 'google' === $map_service ? 'class="wpcm-longitude"' : ''; ?> name="term_meta[wpcm_longitude]" id="term_meta[wpcm_longitude]" value="<?php echo ( isset( $term_meta['wpcm_longitude'] ) && ! empty( $term_meta['wpcm_longitude'] ) ) ? esc_html( $term_meta['wpcm_longitude'] ) : esc_html( $longitude ); ?>">
 
 		<tr class="form-field">
 			<th scope="row" valign="top">
@@ -570,7 +570,7 @@ class WPCM_Admin_Taxonomies {
 
 		$term_meta_value = filter_input( INPUT_POST, 'term_meta', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 
-		if ( 'osm' == $map_service ) {
+		if ( 'osm' === $map_service ) {
 
 			if ( $term_meta_value ) {
 				$t_id                        = $term_id;

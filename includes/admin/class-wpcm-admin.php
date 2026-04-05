@@ -124,7 +124,7 @@ class WPCM_Admin {
 		if ( get_transient( '_wpcm_activation_redirect' ) ) {
 			delete_transient( '_wpcm_activation_redirect' );
 
-			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ) ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
+			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ), true ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
 				return;
 			}
 
@@ -208,7 +208,7 @@ class WPCM_Admin {
 		$current_screen = get_current_screen();
 		$wpcm_pages     = wpcm_get_screen_ids();
 
-		if ( isset( $current_screen->id ) && apply_filters( 'wpclubmanager_display_admin_footer_text', in_array( $current_screen->id, $wpcm_pages ) ) ) {
+		if ( isset( $current_screen->id ) && apply_filters( 'wpclubmanager_display_admin_footer_text', in_array( $current_screen->id, $wpcm_pages, true ) ) ) {
 
 			if ( ! get_option( 'wpclubmanager_admin_footer_text_rated' ) ) {
 

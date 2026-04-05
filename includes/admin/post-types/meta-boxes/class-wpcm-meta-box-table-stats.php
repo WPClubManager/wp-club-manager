@@ -44,8 +44,8 @@ class WPCM_Meta_Box_Table_Stats {
 		$order          = get_option( 'wpcm_standings_order' );
 		$stats_labels   = wpcm_get_preset_labels( 'standings', 'label' );
 		$stats_rows     = count( $stats_labels );
-		$manual_stats   = (array) unserialize( get_post_meta( $post->ID, '_wpcm_table_stats', true ) );
-		$selected_clubs = (array) unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
+		$manual_stats   = (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_table_stats', true ) );
+		$selected_clubs = (array) maybe_unserialize( get_post_meta( $post->ID, '_wpcm_table_clubs', true ) );
 
 		if ( empty( $selected_clubs ) ) {
 
@@ -75,7 +75,7 @@ class WPCM_Meta_Box_Table_Stats {
 			$clubs = get_posts( $args );
 
 			if ( empty( $clubs ) ) {
-				if ( false != $default_club ) {
+				if ( false !== $default_club ) {
 					$selected_clubs = array( $default_club );
 				} else {
 					$selected_clubs = null;
@@ -184,7 +184,7 @@ class WPCM_Meta_Box_Table_Stats {
 
 							<td class="club">
 								<?php
-								if ( $default_club == $club->ID ) {
+								if ( $default_club === $club->ID ) {
 									if ( $team_label ) {
 										echo esc_html( $team_label );
 									} else {
@@ -242,7 +242,7 @@ class WPCM_Meta_Box_Table_Stats {
 				<input type="button" class="button-secondary wpcm-table-add-row" value="<?php esc_html_e( 'Add club', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-table-delete-row <?php echo ( null != $clubs ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-table-delete-row <?php echo ( null !== $clubs ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 
@@ -270,7 +270,7 @@ class WPCM_Meta_Box_Table_Stats {
 			array_walk_recursive( $clubs, 'wpcm_array_values_to_int' );
 		}
 
-		update_post_meta( $post_id, '_wpcm_table_clubs', serialize( $clubs ) );
+		update_post_meta( $post_id, '_wpcm_table_clubs', maybe_serialize( $clubs ) );
 
 		$stats_data = filter_input( INPUT_POST, 'wpcm_table_stats', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 		if ( $stats_data ) {
@@ -282,7 +282,7 @@ class WPCM_Meta_Box_Table_Stats {
 			array_walk_recursive( $stats, 'wpcm_array_values_to_int' );
 		}
 
-		update_post_meta( $post_id, '_wpcm_table_stats', serialize( $stats ) );
+		update_post_meta( $post_id, '_wpcm_table_stats', maybe_serialize( $stats ) );
 
 		do_action( 'delete_plugin_transients' );
 	}

@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPCM_Admin_Profile' ) ) :
 					<tr>
 						<th><label for="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $field['label'] ); ?></label></th>
 						<td>
-							<?php if ( ! empty( $field['type'] ) && 'select' == $field['type'] ) : ?>
+							<?php if ( ! empty( $field['type'] ) && 'select' === $field['type'] ) : ?>
 								<select name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" class="<?php echo ( ! empty( $field['class'] ) ? esc_attr( $field['class'] ) : '' ); ?>" style="width: 25em;">
 									<?php
 										$selected = esc_attr( get_user_meta( $user->ID, $key, true ) );

@@ -129,9 +129,9 @@ class WPCM_Meta_Box_Roster_Details {
 		$player_team_import_id = filter_input( INPUT_POST, 'roster_players_import', FILTER_VALIDATE_INT );
 		if ( $player_team_import_id ) {
 
-			$players = (array) unserialize( get_post_meta( $player_team_import_id, '_wpcm_roster_players', true ) );
+			$players = (array) maybe_unserialize( get_post_meta( $player_team_import_id, '_wpcm_roster_players', true ) );
 
-			update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
+			update_post_meta( $post_id, '_wpcm_roster_players', maybe_serialize( $players ) );
 
 			if ( is_array( $players ) ) {
 
@@ -149,9 +149,9 @@ class WPCM_Meta_Box_Roster_Details {
 		$staff_team_import_id = filter_input( INPUT_POST, 'roster_staff_import', FILTER_VALIDATE_INT );
 		if ( isset( $_POST['roster_staff_import'] ) ) {
 
-			$employees = (array) unserialize( get_post_meta( $staff_team_import_id, '_wpcm_roster_staff', true ) );
+			$employees = (array) maybe_unserialize( get_post_meta( $staff_team_import_id, '_wpcm_roster_staff', true ) );
 
-			update_post_meta( $post_id, '_wpcm_roster_staff', serialize( $employees ) );
+			update_post_meta( $post_id, '_wpcm_roster_staff', maybe_serialize( $employees ) );
 
 			if ( is_array( $employees ) ) {
 

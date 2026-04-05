@@ -32,7 +32,7 @@ if ( ! class_exists( 'WPCM_Admin_Help' ) ) :
 		public function add_tabs() {
 			$screen = get_current_screen();
 
-			if ( ! $screen || ! in_array( $screen->id, wpcm_get_screen_ids() ) ) {
+			if ( ! $screen || ! in_array( $screen->id, wpcm_get_screen_ids(), true ) ) {
 				return;
 			}
 

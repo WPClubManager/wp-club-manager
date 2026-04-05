@@ -230,7 +230,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			global $wp_query, $wpdb;
 
-			if ( is_single() && 0 == $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
+			if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
 				$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
 			}
 
@@ -247,11 +247,11 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function wp_insert_post_data( $data, $postarr ) {
 
-			if ( 'wpcm_match' == $data['post_type'] ) :
+			if ( 'wpcm_match' === $data['post_type'] ) :
 
 				$separator = get_option( 'wpcm_match_clubs_separator' );
 
-				if ( '' == $data['post_title'] || ' ' . $separator . ' ' == $data['post_title'] || 'importing' == $data['post_name'] ) {
+				if ( '' === $data['post_title'] || ' ' . $separator . ' ' === $data['post_title'] || 'importing' === $data['post_name'] ) {
 
 					// $default_club = get_default_club();
 					$title_format = get_match_title_format();
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 						$home_club = $home_club->post_name;
 						$away_club = $away_club->post_name;
 					}
-					if ( '%home% vs %away%' == $title_format ) {
+					if ( '%home% vs %away%' === $title_format ) {
 						$side1 = $home_club;
 						$side2 = $away_club;
 					} else {
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			endif;
 
-			if ( 'wpcm_player' == $data['post_type'] ) :
+			if ( 'wpcm_player' === $data['post_type'] ) :
 
 				$firstname = filter_input( INPUT_POST, '_wpcm_firstname', FILTER_UNSAFE_RAW );
 				if ( $firstname ) {
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			endif;
 
-			if ( 'wpcm_staff' == $data['post_type'] ) :
+			if ( 'wpcm_staff' === $data['post_type'] ) :
 
 				$firstname  = '';
 				$first_name = filter_input( INPUT_POST, '_wpcm_firstname', FILTER_UNSAFE_RAW );
@@ -433,13 +433,13 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 			if ( is_league_mode() ) {
 				$columns['club'] = __( 'Club', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_player_profile_show_number' ) == 'yes' ) {
+			if ( get_option( 'wpcm_player_profile_show_number' ) === 'yes' ) {
 				$columns['number'] = __( 'Squad No.', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_player_profile_show_nationality' ) == 'yes' ) {
+			if ( get_option( 'wpcm_player_profile_show_nationality' ) === 'yes' ) {
 				$columns['flag'] = __( 'Nationality', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_player_profile_show_age' ) == 'yes' ) {
+			if ( get_option( 'wpcm_player_profile_show_age' ) === 'yes' ) {
 				$columns['age'] = __( 'Age', 'wp-club-manager' );
 			}
 			$columns['position'] = __( 'Positions', 'wp-club-manager' );
@@ -469,16 +469,16 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 			if ( is_league_mode() ) {
 				$columns['club'] = __( 'Club', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes' ) {
+			if ( get_option( 'wpcm_staff_profile_show_nationality' ) === 'yes' ) {
 				$columns['flag'] = __( 'Nationality', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_staff_profile_show_age' ) == 'yes' ) {
+			if ( get_option( 'wpcm_staff_profile_show_age' ) === 'yes' ) {
 				$columns['age'] = __( 'Age', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_show_staff_email' ) == 'yes' ) {
+			if ( get_option( 'wpcm_show_staff_email' ) === 'yes' ) {
 				$columns['email'] = __( 'Email', 'wp-club-manager' );
 			}
-			if ( get_option( 'wpcm_show_staff_phone' ) == 'yes' ) {
+			if ( get_option( 'wpcm_show_staff_phone' ) === 'yes' ) {
 				$columns['phone'] = __( 'Phone', 'wp-club-manager' );
 			}
 			$columns['jobs'] = __( 'Jobs', 'wp-club-manager' );
@@ -561,7 +561,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
-					if ( isset( $_GET['mode'] ) && 'excerpt' == $_GET['mode'] ) {
+					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 							'home' => 0,
 							'away' => 0,
 						),
-					), (array) unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
+					), (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) ) );
 					/* Custom inline data for wpclubmanager. */
 					echo '
 					<div class="hidden" id="wpclubmanager_inline_' . esc_attr( $post->ID ) . '">
@@ -656,9 +656,9 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo esc_html( $season );
 					break;
 				case 'dates':
-					if ( get_post_status( $post->ID ) == 'future' ) {
+					if ( get_post_status( $post->ID ) === 'future' ) {
 						$date = __( 'Scheduled', 'wp-club-manager' );
-					} elseif ( get_post_status( $post->ID ) == 'publish' ) {
+					} elseif ( get_post_status( $post->ID ) === 'publish' ) {
 						$played    = get_post_meta( $post->ID, 'wpcm_played', true );
 						$postponed = get_post_meta( $post->ID, '_wpcm_postponed', true );
 						if ( empty( $played ) ) {
@@ -709,14 +709,14 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					$title        = _draft_or_post_title();
 					$default_club = get_default_club();
 
-					echo '<strong>' . ( $post->ID == $default_club ? '<span class="list-table-club-default">' . esc_html__( 'Default', 'wp-club-manager' ) . '</span>' : '' ) . '<a class="row-title" href="' . esc_url( $edit_link ) . '">' . ( $post->post_parent > 0 ? '&mdash;' : '' ) . ' ' . esc_html( $title ) . '</a>';
+					echo '<strong>' . ( $post->ID === $default_club ? '<span class="list-table-club-default">' . esc_html__( 'Default', 'wp-club-manager' ) . '</span>' : '' ) . '<a class="row-title" href="' . esc_url( $edit_link ) . '">' . ( $post->post_parent > 0 ? '&mdash;' : '' ) . ' ' . esc_html( $title ) . '</a>';
 
 					_post_states( $post );
 
 					echo '</strong>';
 
 					// Excerpt view
-					if ( isset( $_GET['mode'] ) && 'excerpt' == $_GET['mode'] ) {
+					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
@@ -741,7 +741,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo esc_html( $abbr );
 					break;
 				case 'venue':
-					if ( false == $defaults['venue'] ) {
+					if ( false === $defaults['venue'] ) {
 						echo '';
 					} else {
 						echo esc_html( $defaults['venue']['name'] );
@@ -782,7 +782,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
-					if ( isset( $_GET['mode'] ) && 'excerpt' == $_GET['mode'] ) {
+					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
@@ -874,7 +874,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					// Excerpt view
-					if ( isset( $_GET['mode'] ) && 'excerpt' == $_GET['mode'] ) {
+					if ( isset( $_GET['mode'] ) && 'excerpt' === $_GET['mode'] ) {
 						echo esc_html( apply_filters( 'the_excerpt', $post->post_excerpt ) );
 					}
 
@@ -970,11 +970,11 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					echo esc_html( $team );
 					break;
 				case 'players':
-					$players = unserialize( get_post_meta( $post->ID, '_wpcm_roster_players', true ) );
+					$players = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_roster_players', true ) );
 					echo ( $players ? count( $players ) : '0' );
 					break;
 				case 'staff':
-					$staff = unserialize( get_post_meta( $post->ID, '_wpcm_roster_staff', true ) );
+					$staff = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_roster_staff', true ) );
 					echo ( $staff ? count( $staff ) : '0' );
 					break;
 			}
@@ -1089,7 +1089,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function row_actions( $actions, $post ) {
 
-			if ( null !== $post->post_type && in_array( $post->post_type, array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_roster', 'wpcm_table', 'wpcm_sponsor' ) ) ) {
+			if ( null !== $post->post_type && in_array( $post->post_type, array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_roster', 'wpcm_table', 'wpcm_sponsor' ), true ) ) {
 				return array_merge( array( 'id' => 'ID: ' . $post->ID ), $actions );
 			}
 
@@ -1104,11 +1104,11 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		 */
 		public function quick_edit( $column_name, $post_type ) {
 
-			if ( 'name' != $column_name ) {
+			if ( 'name' !== $column_name ) {
 				return;
 			}
 
-			if ( 'wpcm_match' == $post_type ) {
+			if ( 'wpcm_match' === $post_type ) {
 				$teams   = get_terms( array(
 					'taxonomy'   => 'wpcm_team',
 					'hide_empty' => false,
@@ -1127,10 +1127,10 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				) );
 
 				include WPCM()->plugin_path() . '/includes/admin/views/html-quick-edit-match.php';
-			} elseif ( 'wpcm_club' == $post_type ) {
+			} elseif ( 'wpcm_club' === $post_type ) {
 
 				include WPCM()->plugin_path() . '/includes/admin/views/html-quick-edit-club.php';
-			} elseif ( 'wpcm_player' == $post_type ) {
+			} elseif ( 'wpcm_player' === $post_type ) {
 
 				$positions = get_terms( array(
 					'taxonomy'   => 'wpcm_position',
@@ -1139,7 +1139,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				$clubs     = get_pages( array( 'post_type' => 'wpcm_club' ) );
 
 				include WPCM()->plugin_path() . '/includes/admin/views/html-quick-edit-player.php';
-			} elseif ( 'wpcm_staff' == $post_type ) {
+			} elseif ( 'wpcm_staff' === $post_type ) {
 
 				$jobs  = get_terms( array(
 					'taxonomy'   => 'wpcm_jobs',
@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			$post_types = array( 'wpcm_match', 'wpcm_club', 'wpcm_player', 'wpcm_staff' );
 			// Check post type is match
-			if ( ! in_array( $post->post_type, $post_types ) ) {
+			if ( ! in_array( $post->post_type, $post_types, true ) ) {
 				return $post_id;
 			}
 
@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					$referee = wpcm_clean( $referee );
 					update_post_meta( $post_id, 'wpcm_referee', $referee );
 					$options = get_option( 'wpcm_referee_list', array() );
-					if ( ! in_array( $referee, $options ) ) {
+					if ( ! in_array( $referee, $options, true ) ) {
 						$options[] = $referee;
 						update_option( 'wpcm_referee_list', $options );
 					}
@@ -1269,7 +1269,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 				$goals = filter_input( INPUT_POST, 'wpcm_goals', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 				if ( $goals ) {
-					update_post_meta( $post_id, 'wpcm_goals', serialize( $goals ) );
+					update_post_meta( $post_id, 'wpcm_goals', maybe_serialize( $goals ) );
 					update_post_meta( $post_id, 'wpcm_home_goals', $goals['total']['home'] );
 					update_post_meta( $post_id, 'wpcm_away_goals', $goals['total']['away'] );
 				}
@@ -1480,8 +1480,8 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			$screen = get_current_screen();
 
-			if ( null !== $screen && in_array( $screen->id, array( 'wpcm_match', 'edit-wpcm_match', 'wpcm_player', 'edit-wpcm_player', 'edit-wpcm_staff' ) ) ) {
-				if ( null != $post ) {
+			if ( null !== $screen && in_array( $screen->id, array( 'wpcm_match', 'edit-wpcm_match', 'wpcm_player', 'edit-wpcm_player', 'edit-wpcm_staff' ), true ) ) {
+				if ( null !== $post ) {
 					if ( 'wpcm_match' === $post->post_type ) {
 						?>
 					<style type="text/css">#wpclubmanager-match-fixture{margin-top:-20px;}.misc-pub-curtime{display:none;}#titlediv{display:none;}</style>
@@ -1545,16 +1545,16 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			global $current_screen;
 
-			if ( 'wpcm_club' == $current_screen->post_type ) {
+			if ( 'wpcm_club' === $current_screen->post_type ) {
 				$content = str_replace( __( 'Set featured image' ), __( 'Set club badge', 'wp-club-manager' ), $content );
 				$content = str_replace( __( 'Remove featured image' ), __( 'Remove club badge', 'wp-club-manager' ), $content );
-			} elseif ( 'wpcm_player' == $current_screen->post_type ) {
+			} elseif ( 'wpcm_player' === $current_screen->post_type ) {
 				$content = str_replace( __( 'Set featured image' ), __( 'Set player image', 'wp-club-manager' ), $content );
 				$content = str_replace( __( 'Remove featured image' ), __( 'Remove player image', 'wp-club-manager' ), $content );
-			} elseif ( 'wpcm_staff' == $current_screen->post_type ) {
+			} elseif ( 'wpcm_staff' === $current_screen->post_type ) {
 				$content = str_replace( __( 'Set featured image' ), __( 'Set staff image', 'wp-club-manager' ), $content );
 				$content = str_replace( __( 'Remove featured image' ), __( 'Remove staff image', 'wp-club-manager' ), $content );
-			} elseif ( 'wpcm_sponsor' == $current_screen->post_type ) {
+			} elseif ( 'wpcm_sponsor' === $current_screen->post_type ) {
 				$content = str_replace( __( 'Set featured image' ), __( 'Set sponsor logo', 'wp-club-manager' ), $content );
 				$content = str_replace( __( 'Remove featured image' ), __( 'Remove sponsor logo', 'wp-club-manager' ), $content );
 			}
@@ -1572,16 +1572,16 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		public function media_view_strings( $strings = array(), $post = null ) {
 
 			if ( is_object( $post ) ) {
-				if ( 'wpcm_club' == $post->post_type ) {
+				if ( 'wpcm_club' === $post->post_type ) {
 					$strings['setFeaturedImageTitle'] = __( 'Set club badge', 'wp-club-manager' );
 					$strings['setFeaturedImage']      = __( 'Set club badge', 'wp-club-manager' );
-				} elseif ( 'wpcm_player' == $post->post_type ) {
+				} elseif ( 'wpcm_player' === $post->post_type ) {
 					$strings['setFeaturedImageTitle'] = __( 'Set player image', 'wp-club-manager' );
 					$strings['setFeaturedImage']      = __( 'Set player image', 'wp-club-manager' );
-				} elseif ( 'wpcm_staff' == $post->post_type ) {
+				} elseif ( 'wpcm_staff' === $post->post_type ) {
 					$strings['setFeaturedImageTitle'] = __( 'Set staff image', 'wp-club-manager' );
 					$strings['setFeaturedImage']      = __( 'Set staff image', 'wp-club-manager' );
-				} elseif ( 'wpcm_sponsor' == $post->post_type ) {
+				} elseif ( 'wpcm_sponsor' === $post->post_type ) {
 					$strings['setFeaturedImageTitle'] = __( 'Set sponsor logo', 'wp-club-manager' );
 					$strings['setFeaturedImage']      = __( 'Set sponsor logo', 'wp-club-manager' );
 				}
@@ -1603,25 +1603,25 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			global $typenow;
 
-			if ( is_admin() && 'wpcm_player' == $typenow ) {
-				if ( 'Scheduled for: <b>%1$s</b>' == $translated_text ) {
+			if ( is_admin() && 'wpcm_player' === $typenow ) {
+				if ( 'Scheduled for: <b>%1$s</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joins on: <b>%1$s</b>', 'wp-club-manager' );
-				} elseif ( 'Published on: <b>%1$s</b>' == $translated_text ) {
+				} elseif ( 'Published on: <b>%1$s</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
-				} elseif ( 'Publish <b>immediately</b>' == $translated_text ) {
+				} elseif ( 'Publish <b>immediately</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 				}
-			} elseif ( is_admin() && 'wpcm_staff' == $typenow ) {
-				if ( 'Scheduled for: <b>%1$s</b>' == $translated_text ) {
+			} elseif ( is_admin() && 'wpcm_staff' === $typenow ) {
+				if ( 'Scheduled for: <b>%1$s</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joins on: <b>%1$s</b>', 'wp-club-manager' );
-				} elseif ( 'Published on: <b>%1$s</b>' == $translated_text ) {
+				} elseif ( 'Published on: <b>%1$s</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
-				} elseif ( 'Publish <b>immediately</b>' == $translated_text ) {
+				} elseif ( 'Publish <b>immediately</b>' === $translated_text ) {
 					/* translators: 1: joined date */
 					$translated_text = __( 'Joined on: <b>%1$s</b>', 'wp-club-manager' );
 				}

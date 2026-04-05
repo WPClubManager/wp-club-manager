@@ -161,10 +161,10 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 						<span class="wpcm-matches-list-col wpcm-matches-list-club1">
 							<?php
-							if ( $club == $side1 ) {
+							if ( $club === $side1 ) {
 								echo '<strong>'; }
 							echo wp_kses_post( wpcm_get_team_name( $side1, $match->ID ) );
-							if ( $club == $side1 ) {
+							if ( $club === $side1 ) {
 								echo '</strong>'; }
 							?>
 						</span>
@@ -177,10 +177,10 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 						<span class="wpcm-matches-list-col wpcm-matches-list-club2">
 								<?php
-								if ( $club == $side2 ) {
+								if ( $club === $side2 ) {
 									echo '<strong>'; }
 								echo wp_kses_post( wpcm_get_team_name( $side2, $match->ID ) );
-								if ( $club == $side2 ) {
+								if ( $club === $side2 ) {
 									echo '</strong>'; }
 								?>
 						</span>

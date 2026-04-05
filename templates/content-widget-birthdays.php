@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 
 		// Today
-		if ( gmdate( 'm-d' ) == $value ) {
+		if ( gmdate( 'm-d' ) === $value ) {
 			?>
 
 			<li class="birthday-today">

@@ -144,7 +144,7 @@ class WPCM_Results_Widget extends WPCM_Widget {
 		$team   = isset( $instance['team'] ) ? $instance['team'] : null;
 		$club   = get_option( 'wpcm_default_club' );
 		$venue  = isset( $instance['venue'] ) ? $instance['venue'] : 'all';
-		if ( 0 == $limit ) {
+		if ( 0 === $limit ) {
 			$limit = -1;
 		}
 		if ( $comp <= 0 ) {
@@ -270,7 +270,7 @@ class WPCM_Results_Widget extends WPCM_Widget {
 				$show_score = ! empty( $instance['show_score'] );
 				$show_comp  = ! empty( $instance['show_comp'] );
 				$show_team  = ! empty( $instance['show_team'] );
-				if ( 1 == $show_abbr ) {
+				if ( 1 === $show_abbr ) {
 					$sides = wpcm_get_match_clubs( $post, true );
 				} else {
 					$sides = wpcm_get_match_clubs( $post );

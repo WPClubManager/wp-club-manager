@@ -26,9 +26,9 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 	$sport = get_option( 'wpcm_sport' );
 	$data  = wpcm_get_sport_presets();
 
-	if ( 'standings' == $type ) {
+	if ( 'standings' === $type ) {
 		$stats = $data[ $sport ]['standings_columns'];
-	} elseif ( 'players' == $type ) {
+	} elseif ( 'players' === $type ) {
 		$stats = $data[ $sport ]['stats_labels'];
 	}
 
@@ -54,7 +54,7 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 	$stats = $data[ $sport ]['stats_labels'];
 
 	foreach ( $stats as $key => $value ) {
-		if ( $section == $value['section'] ) {
+		if ( $section === $value['section'] ) {
 
 			$output[ $key ] = $value['label'];
 		}
@@ -151,7 +151,7 @@ if ( ! function_exists( 'get_wpcm_club_total_stats' ) ) {
 
 		foreach ( $output as $key => $val ) {
 
-			if ( 'pct' == $key ) {
+			if ( 'pct' === $key ) {
 
 				$combined_win    = $autostats['w'] + $manualstats['w'];
 				$combined_played = $autostats['p'] + $manualstats['p'];
@@ -199,7 +199,7 @@ if ( ! function_exists( 'get_wpcm_player_manual_stats' ) ) {
 			$season = 0;
 		}
 
-		$stats = unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
+		$stats = maybe_unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
 
 		if ( is_array( $stats ) && array_key_exists( $team, $stats ) ) {
 
@@ -236,7 +236,7 @@ if ( ! function_exists( 'get_wpcm_club_manual_stats' ) ) {
 			$season = 0;
 		}
 
-		$stats = unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
+		$stats = maybe_unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
 
 		if ( is_array( $stats ) && array_key_exists( $comp, $stats ) ) {
 
@@ -314,7 +314,7 @@ if ( ! function_exists( 'get_wpcm_player_auto_stats' ) ) {
 
 		foreach ( $matches as $match ) {
 
-			$all_players = unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
+			$all_players = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
 
 			if ( is_array( $all_players ) ) {
 
@@ -413,9 +413,9 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 
 			if ( $played && ! $friendly && ! $postponed ) {
 
-				if ( get_option( 'wpcm_sport' ) == 'cricket' ) {
-					$runs   = unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
-					$extras = unserialize( get_post_meta( $match->ID, '_wpcm_match_extras', true ) );
+				if ( get_option( 'wpcm_sport' ) === 'cricket' ) {
+					$runs   = maybe_unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
+					$extras = maybe_unserialize( get_post_meta( $match->ID, '_wpcm_match_extras', true ) );
 					$f      = $runs['home'] + $extras['home'];
 					$a      = $runs['away'] + $extras['away'];
 				} else {
@@ -423,11 +423,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 					$a = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 				}
 				$hb   = get_post_meta( $match->ID, 'wpcm_home_bonus', true );
-				$won  = 0 == $overtime && (int) ( $f > $a );
-				$draw = (int) ( $f == $a );
-				$lost = 0 == $overtime && (int) ( $f < $a );
-				$otw  = 1 == $overtime && (int) ( $f > $a );
-				$otl  = 1 == $overtime && (int) ( $f < $a );
+				$won  = 0 === $overtime && (int) ( $f > $a );
+				$draw = (int) ( $f === $a );
+				$lost = 0 === $overtime && (int) ( $f < $a );
+				$otw  = 1 === $overtime && (int) ( $f > $a );
+				$otl  = 1 === $overtime && (int) ( $f < $a );
 				++$output['p'];
 				$output['w'] += $won;
 				if ( array_key_exists( 'd', $output ) ) {
@@ -454,11 +454,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 				}
 				$output['pts'] += $won * (int) get_option( 'wpcm_standings_win_points', 3 ) + $lost * (int) get_option( 'wpcm_standings_loss_points', 0 );
 			}
-			if ( $postponed && 'home_win' == $walkover ) {
+			if ( $postponed && 'home_win' === $walkover ) {
 				++$output['p'];
 				$output['w']   += 1;
 				$output['pts'] += (int) get_option( 'wpcm_standings_win_points', 3 );
-			} elseif ( $postponed && 'away_win' == $walkover ) {
+			} elseif ( $postponed && 'away_win' === $walkover ) {
 				++$output['p'];
 				$output['l']   += 1;
 				$output['pts'] += (int) get_option( 'wpcm_standings_loss_points', 0 );
@@ -479,9 +479,9 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 
 			if ( $played && ! $friendly && ! $postponed ) {
 
-				if ( get_option( 'wpcm_sport' ) == 'cricket' ) {
-					$runs   = unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
-					$extras = unserialize( get_post_meta( $match->ID, '_wpcm_match_extras', true ) );
+				if ( get_option( 'wpcm_sport' ) === 'cricket' ) {
+					$runs   = maybe_unserialize( get_post_meta( $match->ID, '_wpcm_match_runs', true ) );
+					$extras = maybe_unserialize( get_post_meta( $match->ID, '_wpcm_match_extras', true ) );
 					$f      = (int) $runs['away'] + (int) $extras['away'];
 					$a      = (int) $runs['home'] + (int) $extras['home'];
 				} else {
@@ -489,11 +489,11 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 					$a = (int) get_post_meta( $match->ID, 'wpcm_home_goals', true );
 				}
 				$ab   = (int) get_post_meta( $match->ID, 'wpcm_away_bonus', true );
-				$won  = 0 == $overtime && ( $f > $a ) ? 1 : 0;
-				$draw = ( $f == $a ) ? 1 : 0;
-				$lost = 0 == $overtime && ( $f < $a ) ? 1 : 0;
-				$otw  = 1 == $overtime && ( $f > $a ) ? 1 : 0;
-				$otl  = 1 == $overtime && ( $f < $a ) ? 1 : 0;
+				$won  = 0 === $overtime && ( $f > $a ) ? 1 : 0;
+				$draw = ( $f === $a ) ? 1 : 0;
+				$lost = 0 === $overtime && ( $f < $a ) ? 1 : 0;
+				$otw  = 1 === $overtime && ( $f > $a ) ? 1 : 0;
+				$otl  = 1 === $overtime && ( $f < $a ) ? 1 : 0;
 				++$output['p'];
 				$output['w'] += $won;
 
@@ -522,7 +522,7 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 
 				$output['pts'] += $won * (int) get_option( 'wpcm_standings_win_points', 3 ) + $lost * (int) get_option( 'wpcm_standings_loss_points', 0 );
 			}
-			if ( $postponed && 'away_win' == $walkover ) {
+			if ( $postponed && 'away_win' === $walkover ) {
 				++$output['p'];
 				$output['w']   += 1;
 				$output['pts'] += (int) get_option( 'wpcm_standings_win_points', 3 );
@@ -606,7 +606,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 		}
 
 		// manual stats
-		$manual_stats = (array) unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
+		$manual_stats = (array) maybe_unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
 
 		if ( is_array( $manual_stats ) ) {
 
@@ -704,7 +704,7 @@ if ( ! function_exists( 'get_wpcm_club_stats' ) ) {
 		}
 
 		// manual stats
-		$stats = (array) unserialize( get_post_meta( $post->ID, 'wpcm_stats', true ) );
+		$stats = (array) maybe_unserialize( get_post_meta( $post->ID, 'wpcm_stats', true ) );
 
 		if ( is_array( $stats ) ) {
 
@@ -806,7 +806,7 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 
 		foreach ( $matches as $match ) {
 
-			$player = unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
+			$player = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
 
 			if ( is_array( $player ) && array_key_exists( 'subs', $player ) && array_key_exists( $id, $player['subs'] ) ) {
 

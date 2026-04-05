@@ -80,7 +80,7 @@ class WPCM_Geocoder {
 	private function get_url( $url ) {
 		$referer = get_site_url();
 
-		if ( in_array( 'curl', get_loaded_extensions() ) ) {
+		if ( in_array( 'curl', get_loaded_extensions(), true ) ) {
 			/* try curl */
 			$ch = curl_init();
 

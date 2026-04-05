@@ -308,7 +308,7 @@ class WPCM_Countries {
 		if ( $this->countries ) {
 			foreach ( $this->countries as $key => $value ) :
 				echo '<option';
-				if ( $country == $key ) {
+				if ( $country === $key ) {
 					echo ' selected="selected"';
 				}
 				echo ' value="' . esc_attr( $key ) . '">' . ( $escape ? esc_js( $value ) : $value ) . '</option>'; // phpcs:ignore

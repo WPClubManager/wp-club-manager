@@ -43,7 +43,7 @@ class WPCM_Meta_Box_Club_Staff {
 		<div id="wpcm-club-player-stats">
 			<table>
 				<?php
-				if ( null == $players ) {
+				if ( null === $players ) {
 					?>
 					<thead>
 						<tr>

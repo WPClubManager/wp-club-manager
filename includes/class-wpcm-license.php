@@ -194,7 +194,7 @@ if ( ! class_exists( 'WPCM_License' ) ) :
 
 			}
 
-			if ( 'valid' == get_option( $this->item_shortname . '_license_active' ) ) {
+			if ( 'valid' === get_option( $this->item_shortname . '_license_active' ) ) {
 				return;
 			}
 

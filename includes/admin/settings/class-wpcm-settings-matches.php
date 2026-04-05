@@ -119,7 +119,7 @@ if ( ! class_exists( 'WPCM_Settings_Matches' ) ) :
 				),
 			);
 
-			if ( get_option( 'wpcm_mode', 'club' ) == 'club' ) {
+			if ( get_option( 'wpcm_mode', 'club' ) === 'club' ) {
 				$settings[] = array(
 					'desc'          => __( 'Team', 'wp-club-manager' ),
 					'id'            => 'wpcm_results_show_team',
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WPCM_Settings_Matches' ) ) :
 
 			foreach ( $stats_labels as $key => $value ) {
 
-				if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+				if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 
 					$settings[] = array(
 						'desc'          => strip_tags( $value ),
