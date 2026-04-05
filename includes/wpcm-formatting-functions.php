@@ -351,7 +351,7 @@ function wpcm_dropdown_taxonomies( $args = array() ) {
 	$chosen = $args['chosen'];
 	unset( $args['chosen'] );
 
-	echo sprintf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
+	printf( '<input type="hidden" name="tax_input[%s][]" value="0">', esc_attr( $args['taxonomy'] ) );
 
 	if ( $terms ) :
 

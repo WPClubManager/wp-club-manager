@@ -60,7 +60,7 @@ $title      = isset( $title ) ? $title : '';
 						<?php echo esc_html( date_i18n( 'd M', $timestamp ) ); ?>, <?php echo esc_html( date_i18n( $time_format, $timestamp ) ); ?>
 					</a>
 				</td>
-				<td class="venue"><?php echo esc_html( is_array( $venue ) ? $venue['status'] : '' ); ?></td>
+				<td class="venue"><?php echo esc_html( $venue['status'] ); ?></td>
 				<?php
 				if ( '1' === $thumb ) {
 					echo esc_html( $club == $home_club ? $away_badge : $home_badge );

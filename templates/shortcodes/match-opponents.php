@@ -62,7 +62,7 @@ $title      = isset( $title ) ? $title : '';
 						<?php echo esc_html( date_i18n( apply_filters( 'wpclubmanager_match_date_format', 'D d M' ), $timestamp ) ); ?>, <?php echo esc_html( date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) ); ?>
 					</a>
 				</td>
-				<td class="venue"><?php echo esc_html( is_array( $venue ) ? $venue['status'] : '' ); ?></td>
+				<td class="venue"><?php echo esc_html( $venue['status'] ); ?></td>
 				<?php
 				if ( '1' === $show_thumb ) {
 					echo wp_kses_post( $club === $home_club ? $away_badge : $home_badge );
