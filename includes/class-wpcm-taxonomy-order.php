@@ -80,8 +80,7 @@ class WPCM_Taxonomy_Order {
 			array(
 				'preloader_url'    => esc_url( admin_url( 'images/wpspin_light.gif' ) ),
 				'term_order_nonce' => wp_create_nonce( 'term_order_nonce' ),
-    // phpcs:ignore WordPress.Security.NonceVerification.Missing
-				'paged'            => isset( $_GET['paged'] ) ? absint( wp_unslash( $_GET['paged'] ) ) : 0,
+				'paged'            => isset( $_GET['paged'] ) ? absint( wp_unslash( $_GET['paged'] ) ) : 0, // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				'per_page_id'      => "edit_{$tax}_per_page",
 			)
 		);

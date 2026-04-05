@@ -328,7 +328,7 @@ endif;
 					foreach ( $stats_labels as $key => $val ) :
 						if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 							?>
-							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" name="wpcm_stats[<?php echo esc_attr( $team ); ?>][<?php echo esc_attr( $season ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php esc_attr( wpcm_stats_value( $stats, 'manual', $key ) ); ?>" size="3" class="player-stats-manual-<?php echo esc_attr( $key ); ?>"<?php echo ( 0 === $season ? ' readonly' : '' ); ?> /></td>
+							<td><input type="text" data-index="<?php echo esc_attr( $key ); ?>" name="wpcm_stats[<?php echo esc_attr( $team ); ?>][<?php echo esc_attr( $season ); ?>][<?php echo esc_attr( $key ); ?>]" value="<?php esc_attr( wpcm_stats_value( $stats, 'manual', $key ) ); ?>" size="3" class="player-stats-manual-<?php echo esc_attr( $key ); ?>"<?php echo ( 0 === (int) $season ? ' readonly' : '' ); ?> /></td>
 							<?php
 						endif;
 					endforeach;

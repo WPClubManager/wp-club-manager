@@ -461,52 +461,12 @@ parameters:
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
 
 		-
-			message: "#^Variable \\$bonus might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$goals might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
 			message: "#^Variable \\$overtime might not be defined\\.$#"
 			count: 2
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
 
 		-
 			message: "#^Variable \\$shootout might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$shootout_score might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$wpcm_cricket_outcome might not be defined\\.$#"
-			count: 3
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$wpcm_match_extras might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$wpcm_match_overs might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$wpcm_match_runs might not be defined\\.$#"
-			count: 2
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
-
-		-
-			message: "#^Variable \\$wpcm_match_wickets might not be defined\\.$#"
 			count: 2
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-match-result.php
 
@@ -2094,11 +2054,6 @@ parameters:
 			message: "#^Variable \\$team might not be defined\\.$#"
 			count: 1
 			path: templates/content-widget-results.php
-
-		-
-			message: "#^Variable \\$abbr might not be defined\\.$#"
-			count: 2
-			path: templates/shortcodes/league-table.php
 
 		-
 			message: "#^Variable \\$clubs might not be defined\\.$#"
