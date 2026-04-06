@@ -28,6 +28,7 @@ class Php8CompatTest extends WPCMTestCase {
 			'hide_empty' => false,
 			'fields'     => 'ids',
 		) );
+		$this->assertFalse( is_wp_error( $terms ), is_wp_error( $terms ) ? $terms->get_error_message() : '' );
 		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term_id ) {
 				wp_delete_term( $term_id, 'wpcm_season' );
@@ -43,14 +44,25 @@ class Php8CompatTest extends WPCMTestCase {
 	}
 
 	public function test_get_current_season_returns_data_when_season_exists() {
-		$term = wp_insert_term( 'Season 2024', 'wpcm_season' );
+		$season_name = 'Season 2024 ' . uniqid();
+		$term        = wp_insert_term(
+			$season_name,
+			'wpcm_season',
+			array(
+				'slug' => sanitize_title( $season_name ),
+			)
+		);
+
+		$this->assertFalse( is_wp_error( $term ), is_wp_error( $term ) ? $term->get_error_message() : '' );
+		$this->assertIsArray( $term );
+
 		update_term_meta( $term['term_id'], 'tax_position', 1 );
 
 		$result = get_current_season();
 
 		$this->assertIsArray( $result );
 		$this->assertEquals( $term['term_id'], $result['id'] );
-		$this->assertEquals( 'Season 2024', $result['name'] );
+		$this->assertEquals( $season_name, $result['name'] );
 		$this->assertNotEmpty( $result['slug'] );
 
 		wp_delete_term( $term['term_id'], 'wpcm_season' );

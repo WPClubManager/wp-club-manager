@@ -65,13 +65,19 @@ class WPCM_Admin_Dashboard {
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
-					if ( is_array( $seasons ) && ! empty( $seasons ) ) {
-						$season      = $seasons[0];
-						$season_slug = $seasons[0]->slug;
-					} else {
-						$season      = null;
-						$season_slug = '';
+					if ( is_wp_error( $seasons ) || ! is_array( $seasons ) || empty( $seasons ) ) {
+						?>
+						<div class="ui warning message">
+							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
+						</div>
+					</div>
+				</div>
+				<?php
+						return;
 					}
+
+					$season      = $seasons[0];
+					$season_slug = $season->slug;
 
 					// Statistics
 					$args = array(
@@ -359,13 +365,19 @@ class WPCM_Admin_Dashboard {
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
-					if ( is_array( $seasons ) && ! empty( $seasons ) ) {
-						$season      = $seasons[0];
-						$season_slug = $seasons[0]->slug;
-					} else {
-						$season      = null;
-						$season_slug = '';
+					if ( is_wp_error( $seasons ) || ! is_array( $seasons ) || empty( $seasons ) ) {
+						?>
+						<div class="ui warning message">
+							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
+						</div>
+					</div>
+				</div>
+				<?php
+						return;
 					}
+
+					$season      = $seasons[0];
+					$season_slug = $season->slug;
 
 					// Statistics
 					$args = array(
