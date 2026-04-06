@@ -532,13 +532,22 @@ function get_the_seasons( $post ) {
  */
 function get_current_season() {
 
-	$seasons         = get_terms( array(
+	$seasons = get_terms( array(
 		'taxonomy'     => 'wpcm_season',
 		'meta_key'     => 'tax_position',
 		'meta_compare' => 'NUMERIC',
 		'orderby'      => 'meta_value_num',
 		'hide_empty'   => false,
 	) );
+
+	if ( is_wp_error( $seasons ) || empty( $seasons ) ) {
+		return array(
+			'id'   => 0,
+			'name' => '',
+			'slug' => '',
+		);
+	}
+
 	$season          = $seasons[0];
 	$current['id']   = $season->term_id;
 	$current['name'] = $season->name;

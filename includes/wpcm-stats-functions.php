@@ -26,14 +26,15 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 	$sport = get_option( 'wpcm_sport' );
 	$data  = wpcm_get_sport_presets();
 
-	if ( 'standings' === $type ) {
+	$stats = array();
+	if ( 'standings' === $type && isset( $data[ $sport ]['standings_columns'] ) ) {
 		$stats = $data[ $sport ]['standings_columns'];
-	} elseif ( 'players' === $type ) {
+	} elseif ( 'players' === $type && isset( $data[ $sport ]['stats_labels'] ) ) {
 		$stats = $data[ $sport ]['stats_labels'];
 	}
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
-
 		$output[ $key ] = $value[ $format ];
 	}
 
