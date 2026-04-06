@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable Tag: 2.2.17
+Stable Tag: 2.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,21 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.3.0 - 2nd April 2026 =
+
+* Fix: PHP 8.0+ fatal error in player stats functions
+* Fix: Google Maps embed now works without an API key
+* Fix: Setup wizard map picker broken
+* Fix: New players not appearing in player list shortcode
+* Fix: Wrong club count in league table admin column
+* Fix: Bulk add clubs to league table now supports multi-select
+* Fix: Bulk add players and staff to rosters now supports multi-select
+* Fix: Staff profile title can now be hidden via settings
+* Fix: League table and dashboard crash when no competition assigned
+* Fix: Schema.org markup updated to HTTPS and SportsOrganization type
+* Fix: Deprecated PHP function compatibility (PHP 8.2+)
+* Tweak: Tested up to WordPress 6.7
 
 = 2.2.17 - 15th April 2024 =
 
