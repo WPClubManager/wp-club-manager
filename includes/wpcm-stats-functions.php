@@ -56,7 +56,7 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 
 	$output = array();
 	foreach ( $stats as $key => $value ) {
-		if ( $section === $value['section'] ) {
+		if ( isset( $value['section'] ) && $section === $value['section'] ) {
 
 			$output[ $key ] = $value['label'];
 		}

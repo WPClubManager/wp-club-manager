@@ -319,16 +319,17 @@ class WPCM_Admin_Dashboard {
 						);
 						$clubs = get_posts( $args );
 
-						$size = count( $clubs );
+						$size      = count( $clubs );
+						$season_id = $season ? $season->term_id : null;
 
 						foreach ( $clubs as $club ) {
 
-							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season );
+							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season_id );
 							$club->wpcm_stats = $auto_stats;
 							if ( array_key_exists( $club->ID, $manual_stats ) ) {
 								$club->wpcm_manual_stats = $manual_stats[ $club->ID ];
 								$club->wpcm_auto_stats   = $auto_stats;
-								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
+								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season_id, $manual_stats[ $club->ID ] );
 								$club->wpcm_stats        = $total_stats;
 							}
 						}
@@ -473,16 +474,17 @@ class WPCM_Admin_Dashboard {
 						);
 						$clubs = get_posts( $args );
 
-						$size = count( $clubs );
+						$size      = count( $clubs );
+						$season_id = $season ? $season->term_id : null;
 
 						foreach ( $clubs as $club ) {
 
-							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season );
+							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season_id );
 							$club->wpcm_stats = $auto_stats;
 							if ( array_key_exists( $club->ID, $manual_stats ) ) {
 								$club->wpcm_manual_stats = $manual_stats[ $club->ID ];
 								$club->wpcm_auto_stats   = $auto_stats;
-								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
+								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season_id, $manual_stats[ $club->ID ] );
 								$club->wpcm_stats        = $total_stats;
 							}
 						}
