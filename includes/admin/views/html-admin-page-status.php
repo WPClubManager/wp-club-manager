@@ -331,7 +331,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<td data-export-label="WP Club Manager Support"><?php esc_html_e( 'WP Club Manager Support', 'wp-club-manager' ); ?>:</td>
 							<td>
 							<?php
-							if ( ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $active_theme->template, wpcm_get_core_supported_themes() ) ) {
+							if ( ! current_theme_supports( 'wpclubmanager' ) && ! in_array( $active_theme->template, wpcm_get_core_supported_themes(), true ) ) {
 								echo '<mark class="error">' . esc_html__( 'Not Declared', 'wp-club-manager' ) . '</mark>';
 							} else {
 								echo '<mark class="yes">&#10003;</mark>';

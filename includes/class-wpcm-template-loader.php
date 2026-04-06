@@ -46,7 +46,7 @@ class WPCM_Template_Loader {
 		$find = array( 'wpclubmanager.php' );
 		$file = '';
 
-		if ( is_single() && get_post_type() == 'wpcm_club' ) {
+		if ( is_single() && get_post_type() === 'wpcm_club' ) {
 
 			$file   = 'single-club.php';
 			$find[] = $file;
@@ -54,7 +54,7 @@ class WPCM_Template_Loader {
 
 		}
 
-		if ( is_single() && get_post_type() == 'wpcm_player' ) {
+		if ( is_single() && get_post_type() === 'wpcm_player' ) {
 
 			$file   = 'single-player.php';
 			$find[] = $file;
@@ -62,7 +62,7 @@ class WPCM_Template_Loader {
 
 		}
 
-		if ( is_single() && get_post_type() == 'wpcm_staff' ) {
+		if ( is_single() && get_post_type() === 'wpcm_staff' ) {
 
 			$file   = 'single-staff.php';
 			$find[] = $file;
@@ -70,7 +70,7 @@ class WPCM_Template_Loader {
 
 		}
 
-		if ( is_single() && get_post_type() == 'wpcm_match' ) {
+		if ( is_single() && get_post_type() === 'wpcm_match' ) {
 
 			$file   = 'single-match.php';
 			$find[] = $file;
@@ -78,7 +78,7 @@ class WPCM_Template_Loader {
 
 		}
 
-		if ( is_single() && get_post_type() == 'wpcm_sponsor' ) {
+		if ( is_single() && get_post_type() === 'wpcm_sponsor' ) {
 
 			$file   = 'single-sponsor.php';
 			$find[] = $file;

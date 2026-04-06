@@ -59,11 +59,11 @@ class WPCM_Meta_Box_Club_Table {
 		}
 
 		$table_id = filter_input( INPUT_POST, 'add_to_table', FILTER_VALIDATE_INT );
-		if ( isset( $table_id ) && null != $table_id ) {
-			$clubs = (array) unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
-			if ( ! in_array( $post_id, $clubs ) ) {
+		if ( isset( $table_id ) && null !== $table_id ) {
+			$clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
+			if ( ! in_array( $post_id, $clubs, true ) ) {
 				array_push( $clubs, intval( $post_id ) );
-				update_post_meta( $table_id, '_wpcm_table_clubs', serialize( $clubs ) );
+				update_post_meta( $table_id, '_wpcm_table_clubs', maybe_serialize( $clubs ) );
 			}
 		}
 	}

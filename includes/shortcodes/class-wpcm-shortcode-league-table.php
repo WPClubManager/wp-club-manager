@@ -104,7 +104,7 @@ class WPCM_Shortcode_League_Table {
 					$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
 					$club->wpcm_stats        = $total_stats;
 				}
-				if ( 1 == $thumb ) {
+				if ( 1 === $thumb ) {
 					if ( has_post_thumbnail( $club->ID ) ) {
 						$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
 					} else {

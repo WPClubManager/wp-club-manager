@@ -178,7 +178,7 @@ function wpcm_get_image_size( $image_size ) {
 
 		$image_size = $width . '_' . $height;
 
-	} elseif ( in_array( $image_size, array( 'player_single', 'staff_single', 'player_thumbnail', 'staff_thumbnail', 'club_thumbnail', 'club_thumbnail' ) ) ) {
+	} elseif ( in_array( $image_size, array( 'player_single', 'staff_single', 'player_thumbnail', 'staff_thumbnail', 'club_thumbnail', 'club_thumbnail' ), true ) ) {
 
 		$size           = get_option( $image_size . '_image_size', array() );
 		$size['width']  = isset( $size['width'] ) ? $size['width'] : '300';
@@ -232,7 +232,7 @@ function wpcm_get_image_sizes( $size = '' ) {
 
 	// Create the full array with sizes and crop info
 	foreach ( $get_intermediate_image_sizes as $_size ) {
-		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ), true ) ) {
 			$sizes[ $_size ]['width']  = get_option( $_size . '_size_w' );
 			$sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
 			$sizes[ $_size ]['crop']   = (bool) get_option( $_size . '_crop' );
@@ -409,7 +409,7 @@ if ( ! function_exists( 'wpcm_get_team_name' ) ) {
 
 		$club = get_default_club();
 
-		if ( $post == $club ) {
+		if ( $post === $club ) {
 
 			$teams = wp_get_object_terms( $id, 'wpcm_team' );
 
@@ -558,8 +558,8 @@ function get_current_season() {
  */
 function sort_biggest_score( $a, $b ) {
 
-	if ( $a['gd'] == $b['gd'] ) {
-		if ( $a['f'] == $b['f'] ) {
+	if ( $a['gd'] === $b['gd'] ) {
+		if ( $a['f'] === $b['f'] ) {
 			return 0;
 		} else {
 			return ( $a['f'] < $b['f'] ) ? -1 : 1;
@@ -591,7 +591,7 @@ add_action( 'init', 'wpcm_club_rewrites' );
  * @since  2.0.0
  */
 function wpcm_club_permalinks( $post_link, $post, $leavename ) {
-	if ( isset( $post->post_type ) && 'wpcm_club' == $post->post_type ) {
+	if ( isset( $post->post_type ) && 'wpcm_club' === $post->post_type ) {
 
 		$permalink      = get_option( 'wpclubmanager_club_slug' );
 		$club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
@@ -623,11 +623,11 @@ function wpcm_prevent_slug_duplicates( $slug, $post_ID, $post_status, $post_type
 		'wpcm_club',
 	);
 
-	if ( ! in_array( $post_type, $check_post_types ) ) {
+	if ( ! in_array( $post_type, $check_post_types, true ) ) {
 		return $slug;
 	}
 
-	if ( 'wpcm_club' == $post_type ) {
+	if ( 'wpcm_club' === $post_type ) {
 		// Saving a wpcm_club post, check for duplicates in POST or PAGE post types
 		$post_match = get_page_by_path( $slug, 'OBJECT', 'post' );
 		$page_match = get_page_by_path( $slug, 'OBJECT', 'page' );

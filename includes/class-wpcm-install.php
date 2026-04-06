@@ -52,20 +52,14 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		 */
 		public function install_actions() {
 
-			if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) {
+			if ( ! empty( $_GET['do_update_wpclubmanager'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 				$this->updates();
 
-				// Update complete
-				// WPCM_Admin_Notices::remove_notice( 'update' );
-
 			}
 
-			if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) {
+			if ( ! empty( $_GET['force_update_wpclubmanager'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-				// What's new redirect
-				// delete_transient( '_wpcm_activation_redirect' );
-				// wp_redirect( admin_url( 'index.php?page=wpcm-about&wpcm-updated=true' ) );
 				wp_safe_redirect( admin_url( 'admin.php?page=wpcm-settings' ) );
 				exit;
 			}
@@ -114,19 +108,10 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 			$this->updates( $current_version );
 
 			// Update version
-			// delete_option( 'wpclubmanager_version' );
 			update_option( 'wpclubmanager_version', WPCM()->version );
-
-			// add_option( 'wpcm_install_date', date( 'Y-m-d h:i:s' ) );
-			// add_option( 'wpcm_rating', 'no' );
 
 			// Flush rules after install
 			flush_rewrite_rules();
-
-			// Redirect to welcome screen
-			// if ( ! is_network_admin() && ! isset( $_GET['activate-multi'] ) ) {
-			// set_transient( '_wpcm_activation_redirect', 1, 30 );
-			// }
 
 			// Trigger action
 			do_action( 'wpclubmanager_installed' );
@@ -282,7 +267,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 			$capabilities = array();
 
-			$capabilities['core'] = array( 'manage_wpclubmanager' );
+			$capabilities['core'] = array( 'manage_wpclubmanager' ); // phpcs:ignore WordPress.WP.Capabilities.Unknown
 
 			$capability_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_table', 'wpcm_sponsor', 'wpcm_roster' );
 
@@ -356,7 +341,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 		public function pre_update_option_active_plugins( $new_value ) {
 			$old_value = (array) get_option( 'active_plugins' );
 
-			if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value ) && in_array( W3TC_FILE, (array) $old_value ) ) {
+			if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value, true ) && in_array( W3TC_FILE, (array) $old_value, true ) ) {
 				$this->_config->set( 'notes.plugins_updated', true );
 				try {
 					$this->_config->save();
@@ -381,7 +366,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 				// Output Upgrade Notice
 				$matches = null;
-				$regexp  = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*=|$)~Uis';
+				$regexp  = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WPCM_VERSION, '~' ) . '\s*=|$)~Uis';
 
 				if ( preg_match( $regexp, $response['body'], $matches ) ) {
 					$version = trim( $matches[1] );
@@ -401,7 +386,7 @@ if ( ! class_exists( 'WPCM_Install' ) ) :
 
 				// Output Changelog
 				$matches = null;
-				$regexp  = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WPCM_VERSION ) . '\s*-(.*)=|$)~Uis';
+				$regexp  = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WPCM_VERSION, '~' ) . '\s*-(.*)=|$)~Uis';
 
 				if ( preg_match( $regexp, $response['body'], $matches ) ) {
 					$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );

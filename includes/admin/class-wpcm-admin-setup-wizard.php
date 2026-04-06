@@ -29,7 +29,7 @@ class WPCM_Admin_Setup_Wizard {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-		if ( apply_filters( 'wpclubmanager_enable_setup_wizard', true ) && current_user_can( 'manage_wpclubmanager' ) ) {
+		if ( apply_filters( 'wpclubmanager_enable_setup_wizard', true ) && current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			add_action( 'admin_menu', array( $this, 'admin_menus' ) );
 			add_action( 'admin_init', array( $this, 'setup_wizard' ) );
 		}
@@ -46,6 +46,7 @@ class WPCM_Admin_Setup_Wizard {
 	 * Show the setup wizard.
 	 */
 	public function setup_wizard() {
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( empty( $_GET['page'] ) || 'wpcm-setup' !== $_GET['page'] ) {
 			return;
 		}
@@ -76,6 +77,7 @@ class WPCM_Admin_Setup_Wizard {
 				'handler' => '',
 			),
 		);
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$this->step  = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : current( array_keys( $this->steps ) );
 
 		$google_maps_url = 'https://maps.googleapis.com/maps/api/js';
@@ -87,9 +89,9 @@ class WPCM_Admin_Setup_Wizard {
 
 		wp_register_script( 'jquery-locationpicker', WPCM()->plugin_url() . '/assets/js/locationpicker.jquery.js', array( 'jquery', 'google-maps' ), '0.1.16', true );
 
-		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', '' );
+		wp_enqueue_style( 'wpcm-setup-css', WPCM()->plugin_url() . '/assets/css/wpcm-setup.css', array(), WPCM_VERSION );
 
-		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ) );
+		wp_register_script( 'wpcm-setup-js', WPCM()->plugin_url() . '/assets/js/admin/wpcm-setup.min.js', array( 'jquery-locationpicker' ), WPCM_VERSION, false );
 
 		$step = filter_input( INPUT_POST, 'save_step', FILTER_UNSAFE_RAW );
 		if ( $step && isset( $this->steps[ $this->step ]['handler'] ) ) {
@@ -260,10 +262,6 @@ class WPCM_Admin_Setup_Wizard {
 	public function wpcm_setup_general_save() {
 		check_admin_referer( 'wpcm-setup' );
 
-		// if( isset( $_POST['plugin_mode'] ) ){
-		// $plugin_mode = $_POST['plugin_mode'];
-		// update_option( 'wpcm_mode', $plugin_mode );
-		// }
 		$location = filter_input( INPUT_POST, 'club_location', FILTER_UNSAFE_RAW );
 		if ( $location ) {
 			$club_location = sanitize_text_field( $location );
@@ -288,7 +286,7 @@ class WPCM_Admin_Setup_Wizard {
 
 		wpcm_flush_rewrite_rules();
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 		exit;
 	}
 
@@ -362,7 +360,7 @@ class WPCM_Admin_Setup_Wizard {
 		}
 
 		$default_club = filter_input( INPUT_POST, 'default_club', FILTER_UNSAFE_RAW );
-		if ( $default_club && get_option( 'wpcm_default_club', null ) != sanitize_text_field( $default_club ) ) {
+		if ( $default_club && get_option( 'wpcm_default_club', null ) !== sanitize_text_field( $default_club ) ) {
 			$title             = sanitize_text_field( $default_club );
 			$post              = array(
 				'post_title'  => $title,
@@ -371,8 +369,6 @@ class WPCM_Admin_Setup_Wizard {
 			);
 			$wpcm_default_club = wp_insert_post( $post );
 			update_option( 'wpcm_default_club', $wpcm_default_club );
-
-			// wpcm_flush_rewrite_rules();
 
 			$team    = __( 'First Team', 'wp-club-manager' );
 			$team_id = wp_insert_term( $team, 'wpcm_team' );
@@ -389,9 +385,10 @@ class WPCM_Admin_Setup_Wizard {
 				$opponent_id = wp_insert_post( $args );
 			}
 
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( isset( $_POST['setup_season'] ) && isset( $_POST['setup_comp'] ) ) {
 
-				if ( empty( $_POST['setup_opponent'] ) ) {
+				if ( empty( $_POST['setup_opponent'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					$opponent_id = null;
 				}
 
@@ -408,7 +405,7 @@ class WPCM_Admin_Setup_Wizard {
 				);
 				$table_id     = wp_insert_post( $league_table );
 				$clubs        = array( $wpcm_default_club, $opponent_id );
-				update_post_meta( $table_id, '_wpcm_table_clubs', serialize( $clubs ) );
+				update_post_meta( $table_id, '_wpcm_table_clubs', maybe_serialize( $clubs ) );
 
 				$title  = $team . ' -- ' . $season;
 				$roster = array(
@@ -424,7 +421,7 @@ class WPCM_Admin_Setup_Wizard {
 			}
 		}
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 
 		exit;
 	}
@@ -496,7 +493,7 @@ class WPCM_Admin_Setup_Wizard {
 			}
 		}
 
-		wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+		wp_safe_redirect( esc_url_raw( $this->get_next_step_link() ) );
 		exit;
 	}
 

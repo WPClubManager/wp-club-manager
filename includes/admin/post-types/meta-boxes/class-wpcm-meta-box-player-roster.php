@@ -61,11 +61,11 @@ class WPCM_Meta_Box_Player_Roster {
 		$player_id = filter_input( INPUT_POST, 'add_to_roster', FILTER_VALIDATE_INT );
 		if ( $player_id ) {
 
-			$players = (array) unserialize( get_post_meta( $player_id, '_wpcm_roster_players', true ) );
+			$players = (array) maybe_unserialize( get_post_meta( $player_id, '_wpcm_roster_players', true ) );
 
-			if ( ! in_array( $post_id, $players ) ) {
+			if ( ! in_array( $post_id, $players, true ) ) {
 				array_push( $players, intval( $post_id ) );
-				update_post_meta( $player_id, '_wpcm_roster_players', serialize( $players ) );
+				update_post_meta( $player_id, '_wpcm_roster_players', maybe_serialize( $players ) );
 
 				$seasons = wp_get_post_terms( $player_id, 'wpcm_season' );
 				$season  = $seasons[0]->term_id;

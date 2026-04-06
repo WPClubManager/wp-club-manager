@@ -48,7 +48,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 				$settings[] = include 'settings/class-wpcm-settings-staff.php';
 				$settings[] = include 'settings/class-wpcm-settings-matches.php';
 				$settings[] = include 'settings/class-wpcm-settings-standings.php';
-				if ( in_array( 'wpcm-player-appearances/wpcm-player-appearances.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'wpcm-sponsors-pro/wpcm-sponsors-pro.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+				if ( in_array( 'wpcm-player-appearances/wpcm-player-appearances.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) || in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) || in_array( 'wpcm-sponsors-pro/wpcm-sponsors-pro.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 					$settings[] = include 'settings/class-wpcm-settings-licenses.php';
 				}
 
@@ -259,9 +259,9 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 					$description = '';
 				}
 
-				if ( $description && in_array( $value['type'], array( 'textarea', 'radio' ) ) ) {
+				if ( $description && in_array( $value['type'], array( 'textarea', 'radio' ), true ) ) {
 					$description = '<p style="margin-top:0">' . wp_kses_post( $description ) . '</p>';
-				} elseif ( $description && in_array( $value['type'], array( 'checkbox' ) ) ) {
+				} elseif ( $description && in_array( $value['type'], array( 'checkbox' ), true ) ) {
 					$description = wp_kses_post( $description );
 				} elseif ( $description ) {
 					$description = '<span class="description">' . wp_kses_post( $description ) . '</span>';
@@ -362,13 +362,13 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 
 						</th>
 						<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-							<select name="<?php echo esc_attr( $value['id'] ); ?><?php echo ( 'multiselect' == $value['type'] ) ? '[]' : ''; ?>"
+							<select name="<?php echo esc_attr( $value['id'] ); ?><?php echo ( 'multiselect' === $value['type'] ) ? '[]' : ''; ?>"
 								id="<?php echo esc_attr( $value['id'] ); ?>"
 								style="<?php echo esc_attr( $value['css'] ); ?>"
 								class="<?php echo esc_attr( $value['class'] ); ?>"
 								<?php echo esc_attr( implode( ' ', $custom_attributes ) ); ?>
 								<?php
-								if ( 'multiselect' == $value['type'] ) {
+								if ( 'multiselect' === $value['type'] ) {
 									echo 'multiple="multiple"';}
 								?>
 								>
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 																	<?php
 
 																	if ( is_array( $option_value ) ) {
-																		selected( in_array( $key, $option_value ), true );
+																		selected( in_array( $key, $option_value, true ), true );
 																	} else {
 																		selected( $option_value, $key );
 																	}
@@ -443,17 +443,17 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						if ( ! isset( $value['show_if_checked'] ) ) {
 							$value['show_if_checked'] = false;
 						}
-						if ( 'yes' == $value['hide_if_checked'] || 'yes' == $value['show_if_checked'] ) {
+						if ( 'yes' === $value['hide_if_checked'] || 'yes' === $value['show_if_checked'] ) {
 							$visbility_class[] = 'hidden_option';
 						}
-						if ( 'option' == $value['hide_if_checked'] ) {
+						if ( 'option' === $value['hide_if_checked'] ) {
 							$visbility_class[] = 'hide_options_if_checked';
 						}
-						if ( 'option' == $value['show_if_checked'] ) {
+						if ( 'option' === $value['show_if_checked'] ) {
 							$visbility_class[] = 'show_options_if_checked';
 						}
 
-						if ( ! isset( $value['checkboxgroup'] ) || 'start' == $value['checkboxgroup'] ) {
+						if ( ! isset( $value['checkboxgroup'] ) || 'start' === $value['checkboxgroup'] ) {
 							?>
 							<tr class="<?php echo esc_attr( implode( ' ', $visbility_class ) ); ?>">
 								<th scope="row" class="titledesc"><?php echo esc_html( $value['title'] ); ?></th>
@@ -485,7 +485,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						</label>
 							<?php
 
-							if ( ! isset( $value['checkboxgroup'] ) || 'end' == $value['checkboxgroup'] ) {
+							if ( ! isset( $value['checkboxgroup'] ) || 'end' === $value['checkboxgroup'] ) {
 								?>
 									</fieldset>
 								</td>
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 						<input name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] ); ?>" value="<?php echo esc_attr( $option_value ); ?>"
 								class="regular-text" />
 							<?php
-							if ( 'valid' == get_option( $value['options']['is_valid_license_option'] ) ) {
+							if ( 'valid' === get_option( $value['options']['is_valid_license_option'] ) ) {
 								?>
 							<input type="submit" class="button-secondary" name="<?php echo esc_attr( $value['id'] ); ?>_deactivate" value="<?php esc_html_e( 'Deactivate License', 'wp-club-manager' ); ?>"/>
 							<?php } ?>
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 										?>
 											<option value="<?php echo esc_attr( $key ); ?>"
 																	<?php
-																	if ( in_array( $key, $columns ) ) {
+																	if ( in_array( $key, $columns, true ) ) {
 																		echo 'selected';}
 																	?>
 											><?php echo esc_html( $val ); ?></option>
@@ -1011,7 +1011,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 				);
 
 				foreach ( $allterms as $term ) :
-					if ( 0 == $term->count ) {
+					if ( 0 === $term->count ) {
 						wp_delete_term( $term->term_id, $taxonomy );
 					}
 					endforeach;

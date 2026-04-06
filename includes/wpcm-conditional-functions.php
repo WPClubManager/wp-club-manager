@@ -102,7 +102,7 @@ if ( ! function_exists( 'is_ajax' ) ) {
 			return true;
 		}
 
-		return ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' ) ? true : false; // phpcs:ignore
+		return ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) === 'xmlhttprequest' ) ? true : false; // phpcs:ignore
 	}
 }
 
@@ -130,7 +130,7 @@ if ( ! function_exists( 'is_league_mode' ) ) {
 	function is_league_mode() {
 
 		$mode = false;
-		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'league' ) {
+		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) === 'league' ) {
 
 			$mode = true;
 
@@ -150,7 +150,7 @@ if ( ! function_exists( 'is_club_mode' ) ) {
 	function is_club_mode() {
 
 		$mode = false;
-		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) == 'club' ) {
+		if ( get_option( 'wpcm_mode' ) !== null && get_option( 'wpcm_mode' ) === 'club' ) {
 
 			$mode = true;
 

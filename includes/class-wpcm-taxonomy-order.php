@@ -35,6 +35,7 @@ class WPCM_Taxonomy_Order {
 	 */
 	public function admin_order_terms( WP_Screen $screen ) {
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Form data is not being used.
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( empty( $_GET['orderby'] ) && 'edit-tags' === $screen->base && $this->is_taxonomy_ordering_enabled( $screen->taxonomy ) ) {
 			$this->enqueue();
 			$this->default_term_order( $screen->taxonomy );
@@ -79,7 +80,7 @@ class WPCM_Taxonomy_Order {
 			array(
 				'preloader_url'    => esc_url( admin_url( 'images/wpspin_light.gif' ) ),
 				'term_order_nonce' => wp_create_nonce( 'term_order_nonce' ),
-				'paged'            => isset( $_GET['paged'] ) ? absint( wp_unslash( $_GET['paged'] ) ) : 0,
+				'paged'            => isset( $_GET['paged'] ) ? absint( wp_unslash( $_GET['paged'] ) ) : 0, // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				'per_page_id'      => "edit_{$tax}_per_page",
 			)
 		);
@@ -95,7 +96,6 @@ class WPCM_Taxonomy_Order {
 			'taxonomy'   => $tax_slug,
 			'hide_empty' => false,
 		) );
-		// $order = 1;
 		$order = $this->get_max_taxonomy_order( $tax_slug );
 		foreach ( $terms as $term ) {
 			if ( ! get_term_meta( $term->term_id, 'tax_position', true ) ) {
@@ -170,6 +170,7 @@ class WPCM_Taxonomy_Order {
 			wp_send_json_error();
 		}
 
+  // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$taxonomy_ordering_data = filter_var_array( wp_unslash( $_POST['taxonomy_ordering_data'] ), FILTER_SANITIZE_NUMBER_INT ); // phpcs:ignore
 		$base_index             = filter_input( INPUT_POST, 'base_index', FILTER_SANITIZE_NUMBER_INT );
 		foreach ( $taxonomy_ordering_data as $order_data ) {
@@ -201,7 +202,7 @@ class WPCM_Taxonomy_Order {
 	public function is_taxonomy_ordering_enabled( $tax_slug ) {
 		$enabled_taxonomies = array( 'wpcm_season', 'wpcm_team', 'wpcm_comp', 'wpcm_position', 'wpcm_jobs' );
 
-		return in_array( $tax_slug, $enabled_taxonomies );
+		return in_array( $tax_slug, $enabled_taxonomies, true );
 	}
 }
 

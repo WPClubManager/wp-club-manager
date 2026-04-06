@@ -15,7 +15,7 @@ global $post;
 
 $sport     = get_option( 'wpcm_sport' );
 $sep       = get_option( 'wpcm_match_goals_delimiter' );
-$intgoals  = unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) );
+$intgoals  = maybe_unserialize( get_post_meta( $post->ID, 'wpcm_goals', true ) );
 $played    = get_post_meta( $post->ID, 'wpcm_played', true );
 $home_club = get_post_meta( $post->ID, 'wpcm_home_club', true );
 $away_club = get_post_meta( $post->ID, 'wpcm_away_club', true );
@@ -23,7 +23,7 @@ $overtime  = get_post_meta( $post->ID, 'wpcm_overtime', true );
 $shootout  = get_post_meta( $post->ID, 'wpcm_shootout', true );
 
 $sports = array( 'volleyball', 'basketball', 'football', 'footy', 'hockey', 'floorball' );
-if ( in_array( $sport, $sports ) ) {
+if ( in_array( $sport, $sports, true ) ) {
 
 	if ( $played ) { ?>
 
@@ -36,7 +36,7 @@ if ( in_array( $sport, $sports ) ) {
 					<th><?php esc_html_e( '3rd', 'wp-club-manager' ); ?></th>
 					<?php
 					$sports = array( 'volleyball', 'basketball', 'football', 'footy' );
-					if ( in_array( $sport, $sports ) ) {
+					if ( in_array( $sport, $sports, true ) ) {
 						?>
 						<th><?php esc_html_e( '4th', 'wp-club-manager' ); ?></th>
 						<?php
@@ -46,7 +46,7 @@ if ( in_array( $sport, $sports ) ) {
 						<th><?php esc_html_e( '5th', 'wp-club-manager' ); ?></th>
 						<?php
 					}
-					if ( in_array( $sport, array( 'hockey', 'floorball' ) ) ) {
+					if ( in_array( $sport, array( 'hockey', 'floorball' ), true ) ) {
 						if ( '1' === $overtime ) {
 							?>
 							<th><?php echo esc_html_x( 'OT', 'Overtime', 'wp-club-manager' ); ?></th>
@@ -81,7 +81,7 @@ if ( in_array( $sport, $sports ) ) {
 						<td><?php echo esc_html( 'yes' === get_option( 'wpcm_hide_scores' ) && ! is_user_logged_in() ? __( 'x', 'wp-club-manager' ) : $intgoals['q3']['home'] ); ?></td>
 						<?php
 					}
-					if ( in_array( $sport, $sports ) ) {
+					if ( in_array( $sport, $sports, true ) ) {
 						if ( isset( $intgoals['q4'] ) ) {
 							?>
 							<td><?php echo esc_html( 'yes' === get_option( 'wpcm_hide_scores' ) && ! is_user_logged_in() ? __( 'x', 'wp-club-manager' ) : $intgoals['q4']['home'] ); ?></td>
@@ -95,7 +95,7 @@ if ( in_array( $sport, $sports ) ) {
 							<?php
 						}
 					}
-					if ( in_array( $sport, array( 'hockey', 'floorball' ) ) ) {
+					if ( in_array( $sport, array( 'hockey', 'floorball' ), true ) ) {
 						if ( '1' === $overtime ) {
 							if ( $intgoals['total']['home'] > $intgoals['total']['away'] ) {
 								?>
@@ -136,7 +136,7 @@ if ( in_array( $sport, $sports ) ) {
 						<td><?php echo esc_html( 'yes' === get_option( 'wpcm_hide_scores' ) && ! is_user_logged_in() ? __( 'x', 'wp-club-manager' ) : $intgoals['q3']['away'] ); ?></td>
 						<?php
 					}
-					if ( in_array( $sport, $sports ) ) {
+					if ( in_array( $sport, $sports, true ) ) {
 						if ( isset( $intgoals['q4'] ) ) {
 							?>
 							<td><?php echo esc_html( 'yes' === get_option( 'wpcm_hide_scores' ) && ! is_user_logged_in() ? __( 'x', 'wp-club-manager' ) : $intgoals['q4']['away'] ); ?></td>
@@ -150,7 +150,7 @@ if ( in_array( $sport, $sports ) ) {
 							<?php
 						}
 					}
-					if ( in_array( $sport, array( 'hockey', 'floorball' ) ) ) {
+					if ( in_array( $sport, array( 'hockey', 'floorball' ), true ) ) {
 						if ( '1' === $overtime ) {
 							if ( $intgoals['total']['away'] > $intgoals['total']['home'] ) {
 								?>

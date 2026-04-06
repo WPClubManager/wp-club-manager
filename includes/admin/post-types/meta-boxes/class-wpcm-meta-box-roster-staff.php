@@ -32,7 +32,7 @@ class WPCM_Meta_Box_Roster_Staff {
 		$season  = $seasons[0]->term_id;
 		$teams   = get_the_terms( $post->ID, 'wpcm_team' );
 		$team    = $teams[0]->term_id;
-		$staff   = unserialize( get_post_meta( $post->ID, '_wpcm_roster_staff', true ) );
+		$staff   = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_roster_staff', true ) );
 
 		if ( empty( $staff ) ) {
 
@@ -75,7 +75,7 @@ class WPCM_Meta_Box_Roster_Staff {
 		<div id="wpcm-staff-roster-stats">
 			<table>
 				<?php
-				if ( null != $staff ) {
+				if ( null !== $staff ) {
 					?>
 					<thead>
 						<tr>
@@ -129,7 +129,7 @@ class WPCM_Meta_Box_Roster_Staff {
 
 				<input type="button" class="button-secondary wpcm-staff-roster-add-row" value="<?php esc_html_e( 'Add staff', 'wp-club-manager' ); ?>">
 			</div>
-			<a class="wpcm-staff-roster-delete-row <?php echo ( null != $staff ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-staff-roster-delete-row <?php echo ( ! empty( $staff ) ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 
@@ -158,7 +158,7 @@ class WPCM_Meta_Box_Roster_Staff {
 			array_walk_recursive( $staff, 'wpcm_array_values_to_int' );
 		}
 
-		update_post_meta( $post_id, '_wpcm_roster_staff', serialize( $staff ) );
+		update_post_meta( $post_id, '_wpcm_roster_staff', maybe_serialize( $staff ) );
 
 		do_action( 'delete_plugin_transients' );
 	}

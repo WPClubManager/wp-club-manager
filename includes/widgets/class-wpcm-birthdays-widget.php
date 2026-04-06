@@ -89,12 +89,12 @@ class WPCM_Birthdays_Widget extends WPCM_Widget {
 
 		if ( $include_staff ) {
 			$post_types       = array( 'wpcm_player', 'wpcm_staff' );
-			$selected_players = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
-			$selected_staff   = (array) unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
+			$selected_players = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
+			$selected_staff   = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
 			$selected         = array_merge( $selected_players, $selected_staff );
 		} else {
 			$post_types = 'wpcm_player';
-			$selected   = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
+			$selected   = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
 		}
 
 		$query_args = array(

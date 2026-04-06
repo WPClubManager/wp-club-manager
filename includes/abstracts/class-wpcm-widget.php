@@ -174,13 +174,13 @@ abstract class WPCM_Widget extends WP_Widget {
 					if ( is_array( $new_instance[ $key ] ) ) {
 						$new_instance[ $key ] = implode( ',', $new_instance[ $key ] );
 					}
-					$instance[ $key ] = strip_tags( $new_instance[ $key ] );
+					$instance[ $key ] = wp_strip_all_tags( $new_instance[ $key ] );
 					break;
 				case 'standings_columns':
 					if ( is_array( $new_instance[ $key ] ) ) {
 						$new_instance[ $key ] = implode( ',', $new_instance[ $key ] );
 					}
-					$instance[ $key ] = strip_tags( $new_instance[ $key ] );
+					$instance[ $key ] = wp_strip_all_tags( $new_instance[ $key ] );
 					break;
 				default:
 					$instance[ $key ] = sanitize_text_field( $new_instance[ $key ] );
@@ -337,7 +337,7 @@ abstract class WPCM_Widget extends WP_Widget {
 							<?php foreach ( $player_stats_labels as $option_key => $option_value ) : ?>
 
 								<option id="<?php echo esc_attr( $key ); ?>"
-										value="<?php echo esc_attr( esc_attr( $option_key ) ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( strip_tags( $option_value ) ); ?></option>
+										value="<?php echo esc_attr( esc_attr( $option_key ) ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( wp_strip_all_tags( $option_value ) ); ?></option>
 
 							<?php endforeach; ?>
 						</select>
@@ -367,8 +367,8 @@ abstract class WPCM_Widget extends WP_Widget {
 											<input type="checkbox"
 													id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>"
 													name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]"
-													value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $stats ) ); ?> />
-											<?php echo esc_html( strip_tags( $option_value ) ); ?>
+													value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $stats, true ) ); ?> />
+											<?php echo esc_html( wp_strip_all_tags( $option_value ) ); ?>
 										</label>
 									</td>
 								<?php } ?>
@@ -389,7 +389,7 @@ abstract class WPCM_Widget extends WP_Widget {
 							<?php foreach ( $standings_columns_labels as $option_key => $option_value ) : ?>
 
 								<option id="<?php echo esc_attr( $key ); ?>"
-										value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( strip_tags( $option_value ) ); ?></option>
+										value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( wp_strip_all_tags( $option_value ) ); ?></option>
 
 							<?php endforeach; ?>
 						</select>
@@ -416,8 +416,8 @@ abstract class WPCM_Widget extends WP_Widget {
 									<td>
 										<label class="selectit"
 												for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>">
-											<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]" value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $columns ) ); ?> />
-											<?php echo esc_html( strip_tags( $option_value ) ); ?>
+											<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>-<?php echo esc_attr( $option_key ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>[]" value="<?php echo esc_attr( $option_key ); ?>" <?php checked( in_array( $option_key, $columns, true ) ); ?> />
+											<?php echo esc_html( wp_strip_all_tags( $option_value ) ); ?>
 										</label>
 									</td>
 								<?php } ?>
@@ -447,7 +447,7 @@ abstract class WPCM_Widget extends WP_Widget {
 								name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>">
 							<?php foreach ( $focus_options as $option_key => $option_value ) : ?>
 								<option
-									value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( strip_tags( $option_value ) ); ?></option>
+									value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( wp_strip_all_tags( $option_value ) ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>

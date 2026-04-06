@@ -50,7 +50,7 @@ class WPCM_Shortcode_Standings {
 
 		if ( false === $output ) {
 
-			if ( 0 == $limit ) {
+			if ( 0 === $limit ) {
 				$limit = -1;
 			}
 			if ( $comp <= 0 ) {
@@ -90,17 +90,17 @@ class WPCM_Shortcode_Standings {
 			}
 			$clubs = get_posts( $args );
 			$size  = count( $clubs );
-			if ( 0 == $size ) {
+			if ( 0 === $size ) {
 				return false;
 			}
-			if ( - 1 == $limit ) {
+			if ( - 1 === $limit ) {
 				$limit = $size;
 			}
 			// attach stats to each club
 			foreach ( $clubs as $club ) {
 				$club_stats       = get_wpcm_club_total_stats( $club->ID, $comp, $season );
 				$club->wpcm_stats = $club_stats;
-				if ( 1 == $thumb ) {
+				if ( 1 === $thumb ) {
 					if ( has_post_thumbnail( $club->ID ) ) {
 						$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
 					} else {
@@ -134,7 +134,7 @@ class WPCM_Shortcode_Standings {
 				// find middle
 				$middle = 0;
 				foreach ( $clubs as $key => $value ) {
-					if ( $value->ID == $center ) {
+					if ( $value->ID === $center ) {
 						$middle = $key;
 					}
 				}

@@ -80,7 +80,7 @@ class WPCM_Shortcode_Staff_Gallery {
 
 		if ( false === $output ) {
 
-			$selected_staff = (array) unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
+			$selected_staff = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_staff', true ) );
 			$seasons        = get_the_terms( $id, 'wpcm_season' );
 			$season         = $seasons[0]->term_id;
 			$teams          = get_the_terms( $id, 'wpcm_team' );

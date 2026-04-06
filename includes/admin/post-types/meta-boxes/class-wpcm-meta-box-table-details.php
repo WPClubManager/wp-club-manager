@@ -85,7 +85,7 @@ class WPCM_Meta_Box_Table_Details {
 			?>
 		</p>
 		<?php
-		if ( null != $default_club && has_teams() ) {
+		if ( null !== $default_club && has_teams() ) {
 			?>
 			<p>
 				<label><?php esc_html_e( 'Team', 'wp-club-manager' ); ?></label>

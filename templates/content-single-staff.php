@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<?php
 
-					if ( get_option( 'wpcm_staff_profile_show_dob' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_dob' ) === 'yes' ) {
 						?>
 
 						<tr>
@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_age' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_age' ) === 'yes' ) {
 						?>
 
 						<tr>
@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_season' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_season' ) === 'yes' ) {
 
 						$seasons = get_the_terms( $post->ID, 'wpcm_season' );
 
@@ -90,7 +90,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_team' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_team' ) === 'yes' ) {
 
 						$teams = get_the_terms( $post->ID, 'wpcm_team' );
 
@@ -116,7 +116,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_jobs' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_jobs' ) === 'yes' ) {
 
 						$jobs = get_the_terms( $post->ID, 'wpcm_jobs' );
 
@@ -142,7 +142,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 					}
 
-					if ( get_option( 'wpcm_show_staff_email' ) == 'yes' ) {
+					if ( get_option( 'wpcm_show_staff_email' ) === 'yes' ) {
 
 						$email = get_post_meta( $post->ID, '_wpcm_staff_email', true );
 						?>
@@ -158,7 +158,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 
-					if ( get_option( 'wpcm_show_staff_phone' ) == 'yes' ) {
+					if ( get_option( 'wpcm_show_staff_phone' ) === 'yes' ) {
 
 						$phone = get_post_meta( $post->ID, '_wpcm_staff_phone', true );
 						?>
@@ -174,20 +174,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes' || get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_hometown' ) === 'yes' || get_option( 'wpcm_staff_profile_show_nationality' ) === 'yes' ) {
 						?>
 						<tr>
 							<th>
 								<?php esc_html_e( 'Birthplace', 'wp-club-manager' ); ?>
 							</th>
 							<td>
-								<?php echo esc_html( ( get_option( 'wpcm_staff_profile_show_hometown' ) == 'yes' ? get_post_meta( $post->ID, 'wpcm_hometown', true ) : '' ) ); ?> <?php echo ( get_option( 'wpcm_staff_profile_show_nationality' ) == 'yes' ? '<img class="flag" src="' . esc_url( WPCM_URL . 'assets/images/flags/' . esc_attr( get_post_meta( $post->ID, 'wpcm_natl', true ) ) . '.png' ) . '" />' : '' ); ?>
+								<?php echo esc_html( ( get_option( 'wpcm_staff_profile_show_hometown' ) === 'yes' ? get_post_meta( $post->ID, 'wpcm_hometown', true ) : '' ) ); ?> <?php echo ( get_option( 'wpcm_staff_profile_show_nationality' ) === 'yes' ? '<img class="flag" src="' . esc_url( WPCM_URL . 'assets/images/flags/' . esc_attr( get_post_meta( $post->ID, 'wpcm_natl', true ) ) . '.png' ) . '" />' : '' ); ?>
 							</td>
 						</tr>
 						<?php
 					}
 
-					if ( get_option( 'wpcm_staff_profile_show_joined' ) == 'yes' ) {
+					if ( get_option( 'wpcm_staff_profile_show_joined' ) === 'yes' ) {
 						?>
 
 						<tr>

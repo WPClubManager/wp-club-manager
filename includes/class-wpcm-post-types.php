@@ -64,9 +64,9 @@ class WPCM_Post_Types {
 				'show_in_nav_menus'  => false,
 				'tax_position'       => true,
 				'capabilities'       => array(
-					'manage_terms' => 'manage_wpcm_club_terms',
-					'edit_terms'   => 'edit_wpcm_club_terms',
-					'delete_terms' => 'delete_wpcm_club_terms',
+					'manage_terms' => 'manage_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'edit_terms'   => 'edit_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'delete_terms' => 'delete_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
 				'publicly_queryable' => false,
@@ -94,9 +94,9 @@ class WPCM_Post_Types {
 				'show_in_nav_menus'  => false,
 				'tax_position'       => true,
 				'capabilities'       => array(
-					'manage_terms' => 'manage_wpcm_staff_terms',
-					'edit_terms'   => 'edit_wpcm_staff_terms',
-					'delete_terms' => 'delete_wpcm_staff_terms',
+					'manage_terms' => 'manage_wpcm_staff_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'edit_terms'   => 'edit_wpcm_staff_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'delete_terms' => 'delete_wpcm_staff_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 					'assign_terms' => 'assign_wpcm_staff_terms',
 				),
 				'publicly_queryable' => false,
@@ -124,9 +124,9 @@ class WPCM_Post_Types {
 				'show_in_nav_menus'  => false,
 				'tax_position'       => true,
 				'capabilities'       => array(
-					'manage_terms' => 'manage_wpcm_player_terms',
-					'edit_terms'   => 'edit_wpcm_player_terms',
-					'delete_terms' => 'delete_wpcm_player_terms',
+					'manage_terms' => 'manage_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'edit_terms'   => 'edit_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'delete_terms' => 'delete_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 					'assign_terms' => 'assign_wpcm_player_terms',
 				),
 				'publicly_queryable' => false,
@@ -155,9 +155,9 @@ class WPCM_Post_Types {
 				'show_in_nav_menus'  => false,
 				'tax_position'       => true,
 				'capabilities'       => array(
-					'manage_terms' => 'manage_wpcm_club_terms',
-					'edit_terms'   => 'edit_wpcm_club_terms',
-					'delete_terms' => 'delete_wpcm_club_terms',
+					'manage_terms' => 'manage_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'edit_terms'   => 'edit_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'delete_terms' => 'delete_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
 				'publicly_queryable' => false,
@@ -187,9 +187,9 @@ class WPCM_Post_Types {
 					'show_in_nav_menus'  => false,
 					'tax_position'       => true,
 					'capabilities'       => array(
-						'manage_terms' => 'manage_wpcm_player_terms',
-						'edit_terms'   => 'edit_wpcm_player_terms',
-						'delete_terms' => 'delete_wpcm_player_terms',
+						'manage_terms' => 'manage_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+						'edit_terms'   => 'edit_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+						'delete_terms' => 'delete_wpcm_player_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 						'assign_terms' => 'assign_wpcm_player_terms',
 					),
 					'publicly_queryable' => false,
@@ -216,9 +216,9 @@ class WPCM_Post_Types {
 				),
 				'show_in_nav_menus'  => false,
 				'capabilities'       => array(
-					'manage_terms' => 'manage_wpcm_club_terms',
-					'edit_terms'   => 'edit_wpcm_club_terms',
-					'delete_terms' => 'delete_wpcm_club_terms',
+					'manage_terms' => 'manage_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'edit_terms'   => 'edit_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
+					'delete_terms' => 'delete_wpcm_club_terms', // phpcs:ignore WordPress.WP.Capabilities.Unknown
 					'assign_terms' => 'assign_wpcm_club_terms',
 				),
 				'publicly_queryable' => false,
@@ -237,9 +237,6 @@ class WPCM_Post_Types {
 		}
 
 		do_action( 'wpclubmanager_register_post_type' );
-
-		// $permalink      = get_option( 'wpclubmanager_club_slug' );
-		// $club_permalink = empty( $permalink ) ? _x( 'club', 'slug', 'wp-club-manager' ) : $permalink;
 
 		register_post_type( 'wpcm_club',
 			apply_filters( 'wpclubmanager_register_post_type_club',

@@ -17,7 +17,7 @@ global $post; ?>
 	<tbody>
 
 		<?php
-		if ( get_option( 'wpcm_player_profile_show_number' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_number' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -30,7 +30,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_dob' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_dob' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -43,7 +43,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_age' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_age' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -56,7 +56,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_height' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_height' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -69,7 +69,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_weight' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_weight' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -82,7 +82,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_season' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_season' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -95,7 +95,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_team' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_team' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -108,7 +108,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_position' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_position' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -121,20 +121,20 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes' || get_option( 'wpcm_player_profile_show_nationality' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_hometown' ) === 'yes' || get_option( 'wpcm_player_profile_show_nationality' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
 					<?php esc_html_e( 'Birthplace', 'wp-club-manager' ); ?>
 				</th>
 				<td>
-					<?php echo ( get_option( 'wpcm_player_profile_show_hometown' ) == 'yes' ? esc_html( get_post_meta( $post->ID, 'wpcm_hometown', true ) ) : '' ); ?> <?php echo ( get_option( 'wpcm_player_profile_show_nationality' ) == 'yes' ? '<img class="flag" src="' . esc_url( WPCM_URL ) . 'assets/images/flags/' . esc_url( get_post_meta( $post->ID, 'wpcm_natl', true ) ) . '.png" />' : '' ); ?>
+					<?php echo ( get_option( 'wpcm_player_profile_show_hometown' ) === 'yes' ? esc_html( get_post_meta( $post->ID, 'wpcm_hometown', true ) ) : '' ); ?> <?php echo ( get_option( 'wpcm_player_profile_show_nationality' ) === 'yes' ? '<img class="flag" src="' . esc_url( WPCM_URL ) . 'assets/images/flags/' . esc_url( get_post_meta( $post->ID, 'wpcm_natl', true ) ) . '.png" />' : '' ); ?>
 				</td>
 			</tr>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_joined' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_joined' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -147,7 +147,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_exp' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_exp' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>
@@ -160,7 +160,7 @@ global $post; ?>
 			<?php
 		}
 
-		if ( get_option( 'wpcm_player_profile_show_prevclubs' ) == 'yes' ) {
+		if ( get_option( 'wpcm_player_profile_show_prevclubs' ) === 'yes' ) {
 			?>
 			<tr>
 				<th>

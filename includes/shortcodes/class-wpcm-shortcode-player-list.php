@@ -78,7 +78,7 @@ class WPCM_Shortcode_Player_List {
 		if ( false === $output ) {
 
 			if ( is_club_mode() ) {
-				$selected_players = (array) unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
+				$selected_players = (array) maybe_unserialize( get_post_meta( $id, '_wpcm_roster_players', true ) );
 				$seasons          = get_the_terms( $id, 'wpcm_season' );
 				$season           = $seasons[0]->term_id;
 				$teams            = get_the_terms( $id, 'wpcm_team' );

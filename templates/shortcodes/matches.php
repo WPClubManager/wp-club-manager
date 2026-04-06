@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td class="venue"><?php echo esc_html( $venue['status'] ); ?></td>
 				<?php
 				if ( '1' === $thumb ) {
-					echo esc_html( $club == $home_club ? $away_badge : $home_badge );
+					echo esc_html( $club === $home_club ? $away_badge : $home_badge );
 				}
 				?>
 				<td class="opponent"><?php echo esc_html( $opponent ); ?></td>

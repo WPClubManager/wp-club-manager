@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return bool
  */
 function wpcm_disable_admin_bar( $show_admin_bar ) {
-	if ( ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) ) {
+	if ( ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 		$show_admin_bar = false;
 	}
 
@@ -152,7 +152,8 @@ function wpcm_disable_author_archives_for_players() {
 		$user = get_user_by( 'id', $author );
 
 		if ( isset( $user->roles[0] ) && 'player' === $user->roles[0] ) {
-			wp_redirect( home_url() );
+			wp_safe_redirect( home_url() );
+			exit;
 		}
 	}
 }
