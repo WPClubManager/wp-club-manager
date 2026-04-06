@@ -32,15 +32,12 @@ class WPCM_Meta_Box_Player_Users {
 		}
 
 		$meta_key       = $wpdb->prefix . 'capabilities';
-		$has_admin_role = $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM {$wpdb->prefix}usermeta WHERE user_id=%d AND meta_key=%s AND meta_value like %s", $user_id, $meta_key, '%administrator%' ) );
+		$has_admin_role = $wpdb->get_var( $wpdb->prepare( "SELECT count(*) FROM {$wpdb->prefix}usermeta WHERE user_id=%d AND meta_key=%s AND meta_value like %s", $user_id, $meta_key, '%administrator%' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		if ( $has_admin_role > 0 ) {
 			$result = true;
 		} else {
 			$result = false;
 		}
-		// cache checking result for the future use
-		// $this->user_to_check[$user_id] = $result;
-
 		return $result;
 	}
 

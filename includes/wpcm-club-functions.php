@@ -77,18 +77,18 @@ function wpcm_head_to_head_count( $matches ) {
 	$count  = 0;
 	foreach ( $matches as $match ) {
 
-		if ( get_post_meta( $match->ID, '_wpcm_postponed', true ) != '1' && get_post_meta( $match->ID, '_wpcm_walkover', true ) == '' ) {
+		if ( get_post_meta( $match->ID, '_wpcm_postponed', true ) !== '1' && get_post_meta( $match->ID, '_wpcm_walkover', true ) === '' ) {
 
 			++$count;
 			$home_club  = get_post_meta( $match->ID, 'wpcm_home_club', true );
 			$home_goals = get_post_meta( $match->ID, 'wpcm_home_goals', true );
 			$away_goals = get_post_meta( $match->ID, 'wpcm_away_goals', true );
 
-			if ( $home_goals == $away_goals ) {
+			if ( $home_goals === $away_goals ) {
 				++$draws;
 			}
 
-			if ( $club == $home_club ) {
+			if ( $club === $home_club ) {
 				if ( $home_goals > $away_goals ) {
 					++$wins;
 				}

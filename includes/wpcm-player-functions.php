@@ -184,7 +184,7 @@ function wpcm_get_player_stats_labels( $subs = false ) {
 	$labels = wpcm_get_preset_labels();
 	$output = false;
 	foreach ( $labels as $label => $value ) {
-		if ( get_option( 'wpcm_show_stats_' . $label ) == 'yes' ) {
+		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}
@@ -210,7 +210,7 @@ function wpcm_get_player_all_labels() {
 	$labels = wpcm_get_preset_labels();
 	$output = false;
 	foreach ( $labels as $label => $value ) {
-		if ( get_option( 'wpcm_show_stats_' . $label ) == 'yes' ) {
+		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}
@@ -239,7 +239,7 @@ function wpcm_get_player_stats_names( $subs = false ) {
 	$labels = wpcm_get_preset_labels( 'players', 'name' );
 	$output = false;
 	foreach ( $labels as $label => $value ) {
-		if ( get_option( 'wpcm_show_stats_' . $label ) == 'yes' ) {
+		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}

@@ -24,9 +24,9 @@ class WPCM_Reset_Database {
 		global $wpdb;
 
 		// Delete options
-		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'wpcm_%';" );
-		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'wpclubmanager_%';" );
-		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_wpcm_%';" );
+		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'wpcm_%';" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'wpclubmanager_%';" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE '_wpcm_%';" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 		$this->delete_terms( 'wpcm_comp' );
 		$this->delete_terms( 'wpcm_jobs' );
@@ -35,8 +35,8 @@ class WPCM_Reset_Database {
 		$this->delete_terms( 'wpcm_team' );
 		$this->delete_terms( 'wpcm_venue' );
 
-		$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta INNER JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.post_type IN ( 'wpcm_player', 'wpcm_staff', 'wpcm_club', 'wpcm_match', 'wpcm_sponsor', 'wpcm_roster', 'wpcm_table' );" );
-		$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'wpcm_player', 'wpcm_staff', 'wpcm_club', 'wpcm_match', 'wpcm_sponsor', 'wpcm_roster', 'wpcm_table' );" );
+		$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta INNER JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.post_type IN ( 'wpcm_player', 'wpcm_staff', 'wpcm_club', 'wpcm_match', 'wpcm_sponsor', 'wpcm_roster', 'wpcm_table' );" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'wpcm_player', 'wpcm_staff', 'wpcm_club', 'wpcm_match', 'wpcm_sponsor', 'wpcm_roster', 'wpcm_table' );" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 		delete_option( 'wpclubmanager_installed' );
 	}

@@ -27,7 +27,6 @@ class WPCM_Admin {
 
 		add_action( 'init', array( $this, 'includes' ) );
 		add_action( 'current_screen', array( $this, 'conditonal_includes' ) );
-		// add_action( 'admin_init', array( $this, 'buffer' ), 1 );
 		add_action( 'admin_init', array( $this, 'prevent_admin_access' ) );
 		add_action( 'admin_init', array( $this, 'admin_redirects' ) );
 		add_action( 'admin_footer', array( $this, 'wpclubmanager_print_js' ), 25 );
@@ -53,14 +52,11 @@ class WPCM_Admin {
 		include_once 'class-wpcm-admin-post-types.php';
 		include_once 'class-wpcm-admin-taxonomies.php';
 
-		// Classes we only need if the ajax is not-ajax
-		// if ( ! is_ajax() ) {
-			include 'class-wpcm-admin-menus.php';
-			include 'class-wpcm-admin-notices.php';
-			include 'class-wpcm-admin-assets.php';
-			include 'class-wpcm-admin-permalink-settings.php';
-			include 'class-wpcm-admin-editor.php';
-		// }
+		include 'class-wpcm-admin-menus.php';
+		include 'class-wpcm-admin-notices.php';
+		include 'class-wpcm-admin-assets.php';
+		include 'class-wpcm-admin-permalink-settings.php';
+		include 'class-wpcm-admin-editor.php';
 
 		// Help Tabs
 		if ( apply_filters( 'wpclubmanager_enable_admin_help_tab', true ) ) {
@@ -68,8 +64,8 @@ class WPCM_Admin {
 		}
 
 		// Setup/welcome
-		if ( ! empty( $_GET['page'] ) ) {
-			switch ( $_GET['page'] ) {
+		if ( ! empty( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			switch ( $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				case 'wpcm-setup':
 					include_once 'class-wpcm-admin-setup-wizard.php';
 					break;
@@ -124,7 +120,8 @@ class WPCM_Admin {
 		if ( get_transient( '_wpcm_activation_redirect' ) ) {
 			delete_transient( '_wpcm_activation_redirect' );
 
-			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ) ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'wpcm-setup' ), true ) ) || is_network_admin() || isset( $_GET['activate-multi'] ) || ! current_user_can( 'manage_wpclubmanager' ) || apply_filters( 'wpclubmanager_prevent_automatic_wizard_redirect', false ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				return;
 			}
 
@@ -142,7 +139,7 @@ class WPCM_Admin {
 	public function prevent_admin_access() {
 		$prevent_access = false;
 
-		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( $_SERVER['SCRIPT_FILENAME'] ) !== 'admin-post.php' ) ) { // phpcs:ignore
+		if ( get_option( 'wpclubmanager_lock_down_admin' ) === 'yes' && ! is_ajax() && ! ( current_user_can( 'edit_posts' ) || current_user_can( 'manage_wpclubmanager' ) ) && ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) ) !== 'admin-post.php' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			$prevent_access = true;
 		}
 
@@ -201,14 +198,14 @@ class WPCM_Admin {
 	 */
 	public function wpclubmanager_admin_rate_us( $footer_text ) {
 
-		if ( ! current_user_can( 'manage_wpclubmanager' ) ) {
+		if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 			return;
 		}
 
 		$current_screen = get_current_screen();
 		$wpcm_pages     = wpcm_get_screen_ids();
 
-		if ( isset( $current_screen->id ) && apply_filters( 'wpclubmanager_display_admin_footer_text', in_array( $current_screen->id, $wpcm_pages ) ) ) {
+		if ( isset( $current_screen->id ) && apply_filters( 'wpclubmanager_display_admin_footer_text', in_array( $current_screen->id, $wpcm_pages, true ) ) ) {
 
 			if ( ! get_option( 'wpclubmanager_admin_footer_text_rated' ) ) {
 

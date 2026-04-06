@@ -79,7 +79,7 @@ if ( ! class_exists( 'WPCM_Settings_General' ) ) :
 				),
 			);
 
-			if ( get_option( 'wpcm_mode', 'club' ) == 'club' ) {
+			if ( get_option( 'wpcm_mode', 'club' ) === 'club' ) {
 				$settings[] = array(
 					'title'   => __( 'Default Club', 'wp-club-manager' ),
 					'id'      => 'wpcm_default_club',

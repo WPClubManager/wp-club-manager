@@ -112,7 +112,7 @@ class WPCM_Admin_Dashboard {
 						foreach ( $matches as $match ) {
 							$home_club  = get_post_meta( $match->ID, 'wpcm_home_club', true );
 							$wpcm_goals = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_goals', true ) );
-							if ( $default_club == $home_club ) {
+							if ( $default_club === $home_club ) {
 								$goals_scored   += $wpcm_goals['total']['home'];
 								$goals_conceded += $wpcm_goals['total']['away'];
 								$goals_for       = $wpcm_goals['total']['home'];
@@ -200,8 +200,8 @@ class WPCM_Admin_Dashboard {
 							'tax_input[wpcm_season][0]' => 0,
 							'tax_input[wpcm_team][0]'   => 0,
 							'wpcm_comp'                 => 0,
-							'wpcm_team'                 => urlencode( $team_slug ),
-							'wpcm_season'               => urlencode( $season_slug ),
+							'wpcm_team'                 => rawurlencode( $team_slug ),
+							'wpcm_season'               => rawurlencode( $season_slug ),
 							'filter_action'             => 'Filter',
 							'paged'                     => 1,
 							'action2'                   => -1,
@@ -295,7 +295,6 @@ class WPCM_Admin_Dashboard {
 						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
 						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
-						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
 						$notes = get_post_meta( $table_id, '_wpcm_table_notes', true );
@@ -414,7 +413,7 @@ class WPCM_Admin_Dashboard {
 							'tax_input[wpcm_season][0]' => 0,
 							'tax_input[wpcm_team][0]'   => 0,
 							'wpcm_comp'                 => 0,
-							'wpcm_season'               => urlencode( $season_slug ),
+							'wpcm_season'               => rawurlencode( $season_slug ),
 							'filter_action'             => 'Filter',
 							'paged'                     => 1,
 							'action2'                   => -1,
@@ -445,7 +444,6 @@ class WPCM_Admin_Dashboard {
 						$comp           = is_array( $comps ) ? $comps[0]->term_id : null;
 						$manual_stats   = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_stats', true ) );
 						$selected_clubs = (array) maybe_unserialize( get_post_meta( $table_id, '_wpcm_table_clubs', true ) );
-						// $columns = get_option( 'wpcm_standings_columns_display' );
 						$stats = explode( ',', $stats );
 						$order = get_option( 'wpcm_standings_order' );
 						$notes = get_post_meta( $table_id, '_wpcm_table_notes', true );

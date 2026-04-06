@@ -86,9 +86,6 @@ class WPCM_Meta_Box_Club_Details {
 		if ( ! check_admin_referer( 'wpclubmanager_save_data', 'wpclubmanager_meta_nonce' ) ) {
 			return;
 		}
-		// if( isset( $_POST['parent_id'] )  ) {
-		// update_post_meta( $post_id, '_wpcm_club_parent', $_POST['parent_id'] );
-		// }
 		$club_abr = filter_input( INPUT_POST, '_wpcm_club_abbr', FILTER_UNSAFE_RAW );
 		if ( $club_abr ) {
 			update_post_meta( $post_id, '_wpcm_club_abbr', sanitize_text_field( $club_abr ) );

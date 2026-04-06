@@ -79,7 +79,7 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 				return;
 			}
 
-			if ( ! isset( $_POST['wpclubmanager_club_slug'] ) ) {
+			if ( ! isset( $_POST['wpclubmanager_club_slug'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				return;
 			}
 

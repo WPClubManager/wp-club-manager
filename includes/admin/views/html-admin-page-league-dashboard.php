@@ -135,11 +135,11 @@
 								$result    = wpcm_get_match_result( $played_match->ID );
 								$opponent  = wpcm_get_match_opponents( $played_match->ID, false );
 								$class     = wpcm_get_match_outcome( $played_match->ID );
-								if ( 'win' == $class ) {
+								if ( 'win' === $class ) {
 									$class = 'green';
-								} elseif ( 'loss' == $class ) {
+								} elseif ( 'loss' === $class ) {
 									$class = 'red';
-								} elseif ( 'draw' == $class ) {
+								} elseif ( 'draw' === $class ) {
 									$class = 'yellow';
 								}
 								?>

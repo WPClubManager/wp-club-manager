@@ -61,7 +61,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 			$date_format              = 'yyyy/mm/dd';
 			$wpcm_player_stats_labels = wpcm_get_preset_labels();
 			foreach ( $wpcm_player_stats_labels as $key => $val ) :
-				if ( get_option( 'wpcm_show_stats_' . $key ) == 'yes' ) :
+				if ( get_option( 'wpcm_show_stats_' . $key ) === 'yes' ) :
 					$labels[] = $key;
 				endif;
 			endforeach;
@@ -156,7 +156,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$post_name = sanitize_title_with_dashes( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
 
-				// $match_name = $id . '-' . $home_title . '-' . $separator . '-' . $away_title;
 				wp_update_post( array(
 					'ID'         => $id,
 					'post_name'  => $post_name,
@@ -188,7 +187,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					if ( $home_goals >= '0' && $away_goals >= '0' ) :
 						update_post_meta( $id, 'wpcm_home_goals', $home_goals );
 						update_post_meta( $id, 'wpcm_away_goals', $away_goals );
-						update_post_meta( $id, 'wpcm_goals', serialize( $goals ) );
+						update_post_meta( $id, 'wpcm_goals', maybe_serialize( $goals ) );
 						update_post_meta( $id, 'wpcm_played', 1 );
 					endif;
 
@@ -226,7 +225,6 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				if ( $players ) :
 					$lineup = explode( '|', $players );
-					// unset($stats);
 					$players_array = array();
 					$players       = array();
 					foreach ( $lineup as $player ) {
@@ -275,7 +273,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 						$cards = wpcm_stats_cards();
 						foreach ( $cards as $card ) {
-							if ( array_key_exists( $card, $stats_combine ) && '0' == $stats_combine[ $card ] ) {
+							if ( array_key_exists( $card, $stats_combine ) && '0' === $stats_combine[ $card ] ) {
 								unset( $stats_combine[ $card ] );
 							}
 						}
@@ -287,7 +285,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$players = array(
 						'lineup' => $players_array,
 					);
-					update_post_meta( $id, 'wpcm_players', serialize( $players ) );
+					update_post_meta( $id, 'wpcm_players', maybe_serialize( $players ) );
 				endif;
 
 				++$this->imported;

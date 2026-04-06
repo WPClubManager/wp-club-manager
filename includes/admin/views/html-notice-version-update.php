@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</p>
 
 	<?php
-	if ( in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || in_array( 'wp-club-manager-score-summary/wpcm-score-summary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	if ( in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) || in_array( 'wp-club-manager-score-summary/wpcm-score-summary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 		?>
 		<p><strong>
 			<?php
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 	}
 
-	if ( in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	if ( in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 		?>
 		<p>
 			<span class="dashicons dashicons-warning"></span>
@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 	}
 
-	if ( in_array( 'wp-club-manager-score-summary/wpcm-score-summary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	if ( in_array( 'wp-club-manager-score-summary/wpcm-score-summary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 		?>
 		<p>
 			<span class="dashicons dashicons-warning"></span>

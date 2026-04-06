@@ -175,7 +175,7 @@ if ( ! class_exists( 'WPCM_Settings_Players' ) ) :
 				if ( $first ) {
 					$settings[] = array(
 						'title'         => __( 'Display', 'wp-club-manager' ),
-						'desc'          => strip_tags( $value ),
+						'desc'          => wp_strip_all_tags( $value ),
 						'id'            => 'wpcm_show_stats_' . $key,
 						'default'       => 'yes',
 						'type'          => 'checkbox',
@@ -185,7 +185,7 @@ if ( ! class_exists( 'WPCM_Settings_Players' ) ) :
 				} else {
 
 					$settings[] = array(
-						'desc'          => strip_tags( $value ),
+						'desc'          => wp_strip_all_tags( $value ),
 						'id'            => 'wpcm_show_stats_' . $key,
 						'default'       => 'yes',
 						'type'          => 'checkbox',

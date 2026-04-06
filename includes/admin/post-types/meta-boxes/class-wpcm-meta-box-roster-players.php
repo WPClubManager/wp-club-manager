@@ -32,7 +32,7 @@ class WPCM_Meta_Box_Roster_Players {
 		$season  = $seasons[0]->term_id;
 		$teams   = get_the_terms( $post->ID, 'wpcm_team' );
 		$team    = $teams[0]->term_id;
-		$players = unserialize( get_post_meta( $post->ID, '_wpcm_roster_players', true ) );
+		$players = maybe_unserialize( get_post_meta( $post->ID, '_wpcm_roster_players', true ) );
 
 		if ( empty( $players ) ) {
 
@@ -73,7 +73,7 @@ class WPCM_Meta_Box_Roster_Players {
 		<div id="wpcm-player-roster-stats">
 			<table>
 				<?php
-				if ( null != $players ) {
+				if ( null !== $players ) {
 					?>
 					<thead>
 						<tr>
@@ -128,7 +128,7 @@ class WPCM_Meta_Box_Roster_Players {
 				<input type="button" class="button-secondary wpcm-player-roster-add-row" value="<?php esc_html_e( 'Add player', 'wp-club-manager' ); ?>">
 			</div>
 
-			<a class="wpcm-player-roster-delete-row <?php echo ( null != $players ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
+			<a class="wpcm-player-roster-delete-row <?php echo ( ! empty( $players ) ? '' : 'hidden-button' ); ?>"><?php esc_html_e( 'Remove selected', 'wp-club-manager' ); ?></a>
 
 		</div>
 
@@ -159,7 +159,7 @@ class WPCM_Meta_Box_Roster_Players {
 				}
 			}
 
-			update_post_meta( $post_id, '_wpcm_roster_players', serialize( $players ) );
+			update_post_meta( $post_id, '_wpcm_roster_players', maybe_serialize( $players ) );
 		}
 
 		do_action( 'delete_plugin_transients' );

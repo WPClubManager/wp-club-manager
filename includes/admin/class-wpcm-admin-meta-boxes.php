@@ -36,7 +36,6 @@ class WPCM_Admin_Meta_Boxes {
 		// Save Club Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Details::save', 10, 2 );
 		add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Table::save', 10, 2 );
-		// add_action( 'wpclubmanager_process_wpcm_club_meta', 'WPCM_Meta_Box_Club_Parent::save', 10, 2 );
 
 		// Save Match Meta Boxes
 		add_action( 'wpclubmanager_process_wpcm_match_meta', 'WPCM_Meta_Box_Match_Details::save', 10, 2 );
@@ -151,7 +150,7 @@ class WPCM_Admin_Meta_Boxes {
 
 		add_meta_box( 'wpclubmanager-match-fixture', __( 'Match Fixture', 'wp-club-manager' ), 'WPCM_Meta_Box_Match_Fixture::output', 'wpcm_match', 'normal', 'high' );
 		add_meta_box( 'wpclubmanager-match-details', __( 'Match Details', 'wp-club-manager' ), 'WPCM_Meta_Box_Match_Details::output', 'wpcm_match', 'normal', 'high' );
-		if ( get_option( 'wpcm_match_show_report', 'yes' ) == 'yes' ) {
+		if ( get_option( 'wpcm_match_show_report', 'yes' ) === 'yes' ) {
 			add_meta_box( 'wpclubmanager-match-report', __( 'Match Report', 'wp-club-manager' ), function ( $post ) {
 				wp_editor( $post->post_content, 'post_content', array(
 					'name'          => 'post_content',
@@ -159,7 +158,7 @@ class WPCM_Admin_Meta_Boxes {
 				) );
 			}, 'wpcm_match', 'normal', 'high' );
 		}
-		if ( get_option( 'wpcm_match_show_preview', 'no' ) == 'yes' ) {
+		if ( get_option( 'wpcm_match_show_preview', 'no' ) === 'yes' ) {
 			add_meta_box( 'postexcerpt', __( 'Match Preview', 'wp-club-manager' ), function ( $post ) {
 				wp_editor( $post->post_excerpt, 'excerpt', array(
 					'name'       => 'excerpt',
@@ -274,7 +273,8 @@ class WPCM_Admin_Meta_Boxes {
 		if ( empty( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpclubmanager_save_data' ) ) {
 			return;
 		}
-		if ( empty( $_POST['post_ID'] ) || $_POST['post_ID'] != $post_id ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( empty( $_POST['post_ID'] ) || absint( wp_unslash( $_POST['post_ID'] ) ) !== (int) $post_id ) {
 			return;
 		}
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
@@ -289,7 +289,7 @@ class WPCM_Admin_Meta_Boxes {
 			'wpcm_sponsor',
 			'wpcm_table',
 			'wpcm_roster',
-		) ) ) {
+		), true ) ) {
 			return;
 		}
 

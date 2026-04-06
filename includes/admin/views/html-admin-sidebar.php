@@ -5,7 +5,7 @@
 
 ?>
 <div id="postbox-container-1" class="postbox-container">
-	<?php if ( wp_get_theme() != 'Victory' ) { ?>
+	<?php if ( wp_get_theme()->get( 'Name' ) !== 'Victory' ) { ?>
 		<div id="wpcm-support" class="stuffbox ">
 			<h3>Victory Theme</h3>
 			<div class="inside">

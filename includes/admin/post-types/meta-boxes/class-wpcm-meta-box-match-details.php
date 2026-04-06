@@ -162,14 +162,14 @@ class WPCM_Meta_Box_Match_Details {
 		</p>
 		<?php
 
-		if ( get_option( 'wpcm_results_show_attendance' ) == 'yes' ) {
+		if ( get_option( 'wpcm_results_show_attendance' ) === 'yes' ) {
 			wpclubmanager_wp_text_input( array(
 				'id'    => 'wpcm_attendance',
 				'label' => __( 'Attendance', 'wp-club-manager' ),
 			) );
 		}
 
-		if ( get_option( 'wpcm_results_show_referee' ) == 'yes' ) {
+		if ( get_option( 'wpcm_results_show_referee' ) === 'yes' ) {
 			?>
 
 			<?php
@@ -181,7 +181,7 @@ class WPCM_Meta_Box_Match_Details {
 						<?php
 						foreach ( $option_list as $option ) {
 							?>
-							<option value="<?php echo esc_attr( $option ); ?>"<?php echo ( $option == $referee ? ' selected' : null ); ?>><?php echo esc_html( $option ); ?></option>
+							<option value="<?php echo esc_attr( $option ); ?>"<?php echo ( $option === $referee ? ' selected' : null ); ?>><?php echo esc_html( $option ); ?></option>
 							<?php
 						}
 						?>
@@ -260,7 +260,7 @@ class WPCM_Meta_Box_Match_Details {
 			$wpcm_referee = sanitize_text_field( $wpcm_referee );
 			update_post_meta( $post_id, 'wpcm_referee', $wpcm_referee );
 			$options = get_option( 'wpcm_referee_list', array() );
-			if ( ! in_array( $wpcm_referee, $options ) ) {
+			if ( ! in_array( $wpcm_referee, $options, true ) ) {
 				$options[] = $wpcm_referee;
 				update_option( 'wpcm_referee_list', $options );
 			}

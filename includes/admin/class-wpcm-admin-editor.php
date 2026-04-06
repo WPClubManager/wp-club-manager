@@ -37,7 +37,7 @@ class WPCM_Admin_Editor {
 			return;
 		}
 
-		if ( 'true' == get_user_option( 'rich_editing' ) ) {
+		if ( 'true' === get_user_option( 'rich_editing' ) ) {
 			add_filter( 'mce_external_plugins', array( $this, 'add_shortcode_tinymce_plugin' ) );
 			add_filter( 'mce_buttons', array( $this, 'register_shortcode_button' ) );
 		}
