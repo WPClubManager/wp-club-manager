@@ -32,9 +32,15 @@ class WPCM_Admin_Dashboard {
 					$default_club = get_default_club();
 					$team         = filter_input( INPUT_POST, 'team_select', FILTER_UNSAFE_RAW );
 					if ( $team ) {
-						$term      = get_term( $team, 'wpcm_team' );
-						$team_name = $term->name;
-						$team_slug = $term->slug;
+						$term = get_term( $team, 'wpcm_team' );
+						if ( $term && ! is_wp_error( $term ) ) {
+							$team_name = $term->name;
+							$team_slug = $term->slug;
+						} else {
+							$team      = null;
+							$team_name = null;
+							$team_slug = null;
+						}
 					} else {
 						$teams = get_terms( array(
 							'taxonomy'   => 'wpcm_team',
@@ -53,14 +59,19 @@ class WPCM_Admin_Dashboard {
 						}
 					}
 					// Setup
-					$seasons     = get_terms( array(
+					$seasons = get_terms( array(
 						'taxonomy'   => 'wpcm_season',
 						'meta_key'   => 'tax_position',
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
-					$season      = $seasons[0];
-					$season_slug = $seasons[0]->slug;
+					if ( is_array( $seasons ) && ! empty( $seasons ) ) {
+						$season      = $seasons[0];
+						$season_slug = $seasons[0]->slug;
+					} else {
+						$season      = null;
+						$season_slug = '';
+					}
 
 					// Statistics
 					$args = array(
@@ -341,14 +352,19 @@ class WPCM_Admin_Dashboard {
 
 				} else {
 					// Setup
-					$seasons     = get_terms( array(
+					$seasons = get_terms( array(
 						'taxonomy'   => 'wpcm_season',
 						'meta_key'   => 'tax_position',
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
-					$season      = $seasons[0];
-					$season_slug = $seasons[0]->slug;
+					if ( is_array( $seasons ) && ! empty( $seasons ) ) {
+						$season      = $seasons[0];
+						$season_slug = $seasons[0]->slug;
+					} else {
+						$season      = null;
+						$season_slug = '';
+					}
 
 					// Statistics
 					$args = array(

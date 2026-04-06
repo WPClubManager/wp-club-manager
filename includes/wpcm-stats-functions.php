@@ -32,6 +32,7 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 		$stats = $data[ $sport ]['stats_labels'];
 	}
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
 
 		$output[ $key ] = $value[ $format ];
@@ -53,6 +54,7 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 	$data  = wpcm_get_sport_presets();
 	$stats = $data[ $sport ]['stats_labels'];
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
 		if ( $section === $value['section'] ) {
 
