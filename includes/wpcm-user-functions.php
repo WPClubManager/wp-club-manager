@@ -101,6 +101,57 @@ function wpcm_create_new_user( $email, $username = '', $password = '' ) {
 }
 
 /**
+ * Get all player IDs linked to a WordPress user.
+ *
+ * Supports multiple players per user account (e.g. a parent
+ * managing children's profiles).
+ *
+ * @param int $user_id WordPress user ID.
+ * @return int[] Array of wpcm_player post IDs.
+ */
+function wpcm_get_linked_players( $user_id ) {
+	if ( empty( $user_id ) ) {
+		return array();
+	}
+
+	$values = get_user_meta( $user_id, '_linked_player', false );
+	return array_map( 'intval', array_filter( $values ) );
+}
+
+/**
+ * Link a player to a WordPress user account.
+ *
+ * Creates the bidirectional relationship between a wpcm_player post
+ * and a WP user.  Handles cleanup when the linked user changes and
+ * prevents duplicate entries so one user can manage many players.
+ *
+ * @param int $player_id The wpcm_player post ID.
+ * @param int $user_id   The WordPress user ID (0 to unlink).
+ */
+function wpcm_link_player_to_user( $player_id, $user_id ) {
+	$old_user_id = (int) get_post_meta( $player_id, '_wpcm_link_users', true );
+	$user_id     = (int) $user_id;
+
+	// Remove old user → player link when the user changes.
+	if ( $old_user_id && $old_user_id !== $user_id ) {
+		delete_user_meta( $old_user_id, '_linked_player', $player_id );
+	}
+
+	if ( $user_id > 0 ) {
+		update_post_meta( $player_id, '_wpcm_link_users', $user_id );
+
+		// Add user → player link only if it does not already exist.
+		$existing = wpcm_get_linked_players( $user_id );
+		if ( ! in_array( $player_id, $existing, true ) ) {
+			add_user_meta( $user_id, '_linked_player', $player_id );
+		}
+	} else {
+		// Unlinking — clear both sides.
+		delete_post_meta( $player_id, '_wpcm_link_users' );
+	}
+}
+
+/**
  * Modify the list of editable roles to prevent non-admin adding admin users.
  *
  * @param  array $roles
