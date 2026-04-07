@@ -70,9 +70,9 @@ class WPCM_Admin_Dashboard {
 						<div class="ui warning message">
 							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
 						</div>
-					</div>
-				</div>
-				<?php
+						</div>
+						</div>
+						<?php
 						return;
 					}
 
@@ -103,13 +103,11 @@ class WPCM_Admin_Dashboard {
 							'value' => 1,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 					if ( isset( $team ) ) {
 						$args['tax_query'][] = array(
 							'taxonomy' => 'wpcm_team',
@@ -179,13 +177,11 @@ class WPCM_Admin_Dashboard {
 							'value' => $default_club,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 					if ( isset( $team ) ) {
 						$args['tax_query'][] = array(
 							'taxonomy' => 'wpcm_team',
@@ -326,7 +322,7 @@ class WPCM_Admin_Dashboard {
 						$clubs = get_posts( $args );
 
 						$size      = count( $clubs );
-						$season_id = $season ? $season->term_id : null;
+						$season_id = $season->term_id;
 
 						foreach ( $clubs as $club ) {
 
@@ -370,9 +366,9 @@ class WPCM_Admin_Dashboard {
 						<div class="ui warning message">
 							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
 						</div>
-					</div>
-				</div>
-				<?php
+						</div>
+						</div>
+						<?php
 						return;
 					}
 
@@ -393,13 +389,11 @@ class WPCM_Admin_Dashboard {
 							'value' => 1,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 
 					// Matches
 					$args = array(
@@ -410,13 +404,11 @@ class WPCM_Admin_Dashboard {
 						'posts_per_page' => 4,
 					);
 
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 
 					$publish        = array(
 						'post_status' => 'publish',
@@ -487,7 +479,7 @@ class WPCM_Admin_Dashboard {
 						$clubs = get_posts( $args );
 
 						$size      = count( $clubs );
-						$season_id = $season ? $season->term_id : null;
+						$season_id = $season->term_id;
 
 						foreach ( $clubs as $club ) {
 

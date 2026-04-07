@@ -22,20 +22,22 @@ class Php8CompatTest extends WPCMTestCase {
 	// -----------------------------------------------------------------------
 
 	public function test_get_current_season_returns_empty_when_no_seasons() {
-		// Ensure no wpcm_season terms exist.
-		$terms = get_terms( array(
-			'taxonomy'   => 'wpcm_season',
-			'hide_empty' => false,
-			'fields'     => 'ids',
-		) );
-		$this->assertFalse( is_wp_error( $terms ), is_wp_error( $terms ) ? $terms->get_error_message() : '' );
-		if ( is_array( $terms ) ) {
-			foreach ( $terms as $term_id ) {
-				wp_delete_term( $term_id, 'wpcm_season' );
+		// Stub get_terms() for wpcm_season to return an empty array,
+		// avoiding state leakage from deleting real terms.
+		$filter = function ( $terms, $query ) {
+			if ( isset( $query->query_vars['taxonomy'] )
+				&& in_array( 'wpcm_season', (array) $query->query_vars['taxonomy'], true )
+			) {
+				return array();
 			}
-		}
+
+			return $terms;
+		};
+		add_filter( 'terms_pre_query', $filter, 10, 2 );
 
 		$result = get_current_season();
+
+		remove_filter( 'terms_pre_query', $filter, 10 );
 
 		$this->assertIsArray( $result );
 		$this->assertNull( $result['id'] );
@@ -56,16 +58,34 @@ class Php8CompatTest extends WPCMTestCase {
 		$this->assertFalse( is_wp_error( $term ), is_wp_error( $term ) ? $term->get_error_message() : '' );
 		$this->assertIsArray( $term );
 
-		update_term_meta( $term['term_id'], 'tax_position', 1 );
+		$term_id = $term['term_id'];
+
+		update_term_meta( $term_id, 'tax_position', 1 );
+
+		// Stub get_terms() so only our created term is returned,
+		// making the assertion deterministic regardless of other suite terms.
+		$term_obj = get_term( $term_id, 'wpcm_season' );
+		$filter   = function ( $terms, $query ) use ( $term_obj ) {
+			if ( isset( $query->query_vars['taxonomy'] )
+				&& in_array( 'wpcm_season', (array) $query->query_vars['taxonomy'], true )
+			) {
+				return array( $term_obj );
+			}
+
+			return $terms;
+		};
+		add_filter( 'terms_pre_query', $filter, 10, 2 );
 
 		$result = get_current_season();
 
+		remove_filter( 'terms_pre_query', $filter, 10 );
+
 		$this->assertIsArray( $result );
-		$this->assertEquals( $term['term_id'], $result['id'] );
+		$this->assertEquals( $term_id, $result['id'] );
 		$this->assertEquals( $season_name, $result['name'] );
 		$this->assertNotEmpty( $result['slug'] );
 
-		wp_delete_term( $term['term_id'], 'wpcm_season' );
+		wp_delete_term( $term_id, 'wpcm_season' );
 	}
 
 	// -----------------------------------------------------------------------
