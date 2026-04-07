@@ -6,6 +6,7 @@ parameters:
     level: 5
     bootstrapFiles:
         - phpstan-stubs/wp-cli.php
+        - phpstan-stubs/wpcm-constants.php
     paths:
         - .
     excludePaths:
