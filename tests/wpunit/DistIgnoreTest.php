@@ -19,6 +19,7 @@ class DistIgnoreTest extends WPCMTestCase {
 		$this->assertFileExists( $distignore_path, '.distignore must exist' );
 
 		$lines = file( $distignore_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
+		$this->assertIsArray( $lines, '.distignore could not be read' );
 		$this->patterns = array_filter(
 			$lines,
 			function ( $line ) {
@@ -38,6 +39,8 @@ class DistIgnoreTest extends WPCMTestCase {
 	 * @see https://github.com/WPClubManager/wp-club-manager/issues/104
 	 */
 	public function test_vendor_pattern_is_anchored_to_root() {
+		$found = false;
+
 		foreach ( $this->patterns as $pattern ) {
 			$trimmed = trim( $pattern );
 
@@ -45,6 +48,8 @@ class DistIgnoreTest extends WPCMTestCase {
 			if ( false === strpos( $trimmed, 'vendor' ) ) {
 				continue;
 			}
+
+			$found = true;
 
 			// An unanchored "vendor" (no leading slash) would match
 			// assets/js/vendor/ and break the build.
@@ -58,6 +63,8 @@ class DistIgnoreTest extends WPCMTestCase {
 				)
 			);
 		}
+
+		$this->assertTrue( $found, '.distignore must contain at least one vendor exclusion pattern.' );
 	}
 
 	/**
