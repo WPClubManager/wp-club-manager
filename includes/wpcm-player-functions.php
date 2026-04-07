@@ -158,7 +158,7 @@ function wpcm_get_appearance_names() {
  */
 function wpcm_get_appearance_and_subs_names() {
 
-	$apps        = wpcm_get_appearance_names();
+	$apps        = (array) wpcm_get_appearance_names();
 	$subs        = array(
 		'subs' => __( 'Sub Appearances', 'wp-club-manager' ),
 	);
