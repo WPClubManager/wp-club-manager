@@ -134,7 +134,7 @@ class WPCM_Players_Widget extends WPCM_Widget {
 			if ( '-1' !== (string) $value ) {
 				$sanitized_key = sanitize_key( $key );
 				if ( '' !== $sanitized_key ) {
-					$options_string .= ' ' . $sanitized_key . '="' . esc_attr( $value ) . '"';
+					$options_string .= ' ' . $sanitized_key . '="' . $value . '"';
 				}
 			}
 		}

@@ -30,12 +30,28 @@ class WidgetRenderTest extends WPCMTestCase {
 	private $captured_atts;
 
 	/**
+	 * Original shortcode callbacks to restore in teardown.
+	 *
+	 * @var array
+	 */
+	private $original_shortcodes = array();
+
+	/**
 	 * Register shortcode stubs before each test.
 	 */
-	public function setUp(): void {
-		parent::setUp();
+	public function _setUp() {
+		parent::_setUp();
+
+		global $shortcode_tags;
 
 		$this->captured_atts = null;
+
+		// Save original shortcode callbacks so we can restore them.
+		foreach ( array( 'player_list', 'league_table' ) as $tag ) {
+			if ( isset( $shortcode_tags[ $tag ] ) ) {
+				$this->original_shortcodes[ $tag ] = $shortcode_tags[ $tag ];
+			}
+		}
 
 		$stub = function ( $atts ) {
 			$this->captured_atts = $atts;
@@ -47,12 +63,16 @@ class WidgetRenderTest extends WPCMTestCase {
 	}
 
 	/**
-	 * Remove shortcode stubs after each test.
+	 * Restore original shortcode callbacks after each test.
 	 */
-	public function tearDown(): void {
-		remove_shortcode( 'player_list' );
-		remove_shortcode( 'league_table' );
-		parent::tearDown();
+	public function _tearDown() {
+		// Restore original shortcodes so other tests are not affected.
+		foreach ( $this->original_shortcodes as $tag => $callback ) {
+			add_shortcode( $tag, $callback );
+		}
+		$this->original_shortcodes = array();
+
+		parent::_tearDown();
 	}
 
 	/**

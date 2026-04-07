@@ -126,7 +126,7 @@ class WPCM_Standings_Widget extends WPCM_Widget {
 			}
 			$sanitized_key = sanitize_key( $key );
 			if ( '-1' !== (string) $value && '' !== $sanitized_key ) {
-				$options_string .= ' ' . $sanitized_key . '="' . esc_attr( $value ) . '"';
+				$options_string .= ' ' . $sanitized_key . '="' . $value . '"';
 			}
 		}
 
