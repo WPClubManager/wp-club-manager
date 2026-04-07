@@ -32,9 +32,15 @@ class WPCM_Admin_Dashboard {
 					$default_club = get_default_club();
 					$team         = filter_input( INPUT_POST, 'team_select', FILTER_UNSAFE_RAW );
 					if ( $team ) {
-						$term      = get_term( $team, 'wpcm_team' );
-						$team_name = $term->name;
-						$team_slug = $term->slug;
+						$term = get_term( $team, 'wpcm_team' );
+						if ( $term && ! is_wp_error( $term ) ) {
+							$team_name = $term->name;
+							$team_slug = $term->slug;
+						} else {
+							$team      = null;
+							$team_name = null;
+							$team_slug = null;
+						}
 					} else {
 						$teams = get_terms( array(
 							'taxonomy'   => 'wpcm_team',
@@ -53,14 +59,25 @@ class WPCM_Admin_Dashboard {
 						}
 					}
 					// Setup
-					$seasons     = get_terms( array(
+					$seasons = get_terms( array(
 						'taxonomy'   => 'wpcm_season',
 						'meta_key'   => 'tax_position',
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
+					if ( is_wp_error( $seasons ) || ! is_array( $seasons ) || empty( $seasons ) ) {
+						?>
+						<div class="ui warning message">
+							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
+						</div>
+						</div>
+						</div>
+						<?php
+						return;
+					}
+
 					$season      = $seasons[0];
-					$season_slug = $seasons[0]->slug;
+					$season_slug = $season->slug;
 
 					// Statistics
 					$args = array(
@@ -86,13 +103,11 @@ class WPCM_Admin_Dashboard {
 							'value' => 1,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 					if ( isset( $team ) ) {
 						$args['tax_query'][] = array(
 							'taxonomy' => 'wpcm_team',
@@ -162,13 +177,11 @@ class WPCM_Admin_Dashboard {
 							'value' => $default_club,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 					if ( isset( $team ) ) {
 						$args['tax_query'][] = array(
 							'taxonomy' => 'wpcm_team',
@@ -308,16 +321,17 @@ class WPCM_Admin_Dashboard {
 						);
 						$clubs = get_posts( $args );
 
-						$size = count( $clubs );
+						$size      = count( $clubs );
+						$season_id = $season->term_id;
 
 						foreach ( $clubs as $club ) {
 
-							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season );
+							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season_id );
 							$club->wpcm_stats = $auto_stats;
 							if ( array_key_exists( $club->ID, $manual_stats ) ) {
 								$club->wpcm_manual_stats = $manual_stats[ $club->ID ];
 								$club->wpcm_auto_stats   = $auto_stats;
-								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
+								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season_id, $manual_stats[ $club->ID ] );
 								$club->wpcm_stats        = $total_stats;
 							}
 						}
@@ -341,14 +355,25 @@ class WPCM_Admin_Dashboard {
 
 				} else {
 					// Setup
-					$seasons     = get_terms( array(
+					$seasons = get_terms( array(
 						'taxonomy'   => 'wpcm_season',
 						'meta_key'   => 'tax_position',
 						'orderby'    => 'tax_position',
 						'hide_empty' => false,
 					) );
+					if ( is_wp_error( $seasons ) || ! is_array( $seasons ) || empty( $seasons ) ) {
+						?>
+						<div class="ui warning message">
+							<div class="header"><?php esc_html_e( 'No seasons found.', 'wp-club-manager' ); ?></div>
+						</div>
+						</div>
+						</div>
+						<?php
+						return;
+					}
+
 					$season      = $seasons[0];
-					$season_slug = $seasons[0]->slug;
+					$season_slug = $season->slug;
 
 					// Statistics
 					$args = array(
@@ -364,13 +389,11 @@ class WPCM_Admin_Dashboard {
 							'value' => 1,
 						),
 					);
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 
 					// Matches
 					$args = array(
@@ -381,13 +404,11 @@ class WPCM_Admin_Dashboard {
 						'posts_per_page' => 4,
 					);
 
-					if ( isset( $season ) ) {
-						$args['tax_query'][] = array(
-							'taxonomy' => 'wpcm_season',
-							'terms'    => $season->term_id,
-							'field'    => 'term_id',
-						);
-					}
+					$args['tax_query'][] = array(
+						'taxonomy' => 'wpcm_season',
+						'terms'    => $season->term_id,
+						'field'    => 'term_id',
+					);
 
 					$publish        = array(
 						'post_status' => 'publish',
@@ -457,16 +478,17 @@ class WPCM_Admin_Dashboard {
 						);
 						$clubs = get_posts( $args );
 
-						$size = count( $clubs );
+						$size      = count( $clubs );
+						$season_id = $season->term_id;
 
 						foreach ( $clubs as $club ) {
 
-							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season );
+							$auto_stats       = get_wpcm_club_auto_stats( $club->ID, $comp, $season_id );
 							$club->wpcm_stats = $auto_stats;
 							if ( array_key_exists( $club->ID, $manual_stats ) ) {
 								$club->wpcm_manual_stats = $manual_stats[ $club->ID ];
 								$club->wpcm_auto_stats   = $auto_stats;
-								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season, $manual_stats[ $club->ID ] );
+								$total_stats             = get_wpcm_table_total_stats( $club->ID, $comp, $season_id, $manual_stats[ $club->ID ] );
 								$club->wpcm_stats        = $total_stats;
 							}
 						}

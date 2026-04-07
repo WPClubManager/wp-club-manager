@@ -1886,11 +1886,6 @@ parameters:
 			path: includes/wpcm-stats-functions.php
 
 		-
-			message: "#^Variable \\$output might not be defined\\.$#"
-			count: 2
-			path: includes/wpcm-stats-functions.php
-
-		-
 			message: "#^Variable \\$season might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-stats-functions.php
