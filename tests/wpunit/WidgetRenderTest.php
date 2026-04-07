@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for widget render methods — specifically that string "-1"
+ * Tests for widget render methods -- specifically that string "-1"
  * values (produced by sanitize_text_field) are correctly excluded
  * from shortcode attribute output.
  *
@@ -10,14 +10,56 @@
 class WidgetRenderTest extends WPCMTestCase {
 
 	/**
-	 * Test that WPCM_Players_Widget::widget() excludes string "-1" values
-	 * from the generated shortcode.
+	 * Default widget wrapper args.
+	 *
+	 * @var array
+	 */
+	private $widget_args = array(
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
+		'widget_id'     => 'test-widget-1',
+	);
+
+	/**
+	 * Captured shortcode attributes from the stub.
+	 *
+	 * @var array|null
+	 */
+	private $captured_atts;
+
+	/**
+	 * Register shortcode stubs before each test.
+	 */
+	public function setUp(): void {
+		parent::setUp();
+
+		$this->captured_atts = null;
+
+		$stub = function ( $atts ) {
+			$this->captured_atts = $atts;
+			return '';
+		};
+
+		add_shortcode( 'player_list', $stub );
+		add_shortcode( 'league_table', $stub );
+	}
+
+	/**
+	 * Remove shortcode stubs after each test.
+	 */
+	public function tearDown(): void {
+		remove_shortcode( 'player_list' );
+		remove_shortcode( 'league_table' );
+		parent::tearDown();
+	}
+
+	/**
+	 * Test that WPCM_Players_Widget excludes string "-1" values from shortcode atts.
 	 */
 	public function test_players_widget_excludes_string_minus_one() {
-		$widget = new WPCM_Players_Widget();
-
-		// Simulate saved instance data — values come through sanitize_text_field()
-		// so "-1" markers arrive as strings, not integers.
+		$widget   = new WPCM_Players_Widget();
 		$instance = array(
 			'title'           => 'Players',
 			'id'              => '42',
@@ -29,35 +71,23 @@ class WidgetRenderTest extends WPCMTestCase {
 			'linkpage'        => 'None',
 		);
 
-		$args = array(
-			'before_widget' => '<div>',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2>',
-			'after_title'   => '</h2>',
-			'widget_id'     => 'test-players-1',
-		);
-
 		ob_start();
-		$widget->widget( $args, $instance );
-		$output = ob_get_clean();
+		$widget->widget( $this->widget_args, $instance );
+		ob_get_clean();
 
-		// The shortcode output should NOT contain position="-1" or link_options="-1".
-		$this->assertStringNotContainsString( 'position="-1"', $output, 'String "-1" position should be excluded from shortcode' );
-		$this->assertStringNotContainsString( 'display_options="-1"', $output, 'String "-1" display_options should be excluded from shortcode' );
-		$this->assertStringNotContainsString( 'link_options="-1"', $output, 'String "-1" link_options should be excluded from shortcode' );
-
-		// Valid values should still be present.
-		$this->assertStringContainsString( 'title="Players"', $output );
-		$this->assertStringContainsString( 'id="42"', $output );
+		$this->assertIsArray( $this->captured_atts, 'player_list shortcode should be invoked.' );
+		$this->assertArrayNotHasKey( 'position', $this->captured_atts, 'String "-1" position should be excluded.' );
+		$this->assertArrayNotHasKey( 'display_options', $this->captured_atts, 'String "-1" display_options should be excluded.' );
+		$this->assertArrayNotHasKey( 'link_options', $this->captured_atts, 'String "-1" link_options should be excluded.' );
+		$this->assertSame( 'Players', $this->captured_atts['title'] );
+		$this->assertSame( '42', $this->captured_atts['id'] );
 	}
 
 	/**
-	 * Test that WPCM_Standings_Widget::widget() excludes string "-1" values
-	 * from the generated shortcode.
+	 * Test that WPCM_Standings_Widget excludes string "-1" values from shortcode atts.
 	 */
 	public function test_standings_widget_excludes_string_minus_one() {
-		$widget = new WPCM_Standings_Widget();
-
+		$widget   = new WPCM_Standings_Widget();
 		$instance = array(
 			'title'        => 'Standings',
 			'id'           => '99',
@@ -67,29 +97,21 @@ class WidgetRenderTest extends WPCMTestCase {
 			'linkpage'     => 'None',
 		);
 
-		$args = array(
-			'before_widget' => '<div>',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2>',
-			'after_title'   => '</h2>',
-			'widget_id'     => 'test-standings-1',
-		);
-
 		ob_start();
-		$widget->widget( $args, $instance );
-		$output = ob_get_clean();
+		$widget->widget( $this->widget_args, $instance );
+		ob_get_clean();
 
-		$this->assertStringNotContainsString( 'link_options="-1"', $output, 'String "-1" link_options should be excluded from shortcode' );
-		$this->assertStringContainsString( 'title="Standings"', $output );
-		$this->assertStringContainsString( 'id="99"', $output );
+		$this->assertIsArray( $this->captured_atts, 'league_table shortcode should be invoked.' );
+		$this->assertArrayNotHasKey( 'link_options', $this->captured_atts, 'String "-1" link_options should be excluded.' );
+		$this->assertSame( 'Standings', $this->captured_atts['title'] );
+		$this->assertSame( '99', $this->captured_atts['id'] );
 	}
 
 	/**
-	 * Test that integer -1 values are also excluded (original behaviour).
+	 * Test that integer -1 values are also excluded for WPCM_Players_Widget.
 	 */
 	public function test_players_widget_excludes_integer_minus_one() {
-		$widget = new WPCM_Players_Widget();
-
+		$widget   = new WPCM_Players_Widget();
 		$instance = array(
 			'title'           => 'Players',
 			'id'              => '42',
@@ -97,19 +119,36 @@ class WidgetRenderTest extends WPCMTestCase {
 			'link_options'    => -1,
 		);
 
-		$args = array(
-			'before_widget' => '<div>',
-			'after_widget'  => '</div>',
-			'before_title'  => '<h2>',
-			'after_title'   => '</h2>',
-			'widget_id'     => 'test-players-2',
+		ob_start();
+		$widget->widget( $this->widget_args, $instance );
+		ob_get_clean();
+
+		$this->assertIsArray( $this->captured_atts, 'player_list shortcode should be invoked.' );
+		$this->assertArrayNotHasKey( 'display_options', $this->captured_atts, 'Integer -1 display_options should be excluded.' );
+		$this->assertArrayNotHasKey( 'link_options', $this->captured_atts, 'Integer -1 link_options should be excluded.' );
+	}
+
+	/**
+	 * Test that integer -1 values are also excluded for WPCM_Standings_Widget.
+	 */
+	public function test_standings_widget_excludes_integer_minus_one() {
+		$widget   = new WPCM_Standings_Widget();
+		$instance = array(
+			'title'        => 'Standings',
+			'id'           => '99',
+			'limit'        => '7',
+			'link_options' => -1,
+			'linktext'     => 'View all standings',
+			'linkpage'     => 'None',
 		);
 
 		ob_start();
-		$widget->widget( $args, $instance );
-		$output = ob_get_clean();
+		$widget->widget( $this->widget_args, $instance );
+		ob_get_clean();
 
-		$this->assertStringNotContainsString( 'display_options="-1"', $output );
-		$this->assertStringNotContainsString( 'link_options="-1"', $output );
+		$this->assertIsArray( $this->captured_atts, 'league_table shortcode should be invoked.' );
+		$this->assertArrayNotHasKey( 'link_options', $this->captured_atts, 'Integer -1 link_options should be excluded.' );
+		$this->assertSame( 'Standings', $this->captured_atts['title'] );
+		$this->assertSame( '99', $this->captured_atts['id'] );
 	}
 }

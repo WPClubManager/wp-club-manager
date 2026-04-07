@@ -131,8 +131,11 @@ class WPCM_Players_Widget extends WPCM_Widget {
 
 		$options_string = '';
 		foreach ( $instance as $key => $value ) {
-			if ( (string) $value !== '-1' ) {
-				$options_string .= ' ' . $key . '="' . $value . '"';
+			if ( '-1' !== (string) $value ) {
+				$sanitized_key = sanitize_key( $key );
+				if ( '' !== $sanitized_key ) {
+					$options_string .= ' ' . $sanitized_key . '="' . esc_attr( $value ) . '"';
+				}
 			}
 		}
 
