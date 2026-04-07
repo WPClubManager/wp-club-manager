@@ -97,6 +97,32 @@ class Php8CompatTest extends WPCMTestCase {
 		$this->assertIsArray( $result );
 	}
 
+	public function test_wpcm_get_preset_labels_returns_empty_array_when_sport_missing() {
+		delete_option( 'wpcm_sport' );
+
+		$result = wpcm_get_preset_labels( 'players', 'label' );
+		$this->assertIsArray( $result );
+		$this->assertEmpty( $result );
+
+		// Restore for subsequent tests.
+		update_option( 'wpcm_sport', 'soccer' );
+	}
+
+	public function test_wpcm_get_preset_labels_returns_empty_array_when_sport_unknown() {
+		update_option( 'wpcm_sport', 'nonexistent_sport' );
+
+		$result = wpcm_get_preset_labels( 'players', 'label' );
+		$this->assertIsArray( $result );
+		$this->assertEmpty( $result );
+
+		$standings = wpcm_get_preset_labels( 'standings', 'label' );
+		$this->assertIsArray( $standings );
+		$this->assertEmpty( $standings );
+
+		// Restore for subsequent tests.
+		update_option( 'wpcm_sport', 'soccer' );
+	}
+
 	// -----------------------------------------------------------------------
 	// wpcm_get_section_stats() — $output must be initialized as array
 	// -----------------------------------------------------------------------
