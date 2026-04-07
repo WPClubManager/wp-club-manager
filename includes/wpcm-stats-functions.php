@@ -812,7 +812,7 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 
 			$player = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
 
-			if ( is_array( $player ) && array_key_exists( 'subs', $player ) && array_key_exists( $id, $player['subs'] ) && ! empty( $player['subs'][ $id ]['checked'] ) ) {
+			if ( is_array( $player ) && array_key_exists( 'subs', $player ) && is_array( $player['subs'] ) && array_key_exists( $id, $player['subs'] ) && ! empty( $player['subs'][ $id ]['checked'] ) ) {
 
 				++$total_subs;
 
