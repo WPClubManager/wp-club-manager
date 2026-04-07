@@ -1771,11 +1771,6 @@ parameters:
 			path: includes/wpcm-stats-functions.php
 
 		-
-			message: "#^Variable \\$stats might not be defined\\.$#"
-			count: 1
-			path: includes/wpcm-stats-functions.php
-
-		-
 			message: "#^Variable \\$team might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-stats-functions.php
