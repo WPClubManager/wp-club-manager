@@ -158,7 +158,7 @@ function wpcm_get_appearance_names() {
  */
 function wpcm_get_appearance_and_subs_names() {
 
-	$apps        = wpcm_get_appearance_names();
+	$apps        = (array) wpcm_get_appearance_names();
 	$subs        = array(
 		'subs' => __( 'Sub Appearances', 'wp-club-manager' ),
 	);
@@ -182,14 +182,14 @@ function wpcm_get_player_stats_labels( $subs = false ) {
 	}
 
 	$labels = wpcm_get_preset_labels();
-	$output = false;
+	$output = array();
 	foreach ( $labels as $label => $value ) {
 		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}
 
-	if ( is_array( $output ) ) {
+	if ( ! empty( $output ) ) {
 		$stats_labels = array_merge( $appearance_label, $output );
 	} else {
 		$stats_labels = $appearance_label;
@@ -208,13 +208,13 @@ function wpcm_get_player_all_labels() {
 	$appearance_labels = wpcm_get_appearance_and_subs_labels();
 
 	$labels = wpcm_get_preset_labels();
-	$output = false;
+	$output = array();
 	foreach ( $labels as $label => $value ) {
 		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}
-	if ( is_array( $output ) ) {
+	if ( ! empty( $output ) ) {
 		$stats_labels = array_merge( wpcm_player_labels(), $appearance_labels, $output );
 	} else {
 		$stats_labels = $appearance_labels;
@@ -237,13 +237,13 @@ function wpcm_get_player_stats_names( $subs = false ) {
 		$appearance_label = wpcm_get_appearance_names();
 	}
 	$labels = wpcm_get_preset_labels( 'players', 'name' );
-	$output = false;
+	$output = array();
 	foreach ( $labels as $label => $value ) {
 		if ( get_option( 'wpcm_show_stats_' . $label ) === 'yes' ) {
 			$output[ $label ] = $value;
 		}
 	}
-	if ( is_array( $output ) ) {
+	if ( ! empty( $output ) ) {
 		$stats_labels = array_merge( $appearance_label, $output );
 	} else {
 		$stats_labels = $appearance_label;

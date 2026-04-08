@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable Tag: 2.3.1
+Stable Tag: 2.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.3.2 - 8th April 2026 =
+
+* Fix: Sub appearances count showing incorrectly (#84)
+* Fix: PHP 8.x fatal error - array_merge null argument in settings (#109)
+* Fix: Players List and Standings widgets render empty (#103)
+* Fix: PHP 8.x fatal errors from null property access (#93)
+* Fix: Allow multiple players per user account (#101)
+* Fix: Anchor vendor pattern in .distignore to preserve JS assets (#105)
+* Add: WPCM constants stub for PHPStan (#107)
 
 = 2.3.1 - 6th April 2026 =
 

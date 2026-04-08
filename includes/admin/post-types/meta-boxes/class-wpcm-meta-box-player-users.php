@@ -111,15 +111,14 @@ class WPCM_Meta_Box_Player_Users {
 		$user_id = filter_input( INPUT_POST, 'wpcm_link_users', FILTER_VALIDATE_INT );
 		if ( isset( $user_id ) ) {
 			$is_admin = self::has_administrator_role( $user_id );
-			update_post_meta( $post_id, '_wpcm_link_users', $user_id );
 
-			if ( ! $is_admin ) {
+			if ( ! $is_admin && $user_id > 0 ) {
 				wp_update_user( array(
 					'ID'   => $user_id,
 					'role' => 'player',
 				) );
 			}
-			update_user_meta( $user_id, '_linked_player', $post_id );
+			wpcm_link_player_to_user( $post_id, $user_id );
 		}
 
 		$email = filter_input( INPUT_POST, 'wpcm_create_user', FILTER_VALIDATE_EMAIL );
@@ -129,8 +128,9 @@ class WPCM_Meta_Box_Player_Users {
 				$player = sanitize_text_field( $create_username );
 			}
 			$new_user = wpcm_create_new_user( $email, $player );
-			update_user_meta( $new_user, '_linked_player', $post_id );
-			update_post_meta( $post_id, '_wpcm_link_users', $new_user );
+			if ( $new_user && ! is_wp_error( $new_user ) ) {
+				wpcm_link_player_to_user( $post_id, $new_user );
+			}
 		}
 
 		do_action( 'delete_plugin_transients' );

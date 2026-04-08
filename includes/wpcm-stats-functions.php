@@ -26,15 +26,20 @@ function wpcm_get_preset_labels( $type = 'players', $format = 'label' ) {
 	$sport = get_option( 'wpcm_sport' );
 	$data  = wpcm_get_sport_presets();
 
-	if ( 'standings' === $type ) {
-		$stats = $data[ $sport ]['standings_columns'];
-	} elseif ( 'players' === $type ) {
-		$stats = $data[ $sport ]['stats_labels'];
+	$stats = array();
+	if ( $sport && isset( $data[ $sport ] ) ) {
+		if ( 'standings' === $type && isset( $data[ $sport ]['standings_columns'] ) ) {
+			$stats = $data[ $sport ]['standings_columns'];
+		} elseif ( 'players' === $type && isset( $data[ $sport ]['stats_labels'] ) ) {
+			$stats = $data[ $sport ]['stats_labels'];
+		}
 	}
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
-
-		$output[ $key ] = $value[ $format ];
+		if ( isset( $value[ $format ] ) ) {
+			$output[ $key ] = $value[ $format ];
+		}
 	}
 
 	return $output;
@@ -53,8 +58,9 @@ function wpcm_get_section_stats( $section = 'batting' ) {
 	$data  = wpcm_get_sport_presets();
 	$stats = $data[ $sport ]['stats_labels'];
 
+	$output = array();
 	foreach ( $stats as $key => $value ) {
-		if ( $section === $value['section'] ) {
+		if ( isset( $value['section'] ) && $section === $value['section'] ) {
 
 			$output[ $key ] = $value['label'];
 		}
@@ -796,17 +802,15 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 
 	$size = count( $matches );
 
-	$total_subs = '0';
+	$total_subs = 0;
 
 	if ( $size > 0 ) {
-
-		$total_subs = 0;
 
 		foreach ( $matches as $match ) {
 
 			$player = maybe_unserialize( get_post_meta( $match->ID, 'wpcm_players', true ) );
 
-			if ( is_array( $player ) && array_key_exists( 'subs', $player ) && array_key_exists( $id, $player['subs'] ) ) {
+			if ( is_array( $player ) && array_key_exists( 'subs', $player ) && is_array( $player['subs'] ) && array_key_exists( $id, $player['subs'] ) && ! empty( $player['subs'][ $id ]['checked'] ) ) {
 
 				++$total_subs;
 

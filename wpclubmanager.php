@@ -6,7 +6,7 @@
  * Author: WP Club Manager
  * Author URI: https://wpclubmanager.com
  * Requires PHP: 7.4
- * Version: 2.3.1
+ * Version: 2.3.2
  * Text Domain: wp-club-manager
  * Domain Path: /languages/
  * License: GPLv3
@@ -27,7 +27,7 @@ if ( ! function_exists( 'WPCM' ) ) :
 	function WPCM() {
 		require_once __DIR__ . '/includes/class-wp-club-manager.php';
 
-		return WP_Club_Manager::instance( __FILE__, '2.3.1' );
+		return WP_Club_Manager::instance( __FILE__, '2.3.2' );
 	}
 endif;
 

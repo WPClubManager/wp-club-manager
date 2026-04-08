@@ -4,7 +4,7 @@
 .sass-cache
 node_modules
 tests
-vendor
+/vendor
 build
 release
 phpstan-stubs

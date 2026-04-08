@@ -31,11 +31,6 @@ parameters:
 			path: includes/WPCM_Plugin_Updater.php
 
 		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 13
-			path: includes/admin/class-wpcm-admin-assets.php
-
-		-
 			message: "#^Undefined variable\\: \\$wp_scripts$#"
 			count: 1
 			path: includes/admin/class-wpcm-admin-assets.php
@@ -116,16 +111,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin-meta-boxes.php
 
 		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 5
-			path: includes/admin/class-wpcm-admin-notices.php
-
-		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 5
-			path: includes/admin/class-wpcm-admin-notices.php
-
-		-
 			message: "#^Property WPCM_Admin_Notices\\:\\:\\$notices is never read, only written\\.$#"
 			count: 1
 			path: includes/admin/class-wpcm-admin-notices.php
@@ -148,11 +133,6 @@ parameters:
 		-
 			message: "#^Callback expects 2 parameters, \\$accepted_args is set to 100\\.$#"
 			count: 1
-			path: includes/admin/class-wpcm-admin-post-types.php
-
-		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 2
 			path: includes/admin/class-wpcm-admin-post-types.php
 
 		-
@@ -223,11 +203,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$term_id of function update_term_meta expects int, array\\<string, int\\|string\\>\\|WP_Error given\\.$#"
 			count: 3
-			path: includes/admin/class-wpcm-admin-setup-wizard.php
-
-		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 2
 			path: includes/admin/class-wpcm-admin-setup-wizard.php
 
 		-
@@ -321,11 +296,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin.php
 
 		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/admin/importers/class-wpcm-club-importer.php
-
-		-
 			message: "#^Call to an undefined method WPCM_Importer\\:\\:greet\\(\\)\\.$#"
 			count: 1
 			path: includes/admin/importers/class-wpcm-importer.php
@@ -346,29 +316,14 @@ parameters:
 			path: includes/admin/importers/class-wpcm-importer.php
 
 		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/admin/importers/class-wpcm-match-importer.php
-
-		-
 			message: "#^Variable \\$labels might not be defined\\.$#"
 			count: 1
 			path: includes/admin/importers/class-wpcm-match-importer.php
 
 		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/admin/importers/class-wpcm-player-importer.php
-
-		-
 			message: "#^Negated boolean expression is always false\\.$#"
 			count: 1
 			path: includes/admin/importers/class-wpcm-player-importer.php
-
-		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/admin/importers/class-wpcm-staff-importer.php
 
 		-
 			message: "#^Parameter \\#1 \\$post of function get_club_details expects array, WP_Post given\\.$#"
@@ -836,16 +791,6 @@ parameters:
 			path: includes/admin/views/html-bulk-edit-match.php
 
 		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 1
-			path: includes/admin/views/html-notice-install.php
-
-		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 1
-			path: includes/admin/views/html-notice-version-update.php
-
-		-
 			message: "#^Variable \\$comps might not be defined\\.$#"
 			count: 1
 			path: includes/admin/views/html-quick-edit-match.php
@@ -886,16 +831,6 @@ parameters:
 			path: includes/class-wp-club-manager.php
 
 		-
-			message: "#^Constant WPCM_PATH not found\\.$#"
-			count: 22
-			path: includes/class-wp-club-manager.php
-
-		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/class-wp-club-manager.php
-
-		-
 			message: "#^Method WP_Club_Manager\\:\\:is_request\\(\\) should return bool but return statement is missing\\.$#"
 			count: 1
 			path: includes/class-wp-club-manager.php
@@ -919,11 +854,6 @@ parameters:
 			message: "#^Variable \\$stats might not be defined\\.$#"
 			count: 1
 			path: includes/class-wpcm-ajax.php
-
-		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/class-wpcm-autoloader.php
 
 		-
 			message: "#^Parameter \\#1 \\$callback of function spl_autoload_register expects \\(callable\\(string\\)\\: void\\)\\|null, '__autoload' given\\.$#"
@@ -951,11 +881,6 @@ parameters:
 			path: includes/class-wpcm-cli.php
 
 		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 3
-			path: includes/class-wpcm-frontend-scripts.php
-
-		-
 			message: "#^Method WPCM_Geocoder\\:\\:osm_geocode\\(\\) has invalid return type varies\\.$#"
 			count: 1
 			path: includes/class-wpcm-geocoder.php
@@ -978,16 +903,6 @@ parameters:
 		-
 			message: "#^Constant W3TC_FILE not found\\.$#"
 			count: 1
-			path: includes/class-wpcm-install.php
-
-		-
-			message: "#^Constant WPCM_PLUGIN_FILE not found\\.$#"
-			count: 1
-			path: includes/class-wpcm-install.php
-
-		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 4
 			path: includes/class-wpcm-install.php
 
 		-
@@ -1031,11 +946,6 @@ parameters:
 			path: includes/class-wpcm-shortcodes.php
 
 		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 1
-			path: includes/class-wpcm-taxonomy-order.php
-
-		-
 			message: "#^Offset 'order' does not exist on string\\|false\\.$#"
 			count: 1
 			path: includes/class-wpcm-taxonomy-order.php
@@ -1044,11 +954,6 @@ parameters:
 			message: "#^Offset 'term_id' does not exist on string\\|false\\.$#"
 			count: 2
 			path: includes/class-wpcm-taxonomy-order.php
-
-		-
-			message: "#^Constant WPCM_TEMPLATE_PATH not found\\.$#"
-			count: 5
-			path: includes/class-wpcm-template-loader.php
 
 		-
 			message: "#^@param tag must not be named \\$this\\. Choose a descriptive alias, for example \\$instance\\.$#"
@@ -1486,11 +1391,6 @@ parameters:
 			path: includes/shortcodes/class-wpcm-shortcode-player-gallery.php
 
 		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 2
-			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
-
-		-
 			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
 			count: 1
 			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
@@ -1521,11 +1421,6 @@ parameters:
 			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
 
 		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 1
-			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
-
-		-
 			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_staff', tax_query\\: array\\{\\}\\|array\\{array\\{taxonomy\\: 'wpcm_jobs', terms\\: mixed, field\\: 'term_id'\\}\\}, posts_per_page\\: mixed, order\\: string, orderby\\: string, suppress_filters\\: 0, post__in\\: array\\} given\\.$#"
 			count: 1
 			path: includes/shortcodes/class-wpcm-shortcode-staff-list.php
@@ -1544,11 +1439,6 @@ parameters:
 			message: "#^Variable \\$venue in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 2
 			path: includes/shortcodes/legacy/class-wpcm-shortcode-matches.php
-
-		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 2
-			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
 
 		-
 			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_player', tax_query\\: array\\{\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_season', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position'\\|'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 2\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}, numposts\\: mixed, posts_per_page\\: mixed, orderby\\: 'menu_order'\\|'meta_value_num'\\|'name', meta_key\\: 'wpcm_number', order\\: string, suppress_filters\\: 0\\} given\\.$#"
@@ -1574,11 +1464,6 @@ parameters:
 			message: "#^Variable \\$transient_name might not be defined\\.$#"
 			count: 2
 			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
-
-		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 1
-			path: includes/shortcodes/legacy/class-wpcm-shortcode-staff.php
 
 		-
 			message: "#^Variable \\$staff_details might not be defined\\.$#"
@@ -1696,16 +1581,6 @@ parameters:
 			path: includes/wpcm-core-functions.php
 
 		-
-			message: "#^Constant WPCM_TEMPLATE_DEBUG_MODE not found\\.$#"
-			count: 1
-			path: includes/wpcm-core-functions.php
-
-		-
-			message: "#^Constant WPCM_TEMPLATE_PATH not found\\.$#"
-			count: 1
-			path: includes/wpcm-core-functions.php
-
-		-
 			message: "#^Offset 0 on \\*NEVER\\* in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 1
 			path: includes/wpcm-core-functions.php
@@ -1727,6 +1602,11 @@ parameters:
 
 		-
 			message: "#^Property WP_Post\\:\\:\\$post_type \\(string\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: includes/wpcm-core-functions.php
+
+		-
+			message: "#^Right side of \\|\\| is always false\\.$#"
 			count: 1
 			path: includes/wpcm-core-functions.php
 
@@ -1886,17 +1766,7 @@ parameters:
 			path: includes/wpcm-stats-functions.php
 
 		-
-			message: "#^Variable \\$output might not be defined\\.$#"
-			count: 2
-			path: includes/wpcm-stats-functions.php
-
-		-
 			message: "#^Variable \\$season might not be defined\\.$#"
-			count: 1
-			path: includes/wpcm-stats-functions.php
-
-		-
-			message: "#^Variable \\$stats might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-stats-functions.php
 
@@ -1904,11 +1774,6 @@ parameters:
 			message: "#^Variable \\$team might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-stats-functions.php
-
-		-
-			message: "#^Constant WPCM_VERSION not found\\.$#"
-			count: 1
-			path: includes/wpcm-template-functions.php
 
 		-
 			message: "#^Parameter \\#4 \\$atts of function wpcm_form_dropdown expects string\\|null, array\\<string, string\\> given\\.$#"
@@ -1934,11 +1799,6 @@ parameters:
 			message: "#^Variable \\$post might not be defined\\.$#"
 			count: 5
 			path: templates/content-single-club.php
-
-		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 1
-			path: templates/content-single-staff.php
 
 		-
 			message: "#^Variable \\$post might not be defined\\.$#"
@@ -2519,11 +2379,6 @@ parameters:
 			message: "#^Offset 'name' does not exist on non\\-falsy\\-string\\.$#"
 			count: 1
 			path: templates/single-match/venue.php
-
-		-
-			message: "#^Constant WPCM_URL not found\\.$#"
-			count: 1
-			path: templates/single-player/meta.php
 
 		-
 			message: "#^Variable \\$season might not be defined\\.$#"
