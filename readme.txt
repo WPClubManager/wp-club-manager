@@ -173,18 +173,16 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = 2.3.2 - 8th April 2026 =
 
-* Fix: Sub appearances count showing incorrectly (#84)
-* Fix: PHP 8.x fatal error - array_merge null argument in settings (#109)
-* Fix: Players List and Standings widgets render empty (#103)
-* Fix: PHP 8.x fatal errors from null property access (#93)
-* Fix: Allow multiple players per user account (#101)
-* Fix: Anchor vendor pattern in .distignore to preserve JS assets (#105)
-* Add: WPCM constants stub for PHPStan (#107)
+* Fix: Sub appearances count showing incorrectly
+* Fix: PHP 8.x fatal error on player settings page
+* Fix: Players List and Standings widgets rendering empty
+* Fix: PHP 8.x fatal errors from null property access in dashboard and stats
+* Fix: Allow multiple players to be linked to a single user account
+* Fix: Missing JavaScript assets in WordPress.org release
 
 = 2.3.1 - 6th April 2026 =
 
-* Fix: Exclude dev files from Grunt build (phpstan, composer, release.json, etc)
-* Chore: Resolve all PHPCS warnings
+* Tweak: Internal code quality improvements
 
 = 2.3.0 - 2nd April 2026 =
 
