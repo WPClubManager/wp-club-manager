@@ -51,14 +51,14 @@ $custom_stats = get_post_meta( $post->ID, '_wpcm_custom_player_stats', true ); ?
 						if ( get_option( 'wpcm_show_stats_subs' ) === 'yes' ) {
 							$subs = get_player_subs_total( $post->ID, $season, $team );
 							if ( $subs > 0 ) {
-								$sub = ' <span class="sub-appearances">(' . $subs . ')</span>';
+								$sub = ' <span class="sub-appearances">(' . absint( $subs ) . ')</span>';
 							} else {
 								$sub = '';
 							}
 						}
 						?>
 
-						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo esc_html( 'yes' === get_option( 'wpcm_show_stats_subs' ) ? $sub : '' ); ?></span></td>
+						<td><span data-index="appearances"><?php wpcm_stats_value( $stats, 'total', 'appearances' ); ?><?php echo wp_kses( 'yes' === get_option( 'wpcm_show_stats_subs' ) ? $sub : '', array( 'span' => array( 'class' => array() ) ) ); ?></span></td>
 
 						<?php
 					}
