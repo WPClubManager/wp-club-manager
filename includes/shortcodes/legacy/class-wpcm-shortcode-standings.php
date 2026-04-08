@@ -100,7 +100,7 @@ class WPCM_Shortcode_Standings {
 			foreach ( $clubs as $club ) {
 				$club_stats       = get_wpcm_club_total_stats( $club->ID, $comp, $season );
 				$club->wpcm_stats = $club_stats;
-				if ( 1 === $thumb ) {
+				if ( ! empty( $thumb ) ) {
 					if ( has_post_thumbnail( $club->ID ) ) {
 						$club->thumb = get_the_post_thumbnail( $club->ID, 'crest-small' );
 					} else {
