@@ -802,11 +802,9 @@ function get_player_subs_total( $id = null, $season = null, $team = null ) {
 
 	$size = count( $matches );
 
-	$total_subs = '0';
+	$total_subs = 0;
 
 	if ( $size > 0 ) {
-
-		$total_subs = 0;
 
 		foreach ( $matches as $match ) {
 

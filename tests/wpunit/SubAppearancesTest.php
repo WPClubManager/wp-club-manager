@@ -178,6 +178,35 @@ class SubAppearancesTest extends WPCMTestCase {
 		$this->assertEquals( 0, $subs );
 	}
 
+	public function test_already_unserialized_meta_is_handled() {
+		$match_id = wp_insert_post( array(
+			'post_type'   => 'wpcm_match',
+			'post_title'  => 'Subs Unserialized Meta Match',
+			'post_status' => 'publish',
+		) );
+
+		update_post_meta( $match_id, 'wpcm_home_club', $this->club_id );
+		update_post_meta( $match_id, 'wpcm_away_club', $this->away_club_id );
+		update_post_meta( $match_id, 'wpcm_played', '1' );
+
+		// Store as array (no manual serialize) — maybe_unserialize() should handle this.
+		update_post_meta( $match_id, 'wpcm_players', array(
+			'lineup' => array(),
+			'subs'   => array(
+				$this->player_id => array(
+					'checked' => '1',
+					'goals'   => 0,
+				),
+			),
+		) );
+
+		$this->match_ids[] = $match_id;
+
+		$subs = get_player_subs_total( $this->player_id );
+
+		$this->assertEquals( 1, $subs, 'Already-unserialized meta should be handled by maybe_unserialize' );
+	}
+
 	public function test_subs_total_returns_zero_with_no_matches() {
 		$subs = get_player_subs_total( $this->player_id );
 
