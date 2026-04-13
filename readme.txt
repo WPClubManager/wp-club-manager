@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable Tag: 2.3.2
+Stable Tag: 2.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.3.3 - 13th April 2026 =
+
+* Fix: League table club logos not showing after 2.3.1
 
 = 2.3.2 - 8th April 2026 =
 
