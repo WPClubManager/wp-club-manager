@@ -17,7 +17,7 @@ class MatchImportTaxonomyTest extends WPCMTestCase {
 	private $created_posts = array();
 
 	/**
-	 * @var int[]
+	 * @var array[] Array of ( taxonomy, term_id ) pairs.
 	 */
 	private $created_terms = array();
 
@@ -62,11 +62,8 @@ class MatchImportTaxonomyTest extends WPCMTestCase {
 		foreach ( $this->created_posts as $post_id ) {
 			wp_delete_post( $post_id, true );
 		}
-		foreach ( $this->created_terms as $term_id ) {
-			wp_delete_term( $term_id, 'wpcm_comp' );
-			wp_delete_term( $term_id, 'wpcm_season' );
-			wp_delete_term( $term_id, 'wpcm_team' );
-			wp_delete_term( $term_id, 'wpcm_venue' );
+		foreach ( $this->created_terms as $entry ) {
+			wp_delete_term( $entry[1], $entry[0] );
 		}
 		parent::_tearDown();
 	}
@@ -81,8 +78,8 @@ class MatchImportTaxonomyTest extends WPCMTestCase {
 
 		$term = wp_insert_term( 'Premier League', 'wpcm_comp' );
 		$this->assertNotWPError( $term );
-		$term_id                = $term['term_id'];
-		$this->created_terms[] = $term_id;
+		$term_id               = $term['term_id'];
+		$this->created_terms[] = array( 'wpcm_comp', $term_id );
 
 		$columns = array_keys( $this->importer->columns );
 		$data    = array(
@@ -111,6 +108,14 @@ class MatchImportTaxonomyTest extends WPCMTestCase {
 		$this->assertCount( 1, $match_comps, 'Match should have exactly one competition term.' );
 		$this->assertEquals( $term_id, $match_comps[0]->term_id, 'Match should use the existing competition term, not create a new one.' );
 		$this->assertEquals( 'Premier League', $match_comps[0]->name, 'Competition term should retain its original name.' );
+
+		// Track season, team, and venue terms created by the import for cleanup.
+		foreach ( array( 'wpcm_season', 'wpcm_team', 'wpcm_venue' ) as $taxonomy ) {
+			$terms = wp_get_object_terms( $match_id, $taxonomy );
+			foreach ( $terms as $t ) {
+				$this->created_terms[] = array( $taxonomy, $t->term_id );
+			}
+		}
 	}
 
 	/**
@@ -146,21 +151,21 @@ class MatchImportTaxonomyTest extends WPCMTestCase {
 		$comps = wp_get_object_terms( $match_id, 'wpcm_comp' );
 		$this->assertCount( 1, $comps );
 		$this->assertEquals( 'FA Cup', $comps[0]->name, 'Competition should be created with proper name, not slug.' );
-		$this->created_terms[] = $comps[0]->term_id;
+		$this->created_terms[] = array( 'wpcm_comp', $comps[0]->term_id );
 
 		$seasons = wp_get_object_terms( $match_id, 'wpcm_season' );
 		$this->assertCount( 1, $seasons );
 		$this->assertEquals( '2023-24', $seasons[0]->name, 'Season should be created with proper name, not slug.' );
-		$this->created_terms[] = $seasons[0]->term_id;
+		$this->created_terms[] = array( 'wpcm_season', $seasons[0]->term_id );
 
 		$teams = wp_get_object_terms( $match_id, 'wpcm_team' );
 		$this->assertCount( 1, $teams );
 		$this->assertEquals( 'First Team', $teams[0]->name, 'Team should be created with proper name, not slug.' );
-		$this->created_terms[] = $teams[0]->term_id;
+		$this->created_terms[] = array( 'wpcm_team', $teams[0]->term_id );
 
 		$venues = wp_get_object_terms( $match_id, 'wpcm_venue' );
 		$this->assertCount( 1, $venues );
 		$this->assertEquals( 'Wembley Stadium', $venues[0]->name, 'Venue should be created with proper name, not slug.' );
-		$this->created_terms[] = $venues[0]->term_id;
+		$this->created_terms[] = array( 'wpcm_venue', $venues[0]->term_id );
 	}
 }
