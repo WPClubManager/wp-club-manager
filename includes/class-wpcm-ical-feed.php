@@ -85,6 +85,10 @@ class WPCM_ICal_Feed {
 		$season = isset( $args['season'] ) ? $args['season'] : null;
 		$team   = isset( $args['team'] ) ? $args['team'] : null;
 
+		// Limit feed to 6 months past and 12 months future to avoid large responses.
+		$date_start = gmdate( 'Y-m-d', strtotime( '-6 months' ) );
+		$date_end   = gmdate( 'Y-m-d', strtotime( '+12 months' ) );
+
 		$query_args = array(
 			'tax_query'      => array(), // phpcs:ignore
 			'order'          => 'ASC',
@@ -92,6 +96,13 @@ class WPCM_ICal_Feed {
 			'post_type'      => 'wpcm_match',
 			'post_status'    => array( 'publish', 'future' ),
 			'posts_per_page' => -1,
+			'date_query'     => array(
+				array(
+					'after'     => $date_start,
+					'before'    => $date_end,
+					'inclusive' => true,
+				),
+			),
 		);
 
 		if ( is_club_mode() ) {
@@ -140,7 +151,7 @@ class WPCM_ICal_Feed {
 		$lines[] = 'CALSCALE:GREGORIAN';
 		$lines[] = 'METHOD:PUBLISH';
 		/* translators: %s: site name */
-	$lines[] = 'X-WR-CALNAME:' . $this->escape_ical_text( sprintf( __( '%s Matches', 'wp-club-manager' ), get_bloginfo( 'name' ) ) );
+		$lines[] = 'X-WR-CALNAME:' . $this->escape_ical_text( sprintf( __( '%s Matches', 'wp-club-manager' ), get_bloginfo( 'name' ) ) );
 
 		foreach ( $matches as $match ) {
 			$lines = array_merge( $lines, $this->build_vevent( $match ) );
@@ -162,7 +173,7 @@ class WPCM_ICal_Feed {
 	 * @return array Lines for the VEVENT.
 	 */
 	private function build_vevent( $match ) {
-		$timestamp  = strtotime( $match->post_date );
+		$timestamp  = get_post_time( 'U', true, $match );
 		$dtstart    = gmdate( 'Ymd\THis\Z', $timestamp );
 		// Default match duration: 2 hours.
 		$dtend      = gmdate( 'Ymd\THis\Z', $timestamp + 7200 );

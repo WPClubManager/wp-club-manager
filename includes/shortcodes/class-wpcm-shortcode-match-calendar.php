@@ -41,6 +41,12 @@ class WPCM_Shortcode_Match_Calendar {
 			$month = (int) gmdate( 'n' );
 		}
 
+		// Clamp year to reasonable range.
+		$current_year = (int) gmdate( 'Y' );
+		if ( $year < 1970 || $year > $current_year + 10 ) {
+			$year = $current_year;
+		}
+
 		$effective_atts = array(
 			'month'  => $month,
 			'year'   => $year,
@@ -123,7 +129,7 @@ class WPCM_Shortcode_Match_Calendar {
 			// Group matches by day of month.
 			$matches_by_day = array();
 			foreach ( $matches as $match ) {
-				$day = (int) gmdate( 'j', strtotime( $match->post_date ) );
+				$day = (int) date( 'j', strtotime( $match->post_date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				if ( ! isset( $matches_by_day[ $day ] ) ) {
 					$matches_by_day[ $day ] = array();
 				}

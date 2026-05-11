@@ -121,7 +121,7 @@ if ( $next_month > 12 ) {
 												if ( $played ) {
 													echo esc_html( $result[0] );
 												} else {
-													echo esc_html( date_i18n( get_option( 'time_format' ), $timestamp ) );
+													echo esc_html( date_i18n( apply_filters( 'wpclubmanager_match_time_format', get_option( 'time_format' ) ), $timestamp ) );
 												}
 												?>
 											</span>
