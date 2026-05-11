@@ -122,9 +122,16 @@ function wpcm_get_match_outcome( $post ) {
 
 	if ( ! $away_id ) {
 		if ( $postponed ) {
+			if ( '' !== $walkover ) {
+				if ( $club === $home_club ) {
+					return ( 'home_win' === $walkover ) ? 'win' : 'loss';
+				}
+				return ( 'away_win' === $walkover ) ? 'win' : 'loss';
+			}
 			return 'postponed';
 		}
-		return 'win';
+		$played = get_post_meta( $post, 'wpcm_played', true );
+		return $played ? 'win' : '';
 	}
 
 	if ( get_option( 'wpcm_sport' ) !== 'cricket' ) {
@@ -206,9 +213,27 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 		$away_id    = (int) get_post_meta( $post, 'wpcm_away_club', true );
 
 		if ( ! $away_id ) {
-			$result = ( $played ? $home_goals : '' );
-			$side1  = ( $played ? $home_goals : '' );
-			$side2  = '';
+			if ( $postponed ) {
+				if ( 'home_win' === $walkover ) {
+					$side1 = _x( 'H', 'HW - home walkover', 'wp-club-manager' );
+					$side2 = _x( 'W', 'HW - home walkover', 'wp-club-manager' );
+				} elseif ( 'away_win' === $walkover ) {
+					$side1 = _x( 'A', 'AW - away walkover', 'wp-club-manager' );
+					$side2 = _x( 'W', 'AW - away walkover', 'wp-club-manager' );
+				} else {
+					$side1 = _x( 'P', 'Postponed', 'wp-club-manager' );
+					$side2 = '';
+				}
+				$result = $side1;
+			} elseif ( 'yes' === $hide && ! is_user_logged_in() ) {
+				$result = ( $played ? __( 'x', 'wp-club-manager' ) : '' );
+				$side1  = __( 'x', 'wp-club-manager' );
+				$side2  = '';
+			} else {
+				$result = ( $played ? $home_goals : '' );
+				$side1  = ( $played ? $home_goals : '' );
+				$side2  = '';
+			}
 
 			return array( $result, $side1, $side2, $delimiter );
 		}
