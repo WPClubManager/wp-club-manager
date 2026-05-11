@@ -26,8 +26,12 @@ class WPCM_Shortcode_Match_Calendar {
 	 */
 	public static function output( $atts ) {
 
-		$month  = isset( $atts['month'] ) && '' !== $atts['month'] ? absint( $atts['month'] ) : (int) gmdate( 'n' );
-		$year   = isset( $atts['year'] ) && '' !== $atts['year'] ? absint( $atts['year'] ) : (int) gmdate( 'Y' );
+		// Allow query string overrides for calendar navigation.
+		$get_month = isset( $_GET['month'] ) ? absint( $_GET['month'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+		$get_year  = isset( $_GET['year'] ) ? absint( $_GET['year'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+
+		$month  = $get_month ? $get_month : ( isset( $atts['month'] ) && '' !== $atts['month'] ? absint( $atts['month'] ) : (int) gmdate( 'n' ) );
+		$year   = $get_year ? $get_year : ( isset( $atts['year'] ) && '' !== $atts['year'] ? absint( $atts['year'] ) : (int) gmdate( 'Y' ) );
 		$comp   = isset( $atts['comp'] ) && '' !== $atts['comp'] ? $atts['comp'] : null;
 		$season = isset( $atts['season'] ) && '' !== $atts['season'] ? $atts['season'] : null;
 		$team   = isset( $atts['team'] ) && '' !== $atts['team'] ? $atts['team'] : null;

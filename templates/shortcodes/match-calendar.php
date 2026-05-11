@@ -48,13 +48,23 @@ if ( $next_month > 12 ) {
 <div class="wpcm-calendar">
 
 	<div class="wpcm-calendar-header">
-		<a class="wpcm-calendar-nav wpcm-calendar-prev" href="<?php echo esc_url( add_query_arg( array( 'month' => $prev_month, 'year' => $prev_year ) ) ); ?>" aria-label="<?php esc_attr_e( 'Previous month', 'wp-club-manager' ); ?>">
+		<a class="wpcm-calendar-nav wpcm-calendar-prev" href="<?php echo esc_url( add_query_arg(
+			array(
+				'month' => $prev_month,
+				'year'  => $prev_year,
+			)
+		) ); ?>" aria-label="<?php esc_attr_e( 'Previous month', 'wp-club-manager' ); ?>">
 			&laquo;
 		</a>
 		<span class="wpcm-calendar-title">
 			<?php echo esc_html( $month_name . ' ' . $year ); ?>
 		</span>
-		<a class="wpcm-calendar-nav wpcm-calendar-next" href="<?php echo esc_url( add_query_arg( array( 'month' => $next_month, 'year' => $next_year ) ) ); ?>" aria-label="<?php esc_attr_e( 'Next month', 'wp-club-manager' ); ?>">
+		<a class="wpcm-calendar-nav wpcm-calendar-next" href="<?php echo esc_url( add_query_arg(
+			array(
+				'month' => $next_month,
+				'year'  => $next_year,
+			)
+		) ); ?>" aria-label="<?php esc_attr_e( 'Next month', 'wp-club-manager' ); ?>">
 			&raquo;
 		</a>
 	</div>

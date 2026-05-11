@@ -139,7 +139,8 @@ class WPCM_ICal_Feed {
 		$lines[] = 'PRODID:-//WP Club Manager//NONSGML v' . WPCM_VERSION . '//EN';
 		$lines[] = 'CALSCALE:GREGORIAN';
 		$lines[] = 'METHOD:PUBLISH';
-		$lines[] = 'X-WR-CALNAME:' . $this->escape_ical_text( get_bloginfo( 'name' ) . ' Matches' );
+		/* translators: %s: site name */
+	$lines[] = 'X-WR-CALNAME:' . $this->escape_ical_text( sprintf( __( '%s Matches', 'wp-club-manager' ), get_bloginfo( 'name' ) ) );
 
 		foreach ( $matches as $match ) {
 			$lines = array_merge( $lines, $this->build_vevent( $match ) );
@@ -180,12 +181,13 @@ class WPCM_ICal_Feed {
 		}
 		if ( $played ) {
 			$result              = wpcm_get_match_result( $match->ID );
-			$description_parts[] = 'Result: ' . $result[0];
+			/* translators: %s: match result score */
+			$description_parts[] = sprintf( __( 'Result: %s', 'wp-club-manager' ), $result[0] );
 		}
 
 		$venue_data = wpcm_get_match_venue( $match->ID );
 		$location   = '';
-		if ( is_array( $venue_data ) && ! empty( $venue_data['name'] ) ) {
+		if ( isset( $venue_data['name'] ) && ! empty( $venue_data['name'] ) ) {
 			$location = $venue_data['name'];
 			if ( ! empty( $venue_data['address'] ) ) {
 				$location .= ', ' . $venue_data['address'];
@@ -201,10 +203,10 @@ class WPCM_ICal_Feed {
 		$lines[] = 'SUMMARY:' . $this->escape_ical_text( $summary );
 
 		if ( ! empty( $description_parts ) ) {
-			$lines[] = 'DESCRIPTION:' . $this->escape_ical_text( implode( '\n', $description_parts ) );
+			$lines[] = 'DESCRIPTION:' . $this->escape_ical_text( implode( "\n", $description_parts ) );
 		}
 
-		if ( ! empty( $location ) ) {
+		if ( '' !== $location ) {
 			$lines[] = 'LOCATION:' . $this->escape_ical_text( $location );
 		}
 
@@ -242,12 +244,16 @@ class WPCM_ICal_Feed {
 			return $line;
 		}
 
-		$folded = mb_strcut( $line, 0, 75 );
-		$rest   = mb_strcut( $line, 75 );
+		$cut_func = function_exists( 'mb_strcut' ) ? 'mb_strcut' : 'substr';
 
-		while ( strlen( $rest ) > 0 ) {
-			$folded .= "\r\n " . mb_strcut( $rest, 0, 74 );
-			$rest    = mb_strcut( $rest, 74 );
+		$folded    = $cut_func( $line, 0, 75 );
+		$rest      = $cut_func( $line, 75 );
+		$rest_len  = strlen( $rest );
+
+		while ( $rest_len > 0 ) {
+			$folded   .= "\r\n " . $cut_func( $rest, 0, 74 );
+			$rest      = $cut_func( $rest, 74 );
+			$rest_len  = strlen( $rest );
 		}
 
 		return $folded;
