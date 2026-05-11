@@ -20,6 +20,18 @@ class SettingsExportImportTest extends WPCMTestCase {
 	public function _setUp() {
 		parent::_setUp();
 		$this->test_options = array();
+
+		if ( ! class_exists( 'WPCM_Settings_Page' ) ) {
+			include_once WPCM_PATH . 'includes/admin/settings/class-wpcm-settings-page.php';
+		}
+
+		if ( ! class_exists( 'WPCM_Admin_Settings' ) ) {
+			include_once WPCM_PATH . 'includes/admin/class-wpcm-admin-settings.php';
+		}
+
+		if ( ! class_exists( 'WPCM_Settings_Tools' ) ) {
+			include_once WPCM_PATH . 'includes/admin/settings/class-wpcm-settings-tools.php';
+		}
 	}
 
 	public function _tearDown() {

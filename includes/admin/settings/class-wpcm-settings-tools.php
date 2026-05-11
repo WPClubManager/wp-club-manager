@@ -53,9 +53,11 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 			global $wpdb;
 
 			$results = $wpdb->get_col(
-				"SELECT option_name FROM {$wpdb->options}
-				WHERE option_name LIKE 'wpcm\_%'
-				OR option_name LIKE 'wpclubmanager\_%'"
+				$wpdb->prepare(
+					"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+					$wpdb->esc_like( 'wpcm_' ) . '%',
+					$wpdb->esc_like( 'wpclubmanager_' ) . '%'
+				)
 			);
 
 			return is_array( $results ) ? $results : array();
@@ -73,6 +75,20 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 			}
 
 			return ( strpos( $option_name, 'wpcm_' ) === 0 || strpos( $option_name, 'wpclubmanager_' ) === 0 );
+		}
+
+		/**
+		 * Sanitize a value for import.
+		 *
+		 * @param mixed $value Value to clean.
+		 * @return mixed
+		 */
+		private static function clean_value( $value ) {
+			if ( is_array( $value ) ) {
+				return array_map( array( __CLASS__, 'clean_value' ), $value );
+			}
+
+			return is_string( $value ) ? wpcm_clean( $value ) : $value;
 		}
 
 		/**
@@ -132,13 +148,17 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 				return false;
 			}
 
+			$updated = 0;
+
 			foreach ( $data as $name => $value ) {
 				if ( self::is_valid_option( $name ) ) {
+					$value = self::clean_value( $value );
 					update_option( $name, $value );
+					++$updated;
 				}
 			}
 
-			return true;
+			return $updated > 0;
 		}
 
 		/**
