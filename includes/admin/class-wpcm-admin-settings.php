@@ -51,6 +51,7 @@ if ( ! class_exists( 'WPCM_Admin_Settings' ) ) :
 				if ( in_array( 'wpcm-player-appearances/wpcm-player-appearances.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) || in_array( 'wpcm-players-gallery/wpcm-player-gallery.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) || in_array( 'wpcm-sponsors-pro/wpcm-sponsors-pro.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true ) ) {
 					$settings[] = include 'settings/class-wpcm-settings-licenses.php';
 				}
+				$settings[] = include 'settings/class-wpcm-settings-tools.php';
 
 				self::$settings = apply_filters( 'wpclubmanager_get_settings_pages', $settings );
 			}
