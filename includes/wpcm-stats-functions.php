@@ -589,7 +589,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 
 		// combined season stats for combined team
 		$stats        = get_wpcm_player_auto_stats( $post );
-		$manual_stats = get_wpcm_player_manual_stats( $post, $team->term_id, $season->term_id );
+		$manual_stats = get_wpcm_player_manual_stats( $post );
 		$output[0][0] = array(
 			'auto'   => $stats,
 			'total'  => $stats,

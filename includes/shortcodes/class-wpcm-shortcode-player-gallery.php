@@ -47,7 +47,7 @@ class WPCM_Shortcode_Player_Gallery {
 		$linktext    = ( isset( $atts['linktext'] ) ? $atts['linktext'] : __( 'View all players', 'wp-club-manager' ) );
 		$linkpage    = ( isset( $atts['linkpage'] ) ? $atts['linkpage'] : null );
 		$name_format = ( isset( $atts['name_format'] ) ? $atts['name_format'] : 'full' );
-		$linkimage   = ( isset( $atts['linkimage'] ) ? $atts['linkimage'] : 'yes' );
+		$linkimage   = ( isset( $atts['linkimage'] ) ? strtolower( trim( $atts['linkimage'] ) ) : 'yes' );
 		$type        = ( isset( $atts['type'] ) ? $atts['type'] : '' );
 
 		if ( '' === $limit ) {

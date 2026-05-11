@@ -29,10 +29,18 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 		update_option( 'wpcm_disable_cache', 'yes' );
 
 		// Create a season and team term.
-		$season           = wp_insert_term( 'Test Season', 'wpcm_season' );
-		$this->season_id  = $season['term_id'];
-		$team             = wp_insert_term( 'Test Team', 'wpcm_team' );
-		$this->team_id    = $team['term_id'];
+		$season = wp_insert_term( 'Test Season', 'wpcm_season' );
+		if ( is_wp_error( $season ) ) {
+			$this->season_id = $season->get_error_data();
+		} else {
+			$this->season_id = $season['term_id'];
+		}
+		$team = wp_insert_term( 'Test Team', 'wpcm_team' );
+		if ( is_wp_error( $team ) ) {
+			$this->team_id = $team->get_error_data();
+		} else {
+			$this->team_id = $team['term_id'];
+		}
 
 		// Create a player.
 		$this->player_id = wp_insert_post( array(
@@ -70,6 +78,7 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 		$url    = get_permalink( $this->player_id );
 
 		$this->assertStringContainsString( '<a href="' . esc_url( $url ) . '">', $output );
+		$this->assertStringContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
 	}
 
 	// -----------------------------------------------------------------------
@@ -81,6 +90,7 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 		$url    = get_permalink( $this->player_id );
 
 		$this->assertStringNotContainsString( '<a href="' . esc_url( $url ) . '">', $output );
+		$this->assertStringNotContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
 		// The image should still be rendered, just without the link.
 		$this->assertStringContainsString( 'wpcm-players-gallery', $output );
 	}
@@ -94,5 +104,6 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 		$url    = get_permalink( $this->player_id );
 
 		$this->assertStringContainsString( '<a href="' . esc_url( $url ) . '">', $output );
+		$this->assertStringContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
 	}
 }
