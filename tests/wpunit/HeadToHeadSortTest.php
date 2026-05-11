@@ -186,46 +186,20 @@ class HeadToHeadSortTest extends WPCMTestCase {
 	// -----------------------------------------------------------------------
 
 	public function test_h2h_tiebreaker_ranks_winner_higher() {
-		// Set up: A and B have identical records vs C but A beat B directly.
-		// A beats C 2-0, B beats C 2-0, A beats B 1-0.
-		$this->create_match( $this->club_a, $this->club_c, 2, 0 );
+		// A beats B 1-0, C beats A 2-0, B beats C 2-0.
+		// A: 1W 1L = 3pts, F=1 A=2 GD=-1
+		// B: 1W 1L = 3pts, F=2 A=1 GD=+1
+		// C: 1W 1L = 3pts, F=2 A=2 GD=0
+		// All tied on pts. H2H (priority 2) breaks A vs B: A beat B 1-0.
+		$this->create_match( $this->club_a, $this->club_b, 1, 0 );
+		$this->create_match( $this->club_c, $this->club_a, 2, 0 );
 		$this->create_match( $this->club_b, $this->club_c, 2, 0 );
-		$this->create_match( $this->club_a, $this->club_b, 1, 0 );
 
-		// A: 2W 0D 0L, 6pts, F=3 A=0 GD=+3
-		// B: 1W 0D 1L, 3pts, F=2 A=1 GD=+1
-		// C: 0W 0D 2L, 0pts, F=0 A=4 GD=-4
-		// A is clearly ahead, but let's test with matching points.
-
-		// Better scenario: both tied on points, GD, goals.
-		// A beats B 1-0, B beats C 2-0, C beats A 1-0.
-		// Each has: 1W 0D 1L = 3pts, GD=+0 ... let's check:
-		// A: F=1+0=1, A=0+1=1, GD=0
-		// B: F=0+2=2, A=1+0=1, GD=+1
-		// Not equal GD. Let me design it more carefully.
-
-		// Reset - recreate with precise scenario.
-		foreach ( $this->match_ids as $id ) {
-			wp_delete_post( $id, true );
-		}
-		$this->match_ids = array();
-
-		// A beats B 1-0, B beats A 0-1 ... that means 2 matches between A and B.
-		// Let me use a triangular scenario where all 3 have same pts and GD:
-		// A beats B 1-0
-		// B beats C 1-0
-		// C beats A 1-0
-		// Each team: 1W 0D 1L, 3pts, F=1, A=1, GD=0
-		$this->create_match( $this->club_a, $this->club_b, 1, 0 );
-		$this->create_match( $this->club_b, $this->club_c, 1, 0 );
-		$this->create_match( $this->club_c, $this->club_a, 1, 0 );
-
-		// Configure sorting: pts first, then H2H.
 		update_option( 'wpcm_standings_orderby', 'pts' );
 		update_option( 'wpcm_standings_priority_order', 'DESC' );
 		update_option( 'wpcm_standings_orderby_2', 'h2h' );
 		update_option( 'wpcm_standings_priority_order_2', 'DESC' );
-		update_option( 'wpcm_standings_orderby_3', 'f' );
+		update_option( 'wpcm_standings_orderby_3', 'gd' );
 		update_option( 'wpcm_standings_priority_order_3', 'DESC' );
 
 		wpcm_set_h2h_context( $this->comp_id, $this->season_id );
@@ -233,28 +207,31 @@ class HeadToHeadSortTest extends WPCMTestCase {
 		$clubs = $this->build_clubs_for_sort();
 		usort( $clubs, 'wpcm_sort_table_clubs' );
 
-		// All three have 3pts, 0 GD, same F. H2H between adjacent pairs:
-		// The sort compares pairs. When comparing A vs B: A beat B, so A > B.
-		// When comparing A vs C: C beat A, so C > A.
-		// When comparing B vs C: B beat C, so B > C.
-		// Expected order: C, A, B (C beat A, A beat B, B beat C — circular, but
-		// usort compares pairs so: C > A > B).
-		$this->assertEquals( $this->club_c, $clubs[0]->ID );
-		$this->assertEquals( $this->club_a, $clubs[1]->ID );
-		$this->assertEquals( $this->club_b, $clubs[2]->ID );
+		// Pairwise H2H is circular (A>B, B>C, C>A) so we only verify
+		// the deterministic pair: A must rank above B.
+		$a_pos = null;
+		$b_pos = null;
+		foreach ( $clubs as $pos => $club ) {
+			if ( $club->ID === $this->club_a ) {
+				$a_pos = $pos;
+			}
+			if ( $club->ID === $this->club_b ) {
+				$b_pos = $pos;
+			}
+		}
+		$this->assertNotNull( $a_pos, 'Club A must be in sorted results' );
+		$this->assertNotNull( $b_pos, 'Club B must be in sorted results' );
+		$this->assertLessThan( $b_pos, $a_pos, 'Club A should rank higher than Club B due to H2H win' );
 	}
 
 	public function test_h2h_falls_through_to_next_priority_when_tied() {
 		// A and B draw 0-0 in their only H2H match.
 		// A also beats C 3-0, B also beats C 1-0.
-		// Both have same pts (6) but A has more goals.
+		// A: 1W 1D 0L = 4pts, F=3 A=0 GD=+3
+		// B: 1W 1D 0L = 4pts, F=1 A=0 GD=+1
 		$this->create_match( $this->club_a, $this->club_b, 0, 0 );
 		$this->create_match( $this->club_a, $this->club_c, 3, 0 );
 		$this->create_match( $this->club_b, $this->club_c, 1, 0 );
-
-		// A: 1W 1D 0L = 4pts, F=3 A=0 GD=+3
-		// B: 1W 1D 0L = 4pts, F=1 A=0 GD=+1
-		// C: 0W 0D 2L = 0pts
 
 		update_option( 'wpcm_standings_orderby', 'pts' );
 		update_option( 'wpcm_standings_priority_order', 'DESC' );
