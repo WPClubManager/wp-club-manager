@@ -80,6 +80,9 @@ class SettingsExportImportTest extends WPCMTestCase {
 		$this->set_option( 'wpclubmanager_installed', '1' );
 		$this->set_option( 'wpcm_version_upgraded_from', '2.3.0' );
 		$this->set_option( 'wpclubmanager_admin_footer_text_rated', '1' );
+		$this->set_option( 'wpcm_transient_keys', array( 'key1' ) );
+		$this->set_option( 'wpclubmanager_admin_notices', array( 'notice1' ) );
+		$this->set_option( 'wpclubmanager_meta_box_errors', array( 'error1' ) );
 
 		$exported = WPCM_Settings_Tools::get_export_data();
 
@@ -87,6 +90,9 @@ class SettingsExportImportTest extends WPCMTestCase {
 		$this->assertArrayNotHasKey( 'wpclubmanager_installed', $exported );
 		$this->assertArrayNotHasKey( 'wpcm_version_upgraded_from', $exported );
 		$this->assertArrayNotHasKey( 'wpclubmanager_admin_footer_text_rated', $exported );
+		$this->assertArrayNotHasKey( 'wpcm_transient_keys', $exported );
+		$this->assertArrayNotHasKey( 'wpclubmanager_admin_notices', $exported );
+		$this->assertArrayNotHasKey( 'wpclubmanager_meta_box_errors', $exported );
 	}
 
 	public function test_export_excludes_non_wpcm_options() {

@@ -29,6 +29,9 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 			'wpclubmanager_installed',
 			'wpcm_version_upgraded_from',
 			'wpclubmanager_admin_footer_text_rated',
+			'wpcm_transient_keys',
+			'wpclubmanager_admin_notices',
+			'wpclubmanager_meta_box_errors',
 		);
 
 		/**
@@ -41,7 +44,7 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 			add_filter( 'wpclubmanager_settings_tabs_array', array( $this, 'add_settings_page' ), 99 );
 			add_action( 'wpclubmanager_settings_' . $this->id, array( $this, 'output' ) );
 			add_action( 'wpclubmanager_settings_save_' . $this->id, array( $this, 'save' ) );
-			add_action( 'admin_init', array( $this, 'handle_export' ) );
+			add_action( 'admin_post_wpcm_export_settings', array( $this, 'handle_export' ) );
 		}
 
 		/**
@@ -120,7 +123,7 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 		public static function validate_import_json( $json ) {
 			$data = json_decode( $json, true );
 
-			if ( null === $data ) {
+			if ( JSON_ERROR_NONE !== json_last_error() ) {
 				return new WP_Error(
 					'invalid_json',
 					__( 'The uploaded file does not contain valid JSON.', 'wp-club-manager' )
@@ -141,7 +144,7 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 		 * Import settings from an associative array.
 		 *
 		 * @param array $data Settings data to import.
-		 * @return bool True on success, false if data is empty.
+		 * @return bool True on success, false if no valid settings were imported.
 		 */
 		public static function import_settings( $data ) {
 			if ( empty( $data ) ) {
@@ -162,19 +165,10 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 		}
 
 		/**
-		 * Handle the export action via GET request.
+		 * Handle the export action via admin-post.php.
 		 */
 		public function handle_export() {
-			$action = filter_input( INPUT_GET, 'action', FILTER_UNSAFE_RAW );
-			$nonce  = filter_input( INPUT_GET, '_wpnonce', FILTER_UNSAFE_RAW );
-
-			if ( 'wpcm_export_settings' !== $action ) {
-				return;
-			}
-
-			if ( empty( $nonce ) || ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wpcm-export-settings' ) ) {
-				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'wp-club-manager' ) );
-			}
+			check_admin_referer( 'wpcm-export-settings' );
 
 			if ( ! current_user_can( 'manage_wpclubmanager' ) ) { // phpcs:ignore WordPress.WP.Capabilities.Unknown
 				wp_die( esc_html__( 'You do not have permission to export settings.', 'wp-club-manager' ) );
@@ -217,8 +211,19 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 				return;
 			}
 
-			$tmp_name = sanitize_text_field( $file['tmp_name'] );
-			$json     = file_get_contents( $tmp_name ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+			$tmp_name = wp_unslash( $file['tmp_name'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+			if ( ! is_uploaded_file( $tmp_name ) ) {
+				WPCM_Admin_Settings::add_error( __( 'The uploaded file could not be read. Please try again.', 'wp-club-manager' ) );
+				return;
+			}
+
+			$json = file_get_contents( $tmp_name ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+			if ( false === $json ) {
+				WPCM_Admin_Settings::add_error( __( 'The uploaded file could not be read. Please try again.', 'wp-club-manager' ) );
+				return;
+			}
 
 			$data = self::validate_import_json( $json );
 
@@ -252,7 +257,7 @@ if ( ! class_exists( 'WPCM_Settings_Tools' ) ) :
 			$GLOBALS['hide_save_button'] = true;
 
 			$export_url = wp_nonce_url(
-				admin_url( 'admin.php?page=wpcm-settings&tab=tools&action=wpcm_export_settings' ),
+				admin_url( 'admin-post.php?action=wpcm_export_settings' ),
 				'wpcm-export-settings'
 			);
 			?>
