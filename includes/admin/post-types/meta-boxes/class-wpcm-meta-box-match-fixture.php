@@ -55,6 +55,7 @@ class WPCM_Meta_Box_Match_Fixture {
 			?>
 		</p>
 
+		<?php if ( wpcm_is_team_sport() ) : ?>
 		<p>
 			<label><?php esc_html_e( 'Away', 'wp-club-manager' ); ?></label>
 			<?php
@@ -70,6 +71,7 @@ class WPCM_Meta_Box_Match_Fixture {
 			));
 			?>
 		</p>
+		<?php endif; ?>
 
 		<?php
 	}
@@ -95,7 +97,7 @@ class WPCM_Meta_Box_Match_Fixture {
 			wp_set_post_terms( $home_club_id, $comp_id, 'wpcm_comp', true );
 			wp_set_post_terms( $home_club_id, $season_id, 'wpcm_season', true );
 		}
-		if ( isset( $away_club_id ) ) {
+		if ( isset( $away_club_id ) && wpcm_is_team_sport() ) {
 			update_post_meta( $post_id, 'wpcm_away_club', $away_club_id );
 			wp_set_post_terms( $away_club_id, $comp_id, 'wpcm_comp', true );
 			wp_set_post_terms( $away_club_id, $season_id, 'wpcm_season', true );

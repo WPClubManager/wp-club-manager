@@ -32,7 +32,13 @@ function match_title( $title, $id = null ) {
 		$home_id      = (int) get_post_meta( $id, 'wpcm_home_club', true );
 		$away_id      = (int) get_post_meta( $id, 'wpcm_away_club', true );
 		$home_club    = get_post( $home_id );
-		$away_club    = get_post( $away_id );
+
+		if ( ! $away_id ) {
+			$title = $home_club ? $home_club->post_title : $title;
+			return $title;
+		}
+
+		$away_club = get_post( $away_id );
 		if ( '%home% vs %away%' === $title_format ) {
 			$side1 = $home_club->post_title;
 			$side2 = $away_club->post_title;
@@ -110,8 +116,17 @@ function wpcm_get_match_outcome( $post ) {
 
 	$club      = (int) get_default_club();
 	$home_club = (int) get_post_meta( $post, 'wpcm_home_club', true );
+	$away_id   = (int) get_post_meta( $post, 'wpcm_away_club', true );
 	$walkover  = get_post_meta( $post, '_wpcm_walkover', true );
 	$postponed = get_post_meta( $post, '_wpcm_postponed', true );
+
+	if ( ! $away_id ) {
+		if ( $postponed ) {
+			return 'postponed';
+		}
+		return 'win';
+	}
+
 	if ( get_option( 'wpcm_sport' ) !== 'cricket' ) {
 		if ( get_post_meta( $post, 'wpcm_shootout', true ) ) {
 			$home_goals = get_post_meta( $post, '_wpcm_home_shootout_goals', true );
@@ -188,6 +203,16 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 		$walkover   = get_post_meta( $post, '_wpcm_walkover', true );
 		$home_goals = get_post_meta( $post, 'wpcm_home_goals', true );
 		$away_goals = get_post_meta( $post, 'wpcm_away_goals', true );
+		$away_id    = (int) get_post_meta( $post, 'wpcm_away_club', true );
+
+		if ( ! $away_id ) {
+			$result = ( $played ? $home_goals : '' );
+			$side1  = ( $played ? $home_goals : '' );
+			$side2  = '';
+
+			return array( $result, $side1, $side2, $delimiter );
+		}
+
 		if ( 'gaelic' === $sport ) {
 			$home_gaa_goals  = get_post_meta( $post, 'wpcm_home_gaa_goals', true );
 			$home_gaa_points = get_post_meta( $post, 'wpcm_home_gaa_points', true );
@@ -373,6 +398,15 @@ function wpcm_get_match_clubs( $post, $abbr = false ) {
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
 
+	if ( ! $away_club ) {
+		if ( false === $abbr ) {
+			$side1 = wpcm_get_team_name( $home_club, $post );
+		} else {
+			$side1 = get_club_abbreviation( $home_club );
+		}
+		return array( $side1, '' );
+	}
+
 	if ( false === $abbr ) {
 		if ( '%home% vs %away%' === $format ) {
 			$side1 = wpcm_get_team_name( $home_club, $post );
@@ -409,6 +443,11 @@ function wpcm_get_match_opponents( $post, $abbr = false ) {
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
 	$opponent  = '';
+
+	if ( ! $away_club ) {
+		return $opponent;
+	}
+
 	if ( false === $abbr ) {
 		if ( $club === $home_club ) {
 			$opponent = get_the_title( $away_club, true );
@@ -441,6 +480,15 @@ function wpcm_get_match_badges( $post, $size = null, $args = null ) {
 	$format    = get_match_title_format();
 	$home_club = get_post_meta( $post, 'wpcm_home_club', true );
 	$away_club = get_post_meta( $post, 'wpcm_away_club', true );
+
+	if ( ! $away_club ) {
+		if ( has_post_thumbnail( $home_club ) ) {
+			$badge1 = get_the_post_thumbnail( $home_club, $size, $args );
+		} else {
+			$badge1 = wpcm_crest_placeholder_img( $size );
+		}
+		return array( $badge1, '' );
+	}
 
 	if ( '%home% vs %away%' === $format ) {
 		if ( has_post_thumbnail( $home_club ) ) {

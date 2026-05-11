@@ -469,6 +469,8 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 			}
 		}
 
+		if ( wpcm_is_team_sport() ) {
+
 		$args['meta_key'] = 'wpcm_away_club';
 
 		$matches = get_posts( $args );
@@ -536,6 +538,8 @@ if ( ! function_exists( 'get_wpcm_club_auto_stats' ) ) {
 				$output['pts'] += (int) get_option( 'wpcm_standings_loss_points', 0 );
 			}
 		}
+
+		} // end if wpcm_is_team_sport
 
 		return $output;
 	}
