@@ -112,6 +112,7 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 			add_action( 'init', array( $this, 'init' ), 0 );
 			add_action( 'init', array( 'WPCM_Shortcodes', 'init' ) );
 			WPCM_Blocks::init();
+			WPCM_iCal_Feed::init();
 			add_action( 'tgmpa_register', array( $this, 'wp_club_manager_register_required_plugins' ) );
 
 			do_action( 'wpclubmanager_loaded' );
