@@ -1062,10 +1062,12 @@ ul.wpcm-matches-list {
 	font-size: 1.1em;
 	font-weight: 600;
 }
-.wpcm-calendar-nav {
+a.wpcm-calendar-nav {
 	cursor: pointer;
 	padding: 0.25em 0.5em;
 	user-select: none;
+	text-decoration: none;
+	color: inherit;
 }
 .wpcm-calendar-table {
 	width: 100%;
@@ -1082,7 +1084,7 @@ ul.wpcm-matches-list {
 	vertical-align: top;
 	padding: 0.3em;
 	border: 1px solid #eee;
-	min-height: 60px;
+	height: 60px;
 }
 .wpcm-calendar-empty {
 	background: #fafafa;

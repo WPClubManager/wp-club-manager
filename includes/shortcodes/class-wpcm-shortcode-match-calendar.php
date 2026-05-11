@@ -37,9 +37,20 @@ class WPCM_Shortcode_Match_Calendar {
 			$month = (int) gmdate( 'n' );
 		}
 
+		$effective_atts = array(
+			'month'  => $month,
+			'year'   => $year,
+			'comp'   => $comp,
+			'season' => $season,
+			'team'   => $team,
+		);
+		if ( is_club_mode() ) {
+			$effective_atts['club'] = get_default_club();
+		}
+
 		$disable_cache = get_option( 'wpcm_disable_cache' );
 		if ( 'no' === $disable_cache ) {
-			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $atts, 'match_calendar' );
+			$transient_name = WPCM_Cache_Helper::create_plugin_transient_name( $effective_atts, 'match_calendar' );
 			$output         = get_transient( $transient_name );
 		} else {
 			$output = false;

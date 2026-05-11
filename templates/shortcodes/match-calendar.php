@@ -11,7 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$month_name   = date_i18n( 'F', gmmktime( 0, 0, 0, $month, 1, $year ) );
+/** @var int $month */
+/** @var int $year */
+/** @var array $matches_by_day */
+
+$month_name    = wp_date( 'F', gmmktime( 0, 0, 0, $month, 1, $year ), new DateTimeZone( 'UTC' ) );
 $days_in_month = (int) gmdate( 't', gmmktime( 0, 0, 0, $month, 1, $year ) );
 // 1 = Monday … 7 = Sunday (ISO-8601).
 $first_weekday = (int) gmdate( 'N', gmmktime( 0, 0, 0, $month, 1, $year ) );
@@ -44,15 +48,15 @@ if ( $next_month > 12 ) {
 <div class="wpcm-calendar">
 
 	<div class="wpcm-calendar-header">
-		<span class="wpcm-calendar-nav wpcm-calendar-prev" data-month="<?php echo esc_attr( $prev_month ); ?>" data-year="<?php echo esc_attr( $prev_year ); ?>">
+		<a class="wpcm-calendar-nav wpcm-calendar-prev" href="<?php echo esc_url( add_query_arg( array( 'month' => $prev_month, 'year' => $prev_year ) ) ); ?>" aria-label="<?php esc_attr_e( 'Previous month', 'wp-club-manager' ); ?>">
 			&laquo;
-		</span>
+		</a>
 		<span class="wpcm-calendar-title">
 			<?php echo esc_html( $month_name . ' ' . $year ); ?>
 		</span>
-		<span class="wpcm-calendar-nav wpcm-calendar-next" data-month="<?php echo esc_attr( $next_month ); ?>" data-year="<?php echo esc_attr( $next_year ); ?>">
+		<a class="wpcm-calendar-nav wpcm-calendar-next" href="<?php echo esc_url( add_query_arg( array( 'month' => $next_month, 'year' => $next_year ) ) ); ?>" aria-label="<?php esc_attr_e( 'Next month', 'wp-club-manager' ); ?>">
 			&raquo;
-		</span>
+		</a>
 	</div>
 
 	<table class="wpcm-calendar-table">
@@ -89,7 +93,7 @@ if ( $next_month > 12 ) {
 							}
 							?>
 							<td class="<?php echo esc_attr( $css_class ); ?>">
-								<span class="wpcm-calendar-day-number"><?php echo esc_html( $current_day ); ?></span>
+								<span class="wpcm-calendar-day-number"><?php echo esc_html( (string) $current_day ); ?></span>
 								<?php
 								if ( $has_matches ) :
 									foreach ( $matches_by_day[ $current_day ] as $match ) :

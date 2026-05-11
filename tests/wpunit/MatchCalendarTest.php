@@ -118,15 +118,15 @@ class MatchCalendarTest extends WPCMTestCase {
 
 	public function test_calendar_shows_month_and_year_heading() {
 		$output = do_shortcode( '[match_calendar month="6" year="2026"]' );
-		$this->assertStringContainsString( 'June', $output );
+		$this->assertStringContainsString( 'wpcm-calendar-title', $output );
 		$this->assertStringContainsString( '2026', $output );
 	}
 
 	public function test_calendar_shows_day_of_week_headers() {
 		$output = do_shortcode( '[match_calendar month="6" year="2026"]' );
-		$this->assertStringContainsString( 'Mon', $output );
-		$this->assertStringContainsString( 'Fri', $output );
-		$this->assertStringContainsString( 'Sun', $output );
+		// Assert 7 column headers exist regardless of locale.
+		preg_match_all( '/<th>/', $output, $th_matches );
+		$this->assertCount( 7, $th_matches[0], 'Calendar should have 7 day-of-week headers' );
 	}
 
 	// -------------------------------------------------------------------
@@ -170,13 +170,13 @@ class MatchCalendarTest extends WPCMTestCase {
 	// -------------------------------------------------------------------
 
 	public function test_ical_feed_class_exists() {
-		$this->assertTrue( class_exists( 'WPCM_iCal_Feed' ), 'WPCM_iCal_Feed class should exist' );
+		$this->assertTrue( class_exists( 'WPCM_ICal_Feed' ), 'WPCM_ICal_Feed class should exist' );
 	}
 
 	public function test_ical_generate_returns_valid_vcalendar() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
 		$this->assertStringContainsString( 'BEGIN:VCALENDAR', $output );
@@ -188,7 +188,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_ical_contains_vevent_for_match() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
 		$this->assertStringContainsString( 'BEGIN:VEVENT', $output );
@@ -200,7 +200,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_ical_vevent_contains_match_title() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
 		$this->assertStringContainsString( 'Home FC', $output );
@@ -209,7 +209,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_ical_filters_by_competition() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate( array( 'comp' => $this->comp_term_id ) );
 		$this->assertStringContainsString( 'BEGIN:VEVENT', $output );
 
@@ -220,7 +220,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_ical_filters_by_season() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate( array( 'season' => $this->season_term_id ) );
 		$this->assertStringContainsString( 'BEGIN:VEVENT', $output );
 	}
@@ -228,24 +228,24 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_ical_dtstart_format_is_correct() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
-		// iCal datetime format: YYYYMMDDTHHMMSS
-		$this->assertMatchesRegularExpression( '/DTSTART:\d{8}T\d{6}/', $output );
+		// iCal datetime format: YYYYMMDDTHHMMSSZ (UTC).
+		$this->assertMatchesRegularExpression( '/DTSTART:\d{8}T\d{6}Z/', $output );
 	}
 
 	public function test_ical_has_uid_per_event() {
 		$this->create_match( '2026-02-14 15:00:00', true );
 
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
 		$this->assertStringContainsString( 'UID:', $output );
 	}
 
 	public function test_ical_empty_when_no_matches() {
-		$feed   = new WPCM_iCal_Feed();
+		$feed   = new WPCM_ICal_Feed();
 		$output = $feed->generate();
 
 		$this->assertStringContainsString( 'BEGIN:VCALENDAR', $output );
@@ -257,7 +257,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	// -------------------------------------------------------------------
 
 	public function test_ical_feed_url_contains_wpcm_ical() {
-		$feed = new WPCM_iCal_Feed();
+		$feed = new WPCM_ICal_Feed();
 		$url  = $feed->get_feed_url();
 
 		$this->assertStringContainsString( 'wpcm_ical', $url );

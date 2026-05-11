@@ -5,7 +5,7 @@
  * Generates an iCalendar (.ics) feed of matches for subscribing
  * to fixtures in external calendar applications.
  *
- * @class       WPCM_iCal_Feed
+ * @class       WPCM_ICal_Feed
  * @version     2.4.0
  * @package     WPClubManager/Classes
  * @category    Class
@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WPCM_iCal_Feed
+ * WPCM_ICal_Feed
  */
-class WPCM_iCal_Feed {
+class WPCM_ICal_Feed {
 
 	/**
 	 * Hook into WordPress.
@@ -149,7 +149,9 @@ class WPCM_iCal_Feed {
 
 		wp_reset_postdata();
 
-		return implode( "\r\n", $lines ) . "\r\n";
+		$folded = array_map( array( $this, 'fold_line' ), $lines );
+
+		return implode( "\r\n", $folded ) . "\r\n";
 	}
 
 	/**
@@ -160,10 +162,10 @@ class WPCM_iCal_Feed {
 	 */
 	private function build_vevent( $match ) {
 		$timestamp  = strtotime( $match->post_date );
-		$dtstart    = gmdate( 'Ymd\THis', $timestamp );
+		$dtstart    = gmdate( 'Ymd\THis\Z', $timestamp );
 		// Default match duration: 2 hours.
-		$dtend      = gmdate( 'Ymd\THis', $timestamp + 7200 );
-		$dtstamp    = gmdate( 'Ymd\THis' );
+		$dtend      = gmdate( 'Ymd\THis\Z', $timestamp + 7200 );
+		$dtstamp    = gmdate( 'Ymd\THis\Z' );
 		$uid        = 'wpcm-match-' . $match->ID . '@' . wp_parse_url( home_url(), PHP_URL_HOST );
 		$url        = get_post_permalink( $match->ID, false, true );
 		$played     = get_post_meta( $match->ID, 'wpcm_played', true );
@@ -183,7 +185,7 @@ class WPCM_iCal_Feed {
 
 		$venue_data = wpcm_get_match_venue( $match->ID );
 		$location   = '';
-		if ( ! empty( $venue_data ) && ! empty( $venue_data['name'] ) ) {
+		if ( is_array( $venue_data ) && ! empty( $venue_data['name'] ) ) {
 			$location = $venue_data['name'];
 			if ( ! empty( $venue_data['address'] ) ) {
 				$location .= ', ' . $venue_data['address'];
@@ -221,8 +223,33 @@ class WPCM_iCal_Feed {
 	 */
 	private function escape_ical_text( $text ) {
 		$text = str_replace( '\\', '\\\\', $text );
+		$text = str_replace( "\r\n", '\n', $text );
+		$text = str_replace( "\r", '\n', $text );
+		$text = str_replace( "\n", '\n', $text );
 		$text = str_replace( ',', '\,', $text );
 		$text = str_replace( ';', '\;', $text );
 		return $text;
+	}
+
+	/**
+	 * Fold a single iCal line at 75 octets per RFC 5545.
+	 *
+	 * @param string $line The line to fold.
+	 * @return string Folded line.
+	 */
+	private function fold_line( $line ) {
+		if ( strlen( $line ) <= 75 ) {
+			return $line;
+		}
+
+		$folded = mb_strcut( $line, 0, 75 );
+		$rest   = mb_strcut( $line, 75 );
+
+		while ( strlen( $rest ) > 0 ) {
+			$folded .= "\r\n " . mb_strcut( $rest, 0, 74 );
+			$rest    = mb_strcut( $rest, 74 );
+		}
+
+		return $folded;
 	}
 }
