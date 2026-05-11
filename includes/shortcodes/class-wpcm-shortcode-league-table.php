@@ -115,7 +115,9 @@ class WPCM_Shortcode_League_Table {
 				}
 			}
 
+			wpcm_set_h2h_context( $comp, $season );
 			usort( $clubs, 'wpcm_sort_table_clubs' );
+			wpcm_clear_h2h_context();
 
 			if ( 'ASC' === $order ) {
 				$clubs = array_reverse( $clubs );

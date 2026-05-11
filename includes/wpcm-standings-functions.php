@@ -225,6 +225,168 @@ if ( ! function_exists( 'get_wpcm_table_total_stats' ) ) {
 	}
 }
 
+/**
+ * Store competition and season context for head-to-head lookups during sorting.
+ *
+ * @param int $comp   Competition term ID.
+ * @param int $season Season term ID.
+ */
+function wpcm_set_h2h_context( $comp, $season ) {
+	global $wpcm_h2h_comp, $wpcm_h2h_season;
+	$wpcm_h2h_comp   = $comp;
+	$wpcm_h2h_season = $season;
+}
+
+/**
+ * Clear H2H context after sorting is complete.
+ */
+function wpcm_clear_h2h_context() {
+	global $wpcm_h2h_comp, $wpcm_h2h_season;
+	$wpcm_h2h_comp   = null;
+	$wpcm_h2h_season = null;
+}
+
+/**
+ * Calculate head-to-head record between two clubs in the current H2H context.
+ *
+ * Returns points, goal difference, and goals scored for each club
+ * based only on their direct matches in the given competition and season.
+ *
+ * @param int $club_a_id Club A post ID.
+ * @param int $club_b_id Club B post ID.
+ * @return array {
+ *     @type int $a_points Points earned by club A in H2H matches.
+ *     @type int $b_points Points earned by club B in H2H matches.
+ *     @type int $a_gd     Goal difference for club A in H2H matches.
+ *     @type int $b_gd     Goal difference for club B in H2H matches.
+ *     @type int $a_goals  Goals scored by club A in H2H matches.
+ *     @type int $b_goals  Goals scored by club B in H2H matches.
+ * }
+ */
+function wpcm_get_h2h_points( $club_a_id, $club_b_id ) {
+	global $wpcm_h2h_comp, $wpcm_h2h_season;
+
+	$win_pts  = (int) get_option( 'wpcm_standings_win_points', 3 );
+	$draw_pts = (int) get_option( 'wpcm_standings_draw_points', 1 );
+	$loss_pts = (int) get_option( 'wpcm_standings_loss_points', 0 );
+
+	$result = array(
+		'a_points' => 0,
+		'b_points' => 0,
+		'a_gd'     => 0,
+		'b_gd'     => 0,
+		'a_goals'  => 0,
+		'b_goals'  => 0,
+	);
+
+	$tax_query = array();
+	if ( $wpcm_h2h_comp ) {
+		$tax_query[] = array(
+			'taxonomy' => 'wpcm_comp',
+			'terms'    => $wpcm_h2h_comp,
+			'field'    => 'term_id',
+		);
+	}
+	if ( $wpcm_h2h_season ) {
+		$tax_query[] = array(
+			'taxonomy' => 'wpcm_season',
+			'terms'    => $wpcm_h2h_season,
+			'field'    => 'term_id',
+		);
+	}
+
+	// Find matches where club A is home and club B is away.
+	$args = array(
+		'post_type'      => 'wpcm_match',
+		'posts_per_page' => -1,
+		'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			array(
+				'key'   => 'wpcm_home_club',
+				'value' => $club_a_id,
+			),
+			array(
+				'key'   => 'wpcm_away_club',
+				'value' => $club_b_id,
+			),
+		),
+		'tax_query'      => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+	);
+
+	$matches = get_posts( $args );
+
+	foreach ( $matches as $match ) {
+		$played   = (int) get_post_meta( $match->ID, 'wpcm_played', true );
+		$friendly = (int) get_post_meta( $match->ID, 'wpcm_friendly', true );
+
+		if ( ! $played || $friendly ) {
+			continue;
+		}
+
+		$home_goals = (int) get_post_meta( $match->ID, 'wpcm_home_goals', true );
+		$away_goals = (int) get_post_meta( $match->ID, 'wpcm_away_goals', true );
+
+		$result['a_goals'] += $home_goals;
+		$result['b_goals'] += $away_goals;
+		$result['a_gd']    += $home_goals - $away_goals;
+		$result['b_gd']    += $away_goals - $home_goals;
+
+		if ( $home_goals > $away_goals ) {
+			$result['a_points'] += $win_pts;
+			$result['b_points'] += $loss_pts;
+		} elseif ( $home_goals < $away_goals ) {
+			$result['a_points'] += $loss_pts;
+			$result['b_points'] += $win_pts;
+		} else {
+			$result['a_points'] += $draw_pts;
+			$result['b_points'] += $draw_pts;
+		}
+	}
+
+	// Find matches where club B is home and club A is away.
+	$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+		array(
+			'key'   => 'wpcm_home_club',
+			'value' => $club_b_id,
+		),
+		array(
+			'key'   => 'wpcm_away_club',
+			'value' => $club_a_id,
+		),
+	);
+
+	$matches = get_posts( $args );
+
+	foreach ( $matches as $match ) {
+		$played   = (int) get_post_meta( $match->ID, 'wpcm_played', true );
+		$friendly = (int) get_post_meta( $match->ID, 'wpcm_friendly', true );
+
+		if ( ! $played || $friendly ) {
+			continue;
+		}
+
+		$home_goals = (int) get_post_meta( $match->ID, 'wpcm_home_goals', true );
+		$away_goals = (int) get_post_meta( $match->ID, 'wpcm_away_goals', true );
+
+		$result['b_goals'] += $home_goals;
+		$result['a_goals'] += $away_goals;
+		$result['b_gd']    += $home_goals - $away_goals;
+		$result['a_gd']    += $away_goals - $home_goals;
+
+		if ( $home_goals > $away_goals ) {
+			$result['b_points'] += $win_pts;
+			$result['a_points'] += $loss_pts;
+		} elseif ( $home_goals < $away_goals ) {
+			$result['b_points'] += $loss_pts;
+			$result['a_points'] += $win_pts;
+		} else {
+			$result['a_points'] += $draw_pts;
+			$result['b_points'] += $draw_pts;
+		}
+	}
+
+	return $result;
+}
+
 if ( ! function_exists( 'wpcm_table_priorities' ) ) {
 	/**
 	 * @return array
@@ -263,6 +425,41 @@ if ( ! function_exists( 'wpcm_sort_table_clubs' ) ) {
 		// Loop through priorities
 		foreach ( $priorities as $priority ) {
 
+			if ( 'h2h' === $priority['column'] ) {
+				// Head-to-head tiebreaker: compare direct match record.
+				$h2h = wpcm_get_h2h_points( $a->ID, $b->ID );
+
+				// Compare H2H points first.
+				if ( $h2h['a_points'] !== $h2h['b_points'] ) {
+					$output = $h2h['a_points'] - $h2h['b_points'];
+					if ( 'DESC' === $priority['order'] ) {
+						$output = 0 - $output;
+					}
+					return ( $output > 0 ? 1 : -1 );
+				}
+
+				// If H2H points tied, compare H2H goal difference.
+				if ( $h2h['a_gd'] !== $h2h['b_gd'] ) {
+					$output = $h2h['a_gd'] - $h2h['b_gd'];
+					if ( 'DESC' === $priority['order'] ) {
+						$output = 0 - $output;
+					}
+					return ( $output > 0 ? 1 : -1 );
+				}
+
+				// If H2H GD tied, compare H2H goals scored.
+				if ( $h2h['a_goals'] !== $h2h['b_goals'] ) {
+					$output = $h2h['a_goals'] - $h2h['b_goals'];
+					if ( 'DESC' === $priority['order'] ) {
+						$output = 0 - $output;
+					}
+					return ( $output > 0 ? 1 : -1 );
+				}
+
+				// H2H completely tied, fall through to next priority.
+				continue;
+			}
+
 			if ( wpcm_array_value( $a->wpcm_stats, $priority['column'], 0 ) !== wpcm_array_value( $b->wpcm_stats, $priority['column'], 0 ) ) {
 
 				// Compare column values
@@ -279,7 +476,6 @@ if ( ! function_exists( 'wpcm_sort_table_clubs' ) ) {
 		}
 
 		// Default sort by alphabetical
-		// return strcmp( wpcm_array_value( $a, 'name', '' ), wpcm_array_value( $b, 'name', '' ) );
 		return strcmp( $a->post_name, $b->post_name );
 	}
 }
