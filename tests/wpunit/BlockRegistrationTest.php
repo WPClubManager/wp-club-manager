@@ -30,6 +30,7 @@ class BlockRegistrationTest extends WPCMTestCase {
 	/** @dataProvider block_names */
 	public function test_block_render_returns_string( $block_name ) {
 		$block_type = WP_Block_Type_Registry::get_instance()->get_registered( $block_name );
+		$this->assertNotNull( $block_type, "Block {$block_name} should be registered before testing render" );
 
 		// Suppress warnings from shortcodes when rendered with empty data.
 		// The underlying shortcodes may trigger notices when no posts/terms exist.
@@ -72,7 +73,9 @@ class BlockRegistrationTest extends WPCMTestCase {
 			)
 		);
 
-		$categories = apply_filters( 'block_categories_all', array(), get_post( $post_id ) );
+		$post       = get_post( $post_id );
+		$filter     = has_filter( 'block_categories_all', array( 'WPCM_Blocks', 'register_category' ) ) ? 'block_categories_all' : 'block_categories';
+		$categories = apply_filters( $filter, array(), $post );
 		$slugs      = wp_list_pluck( $categories, 'slug' );
 		$this->assertContains( 'wp-club-manager', $slugs );
 

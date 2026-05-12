@@ -32,11 +32,8 @@ class WPCM_Blocks {
 
 		add_action( 'init', array( __CLASS__, 'register_blocks' ) );
 
-		if ( function_exists( 'get_default_block_categories' ) ) {
-			add_filter( 'block_categories_all', array( __CLASS__, 'register_category' ), 10, 2 );
-		} else {
-			add_filter( 'block_categories', array( __CLASS__, 'register_category' ), 10, 2 );
-		}
+		add_filter( 'block_categories_all', array( __CLASS__, 'register_category' ), 10, 2 );
+		add_filter( 'block_categories', array( __CLASS__, 'register_category' ), 10, 2 );
 	}
 
 	/**
@@ -70,7 +67,7 @@ class WPCM_Blocks {
 		wp_register_script(
 			'wpcm-blocks-editor',
 			plugins_url( 'assets/js/blocks/wpcm-blocks-editor.js', WPCM_PLUGIN_FILE ),
-			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
+			array( 'wp-blocks', 'wp-element', 'wp-block-editor', 'wp-editor', 'wp-components', 'wp-server-side-render', 'wp-i18n' ),
 			WPCM_VERSION,
 			true
 		);

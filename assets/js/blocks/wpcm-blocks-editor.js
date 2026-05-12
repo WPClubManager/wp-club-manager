@@ -11,7 +11,8 @@
 ( function() {
 	var el = wp.element.createElement;
 	var registerBlockType = wp.blocks.registerBlockType;
-	var InspectorControls = wp.blockEditor.InspectorControls;
+	var blockEditor = wp.blockEditor || wp.editor;
+	var InspectorControls = blockEditor.InspectorControls;
 	var PanelBody = wp.components.PanelBody;
 	var TextControl = wp.components.TextControl;
 	var SelectControl = wp.components.SelectControl;
