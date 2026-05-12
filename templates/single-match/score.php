@@ -20,7 +20,7 @@ $score  = wpcm_get_match_result( $post->ID ); ?>
 
 	<?php echo esc_html( $score[1] ); ?>
 
-	<?php if ( wpcm_is_team_sport() ) : ?>
+	<?php if ( '' !== $score[2] ) : ?>
 		<span class="wpcm-match-score-delimiter"><?php echo esc_html( $played ? $score[3] : get_option( 'wpcm_match_clubs_separator' ) ); ?></span>
 
 		<?php echo esc_html( $score[2] ); ?>
