@@ -446,11 +446,6 @@ parameters:
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
 
 		-
-			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
-			count: 1
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
-
-		-
 			message: "#^Parameter \\#1 \\$post_id of function get_post_meta expects int, string given\\.$#"
 			count: 1
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-player-stats.php
@@ -1381,19 +1376,9 @@ parameters:
 			path: includes/shortcodes/class-wpcm-shortcode-match-opponents.php
 
 		-
-			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
-			count: 1
-			path: includes/shortcodes/class-wpcm-shortcode-player-gallery.php
-
-		-
 			message: "#^Variable \\$transient_name might not be defined\\.$#"
 			count: 2
 			path: includes/shortcodes/class-wpcm-shortcode-player-gallery.php
-
-		-
-			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
-			count: 1
-			path: includes/shortcodes/class-wpcm-shortcode-player-list.php
 
 		-
 			message: "#^Undefined variable\\: \\$natl$#"
@@ -1442,11 +1427,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$args of function get_posts expects array\\{numberposts\\?\\: int, category\\?\\: int\\|string, include\\?\\: array\\<int\\>, exclude\\?\\: array\\<int\\>, suppress_filters\\?\\: bool, attachment_id\\?\\: int, author\\?\\: int\\|string, author_name\\?\\: string, \\.\\.\\.\\}\\|null, array\\{post_type\\: 'wpcm_player', tax_query\\: array\\{\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_season', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position'\\|'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 2\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{0\\: array\\{taxonomy\\: 'wpcm_team', terms\\: mixed, field\\: 'term_id'\\}, 1\\?\\: array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}\\|array\\{array\\{taxonomy\\: 'wpcm_position', terms\\: mixed, field\\: 'term_id'\\}\\}, numposts\\: mixed, posts_per_page\\: mixed, orderby\\: 'menu_order'\\|'meta_value_num'\\|'name', meta_key\\: 'wpcm_number', order\\: string, suppress_filters\\: 0\\} given\\.$#"
-			count: 1
-			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
-
-		-
-			message: "#^Parameter \\#1 \\$post of function get_wpcm_player_stats expects WP_Post\\|null, int given\\.$#"
 			count: 1
 			path: includes/shortcodes/legacy/class-wpcm-shortcode-players.php
 
