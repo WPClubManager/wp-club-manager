@@ -13,10 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-$badges = wpcm_get_match_badges( $post->ID, 'crest-medium', array( 'class' => 'away-logo' ) ); ?>
+$badges = wpcm_get_match_badges( $post->ID, 'crest-medium', array( 'class' => 'away-logo' ) );
+
+if ( ! empty( $badges[1] ) ) : ?>
 
 <div class="wpcm-match-away-club-badge">
 
 	<?php echo wp_kses_post( $badges[1] ); ?>
 
 </div>
+<?php endif; ?>

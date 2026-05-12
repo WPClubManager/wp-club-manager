@@ -13,10 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-$side = wpcm_get_match_clubs( $post->ID ); ?>
+$side = wpcm_get_match_clubs( $post->ID );
+
+if ( ! empty( $side[1] ) ) : ?>
 
 <div class="wpcm-match-away-club">
 
 	<?php echo esc_html( $side[1] ); ?>
 
 </div>
+<?php endif; ?>

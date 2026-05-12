@@ -1636,11 +1636,6 @@ parameters:
 			path: includes/wpcm-match-functions.php
 
 		-
-			message: "#^Function wpcm_get_match_result\\(\\) should return string but returns array\\<int, mixed\\>\\.$#"
-			count: 1
-			path: includes/wpcm-match-functions.php
-
-		-
 			message: "#^Function wpcm_get_match_venue\\(\\) should return string but returns array\\<string, mixed\\>\\.$#"
 			count: 1
 			path: includes/wpcm-match-functions.php
@@ -1832,7 +1827,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$sides might not be defined\\.$#"
-			count: 2
+			count: 1
 			path: templates/content-widget-fixtures.php
 
 		-
@@ -1887,7 +1882,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$sides might not be defined\\.$#"
-			count: 2
+			count: 1
 			path: templates/content-widget-results.php
 
 		-
