@@ -34,8 +34,11 @@ class BlockRegistrationTest extends WPCMTestCase {
 		// Suppress warnings from shortcodes when rendered with empty data.
 		// The underlying shortcodes may trigger notices when no posts/terms exist.
 		$previous = error_reporting( error_reporting() & ~E_WARNING & ~E_NOTICE ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_value_error_reporting,WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
-		$output   = call_user_func( $block_type->render_callback, array(), '', null );
-		error_reporting( $previous ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_value_error_reporting,WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
+		try {
+			$output = call_user_func( $block_type->render_callback, array(), '', null );
+		} finally {
+			error_reporting( $previous ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_value_error_reporting,WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
+		}
 
 		$this->assertIsString( $output, "Block {$block_name} render should return a string" );
 	}

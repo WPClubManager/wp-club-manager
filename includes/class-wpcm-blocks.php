@@ -63,6 +63,10 @@ class WPCM_Blocks {
 	 * Register the editor script and all blocks.
 	 */
 	public static function register_blocks() {
+		if ( WP_Block_Type_Registry::get_instance()->is_registered( 'wpcm/match-list' ) ) {
+			return;
+		}
+
 		wp_register_script(
 			'wpcm-blocks-editor',
 			plugins_url( 'assets/js/blocks/wpcm-blocks-editor.js', WPCM_PLUGIN_FILE ),
@@ -70,6 +74,8 @@ class WPCM_Blocks {
 			WPCM_VERSION,
 			true
 		);
+
+		wp_set_script_translations( 'wpcm-blocks-editor', 'wp-club-manager', plugin_dir_path( WPCM_PLUGIN_FILE ) . 'languages' );
 
 		$is_club_mode = function_exists( 'is_club_mode' ) && is_club_mode();
 
