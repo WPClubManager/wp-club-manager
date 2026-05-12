@@ -130,8 +130,11 @@ function wpcm_get_match_outcome( $post ) {
 			}
 			return 'postponed';
 		}
-		$played = get_post_meta( $post, 'wpcm_played', true );
-		return $played ? 'win' : '';
+		if ( ! wpcm_is_team_sport() ) {
+			$played = get_post_meta( $post, 'wpcm_played', true );
+			return $played ? 'win' : '';
+		}
+		return '';
 	}
 
 	if ( get_option( 'wpcm_sport' ) !== 'cricket' ) {
@@ -196,7 +199,7 @@ if ( ! function_exists( 'wpcm_get_match_result' ) ) {
 	 *
 	 * @param int $post
 	 *
-	 * @return string $result
+	 * @return array $result
 	 * @since  1.4.6
 	 */
 	function wpcm_get_match_result( $post ) {

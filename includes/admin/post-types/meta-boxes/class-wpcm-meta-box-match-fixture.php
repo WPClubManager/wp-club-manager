@@ -56,21 +56,21 @@ class WPCM_Meta_Box_Match_Fixture {
 		</p>
 
 		<?php if ( wpcm_is_team_sport() ) : ?>
-		<p>
-			<label><?php esc_html_e( 'Away', 'wp-club-manager' ); ?></label>
-			<?php
-			wpcm_dropdown_posts(array(
-				'name'             => 'wpcm_away_club',
-				'id'               => 'wpcm_away_club',
-				'post_type'        => 'wpcm_club',
-				'limit'            => -1,
-				'show_option_none' => __( 'Choose club', 'wp-club-manager' ),
-				'class'            => 'chosen_select',
-				'echo'             => false,
-				'selected'         => $away_club,
-			));
-			?>
-		</p>
+			<p>
+				<label><?php esc_html_e( 'Away', 'wp-club-manager' ); ?></label>
+				<?php
+				wpcm_dropdown_posts(array(
+					'name'             => 'wpcm_away_club',
+					'id'               => 'wpcm_away_club',
+					'post_type'        => 'wpcm_club',
+					'limit'            => -1,
+					'show_option_none' => __( 'Choose club', 'wp-club-manager' ),
+					'class'            => 'chosen_select',
+					'echo'             => false,
+					'selected'         => $away_club,
+				));
+				?>
+			</p>
 		<?php endif; ?>
 
 		<?php

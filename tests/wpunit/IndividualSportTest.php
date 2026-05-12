@@ -215,7 +215,7 @@ class IndividualSportTest extends WPCMTestCase {
 		$match_id = $this->create_individual_match();
 
 		update_option( 'wpcm_match_title_format', '%home% vs %away%' );
-		$badges = wpcm_get_match_badges( $match_id );
+		$badges = wpcm_get_match_badges( $match_id, 'crest-small' );
 
 		$this->assertNotEmpty( $badges[0] );
 		$this->assertEmpty( $badges[1] );
