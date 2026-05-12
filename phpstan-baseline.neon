@@ -1746,33 +1746,13 @@ parameters:
 			path: includes/wpcm-stats-functions.php
 
 		-
-			message: "#^Parameter \\#2 \\$team of function get_wpcm_player_manual_stats expects string\\|null, int given\\.$#"
-			count: 1
-			path: includes/wpcm-stats-functions.php
-
-		-
 			message: "#^Parameter \\#3 \\$season of function get_wpcm_club_auto_stats expects int\\|null, string\\|null given\\.$#"
-			count: 1
-			path: includes/wpcm-stats-functions.php
-
-		-
-			message: "#^Parameter \\#3 \\$season of function get_wpcm_player_manual_stats expects string\\|null, int given\\.$#"
 			count: 1
 			path: includes/wpcm-stats-functions.php
 
 		-
 			message: "#^Parameter \\#3 \\$season_id of function get_wpcm_player_auto_stats expects string\\|null, int given\\.$#"
 			count: 2
-			path: includes/wpcm-stats-functions.php
-
-		-
-			message: "#^Variable \\$season might not be defined\\.$#"
-			count: 1
-			path: includes/wpcm-stats-functions.php
-
-		-
-			message: "#^Variable \\$team might not be defined\\.$#"
-			count: 1
 			path: includes/wpcm-stats-functions.php
 
 		-

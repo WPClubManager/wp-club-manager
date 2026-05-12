@@ -118,6 +118,57 @@ class PlayerStatsTest extends WPCMTestCase {
 	}
 
 	// -----------------------------------------------------------------------
+	// get_wpcm_player_stats() — combined manual stats
+	// -----------------------------------------------------------------------
+
+	public function test_get_wpcm_player_stats_combined_manual_stats_uses_combined_entry() {
+		$team = wp_insert_term( 'Stats Team', 'wpcm_team' );
+		if ( is_wp_error( $team ) ) {
+			$team_id = $team->get_error_data();
+		} else {
+			$team_id = $team['term_id'];
+		}
+
+		$season = wp_insert_term( 'Stats Season', 'wpcm_season' );
+		if ( is_wp_error( $season ) ) {
+			$season_id = $season->get_error_data();
+		} else {
+			$season_id = $season['term_id'];
+		}
+
+		wp_set_object_terms( $this->player_id, $team_id, 'wpcm_team' );
+		wp_set_object_terms( $this->player_id, $season_id, 'wpcm_season' );
+
+		// Store manual stats under the combined key (0,0) and a per-team key.
+		$stats = array(
+			0        => array(
+				0 => array(
+					'appearances' => 12,
+					'goals'       => 8,
+				),
+			),
+			$team_id => array(
+				$season_id => array(
+					'appearances' => 5,
+					'goals'       => 2,
+				),
+			),
+		);
+
+		update_post_meta( $this->player_id, 'wpcm_stats', serialize( $stats ) );
+
+		$result = get_wpcm_player_stats( $this->player_id );
+
+		// The combined entry should use the (0,0) manual stats, not the per-team values.
+		$this->assertArrayHasKey( 'manual', $result[0][0] );
+		$this->assertEquals( 12, $result[0][0]['manual']['appearances'] );
+		$this->assertEquals( 8, $result[0][0]['manual']['goals'] );
+
+		wp_delete_term( $team_id, 'wpcm_team' );
+		wp_delete_term( $season_id, 'wpcm_season' );
+	}
+
+	// -----------------------------------------------------------------------
 	// get_wpcm_player_stats_empty_row()
 	// -----------------------------------------------------------------------
 
