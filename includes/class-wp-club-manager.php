@@ -111,6 +111,7 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 			add_action( 'after_setup_theme', array( $this, 'wpcm_template_debug_mode' ), 20 );
 			add_action( 'init', array( $this, 'init' ), 0 );
 			add_action( 'init', array( 'WPCM_Shortcodes', 'init' ) );
+			WPCM_Blocks::init();
 			add_action( 'tgmpa_register', array( $this, 'wp_club_manager_register_required_plugins' ) );
 
 			do_action( 'wpclubmanager_loaded' );
@@ -372,15 +373,7 @@ if ( ! class_exists( 'WPClubManager' ) ) :
 		 * @since 2.1.11
 		 */
 		public function wp_club_manager_register_required_plugins() {
-			$plugins = array(
-
-				array(
-					'name'     => 'Classic Editor',
-					'slug'     => 'classic-editor',
-					'required' => true,
-				),
-
-			);
+			$plugins = array();
 
 			$config = array(
 				'id'           => 'wp-club-manager',
