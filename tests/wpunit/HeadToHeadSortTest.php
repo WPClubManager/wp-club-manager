@@ -186,13 +186,13 @@ class HeadToHeadSortTest extends WPCMTestCase {
 	// -----------------------------------------------------------------------
 
 	public function test_h2h_tiebreaker_ranks_winner_higher() {
-		// A beats B 1-0, C beats A 2-0, B beats C 2-0.
-		// A: 1W 1L = 3pts, F=1 A=2 GD=-1
-		// B: 1W 1L = 3pts, F=2 A=1 GD=+1
-		// C: 1W 1L = 3pts, F=2 A=2 GD=0
-		// All tied on pts. H2H (priority 2) breaks A vs B: A beat B 1-0.
+		// A and B both beat C, so they are tied on overall pts.
+		// A beats B 1-0 in H2H, so A should rank above B.
+		// A: 2W 0L = 6pts (beat B 1-0, beat C 1-0)
+		// B: 1W 1L = 3pts (lost to A 0-1, beat C 2-0)
+		// C: 0W 2L = 0pts
 		$this->create_match( $this->club_a, $this->club_b, 1, 0 );
-		$this->create_match( $this->club_c, $this->club_a, 2, 0 );
+		$this->create_match( $this->club_a, $this->club_c, 1, 0 );
 		$this->create_match( $this->club_b, $this->club_c, 2, 0 );
 
 		update_option( 'wpcm_standings_orderby', 'pts' );
@@ -207,28 +207,16 @@ class HeadToHeadSortTest extends WPCMTestCase {
 		$clubs = $this->build_clubs_for_sort();
 		usort( $clubs, 'wpcm_sort_table_clubs' );
 
-		// Pairwise H2H is circular (A>B, B>C, C>A) so we only verify
-		// the deterministic pair: A must rank above B.
-		$a_pos = null;
-		$b_pos = null;
-		foreach ( $clubs as $pos => $club ) {
-			if ( $club->ID === $this->club_a ) {
-				$a_pos = $pos;
-			}
-			if ( $club->ID === $this->club_b ) {
-				$b_pos = $pos;
-			}
-		}
-		$this->assertNotNull( $a_pos, 'Club A must be in sorted results' );
-		$this->assertNotNull( $b_pos, 'Club B must be in sorted results' );
-		$this->assertLessThan( $b_pos, $a_pos, 'Club A should rank higher than Club B due to H2H win' );
+		$this->assertEquals( $this->club_a, $clubs[0]->ID, 'Club A should be 1st (most pts)' );
+		$this->assertEquals( $this->club_b, $clubs[1]->ID, 'Club B should be 2nd' );
+		$this->assertEquals( $this->club_c, $clubs[2]->ID, 'Club C should be 3rd (0 pts)' );
 	}
 
 	public function test_h2h_falls_through_to_next_priority_when_tied() {
 		// A and B draw 0-0 in their only H2H match.
 		// A also beats C 3-0, B also beats C 1-0.
-		// A: 1W 1D 0L = 4pts, F=3 A=0 GD=+3
-		// B: 1W 1D 0L = 4pts, F=1 A=0 GD=+1
+		// A: 1W 1D 0L = 4pts, F=3 A=0 GD=+3 (H2H: 1pt)
+		// B: 1W 1D 0L = 4pts, F=1 A=0 GD=+1 (H2H: 1pt)
 		$this->create_match( $this->club_a, $this->club_b, 0, 0 );
 		$this->create_match( $this->club_a, $this->club_c, 3, 0 );
 		$this->create_match( $this->club_b, $this->club_c, 1, 0 );
@@ -267,6 +255,33 @@ class HeadToHeadSortTest extends WPCMTestCase {
 		// Only the competitive match counts: B won, A lost.
 		$this->assertEquals( 0, $result['a_points'] );
 		$this->assertEquals( 3, $result['b_points'] );
+	}
+
+	public function test_h2h_excludes_postponed_without_walkover() {
+		// Postponed match without walkover should be excluded.
+		$postponed = $this->create_match( $this->club_a, $this->club_b, 0, 0 );
+		update_post_meta( $postponed, '_wpcm_postponed', '1' );
+
+		wpcm_set_h2h_context( $this->comp_id, $this->season_id );
+
+		$result = wpcm_get_h2h_points( $this->club_a, $this->club_b );
+
+		$this->assertEquals( 0, $result['a_points'] );
+		$this->assertEquals( 0, $result['b_points'] );
+	}
+
+	public function test_h2h_includes_walkover_results() {
+		// Postponed match with home_win walkover should count.
+		$walkover = $this->create_match( $this->club_a, $this->club_b, 0, 0 );
+		update_post_meta( $walkover, '_wpcm_postponed', '1' );
+		update_post_meta( $walkover, '_wpcm_walkover', 'home_win' );
+
+		wpcm_set_h2h_context( $this->comp_id, $this->season_id );
+
+		$result = wpcm_get_h2h_points( $this->club_a, $this->club_b );
+
+		$this->assertEquals( 3, $result['a_points'] );
+		$this->assertEquals( 0, $result['b_points'] );
 	}
 
 	public function test_h2h_with_no_direct_matches_returns_zero() {

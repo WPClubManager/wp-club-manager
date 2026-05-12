@@ -35,38 +35,20 @@ if ( ! function_exists( 'wpcm_club_standings_sort' ) ) {
 		$priority_2 = get_option( 'wpcm_standings_orderby_2' );
 		$priority_3 = get_option( 'wpcm_standings_orderby_3' );
 
-		if ( $a->wpcm_stats[ $priority_1 ] > $b->wpcm_stats[ $priority_1 ] ) {
-
-			return -1;
-
-		} elseif ( $a->wpcm_stats[ $priority_1 ] < $b->wpcm_stats[ $priority_1 ] ) {
-
-			return 1;
-
-		} elseif ( $a->wpcm_stats[ $priority_2 ] > $b->wpcm_stats[ $priority_2 ] ) {
-
+		$priorities = array( $priority_1, $priority_2, $priority_3 );
+		foreach ( $priorities as $col ) {
+			// Skip H2H — not supported in the legacy standings shortcode sorter.
+			if ( 'h2h' === $col || ! isset( $a->wpcm_stats[ $col ], $b->wpcm_stats[ $col ] ) ) {
+				continue;
+			}
+			if ( $a->wpcm_stats[ $col ] > $b->wpcm_stats[ $col ] ) {
 				return -1;
-
-		} elseif ( $a->wpcm_stats[ $priority_2 ] < $b->wpcm_stats[ $priority_2 ] ) {
-
-			return 1;
-
-		} elseif ( $a->wpcm_stats[ $priority_3 ] > $b->wpcm_stats[ $priority_3 ] ) {
-
-				return -1;
-
-		} elseif ( $a->wpcm_stats[ $priority_3 ] < $b->wpcm_stats[ $priority_3 ] ) {
-
-			return 1;
-
-		} elseif ( strcmp( $a->post_title, $b->post_title ) < 0 ) {
-
-				return -1;
-
-		} else {
-
-			return 1;
+			} elseif ( $a->wpcm_stats[ $col ] < $b->wpcm_stats[ $col ] ) {
+				return 1;
+			}
 		}
+
+		return strcmp( $a->post_title, $b->post_title );
 	}
 }
 
@@ -229,13 +211,14 @@ if ( ! function_exists( 'wpcm_set_h2h_context' ) ) {
 	/**
 	 * Store competition and season context for head-to-head lookups during sorting.
 	 *
-	 * @param int $comp   Competition term ID.
-	 * @param int $season Season term ID.
+	 * @param int|null $comp   Competition term ID (null = no restriction).
+	 * @param int|null $season Season term ID (null = no restriction).
 	 */
 	function wpcm_set_h2h_context( $comp, $season ) {
-		global $wpcm_h2h_comp, $wpcm_h2h_season;
-		$wpcm_h2h_comp   = $comp;
-		$wpcm_h2h_season = $season;
+		global $wpcm_h2h_comp, $wpcm_h2h_season, $wpcm_h2h_context_set;
+		$wpcm_h2h_comp        = $comp;
+		$wpcm_h2h_season      = $season;
+		$wpcm_h2h_context_set = true;
 	}
 }
 
@@ -244,9 +227,10 @@ if ( ! function_exists( 'wpcm_clear_h2h_context' ) ) {
 	 * Clear H2H context and in-memory cache after sorting is complete.
 	 */
 	function wpcm_clear_h2h_context() {
-		global $wpcm_h2h_comp, $wpcm_h2h_season;
-		$wpcm_h2h_comp   = null;
-		$wpcm_h2h_season = null;
+		global $wpcm_h2h_comp, $wpcm_h2h_season, $wpcm_h2h_context_set;
+		$wpcm_h2h_comp        = null;
+		$wpcm_h2h_season      = null;
+		$wpcm_h2h_context_set = false;
 		wpcm_h2h_cache_reset();
 	}
 }
@@ -283,37 +267,39 @@ if ( ! function_exists( 'wpcm_get_h2h_points' ) ) {
 	 * }
 	 */
 	function wpcm_get_h2h_points( $club_a_id, $club_b_id ) {
-		global $wpcm_h2h_comp, $wpcm_h2h_season, $wpcm_h2h_cache;
+		global $wpcm_h2h_comp, $wpcm_h2h_season, $wpcm_h2h_cache, $wpcm_h2h_context_set;
+
+		$neutral = array(
+			'a_points' => 0,
+			'b_points' => 0,
+			'a_gd'     => 0,
+			'b_gd'     => 0,
+			'a_goals'  => 0,
+			'b_goals'  => 0,
+		);
 
 		if ( ! is_array( $wpcm_h2h_cache ) ) {
 			$wpcm_h2h_cache = array();
 		}
 		$cache = &$wpcm_h2h_cache;
 
-		// Return neutral result when H2H context is not set.
-		if ( ! $wpcm_h2h_comp && ! $wpcm_h2h_season ) {
-			return array(
-				'a_points' => 0,
-				'b_points' => 0,
-				'a_gd'     => 0,
-				'b_gd'     => 0,
-				'a_goals'  => 0,
-				'b_goals'  => 0,
-			);
+		// Return neutral result when H2H context was never set by a caller.
+		if ( empty( $wpcm_h2h_context_set ) ) {
+			return $neutral;
 		}
 
 		// Normalise cache key so (A,B) and (B,A) share the same entry.
-		$lo  = min( $club_a_id, $club_b_id );
-		$hi  = max( $club_a_id, $club_b_id );
-		$key = "{$wpcm_h2h_comp}_{$wpcm_h2h_season}_{$lo}_{$hi}";
+		$lo       = min( $club_a_id, $club_b_id );
+		$hi       = max( $club_a_id, $club_b_id );
+		$comp_key = $wpcm_h2h_comp ? $wpcm_h2h_comp : '0';
+		$ssn_key  = $wpcm_h2h_season ? $wpcm_h2h_season : '0';
+		$key      = "{$comp_key}_{$ssn_key}_{$lo}_{$hi}";
 
 		if ( isset( $cache[ $key ] ) ) {
 			$cached = $cache[ $key ];
-			// If the caller asked with the IDs in the same order, return as-is.
 			if ( $club_a_id === $lo ) {
 				return $cached;
 			}
-			// Swap a/b in the result.
 			return array(
 				'a_points' => $cached['b_points'],
 				'b_points' => $cached['a_points'],
@@ -324,18 +310,14 @@ if ( ! function_exists( 'wpcm_get_h2h_points' ) ) {
 			);
 		}
 
+		$sport    = get_option( 'wpcm_sport' );
 		$win_pts  = (int) get_option( 'wpcm_standings_win_points', 3 );
 		$draw_pts = (int) get_option( 'wpcm_standings_draw_points', 1 );
 		$loss_pts = (int) get_option( 'wpcm_standings_loss_points', 0 );
+		$otw_pts  = (int) get_option( 'wpcm_standings_otw_points', 0 );
+		$otl_pts  = (int) get_option( 'wpcm_standings_otl_points', 1 );
 
-		$result = array(
-			'a_points' => 0,
-			'b_points' => 0,
-			'a_gd'     => 0,
-			'b_gd'     => 0,
-			'a_goals'  => 0,
-			'b_goals'  => 0,
-		);
+		$result = $neutral;
 
 		$tax_query = array();
 		if ( $wpcm_h2h_comp ) {
@@ -353,92 +335,115 @@ if ( ! function_exists( 'wpcm_get_h2h_points' ) ) {
 			);
 		}
 
-		// Find matches where club A is home and club B is away.
+		// Query both directions (A home / B away, and B home / A away) using OR.
 		$args = array(
-			'post_type'      => 'wpcm_match',
-			'posts_per_page' => -1,
-			'no_found_rows'  => true,
-			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			'post_type'              => 'wpcm_match',
+			'posts_per_page'         => -1,
+			'fields'                 => 'ids',
+			'no_found_rows'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+			'suppress_filters'       => true,
+			'meta_query'             => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				'relation' => 'OR',
 				array(
-					'key'   => 'wpcm_home_club',
-					'value' => $club_a_id,
+					'relation' => 'AND',
+					array(
+						'key'   => 'wpcm_home_club',
+						'value' => $club_a_id,
+					),
+					array(
+						'key'   => 'wpcm_away_club',
+						'value' => $club_b_id,
+					),
 				),
 				array(
-					'key'   => 'wpcm_away_club',
-					'value' => $club_b_id,
+					'relation' => 'AND',
+					array(
+						'key'   => 'wpcm_home_club',
+						'value' => $club_b_id,
+					),
+					array(
+						'key'   => 'wpcm_away_club',
+						'value' => $club_a_id,
+					),
 				),
 			),
-			'tax_query'      => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			'tax_query'              => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 		);
 
-		$matches = get_posts( $args );
+		$match_ids = get_posts( $args );
 
-		foreach ( $matches as $match ) {
-			$played    = (int) get_post_meta( $match->ID, 'wpcm_played', true );
-			$friendly  = (int) get_post_meta( $match->ID, 'wpcm_friendly', true );
-			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
+		foreach ( $match_ids as $match_id ) {
+			$played    = (int) get_post_meta( $match_id, 'wpcm_played', true );
+			$friendly  = (int) get_post_meta( $match_id, 'wpcm_friendly', true );
+			$postponed = (int) get_post_meta( $match_id, '_wpcm_postponed', true );
+			$walkover  = get_post_meta( $match_id, '_wpcm_walkover', true );
+			$overtime  = (int) get_post_meta( $match_id, 'wpcm_overtime', true );
 
-			if ( ! $played || $friendly || $postponed ) {
+			$home_id = (int) get_post_meta( $match_id, 'wpcm_home_club', true );
+			// Determine which club is "a" and which is "b" in this match.
+			$a_is_home = ( $home_id === $club_a_id );
+
+			// Handle walkover outcomes for postponed matches.
+			if ( $postponed ) {
+				if ( 'home_win' === $walkover ) {
+					if ( $a_is_home ) {
+						$result['a_points'] += $win_pts;
+						$result['b_points'] += $loss_pts;
+					} else {
+						$result['b_points'] += $win_pts;
+						$result['a_points'] += $loss_pts;
+					}
+				} elseif ( 'away_win' === $walkover ) {
+					if ( $a_is_home ) {
+						$result['a_points'] += $loss_pts;
+						$result['b_points'] += $win_pts;
+					} else {
+						$result['b_points'] += $loss_pts;
+						$result['a_points'] += $win_pts;
+					}
+				}
 				continue;
 			}
 
-			$home_goals = (int) get_post_meta( $match->ID, 'wpcm_home_goals', true );
-			$away_goals = (int) get_post_meta( $match->ID, 'wpcm_away_goals', true );
+			if ( ! $played || $friendly ) {
+				continue;
+			}
 
-			$result['a_goals'] += $home_goals;
-			$result['b_goals'] += $away_goals;
-			$result['a_gd']    += $home_goals - $away_goals;
-			$result['b_gd']    += $away_goals - $home_goals;
+			$home_goals = (int) get_post_meta( $match_id, 'wpcm_home_goals', true );
+			$away_goals = (int) get_post_meta( $match_id, 'wpcm_away_goals', true );
 
-			if ( $home_goals > $away_goals ) {
-				$result['a_points'] += $win_pts;
-				$result['b_points'] += $loss_pts;
-			} elseif ( $home_goals < $away_goals ) {
-				$result['a_points'] += $loss_pts;
-				$result['b_points'] += $win_pts;
+			if ( $a_is_home ) {
+				$a_goals = $home_goals;
+				$b_goals = $away_goals;
 			} else {
-				$result['a_points'] += $draw_pts;
-				$result['b_points'] += $draw_pts;
-			}
-		}
-
-		// Find matches where club B is home and club A is away.
-		$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-			array(
-				'key'   => 'wpcm_home_club',
-				'value' => $club_b_id,
-			),
-			array(
-				'key'   => 'wpcm_away_club',
-				'value' => $club_a_id,
-			),
-		);
-
-		$matches = get_posts( $args );
-
-		foreach ( $matches as $match ) {
-			$played    = (int) get_post_meta( $match->ID, 'wpcm_played', true );
-			$friendly  = (int) get_post_meta( $match->ID, 'wpcm_friendly', true );
-			$postponed = get_post_meta( $match->ID, '_wpcm_postponed', true );
-
-			if ( ! $played || $friendly || $postponed ) {
-				continue;
+				$a_goals = $away_goals;
+				$b_goals = $home_goals;
 			}
 
-			$home_goals = (int) get_post_meta( $match->ID, 'wpcm_home_goals', true );
-			$away_goals = (int) get_post_meta( $match->ID, 'wpcm_away_goals', true );
+			$result['a_goals'] += $a_goals;
+			$result['b_goals'] += $b_goals;
+			$result['a_gd']    += $a_goals - $b_goals;
+			$result['b_gd']    += $b_goals - $a_goals;
 
-			$result['b_goals'] += $home_goals;
-			$result['a_goals'] += $away_goals;
-			$result['b_gd']    += $home_goals - $away_goals;
-			$result['a_gd']    += $away_goals - $home_goals;
-
-			if ( $home_goals > $away_goals ) {
-				$result['b_points'] += $win_pts;
-				$result['a_points'] += $loss_pts;
-			} elseif ( $home_goals < $away_goals ) {
-				$result['b_points'] += $loss_pts;
-				$result['a_points'] += $win_pts;
+			// Use overtime-aware points for hockey/basketball.
+			if ( $a_goals > $b_goals ) {
+				if ( $overtime && in_array( $sport, array( 'hockey', 'basketball' ), true ) ) {
+					$result['a_points'] += $otw_pts;
+					$result['b_points'] += $otl_pts;
+				} else {
+					$result['a_points'] += $win_pts;
+					$result['b_points'] += $loss_pts;
+				}
+			} elseif ( $a_goals < $b_goals ) {
+				if ( $overtime && in_array( $sport, array( 'hockey', 'basketball' ), true ) ) {
+					$result['a_points'] += $otl_pts;
+					$result['b_points'] += $otw_pts;
+				} else {
+					$result['a_points'] += $loss_pts;
+					$result['b_points'] += $win_pts;
+				}
 			} else {
 				$result['a_points'] += $draw_pts;
 				$result['b_points'] += $draw_pts;
