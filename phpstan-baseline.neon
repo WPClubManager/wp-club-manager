@@ -551,11 +551,6 @@ parameters:
 			path: includes/admin/settings/class-wpcm-settings-general.php
 
 		-
-			message: "#^Offset 'name' does not exist on string\\.$#"
-			count: 2
-			path: includes/admin/views/html-admin-page-dashboard.php
-
-		-
 			message: "#^Variable \\$a_label might not be defined\\.$#"
 			count: 1
 			path: includes/admin/views/html-admin-page-dashboard.php
@@ -664,11 +659,6 @@ parameters:
 			message: "#^Variable \\$win_percent might not be defined\\.$#"
 			count: 1
 			path: includes/admin/views/html-admin-page-dashboard.php
-
-		-
-			message: "#^Offset 'name' does not exist on string\\.$#"
-			count: 2
-			path: includes/admin/views/html-admin-page-league-dashboard.php
 
 		-
 			message: "#^Variable \\$clubs might not be defined\\.$#"
@@ -1961,11 +1951,6 @@ parameters:
 			path: templates/shortcodes/match-list.php
 
 		-
-			message: "#^Offset 'status' does not exist on string\\.$#"
-			count: 1
-			path: templates/shortcodes/match-opponents.php
-
-		-
 			message: "#^Variable \\$away_badge might not be defined\\.$#"
 			count: 1
 			path: templates/shortcodes/match-opponents.php
@@ -2030,10 +2015,6 @@ parameters:
 			count: 1
 			path: templates/shortcodes/matches-2.php
 
-		-
-			message: "#^Offset 'status' does not exist on string\\.$#"
-			count: 1
-			path: templates/shortcodes/matches.php
 
 		-
 			message: "#^Variable \\$away_badge might not be defined\\.$#"
@@ -2269,31 +2250,6 @@ parameters:
 			message: "#^Variable \\$count might not be defined\\.$#"
 			count: 2
 			path: templates/single-match/lineup.php
-
-		-
-			message: "#^Offset 'address' does not exist on string\\.$#"
-			count: 2
-			path: templates/single-match/venue-info.php
-
-		-
-			message: "#^Offset 'description' does not exist on string\\.$#"
-			count: 1
-			path: templates/single-match/venue-info.php
-
-		-
-			message: "#^Offset 'id' does not exist on string\\.$#"
-			count: 1
-			path: templates/single-match/venue-info.php
-
-		-
-			message: "#^Offset 'name' does not exist on string\\.$#"
-			count: 1
-			path: templates/single-match/venue-info.php
-
-		-
-			message: "#^Offset 'name' does not exist on non\\-falsy\\-string\\.$#"
-			count: 1
-			path: templates/single-match/venue.php
 
 		-
 			message: "#^Variable \\$season might not be defined\\.$#"

@@ -27,8 +27,8 @@ class WPCM_Shortcode_Match_Calendar {
 	public static function output( $atts ) {
 
 		// Allow query string overrides for calendar navigation.
-		$get_month = isset( $_GET['month'] ) ? absint( $_GET['month'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
-		$get_year  = isset( $_GET['year'] ) ? absint( $_GET['year'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+		$get_month = isset( $_GET['wpcm_cal_month'] ) ? absint( $_GET['wpcm_cal_month'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
+		$get_year  = isset( $_GET['wpcm_cal_year'] ) ? absint( $_GET['wpcm_cal_year'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
 
 		$month  = $get_month ? $get_month : ( isset( $atts['month'] ) && '' !== $atts['month'] ? absint( $atts['month'] ) : (int) gmdate( 'n' ) );
 		$year   = $get_year ? $get_year : ( isset( $atts['year'] ) && '' !== $atts['year'] ? absint( $atts['year'] ) : (int) gmdate( 'Y' ) );

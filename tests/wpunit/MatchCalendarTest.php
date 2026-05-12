@@ -125,7 +125,7 @@ class MatchCalendarTest extends WPCMTestCase {
 	public function test_calendar_shows_day_of_week_headers() {
 		$output = do_shortcode( '[match_calendar month="6" year="2026"]' );
 		// Assert 7 column headers exist regardless of locale.
-		preg_match_all( '/<th>/', $output, $th_matches );
+		preg_match_all( '/<th[\s>]/', $output, $th_matches );
 		$this->assertCount( 7, $th_matches[0], 'Calendar should have 7 day-of-week headers' );
 	}
 

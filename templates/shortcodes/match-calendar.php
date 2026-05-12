@@ -48,23 +48,29 @@ if ( $next_month > 12 ) {
 <div class="wpcm-calendar">
 
 	<div class="wpcm-calendar-header">
-		<a class="wpcm-calendar-nav wpcm-calendar-prev" href="<?php echo esc_url( add_query_arg(
+		<?php
+		$prev_url = esc_url( add_query_arg(
 			array(
-				'month' => $prev_month,
-				'year'  => $prev_year,
+				'wpcm_cal_month' => $prev_month,
+				'wpcm_cal_year'  => $prev_year,
 			)
-		) ); ?>" aria-label="<?php esc_attr_e( 'Previous month', 'wp-club-manager' ); ?>">
+		) );
+		?>
+		<a class="wpcm-calendar-nav wpcm-calendar-prev" href="<?php echo $prev_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>" aria-label="<?php esc_attr_e( 'Previous month', 'wp-club-manager' ); ?>">
 			&laquo;
 		</a>
 		<span class="wpcm-calendar-title">
 			<?php echo esc_html( $month_name . ' ' . $year ); ?>
 		</span>
-		<a class="wpcm-calendar-nav wpcm-calendar-next" href="<?php echo esc_url( add_query_arg(
+		<?php
+		$next_url = esc_url( add_query_arg(
 			array(
-				'month' => $next_month,
-				'year'  => $next_year,
+				'wpcm_cal_month' => $next_month,
+				'wpcm_cal_year'  => $next_year,
 			)
-		) ); ?>" aria-label="<?php esc_attr_e( 'Next month', 'wp-club-manager' ); ?>">
+		) );
+		?>
+		<a class="wpcm-calendar-nav wpcm-calendar-next" href="<?php echo $next_url; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>" aria-label="<?php esc_attr_e( 'Next month', 'wp-club-manager' ); ?>">
 			&raquo;
 		</a>
 	</div>
@@ -73,7 +79,7 @@ if ( $next_month > 12 ) {
 		<thead>
 			<tr>
 				<?php foreach ( $day_labels as $label ) : ?>
-					<th><?php echo esc_html( $label ); ?></th>
+					<th scope="col"><?php echo esc_html( $label ); ?></th>
 				<?php endforeach; ?>
 			</tr>
 		</thead>

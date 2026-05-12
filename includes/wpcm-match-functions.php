@@ -550,7 +550,7 @@ function wpcm_get_match_badges( $post, $size = null, $args = null ) {
  *
  * @access public
  * @param int $post
- * @return array $venue
+ * @return array{name: string|null, id: int|null, description: string|null, address: string|null, capacity: string|null, status: string} $venue
  * @since 1.4.6
  */
 function wpcm_get_match_venue( $post ) {
