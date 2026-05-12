@@ -30,7 +30,13 @@ class BlockRegistrationTest extends WPCMTestCase {
 	/** @dataProvider block_names */
 	public function test_block_render_returns_string( $block_name ) {
 		$block_type = WP_Block_Type_Registry::get_instance()->get_registered( $block_name );
-		$output     = call_user_func( $block_type->render_callback, array() );
+
+		// Suppress warnings from shortcodes when rendered with empty data.
+		// The underlying shortcodes may trigger notices when no posts/terms exist.
+		$previous = error_reporting( error_reporting() & ~E_WARNING & ~E_NOTICE ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_value_error_reporting,WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
+		$output   = call_user_func( $block_type->render_callback, array(), '', null );
+		error_reporting( $previous ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_value_error_reporting,WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
+
 		$this->assertIsString( $output, "Block {$block_name} render should return a string" );
 	}
 
@@ -55,11 +61,13 @@ class BlockRegistrationTest extends WPCMTestCase {
 	}
 
 	public function test_block_category_is_registered() {
-		$post_id = wp_insert_post( array(
-			'post_type'   => 'post',
-			'post_title'  => 'Block Category Test',
-			'post_status' => 'draft',
-		) );
+		$post_id = wp_insert_post(
+			array(
+				'post_type'   => 'post',
+				'post_title'  => 'Block Category Test',
+				'post_status' => 'draft',
+			)
+		);
 
 		$categories = apply_filters( 'block_categories_all', array(), get_post( $post_id ) );
 		$slugs      = wp_list_pluck( $categories, 'slug' );

@@ -131,6 +131,10 @@
 	// Match List
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/match-list', {
+		title: __( 'Match List', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'list-view',
+		description: __( 'Display a list of matches.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/match-list', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'format', label: __( 'Format', 'wp-club-manager' ), type: 'select', options: formatOptions },
@@ -156,6 +160,10 @@
 	// Player List
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/player-list', {
+		title: __( 'Player List', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'groups',
+		description: __( 'Display a list of players.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/player-list', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'Roster ID', 'wp-club-manager' ) },
@@ -175,6 +183,10 @@
 	// Player Gallery
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/player-gallery', {
+		title: __( 'Player Gallery', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'format-gallery',
+		description: __( 'Display a gallery of players.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/player-gallery', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'Roster ID', 'wp-club-manager' ) },
@@ -194,6 +206,10 @@
 	// Staff List
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/staff-list', {
+		title: __( 'Staff List', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'businessman',
+		description: __( 'Display a list of staff members.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/staff-list', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'ID', 'wp-club-manager' ) },
@@ -213,6 +229,10 @@
 	// Staff Gallery
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/staff-gallery', {
+		title: __( 'Staff Gallery', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'format-gallery',
+		description: __( 'Display a gallery of staff members.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/staff-gallery', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'ID', 'wp-club-manager' ) },
@@ -232,6 +252,10 @@
 	// League Table
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/league-table', {
+		title: __( 'League Table', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'editor-table',
+		description: __( 'Display a league standings table.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/league-table', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'Table ID', 'wp-club-manager' ) },
@@ -252,6 +276,10 @@
 	// Map Venue
 	// -----------------------------------------------------------------------
 	registerBlockType( 'wpcm/map-venue', {
+		title: __( 'Map Venue', 'wp-club-manager' ),
+		category: 'wp-club-manager',
+		icon: 'location-alt',
+		description: __( 'Display a venue map.', 'wp-club-manager' ),
 		edit: makeEdit( 'wpcm/map-venue', [
 			{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 			{ attr: 'id', label: __( 'Venue ID', 'wp-club-manager' ) },
@@ -266,6 +294,10 @@
 	// -----------------------------------------------------------------------
 	if ( window.wpcmBlocksConfig && window.wpcmBlocksConfig.clubMode ) {
 		registerBlockType( 'wpcm/match-opponents', {
+			title: __( 'Match Opponents', 'wp-club-manager' ),
+			category: 'wp-club-manager',
+			icon: 'list-view',
+			description: __( 'Display matches against a specific opponent.', 'wp-club-manager' ),
 			edit: makeEdit( 'wpcm/match-opponents', [
 				{ attr: 'title', label: __( 'Title', 'wp-club-manager' ) },
 				{ attr: 'format', label: __( 'Format', 'wp-club-manager' ), type: 'select', options: formatOptions },
