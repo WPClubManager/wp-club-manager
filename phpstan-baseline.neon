@@ -91,11 +91,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin-dashboard.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
-			count: 2
-			path: includes/admin/class-wpcm-admin-dashboard.php
-
-		-
 			message: "#^Parameter \\#6 \\$callback of function add_submenu_page expects ''\\|\\(callable\\(\\)\\: mixed\\), false given\\.$#"
 			count: 5
 			path: includes/admin/class-wpcm-admin-menus.php
@@ -567,11 +562,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$text of function esc_html expects string, int\\<0, max\\> given\\.$#"
-			count: 1
-			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
 			count: 1
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-table-stats.php
 
@@ -1351,11 +1341,6 @@ parameters:
 			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
 
 		-
-			message: "#^Parameter \\#2 \\$callback of function usort expects callable\\(WP_Post, WP_Post\\)\\: int, 'wpcm_sort_table…' given\\.$#"
-			count: 1
-			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
-
-		-
 			message: "#^Variable \\$transient_name might not be defined\\.$#"
 			count: 2
 			path: includes/shortcodes/class-wpcm-shortcode-league-table.php
@@ -1694,16 +1679,6 @@ parameters:
 			message: "#^Variable \\$season might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-player-functions.php
-
-		-
-			message: "#^Cannot access property \\$post_name on array\\.$#"
-			count: 2
-			path: includes/wpcm-standings-functions.php
-
-		-
-			message: "#^Cannot access property \\$wpcm_stats on array\\.$#"
-			count: 4
-			path: includes/wpcm-standings-functions.php
 
 		-
 			message: "#^Comparison operation \"\\>\" between \\(array\\|float\\|int\\) and 0 results in an error\\.$#"

@@ -117,7 +117,9 @@ class WPCM_Meta_Box_Table_Stats {
 			}
 		}
 
+		wpcm_set_h2h_context( $comp, $season );
 		usort( $clubs, 'wpcm_sort_table_clubs' );
+		wpcm_clear_h2h_context();
 
 		if ( 'ASC' === $order ) {
 			$clubs = array_reverse( $clubs );

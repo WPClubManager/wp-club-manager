@@ -336,7 +336,9 @@ class WPCM_Admin_Dashboard {
 							}
 						}
 
+						wpcm_set_h2h_context( $comp, $season_id );
 						usort( $clubs, 'wpcm_sort_table_clubs' );
+						wpcm_clear_h2h_context();
 
 						if ( 'ASC' === $order ) {
 							$clubs = array_reverse( $clubs );
@@ -493,7 +495,9 @@ class WPCM_Admin_Dashboard {
 							}
 						}
 
+						wpcm_set_h2h_context( $comp, $season_id );
 						usort( $clubs, 'wpcm_sort_table_clubs' );
+						wpcm_clear_h2h_context();
 
 						if ( 'ASC' === $order ) {
 							$clubs = array_reverse( $clubs );
