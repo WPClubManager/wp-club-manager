@@ -75,10 +75,10 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 
 	public function test_player_gallery_image_is_linked_by_default() {
 		$output = do_shortcode( '[player_gallery id="' . $this->roster_id . '"]' );
-		$url    = get_permalink( $this->player_id );
+		$url    = preg_quote( esc_url( get_permalink( $this->player_id ) ), '/' );
 
-		$this->assertStringContainsString( '<a href="' . esc_url( $url ) . '">', $output );
-		$this->assertStringContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
+		$this->assertMatchesRegularExpression( '/<a\s[^>]*href="' . $url . '"/', $output );
+		$this->assertMatchesRegularExpression( '/<h4>\s*<a\s[^>]*href="' . $url . '"/', $output );
 	}
 
 	// -----------------------------------------------------------------------
@@ -87,10 +87,10 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 
 	public function test_player_gallery_image_not_linked_when_linkimage_no() {
 		$output = do_shortcode( '[player_gallery id="' . $this->roster_id . '" linkimage="no"]' );
-		$url    = get_permalink( $this->player_id );
+		$url    = preg_quote( esc_url( get_permalink( $this->player_id ) ), '/' );
 
-		$this->assertStringNotContainsString( '<a href="' . esc_url( $url ) . '">', $output );
-		$this->assertStringNotContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
+		$this->assertDoesNotMatchRegularExpression( '/<a\s[^>]*href="' . $url . '"/', $output );
+		$this->assertDoesNotMatchRegularExpression( '/<h4>\s*<a\s[^>]*href="' . $url . '"/', $output );
 		// The image should still be rendered, just without the link.
 		$this->assertStringContainsString( 'wpcm-players-gallery', $output );
 	}
@@ -101,9 +101,9 @@ class PlayerGalleryLinkTest extends WPCMTestCase {
 
 	public function test_player_gallery_image_linked_when_linkimage_yes() {
 		$output = do_shortcode( '[player_gallery id="' . $this->roster_id . '" linkimage="yes"]' );
-		$url    = get_permalink( $this->player_id );
+		$url    = preg_quote( esc_url( get_permalink( $this->player_id ) ), '/' );
 
-		$this->assertStringContainsString( '<a href="' . esc_url( $url ) . '">', $output );
-		$this->assertStringContainsString( '<h4><a href="' . esc_url( $url ) . '">', $output );
+		$this->assertMatchesRegularExpression( '/<a\s[^>]*href="' . $url . '"/', $output );
+		$this->assertMatchesRegularExpression( '/<h4>\s*<a\s[^>]*href="' . $url . '"/', $output );
 	}
 }
