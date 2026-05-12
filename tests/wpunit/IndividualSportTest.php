@@ -25,11 +25,24 @@ class IndividualSportTest extends WPCMTestCase {
 	/** @var callable|null */
 	private $sports_filter;
 
+	/** @var array */
+	private $original_options = array();
+
 	public function _setUp() {
 		parent::_setUp();
 
 		$this->original_sport        = get_option( 'wpcm_sport' );
 		$this->original_default_club = get_option( 'wpcm_default_club' );
+
+		$options_to_snapshot = array(
+			'wpcm_match_title_format',
+			'wpcm_match_goals_delimiter',
+			'wpcm_match_clubs_separator',
+			'wpcm_hide_scores',
+		);
+		foreach ( $options_to_snapshot as $opt ) {
+			$this->original_options[ $opt ] = get_option( $opt );
+		}
 
 		$this->club_id = wp_insert_post( array(
 			'post_type'   => 'wpcm_club',
@@ -58,6 +71,14 @@ class IndividualSportTest extends WPCMTestCase {
 		if ( $this->sports_filter ) {
 			remove_filter( 'wpcm_sports', $this->sports_filter );
 			$this->sports_filter = null;
+		}
+
+		foreach ( $this->original_options as $opt => $value ) {
+			if ( false === $value ) {
+				delete_option( $opt );
+			} else {
+				update_option( $opt, $value );
+			}
 		}
 
 		parent::_tearDown();

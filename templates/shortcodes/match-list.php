@@ -57,10 +57,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</span>
 				</span>
 				<?php if ( ! empty( $side2 ) ) : ?>
-				<?php echo wp_kses_post( $away_badge ); ?>
-				<span class="wpcm-matches-list-col wpcm-matches-list-club2">
-					<?php echo esc_html( $side2 ); ?>
-				</span>
+					<?php echo wp_kses_post( $away_badge ); ?>
+					<span class="wpcm-matches-list-col wpcm-matches-list-club2">
+						<?php echo esc_html( $side2 ); ?>
+					</span>
 				<?php endif; ?>
 				<?php if ( 1 === $show_comp ) { ?>
 					<span class="wpcm-matches-list-col wpcm-matches-list-info">
