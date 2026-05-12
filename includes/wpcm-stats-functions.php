@@ -556,6 +556,10 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 			global $post;
 		}
 
+		if ( $post instanceof WP_Post ) {
+			$post = $post->ID;
+		}
+
 		$output  = array();
 		$teams   = wp_get_object_terms( $post, 'wpcm_team', array( 'orderby' => 'tax_position' ) );
 		$seasons = wp_get_object_terms( $post, 'wpcm_season', array( 'orderby' => 'tax_position' ) );
