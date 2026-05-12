@@ -546,7 +546,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 	/**
 	 * Get total player stats.
 	 *
-	 * @param WP_Post $post
+	 * @param WP_Post|int|null $post Player post object or ID.
 	 *
 	 * @return array
 	 */
@@ -556,9 +556,11 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 			global $post;
 		}
 
+		$post_id = ( $post instanceof WP_Post ) ? $post->ID : $post;
+
 		$output  = array();
-		$teams   = wp_get_object_terms( $post, 'wpcm_team', array( 'orderby' => 'tax_position' ) );
-		$seasons = wp_get_object_terms( $post, 'wpcm_season', array( 'orderby' => 'tax_position' ) );
+		$teams   = wp_get_object_terms( $post_id, 'wpcm_team', array( 'orderby' => 'tax_position' ) );
+		$seasons = wp_get_object_terms( $post_id, 'wpcm_season', array( 'orderby' => 'tax_position' ) );
 
 		// isolated team stats
 		if ( is_array( $teams ) ) {
@@ -566,7 +568,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 			foreach ( $teams as $team ) {
 
 				// combined season stats per team
-				$stats                       = get_wpcm_player_auto_stats( $post, $team->term_id, null );
+				$stats                       = get_wpcm_player_auto_stats( $post_id, $team->term_id, null );
 				$output[ $team->term_id ][0] = array(
 					'auto'  => $stats,
 					'total' => $stats,
@@ -577,7 +579,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 
 					foreach ( $seasons as $season ) {
 
-						$stats                                        = get_wpcm_player_auto_stats( $post, $team->term_id, $season->term_id );
+						$stats                                        = get_wpcm_player_auto_stats( $post_id, $team->term_id, $season->term_id );
 						$output[ $team->term_id ][ $season->term_id ] = array(
 							'auto'  => $stats,
 							'total' => $stats,
@@ -588,8 +590,8 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 		}
 
 		// combined season stats for combined team
-		$stats        = get_wpcm_player_auto_stats( $post );
-		$manual_stats = get_wpcm_player_manual_stats( $post, $team->term_id, $season->term_id );
+		$stats        = get_wpcm_player_auto_stats( $post_id );
+		$manual_stats = get_wpcm_player_manual_stats( $post_id );
 		$output[0][0] = array(
 			'auto'   => $stats,
 			'total'  => $stats,
@@ -601,7 +603,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 
 			foreach ( $seasons as $season ) {
 
-				$stats                         = get_wpcm_player_auto_stats( $post, null, $season->term_id );
+				$stats                         = get_wpcm_player_auto_stats( $post_id, null, $season->term_id );
 				$output[0][ $season->term_id ] = array(
 					'auto'  => $stats,
 					'total' => $stats,
@@ -610,7 +612,7 @@ if ( ! function_exists( 'get_wpcm_player_stats' ) ) {
 		}
 
 		// manual stats
-		$manual_stats = (array) maybe_unserialize( get_post_meta( $post, 'wpcm_stats', true ) );
+		$manual_stats = (array) maybe_unserialize( get_post_meta( $post_id, 'wpcm_stats', true ) );
 
 		if ( is_array( $manual_stats ) ) {
 
