@@ -138,7 +138,8 @@ if ( ! class_exists( 'WPCM_Settings_Standings' ) ) :
 			);
 
 			$stats_names = wpcm_get_preset_labels( 'standings', 'name' );
-			$options = $stats_names;
+			$options         = $stats_names;
+			$options['h2h']  = __( 'Head-to-Head Record', 'wp-club-manager' );
 
 			$settings[] = array(
 				'title'    => __( 'Priority 1', 'wp-club-manager' ),
