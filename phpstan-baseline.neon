@@ -116,11 +116,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin-permalink-settings.php
 
 		-
-			message: "#^Access to an undefined property object\\:\\:\\$request\\.$#"
-			count: 1
-			path: includes/admin/class-wpcm-admin-post-types.php
-
-		-
 			message: "#^Action callback returns int but should not return anything\\.$#"
 			count: 1
 			path: includes/admin/class-wpcm-admin-post-types.php
@@ -904,11 +899,6 @@ parameters:
 			message: "#^Variable \\$_optname in isset\\(\\) always exists and is not nullable\\.$#"
 			count: 1
 			path: includes/class-wpcm-license.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$request\\.$#"
-			count: 1
-			path: includes/class-wpcm-post-types.php
 
 		-
 			message: "#^Left side of && is always true\\.$#"
