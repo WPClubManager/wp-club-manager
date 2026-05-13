@@ -28,7 +28,7 @@ class WPCM_Post_Types {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'support_jetpack_omnisearch' ) );
-		add_filter( 'the_posts', array( __CLASS__, 'show_future_matches' ) );
+		add_action( 'pre_get_posts', array( __CLASS__, 'show_future_matches' ) );
 		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
 	}
 
@@ -516,18 +516,18 @@ class WPCM_Post_Types {
 	}
 
 	/**
-	 * Show future matches
+	 * Allow future-dated matches to be viewed on the frontend.
 	 *
-	 * @access public
-	 * @param string $posts
-	 * @return string
+	 * WordPress excludes future posts from queries by default, causing
+	 * scheduled matches to return 404. This adds 'future' to the
+	 * post_status query before the SQL is built.
+	 *
+	 * @param WP_Query $query The query object.
 	 */
-	public static function show_future_matches( $posts ) {
-		global $wp_query, $wpdb;
-		if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
-			$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
+	public static function show_future_matches( $query ) {
+		if ( $query->is_singular && isset( $query->query_vars['wpcm_match'] ) ) {
+			$query->set( 'post_status', array( 'publish', 'future' ) );
 		}
-		return $posts;
 	}
 
 	/**
