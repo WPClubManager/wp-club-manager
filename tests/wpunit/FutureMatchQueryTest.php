@@ -66,6 +66,22 @@ class FutureMatchQueryTest extends WPCMTestCase {
 	}
 
 	/**
+	 * The show_future_matches filter should include future status when post_type is set.
+	 */
+	public function test_pre_get_posts_adds_future_status_for_match_by_post_type() {
+		$query = new WP_Query();
+		$query->set( 'post_type', 'wpcm_match' );
+		$query->is_singular = true;
+
+		do_action_ref_array( 'pre_get_posts', array( &$query ) );
+
+		$status = $query->get( 'post_status' );
+		$this->assertIsArray( $status );
+		$this->assertContains( 'publish', $status );
+		$this->assertContains( 'future', $status );
+	}
+
+	/**
 	 * The filter should not affect non-match queries.
 	 */
 	public function test_pre_get_posts_does_not_affect_other_post_types() {

@@ -525,7 +525,7 @@ class WPCM_Post_Types {
 	 * @param WP_Query $query The query object.
 	 */
 	public static function show_future_matches( $query ) {
-		if ( $query->is_singular && isset( $query->query_vars['wpcm_match'] ) ) {
+		if ( $query->is_singular && ( isset( $query->query_vars['wpcm_match'] ) || 'wpcm_match' === $query->get( 'post_type' ) ) ) {
 			$query->set( 'post_status', array( 'publish', 'future' ) );
 		}
 	}
