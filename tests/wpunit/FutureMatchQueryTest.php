@@ -1,0 +1,82 @@
+<?php
+/**
+ * Tests for scheduled (future) match visibility on the frontend.
+ *
+ * Verifies that future-dated wpcm_match posts are included in
+ * single-post queries instead of returning 404.
+ *
+ * @see https://github.com/WPClubManager/wp-club-manager/issues/94
+ */
+
+class FutureMatchQueryTest extends WPCMTestCase {
+
+	/** @var int */
+	private $match_id;
+
+	public function _setUp() {
+		parent::_setUp();
+
+		// Create a future-dated match.
+		$this->match_id = wp_insert_post( array(
+			'post_type'   => 'wpcm_match',
+			'post_title'  => 'Home FC vs Away United',
+			'post_status' => 'future',
+			'post_date'   => gmdate( 'Y-m-d H:i:s', strtotime( '+7 days' ) ),
+		) );
+	}
+
+	public function _tearDown() {
+		if ( $this->match_id ) {
+			wp_delete_post( $this->match_id, true );
+		}
+		parent::_tearDown();
+	}
+
+	/**
+	 * A WP_Query for a single future match by post name should return results.
+	 */
+	public function test_future_match_query_returns_post() {
+		$match = get_post( $this->match_id );
+
+		$query = new WP_Query( array(
+			'post_type' => 'wpcm_match',
+			'name'      => $match->post_name,
+		) );
+
+		$this->assertGreaterThan( 0, $query->post_count, 'Future match should be found by slug query' );
+		$this->assertEquals( $this->match_id, $query->posts[0]->ID );
+	}
+
+	/**
+	 * The show_future_matches filter should include future status in query.
+	 */
+	public function test_pre_get_posts_adds_future_status_for_match() {
+		$query = new WP_Query();
+		$query->set( 'post_type', 'wpcm_match' );
+		$query->set( 'wpcm_match', 'some-slug' );
+		$query->is_singular = true;
+
+		// Fire the pre_get_posts action to trigger the filter.
+		do_action_ref_array( 'pre_get_posts', array( &$query ) );
+
+		$status = $query->get( 'post_status' );
+		$this->assertIsArray( $status );
+		$this->assertContains( 'publish', $status );
+		$this->assertContains( 'future', $status );
+	}
+
+	/**
+	 * The filter should not affect non-match queries.
+	 */
+	public function test_pre_get_posts_does_not_affect_other_post_types() {
+		$query = new WP_Query();
+		$query->set( 'post_type', 'post' );
+		$query->is_singular = true;
+
+		do_action_ref_array( 'pre_get_posts', array( &$query ) );
+
+		$status = $query->get( 'post_status' );
+		// Should remain unchanged (empty string = default).
+		$this->assertEmpty( $status );
+	}
+}
