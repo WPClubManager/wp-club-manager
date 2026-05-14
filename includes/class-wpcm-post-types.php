@@ -542,11 +542,7 @@ class WPCM_Post_Types {
 			$status = $query->get( 'post_status' );
 
 			if ( empty( $status ) ) {
-				$status = get_post_stati( array( 'public' => true ) );
-				if ( is_user_logged_in() ) {
-					$status = array_merge( $status, get_post_stati( array( 'private' => true ) ) );
-				}
-				$status = array_values( $status );
+				$status = array( 'publish' );
 			} elseif ( is_string( $status ) ) {
 				$status = array( $status );
 			}
