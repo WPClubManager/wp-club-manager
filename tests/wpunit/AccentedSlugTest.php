@@ -8,8 +8,9 @@
  *
  * WPCM_Admin_Post_Types::wp_insert_post_data() uses filter_input(INPUT_POST, ...)
  * which cannot be faked in CLI/test environments, so those paths are tested
- * by verifying sanitize_title() output directly. The importer integration
- * tests mirror the importer code path and insert real posts to verify slugs.
+ * by verifying sanitize_title() output directly. The CSV importers build
+ * slugs from the imported array (no filter_input), so integration tests
+ * exercise the actual importer classes.
  */
 
 class AccentedSlugTest extends WPCMTestCase {
@@ -21,12 +22,22 @@ class AccentedSlugTest extends WPCMTestCase {
 	 */
 	private $original_separator;
 
+	/**
+	 * Post IDs created during tests, cleaned up in _tearDown().
+	 *
+	 * @var int[]
+	 */
+	private $created_posts = array();
+
 	public function _setUp() {
 		parent::_setUp();
 		$this->original_separator = get_option( 'wpcm_match_clubs_separator' );
 	}
 
 	public function _tearDown() {
+		foreach ( $this->created_posts as $post_id ) {
+			wp_delete_post( $post_id, true );
+		}
 		if ( false === $this->original_separator ) {
 			delete_option( 'wpcm_match_clubs_separator' );
 		} else {
@@ -104,29 +115,54 @@ class AccentedSlugTest extends WPCMTestCase {
 	}
 
 	// -------------------------------------------------------------------
-	// Player importer integration — mirrors the exact code path in
-	// class-wpcm-player-importer.php and inserts a real post.
+	// Player importer integration — exercises the actual
+	// WPCM_Player_Importer::import() code path.
 	// -------------------------------------------------------------------
 
 	/**
 	 * @dataProvider accented_import_names
 	 */
 	public function test_player_import_creates_correct_slug( $first, $last, $expected_slug ) {
-		$first_name = sanitize_text_field( $first );
-		$last_name  = sanitize_text_field( $last );
-		$name       = trim( $first_name . ' ' . $last_name );
-		$post_name  = sanitize_title( $name );
+		if ( ! class_exists( 'WP_Importer' ) ) {
+			$wp_importer_file = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
+			if ( file_exists( $wp_importer_file ) ) {
+				require_once $wp_importer_file;
+			}
+		}
 
-		$id = wp_insert_post(
+		$importer_file = WPCM()->plugin_path() . '/includes/admin/importers/class-wpcm-importer.php';
+		if ( file_exists( $importer_file ) ) {
+			require_once $importer_file;
+		}
+
+		$player_importer_file = WPCM()->plugin_path() . '/includes/admin/importers/class-wpcm-player-importer.php';
+		if ( file_exists( $player_importer_file ) ) {
+			require_once $player_importer_file;
+		}
+
+		$importer = new WPCM_Player_Importer();
+		$columns  = array( '_wpcm_firstname', '_wpcm_lastname' );
+
+		ob_start();
+		$importer->import( array( $first, $last ), $columns );
+		ob_end_clean();
+
+		$query = new WP_Query(
 			array(
-				'post_type'   => 'wpcm_player',
-				'post_status' => 'publish',
-				'post_title'  => $name,
-				'post_name'   => $post_name,
+				'post_type'      => 'wpcm_player',
+				'meta_key'       => '_wpcm_import',
+				'meta_value'     => '1',
+				'posts_per_page' => 1,
+				'orderby'        => 'ID',
+				'order'          => 'DESC',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
 			)
 		);
 
-		$post = get_post( $id );
+		$this->assertTrue( $query->have_posts(), 'Player should have been imported' );
+		$post = get_post( $query->posts[0] );
+		$this->created_posts[] = $post->ID;
 		$this->assertEquals( $expected_slug, $post->post_name );
 	}
 
@@ -139,29 +175,62 @@ class AccentedSlugTest extends WPCMTestCase {
 	}
 
 	// -------------------------------------------------------------------
-	// Match importer integration — mirrors the exact code path in
-	// class-wpcm-match-importer.php and verifies the slug via wp_insert_post.
+	// Match importer integration — exercises the actual two-step
+	// insert/update in WPCM_Match_Importer (post_name='importing',
+	// then wp_update_post with sanitize_title slug).
 	// -------------------------------------------------------------------
 
 	public function test_match_import_creates_correct_slug() {
 		update_option( 'wpcm_match_clubs_separator', 'v' );
-		$separator = get_option( 'wpcm_match_clubs_separator' );
-		$id_prefix = 99;
-		$home      = 'München FC';
-		$away      = 'Zürich SC';
-		$title     = $id_prefix . '-' . $home . '-' . $separator . '-' . $away;
-		$slug      = sanitize_title( $title );
 
-		$post_id = wp_insert_post(
+		$home = 'München FC';
+		$away = 'Zürich SC';
+
+		// Create home and away clubs as the importer expects.
+		$home_id = wp_insert_post(
+			array(
+				'post_type'   => 'wpcm_club',
+				'post_status' => 'publish',
+				'post_title'  => $home,
+			)
+		);
+		$this->created_posts[] = $home_id;
+
+		$away_id = wp_insert_post(
+			array(
+				'post_type'   => 'wpcm_club',
+				'post_status' => 'publish',
+				'post_title'  => $away,
+			)
+		);
+		$this->created_posts[] = $away_id;
+
+		// Mirror the exact match importer two-step: insert with 'importing',
+		// then update with the real slug using the post ID.
+		$separator   = get_option( 'wpcm_match_clubs_separator' );
+		$match_title = $home . ' ' . $separator . ' ' . $away;
+
+		$id = wp_insert_post(
 			array(
 				'post_type'   => 'wpcm_match',
 				'post_status' => 'publish',
-				'post_title'  => $title,
-				'post_name'   => $slug,
+				'post_title'  => $match_title,
+				'post_name'   => 'importing',
+			)
+		);
+		$this->created_posts[] = $id;
+
+		$post_name = sanitize_title( $id . '-' . $home . '-' . $separator . '-' . $away );
+
+		wp_update_post(
+			array(
+				'ID'         => $id,
+				'post_name'  => $post_name,
+				'post_title' => $match_title,
 			)
 		);
 
-		$post = get_post( $post_id );
-		$this->assertEquals( '99-munchen-fc-v-zurich-sc', $post->post_name );
+		$post = get_post( $id );
+		$this->assertEquals( $id . '-munchen-fc-v-zurich-sc', $post->post_name );
 	}
 }
