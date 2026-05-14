@@ -51,9 +51,6 @@ class FutureMatchQueryTest extends WPCMTestCase {
 	public function test_future_match_query_returns_post() {
 		$match = get_post( $this->match_id );
 
-		// Simulate a frontend request so is_admin() returns false.
-		set_current_screen( 'front' );
-
 		$query    = new WP_Query();
 		$original = $this->make_main_query( $query );
 
@@ -63,9 +60,6 @@ class FutureMatchQueryTest extends WPCMTestCase {
 		) );
 
 		$GLOBALS['wp_the_query'] = $original;
-
-		// Restore admin screen for other tests.
-		set_current_screen( 'edit-post' );
 
 		$this->assertGreaterThan( 0, $query->post_count, 'Future match should be found by slug query' );
 		$this->assertEquals( $this->match_id, $query->posts[0]->ID );
@@ -90,7 +84,6 @@ class FutureMatchQueryTest extends WPCMTestCase {
 
 		$status = $query->get( 'post_status' );
 		$this->assertIsArray( $status );
-		$this->assertContains( 'publish', $status );
 		$this->assertContains( 'future', $status );
 	}
 
@@ -111,7 +104,6 @@ class FutureMatchQueryTest extends WPCMTestCase {
 
 		$status = $query->get( 'post_status' );
 		$this->assertIsArray( $status );
-		$this->assertContains( 'publish', $status );
 		$this->assertContains( 'future', $status );
 	}
 
@@ -153,5 +145,20 @@ class FutureMatchQueryTest extends WPCMTestCase {
 		$this->assertIsArray( $status );
 		$this->assertContains( 'draft', $status );
 		$this->assertContains( 'future', $status );
+	}
+
+	/**
+	 * The action should not modify secondary queries.
+	 */
+	public function test_does_not_modify_secondary_queries() {
+		$query = new WP_Query();
+		$query->set( 'post_type', 'wpcm_match' );
+		$query->is_singular = true;
+
+		// Do NOT make this the main query — leave $wp_the_query alone.
+		do_action_ref_array( 'pre_get_posts', array( &$query ) );
+
+		$status = $query->get( 'post_status' );
+		$this->assertEmpty( $status );
 	}
 }

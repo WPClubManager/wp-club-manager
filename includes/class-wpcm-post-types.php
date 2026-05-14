@@ -532,15 +532,21 @@ class WPCM_Post_Types {
 	 * @param WP_Query $query The query object.
 	 */
 	public static function show_future_matches( $query ) {
-		if ( is_admin() || ! $query->is_main_query() ) {
+		if ( ! $query->is_main_query() ) {
 			return;
 		}
 
-		if ( $query->is_singular && ( isset( $query->query_vars['wpcm_match'] ) || 'wpcm_match' === $query->get( 'post_type' ) ) ) {
+		$is_match = isset( $query->query_vars['wpcm_match'] ) || 'wpcm_match' === $query->get( 'post_type' );
+
+		if ( $query->is_singular && $is_match ) {
 			$status = $query->get( 'post_status' );
 
 			if ( empty( $status ) ) {
-				$status = array( 'publish' );
+				$status = get_post_stati( array( 'public' => true ) );
+				if ( is_user_logged_in() ) {
+					$status = array_merge( $status, get_post_stati( array( 'private' => true ) ) );
+				}
+				$status = array_values( $status );
 			} elseif ( is_string( $status ) ) {
 				$status = array( $status );
 			}
