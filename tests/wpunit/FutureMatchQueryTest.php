@@ -46,10 +46,13 @@ class FutureMatchQueryTest extends WPCMTestCase {
 
 	/**
 	 * A main-query for a single future match by CPT query var should return results
-	 * because the pre_get_posts hook adds 'future' to the post_status.
+	 * because the pre_get_posts action adds 'future' to the post_status.
 	 */
 	public function test_future_match_query_returns_post() {
 		$match = get_post( $this->match_id );
+
+		// Simulate a frontend request so is_admin() returns false.
+		set_current_screen( 'front' );
 
 		$query    = new WP_Query();
 		$original = $this->make_main_query( $query );
@@ -61,12 +64,15 @@ class FutureMatchQueryTest extends WPCMTestCase {
 
 		$GLOBALS['wp_the_query'] = $original;
 
+		// Restore admin screen for other tests.
+		set_current_screen( 'edit-post' );
+
 		$this->assertGreaterThan( 0, $query->post_count, 'Future match should be found by slug query' );
 		$this->assertEquals( $this->match_id, $query->posts[0]->ID );
 	}
 
 	/**
-	 * The show_future_matches action should include future status in query
+	 * The pre_get_posts action should include future status in query
 	 * when the wpcm_match query var is set.
 	 */
 	public function test_pre_get_posts_adds_future_status_for_match() {
@@ -89,7 +95,7 @@ class FutureMatchQueryTest extends WPCMTestCase {
 	}
 
 	/**
-	 * The show_future_matches action should include future status when
+	 * The pre_get_posts action should include future status when
 	 * post_type is set without the CPT query var.
 	 */
 	public function test_pre_get_posts_adds_future_status_for_match_by_post_type() {
