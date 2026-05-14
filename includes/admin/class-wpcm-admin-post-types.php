@@ -28,7 +28,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 
-			add_filter( 'the_posts', array( $this, 'show_scheduled_matches' ) );
 			add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
 
 			// WP List table columns. Defined here so they are always available for events such as inline editing.
@@ -217,24 +216,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 			);
 
 			return $messages;
-		}
-
-		/**
-		 * Show future
-		 *
-		 * @param array $posts
-		 *
-		 * @return array
-		 */
-		public function show_scheduled_matches( $posts ) {
-
-			global $wp_query, $wpdb;
-
-			if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
-				$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
-			}
-
-			return $posts;
 		}
 
 		/**
