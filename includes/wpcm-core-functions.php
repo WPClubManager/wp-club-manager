@@ -202,9 +202,17 @@ function wpcm_get_image_size( $image_size ) {
  */
 function wpcm_flush_rewrite_rules() {
 
-	$post_types = new WPCM_Post_Types();
-	$post_types->register_taxonomies();
-	$post_types->register_post_types();
+	// Unregister existing CPTs so register_post_types() can re-register
+	// them with updated option values (e.g. changed permalink slugs).
+	$wpcm_types = array( 'wpcm_club', 'wpcm_player', 'wpcm_staff', 'wpcm_match', 'wpcm_table', 'wpcm_sponsor', 'wpcm_roster' );
+	foreach ( $wpcm_types as $type ) {
+		if ( post_type_exists( $type ) ) {
+			unregister_post_type( $type );
+		}
+	}
+
+	WPCM_Post_Types::register_taxonomies();
+	WPCM_Post_Types::register_post_types();
 	flush_rewrite_rules();
 }
 

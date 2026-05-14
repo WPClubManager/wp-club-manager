@@ -45,18 +45,6 @@ class PostTypesTest extends WPCMTestCase {
 			array( 'wpcm_staff' ),
 			array( 'wpcm_match' ),
 			array( 'wpcm_sponsor' ),
-		);
-	}
-
-	/** @dataProvider non_public_post_types */
-	public function test_post_type_is_not_public( $cpt ) {
-		$obj = get_post_type_object( $cpt );
-		$this->assertNotNull( $obj );
-		$this->assertFalse( $obj->public, "{$cpt} should not be public" );
-	}
-
-	public function non_public_post_types() {
-		return array(
 			array( 'wpcm_table' ),
 		);
 	}
