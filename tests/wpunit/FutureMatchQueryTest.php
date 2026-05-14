@@ -45,16 +45,21 @@ class FutureMatchQueryTest extends WPCMTestCase {
 	}
 
 	/**
-	 * A WP_Query for a single future match by CPT query var should return results.
+	 * A main-query for a single future match by CPT query var should return results
+	 * because the pre_get_posts hook adds 'future' to the post_status.
 	 */
 	public function test_future_match_query_returns_post() {
 		$match = get_post( $this->match_id );
 
-		$query = new WP_Query( array(
-			'wpcm_match'  => $match->post_name,
-			'post_type'   => 'wpcm_match',
-			'post_status' => array( 'publish', 'future' ),
+		$query    = new WP_Query();
+		$original = $this->make_main_query( $query );
+
+		$query->query( array(
+			'wpcm_match' => $match->post_name,
+			'post_type'  => 'wpcm_match',
 		) );
+
+		$GLOBALS['wp_the_query'] = $original;
 
 		$this->assertGreaterThan( 0, $query->post_count, 'Future match should be found by slug query' );
 		$this->assertEquals( $this->match_id, $query->posts[0]->ID );
