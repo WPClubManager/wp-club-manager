@@ -28,6 +28,7 @@ if ( ! class_exists( 'WPCM_Admin_Permalink_Settings' ) ) :
 				array( 'player', __( 'Players', 'wp-club-manager' ) ),
 				array( 'staff', __( 'Staff', 'wp-club-manager' ) ),
 				array( 'match', __( 'Matches', 'wp-club-manager' ) ),
+				array( 'table', __( 'League Tables', 'wp-club-manager' ) ),
 			) );
 
 			add_action( 'admin_init', array( $this, 'settings_init' ) );
