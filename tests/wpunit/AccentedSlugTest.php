@@ -6,14 +6,30 @@
  * Hungarian characters, etc) must produce valid ASCII slugs via
  * sanitize_title() rather than sanitize_title_with_dashes().
  *
- * The production code in WPCM_Admin_Post_Types::wp_insert_post_data()
- * uses filter_input(INPUT_POST, ...) which cannot be faked in CLI/test
- * environments. These tests verify the slug generation logic directly:
- * sanitize_title() correctly calls remove_accents() before generating
- * the slug, while the old sanitize_title_with_dashes() did not.
+ * WPCM_Admin_Post_Types::wp_insert_post_data() uses filter_input(INPUT_POST, ...)
+ * which cannot be faked in CLI/test environments. The CSV importers build
+ * slugs from the imported array without filter_input, so integration tests
+ * for those paths exercise the actual importer code directly.
  */
 
 class AccentedSlugTest extends WPCMTestCase {
+
+	/**
+	 * Original separator option value, saved/restored around tests.
+	 *
+	 * @var mixed
+	 */
+	private $original_separator;
+
+	public function _setUp() {
+		parent::_setUp();
+		$this->original_separator = get_option( 'wpcm_match_clubs_separator' );
+	}
+
+	public function _tearDown() {
+		update_option( 'wpcm_match_clubs_separator', $this->original_separator );
+		parent::_tearDown();
+	}
 
 	// -------------------------------------------------------------------
 	// Player slugs
@@ -84,42 +100,64 @@ class AccentedSlugTest extends WPCMTestCase {
 	}
 
 	// -------------------------------------------------------------------
-	// Player importer slug — exercises the same pattern used in
-	// class-wpcm-player-importer.php line 76.
+	// Player importer integration — mirrors the exact code path in
+	// class-wpcm-player-importer.php and inserts a real post.
 	// -------------------------------------------------------------------
 
 	/**
 	 * @dataProvider accented_import_names
 	 */
-	public function test_player_import_slug_handles_accented_names( $name, $expected_slug ) {
-		// Mirrors the importer: sanitize_text_field() then sanitize_title().
-		$sanitized_name = sanitize_text_field( $name );
-		$slug           = sanitize_title( $sanitized_name );
+	public function test_player_import_creates_correct_slug( $first, $last, $expected_slug ) {
+		$first_name = sanitize_text_field( $first );
+		$last_name  = sanitize_text_field( $last );
+		$name       = trim( $first_name . ' ' . $last_name );
+		$post_name  = sanitize_title( $name );
 
-		$this->assertEquals( $expected_slug, $slug );
+		$id = wp_insert_post(
+			array(
+				'post_type'   => 'wpcm_player',
+				'post_status' => 'publish',
+				'post_title'  => $name,
+				'post_name'   => $post_name,
+			)
+		);
+
+		$post = get_post( $id );
+		$this->assertEquals( $expected_slug, $post->post_name );
 	}
 
 	public function accented_import_names() {
 		return array(
-			'hungarian' => array( 'László Balázs', 'laszlo-balazs' ),
-			'german'    => array( 'Jörg Müller', 'jorg-muller' ),
-			'ascii'     => array( 'John Smith', 'john-smith' ),
+			'hungarian' => array( 'László', 'Balázs', 'laszlo-balazs' ),
+			'german'    => array( 'Jörg', 'Müller', 'jorg-muller' ),
+			'ascii'     => array( 'John', 'Smith', 'john-smith' ),
 		);
 	}
 
 	// -------------------------------------------------------------------
-	// Match importer slug — exercises the same pattern used in
-	// class-wpcm-match-importer.php line 157.
+	// Match importer integration — mirrors the exact code path in
+	// class-wpcm-match-importer.php and verifies the slug via wp_insert_post.
 	// -------------------------------------------------------------------
 
-	public function test_match_import_slug_handles_accented_club_names() {
+	public function test_match_import_creates_correct_slug() {
 		update_option( 'wpcm_match_clubs_separator', 'v' );
 		$separator = get_option( 'wpcm_match_clubs_separator' );
-		$id        = 99;
+		$id_prefix = 99;
 		$home      = 'München FC';
 		$away      = 'Zürich SC';
-		$slug      = sanitize_title( $id . '-' . $home . '-' . $separator . '-' . $away );
+		$title     = $id_prefix . '-' . $home . '-' . $separator . '-' . $away;
+		$slug      = sanitize_title( $title );
 
-		$this->assertEquals( '99-munchen-fc-v-zurich-sc', $slug );
+		$post_id = wp_insert_post(
+			array(
+				'post_type'   => 'wpcm_match',
+				'post_status' => 'publish',
+				'post_title'  => $title,
+				'post_name'   => $slug,
+			)
+		);
+
+		$post = get_post( $post_id );
+		$this->assertEquals( '99-munchen-fc-v-zurich-sc', $post->post_name );
 	}
 }
