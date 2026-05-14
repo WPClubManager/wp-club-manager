@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</header>
 
 	<div class="wpcm-table-details wpcm-row">
-		<?php echo do_shortcode( '[league_table id="' . get_the_ID() . '"]' ); ?>
+		<?php echo do_shortcode( '[league_table id="' . absint( get_the_ID() ) . '"]' ); ?>
 	</div>
 
 	<?php do_action( 'wpclubmanager_after_single_table' ); ?>

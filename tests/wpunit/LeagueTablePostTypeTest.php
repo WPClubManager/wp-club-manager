@@ -33,9 +33,9 @@ class LeagueTablePostTypeTest extends WPCMTestCase {
 
 	public function test_league_table_default_rewrite_slug() {
 		delete_option( 'wpclubmanager_table_slug' );
-		// Re-register post types to pick up default slug.
-		$post_types = new WPCM_Post_Types();
-		$post_types->register_post_types();
+		// Unregister and re-register to pick up default slug.
+		unregister_post_type( 'wpcm_table' );
+		WPCM_Post_Types::register_post_types();
 
 		$obj = get_post_type_object( 'wpcm_table' );
 		$this->assertNotNull( $obj );
@@ -45,9 +45,9 @@ class LeagueTablePostTypeTest extends WPCMTestCase {
 
 	public function test_league_table_custom_rewrite_slug() {
 		update_option( 'wpclubmanager_table_slug', 'league-table' );
-		// Re-register post types to pick up custom slug.
-		$post_types = new WPCM_Post_Types();
-		$post_types->register_post_types();
+		// Unregister and re-register to pick up custom slug.
+		unregister_post_type( 'wpcm_table' );
+		WPCM_Post_Types::register_post_types();
 
 		$obj = get_post_type_object( 'wpcm_table' );
 		$this->assertNotNull( $obj );
