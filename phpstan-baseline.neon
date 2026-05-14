@@ -316,11 +316,6 @@ parameters:
 			path: includes/admin/importers/class-wpcm-match-importer.php
 
 		-
-			message: "#^Negated boolean expression is always false\\.$#"
-			count: 1
-			path: includes/admin/importers/class-wpcm-player-importer.php
-
-		-
 			message: "#^Parameter \\#1 \\$post of function get_club_details expects array, WP_Post given\\.$#"
 			count: 1
 			path: includes/admin/post-types/meta-boxes/class-wpcm-meta-box-club-details.php
