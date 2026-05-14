@@ -7,9 +7,9 @@
  * sanitize_title() rather than sanitize_title_with_dashes().
  *
  * WPCM_Admin_Post_Types::wp_insert_post_data() uses filter_input(INPUT_POST, ...)
- * which cannot be faked in CLI/test environments. The CSV importers build
- * slugs from the imported array without filter_input, so integration tests
- * for those paths exercise the actual importer code directly.
+ * which cannot be faked in CLI/test environments, so those paths are tested
+ * by verifying sanitize_title() output directly. The importer integration
+ * tests mirror the importer code path and insert real posts to verify slugs.
  */
 
 class AccentedSlugTest extends WPCMTestCase {
@@ -27,7 +27,11 @@ class AccentedSlugTest extends WPCMTestCase {
 	}
 
 	public function _tearDown() {
-		update_option( 'wpcm_match_clubs_separator', $this->original_separator );
+		if ( false === $this->original_separator ) {
+			delete_option( 'wpcm_match_clubs_separator' );
+		} else {
+			update_option( 'wpcm_match_clubs_separator', $this->original_separator );
+		}
 		parent::_tearDown();
 	}
 

@@ -324,10 +324,10 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 				if ( $first_name || $last_name ) {
 					$full_name = trim( $first_name . ' ' . $last_name );
-					$title     = sanitize_title( $full_name );
+					$post_name = sanitize_title( $full_name );
 
 					$data['post_title'] = $full_name;
-					$data['post_name']  = $title;
+					$data['post_name']  = $post_name;
 				}
 
 			endif;
@@ -347,10 +347,10 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 				$full_name = trim( $firstname . ' ' . $lastname );
 				if ( $full_name ) {
-					$title = sanitize_title( $full_name );
+					$post_name = sanitize_title( $full_name );
 
 					$data['post_title'] = $full_name;
-					$data['post_name']  = $title;
+					$data['post_name']  = $post_name;
 				}
 
 			endif;
