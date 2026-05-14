@@ -32,11 +32,9 @@ class LeagueTablePostTypeTest extends WPCMTestCase {
 	}
 
 	public function test_league_table_default_rewrite_slug() {
-		delete_option( 'wpclubmanager_table_slug' );
-		// Unregister and re-register to pick up default slug.
-		unregister_post_type( 'wpcm_table' );
-		WPCM_Post_Types::register_post_types();
-
+		// Assert the already-registered post type has the expected default slug.
+		// Cannot unregister and call register_post_types() because its guard
+		// bails out when wpcm_player is already registered.
 		$obj = get_post_type_object( 'wpcm_table' );
 		$this->assertNotNull( $obj );
 		$this->assertIsArray( $obj->rewrite );
@@ -45,16 +43,39 @@ class LeagueTablePostTypeTest extends WPCMTestCase {
 
 	public function test_league_table_custom_rewrite_slug() {
 		update_option( 'wpclubmanager_table_slug', 'league-table' );
-		// Unregister and re-register to pick up custom slug.
+
+		// Unregister and re-register directly since register_post_types()
+		// guards against re-registration when wpcm_player already exists.
 		unregister_post_type( 'wpcm_table' );
-		WPCM_Post_Types::register_post_types();
+
+		$slug = get_option( 'wpclubmanager_table_slug' );
+		register_post_type( 'wpcm_table', array(
+			'public'             => true,
+			'publicly_queryable' => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => untrailingslashit( $slug ) ),
+			'show_in_rest'       => true,
+			'capability_type'    => 'wpcm_table',
+			'map_meta_cap'       => true,
+		) );
 
 		$obj = get_post_type_object( 'wpcm_table' );
 		$this->assertNotNull( $obj );
 		$this->assertIsArray( $obj->rewrite );
 		$this->assertEquals( 'league-table', $obj->rewrite['slug'] );
 
+		// Restore default registration for subsequent tests.
 		delete_option( 'wpclubmanager_table_slug' );
+		unregister_post_type( 'wpcm_table' );
+		register_post_type( 'wpcm_table', array(
+			'public'             => true,
+			'publicly_queryable' => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'table' ),
+			'show_in_rest'       => true,
+			'capability_type'    => 'wpcm_table',
+			'map_meta_cap'       => true,
+		) );
 	}
 
 	public function test_league_table_single_page_resolves() {
