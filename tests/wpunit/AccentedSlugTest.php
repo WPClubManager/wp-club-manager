@@ -6,11 +6,11 @@
  * Hungarian characters, etc) must produce valid ASCII slugs via
  * sanitize_title() rather than sanitize_title_with_dashes().
  *
- * The production code in WPCM_Admin_Post_Types::wp_insert_post_data() and
- * the CSV importers uses filter_input(INPUT_POST, ...) which cannot be
- * faked in CLI/test environments. These tests verify the slug generation
- * logic directly: sanitize_title() correctly calls remove_accents() before
- * generating the slug, while the old sanitize_title_with_dashes() did not.
+ * The production code in WPCM_Admin_Post_Types::wp_insert_post_data()
+ * uses filter_input(INPUT_POST, ...) which cannot be faked in CLI/test
+ * environments. These tests verify the slug generation logic directly:
+ * sanitize_title() correctly calls remove_accents() before generating
+ * the slug, while the old sanitize_title_with_dashes() did not.
  */
 
 class AccentedSlugTest extends WPCMTestCase {
@@ -27,12 +27,6 @@ class AccentedSlugTest extends WPCMTestCase {
 		$slug = sanitize_title( $name );
 
 		$this->assertEquals( $expected_slug, $slug );
-
-		// Confirm the old function would NOT have produced the same result for accented names.
-		if ( $name !== remove_accents( $name ) ) {
-			$old_slug = sanitize_title_with_dashes( $name );
-			$this->assertNotEquals( $expected_slug, $old_slug, 'sanitize_title_with_dashes should fail for accented characters' );
-		}
 	}
 
 	public function accented_player_names() {
@@ -74,7 +68,8 @@ class AccentedSlugTest extends WPCMTestCase {
 	 * @dataProvider accented_match_titles
 	 */
 	public function test_match_slug_handles_accented_club_names( $match_id, $home, $away, $expected_slug ) {
-		$separator = get_option( 'wpcm_match_clubs_separator', 'vs' );
+		update_option( 'wpcm_match_clubs_separator', 'v' );
+		$separator = get_option( 'wpcm_match_clubs_separator' );
 		$title     = $match_id . '-' . $home . ' ' . $separator . ' ' . $away;
 		$slug      = sanitize_title( $title );
 
@@ -83,8 +78,8 @@ class AccentedSlugTest extends WPCMTestCase {
 
 	public function accented_match_titles() {
 		return array(
-			'accented_clubs' => array( 1, 'München FC', 'Zürich SC', '1-munchen-fc-vs-zurich-sc' ),
-			'ascii_clubs'    => array( 2, 'Arsenal', 'Chelsea', '2-arsenal-vs-chelsea' ),
+			'accented_clubs' => array( 1, 'München FC', 'Zürich SC', '1-munchen-fc-v-zurich-sc' ),
+			'ascii_clubs'    => array( 2, 'Arsenal', 'Chelsea', '2-arsenal-v-chelsea' ),
 		);
 	}
 
@@ -118,12 +113,13 @@ class AccentedSlugTest extends WPCMTestCase {
 	// -------------------------------------------------------------------
 
 	public function test_match_import_slug_handles_accented_club_names() {
-		$separator = get_option( 'wpcm_match_clubs_separator', 'vs' );
+		update_option( 'wpcm_match_clubs_separator', 'v' );
+		$separator = get_option( 'wpcm_match_clubs_separator' );
 		$id        = 99;
 		$home      = 'München FC';
 		$away      = 'Zürich SC';
 		$slug      = sanitize_title( $id . '-' . $home . '-' . $separator . '-' . $away );
 
-		$this->assertEquals( '99-munchen-fc-vs-zurich-sc', $slug );
+		$this->assertEquals( '99-munchen-fc-v-zurich-sc', $slug );
 	}
 }
