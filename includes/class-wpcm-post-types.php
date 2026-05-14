@@ -400,10 +400,13 @@ class WPCM_Post_Types {
 			)
 		);
 
+		$permalink       = get_option( 'wpclubmanager_table_slug' );
+		$table_permalink = empty( $permalink ) ? _x( 'table', 'slug', 'wp-club-manager' ) : $permalink;
+
 		register_post_type( 'wpcm_table',
 			apply_filters( 'wpclubmanager_register_post_type_table',
 				array(
-					'labels'            => array(
+					'labels'              => array(
 						'name'               => __( 'League Tables', 'wp-club-manager' ),
 						'singular_name'      => __( 'League Table', 'wp-club-manager' ),
 						'add_new'            => __( 'Add New', 'wp-club-manager' ),
@@ -418,18 +421,22 @@ class WPCM_Post_Types {
 						'parent_item_colon'  => __( 'Parent League Table:', 'wp-club-manager' ),
 						'menu_name'          => __( 'League Tables', 'wp-club-manager' ),
 					),
-					'hierarchical'      => false,
-					'supports'          => array( 'title' ),
-					'public'            => false,
-					'show_ui'           => true,
-					'show_in_menu'      => false,
-					'query_var'         => false,
-					'rewrite'           => false,
-					'capability_type'   => 'wpcm_table',
-					'map_meta_cap'      => true,
-					'show_in_admin_bar' => true,
-					'taxonomies'        => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
-					'show_in_rest'      => true,
+					'hierarchical'        => false,
+					'supports'            => array( 'title' ),
+					'public'              => true,
+					'show_ui'             => true,
+					'show_in_menu'        => false,
+					'publicly_queryable'  => true,
+					'exclude_from_search' => true,
+					'has_archive'         => false,
+					'query_var'           => true,
+					'can_export'          => true,
+					'rewrite'             => $table_permalink ? array( 'slug' => untrailingslashit( $table_permalink ) ) : false,
+					'capability_type'     => 'wpcm_table',
+					'map_meta_cap'        => true,
+					'show_in_admin_bar'   => true,
+					'taxonomies'          => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
+					'show_in_rest'        => true,
 				)
 			)
 		);
@@ -525,8 +532,24 @@ class WPCM_Post_Types {
 	 * @param WP_Query $query The query object.
 	 */
 	public static function show_future_matches( $query ) {
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
 		if ( $query->is_singular && ( isset( $query->query_vars['wpcm_match'] ) || 'wpcm_match' === $query->get( 'post_type' ) ) ) {
-			$query->set( 'post_status', array( 'publish', 'future' ) );
+			$status = $query->get( 'post_status' );
+
+			if ( empty( $status ) ) {
+				$status = array( 'publish' );
+			} elseif ( is_string( $status ) ) {
+				$status = array( $status );
+			}
+
+			if ( ! in_array( 'future', $status, true ) ) {
+				$status[] = 'future';
+			}
+
+			$query->set( 'post_status', $status );
 		}
 	}
 
