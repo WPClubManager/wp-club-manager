@@ -283,7 +283,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					$title     = $side1 . ' ' . $separator . ' ' . $side2;
-					$post_name = sanitize_title_with_dashes( $postarr['ID'] . '-' . $title );
+					$post_name = sanitize_title( $postarr['ID'] . '-' . $title );
 
 					$data['post_title'] = $title;
 					$data['post_name']  = $post_name;
@@ -323,7 +323,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 				}
 
 				if ( $firstname || $lastname ) {
-					$title = sanitize_title_with_dashes( $first_name . '-' . $last_name );
+					$title = sanitize_title( $first_name . ' ' . $last_name );
 
 					$data['post_title'] = $first_name . ' ' . $last_name;
 					$data['post_name']  = $title;
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					$lastname = sanitize_text_field( $last_name );
 				}
 
-				$title = sanitize_title_with_dashes( $firstname . '-' . $lastname );
+				$title = sanitize_title( $firstname . ' ' . $lastname );
 
 				$data['post_title'] = $firstname . ' ' . $lastname;
 				$data['post_name']  = $title;

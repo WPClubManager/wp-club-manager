@@ -154,7 +154,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				);
 				$id   = wp_insert_post( $args );
 
-				$post_name = sanitize_title_with_dashes( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
+				$post_name = sanitize_title( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
 
 				wp_update_post( array(
 					'ID'         => $id,
