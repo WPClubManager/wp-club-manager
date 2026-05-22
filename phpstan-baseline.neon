@@ -51,11 +51,6 @@ parameters:
 			path: includes/admin/class-wpcm-admin-dashboard-widgets.php
 
 		-
-			message: "#^Variable \\$competition might not be defined\\.$#"
-			count: 1
-			path: includes/admin/class-wpcm-admin-dashboard-widgets.php
-
-		-
 			message: "#^Access to an undefined property WP_Post\\:\\:\\$place\\.$#"
 			count: 2
 			path: includes/admin/class-wpcm-admin-dashboard.php
