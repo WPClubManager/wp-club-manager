@@ -141,17 +141,11 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 						$side2 = $home_club;
 					}
 
+					$competition = '';
 					if ( is_array( $comps ) ) {
-						foreach ( $comps as $comp ) :
+						$comp = reset( $comps );
 
-							$comp       = reset( $comps );
-							$t_id       = $comp->term_id;
-							$comp_meta  = get_option( "taxonomy_term_$t_id" );
-							$comp_label = $comp_meta['wpcm_comp_label'];
-
-							$competition = $comp->name . '&nbsp;' . $comp_status;
-
-						endforeach;
+						$competition = $comp->name . "\xC2\xA0" . $comp_status;
 					}
 					?>
 
