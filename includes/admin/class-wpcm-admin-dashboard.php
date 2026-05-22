@@ -87,17 +87,18 @@ class WPCM_Admin_Dashboard {
 
 					);
 					$args['meta_query'] = array(
-						'relation' => 'OR',
+						'relation' => 'AND',
 						array(
-							'key'   => 'wpcm_home_club',
-							'value' => $default_club,
+							'relation' => 'OR',
+							array(
+								'key'   => 'wpcm_home_club',
+								'value' => $default_club,
+							),
+							array(
+								'key'   => 'wpcm_away_club',
+								'value' => $default_club,
+							),
 						),
-						array(
-							'key'   => 'wpcm_away_club',
-							'value' => $default_club,
-						),
-					);
-					$args['meta_query'] = array(
 						array(
 							'key'   => 'wpcm_played',
 							'value' => 1,
