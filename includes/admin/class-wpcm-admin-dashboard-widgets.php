@@ -143,11 +143,9 @@ if ( ! class_exists( 'WPCM_Admin_Dashboard_Widgets' ) ) :
 
 					$competition = '';
 					if ( is_array( $comps ) ) {
-						$comp       = reset( $comps );
-						$t_id       = $comp->term_id;
-						$comp_meta  = get_option( "taxonomy_term_$t_id" );
+						$comp = reset( $comps );
 
-						$competition = $comp->name . '&nbsp;' . $comp_status;
+						$competition = $comp->name . "\xC2\xA0" . $comp_status;
 					}
 					?>
 
