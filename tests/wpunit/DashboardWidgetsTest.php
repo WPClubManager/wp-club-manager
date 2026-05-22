@@ -86,27 +86,20 @@ class DashboardWidgetsTest extends WPCMTestCase {
 	/**
 	 * Return a future date guaranteed to fall within the current ISO week.
 	 *
-	 * Uses "monday this week" in UTC and adds days to stay within the week,
-	 * avoiding flakiness when tests run on different days.
+	 * Uses 60 seconds from now, capped at Sunday 23:59:59 UTC to ensure
+	 * the date never crosses into the next ISO week.
 	 *
 	 * @return string Date in 'Y-m-d H:i:s' format.
 	 */
 	private function get_future_date_this_week() {
-		$monday    = strtotime( 'monday this week 00:00:00 UTC' );
-		$now       = time();
-		$day_of_week = (int) gmdate( 'N' ); // 1 = Monday, 7 = Sunday.
+		$monday      = strtotime( 'monday this week 00:00:00 UTC' );
+		$now         = time();
+		$end_of_week = $monday + ( 7 * DAY_IN_SECONDS ) - 1; // Sunday 23:59:59 UTC.
 
-		// Pick the latest day this week that is still in the future.
-		// Try Sunday (day 7), then Saturday, etc., down to current day.
-		for ( $target = 7; $target >= $day_of_week; $target-- ) {
-			$candidate = $monday + ( ( $target - 1 ) * DAY_IN_SECONDS ) + ( 15 * HOUR_IN_SECONDS );
-			if ( $candidate > $now ) {
-				return gmdate( 'Y-m-d H:i:s', $candidate );
-			}
-		}
+		// Use a time 60 seconds from now, capped at end of current ISO week.
+		$candidate = min( $now + 60, $end_of_week );
 
-		// Fallback: use tomorrow at 23:59 (still this week if not Sunday).
-		return gmdate( 'Y-m-d H:i:s', $now + DAY_IN_SECONDS );
+		return gmdate( 'Y-m-d H:i:s', $candidate );
 	}
 
 	/**
@@ -138,15 +131,18 @@ class DashboardWidgetsTest extends WPCMTestCase {
 		set_error_handler( function ( $errno, $errstr ) use ( &$error_triggered ) {
 			if ( strpos( $errstr, 'competition' ) !== false || strpos( $errstr, 'Undefined variable' ) !== false ) {
 				$error_triggered = true;
+				return true;
 			}
-			return true;
+			return false;
 		} );
 
-		ob_start();
-		$widgets->upcoming_matches_widget();
-		$output = ob_get_clean();
-
-		restore_error_handler();
+		try {
+			ob_start();
+			$widgets->upcoming_matches_widget();
+			$output = ob_get_clean();
+		} finally {
+			restore_error_handler();
+		}
 
 		$this->assertFalse( $error_triggered, 'No PHP warning should be triggered for undefined $competition variable.' );
 		$this->assertStringContainsString( 'wpcm-matches-list', $output );
