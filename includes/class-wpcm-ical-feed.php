@@ -255,16 +255,13 @@ class WPCM_ICal_Feed {
 			return $line;
 		}
 
-		$cut_func = function_exists( 'mb_strcut' ) ? 'mb_strcut' : 'substr';
+		$folded = mb_strcut( $line, 0, 75, 'UTF-8' );
+		$rest   = mb_strcut( $line, strlen( $folded ), null, 'UTF-8' );
 
-		$folded    = $cut_func( $line, 0, 75 );
-		$rest      = $cut_func( $line, 75 );
-		$rest_len  = strlen( $rest );
-
-		while ( $rest_len > 0 ) {
-			$folded   .= "\r\n " . $cut_func( $rest, 0, 74 );
-			$rest      = $cut_func( $rest, 74 );
-			$rest_len  = strlen( $rest );
+		while ( '' !== $rest ) {
+			$chunk   = mb_strcut( $rest, 0, 74, 'UTF-8' );
+			$folded .= "\r\n " . $chunk;
+			$rest    = mb_strcut( $rest, strlen( $chunk ), null, 'UTF-8' );
 		}
 
 		return $folded;

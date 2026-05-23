@@ -30,19 +30,19 @@ class WPCM_Shortcode_Match_Calendar {
 		$get_month = isset( $_GET['wpcm_cal_month'] ) ? absint( $_GET['wpcm_cal_month'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
 		$get_year  = isset( $_GET['wpcm_cal_year'] ) ? absint( $_GET['wpcm_cal_year'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification
 
-		$month  = $get_month ? $get_month : ( isset( $atts['month'] ) && '' !== $atts['month'] ? absint( $atts['month'] ) : (int) gmdate( 'n' ) );
-		$year   = $get_year ? $get_year : ( isset( $atts['year'] ) && '' !== $atts['year'] ? absint( $atts['year'] ) : (int) gmdate( 'Y' ) );
+		$month  = $get_month ? $get_month : ( isset( $atts['month'] ) && '' !== $atts['month'] ? absint( $atts['month'] ) : (int) current_time( 'n' ) );
+		$year   = $get_year ? $get_year : ( isset( $atts['year'] ) && '' !== $atts['year'] ? absint( $atts['year'] ) : (int) current_time( 'Y' ) );
 		$comp   = isset( $atts['comp'] ) && '' !== $atts['comp'] ? $atts['comp'] : null;
 		$season = isset( $atts['season'] ) && '' !== $atts['season'] ? $atts['season'] : null;
 		$team   = isset( $atts['team'] ) && '' !== $atts['team'] ? $atts['team'] : null;
 
 		// Clamp month to valid range.
 		if ( $month < 1 || $month > 12 ) {
-			$month = (int) gmdate( 'n' );
+			$month = (int) current_time( 'n' );
 		}
 
 		// Clamp year to reasonable range.
-		$current_year = (int) gmdate( 'Y' );
+		$current_year = (int) current_time( 'Y' );
 		if ( $year < 1970 || $year > $current_year + 10 ) {
 			$year = $current_year;
 		}
@@ -68,8 +68,10 @@ class WPCM_Shortcode_Match_Calendar {
 
 		if ( false === $output ) {
 
-			$first_day = gmdate( 'Y-m-d', gmmktime( 0, 0, 0, $month, 1, $year ) );
-			$last_day  = gmdate( 'Y-m-t', gmmktime( 0, 0, 0, $month, 1, $year ) );
+			$site_tz   = wp_timezone();
+			$month_dt  = new DateTimeImmutable( sprintf( '%04d-%02d-01', $year, $month ), $site_tz );
+			$first_day = $month_dt->format( 'Y-m-d' );
+			$last_day  = $month_dt->format( 'Y-m-t' );
 
 			$query_args = array(
 				'tax_query'      => array(), // phpcs:ignore
@@ -129,7 +131,7 @@ class WPCM_Shortcode_Match_Calendar {
 			// Group matches by day of month.
 			$matches_by_day = array();
 			foreach ( $matches as $match ) {
-				$day = (int) date( 'j', strtotime( $match->post_date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				$day = (int) wp_date( 'j', strtotime( $match->post_date ) );
 				if ( ! isset( $matches_by_day[ $day ] ) ) {
 					$matches_by_day[ $day ] = array();
 				}

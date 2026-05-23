@@ -1586,16 +1586,6 @@ parameters:
 			path: includes/wpcm-match-functions.php
 
 		-
-			message: "#^Function wpcm_get_match_venue\\(\\) should return string but returns array\\<string, mixed\\>\\.$#"
-			count: 1
-			path: includes/wpcm-match-functions.php
-
-		-
-			message: "#^Function wpcm_get_match_result\\(\\) should return string but returns array\\<int, mixed\\>\\.$#"
-			count: 1
-			path: includes/wpcm-match-functions.php
-
-		-
 			message: "#^Variable \\$label might not be defined\\.$#"
 			count: 1
 			path: includes/wpcm-match-functions.php
@@ -2250,6 +2240,11 @@ parameters:
 			message: "#^Variable \\$count might not be defined\\.$#"
 			count: 2
 			path: templates/single-match/lineup.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: templates/single-match/venue.php
 
 		-
 			message: "#^Variable \\$season might not be defined\\.$#"

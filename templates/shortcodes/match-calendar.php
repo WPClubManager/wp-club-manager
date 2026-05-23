@@ -15,10 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** @var int $year */
 /** @var array $matches_by_day */
 
-$month_name    = wp_date( 'F', gmmktime( 0, 0, 0, $month, 1, $year ), new DateTimeZone( 'UTC' ) );
-$days_in_month = (int) gmdate( 't', gmmktime( 0, 0, 0, $month, 1, $year ) );
+$site_tz       = wp_timezone();
+$month_dt      = new DateTimeImmutable( sprintf( '%04d-%02d-01', $year, $month ), $site_tz );
+$month_name    = wp_date( 'F', $month_dt->getTimestamp(), $site_tz );
+$days_in_month = (int) $month_dt->format( 't' );
 // 1 = Monday … 7 = Sunday (ISO-8601).
-$first_weekday = (int) gmdate( 'N', gmmktime( 0, 0, 0, $month, 1, $year ) );
+$first_weekday = (int) $month_dt->format( 'N' );
 
 $day_labels = array(
 	__( 'Mon', 'wp-club-manager' ),
