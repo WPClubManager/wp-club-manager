@@ -86,8 +86,9 @@ class WPCM_ICal_Feed {
 		$team   = isset( $args['team'] ) ? $args['team'] : null;
 
 		// Limit feed to 6 months past and 12 months future to avoid large responses.
-		$date_start = gmdate( 'Y-m-d', strtotime( '-6 months' ) );
-		$date_end   = gmdate( 'Y-m-d', strtotime( '+12 months' ) );
+		// Use current_time so bounds align with post_date (site-local time).
+		$date_start = wp_date( 'Y-m-d', strtotime( '-6 months' ) );
+		$date_end   = wp_date( 'Y-m-d', strtotime( '+12 months' ) );
 
 		$query_args = array(
 			'tax_query'      => array(), // phpcs:ignore
@@ -255,13 +256,39 @@ class WPCM_ICal_Feed {
 			return $line;
 		}
 
-		$folded = mb_strcut( $line, 0, 75, 'UTF-8' );
-		$rest   = mb_strcut( $line, strlen( $folded ), null, 'UTF-8' );
+		if ( function_exists( 'mb_strcut' ) ) {
+			$folded = mb_strcut( $line, 0, 75, 'UTF-8' );
+			$rest   = mb_strcut( $line, strlen( $folded ), null, 'UTF-8' );
 
-		while ( '' !== $rest ) {
-			$chunk   = mb_strcut( $rest, 0, 74, 'UTF-8' );
-			$folded .= "\r\n " . $chunk;
-			$rest    = mb_strcut( $rest, strlen( $chunk ), null, 'UTF-8' );
+			while ( '' !== $rest ) {
+				$chunk   = mb_strcut( $rest, 0, 74, 'UTF-8' );
+				$folded .= "\r\n " . $chunk;
+				$rest    = mb_strcut( $rest, strlen( $chunk ), null, 'UTF-8' );
+			}
+
+			return $folded;
+		}
+
+		// Fallback: fold at 75/74 octets but avoid splitting UTF-8 multibyte sequences.
+		$folded = '';
+		$first  = true;
+		while ( '' !== $line ) {
+			$max   = $first ? 75 : 74;
+			$first = false;
+
+			if ( strlen( $line ) <= $max ) {
+				$folded .= $line;
+				break;
+			}
+
+			$cut = $max;
+			// Walk back if we're in the middle of a UTF-8 multibyte sequence (continuation byte 10xxxxxx).
+			while ( $cut > 0 && ( ord( $line[ $cut ] ) & 0xC0 ) === 0x80 ) {
+				--$cut;
+			}
+
+			$folded .= substr( $line, 0, $cut ) . "\r\n ";
+			$line    = substr( $line, $cut );
 		}
 
 		return $folded;
