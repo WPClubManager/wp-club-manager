@@ -34,6 +34,7 @@ class WPCM_Shortcodes {
 		// Define shortcodes
 		$shortcodes = array(
 			'match_list'     => __CLASS__ . '::match_list',
+			'match_calendar' => __CLASS__ . '::match_calendar',
 			'player_list'    => __CLASS__ . '::player_list',
 			'player_gallery' => __CLASS__ . '::player_gallery',
 			'staff_list'     => __CLASS__ . '::staff_list',
@@ -101,6 +102,18 @@ class WPCM_Shortcodes {
 	public static function match_list( $atts ) {
 
 		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Match_List', 'output' ), $atts );
+	}
+
+	/**
+	 * Match Calendar shortcode.
+	 *
+	 * @access public
+	 * @param mixed $atts
+	 * @return string
+	 */
+	public static function match_calendar( $atts ) {
+
+		return self::shortcode_wrapper( array( 'WPCM_Shortcode_Match_Calendar', 'output' ), $atts );
 	}
 
 	/**

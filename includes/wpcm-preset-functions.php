@@ -22,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function wpcm_get_sport_presets() {
 	return apply_filters( 'wpcm_sports', array(
 		'baseball'     => array(
+			'has_teams'         => true,
 			'name'              => __( 'Baseball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -145,6 +146,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'basketball'   => array(
+			'has_teams'         => true,
 			'name'              => __( 'Basketball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -292,6 +294,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'cricket'      => array(
+			'has_teams'         => true,
 			'name'              => __( 'Cricket', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -416,6 +419,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'floorball'    => array(
+			'has_teams'         => true,
 			'name'              => __( 'Floorball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -511,6 +515,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'football'     => array(
+			'has_teams'         => true,
 			'name'              => __( 'American Football', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -690,6 +695,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'footy'        => array(
+			'has_teams'         => true,
 			'name'              => __( 'Australian Rules Football', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -857,6 +863,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'gaelic'       => array(
+			'has_teams'         => true,
 			'name'              => __( 'Gaelic Football / Hurling', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -952,6 +959,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'handball'     => array(
+			'has_teams'         => true,
 			'name'              => __( 'Handball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1047,6 +1055,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'hockey_field' => array(
+			'has_teams'         => true,
 			'name'              => __( 'Field Hockey', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1146,6 +1155,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'hockey'       => array(
+			'has_teams'         => true,
 			'name'              => __( 'Ice Hockey', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1273,6 +1283,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'lacrosse'     => array(
+			'has_teams'         => true,
 			'name'              => __( 'Lacrosse', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1356,6 +1367,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'netball'      => array(
+			'has_teams'         => true,
 			'name'              => __( 'Netball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1471,6 +1483,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'rugby_league' => array(
+			'has_teams'         => true,
 			'name'              => __( 'Rugby League', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1582,6 +1595,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'rugby'        => array(
+			'has_teams'         => true,
 			'name'              => __( 'Rugby Union', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1701,6 +1715,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'soccer'       => array(
+			'has_teams'         => true,
 			'name'              => __( 'Football (Soccer)', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(
@@ -1796,6 +1811,7 @@ function wpcm_get_sport_presets() {
 			),
 		),
 		'volleyball'   => array(
+			'has_teams'         => true,
 			'name'              => __( 'Volleyball', 'wp-club-manager' ),
 			'terms'             => array(
 				'wpcm_position' => array(

@@ -72,8 +72,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				$first_name = sanitize_text_field( wpcm_array_value( $meta, '_wpcm_firstname' ) );
 				$last_name  = sanitize_text_field( wpcm_array_value( $meta, '_wpcm_lastname' ) );
-				$name       = $first_name . ' ' . $last_name;
-				$post_name  = sanitize_title_with_dashes( $name );
+				$name       = trim( $first_name . ' ' . $last_name );
+				$post_name  = sanitize_title( $name );
 
 				if ( ! $name ) :
 					++$this->skipped;

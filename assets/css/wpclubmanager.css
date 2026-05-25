@@ -1049,3 +1049,72 @@ ul.wpcm-matches-list {
 .leaflet-marker-icon {
 	box-shadow: none !important;
 }
+
+/* Match Calendar */
+.wpcm-calendar {
+	margin: 1em 0;
+}
+.wpcm-calendar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.5em;
+	font-size: 1.1em;
+	font-weight: 600;
+}
+a.wpcm-calendar-nav {
+	cursor: pointer;
+	padding: 0.25em 0.5em;
+	user-select: none;
+	text-decoration: none;
+	color: inherit;
+}
+.wpcm-calendar-table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+.wpcm-calendar-table th {
+	text-align: center;
+	padding: 0.4em;
+	font-weight: 600;
+	border-bottom: 2px solid #ddd;
+}
+.wpcm-calendar-table td {
+	vertical-align: top;
+	padding: 0.3em;
+	border: 1px solid #eee;
+	height: 60px;
+}
+.wpcm-calendar-empty {
+	background: #fafafa;
+}
+.wpcm-calendar-day-number {
+	display: block;
+	font-weight: 600;
+	font-size: 0.85em;
+	margin-bottom: 0.2em;
+	color: #666;
+}
+.wpcm-calendar-has-match {
+	background: #f0f7ff;
+}
+.wpcm-calendar-match {
+	display: block;
+	font-size: 0.75em;
+	line-height: 1.3;
+	padding: 0.2em 0;
+	text-decoration: none;
+	color: inherit;
+}
+.wpcm-calendar-match:hover {
+	text-decoration: underline;
+}
+.wpcm-calendar-match-teams {
+	display: block;
+	font-weight: 600;
+}
+.wpcm-calendar-match-info {
+	display: block;
+	color: #888;
+}

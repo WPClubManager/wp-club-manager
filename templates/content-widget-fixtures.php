@@ -35,10 +35,12 @@ $timestamp = strtotime( $post->post_date ); ?>
 				<div class="home-logo"><?php echo wp_kses_post( $badges[0] ); ?></div>
 				<?php echo esc_html( $sides[0] ); ?>
 			</h4>
+			<?php if ( ! empty( $sides[1] ) ) : ?>
 			<h4 class="away-clubs">
 				<div class="away-logo"><?php echo wp_kses_post( $badges[1] ); ?></div>
 				<?php echo esc_html( $sides[1] ); ?>
 			</h4>
+			<?php endif; ?>
 		</div>
 	</a>
 	<div class="wpcm-date">

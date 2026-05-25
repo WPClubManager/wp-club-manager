@@ -44,9 +44,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo esc_html( $played ? $result[0] : date_i18n( $time_format, $timestamp ) ); ?>
 					</span>
 				</span>
+				<?php if ( ! empty( $side2 ) ) : ?>
 				<span class="wpcm-matches-list-col wpcm-matches-list-club2">
 					<?php echo esc_html( $side2 ); ?>
 				</span>
+				<?php endif; ?>
 				<span class="wpcm-matches-list-col wpcm-matches-list-info">
 					<?php echo esc_html( $comp[1] ); ?>
 				</span>

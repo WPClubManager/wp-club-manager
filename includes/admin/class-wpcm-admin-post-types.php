@@ -28,7 +28,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 
 			add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 
-			add_filter( 'the_posts', array( $this, 'show_scheduled_matches' ) );
 			add_filter( 'wp_insert_post_data', array( $this, 'wp_insert_post_data' ), 99, 2 );
 
 			// WP List table columns. Defined here so they are always available for events such as inline editing.
@@ -220,24 +219,6 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 		}
 
 		/**
-		 * Show future
-		 *
-		 * @param array $posts
-		 *
-		 * @return array
-		 */
-		public function show_scheduled_matches( $posts ) {
-
-			global $wp_query, $wpdb;
-
-			if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
-				$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
-			}
-
-			return $posts;
-		}
-
-		/**
 		 * Insert post title data
 		 *
 		 * @param array $data
@@ -283,7 +264,7 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					}
 
 					$title     = $side1 . ' ' . $separator . ' ' . $side2;
-					$post_name = sanitize_title_with_dashes( $postarr['ID'] . '-' . $title );
+					$post_name = sanitize_title( $postarr['ID'] . '-' . $title );
 
 					$data['post_title'] = $title;
 					$data['post_name']  = $post_name;
@@ -322,11 +303,12 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					$last_name = '';
 				}
 
-				if ( $firstname || $lastname ) {
-					$title = sanitize_title_with_dashes( $first_name . '-' . $last_name );
+				if ( $first_name || $last_name ) {
+					$full_name = trim( $first_name . ' ' . $last_name );
+					$post_name = sanitize_title( $full_name );
 
-					$data['post_title'] = $first_name . ' ' . $last_name;
-					$data['post_name']  = $title;
+					$data['post_title'] = $full_name;
+					$data['post_name']  = $post_name;
 				}
 
 			endif;
@@ -344,10 +326,13 @@ if ( ! class_exists( 'WPCM_Admin_Post_Types' ) ) :
 					$lastname = sanitize_text_field( $last_name );
 				}
 
-				$title = sanitize_title_with_dashes( $firstname . '-' . $lastname );
+				$full_name = trim( $firstname . ' ' . $lastname );
+				if ( $full_name ) {
+					$post_name = sanitize_title( $full_name );
 
-				$data['post_title'] = $firstname . ' ' . $lastname;
-				$data['post_name']  = $title;
+					$data['post_title'] = $full_name;
+					$data['post_name']  = $post_name;
+				}
 
 			endif;
 

@@ -154,7 +154,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				);
 				$id   = wp_insert_post( $args );
 
-				$post_name = sanitize_title_with_dashes( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
+				$post_name = sanitize_title( $id . '-' . $home_club . '-' . $separator . '-' . $away_club );
 
 				wp_update_post( array(
 					'ID'         => $id,
@@ -194,23 +194,19 @@ if ( class_exists( 'WP_Importer' ) ) {
 				endif;
 
 				// Update competitions
-				$comps = wpcm_array_value( $meta, 'wpcm_comp' );
-				$comp  = sanitize_title_with_dashes( $comps );
+				$comp = wpcm_array_value( $meta, 'wpcm_comp' );
 				wp_set_object_terms( $id, $comp, 'wpcm_comp', false );
 
 				// Update seasons
-				$seasons = wpcm_array_value( $meta, 'wpcm_season' );
-				$season  = sanitize_title_with_dashes( $seasons );
+				$season = wpcm_array_value( $meta, 'wpcm_season' );
 				wp_set_object_terms( $id, $season, 'wpcm_season', false );
 
 				// Update teams
-				$teams = wpcm_array_value( $meta, 'wpcm_team' );
-				$team  = sanitize_title_with_dashes( $teams );
+				$team = wpcm_array_value( $meta, 'wpcm_team' );
 				wp_set_object_terms( $id, $team, 'wpcm_team', false );
 
 				// Update venues
-				$venues = wpcm_array_value( $meta, 'wpcm_venue' );
-				$venue  = sanitize_title_with_dashes( $venues );
+				$venue = wpcm_array_value( $meta, 'wpcm_venue' );
 				wp_set_object_terms( $id, $venue, 'wpcm_venue', false );
 
 				// Update Attendance

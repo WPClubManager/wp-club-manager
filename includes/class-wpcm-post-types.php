@@ -28,7 +28,7 @@ class WPCM_Post_Types {
 		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 5 );
 		add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
 		add_action( 'init', array( __CLASS__, 'support_jetpack_omnisearch' ) );
-		add_filter( 'the_posts', array( __CLASS__, 'show_future_matches' ) );
+		add_action( 'pre_get_posts', array( __CLASS__, 'show_future_matches' ) );
 		add_filter( 'rest_api_allowed_post_types', array( __CLASS__, 'rest_api_allowed_post_types' ) );
 	}
 
@@ -400,10 +400,13 @@ class WPCM_Post_Types {
 			)
 		);
 
+		$permalink       = get_option( 'wpclubmanager_table_slug' );
+		$table_permalink = empty( $permalink ) ? _x( 'table', 'slug', 'wp-club-manager' ) : $permalink;
+
 		register_post_type( 'wpcm_table',
 			apply_filters( 'wpclubmanager_register_post_type_table',
 				array(
-					'labels'            => array(
+					'labels'              => array(
 						'name'               => __( 'League Tables', 'wp-club-manager' ),
 						'singular_name'      => __( 'League Table', 'wp-club-manager' ),
 						'add_new'            => __( 'Add New', 'wp-club-manager' ),
@@ -418,18 +421,22 @@ class WPCM_Post_Types {
 						'parent_item_colon'  => __( 'Parent League Table:', 'wp-club-manager' ),
 						'menu_name'          => __( 'League Tables', 'wp-club-manager' ),
 					),
-					'hierarchical'      => false,
-					'supports'          => array( 'title' ),
-					'public'            => false,
-					'show_ui'           => true,
-					'show_in_menu'      => false,
-					'query_var'         => false,
-					'rewrite'           => false,
-					'capability_type'   => 'wpcm_table',
-					'map_meta_cap'      => true,
-					'show_in_admin_bar' => true,
-					'taxonomies'        => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
-					'show_in_rest'      => true,
+					'hierarchical'        => false,
+					'supports'            => array( 'title' ),
+					'public'              => true,
+					'show_ui'             => true,
+					'show_in_menu'        => false,
+					'publicly_queryable'  => true,
+					'exclude_from_search' => true,
+					'has_archive'         => false,
+					'query_var'           => true,
+					'can_export'          => true,
+					'rewrite'             => $table_permalink ? array( 'slug' => untrailingslashit( $table_permalink ) ) : false,
+					'capability_type'     => 'wpcm_table',
+					'map_meta_cap'        => true,
+					'show_in_admin_bar'   => true,
+					'taxonomies'          => array( 'wpcm_team', 'wpcm_season', 'wpcm_comp' ),
+					'show_in_rest'        => true,
 				)
 			)
 		);
@@ -516,18 +523,36 @@ class WPCM_Post_Types {
 	}
 
 	/**
-	 * Show future matches
+	 * Allow future-dated matches to be viewed on the frontend.
 	 *
-	 * @access public
-	 * @param string $posts
-	 * @return string
+	 * WordPress excludes future posts from queries by default, causing
+	 * scheduled matches to return 404. This adds 'future' to the
+	 * post_status query before the SQL is built.
+	 *
+	 * @param WP_Query $query The query object.
 	 */
-	public static function show_future_matches( $posts ) {
-		global $wp_query, $wpdb;
-		if ( is_single() && 0 === $wp_query->post_count && isset( $wp_query->query_vars['wpcm_match'] ) ) {
-			$posts = $wpdb->get_results( $wp_query->request ); // phpcs:ignore
+	public static function show_future_matches( $query ) {
+		if ( ! $query->is_main_query() ) {
+			return;
 		}
-		return $posts;
+
+		$is_match = isset( $query->query_vars['wpcm_match'] ) || 'wpcm_match' === $query->get( 'post_type' );
+
+		if ( $query->is_singular && $is_match ) {
+			$status = $query->get( 'post_status' );
+
+			if ( empty( $status ) ) {
+				$status = array( 'publish' );
+			} elseif ( is_string( $status ) ) {
+				$status = array( $status );
+			}
+
+			if ( ! in_array( 'future', $status, true ) ) {
+				$status[] = 'future';
+			}
+
+			$query->set( 'post_status', $status );
+		}
 	}
 
 	/**

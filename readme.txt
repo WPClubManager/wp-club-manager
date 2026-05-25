@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Requires at least: 4.9
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable Tag: 2.3.3
+Stable Tag: 2.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,6 +170,20 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 11. Front-end League Table
 
 == Changelog ==
+
+= 2.4.0 - 25th May 2026 =
+
+* Feature: Recreate shortcodes as Gutenberg blocks
+* Feature: Head-to-head sorting in league tables
+* Feature: Support individual/non-team sports
+* Feature: Option to remove link on player photo in gallery
+* Feature: Include all settings in export/import
+* Add: Match calendar view with iCal support
+* Fix: Match import not finding existing competitions/teams
+* Fix: 404 error on league table pages
+* Fix: Accented characters broken in permalinks
+* Fix: Scheduled matches returning 404 on frontend
+* Fix: Dashboard widget PHP warnings and stats query
 
 = 2.3.3 - 13th April 2026 =
 

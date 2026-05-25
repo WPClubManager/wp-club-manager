@@ -87,17 +87,18 @@ class WPCM_Admin_Dashboard {
 
 					);
 					$args['meta_query'] = array(
-						'relation' => 'OR',
+						'relation' => 'AND',
 						array(
-							'key'   => 'wpcm_home_club',
-							'value' => $default_club,
+							'relation' => 'OR',
+							array(
+								'key'   => 'wpcm_home_club',
+								'value' => $default_club,
+							),
+							array(
+								'key'   => 'wpcm_away_club',
+								'value' => $default_club,
+							),
 						),
-						array(
-							'key'   => 'wpcm_away_club',
-							'value' => $default_club,
-						),
-					);
-					$args['meta_query'] = array(
 						array(
 							'key'   => 'wpcm_played',
 							'value' => 1,
@@ -336,7 +337,9 @@ class WPCM_Admin_Dashboard {
 							}
 						}
 
+						wpcm_set_h2h_context( $comp, $season_id );
 						usort( $clubs, 'wpcm_sort_table_clubs' );
+						wpcm_clear_h2h_context();
 
 						if ( 'ASC' === $order ) {
 							$clubs = array_reverse( $clubs );
@@ -493,7 +496,9 @@ class WPCM_Admin_Dashboard {
 							}
 						}
 
+						wpcm_set_h2h_context( $comp, $season_id );
 						usort( $clubs, 'wpcm_sort_table_clubs' );
+						wpcm_clear_h2h_context();
 
 						if ( 'ASC' === $order ) {
 							$clubs = array_reverse( $clubs );

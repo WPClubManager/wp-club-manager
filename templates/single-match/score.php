@@ -20,8 +20,10 @@ $score  = wpcm_get_match_result( $post->ID ); ?>
 
 	<?php echo esc_html( $score[1] ); ?>
 
-	<span class="wpcm-match-score-delimiter"><?php echo esc_html( $played ? $score[3] : get_option( 'wpcm_match_clubs_separator' ) ); ?></span>
+	<?php if ( '' !== $score[2] ) : ?>
+		<span class="wpcm-match-score-delimiter"><?php echo esc_html( $played ? $score[3] : get_option( 'wpcm_match_clubs_separator' ) ); ?></span>
 
-	<?php echo esc_html( $score[2] ); ?>
+		<?php echo esc_html( $score[2] ); ?>
+	<?php endif; ?>
 
 </div>

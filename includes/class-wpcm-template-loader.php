@@ -86,6 +86,14 @@ class WPCM_Template_Loader {
 
 		}
 
+		if ( is_single() && get_post_type() === 'wpcm_table' ) {
+
+			$file   = 'single-table.php';
+			$find[] = $file;
+			$find[] = WPCM_TEMPLATE_PATH . $file;
+
+		}
+
 		if ( $file ) {
 			$template = locate_template( $find );
 			if ( ! $template ) {

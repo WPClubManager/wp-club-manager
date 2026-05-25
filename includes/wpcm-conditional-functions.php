@@ -120,6 +120,29 @@ if ( ! function_exists( 'is_plugins_page' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpcm_is_team_sport' ) ) {
+	/**
+	 * wpcm_is_team_sport - Returns true when the current sport uses teams (home vs away).
+	 *
+	 * Individual sports (e.g. tennis, athletics) return false.
+	 *
+	 * @access public
+	 * @return bool
+	 * @since  2.4.0
+	 */
+	function wpcm_is_team_sport() {
+
+		$sport   = get_option( 'wpcm_sport' );
+		$presets = wpcm_get_sport_presets();
+
+		if ( isset( $presets[ $sport ]['has_teams'] ) ) {
+			return (bool) $presets[ $sport ]['has_teams'];
+		}
+
+		return true;
+	}
+}
+
 if ( ! function_exists( 'is_league_mode' ) ) {
 	/**
 	 * is_league_mode - Returns true when league mode is activated
