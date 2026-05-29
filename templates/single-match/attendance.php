@@ -23,7 +23,7 @@ if ( $played ) {
 
 		<div class="wpcm-match-attendance">
 
-			<?php echo esc_html_e( 'Attendance', 'wp-club-manager' ); ?>: <?php echo esc_html( $attendance ); ?>
+			<?php esc_html_e( 'Attendance', 'wp-club-manager' ); ?>: <?php echo esc_html( $attendance ); ?>
 
 		</div>
 
