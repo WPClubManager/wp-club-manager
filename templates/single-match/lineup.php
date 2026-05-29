@@ -24,7 +24,7 @@ if ( $played && $players ) {
 
 		<div class="wpcm-match-stats-start">
 
-			<h3><?php echo esc_html_e( 'Lineup', 'wp-club-manager' ); ?></h3>
+			<h3><?php esc_html_e( 'Lineup', 'wp-club-manager' ); ?></h3>
 
 			<table class="wpcm-lineup-table">
 				<thead>
@@ -83,7 +83,7 @@ if ( $played && $players ) {
 
 		<div class="wpcm-match-stats-subs">
 
-			<h3><?php echo esc_html_e( 'Subs', 'wp-club-manager' ); ?></h3>
+			<h3><?php esc_html_e( 'Subs', 'wp-club-manager' ); ?></h3>
 
 			<table class="wpcm-subs-table">
 				<thead>
